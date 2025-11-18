@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kool D. Studio - Art of Your Story</title>
+  <meta name="description" content="Studio chụp ảnh cưới phong cách Hàn Quốc, makeup cô dâu chuẩn Hàn, ảnh gia đình, ảnh bầu, in ấn album cao cấp tại TP.HCM."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <style>
+    :root{--deep-green:#3A5A40;--soft-gold:#eb9500;--cream:#F9F5F0;--gray:#666;--white:#fff;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Montserrat',sans-serif;background:var(--cream);color:#333;line-height:1.7;}
+    a{text-decoration:none;color:inherit;}
+
+    /* Navigation cố định */
+    nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);z-index:1000;padding:1.3rem 0;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:0.3s;}
+    nav.scrolled{padding:0.9rem 0;}
+    .nav-container{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
+    .logo{font-family:'Playfair Display',serif;font-size:28px;color:var(--deep-green);letter-spacing:2px;}
+    .nav-links{display:flex;gap:3rem;}
+    .nav-links a{font-weight:500;font-size:13.5px;letter-spacing:1.5px;text-transform:uppercase;transition:0.3s;}
+    .nav-links a:hover{color:var(--soft-gold);}
+    .menu-toggle{display:none;font-size:28px;cursor:pointer;}
+
+    /* Hero */
+    header{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(rgba(249,245,240,0.92),rgba(249,245,240,0.92)),url('https://images.unsplash.com/photo-1606216794276-984d66f63c02?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;padding-top:100px;}
+    .studio-name{font-family:'Playfair Display',serif;font-size:62px;color:var(--deep-green);letter-spacing:4px;margin-bottom:8px;}
+    .tagline{font-size:22px;font-weight:300;color:var(--gray);letter-spacing:1px;margin-bottom:30px;}
+    .gold-line{width:130px;height:2px;background:var(--soft-gold);margin:30px auto;}
+    .btn{display:inline-block;padding:14px 40px;background:var(--deep-green);color:white;border-radius:50px;font-weight:500;letter-spacing:2px;transition:0.3s;}
+    .btn:hover{background:#2E4833;transform:translateY(-4px);}
+    .btn-gold{background:var(--soft-gold);}
+
+    /* Section chung */
+    .container{max-width:1300px;margin:0 auto;padding:0 2rem;}
+    section{padding:90px 0;}
+    .section-title{font-family:'Playfair Display',serif;font-size:44px;text-align:center;color:var(--deep-green);margin-bottom:60px;position:relative;}
+    .section-title::after{content:'';width:90px;height:2px;background:var(--soft-gold);position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);}
+
+    /* Portfolio preview */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;}
+    .grid img{width:100%;height:420px;object-fit:cover;border-radius:16px;transition:0.4s;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+    .grid img:hover{transform:scale(1.04);box-shadow:0 20px 40px rgba(0,0,0,0.15);}
+
+    /* Contact */
+    #contact{background:var(--deep-green);color:white;text-align:center;}
+    #contact .section-title{color:white;}
+    #contact .section-title::after{background:var(--soft-gold);}
+
+    @media (max-width:768px){
+      .nav-links{position:fixed;top:76px;left:-100%;width:100%;height:100vh;background:white;flex-direction:column;padding-top:80px;transition:0.4s;}
+      .nav-links.active{left:0;}
+      .menu-toggle{display:block;}
+      .studio-name{font-size:44px;}
+      .grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">KOOL D. STUDIO</div>
+    <div class="nav-links" id="nav-links">
+      <a href="#home">Trang chủ</a>
+      <a href="about.html">Về studio</a>
+      <a href="pricing.html">Bảng giá</a>
+      <a href="about.html#portfolio">Portfolio</a>
+      <a href="#contact">Liên hệ</a>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">☰</div>
+  </div>
+</nav>
+
+<header id="home">
+  <div class="container">
+    <h1 class="studio-name">Kool D. Studio</h1>
+    <p class="tagline">Phong cách Hàn Quốc – Tinh tế trong từng khung hình</p>
+    <div class="gold-line"></div>
+    <a href="#contact" class="btn">Đặt lịch chụp ngay</a><br><br>
+    <a href="https://zalo.me/0379031662" target="_blank" class="btn btn-gold">Chat Zalo tư vấn liền</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <section id="services">
+    <h2 class="section-title">Chúng mình chuyên</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;text-align:center;font-size:16px;">
+      <div><h3 style="font-size:24px;color:var(--deep-green);margin-bottom:12px;">Ảnh cưới Hàn Quốc trong studio</h3><p>Tone pastel, ánh sáng soft, concept Hàn 100%</p></div>
+      <div><h3 style="font-size:24px;color:var(--deep-green);margin-bottom:12px;">Makeup cô dâu chuẩn Hàn</h3><p>Da căng bóng, mắt long lanh, kiểu tóc đang hot nhất</p></div>
+      <div><h3 style="font-size:24px;color:var(--deep-green);margin-bottom:12px;">Ảnh gia đình – Kỷ niệm ngày cưới</h3><p>Ấm áp, tự nhiên, lưu giữ từng khoảnh khắc yêu thương</p></div>
+      
+    </div>
+  </section>
+
+  <section id="portfolio-preview">
+    <h2 class="section-title">Một số ảnh chụp</h2>
+    <div class="grid">
+      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Ảnh cưới Hàn Quốc Kool D. Studio">
+      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80" alt="Makeup cô dâu Hàn Quốc">
+      <img src="https://images.unsplash.com/photo-1606216794276-984d66f63c02?auto=format&fit=crop&w=800&q=80" alt="Ảnh gia đình studio">
+      <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=800&q=80" alt="Concept Hàn Quốc">
+      <img src="https://images.unsplash.com/photo-1537632858346-367b85f69ec9?auto=format&fit=crop&w=800&q=80" alt="Album in ấn cao cấp">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Studio tone pastel">
+    </div>
+    <div style="text-align:center;margin-top:50px;">
+      <a href="about.html#portfolio" class="btn">Xem full portfolio →</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Đặt lịch ngay hôm nay</h2>
+      <p style="font-size:19px;max-width:720px;margin:0 auto 40px;">Hotline & Zalo: <a href="tel:0379031662" style="color:#eb9500;font-size:26px;">0379 031 662</a></p>
+      <a href="https://zalo.me/0379031662" target="_blank" class="btn btn-gold" style="padding:16px 50px;font-size:18px;">Chat Zalo liền tay</a>
+      <p style="margin-top:30px;font-size:15px;">485/10 Phan Văn Trị, P.5, Gò Vấp, TP.HCM</p>
+      <p style="margin-top:30px;font-size:15px;">Ngã 3 Trà Bồng, QL1A, Xã Bình Sơn, Quảng Ngãi</p>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({duration:1000,once:true});
+  const navbar=document.getElementById('navbar');
+  const navLinks=document.getElementById('nav-links');
+  const mobileMenu=document.getElementById('mobile-menu');
+  window.addEventListener('scroll',()=>{ navbar.classList.toggle('scrolled',window.scrollY>80); });
+  mobileMenu.addEventListener('click',()=>{ navLinks.classList.toggle('active'); });
+</script>
+</body>
+</html>

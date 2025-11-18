@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Giá - Kool D. Studio | Ảnh Cưới Hàn Quốc & Gia Đình TP.HCM</title>
+  <meta name="description" content="Bảng giá chụp ảnh cưới Hàn Quốc trong studio, ảnh gia đình, makeup cô dâu, ảnh sự kiện tại Kool D. Studio - Gò Vấp, TP.HCM"/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  
+  <style>
+    :root{
+      --deep-green:#3A5A40;
+      --soft-gold:#eb9500;
+      --cream:#F9F5F0;
+      --gray:#666;
+      --white:#fff;
+      --light:#fdfdfd;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Montserrat',sans-serif;background:var(--cream);color:#333;line-height:1.7;}
+    a{text-decoration:none;color:inherit;}
+
+    /* Navigation – giống hệt index.html */
+    nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);z-index:1000;padding:1.3rem 0;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:0.3s;}
+    nav.scrolled{padding:0.9rem 0;}
+    .nav-container{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
+    .logo{font-family:'Playfair Display',serif;font-size:28px;color:var(--deep-green);letter-spacing:2px;}
+    .nav-links{display:flex;gap:3rem;}
+    .nav-links a{font-weight:500;font-size:13.5px;letter-spacing:1.5px;text-transform:uppercase;transition:0.3s;}
+    .nav-links a:hover{color:var(--soft-gold);}
+    .menu-toggle{display:none;font-size:28px;cursor:pointer;}
+
+    .container{max-width:1300px;margin:0 auto;padding:0 2rem;}
+    section{padding:120px 0 90px;}
+
+    .section-title{
+      font-family:'Playfair Display',serif;
+      font-size:48px;
+      text-align:center;
+      color:var(--deep-green);
+      margin-bottom:20px;
+    }
+    .section-subtitle{
+      text-align:center;
+      font-size:18px;
+      color:var(--gray);
+      max-width:800px;
+      margin:0 auto 70px;
+    }
+    .gold-line{width:100px;height:2px;background:var(--soft-gold);margin:30px auto;}
+
+    /* Bảng giá */
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+      gap:30px;
+      margin-top:50px;
+    }
+    .price-card{
+      background:var(--light);
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 15px 40px rgba(0,0,0,0.08);
+      transition:0.4s;
+      text-align:center;
+    }
+    .price-card:hover{transform:translateY(-12px);box-shadow:0 25px 50px rgba(0,0,0,0.15);}
+    .price-header{
+      background:var(--deep-green);
+      color:white;
+      padding:35px 20px;
+    }
+    .price-header h3{
+      font-family:'Playfair Display',serif;
+      font-size:28px;
+      margin-bottom:8px;
+    }
+    .price-range{
+      font-size:32px;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+    .price-body{
+      padding:40px 30px;
+    }
+    .price-body ul{
+      list-style:none;
+      text-align:left;
+      font-size:15px;
+    }
+    .price-body li{
+      padding:10px 0;
+      position:relative;
+      padding-left:28px;
+    }
+    .price-body li:before{
+      content:'✓';
+      color:var(--soft-gold);
+      font-weight:bold;
+      position:absolute;
+      left:0;
+    }
+    .btn{
+      display:inline-block;
+      margin-top:25px;
+      padding:14px 40px;
+      background:var(--deep-green);
+      color:white;
+      border-radius:50px;
+      font-weight:500;
+      letter-spacing:1.5px;
+      transition:0.3s;
+    }
+    .btn:hover{background:#2E4833;transform:translateY(-3px);}
+    .btn-gold{background:var(--soft-regulatory);border:2px solid var(--soft-gold);color:var(--deep-green);}
+    .btn-gold:hover{background:var(--soft-gold);color:white;}
+
+    /* Footer */
+    footer{background:#2E2E2E;color:#aaa;padding:50px 0;text-align:center;font-size:14px;}
+
+    @media (max-width:768px){
+      .nav-links{position:fixed;top:76px;left:-100%;width:100%;height:100vh;background:white;flex-direction:column;padding-top:80px;transition:0.4s;}
+      .nav-links.active{left:0;}
+      .menu-toggle{display:block;}
+      .section-title{font-size:38px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation – giống hệt trang chủ -->
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">KOOL D. STUDIO</div>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Trang chủ</a>
+      <a href="about.html">Về studio</a>
+      <a href="pricing.html">Bảng giá</a>
+      <a href="about.html#portfolio">Portfolio</a>
+      <a href="index.html#contact">Liên hệ</a>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">☰</div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <section style="padding-top:160px;">
+    <h1 class="section-title">Bảng Giá 2025 - 2026</h1>
+    <p class="section-subtitle">
+      Giá đã bao gồm studio, ánh sáng, concept Hàn Quốc, chỉnh sửa full ảnh và file gốc.<br>
+      Miễn phí makeup + làm tóc cơ bản với gói từ 4 triệu trở lên.
+    </p>
+    <div class="gold-line"></div>
+
+    <div class="pricing-grid">
+
+      <!-- Ảnh cưới studio Hàn Quốc -->
+      <div class="price-card" data-aos="fade-up">
+        <div class="price-header">
+          <h3>Ảnh Cưới Hàn Quốc</h3>
+          <div class="price-range">2.5 - 5.5 triệu</div>
+        </div>
+        <div class="price-body">
+          <ul>
+            <li>2–4 tiếng chụp trong studio</li>
+            <li>2–4 trang phục váy cưới Hàn Quốc</li>
+            <li>Makeup + tóc chuẩn Hàn</li>
+            <li>80–250 ảnh đã chỉnh màu phim</li>
+            <li>File gốc full + USB cao cấp</li>
+            <li>Album 20–30 trang (tùy gói)</li>
+          </ul>
+          <a href="https://zalo.me/0379031662" class="btn btn-gold">Inbox nhận báo giá chi tiết</a>
+        </div>
+      </div>
+
+      <!-- Makeup cô dâu -->
+      <div class="price-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="price-header" style="background:#eb9500;">
+          <h3>Trang Điểm Cô Dâu</h3>
+          <div class="price-range">1.5 - 3 triệu</div>
+        </div>
+        <div class="price-body">
+          <ul>
+            <li>Makeup + tóc chuẩn Hàn Quốc</li>
+            <li>Da căng bóng, mắt long lanh</li>
+            <li>Dùng mỹ phẩm cao cấp (ko tẩy trang trong ngày)</li>
+            <li>Uốn/mi/nails nếu cần (tính thêm)</li>
+            <li>Đi theo suốt buổi chụp</li>
+          </ul>
+          <a href="https://zalo.me/0379031662" class="btn" style="background:#eb9500;border-color:#eb9500;">Đặt lịch makeup</a>
+        </div>
+      </div>
+
+      <!-- Ảnh gia đình / chân dung -->
+      <div class="price-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="price-header">
+          <h3>Ảnh Gia Đình & Chân Dung</h3>
+          <div class="price-range">1 - 3 triệu</div>
+        </div>
+        <div class="price-body">
+          <ul>
+            <li>Ảnh bầu, bé sơ sinh, gia đình</li>
+            <li>1–3 tiếng chụp trong studio</li>
+            <li>1–3 trang phục</li>
+            <li>50–150 ảnh đã chỉnh</li>
+            <li>In ảnh 13x18 hoặc album nhỏ tặng kèm</li>
+          </ul>
+          <a href="https://zalo.me/0379031662" class="btn">Đặt lịch ngay</a>
+        </div>
+      </div>
+
+      <!-- Sự kiện & tiệc tại nhà hàng -->
+      <div class="price-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="price-header">
+          <h3>Chụp Sự Kiện & Tiệc</h3>
+          <div class="price-range">2 - 5 triệu</div>
+        </div>
+        <div class="price-body">
+          <ul>
+            <li>Chụp tiệc cưới, thôi nôi, sinh nhật, khai trương</li>
+            <li>Tại nhà hàng/không gian khách thuê</li>
+            <li>3–6 tiếng chụp</li>
+            <li>200–500 ảnh đã chỉnh</li>
+            <li>File gốc + slideshow ngắn</li>
+          </ul>
+          <a href="https://zalo.me/0379031662" class="btn">Liên hệ báo giá</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:80px;font-size:18px;color:var(--gray);">
+      <p>✿ Tất cả gói đều có thể tùy chỉnh theo yêu cầu</p>
+      <p>✿ Ưu đãi 10–20% khi đặt trước 2 tháng hoặc chụp ngày thường</p>
+      <p style="margin-top:30px;">
+        <a href="https://zalo.me/0379031662" style="color:var(--soft-gold);font-size:24px;font-weight:600;">0379 031 662</a> 
+        → Inbox liền tay để nhận báo giá chi tiết nhất nhé ♡
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    © 2025 Kool D. Studio <br>
+    Chụp ảnh phong cách nhẹ nhàng tự nhiên trong từng khung hình ♡
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({duration:1000,once:true});
+  const navbar=document.getElementById('navbar');
+  const navLinks=document.getElementById('nav-links');
+  const mobileMenu=document.getElementById('mobile-menu');
+  window.addEventListener('scroll',()=>{ navbar.classList.toggle('scrolled',window.scrollY>80); });
+  mobileMenu.onclick=()=>{ navLinks.classList.toggle('active'); };
+</script>
+</body>
+</html>
