@@ -1,0 +1,12 @@
+{
+  "name": "kool-d-studio-gallery-generator",
+  "version": "1.0.0",
+  "description": "Generates a JSON file for the image gallery.",
+  "main": "scripts/generate-gallery.js",
+  "scripts": {
+    "start": "node scripts/generate-gallery.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
