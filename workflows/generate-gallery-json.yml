@@ -2,6 +2,8 @@ name: Tự động tạo danh sách ảnh portfolio
 
 on:
   push:
+    branches:
+      - main # Hoặc tên nhánh chính của bạn
     paths:
       - 'assets/img/portfolio/**'
 
@@ -9,26 +11,21 @@ jobs:
   generate-json:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Tạo file images-list.json từ tất cả ảnh trong portfolio
-        run: |
-          jq -n \
-            --argjson cuoi "$(ls assets/img/portfolio/cuoi/*.{jpg,jpeg,png,webp,gif} 2>/dev/null | xargs -n1 basename | jq -R . | jq -s .)" \
-            --argjson makeup "$(ls assets/img/portfolio/makeup/*.{jpg,jpeg,png,webp,gif} 2>/dev/null | xargs -n1 basename | jq -R . | jq -s .)" \
-            --argjson gia_dinh "$(ls assets/img/portfolio/gia-dinh/*.{jpg,jpeg,png,webp,gif} 2>/dev/null | xargs -n1 basename | jq -R . | jq -s .)" \
-            --argjson phong_su "$(ls assets/img/portfolio/phong-su/*.{jpg,jpeg,png,webp,gif} 2>/dev/null | xargs -n1 basename | jq -R . | jq -s .)" \
-            '{
-              cuoi: $cuoi // [],
-              makeup: $makeup // [],
-              "gia-dinh": $gia_dinh // [],
-              "phong-su": $phong_su // []
-            }' > assets/img/portfolio/images-list.json
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: Commit & Push nếu có thay đổi
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/img/portfolio/images-list.json
-          git commit -m "🤖 Auto update images-list.json" || echo "No changes"
-          git push || echo "Nothing to push"
+      - name: Run script to generate images-list.json
+        run: node scripts/generate-gallery.js
+
+      - name: Commit and push if there are changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: 🤖 Tự động cập nhật danh sách ảnh'
+          file_pattern: 'assets/img/portfolio/images-list.json'
+          commit_user_name: 'github-actions[bot]'
+          commit_user_email: '41898282+github-actions[bot]@users.noreply.github.com'
