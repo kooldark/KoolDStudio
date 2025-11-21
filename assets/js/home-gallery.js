@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // --- 2. Populate Masonry Gallery ---
-  // Get up to 12 random images for the gallery
-  const galleryImages = [...allImages].sort(() => 0.5 - Math.random()).slice(0, 12);
+  // Get up to 8 random images for the gallery
+  const galleryImages = [...allImages].sort(() => 0.5 - Math.random()).slice(0, 8);
 
   let masonryHtml = '';
   galleryImages.forEach(imgPath => {
