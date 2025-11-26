@@ -4,7 +4,9 @@
   "description": "Generates a JSON file for the image gallery.",
   "main": "scripts/generate-gallery.js",
   "scripts": {
-    "start": "node scripts/generate-gallery.js"
+    "start": "node scripts/generate-gallery.js",
+    "generate:hero": "node scripts/generate-hero-json.js",
+    "watch:hero": "node scripts/watch-hero.js"
   },
   "keywords": [],
   "author": "",

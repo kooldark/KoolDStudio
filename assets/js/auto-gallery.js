@@ -4,7 +4,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const filtersContainer = document.getElementById("portfolio-filters");
   if (!galleryContainer || !filtersContainer) return;
 
+  let allImages = []; // Flattened array of all image objects
   let data = {};
+
   try {
     const res = await fetch("assets/img/portfolio/images-list.json?t=" + Date.now());
     data = await res.json();
@@ -32,53 +34,48 @@ document.addEventListener("DOMContentLoaded", async () => {
     filtersContainer.innerHTML = filterHtml;
   };
 
-  // 2. RENDER GALLERY
-  const renderGallery = (filter = 'all') => {
-    let galleryHtml = "";
-    const itemsToRender = (filter === 'all') ? Object.entries(data) : [[filter, data[filter]]];
+  // 2. RENDER GALLERY AS A GRID
+  const renderGallery = () => {
+    let galleryHtml = '<div class="portfolio-grid">';
+    allImages = []; // Reset the flat image list
+    let flatIndex = 0;
 
-    for (const [folder, imgs] of itemsToRender) {
-      if (!imgs || imgs.length === 0) continue;
-      const t = titles[folder] || { vn: folder, en: folder };
-
-      galleryHtml += `
-        <section class="portfolio-section" data-aos="fade-up">
-          <h2 class="section-title">${t.vn}</h2>
-          <p class="section-subtitle">${t.en} Collection</p>
-          <div class="swiper portfolio-swiper">
-            <div class="swiper-wrapper">
-              ${imgs.map((file, index) => `
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/${folder}/${file}" alt="${t.vn}" loading="lazy" data-album="${folder}" data-index="${index}">
-                </div>
-              `).join('')}
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </section>`;
+    for (const folder in data) {
+      if (data[folder] && data[folder].length > 0) {
+        const t = titles[folder] || { vn: folder };
+        data[folder].forEach(file => {
+          const imagePath = `assets/img/portfolio/${folder}/${file}`;
+          galleryHtml += `
+            <div class="grid-item" data-category="${folder}" data-aos="fade-up">
+              <img src="${imagePath}" alt="${t.vn}" loading="lazy" data-index="${flatIndex++}">
+            </div>`;
+          allImages.push({
+            src: imagePath,
+            album: folder,
+            title: t.vn
+          });
+        });
+      }
     }
+
+    galleryHtml += '</div>';
     galleryContainer.innerHTML = galleryHtml || "<p style='text-align:center;padding:120px;color:#999;'>Chưa có ảnh nào</p>";
     
-    // Re-initialize Swiper and Lightbox after rendering
-    initializeSwiper();
+    // Re-initialize AOS and Lightbox after rendering
+    AOS.refresh();
     initializeLightbox();
   };
-
-  // 3. INITIALIZE SWIPER
-  const initializeSwiper = () => {
-    document.querySelectorAll(".portfolio-swiper").forEach(el => {
-      new Swiper(el, {
-        loop: true,
-        autoplay: { delay: 3500, disableOnInteraction: false },
-        speed: 900,
-        spaceBetween: 30,
-        grabCursor: true,
-        pagination: { el: ".swiper-pagination", clickable: true },
-        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-        breakpoints: { 640:1, 768:2, 1024:3, 1280:4 }
-      });
+  
+  // 3. FILTER GALLERY
+  const filterGallery = (filter) => {
+    const gridItems = document.querySelectorAll('.grid-item');
+    gridItems.forEach(item => {
+      const category = item.dataset.category;
+      if (filter === 'all' || filter === category) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
     });
   };
 
@@ -92,44 +89,41 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!lightbox || !lightboxImg || !lightboxClose || !lightboxPrev || !lightboxNext) return;
 
-    let currentAlbum = '';
     let currentIndex = 0;
+    let visibleImages = [];
 
-    const showImage = () => {
-      const imagesInAlbum = data[currentAlbum];
-      if (imagesInAlbum && imagesInAlbum.length > 0) {
-        lightboxImg.src = `assets/img/portfolio/${currentAlbum}/${imagesInAlbum[currentIndex]}`;
-      }
+    const updateVisibleImages = () => {
+        visibleImages = [];
+        document.querySelectorAll('.grid-item:not(.hidden) img').forEach(img => {
+            visibleImages.push(img);
+        });
     };
 
-    const openLightbox = (album, index) => {
-      currentAlbum = album;
-      currentIndex = parseInt(index, 10);
-      lightbox.classList.add('active');
-      showImage();
+    const showImage = (index) => {
+        if (index < 0 || index >= visibleImages.length) return;
+        currentIndex = index;
+        lightboxImg.src = visibleImages[currentIndex].src;
     };
 
+    const openLightbox = (clickedImg) => {
+        updateVisibleImages();
+        const clickedIndex = visibleImages.findIndex(img => img.src === clickedImg.src);
+        if (clickedIndex === -1) return;
+
+        lightbox.classList.add('active');
+        showImage(clickedIndex);
+    };
+    
     const closeLightbox = () => {
       lightbox.classList.remove('active');
       lightboxImg.src = '';
     };
 
-    const showNext = () => {
-      const imagesInAlbum = data[currentAlbum];
-      currentIndex = (currentIndex + 1) % imagesInAlbum.length;
-      showImage();
-    };
+    const showNext = () => showImage((currentIndex + 1) % visibleImages.length);
+    const showPrev = () => showImage((currentIndex - 1 + visibleImages.length) % visibleImages.length);
 
-    const showPrev = () => {
-      const imagesInAlbum = data[currentAlbum];
-      currentIndex = (currentIndex - 1 + imagesInAlbum.length) % imagesInAlbum.length;
-      showImage();
-    };
-
-    document.querySelectorAll('.portfolio-swiper .swiper-slide img').forEach(img => {
-      img.addEventListener('click', (e) => {
-        openLightbox(e.target.dataset.album, e.target.dataset.index);
-      });
+    document.querySelectorAll('.grid-item img').forEach(img => {
+      img.addEventListener('click', (e) => openLightbox(e.target));
     });
 
     lightboxClose.addEventListener('click', closeLightbox);
@@ -138,6 +132,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'ArrowRight') showNext();
+        if (e.key === 'ArrowLeft') showPrev();
+        if (e.key === 'Escape') closeLightbox();
     });
   };
 
@@ -148,18 +149,22 @@ document.addEventListener("DOMContentLoaded", async () => {
       button.addEventListener('click', (e) => {
         const filter = e.target.dataset.filter;
         
-        // Update active button
         buttons.forEach(btn => btn.classList.remove('active'));
         e.target.classList.add('active');
         
-        // Re-render gallery
-        renderGallery(filter);
+        filterGallery(filter);
+        
+        // After filtering, give a moment for the CSS transition before re-initializing lightbox
+        setTimeout(() => {
+            initializeLightbox();
+            AOS.refresh();
+        }, 300); // Should match CSS transition time
       });
     });
   };
 
   // --- INITIAL EXECUTION ---
   renderFilters();
-  renderGallery('all');
+  renderGallery();
   addFilterListeners();
 });

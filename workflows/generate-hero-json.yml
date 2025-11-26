@@ -1,0 +1,31 @@
+name: Tự động tạo danh sách ảnh hero
+
+on:
+  push:
+    branches:
+      - main # Or your main branch name
+    paths:
+      - 'assets/img/hero/**'
+
+jobs:
+  generate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run script to generate hero-images.json
+        run: node scripts/generate-hero-json.js
+
+      - name: Commit and push if there are changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: 🤖 Tự động cập nhật danh sách ảnh hero'
+          file_pattern: 'assets/js/hero-images.json'
+          commit_user_name: 'github-actions[bot]'
+          commit_user_email: '41898282+github-actions[bot]@users.noreply.github.com'

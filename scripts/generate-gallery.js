@@ -4,21 +4,20 @@ const path = require('path');
 const portfolioDir = path.join(__dirname, '..', 'assets', 'img', 'portfolio');
 const outputJsonFile = path.join(portfolioDir, 'images-list.json');
 
-const galleryFolders = ['cuoi', 'makeup', 'gia-dinh', 'phong-su'];
+// Automatically find all subdirectories in the portfolio directory
+const galleryFolders = fs.readdirSync(portfolioDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
 
 const allImages = {};
 
 galleryFolders.forEach(folder => {
     const folderPath = path.join(portfolioDir, folder);
     try {
-        if (fs.existsSync(folderPath)) {
-            const files = fs.readdirSync(folderPath).filter(file => 
-                /\.(jpg|jpeg|png|webp|gif)$/i.test(file)
-            );
-            allImages[folder] = files;
-        } else {
-            allImages[folder] = [];
-        }
+        const files = fs.readdirSync(folderPath).filter(file => 
+            /\.(jpg|jpeg|png|webp|gif)$/i.test(file)
+        );
+        allImages[folder] = files;
     } catch (error) {
         console.error(`Error reading directory ${folderPath}:`, error);
         allImages[folder] = [];
