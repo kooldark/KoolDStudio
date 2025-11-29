@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hợp Đồng Dịch Vụ - Kool D. Studio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-green: #3A5A40;
+            --soft-gold: #eb9500;
+            --cream: #194420;
+            --charcoal: #333333;
+            --white: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            padding: 2rem 1.5rem;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        .page-container { max-width: 1000px; margin: 0 auto; }
+        .container { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(26, 61, 46, 0.08); }
+        #contract-content { padding: 2.6rem 3rem; }
+
+        header { text-align: center; margin-bottom: 1.6rem; }
+        .studio-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--deep-green); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
+        .tagline { font-weight: 300; font-size: 13px; color: #777; letter-spacing: 0.08em; margin-bottom: 1rem; }
+        .gold-divider { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--soft-gold), transparent); margin: 0 auto 1rem; }
+        .contract-meta { font-size: 12px; color: #.was888; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--deep-green);
+            margin: 1.8rem 0 0.9rem;
+            padding-left: 1.4rem;
+            position: relative;
+        }
+        .section-title::before {
+            content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+            width: 4px; height: 1.7em; background-color: var(--soft-gold); border-radius: 2px;
+        }
+
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 2.8rem; align-items: start; }
+        .input-card {
+            background: #fdfdfb; border: 1px solid #eee; border-radius: 12px; padding: 0.75rem 1rem;
+            margin-bottom: 0.85rem; box-shadow: 0 2px 8px rgba(212, 185, 142, 0.06);
+            transition: all 0.3s ease;
+        }
+        .input-card:focus-within { border-color: var(--soft-gold); box-shadow: 0 4px 16px rgba(212, 185, 142, 0.15); }
+        .input-card label { display: block; font-weight: 500; font-size: 13px; color: var(--charcoal); margin-bottom: 0.4rem; letter-spacing: 0.03em; }
+        .input-card input, .input-card textarea { width: 100%; border: none; background: transparent; font-size: 15px; color: var(--charcoal); }
+
+        .appointment-compact { display: flex; align-items: center; gap: 1rem; margin-top: 0.4rem; }
+        .appointment-display { font-weight: 600; color: var(--deep-green); font-size: 15.5px; flex: 1; }
+
+        .service-product-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 0.4rem 0 1rem; }
+        .service-card, .product-card {
+            background: #fdfdfb; border-radius: 16px; padding: 1.3rem 1.6rem; min-height: 135px;
+            box-shadow: 0 6px 20px rgba(212, 185, 142, 0.1); border: 1px solid rgba(212, 185, 142, 0.15);
+        }
+        .editable-area { min-height: 70px; line-height: 1.7; font-size: 15px; outline: none; }
+        .editable-area ul { padding-left: 1.2rem; list-style: none; }
+        .editable-area li { position: relative; padding-left: 1.2rem; margin-bottom: 0.4rem; }
+        .editable-area li::before { content: '✓'; color: var(--soft-gold); position: absolute; left: 0; font-weight: 600; }
+
+        .cost-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+        .cost-table td { padding: 0.55rem 0; font-size: 15px; }
+        .cost-table td:last-child { text-align: right; font-weight: 500; }
+        .cost-table .label td { font-weight: 600; color: var(--deep-green); font-size: 16px; padding: 0.6rem 0; border-bottom: 2px solid var(--soft-gold); }
+        .cost-table input { text-align: right; width: 180px; font-weight: 500; font-size: 17px; border: none; background: transparent; color: var(--deep-green); }
+        #remaining-balance { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--deep-green); }
+
+        .bank-box { background: #f9f7f4; border: 1px dashed #ddd; border-radius: 12px; padding: 1rem 1.4rem; font-size: 13.5px; line-height: 1.7; color: #555; }
+        .bank-box strong { color: var(--deep-green); }
+
+        .terms ul { list-style: none; padding-left: 0; font-size: 14.5px; line-height: 1.8; }
+        .terms li { position: relative; padding-left: 1.8rem; margin-bottom: 0.7rem; }
+        .terms li::before { content: '•'; color: var(--soft-gold); font-weight: bold; position: absolute; left: 0; }
+        .terms-options { display: flex; gap: 1rem; margin-bottom: 1rem; }
+        .terms-options .input-card { margin-bottom: 0; flex-grow: 1; }
+        .terms-options label { cursor: pointer; }
+
+        .signature-row {
+            display: flex; justify-content: space-between; align-items: end;
+            margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #eee;
+        }
+        .signature-block { text-align: center; flex: 1; }
+        .signature-block:first-child { text-align: left; }
+        .signature-block:last-child { text-align: right; }
+        .script-title { font-family: 'Dancing Script', cursive; font-size: 22px; color: var(--soft-gold); margin-bottom: 0.4rem; }
+        .editable-signature { font-family: 'Dancing Script', cursive; font-size: 24px; color: var(--deep-green); border-bottom: 1.5px dashed #ccc; display: inline-block; min-width: 240px; padding: 0.3rem 0; }
+        .signature-placeholder { font-style: italic; color: #aaa; font-size: 12.5px; margin-top: 0.5rem; }
+
+        .contract-management { margin-top: 2rem; background: var(--white); padding: 1.8rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
+
+        @media print {
+            body { padding: 10mm; background: white; }
+            #contract-content { padding: 15mm 18mm; }
+            .contract-management, .terms-options { display: none !important; }
+            .gold-divider { background: var(--soft-gold); }
+        }
+    </style>
+</head>
+<body>
+<div class="page-container">
+    <div class="container">
+        <div id="contract-content">
+            <header>
+                <h1 class="studio-name">KOOL D. STUDIO</h1>
+                <p class="tagline">Art of Your Story</p>
+                <div class="gold-divider"></div>
+                <p class="contract-meta">HỢP ĐỒNG DỊCH VỤ</p>
+                <p class="contract-meta">Ngày: <span id="contract-date"></span></p>
+            </header>
+
+            <section class="two-column">
+                <div>
+                    <h3 class="section-title">Bên A: Khách Hàng</h3>
+                    <div class="input-card"><label>Tên khách hàng</label><input type="text" id="customer-name"></div>
+                    <div class="input-card"><label>Số điện thoại</label><input type="tel" id="customer-phone"></div>
+                    <div class="input-card">
+                        <label>Ngày thực hiện dịch vụ</label>
+                        <div class="appointment-compact">
+                            <div class="appointment-display" id="appointment-display"></div>
+                            <input type="time" id="appointment-time" style="width:110px;">
+                            <input type="date" id="appointment-date" style="width:150px;">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="section-title">Bên B: Kool D. Studio</h3>
+                    <div class="input-card"><label>Đại diện</label><input type="text" id="studio-rep"></div>
+                    <div class="input-card"><label>ĐT</label><input type="text" id="studio-phone" value="0379031662 - 0976839250"></div>
+                    <div class="input-card"><label>Địa điểm thực hiện</label><input type="text" id="location" value="Trong studio"></div>
+                </div>
+            </section>
+
+            <h3 class="section-title">Gói Dịch Vụ & Sản Phẩm Kèm Theo</h3>
+            <div class="service-product-row">
+                <div class="service-card"><div class="editable-area" id="service-details" contenteditable="true"><ul><li>Gói chụp, thời gian, địa điểm...</li></ul></div></div>
+                <div class="product-card"><div class="editable-area" id="included-products" contenteditable="true"><ul><li>Album, ảnh lớn, file ảnh...</li></ul></div></div>
+            </div>
+
+            <section class="two-column">
+                <div>
+                    <h3 class="section-title">Chi Phí & Thanh Toán</h3>
+                    <table class="cost-table">
+                        <tr class="label"><td>TỔNG CHI PHÍ (VNĐ)</td><td><input type="text" class="currency-input" id="total-cost" placeholder="0"></td></tr>
+                        <tr><td>Đặt cọc lần 1</td><td><input type="text" class="currency-input" id="deposit-1" placeholder="0"></td></tr>
+                        <tr><td>Thanh toán lần 2</td><td><input type="text" class="currency-input" id="deposit-2" placeholder="0"></td></tr>
+                        <tr style="border-top: 2px solid var(--soft-gold);"><td>SỐ DƯ CÒN LẠI</td><td id="remaining-balance">0 VNĐ</td></tr>
+                    </table>
+                    <textarea id="remaining-note" placeholder="Ghi chú (vd: thanh toán khi nhận ảnh)" style="width:100%;margin-top:0.5rem;border:none;background:transparent;font-style:italic;color:#777;" rows="1"></textarea>
+                </div>
+                <div>
+                    <h3 class="section-title">Thông Tin Chuyển Khoản</h3>
+                    <div class="bank-box">
+                        <p><strong>Vietcombank</strong></p>
+                        <p><strong>Trần Như Tuấn</strong></p>
+                        <p><strong>0071000763310</strong></p>
+                        <p><strong>Nội dung:</strong> <span id="bank-content">[Tên khách hàng]</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="terms">
+                <h3 class="section-title">Điều Khoản Chung</h3>
+                <div class="terms-options">
+                    <div class="input-card"><input type="radio" id="terms-photo-radio" name="terms-type" value="photo" checked><label for="terms-photo-radio">Gói chụp ảnh</label></div>
+                    <div class="input-card"><input type="radio" id="terms-makeup-radio" name="terms-type" value="makeup"><label for="terms-makeup-radio">Gói makeup</label></div>
+                </div>
+                <ul id="terms-photo">
+                    <li>Studio giao ảnh gốc trong 48h, ảnh chỉnh sửa (file mềm) trong 15 ngày làm việc kể từ khi Khách hàng chốt list. Album/in ấn hoàn thiện trong 25-30 ngày làm việc.</li>
+                    <li>Studio có thể sử dụng một số hình ảnh để quảng bá. Nếu yêu cầu riêng tư 100%, vui lòng thông báo trước.</li>
+                    <li>Hủy hợp đồng: đặt cọc lần 1 không hoàn lại. Hoãn lịch 1 lần miễn phí (thông báo trước 7 ngày), lần 2 trở đi phí 10% giá trị hợp đồng.</li>
+                    <li>Dịch vụ ngoài hợp đồng thanh toán 100% ngay. Giao sản phẩm tại studio; nếu giao tận nơi, Khách chịu phí & rủi ro vận chuyển.</li>
+                </ul>
+                <ul id="terms-makeup" style="display:none;">
+                    <li>Thời Gian: Khách hàng vui lòng đúng giờ hẹn. Trễ hơn 30 phút không thông báo: Studio có quyền điều chỉnh quy trình hoặc hủy dịch vụ (áp dụng phí hủy).</li>
+                    <li>Trách Nhiệm Cơ Địa: Khách hàng cần thông báo về mọi dị ứng/tình trạng da nhạy cảm trước khi làm dịch vụ. Studio miễn trừ trách nhiệm nếu xảy ra phản ứng do cơ địa mà không được thông báo.</li>
+                    <li>Thử Mẫu (Cô Dâu): Phí thử mẫu là không hoàn lại. Yêu cầu thực hiện ít nhất 10 ngày trước ngày chính thức.</li>
+                    <li>Hủy Hợp Đồng: Đặt cọc không hoàn lại (theo Điều Khoản Chung).</li>
+                    <li>Hoãn Lịch: Hoãn miễn phí 1 lần khi báo trước 7 ngày làm việc. Báo trước 3-6 ngày tính phí 10%. Báo trước <48 giờ tính phí 30% giá trị hợp đồng.</li>
+                </ul>
+            </section>
+
+            <div class="signature-row">
+                <div class="signature-block">
+                    <div class="script-title">Signature</div>
+                    <p>ĐẠI DIỆN KHÁCH HÀNG</p>
+                    <div class="signature-placeholder">(Ký và ghi rõ họ tên)</div>
+                </div>
+                <div class="signature-block">
+                    <div class="script-title">Signature</div>
+                    <p>ĐẠI DIỆN STUDIO</p>
+                    <span class="editable-signature" contenteditable="true"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="contract-management">
+    <h3 class="section-title">Quản lý Hợp đồng</h3>
+    <div class="input-card"><label>Tên Hợp đồng</label><input type="text" id="contract-name-input" placeholder="VD: HD_AnhCuoi_NguyenVanA_25122025"></div>
+    <div class="input-card"><label>Ghi chú</label><textarea id="contract-notes-input" rows="2"></textarea></div>
+    <div style="display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap;">
+        <button class="btn" id="save-contract-btn">Lưu Hợp đồng</button>
+        <button class="btn" id="load-contract-btn">Tải Hợp đồng</button>
+        <button class="btn" id="delete-contract-btn">Xóa Hợp đồng</button>
+        <button class="btn" id="capture-screenshot-btn">Chụp Màn hình</button>
+        <button class="btn" id="export-pdf-btn">Xuất PDF</button>
+    </div>
+    <h4 style="margin:2rem 0 1rem;">Lịch sử Hợp đồng</h4>
+    <ul id="contract-list"></ul>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const els = {
+            date: document.getElementById('contract-date'),
+            customerName: document.getElementById('customer-name'),
+            customerPhone: document.getElementById('customer-phone'),
+            appointmentTime: document.getElementById('appointment-time'),
+            appointmentDate: document.getElementById('appointment-date'),
+            appointmentDisplay: document.getElementById('appointment-display'),
+            studioRep: document.getElementById('studio-rep'),
+            studioPhone: document.getElementById('studio-phone'),
+            location: document.getElementById('location'),
+            service: document.getElementById('service-details'),
+            products: document.getElementById('included-products'),
+            total: document.getElementById('total-cost'),
+            deposit1: document.getElementById('deposit-1'),
+            deposit2: document.getElementById('deposit-2'),
+            remaining: document.getElementById('remaining-balance'),
+            remainingNote: document.getElementById('remaining-note'),
+            signature: document.querySelector('.editable-signature'),
+            bankContent: document.getElementById('bank-content'),
+            termsPhotoRadio: document.getElementById('terms-photo-radio'),
+            termsMakeupRadio: document.getElementById('terms-makeup-radio'),
+            termsPhoto: document.getElementById('terms-photo'),
+            termsMakeup: document.getElementById('terms-makeup'),
+
+            contractNameInput: document.getElementById('contract-name-input'),
+            contractNotesInput: document.getElementById('contract-notes-input'),
+            saveContractBtn: document.getElementById('save-contract-btn'),
+            contractList: document.getElementById('contract-list'),
+            captureScreenshotBtn: document.getElementById('capture-screenshot-btn'),
+            exportPdfBtn: document.getElementById('export-pdf-btn'),
+        };
+
+        function setDate() {
+            const d = new Date();
+            els.date.textContent = `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+            autoGenerateContractName();
+        }
+
+        function autoGenerateContractName() {
+            const name = els.customerName.value.trim();
+            if (!name) { els.contractNameInput.value = ''; return; }
+            const slug = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g,'d').replace(/Đ/g,'D').replace(/[^a-zA-Z0-9\s-]/g,'').trim().replace(/\s+/g,'_');
+            els.contractNameInput.value = `HD_${slug}_${els.date.textContent.replace(/\//g,'-')}`;
+        }
+
+        function format(v) { return v ? new Intl.NumberFormat('vi-VN').format(v) : ''; }
+        function parse(v) { return parseFloat(String(v).replace(/\./g, '')) || 0; }
+        function calc() {
+            const t = parse(els.total.value);
+            const d1 = parse(els.deposit1.value);
+            const d2 = parse(els.deposit2.value);
+            els.remaining.textContent = format(t - d1 - d2) + ' VNĐ';
+        }
+
+        document.querySelectorAll('.currency-input').forEach(input => {
+            input.addEventListener('input', e => {
+                let val = e.target.value.replace(/\D/g, '');
+                e.target.value = format(val);
+                calc();
+            });
+        });
+
+        function updateAppointmentDisplay() {
+            const time = els.appointmentTime.value;
+            const date = els.appointmentDate.value;
+            let display = '';
+            if (time) {
+                const [h,m] = time.split(':');
+                let period = h >= 5 && h < 12 ? 'Sáng' : h < 18 ? 'Chiều' : 'Tối';
+                display += `${period} ${h}h${m ? m+'p' : ''} `;
+            }
+            if (date) {
+                const d = new Date(date);
+                display += `ngày ${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+            }
+            els.appointmentDisplay.textContent = display || '(Chưa chọn)';
+        }
+
+        function updateBankContent() {
+            els.bankContent.textContent = els.customerName.value.trim() || '[Tên khách hàng]';
+        }
+
+        [els.appointmentTime, els.appointmentDate].forEach(el => el.addEventListener('change', updateAppointmentDisplay));
+        els.customerName.addEventListener('input', () => { autoGenerateContractName(); updateBankContent(); });
+
+        // Terms switch
+        els.termsPhotoRadio.addEventListener('change', () => { els.termsPhoto.style.display = 'block'; els.termsMakeup.style.display = 'none'; });
+        els.termsMakeupRadio.addEventListener('change', () => { els.termsPhoto.style.display = 'none'; els.termsMakeup.style.display = 'block'; });
+
+        // Contract management functions (giữ nguyên như cũ)
+        function getContractData() {
+            return {
+                customerName: els.customerName.value,
+                customerPhone: els.customerPhone.value,
+                appointmentTime: els.appointmentTime.value,
+                appointmentDate: els.appointmentDate.value,
+                studioRep: els.studioRep.value,
+                studioPhone: els.studioPhone.value,
+                location: els.location.value,
+                serviceDetails: els.service.innerHTML,
+                includedProducts: els.products.innerHTML,
+                totalCost: els.total.value,
+                deposit1: els.deposit1.value,
+                deposit2: els.deposit2.value,
+                remainingNote: els.remainingNote.value,
+                signature: els.signature.textContent,
+                contractDate: els.date.textContent,
+                termsType: els.termsPhotoRadio.checked ? 'photo' : 'makeup',
+            };
+        }
+
+        function setContractData(data) {
+            els.customerName.value = data.customerName || '';
+            els.customerPhone.value = data.customerPhone || '';
+            els.appointmentTime.value = data.appointmentTime || '';
+            els.appointmentDate.value = data.appointmentDate || '';
+            els.studioRep.value = data.studioRep || '';
+            els.studioPhone.value = data.studioPhone || '0379031662 - 0976839250';
+            els.location.value = data.location || 'Trong studio';
+            els.service.innerHTML = data.serviceDetails || '<ul><li>Gói chụp, thời gian, địa điểm...</li></ul>';
+            els.products.innerHTML = data.includedProducts || '<ul><li>Album, ảnh lớn, file ảnh...</li></ul>';
+            els.total.value = data.totalCost || '';
+            els.deposit1.value = data.deposit1 || '';
+            els.deposit2.value = data.deposit2 || '';
+            els.remainingNote.value = data.remainingNote || '';
+            els.signature.textContent = data.signature || '';
+            if (data.termsType === 'makeup') { els.termsMakeupRadio.checked = true; els.termsMakeup.style.display = 'block'; els.termsPhoto.style.display = 'none'; }
+            updateAppointmentDisplay(); calc(); updateBankContent(); autoGenerateContractName();
+        }
+
+        // Save / Load / Delete / List / Screenshot / PDF (giữ nguyên logic cũ, chỉ rút gọn)
+        els.saveContractBtn.addEventListener('click', () => {
+            const name = els.contractNameInput.value.trim();
+            if (!name) return alert('Nhập tên hợp đồng!');
+            const saved = { data: getContractData(), notes: els.contractNotesInput.value, timestamp: new Date().toLocaleString('vi-VN') };
+            localStorage.setItem(`contract_${name}`, JSON.stringify(saved));
+            alert('Đã lưu thành công!');
+            renderList();
+        });
+
+        function renderList() {
+            els.contractList.innerHTML = '';
+            const keys = Object.keys(localStorage).filter(k => k.startsWith('contract_')).sort();
+            if (!keys.length) { els.contractList.innerHTML = '<li>Chưa có hợp đồng nào.</li>'; return; }
+            keys.forEach(k => {
+                const name = k.replace('contract_','');
+                const item = JSON.parse(localStorage.getItem(k));
+                const li = document.createElement('li');
+                li.innerHTML = `<span><strong>${name}</strong><br><small>${item.notes||'Không có ghi chú'}</small><br><small>${item.timestamp}</small></span>
+                                <div style="display:flex;gap:0.5rem;"><button data-name="${name}">Tải</button><button data-name="${name}" style="background:#f44336;color:white;">Xóa</button></div>`;
+                li.querySelectorAll('button').forEach(btn => btn.onclick = e => {
+                    if (e.target.textContent === 'Xóa') { if(confirm('Xóa thật không?')) { localStorage.removeItem(k); renderList(); } }
+                    else { setContractData(item.data); els.contractNameInput.value = name; els.contractNotesInput.value = item.notes||''; }
+                });
+                els.contractList.appendChild(li);
+            });
+        }
+
+/*************  ✨ Windsurf Command ⭐  *************/
+/**
+ * Take a screenshot of the contract content and download it as a PNG file.
+ * The file name will be in the format of "HopDong_{contractName}_{date}.png"
+ * where {contractName} is the value of the contract name input field, and
+ * {date} is the current date in YYYY-MM-DD format.
+ */
+/*******  3caf0c46-e891-4bc8-8614-eea02dc9d779  *******/
+        els.captureScreenshotBtn.onclick = async () => {
+            const canvas = await html2canvas(document.getElementById('contract-content'), {scale:2});
+            const link = document.createElement('a');
+            link.download = `HopDong_${els.contractNameInput.value || 'Moi'}_${new Date().toISOString().slice(0,10)}.png`;
+            link.href = canvas.toDataURL(); link.click();
+        };
+
+        els.exportPdfBtn.onclick = async () => {
+            const canvas = await html2canvas(document.getElementById('contract-content'), {scale:2});
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const imgWidth = 210, imgHeight = canvas.height * imgWidth / canvas.width;
+            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
+            pdf.save(`HopDong_${els.contractNameInput.value || 'Moi'}_${new Date().toISOString().slice(0,10)}.pdf`);
+        };
+
+        setDate(); updateAppointmentDisplay(); calc(); updateBankContent(); renderList();
+    });
+</script>
+</body>
+</html>
