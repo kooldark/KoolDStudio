@@ -12,9 +12,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  const allImages = Object.entries(data).flatMap(([folder, files]) => 
-    files.map(file => `assets/img/portfolio/${folder}/${file}`)
-  );
+  const allImages = Object.entries(data).flatMap(([category, content]) => {
+    if (Array.isArray(content)) {
+      // Handle simple categories (e.g., 'makeup') which have an array of files.
+      return content.map(file => `assets/img/portfolio/${category}/${file}`);
+    } else if (typeof content === 'object' && content !== null) {
+      // Handle nested categories (e.g., 'cuoi') which have an object of albums.
+      return Object.entries(content).flatMap(([album, files]) =>
+        files.map(file => `assets/img/portfolio/${category}/${album}/${file}`)
+      );
+    }
+    return []; // Return an empty array for any unexpected data format.
+  });
 
   // --- Populate Masonry Gallery ---
   // Get up to 8 random images for the gallery

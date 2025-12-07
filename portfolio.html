@@ -41,7 +41,10 @@
   </div>
 
   <!-- Filter Buttons -->
-  <div id="portfolio-filters" class="container"></div>
+  <div class="filters-wrapper">
+    <button id="back-button" class="back-button hidden" data-aos="fade-right">&larr; Quay lại</button>
+    <div id="portfolio-filters" data-aos="fade-up"></div>
+  </div>
 
   <!-- TỰ ĐỘNG TẢI TẤT CẢ ALBUM TỪ THƯ MỤC -->
   <div id="auto-gallery"></div>
@@ -65,11 +68,6 @@
 </div>
 
 <script>
-  // Preloader
-  window.addEventListener('load', () => {
-    document.getElementById('preloader').classList.add('hidden');
-  });
-
   // AOS + Mobile menu
   AOS.init({duration: 800, once: true, offset: 50});
   const mobileMenu = document.getElementById('mobile-menu');
