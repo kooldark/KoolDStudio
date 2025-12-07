@@ -5,19 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const backButton = document.getElementById("back-button");
   const pageSubtitle = document.querySelector('.page-subtitle');
   const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.getElementById('lightbox-close');
-  const lightboxPrev = document.getElementById('lightbox-prev');
-  const lightboxNext = document.getElementById('lightbox-next');
   const preloader = document.getElementById('preloader');
 
   // --- STATE ---
   let galleryData = {};
-  let lightboxCurrentIndex = 0;
   let visibleImages = [];
   let currentCategory = 'all';
   let currentAlbum = null;
   let originalSubtitle = '';
+  let lightboxSwiper = null; // To hold the Swiper instance
 
   const titles = {
     cuoi:      { vn: "Ảnh Cưới",      en: "Pre-Wedding" },
@@ -28,32 +25,29 @@ document.addEventListener("DOMContentLoaded", () => {
   
   async function init() {
     // --- VALIDATE DOM ---
-    const requiredElements = [galleryContainer, categoryFiltersContainer, backButton, pageSubtitle, lightbox, lightboxImg, lightboxClose, lightboxPrev, lightboxNext, preloader];
+    const requiredElements = [galleryContainer, categoryFiltersContainer, backButton, pageSubtitle, lightbox, lightboxClose, preloader];
     if (requiredElements.some(el => !el)) {
       console.error("Gallery initialization failed: a required HTML element is missing.");
       galleryContainer.innerHTML = "<p class='error-message'>Lỗi giao diện. Vui lòng tải lại trang.</p>";
-      preloader?.classList.add('hidden'); // Hide preloader even on error
+      preloader?.classList.add('hidden');
       return;
     }
     originalSubtitle = pageSubtitle.textContent;
 
     try {
       const res = await fetch("assets/img/portfolio/images-list.json?t=" + Date.now());
-      if (!res.ok) {
-        throw new Error(`Network response was not ok, status: ${res.status}`);
-      }
+      if (!res.ok) throw new Error(`Network response was not ok, status: ${res.status}`);
       galleryData = await res.json();
       
-      // All data is loaded, now we can render and set up events
       renderCategoryFilters();
-      await render(); // Wait for the first render (and images) to complete
-      preloader.classList.add('hidden'); // NOW hide the preloader
+      await render();
+      preloader.classList.add('hidden');
       addEventListeners();
 
     } catch (e) {
       console.error("Failed to load or initialize gallery:", e);
       galleryContainer.innerHTML = "<p class='error-message'>Không thể tải album. Vui lòng thử lại sau.</p>";
-      preloader.classList.add('hidden'); // Ensure preloader hides on error too
+      preloader.classList.add('hidden');
     }
   }
 
@@ -82,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
       backButton.classList.add('hidden');
       pageSubtitle.textContent = originalSubtitle;
     } else {
-      // Fallback for empty or invalid category
       await renderImageGrid([]);
       backButton.classList.add('hidden');
     }
@@ -99,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- VIEW RENDERERS ---
   async function renderImageGrid(images) {
-    visibleImages = images;
+    visibleImages = images.map(imgPath => new URL(imgPath, window.location.origin).href);
     let gridHtml = '<div class="portfolio-grid">';
     if (images.length > 0) {
       images.forEach(imgPath => {
@@ -113,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     gridHtml += '</div>';
     galleryContainer.innerHTML = gridHtml;
-    await whenImagesLoaded(galleryContainer); // Wait for images
+    await whenImagesLoaded(galleryContainer);
     if (typeof AOS !== 'undefined') AOS.refresh();
   }
 
@@ -123,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
     for (const albumName in albums) {
       const albumFiles = albums[albumName];
       if (albumFiles.length === 0) continue;
-      // For album covers, we need to construct the path carefully. It could be in a sub-album folder or a loose file.
       const isLoose = albumName === 'Ảnh lẻ';
       const basePath = `assets/img/portfolio/${category}/`;
       const imageFolder = isLoose ? '' : `${albumName}/`;
@@ -138,26 +130,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     gridHtml += '</div>';
     galleryContainer.innerHTML = gridHtml;
-    await whenImagesLoaded(galleryContainer); // Wait for images
+    await whenImagesLoaded(galleryContainer);
     if (typeof AOS !== 'undefined') AOS.refresh();
   }
 
   // --- HELPERS ---
   function whenImagesLoaded(container) {
     const images = Array.from(container.getElementsByTagName('img'));
-    if (images.length === 0) {
-      return Promise.resolve();
-    }
-
-    const promises = images.map(img => {
-      return new Promise(resolve => {
-        if (img.complete) return resolve();
-        img.addEventListener('load', resolve);
-        img.addEventListener('error', resolve); // Resolve on error too, don't block the UI
-      });
-    });
-    
-    return Promise.all(promises);
+    if (images.length === 0) return Promise.resolve();
+    return Promise.all(images.map(img => new Promise(resolve => {
+      if (img.complete) return resolve();
+      img.addEventListener('load', resolve);
+      img.addEventListener('error', resolve);
+    })));
   }
 
   function getAllImages() {
@@ -175,32 +160,64 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     }
-    // Shuffle the array
     for (let i = all.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [all[i], all[j]] = [all[j], all[i]];
     }
-    return all.slice(0, 20); // Show up to 20 random images on 'All'
+    return all.slice(0, 20);
   }
   
-  // --- LIGHTBOX ---
-  function showImage(index) {
-    if (index < 0 || index >= visibleImages.length) return;
-    lightboxCurrentIndex = index;
-    lightboxImg.src = visibleImages[index];
-  }
-
+  // --- LIGHTBOX with SWIPER ---
   function openLightbox(clickedImgSrc) {
-    const imageInVisible = visibleImages.findIndex(src => src === clickedImgSrc);
-    if (imageInVisible === -1) return;
+    const initialSlideIndex = visibleImages.findIndex(src => src === clickedImgSrc);
+    if (initialSlideIndex === -1) return;
+
+    lightbox.style.display = 'block';
     
-    lightbox.classList.add('active');
-    showImage(imageInVisible);
+    const swiperWrapper = lightbox.querySelector('.swiper-wrapper');
+    swiperWrapper.innerHTML = visibleImages.map(src => `
+        <div class="swiper-slide">
+            <div class="swiper-zoom-container">
+                <img src="${src}" alt="Portfolio image">
+            </div>
+        </div>
+    `).join('');
+
+    if (lightboxSwiper) lightboxSwiper.destroy(true, true);
+
+    // Add a small delay to ensure the lightbox is fully displayed before Swiper initializes
+    setTimeout(() => {
+      lightboxSwiper = new Swiper(lightbox.querySelector('.swiper-container'), {
+          initialSlide: initialSlideIndex,
+          loop: false,
+          slidesPerView: 1,
+          spaceBetween: 20,
+          navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+          },
+          pagination: {
+              el: '.swiper-pagination',
+              type: 'fraction',
+          },
+          keyboard: {
+              enabled: true,
+          },
+          zoom: {
+              maxRatio: 2,
+              toggle: true,
+          },
+      });
+    }, 50); // 50ms delay
   }
   
-  const closeLightbox = () => lightbox.classList.remove('active');
-  const showNext = () => showImage((lightboxCurrentIndex + 1) % visibleImages.length);
-  const showPrev = () => showImage((lightboxCurrentIndex - 1 + visibleImages.length) % visibleImages.length);
+  const closeLightbox = () => {
+    lightbox.style.display = 'none';
+    if (lightboxSwiper) {
+        lightboxSwiper.destroy(true, true);
+        lightboxSwiper = null;
+    }
+  };
 
   // --- EVENT LISTENERS ---
   function addEventListeners() {
@@ -212,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       currentCategory = e.target.dataset.filter;
       currentAlbum = null;
-      render(); // This is not awaited, which is fine for subsequent clicks
+      render();
     });
 
     backButton.addEventListener('click', () => {
@@ -235,14 +252,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     
     lightboxClose.addEventListener('click', closeLightbox);
-    lightboxNext.addEventListener('click', showNext);
-    lightboxPrev.addEventListener('click', showPrev);
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-
+    
     document.addEventListener('keydown', (e) => {
-      if (!lightbox.classList.contains('active')) return;
-      if (e.key === 'ArrowRight') showNext();
-      if (e.key === 'ArrowLeft') showPrev();
+      if (lightbox.style.display !== 'block') return;
       if (e.key === 'Escape') closeLightbox();
     });
   }

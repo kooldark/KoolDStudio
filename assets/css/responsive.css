@@ -42,4 +42,35 @@
   .portfolio-section .section-title { font-size: 30px; }
   .portfolio-swiper .swiper-slide { height: 350px; }
   .back-home-btn { padding: 12px 40px; font-size: 14px; }
+
+  .album-grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
+
+  .album-card {
+    height: 380px; /* Adjust height for single column */
+  }
+
+  /* Make Swiper lightbox controls more mobile-friendly */
+  .swiper-lightbox .swiper-button-next,
+  .swiper-lightbox .swiper-button-prev {
+      width: 44px; /* Keep a decent tap area */
+      height: 44px;
+      border-radius: 50%;
+  }
+   .swiper-lightbox .swiper-button-next:after, 
+   .swiper-lightbox .swiper-button-prev:after {
+      font-size: 20px;
+  }
+
+  .swiper-lightbox .swiper-pagination {
+    bottom: 15px;
+    font-size: 14px;
+  }
+
+  #lightbox-close {
+    top: 15px;
+    right: 15px;
+    font-size: 32px;
+  }
 }
