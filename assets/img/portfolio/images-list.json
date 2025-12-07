@@ -1,9 +1,15 @@
 {
-  "cuoi": [
-    "anhcuoi.png",
-    "anhcuoi.webp",
-    "codau.jpg"
-  ],
+  "cuoi": {
+    "Ảnh lẻ": [
+      "codau.jpg"
+    ],
+    "Studio2024": [
+      "anhcuoi.png"
+    ],
+    "Studio2025": [
+      "anhcuoi.webp"
+    ]
+  },
   "gia-dinh": [
     "gia dinh (1).jpg",
     "gia dinh (1).webp",
@@ -11,16 +17,22 @@
     "gia dinh (2).webp",
     "gia dinh (3).webp"
   ],
-  "makeup": [
-    "mk (1).jpg",
-    "mk (1).webp",
-    "mk (2).jpg",
-    "mk (2).webp",
-    "mk (3).webp",
-    "mk (4).webp",
-    "mk (5).webp",
-    "mk (6).webp"
-  ],
+  "makeup": {
+    "Ảnh lẻ": [
+      "mk (1).jpg",
+      "mk (2).jpg"
+    ],
+    "Hân": [
+      "mk (1).webp",
+      "mk (2).webp",
+      "mk (3).webp",
+      "mk (4).webp",
+      "mk (5).webp"
+    ],
+    "Yến": [
+      "mk (6).webp"
+    ]
+  },
   "phong-su": [
     "phongsu.webp"
   ]
