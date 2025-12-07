@@ -72,45 +72,8 @@ echo ║   và file gốc đã được xóa.           ║
 echo ╚══════════════════════════════════════╝
 echo.
 
-:: Tiếp theo: Xóa tiền tố gạch dưới (_) từ các file WebP
-echo.
-echo ╔══════════════════════════════════════╗
-echo ║  XÓA TIỀN TỐ GẠCH DƯỚI (_) TỬ TÊN ẢNH ║
-echo ╚══════════════════════════════════════╝
-echo.
-
-set rename_count=0
-for /r "%folder%" %%F in (_*.webp _*.jpg _*.jpeg _*.png _*.tif _*.tiff _*.bmp) do (
-    set "fullpath=%%F"
-    set "filename=%%~nF"
-    set "newname=!filename:_=!"
-    
-    if not "!newname!"=="!filename!" (
-        set /a rename_count+=1
-        echo   [!rename_count!] !filename! --^> !newname!
-        ren "!fullpath!" "!newname!"
-        if !errorlevel! neq 0 (
-            echo   ^^^ LỖI khi đổi tên!
-        )
-    )
-)
-
-if %rename_count% gtr 0 (
-    echo.
-    echo ✓ Đã xóa tiền tố "_" khỏi !rename_count! ảnh!
-) else (
-    echo.
-    echo ✓ Không tìm thấy ảnh nào có tiền tố "_"
-)
-
-echo.
-
 :end
 echo.
-echo ╔══════════════════════════════════════╗
-echo ║   Nén WebP + Xóa Tiền Tố Xong!      ║
-echo ║   Chúc anh up web nhanh như chớp! ❤ ║
-echo ╚══════════════════════════════════════╝
-echo.
+echo Cảm ơn anh đã dùng tool! Chúc up web nhanh như chớp! ❤
 timeout /t 2 >nul
 exit
