@@ -17,6 +17,7 @@
       --gray:#666;
       --white:#fff;
       --light:#fdfdfd;
+      --dusty-green:#5a7d6d;
     }
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:'Montserrat',sans-serif;background:var(--cream);color:#333;line-height:1.7;}
@@ -60,9 +61,12 @@
     /* Bảng giá */
     .pricing-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
-      gap:30px;
+      grid-template-columns:repeat(2, 1fr);
+      gap:40px;
       margin-top:50px;
+      max-width:1000px;
+      margin-left:auto;
+      margin-right:auto;
     }
     .price-card{
       background:var(--light);
@@ -151,7 +155,7 @@
       <a href="index.html">Trang chủ</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="pricing.html">Bảng giá</a>
-      <a href="index.html#contact">Liên hệ</a>
+      <a href="about.html">About</a>
     </div>
     <div class="menu-toggle" id="mobile-menu">☰</div>
   </div>
@@ -172,8 +176,8 @@
       <!-- Ảnh cưới studio Hàn Quốc -->
       <div class="price-card" data-aos="fade-up" data-aos-delay="200">
         <div class="price-header">
-          <h3>Ảnh Cưới Hàn Quốc</h3>
-          <div class="price-range">2.5 - 5.5 triệu</div>
+          <h3>Ảnh Cưới Studio</h3>
+          <div class="price-range">4 - 8 triệu</div>
         </div>
         <div class="price-body">
           <ul>
@@ -187,6 +191,26 @@
         </div>
         <div class="price-footer">
           <a href="https://zalo.me/0379031662" class="btn btn-gold">Inbox nhận báo giá chi tiết</a>
+        </div>
+      </div>
+
+      <!-- Ảnh Sự Kiện -->
+      <div class="price-card" data-aos="fade-up" data-aos-delay="250">
+        <div class="price-header" style="background:#eb9500;">
+          <h3>Ảnh Sự Kiện</h3>
+          <div class="price-range">2 - 5 triệu</div>
+        </div>
+        <div class="price-body">
+          <ul>
+            <li>Chụp sự kiện đặc biệt</li>
+            <li>Thời gian linh hoạt tùy nhu cầu</li>
+            <li>Chuyên nghiệp & sáng tạo</li>
+            <li>Hàng chục đến hàng trăm ảnh</li>
+            <li>File gốc + chỉnh sửa chuyên nghiệp</li>
+          </ul>
+        </div>
+        <div class="price-footer">
+          <a href="https://zalo.me/0379031662" class="btn" style="background:#eb9500;border-color:#eb9500;">Inbox nhận báo giá chi tiết</a>
         </div>
       </div>
 
@@ -209,9 +233,9 @@
 
       <!-- Ảnh gia đình / chân dung -->
       <div class="price-card" data-aos="fade-up" data-aos-delay="400">
-        <div class="price-header">
+        <div class="price-header" style="background:#5a7d6d;">
           <h3>Ảnh Gia Đình & Chân Dung</h3>
-          <div class="price-range">1 - 5 triệu</div>
+          <div class="price-range">2 - 4 triệu</div>
         </div>
         <div class="price-body">
           <ul>
