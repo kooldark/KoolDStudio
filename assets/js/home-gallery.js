@@ -1,3 +1,10 @@
+/**
+ * Helper function to get a random item from an array
+ */
+function getRandomItem(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   const masonryGallery = document.getElementById('home-masonry-gallery');
 
@@ -12,23 +19,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  const allImages = Object.entries(data).flatMap(([category, content]) => {
+  // --- Get one random representative image from each category/album ---
+  const galleryImages = [];
+
+  Object.entries(data).forEach(([category, content]) => {
     if (Array.isArray(content)) {
-      // Handle simple categories (e.g., 'makeup') which have an array of files.
-      return content.map(file => `assets/img/portfolio/${category}/${file}`);
+      // Simple category: just one random image from the array
+      if (content.length > 0) {
+        const randomFile = getRandomItem(content);
+        galleryImages.push(`assets/img/portfolio/${category}/${randomFile}`);
+      }
     } else if (typeof content === 'object' && content !== null) {
-      // Handle nested categories (e.g., 'cuoi') which have an object of albums.
-      return Object.entries(content).flatMap(([album, files]) =>
-        files.map(file => `assets/img/portfolio/${category}/${album}/${file}`)
-      );
+      // Nested category: get one random image from each album
+      Object.entries(content).forEach(([album, files]) => {
+        if (Array.isArray(files) && files.length > 0) {
+          const randomFile = getRandomItem(files);
+          const isLoose = album === 'Ảnh lẻ';
+          const imageFolder = isLoose ? '' : `${album}/`;
+          galleryImages.push(`assets/img/portfolio/${category}/${imageFolder}${randomFile}`);
+        }
+      });
     }
-    return []; // Return an empty array for any unexpected data format.
   });
 
   // --- Populate Masonry Gallery ---
-  // Get up to 8 random images for the gallery
-  const galleryImages = [...allImages].sort(() => 0.5 - Math.random()).slice(0, 8);
-
   let masonryHtml = '';
   galleryImages.forEach(imgPath => {
     masonryHtml += `

@@ -145,26 +145,41 @@ document.addEventListener("DOMContentLoaded", () => {
     })));
   }
 
+  /**
+   * Helper function to get a random item from an array
+   */
+  function getRandomItem(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  /**
+   * Get one random representative image from each category/album
+   */
   function getAllImages() {
     let all = [];
     for (const category in galleryData) {
       const content = galleryData[category];
       if (Array.isArray(content)) {
-        all.push(...content.map(file => `assets/img/portfolio/${category}/${file}`));
+        // Simple category: get one random image
+        if (content.length > 0) {
+          const randomFile = getRandomItem(content);
+          all.push(`assets/img/portfolio/${category}/${randomFile}`);
+        }
       } else if (typeof content === 'object' && content !== null) {
+        // Nested category: get one random image from each album
         for (const album in content) {
-          const isLoose = album === 'Ảnh lẻ';
-          const basePath = `assets/img/portfolio/${category}/`;
-          const imageFolder = isLoose ? '' : `${album}/`;
-          all.push(...content[album].map(file => basePath + imageFolder + file));
+          const albumFiles = content[album];
+          if (Array.isArray(albumFiles) && albumFiles.length > 0) {
+            const isLoose = album === 'Ảnh lẻ';
+            const basePath = `assets/img/portfolio/${category}/`;
+            const imageFolder = isLoose ? '' : `${album}/`;
+            const randomFile = getRandomItem(albumFiles);
+            all.push(basePath + imageFolder + randomFile);
+          }
         }
       }
     }
-    for (let i = all.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [all[i], all[j]] = [all[j], all[i]];
-    }
-    return all.slice(0, 20);
+    return all;
   }
   
   // --- LIGHTBOX with SWIPER ---
