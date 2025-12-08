@@ -49,6 +49,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     tag.setAttribute('content', content);
   }
+
+  // --- PERFORMANCE OPTIMIZATION: IMAGE OBSERVER ---
+  function setupImageObserver(container) {
+    const images = container.querySelectorAll('img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            // Image is now in view, let browser handle native lazy loading
+            observer.unobserve(img);
+          }
+        });
+      }, {
+        rootMargin: '50px' // Start loading 50px before image enters viewport
+      });
+      
+      images.forEach(img => imageObserver.observe(img));
+    }
+  }
   
   async function init() {
     // --- VALIDATE DOM ---
@@ -88,7 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       
       await render();
-      preloader.classList.add('hidden');
+      // Hide preloader immediately - don't wait for images
+      requestAnimationFrame(() => preloader.classList.add('hidden'));
       addEventListeners();
 
     } catch (e) {
@@ -178,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
       images.forEach(imgPath => {
         gridHtml += `
           <div class="grid-item" data-aos="fade-up">
-            <img src="${imgPath}" alt="Kool D. Studio Portfolio" loading="lazy">
+            <img src="${imgPath}" alt="Kool D. Studio Portfolio" loading="lazy" decoding="async">
           </div>`;
       });
     } else {
@@ -186,7 +208,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     gridHtml += '</div>';
     galleryContainer.innerHTML = gridHtml;
-    await whenImagesLoaded(galleryContainer);
+    
+    // Use native lazy loading with IntersectionObserver for better performance
+    setupImageObserver(galleryContainer);
+    
+    // Don't wait for images - refresh AOS immediately for faster render
     if (typeof AOS !== 'undefined') AOS.refresh();
   }
 
@@ -207,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       gridHtml += `
         <div class="album-card" data-category="${category}" data-album="${albumName}" data-aos="fade-up">
-          <img class="album-card-thumbnail" src="${coverImage}" alt="${albumName}" loading="lazy">
+          <img class="album-card-thumbnail" src="${coverImage}" alt="${albumName}" loading="lazy" decoding="async">
           <div class="album-card-overlay"></div>
           <h3 class="album-card-title">${albumName}</h3>
           <div class="album-card-actions">
@@ -220,21 +246,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     gridHtml += '</div>';
     galleryContainer.innerHTML = gridHtml;
-    await whenImagesLoaded(galleryContainer);
+    
+    // Use native lazy loading with IntersectionObserver for better performance
+    setupImageObserver(galleryContainer);
+    
+    // Don't wait for images - refresh AOS immediately for faster render
     if (typeof AOS !== 'undefined') AOS.refresh();
   }
 
   // --- HELPERS ---
-  function whenImagesLoaded(container) {
-    const images = Array.from(container.getElementsByTagName('img'));
-    if (images.length === 0) return Promise.resolve();
-    return Promise.all(images.map(img => new Promise(resolve => {
-      if (img.complete) return resolve();
-      img.addEventListener('load', resolve);
-      img.addEventListener('error', resolve);
-    })));
-  }
-
   /**
    * Helper function to get a random item from an array
    */
