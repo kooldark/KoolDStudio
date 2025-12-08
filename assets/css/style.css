@@ -167,12 +167,11 @@ nav.scrolled {
   text-transform: uppercase;
   text-align: center;
   color: var(--deep-green);
-  margin-bottom: 70px;
+  margin: 0 auto 70px;
   position: relative;
   padding-left: 40px;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
+  display: table;
+  width: fit-content;
 }
 
 .section-title::before {
@@ -406,8 +405,8 @@ nav.scrolled {
 }
 .masonry-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
   grid-auto-rows: auto;
 }
 .masonry-item {
@@ -442,14 +441,50 @@ nav.scrolled {
   background: var(--deep-green);
   color: white;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
-#contact .section-title { color: white; }
+
+#contact::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(235, 149, 0, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+#contact::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(235, 149, 0, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+#contact .section-title { 
+  color: white;
+  position: relative;
+  z-index: 1;
+}
 #contact .section-title::after { display: none; }
-#contact .contact-intro { font-size: 18px; max-width: 600px; margin: -30px auto 40px; opacity: 0.9; }
-#contact .contact-details { margin-bottom: 40px; }
+#contact .contact-intro { font-size: 18px; max-width: 600px; margin: -30px auto 40px; opacity: 0.9; position: relative; z-index: 1; }
+#contact .contact-details { margin-bottom: 40px; position: relative; z-index: 1; }
 #contact .contact-details p { margin-bottom: 10px; font-size: 16px; }
 #contact .contact-details a { font-weight: 500; color: var(--soft-gold); transition: color 0.3s; }
 #contact .contact-details a:hover { color: #fff; }
+.contact-button-container {
+  margin-top: 40px;
+  position: relative;
+  z-index: 1;
+}
 
 /* === PORTFOLIO PAGE === */
 .page-header { 

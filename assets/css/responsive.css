@@ -21,10 +21,11 @@
 @media (max-width: 768px) {
   .hero-overlay .studio-name { font-size: 48px; letter-spacing: 2px; animation: none; }
   .hero-overlay .tagline { font-size: 18px; animation: none; }
-  .intro-section { padding: 100px 0; }
-  .intro-section::before { width: 300px; height: 300px; }
+  .intro-section { padding: 80px 0; }
+  .intro-section::before { width: 250px; height: 250px; }
   .intro-text { font-size: 24px; font-weight: 700; line-height: 1.6; }
-  .masonry-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .masonry-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .section-title { font-size: 36px; margin-bottom: 50px; }
 }
 @media (max-width: 480px) {
   .hero-overlay .studio-name { font-size: 32px; letter-spacing: 2px; }
@@ -32,9 +33,11 @@
   .hero-overlay .gold-line { animation: none; width: 80px; }
   .masonry-grid { grid-template-columns: 1fr; gap: 12px; }
   .intro-text { font-size: 20px; }
-  .intro-section { padding: 80px 0; }
+  .intro-section { padding: 60px 0; }
   .portfolio-button-container .btn { min-height: 44px; font-size: 12px; padding: 12px 30px; }
-  .section-title { font-size: 32px; display: block; text-align: center; padding-left: 0; }
+  .section-title { font-size: 28px; padding-left: 30px; margin-bottom: 40px; }
+  .section-title::before { width: 3px; }
+  #contact { padding: 80px 0; }
 }
 
 /* === PORTFOLIO PAGE (Responsive) === */
@@ -389,4 +392,12 @@
   .page-title { font-size: 28px; }
   .hero-overlay .studio-name { font-size: 24px; }
   .btn { padding: 10px 20px; font-size: 11px; }
+}
+
+/* === PRICING PAGE: Fix 2-column on mobile === */
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }

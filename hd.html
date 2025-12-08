@@ -32,7 +32,7 @@
         .studio-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--deep-green); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
         .tagline { font-weight: 300; font-size: 13px; color: #777; letter-spacing: 0.08em; margin-bottom: 1rem; }
         .gold-divider { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--soft-gold), transparent); margin: 0 auto 1rem; }
-        .contract-meta { font-size: 12px; color: #.was888; letter-spacing: 0.05em; text-transform: uppercase; }
+        .contract-meta { font-size: 12px; color: #888888; letter-spacing: 0.05em; text-transform: uppercase; }
 
         .section-title {
             font-family: 'Playfair Display', serif;
@@ -55,8 +55,9 @@
             transition: all 0.3s ease;
         }
         .input-card:focus-within { border-color: var(--soft-gold); box-shadow: 0 4px 16px rgba(212, 185, 142, 0.15); }
-        .input-card label { display: block; font-weight: 500; font-size: 13px; color: var(--charcoal); margin-bottom: 0.4rem; letter-spacing: 0.03em; }
+        .input-card label { display: block; font-weight: 500; font-size: 13px; color: var(--charcoal); margin-bottom: 0.4rem; letter-spacing: 0.03em; user-select: none; }
         .input-card input, .input-card textarea { width: 100%; border: none; background: transparent; font-size: 15px; color: var(--charcoal); }
+        .input-card input:focus, .input-card textarea:focus { outline: 2px solid var(--soft-gold); border-radius: 4px; padding: 2px; }
 
         .appointment-compact { display: flex; align-items: center; gap: 1rem; margin-top: 0.4rem; }
         .appointment-display { font-weight: 600; color: var(--deep-green); font-size: 15.5px; flex: 1; }
@@ -99,7 +100,29 @@
         .editable-signature { font-family: 'Dancing Script', cursive; font-size: 24px; color: var(--deep-green); border-bottom: 1.5px dashed #ccc; display: inline-block; min-width: 240px; padding: 0.3rem 0; }
         .signature-placeholder { font-style: italic; color: #aaa; font-size: 12.5px; margin-top: 0.5rem; }
 
+        .btn {
+            background: var(--deep-green);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover { background: var(--soft-gold); color: var(--charcoal); }
+        .btn:active { transform: scale(0.98); }
+
         .contract-management { margin-top: 2rem; background: var(--white); padding: 1.8rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
+
+        @media (max-width: 768px) {
+            .two-column { grid-template-columns: 1fr; gap: 1.5rem; }
+            .service-product-row { grid-template-columns: 1fr; gap: 1.5rem; }
+            .signature-row { flex-direction: column; gap: 2rem; }
+            .signature-block { text-align: center !important; }
+            #contract-content { padding: 1.5rem 1.2rem; }
+        }
 
         @media print {
             body { padding: 10mm; background: white; }
