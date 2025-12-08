@@ -58,7 +58,7 @@
       <!-- Team Member 1: Tuấn -->
       <div class="team-member-card" data-aos="fade-up">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Tuan.webp" alt="Tuấn - Photographer" class="team-image" loading="lazy" decoding="async">
+          <img src="assets/img/team/Tuan.webp" alt="Tuấn - Photographer" class="team-image" loading="lazy" decoding="async" width="360" height="360">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -70,9 +70,9 @@
       </div>
 
       <!-- Team Member 2: Vy Ny -->
-      <div class="team-member-card" data-aos="fade-up">
+      <div class="team-member-card" data-aos="fade-up" data-aos-delay="100">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Ny.webp" alt="Vy Ny - Makeup Artist" class="team-image" loading="lazy" decoding="async">
+          <img src="assets/img/team/Ny.webp" alt="Vy Ny - Makeup Artist" class="team-image" loading="lazy" decoding="async" width="360" height="360">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -84,9 +84,9 @@
       </div>
 
       <!-- Team Member 3: Vũ Eric -->
-      <div class="team-member-card" data-aos="fade-up">
+      <div class="team-member-card" data-aos="fade-up" data-aos-delay="200">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Vu.webp" alt="Vũ Eric - Makeup Artist" class="team-image" loading="lazy" decoding="async">
+          <img src="assets/img/team/Vu.webp" alt="Vũ Eric - Makeup Artist" class="team-image" loading="lazy" decoding="async" width="360" height="360">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -98,9 +98,9 @@
       </div>
 
       <!-- Team Member 4: Dũng -->
-      <div class="team-member-card" data-aos="fade-up">
+      <div class="team-member-card" data-aos="fade-up" data-aos-delay="300">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Dung.webp" alt="Dũng - Photographer" class="team-image" loading="lazy" decoding="async">
+          <img src="assets/img/team/Dung.webp" alt="Dũng - Photographer" class="team-image" loading="lazy" decoding="async" width="360" height="360">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -112,9 +112,9 @@
       </div>
 
       <!-- Team Member 5: Tài -->
-      <div class="team-member-card" data-aos="fade-up">
+      <div class="team-member-card" data-aos="fade-up" data-aos-delay="400">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Tai.webp" alt="Tài - Photographer" class="team-image" loading="lazy" decoding="async">
+          <img src="assets/img/team/Tai.webp" alt="Tài - Photographer" class="team-image" loading="lazy" decoding="async" width="360" height="360">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -126,9 +126,9 @@
       </div>
 
       <!-- Team Member 6: Hiểu -->
-      <div class="team-member-card" data-aos="fade-up">
+      <div class="team-member-card" data-aos="fade-up" data-aos-delay="500">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Hieu.webp" alt="Hiếu - Photographer" class="team-image" loading="lazy" decoding="async">
+          <img src="assets/img/team/Hieu.webp" alt="Hiếu - Photographer" class="team-image" loading="lazy" decoding="async" width="360" height="360">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -189,8 +189,9 @@
   AOS.init({
     duration: 600,
     once: true,
-    offset: 100,
-    disable: false
+    offset: 50,
+    disable: window.innerWidth < 768,
+    throttleDelay: 99
   });
 
   // Mobile menu
@@ -201,6 +202,11 @@
     if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && e.target !== mobileMenu) {
       navLinks.classList.remove('active');
     }
+  });
+
+  // Hide preloader when page is ready
+  window.addEventListener('load', () => {
+    document.getElementById('preloader').style.display = 'none';
   });
 </script>
 
