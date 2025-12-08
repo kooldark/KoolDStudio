@@ -1113,7 +1113,7 @@ nav.scrolled {
 
 /* Team Section Artistic */
 .team-section-artistic {
-  padding: 140px 0 100px;
+  padding: 140px 2rem 100px;
   background: var(--cream);
   position: relative;
 }
