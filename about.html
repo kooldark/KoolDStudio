@@ -58,7 +58,7 @@
       <!-- Team Member 1: Tuấn -->
       <div class="team-member-card" data-aos="fade-up">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Tuan.webp" alt="Tuấn - Photographer" class="team-image">
+          <img src="assets/img/team/Tuan.webp" alt="Tuấn - Photographer" class="team-image" loading="lazy" decoding="async">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -70,9 +70,9 @@
       </div>
 
       <!-- Team Member 2: Vy Ny -->
-      <div class="team-member-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="team-member-card" data-aos="fade-up" data-aos-delay="50">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Ny.webp" alt="Vy Ny - Makeup Artist" class="team-image">
+          <img src="assets/img/team/Ny.webp" alt="Vy Ny - Makeup Artist" class="team-image" loading="lazy" decoding="async">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -84,9 +84,9 @@
       </div>
 
       <!-- Team Member 3: Vũ Eric -->
-      <div class="team-member-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="team-member-card" data-aos="fade-up" data-aos-delay="100">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Vu.webp" alt="Vũ Eric - Makeup Artist" class="team-image">
+          <img src="assets/img/team/Vu.webp" alt="Vũ Eric - Makeup Artist" class="team-image" loading="lazy" decoding="async">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -98,9 +98,9 @@
       </div>
 
       <!-- Team Member 4: Dũng -->
-      <div class="team-member-card" data-aos="fade-up" data-aos-delay="300">
+      <div class="team-member-card" data-aos="fade-up" data-aos-delay="150">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Dung.webp" alt="Dũng - Photographer" class="team-image">
+          <img src="assets/img/team/Dung.webp" alt="Dũng - Photographer" class="team-image" loading="lazy" decoding="async">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -112,9 +112,9 @@
       </div>
 
       <!-- Team Member 5: Tài -->
-      <div class="team-member-card" data-aos="fade-up" data-aos-delay="400">
+      <div class="team-member-card" data-aos="fade-up" data-aos-delay="200">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Tai.webp" alt="Tài - Photographer" class="team-image">
+          <img src="assets/img/team/Tai.webp" alt="Tài - Photographer" class="team-image" loading="lazy" decoding="async">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -126,9 +126,9 @@
       </div>
 
       <!-- Team Member 6: Hiểu -->
-      <div class="team-member-card" data-aos="fade-up" data-aos-delay="500">
+      <div class="team-member-card" data-aos="fade-up" data-aos-delay="250">
         <div class="team-member-image-wrapper">
-          <img src="assets/img/team/Hieu.webp" alt="Hiếu - Photographer" class="team-image">
+          <img src="assets/img/team/Hieu.webp" alt="Hiếu - Photographer" class="team-image" loading="lazy" decoding="async">
           <div class="team-overlay"></div>
         </div>
         <div class="team-member-content">
@@ -185,8 +185,13 @@
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
-  // Initialize AOS
-  AOS.init({duration: 800, once: true, offset: 50});
+  // Initialize AOS with optimized settings for mobile
+  AOS.init({
+    duration: 600,
+    once: true,
+    offset: 100,
+    disable: window.innerWidth < 768 ? 'phone' : false
+  });
 
   // Mobile menu
   const mobileMenu = document.getElementById('mobile-menu');

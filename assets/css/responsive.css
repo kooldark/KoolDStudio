@@ -177,15 +177,22 @@
 
   .team-member-image-wrapper {
     height: 280px;
-    transition: transform 0.2s ease;
+    transition: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .team-member-image-wrapper img {
+    will-change: auto;
   }
 
   .team-member:active .team-member-image-wrapper {
-    transform: scale(0.98);
+    transform: none;
   }
 
   .team-member-card {
     height: auto;
+    will-change: auto;
   }
 
   .team-member-content {
@@ -302,10 +309,17 @@
 /* Disable hover effects on touch devices */
 @media (hover: none) {
   .album-card:hover,
-  .team-member:hover,
+  .team-member-card:hover,
+  .team-member-card:hover .team-image,
+  .team-member-card:hover .team-overlay,
   .btn:hover,
   .portfolio-card:hover {
     transform: none;
+    opacity: 1;
+  }
+  
+  .team-member-card {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
   }
 }
 
