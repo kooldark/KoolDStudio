@@ -40,6 +40,26 @@ document.addEventListener("DOMContentLoaded", () => {
       galleryData = await res.json();
       
       renderCategoryFilters();
+      
+      // Check if URL has shared album parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const sharedCategory = urlParams.get('category');
+      const sharedAlbum = urlParams.get('album');
+      
+      if (sharedCategory && sharedAlbum) {
+        currentCategory = sharedCategory;
+        currentAlbum = sharedAlbum;
+        // Update active filter
+        const filterBtns = categoryFiltersContainer.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+          if (btn.dataset.filter === sharedCategory) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+      
       await render();
       preloader.classList.add('hidden');
       addEventListeners();
@@ -121,11 +141,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const imageFolder = isLoose ? '' : `${albumName}/`;
       const coverImage = basePath + imageFolder + albumFiles[0];
       
+      // Create shareable link for this album
+      const albumLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(category)}&album=${encodeURIComponent(albumName)}`;
+      const encodedLink = encodeURIComponent(albumLink);
+      
       gridHtml += `
         <div class="album-card" data-category="${category}" data-album="${albumName}" data-aos="fade-up">
           <img class="album-card-thumbnail" src="${coverImage}" alt="${albumName}" loading="lazy">
           <div class="album-card-overlay"></div>
           <h3 class="album-card-title">${albumName}</h3>
+          <div class="album-card-actions">
+            <button class="album-share-btn" data-link="${albumLink}" title="Sao chép link album">
+              <span class="share-icon">🔗</span>
+              <span class="share-text">Chia sẻ</span>
+            </button>
+          </div>
         </div>`;
     }
     gridHtml += '</div>';
@@ -254,9 +284,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     galleryContainer.addEventListener('click', (e) => {
       const albumCard = e.target.closest('.album-card');
+      const shareBtn = e.target.closest('.album-share-btn');
       const gridItem = e.target.closest('.grid-item');
 
-      if (albumCard) {
+      if (shareBtn) {
+        // Handle share button click
+        const link = shareBtn.dataset.link;
+        copyToClipboard(link, shareBtn);
+      } else if (albumCard) {
         currentCategory = albumCard.dataset.category;
         currentAlbum = albumCard.dataset.album;
         render();
@@ -272,6 +307,48 @@ document.addEventListener("DOMContentLoaded", () => {
       if (lightbox.style.display !== 'block') return;
       if (e.key === 'Escape') closeLightbox();
     });
+  }
+
+  // --- SHARE LINK HANDLER ---
+  function copyToClipboard(link, button) {
+    // Check if Web API is available (modern browsers)
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(link).then(() => {
+        showCopySuccess(button);
+      }).catch(() => {
+        fallbackCopyToClipboard(link, button);
+      });
+    } else {
+      fallbackCopyToClipboard(link, button);
+    }
+  }
+
+  function fallbackCopyToClipboard(link, button) {
+    // Fallback for older browsers
+    const textarea = document.createElement('textarea');
+    textarea.value = link;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      showCopySuccess(button);
+    } catch (err) {
+      alert('Không thể sao chép. Vui lòng thử lại!');
+    } finally {
+      document.body.removeChild(textarea);
+    }
+  }
+
+  function showCopySuccess(button) {
+    const originalText = button.innerHTML;
+    button.innerHTML = '<span class="share-icon">✓</span><span class="share-text">Đã sao chép!</span>';
+    button.classList.add('copied');
+    setTimeout(() => {
+      button.innerHTML = originalText;
+      button.classList.remove('copied');
+    }, 2000);
   }
 
   // --- START THE APP ---

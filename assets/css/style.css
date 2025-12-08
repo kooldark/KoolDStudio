@@ -322,11 +322,69 @@ nav.scrolled { padding: 0.9rem 0; background: rgba(255, 255, 255, 0.95); box-sha
   transform: translateY(15px);
   opacity: 0;
   transition: transform 0.4s ease 0.1s, opacity 0.4s ease 0.1s;
+  width: 100%;
+  padding-right: 55px;
 }
 
 .album-card:hover .album-card-title {
   transform: translateY(0);
   opacity: 1;
+}
+
+.album-card-actions {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  z-index: 3;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+}
+
+.album-card:hover .album-card-actions {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.album-share-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(235, 149, 0, 0.95);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(235, 149, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.album-share-btn:hover {
+  background: rgba(235, 149, 0, 1);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(235, 149, 0, 0.4);
+}
+
+.album-share-btn:active {
+  transform: scale(0.98);
+}
+
+.album-share-btn.copied {
+  background: rgba(76, 175, 80, 0.95);
+}
+
+.share-icon {
+  font-size: 14px;
+  display: inline-block;
+}
+
+.share-text {
+  display: inline;
 }
 
 

@@ -67,6 +67,16 @@
     transform: scale(0.98);
   }
 
+  .album-card-actions {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .album-share-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
   /* Make Swiper lightbox controls more mobile-friendly */
   .swiper-lightbox .swiper-button-next,
   .swiper-lightbox .swiper-button-prev {
