@@ -168,18 +168,18 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   /* Team page responsive */
   .team-grid-artistic {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 25px;
     max-width: 100%;
-    padding: 0 15px;
+    padding: 0 1rem;
     margin: 0 auto;
   }
 
   .team-member-image-wrapper {
-    height: 280px;
+    height: 300px;
     transition: none;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -189,13 +189,78 @@
     will-change: auto;
   }
 
-  .team-member:active .team-member-image-wrapper {
-    transform: none;
+  .team-member-card {
+    height: auto;
+    will-change: auto;
+  }
+
+  .team-member-content {
+    padding: 25px 20px;
+  }
+
+  .team-member-name {
+    font-size: 22px;
+  }
+
+  .team-member-role {
+    font-size: 11px;
+  }
+
+  .team-member-subtitle {
+    font-size: 13px;
+  }
+
+  .team-member-description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Team page responsive */
+  .team-grid-artistic {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+  }
+
+  .team-member-image-wrapper {
+    height: 250px;
+    transition: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .team-member-image-wrapper img {
+    will-change: auto;
   }
 
   .team-member-card {
     height: auto;
     will-change: auto;
+  }
+
+  .team-member-content {
+    padding: 20px 15px;
+  }
+
+  .team-member-name {
+    font-size: 20px;
+  }
+
+  .team-member-role {
+    font-size: 10px;
+  }
+
+  .team-member-subtitle {
+    font-size: 12px;
+  }
+
+  .team-member-description {
+    font-size: 13px;
+    line-height: 1.5;
   }
 
   .team-member-content {
@@ -323,6 +388,41 @@
   
   .team-member-card {
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .team-section-artistic {
+    padding: 80px 1.5rem 60px;
+  }
+
+  .team-header {
+    margin-bottom: 50px;
+  }
+
+  .team-header .section-title {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .team-subtitle {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-section-artistic {
+    padding: 60px 1rem 40px;
+  }
+
+  .team-header {
+    margin-bottom: 35px;
+  }
+
+  .team-header .section-title {
+    font-size: 28px;
+  }
+
+  .team-subtitle {
+    font-size: 14px;
   }
 }
 
