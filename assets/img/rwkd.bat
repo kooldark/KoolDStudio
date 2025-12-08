@@ -83,12 +83,14 @@ set rename_count=0
 for /r "%folder%" %%F in (_*.webp _*.jpg _*.jpeg _*.png _*.tif _*.tiff _*.bmp) do (
     set "fullpath=%%F"
     set "filename=%%~nF"
+    set "extension=%%~xF"
     set "newname=!filename:_=!"
     
     if not "!newname!"=="!filename!" (
         set /a rename_count+=1
-        echo   [!rename_count!] !filename! --^> !newname!
-        ren "!fullpath!" "!newname!"
+        set "new_fullname=!newname!!extension!"
+        echo   [!rename_count!] !filename!!extension! --^> !new_fullname!
+        ren "!fullpath!" "!new_fullname!"
         if !errorlevel! neq 0 (
             echo   ^^^ LỖI khi đổi tên!
         )
