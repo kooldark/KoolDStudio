@@ -1,11 +1,12 @@
 /* === GENERAL RESPONSIVE === */
 @media (max-width: 768px) {
-  .nav-links { position: fixed; top: 0; left: -100%; width: 80%; max-width: 320px; height: 100vh; background: white; flex-direction: column; align-items: center; padding-top: 120px; transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1); overflow-y: auto; }
+  .nav-links { position: fixed; top: 0; left: -100%; width: 80%; max-width: 320px; height: 100vh; background: rgba(249, 245, 240, 0.98); flex-direction: column; align-items: center; padding-top: 120px; transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 8px 0 30px rgba(58, 90, 64, 0.15); overflow-y: auto; backdrop-filter: blur(10px); }
   .nav-links.active { left: 0; }
-  .nav-links a { display: block; padding: 15px 0; width: 100%; text-align: center; border-bottom: 1px solid #f0f0f0; animation: slideInDown 0.3s ease forwards; min-height: 44px; }
+  .nav-links a { display: block; padding: 15px 0; width: 100%; text-align: center; border-bottom: 1px solid rgba(235, 149, 0, 0.05); animation: slideInDown 0.3s ease forwards; min-height: 44px; }
   .menu-toggle { display: block; position: relative; z-index: 1001; min-height: 48px; min-width: 48px; transition: color 0.3s ease, transform 0.3s ease; }
   .menu-toggle:active { transform: scale(0.95); }
-  .section-title { font-size: 36px; }
+  .section-title { font-size: 36px; padding-left: 25px; }
+  .section-title::before { width: 3px; height: 1.2em; }
 }
 
 @keyframes slideInDown {
@@ -15,17 +16,20 @@
 
 /* === HOME PAGE (Responsive) === */
 @media (max-width: 768px) {
-  .hero-overlay .studio-name { font-size: 48px; }
-  .hero-overlay .tagline { font-size: 18px; }
-  .intro-section { padding: 80px 0; }
-  .intro-text { font-size: 22px; }
-  .masonry-grid { column-count: 2; }
+  .hero-overlay .studio-name { font-size: 48px; letter-spacing: 2px; animation: none; }
+  .hero-overlay .tagline { font-size: 18px; animation: none; }
+  .intro-section { padding: 100px 0; }
+  .intro-section::before { width: 300px; height: 300px; }
+  .intro-text { font-size: 24px; font-weight: 700; line-height: 1.6; }
+  .masonry-grid { column-count: 2; column-gap: 20px; }
 }
 @media (max-width: 480px) {
   .hero-overlay .studio-name { font-size: 32px; letter-spacing: 2px; }
   .hero-overlay .tagline { font-size: 14px; }
+  .hero-overlay .gold-line { animation: none; width: 80px; }
   .masonry-grid { column-count: 1; }
   .intro-text { font-size: 20px; }
+  .intro-section { padding: 80px 0; }
   .portfolio-button-container .btn { min-height: 44px; font-size: 12px; padding: 12px 30px; }
 }
 
@@ -34,9 +38,11 @@
   .portfolio-section .section-title { font-size: 38px; }
   .portfolio-swiper .swiper-slide { height: 450px; }
 }
+
 @media (max-width: 768px) {
-  .page-header { padding: 120px 0 60px; }
-  .page-title { font-size: 42px; }
+  .page-header { padding: 120px 0 60px; background: linear-gradient(135deg, var(--cream) 0%, rgba(235, 149, 0, 0.02) 100%); }
+  .page-header::before { width: 250px; height: 250px; bottom: -40px; }
+  .page-title { font-size: 42px; letter-spacing: 0.02em; }
   .page-subtitle { font-size: 17px; }
   .portfolio-section { margin-bottom: 100px; }
   .portfolio-section .section-title { font-size: 34px; }
@@ -45,21 +51,25 @@
   .swiper-button-next, .swiper-button-prev { width: 40px; height: 40px; }
   .swiper-button-next:after, .swiper-button-prev:after { font-size: 16px; }
   #portfolio-filters { margin-bottom: 50px; }
-  .filter-btn { padding: 8px 18px; margin: 5px; font-size: 13px; }
+  .filter-btn { padding: 10px 20px; margin: 6px; font-size: 12px; letter-spacing: 0.5px; font-weight: 600; }
+  .album-grid { gap: 30px; }
 }
 @media (max-width: 480px) {
   .page-title { font-size: 36px; }
-  .portfolio-section .section-title { font-size: 30px; }
+  .page-header { padding: 100px 0 50px; }
+  .page-header::before { width: 200px; height: 200px; }
+  .portfolio-section .section-title { font-size: 30px; padding-left: 20px; }
   .portfolio-swiper .swiper-slide { height: 350px; }
   .back-home-btn { padding: 12px 40px; font-size: 14px; min-height: 44px; }
 
   .album-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 20px;
   }
 
   .album-card {
     height: 380px;
+    border-radius: 12px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
@@ -67,14 +77,64 @@
     transform: scale(0.98);
   }
 
+  .album-card-thumbnail {
+    transition: transform 0.4s ease;
+  }
+
+  .album-card:active .album-card-thumbnail {
+    transform: scale(1.05);
+  }
+
+  .album-card-title {
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    padding: 20px;
+    padding-right: 50px;
+  }
+
   .album-card-actions {
+    bottom: 20px;
+    right: 20px;
     opacity: 1;
+    transform: scale(0.9);
+  }
+
+  .album-card:active .album-card-actions {
     transform: scale(1);
   }
 
   .album-share-btn {
-    padding: 6px 10px;
+    padding: 8px 12px;
     font-size: 11px;
+    gap: 4px;
+  }
+
+  .share-icon {
+    font-size: 13px;
+  }
+
+  /* Make Swiper lightbox controls more mobile-friendly */
+  .swiper-lightbox .swiper-button-next,
+  .swiper-lightbox .swiper-button-prev {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+  }
+
+  .swiper-lightbox .swiper-button-next:after,
+  .swiper-lightbox .swiper-button-prev:after {
+    font-size: 20px;
+  }
+
+  .swiper-lightbox .swiper-pagination {
+    bottom: 15px;
+    font-size: 14px;
+  }
+
+  #lightbox-close {
+    top: 15px;
+    right: 15px;
+    font-size: 32px;
   }
 
   /* Make Swiper lightbox controls more mobile-friendly */
