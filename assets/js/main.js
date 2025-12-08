@@ -5,14 +5,33 @@ window.addEventListener('load', () => {
     preloader.classList.add('hidden');
   }
 
-  // AOS Init
+  // AOS Init with better easing
   if (typeof AOS !== 'undefined') {
     AOS.init({
-      duration: 800,
-      once: true,
-      offset: 50
+      duration: 900,
+      easing: 'ease-in-out-cubic',
+      once: false,
+      mirror: true,
+      offset: 100,
+      disable: false
     });
   }
+
+  // Add sophisticated hover effects for cards
+  const cards = document.querySelectorAll('.album-card, .team-member-card, .price-card');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      if (window.innerWidth > 768) {
+        this.style.willChange = 'transform, box-shadow';
+      }
+    });
+
+    card.addEventListener('mouseleave', function() {
+      if (window.innerWidth > 768) {
+        this.style.willChange = 'auto';
+      }
+    });
+  });
 });
 
 document.addEventListener('DOMContentLoaded', () => {
