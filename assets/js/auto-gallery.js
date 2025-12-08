@@ -29,9 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
     updateOrCreateMetaTag('property', 'og:title', title);
     updateOrCreateMetaTag('property', 'og:description', description);
     updateOrCreateMetaTag('property', 'og:image', imageUrl);
+    updateOrCreateMetaTag('property', 'og:image:width', '1200');
+    updateOrCreateMetaTag('property', 'og:image:height', '630');
+    updateOrCreateMetaTag('property', 'og:type', 'website');
     updateOrCreateMetaTag('property', 'og:url', window.location.href);
     
     // Update Twitter tags
+    updateOrCreateMetaTag('name', 'twitter:card', 'summary_large_image');
     updateOrCreateMetaTag('name', 'twitter:title', title);
     updateOrCreateMetaTag('name', 'twitter:description', description);
     updateOrCreateMetaTag('name', 'twitter:image', imageUrl);
@@ -97,6 +101,21 @@ document.addEventListener("DOMContentLoaded", () => {
       if (sharedCategory && sharedAlbum) {
         currentCategory = sharedCategory;
         currentAlbum = sharedAlbum;
+        
+        // Immediately set meta tags for social media crawlers
+        const data = galleryData[sharedCategory];
+        if (data && data[sharedAlbum]) {
+          const firstFile = data[sharedAlbum][0];
+          const categoryTitle = titles[sharedCategory]?.vn || sharedCategory;
+          const imageUrl = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${sharedCategory}/${sharedAlbum}/${firstFile}`;
+          
+          updateMetaTags(
+            `${sharedAlbum} - ${categoryTitle} | Kool D. Studio`,
+            `Album ${sharedAlbum} từ bộ sưu tập ${categoryTitle} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
+            imageUrl
+          );
+        }
+        
         // Update active filter
         const filterBtns = categoryFiltersContainer.querySelectorAll('.filter-btn');
         filterBtns.forEach(btn => {

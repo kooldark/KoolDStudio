@@ -28,7 +28,49 @@
 
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
-</head>
+
+  <script>
+    // Pre-generate meta tags for social media crawlers (they don't execute JS)
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const category = urlParams.get('category');
+      const album = urlParams.get('album');
+      
+      if (category && album) {
+        // Create fallback image URL based on category/album
+        const decodedAlbum = decodeURIComponent(album);
+        const imageUrl = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${category}/${decodedAlbum}/0${decodedAlbum.replace(/\s+/g, '')}.webp`;
+        const categoryVn = {
+          'cuoi': 'Ảnh Cưới',
+          'makeup': 'Makeup',
+          'gia-dinh': 'Gia Đình',
+          'phong-su': 'Phóng Sự'
+        }[category] || category;
+        
+        // Update meta tags
+        const metaTags = {
+          'og:title': `${decodedAlbum} - ${categoryVn} | Kool D. Studio`,
+          'og:description': `Album ${decodedAlbum} từ bộ sưu tập ${categoryVn} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
+          'og:image': imageUrl,
+          'og:url': window.location.href,
+          'twitter:title': `${decodedAlbum} - ${categoryVn} | Kool D. Studio`,
+          'twitter:description': `Album ${decodedAlbum} từ bộ sưu tập ${categoryVn} của Kool D. Studio`,
+          'twitter:image': imageUrl
+        };
+        
+        Object.entries(metaTags).forEach(([property, content]) => {
+          let meta = document.querySelector(`meta[property="${property}"], meta[name="${property}"]`);
+          if (!meta) {
+            meta = document.createElement('meta');
+            const attrName = property.startsWith('og:') ? 'property' : 'name';
+            meta.setAttribute(attrName, property);
+            document.head.appendChild(meta);
+          }
+          meta.setAttribute('content', content);
+        });
+      }
+    })();
+  </script>
 <body>
 
 <div id="preloader"><div class="spinner"></div></div>
