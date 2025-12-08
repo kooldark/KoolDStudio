@@ -1,9 +1,16 @@
 /* === GENERAL RESPONSIVE === */
 @media (max-width: 768px) {
-  .nav-links { position: fixed; top: 0; left: -100%; width: 80%; max-width: 320px; height: 100vh; background: white; flex-direction: column; align-items: center; padding-top: 120px; transition: left 0.4s ease-in-out; box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1); }
+  .nav-links { position: fixed; top: 0; left: -100%; width: 80%; max-width: 320px; height: 100vh; background: white; flex-direction: column; align-items: center; padding-top: 120px; transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1); overflow-y: auto; }
   .nav-links.active { left: 0; }
-  .menu-toggle { display: block; position: relative; z-index: 1001; }
+  .nav-links a { display: block; padding: 15px 0; width: 100%; text-align: center; border-bottom: 1px solid #f0f0f0; animation: slideInDown 0.3s ease forwards; min-height: 44px; }
+  .menu-toggle { display: block; position: relative; z-index: 1001; min-height: 48px; min-width: 48px; transition: color 0.3s ease, transform 0.3s ease; }
+  .menu-toggle:active { transform: scale(0.95); }
   .section-title { font-size: 36px; }
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* === HOME PAGE (Responsive) === */
@@ -15,8 +22,11 @@
   .masonry-grid { column-count: 2; }
 }
 @media (max-width: 480px) {
+  .hero-overlay .studio-name { font-size: 32px; letter-spacing: 2px; }
+  .hero-overlay .tagline { font-size: 14px; }
   .masonry-grid { column-count: 1; }
   .intro-text { font-size: 20px; }
+  .portfolio-button-container .btn { min-height: 44px; font-size: 12px; padding: 12px 30px; }
 }
 
 /* === PORTFOLIO PAGE (Responsive) === */
@@ -41,14 +51,20 @@
   .page-title { font-size: 36px; }
   .portfolio-section .section-title { font-size: 30px; }
   .portfolio-swiper .swiper-slide { height: 350px; }
-  .back-home-btn { padding: 12px 40px; font-size: 14px; }
+  .back-home-btn { padding: 12px 40px; font-size: 14px; min-height: 44px; }
 
   .album-grid {
-    grid-template-columns: 1fr; /* Single column on very small screens */
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .album-card {
-    height: 380px; /* Adjust height for single column */
+    height: 380px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .album-card:active {
+    transform: scale(0.98);
   }
 
   /* Make Swiper lightbox controls more mobile-friendly */
@@ -73,15 +89,22 @@
     right: 15px;
     font-size: 32px;
   }
+}
 
+@media (max-width: 480px) {
   /* Team page responsive */
   .team-grid-artistic {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 30px;
   }
 
   .team-member-image-wrapper {
     height: 280px;
+    transition: transform 0.2s ease;
+  }
+
+  .team-member:active .team-member-image-wrapper {
+    transform: scale(0.98);
   }
 
   .team-member-content {
@@ -117,6 +140,11 @@
 
   .contact-item-artistic {
     padding: 35px 25px;
+    transition: transform 0.2s ease;
+  }
+
+  .contact-item-artistic:active {
+    transform: scale(0.98);
   }
 
   .contact-item-title {
@@ -125,6 +153,8 @@
 
   .btn-large {
     width: 100%;
+    min-height: 48px;
+    font-size: 16px;
   }
 
   .team-header .section-title {
@@ -134,7 +164,6 @@
   .contact-header .section-title {
     font-size: 40px;
   }
-}
 }
 
 /* Team page responsive for tablets */
@@ -155,4 +184,67 @@
   .cta-text {
     font-size: 16px;
   }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .btn {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  .album-card,
+  .team-member,
+  .grid-item,
+  .portfolio-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .album-card:active,
+  .team-member:active,
+  .grid-item:active,
+  .portfolio-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: none) {
+  .album-card:hover,
+  .team-member:hover,
+  .btn:hover,
+  .portfolio-card:hover {
+    transform: none;
+  }
+}
+
+/* Landscape mode on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-swiper {
+    height: 60vh;
+  }
+
+  .intro-section {
+    padding: 60px 0;
+  }
+}
+
+/* Form inputs optimization */
+@media (max-width: 768px) {
+  .input-card input,
+  .input-card textarea,
+  input[type="text"],
+  input[type="email"],
+  input[type="phone"],
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Extra small screens optimization */
+@media (max-width: 360px) {
+  .section-title { font-size: 28px; }
+  .page-title { font-size: 28px; }
+  .hero-overlay .studio-name { font-size: 24px; }
+  .btn { padding: 10px 20px; font-size: 11px; }
 }

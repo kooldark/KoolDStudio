@@ -16,15 +16,22 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Navigation scroll effect
+  // Navigation scroll effect with RequestAnimationFrame for smooth performance
   const navbar = document.getElementById('navbar');
   if (navbar) {
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          navbar.classList.toggle('scrolled', window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
   }
 
-  // Mobile menu
+  // Mobile menu with smooth animations
   const navLinks = document.getElementById('nav-links');
   const mobileMenu = document.getElementById('mobile-menu');
   if (navLinks && mobileMenu) {
@@ -33,8 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks.classList.toggle('active');
     };
 
+    // Close menu when link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && e.target !== mobileMenu) {
+      if (navLinks.classList.contains('active') && 
+          !navLinks.contains(e.target) && 
+          e.target !== mobileMenu) {
         navLinks.classList.remove('active');
       }
     });
@@ -47,9 +64,23 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetElement = document.querySelector(this.getAttribute('href'));
       if (targetElement) {
         targetElement.scrollIntoView({
-          behavior: 'smooth'
+          behavior: 'smooth',
+          block: 'start'
         });
       }
     });
   });
+
+  // Prevent scroll on body when mobile menu is open
+  const observer = new MutationObserver(() => {
+    if (navLinks && navLinks.classList.contains('active')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  });
+
+  if (navLinks) {
+    observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
+  }
 });
