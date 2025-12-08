@@ -323,6 +323,43 @@
   }
 }
 
+/* Reduce motion for accessibility and performance on mobile */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .team-member-card,
+  .team-image,
+  .team-overlay {
+    will-change: auto;
+  }
+}
+
+/* Mobile performance optimization */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on smaller screens */
+  .team-member-card {
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .team-member-image-wrapper {
+    transition: none;
+  }
+  
+  .team-image {
+    transition: none;
+  }
+  
+  .team-overlay {
+    transition: none;
+  }
+}
+
 /* Landscape mode on mobile */
 @media (max-width: 768px) and (orientation: landscape) {
   .hero-swiper {
