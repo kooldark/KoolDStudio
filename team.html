@@ -109,6 +109,17 @@
     .about-contact-section {
       padding: 60px 1.5rem;
     }
+
+    /* Team page images optimization */
+    .team-member-image {
+      height: 280px;
+    }
+
+    .team-member-image img {
+      will-change: auto;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
   }
 
   @media (max-width: 480px) {
@@ -127,6 +138,40 @@
     .contact-icon {
       font-size: 32px;
       margin-bottom: 8px;
+    }
+
+    /* Team page mobile optimization */
+    .team-member {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .team-member:hover {
+      transform: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .team-member-image {
+      height: 240px;
+    }
+
+    .team-member-image img {
+      will-change: auto;
+    }
+
+    .team-member-info {
+      padding: 20px;
+    }
+
+    .team-member-name {
+      font-size: 22px;
+    }
+
+    .team-member-role {
+      font-size: 12px;
+    }
+
+    .team-member-description {
+      font-size: 13px;
     }
   }
 </style>
@@ -147,7 +192,7 @@
       <!-- Team Member 1: Tuấn -->
       <div class="team-member" data-aos="fade-up">
         <div class="team-member-image">
-          <div class="team-placeholder">T</div>
+          <img src="assets/img/team/Tuan.webp" alt="Tuấn - Photographer" loading="lazy" decoding="async">
         </div>
         <div class="team-member-info">
           <h3 class="team-member-name">Tuấn</h3>
@@ -159,7 +204,7 @@
       <!-- Team Member 2: Vy Ny -->
       <div class="team-member" data-aos="fade-up" data-aos-delay="100">
         <div class="team-member-image">
-          <div class="team-placeholder">V</div>
+          <img src="assets/img/team/Ny.webp" alt="Vy Ny - Makeup Artist" loading="lazy" decoding="async">
         </div>
         <div class="team-member-info">
           <h3 class="team-member-name">Vy Ny</h3>
@@ -171,7 +216,7 @@
       <!-- Team Member 3: Vũ Eric -->
       <div class="team-member" data-aos="fade-up" data-aos-delay="200">
         <div class="team-member-image">
-          <div class="team-placeholder">E</div>
+          <img src="assets/img/team/Vu.webp" alt="Vũ Eric - Makeup Artist" loading="lazy" decoding="async">
         </div>
         <div class="team-member-info">
           <h3 class="team-member-name">Vũ Eric</h3>
@@ -183,7 +228,7 @@
       <!-- Team Member 4: Dũng -->
       <div class="team-member" data-aos="fade-up" data-aos-delay="300">
         <div class="team-member-image">
-          <div class="team-placeholder">D</div>
+          <img src="assets/img/team/Dung.webp" alt="Dũng - Photographer" loading="lazy" decoding="async">
         </div>
         <div class="team-member-info">
           <h3 class="team-member-name">Dũng</h3>
@@ -195,7 +240,7 @@
       <!-- Team Member 5: Tài -->
       <div class="team-member" data-aos="fade-up" data-aos-delay="400">
         <div class="team-member-image">
-          <div class="team-placeholder">T</div>
+          <img src="assets/img/team/Tai.webp" alt="Tài - Photographer" loading="lazy" decoding="async">
         </div>
         <div class="team-member-info">
           <h3 class="team-member-name">Tài</h3>
@@ -207,7 +252,7 @@
       <!-- Team Member 6: Hiểu -->
       <div class="team-member" data-aos="fade-up" data-aos-delay="500">
         <div class="team-member-image">
-          <div class="team-placeholder">H</div>
+          <img src="assets/img/team/Hieu.webp" alt="Hiếu - Photographer" loading="lazy" decoding="async">
         </div>
         <div class="team-member-info">
           <h3 class="team-member-name">Hiểu</h3>
@@ -240,8 +285,14 @@
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
-  // Initialize AOS
-  AOS.init({duration: 800, once: true, offset: 50});
+  // Initialize AOS with optimized settings for better mobile performance
+  AOS.init({
+    duration: 600,
+    once: true,
+    offset: 100,
+    disable: window.innerWidth < 768,
+    throttleDelay: 99
+  });
 
   // Mobile menu
   const mobileMenu = document.getElementById('mobile-menu');
@@ -251,6 +302,11 @@
     if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && e.target !== mobileMenu) {
       navLinks.classList.remove('active');
     }
+  });
+
+  // Hide preloader once images are loaded
+  window.addEventListener('load', () => {
+    document.getElementById('preloader').style.display = 'none';
   });
 </script>
 

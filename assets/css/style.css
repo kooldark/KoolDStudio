@@ -994,6 +994,7 @@ nav.scrolled {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 }
 
 .team-member-image img {
@@ -1001,6 +1002,9 @@ nav.scrolled {
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
+  display: block;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .team-member:hover .team-member-image img {
