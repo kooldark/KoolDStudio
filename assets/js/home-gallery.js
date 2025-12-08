@@ -46,10 +46,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   let masonryHtml = '';
   galleryImages.forEach(imgPath => {
     masonryHtml += `
-      <div class="masonry-item">
-        <img src="${imgPath}" alt="Kool D. Studio Work" loading="lazy">
+      <div class="masonry-item" data-aos="fade-up">
+        <img src="${imgPath}" alt="Kool D. Studio Work" loading="lazy" decoding="async">
       </div>
     `;
   });
   masonryGallery.innerHTML = masonryHtml;
+  
+  // Refresh AOS animations
+  if (typeof AOS !== 'undefined') {
+    AOS.refresh();
+  }
 });
+

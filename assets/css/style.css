@@ -33,11 +33,16 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-body);
   background: var(--cream);
   color: #333;
   line-height: 1.7;
+  overflow-x: hidden;
 }
 
 a {
@@ -400,15 +405,22 @@ nav.scrolled {
   background: #f4f0eb;
 }
 .masonry-grid {
-  column-count: 3;
-  column-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  grid-auto-rows: auto;
 }
 .masonry-item {
-  margin-bottom: 20px;
-  display: inline-block;
+  margin-bottom: 0;
+  display: block;
   width: 100%;
   overflow: hidden;
   border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+.masonry-item:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 .masonry-item img {
   width: 100%;

@@ -1,5 +1,8 @@
 /* === GENERAL RESPONSIVE === */
 @media (max-width: 768px) {
+  body, html {
+    overflow-x: hidden;
+  }
   .nav-links { position: fixed; top: 0; left: -100%; width: 80%; max-width: 320px; height: 100vh; background: rgba(249, 245, 240, 0.98); flex-direction: column; align-items: center; padding-top: 120px; transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 8px 0 30px rgba(58, 90, 64, 0.15); overflow-y: auto; backdrop-filter: blur(10px); }
   .nav-links.active { left: 0; }
   .nav-links a { display: block; padding: 15px 0; width: 100%; text-align: center; border-bottom: 1px solid rgba(235, 149, 0, 0.05); animation: slideInDown 0.3s ease forwards; min-height: 44px; }
@@ -21,13 +24,13 @@
   .intro-section { padding: 100px 0; }
   .intro-section::before { width: 300px; height: 300px; }
   .intro-text { font-size: 24px; font-weight: 700; line-height: 1.6; }
-  .masonry-grid { column-count: 2; column-gap: 20px; }
+  .masonry-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
 }
 @media (max-width: 480px) {
   .hero-overlay .studio-name { font-size: 32px; letter-spacing: 2px; }
   .hero-overlay .tagline { font-size: 14px; }
   .hero-overlay .gold-line { animation: none; width: 80px; }
-  .masonry-grid { column-count: 1; }
+  .masonry-grid { grid-template-columns: 1fr; gap: 12px; }
   .intro-text { font-size: 20px; }
   .intro-section { padding: 80px 0; }
   .portfolio-button-container .btn { min-height: 44px; font-size: 12px; padding: 12px 30px; }
