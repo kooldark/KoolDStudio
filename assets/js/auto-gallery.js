@@ -22,6 +22,33 @@ document.addEventListener("DOMContentLoaded", () => {
     "gia-dinh":{ vn: "Gia Đình",       en: "Family" },
     "phong-su":{ vn: "Phóng Sự",  en: "Wedding Day" }
   };
+
+  // --- UPDATE META TAGS FOR SOCIAL SHARING ---
+  function updateMetaTags(title, description, imageUrl) {
+    // Update Open Graph tags
+    updateOrCreateMetaTag('property', 'og:title', title);
+    updateOrCreateMetaTag('property', 'og:description', description);
+    updateOrCreateMetaTag('property', 'og:image', imageUrl);
+    updateOrCreateMetaTag('property', 'og:url', window.location.href);
+    
+    // Update Twitter tags
+    updateOrCreateMetaTag('name', 'twitter:title', title);
+    updateOrCreateMetaTag('name', 'twitter:description', description);
+    updateOrCreateMetaTag('name', 'twitter:image', imageUrl);
+    
+    // Update page title
+    document.title = title;
+  }
+
+  function updateOrCreateMetaTag(attrName, attrValue, content) {
+    let tag = document.querySelector(`meta[${attrName}="${attrValue}"]`);
+    if (!tag) {
+      tag = document.createElement('meta');
+      tag.setAttribute(attrName, attrValue);
+      document.head.appendChild(tag);
+    }
+    tag.setAttribute('content', content);
+  }
   
   async function init() {
     // --- VALIDATE DOM ---
@@ -79,25 +106,58 @@ document.addEventListener("DOMContentLoaded", () => {
       await renderImageGrid(getAllImages());
       backButton.classList.add('hidden');
       pageSubtitle.textContent = originalSubtitle;
+      updateMetaTags(
+        'Portfolio - Kool D. Studio | Ảnh Cưới Hàn Quốc & Gia Đình',
+        'Portfolio ảnh cưới phong cách Hàn Quốc tinh tế, gia đình, makeup & phóng sự tại Kool D. Studio',
+        'https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg'
+      );
     } else if (data && typeof data === 'object' && !Array.isArray(data)) {
       if (currentAlbum) {
         const albumImages = data[currentAlbum].map(file => `assets/img/portfolio/${currentCategory}/${currentAlbum}/${file}`);
         await renderImageGrid(albumImages);
         backButton.classList.remove('hidden');
         pageSubtitle.textContent = `Album: ${currentAlbum}`;
+        
+        // Update meta tags for album sharing
+        const firstImagePath = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${currentCategory}/${currentAlbum}/${data[currentAlbum][0]}`;
+        const categoryTitle = titles[currentCategory]?.vn || currentCategory;
+        updateMetaTags(
+          `${currentAlbum} - ${categoryTitle} | Kool D. Studio`,
+          `Album ${currentAlbum} từ bộ sưu tập ${categoryTitle} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
+          firstImagePath
+        );
       } else {
         await renderAlbumCovers(currentCategory, data);
         backButton.classList.add('hidden');
         pageSubtitle.textContent = `Chọn một album để khám phá`;
+        
+        const categoryTitle = titles[currentCategory]?.vn || currentCategory;
+        updateMetaTags(
+          `${categoryTitle} - Kool D. Studio`,
+          `Khám phá bộ sưu tập ${categoryTitle} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
+          'https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg'
+        );
       }
     } else if (data && Array.isArray(data)) {
       const categoryImages = data.map(file => `assets/img/portfolio/${currentCategory}/${file}`);
       await renderImageGrid(categoryImages);
       backButton.classList.add('hidden');
       pageSubtitle.textContent = originalSubtitle;
+      
+      const categoryTitle = titles[currentCategory]?.vn || currentCategory;
+      updateMetaTags(
+        `${categoryTitle} - Kool D. Studio`,
+        `Khám phá bộ sưu tập ${categoryTitle} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
+        'https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg'
+      );
     } else {
       await renderImageGrid([]);
       backButton.classList.add('hidden');
+      updateMetaTags(
+        'Portfolio - Kool D. Studio',
+        'Portfolio ảnh cưới phong cách Hàn Quốc tinh tế, gia đình, makeup & phóng sự tại Kool D. Studio',
+        'https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg'
+      );
     }
   }
   
