@@ -6,56 +6,58 @@ function getRandomItem(arr) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const masonryGallery = document.getElementById('home-masonry-gallery');
+  const galleryContainer = document.getElementById('home-gallery-container');
 
-  if (!masonryGallery) return;
+  if (!galleryContainer) return;
 
-  let data = {};
+  let galleryData = {};
   try {
     const res = await fetch('assets/img/portfolio/images-list.json?t=' + Date.now());
-    data = await res.json();
+    if (!res.ok) throw new Error(`Network response was not ok, status: ${res.status}`);
+    galleryData = await res.json();
   } catch (e) {
     console.error("Could not load gallery data.", e);
+    galleryContainer.innerHTML = "<p class='error-message'>Không thể tải thư viện ảnh.</p>";
     return;
   }
 
-  // --- Get one random representative image from each category/album ---
-  const galleryImages = [];
-
-  Object.entries(data).forEach(([category, content]) => {
-    if (Array.isArray(content)) {
-      // Simple category: just one random image from the array
-      if (content.length > 0) {
-        const randomFile = getRandomItem(content);
-        galleryImages.push(`assets/img/portfolio/${category}/${randomFile}`);
-      }
-    } else if (typeof content === 'object' && content !== null) {
-      // Nested category: get one random image from each album
-      Object.entries(content).forEach(([album, files]) => {
-        if (Array.isArray(files) && files.length > 0) {
-          const randomFile = getRandomItem(files);
-          const isLoose = album === 'Ảnh lẻ';
-          const imageFolder = isLoose ? '' : `${album}/`;
-          galleryImages.push(`assets/img/portfolio/${category}/${imageFolder}${randomFile}`);
+  /**
+   * Get one random representative image from each category/album
+   */
+  function getHomepageImages() {
+    const images = [];
+    for (const category in galleryData) {
+      const content = galleryData[category];
+      if (Array.isArray(content)) {
+        // Simple category: get one random image
+        if (content.length > 0) {
+          const randomFile = getRandomItem(content);
+          images.push(`assets/img/portfolio/${category}/${randomFile}`);
         }
-      });
+      } else if (typeof content === 'object' && content !== null) {
+        // Nested category: get one random image from each album
+        for (const album in content) {
+          const albumFiles = content[album];
+          if (Array.isArray(albumFiles) && albumFiles.length > 0) {
+            const isLoose = album === 'Ảnh lẻ';
+            const imageFolder = isLoose ? '' : `${album}/`;
+            const randomFile = getRandomItem(albumFiles);
+            images.push(`assets/img/portfolio/${category}/${imageFolder}${randomFile}`);
+          }
+        }
+      }
     }
-  });
+    return images;
+  }
 
-  // --- Populate Masonry Gallery ---
-  let masonryHtml = '';
+  const galleryImages = getHomepageImages();
+  let galleryHtml = '';
   galleryImages.forEach(imgPath => {
-    masonryHtml += `
-      <div class="masonry-item" data-aos="fade-up">
+    galleryHtml += `
+      <div class="grid-item" data-aos="fade-up">
         <img src="${imgPath}" alt="Kool D. Studio Work" loading="lazy" decoding="async">
       </div>
     `;
   });
-  masonryGallery.innerHTML = masonryHtml;
-  
-  // Refresh AOS animations
-  if (typeof AOS !== 'undefined') {
-    AOS.refresh();
-  }
+  galleryContainer.innerHTML = galleryHtml;
 });
-

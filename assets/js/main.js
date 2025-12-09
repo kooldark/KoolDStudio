@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
       once: false,
       mirror: true,
       offset: 100,
-      disable: false
+      disable: window.innerWidth < 768 // Tắt hiệu ứng trên màn hình nhỏ hơn 768px
     });
   }
 

@@ -55,12 +55,12 @@
 <section id="portfolio-showcase">
   <div class="container">
     <h2 class="section-title" data-aos="fade-up">Our Works</h2>
-    <div class="masonry-grid" id="home-masonry-gallery" data-aos="fade-up" data-aos-delay="100">
+    <div class="portfolio-grid" id="home-gallery-container" data-aos="fade-up" data-aos-delay="100">
       <!-- Images will be injected by JS -->
     </div>
-    <div class="portfolio-button-container" data-aos="fade-up">
-      <a href="portfolio.html" class="btn">Xem Full Portfolio →</a>
-    </div>
+  </div>
+  <div class="portfolio-button-container" data-aos="fade-up">
+    <a href="portfolio.html" class="btn">Xem Full Portfolio →</a>
   </div>
 </section>
 
@@ -81,6 +81,22 @@
     </div>
   </div>
 </section>
+
+<!-- Swiper Lightbox -->
+<div id="lightbox" class="swiper-lightbox" style="display:none;">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!-- Slides will be injected here -->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        
+        <!-- Add Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <span id="lightbox-close">&times;</span>
+</div>
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
