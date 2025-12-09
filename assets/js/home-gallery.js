@@ -50,7 +50,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     return images;
   }
 
-  const galleryImages = getHomepageImages();
+  // Lấy tất cả ảnh đại diện có thể có
+  const allImages = getHomepageImages();
+
+  // Xáo trộn mảng để mỗi lần tải lại trang sẽ có một bộ ảnh ngẫu nhiên khác nhau
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  shuffleArray(allImages);
+
+  // Xác định số lượng ảnh cần hiển thị dựa trên kích thước màn hình
+  const isMobile = window.innerWidth < 768;
+  const maxImages = isMobile ? 6 : 12;
+
+  // Cắt mảng để chỉ lấy số lượng ảnh mong muốn
+  const galleryImages = allImages.slice(0, maxImages);
+
   let galleryHtml = '';
   galleryImages.forEach(imgPath => {
     galleryHtml += `
