@@ -1,10 +1,4 @@
 window.addEventListener('load', () => {
-  // Preloader
-  const preloader = document.getElementById('preloader');
-  if (preloader) {
-    preloader.classList.add('hidden');
-  }
-
   // AOS Init with better easing
   if (typeof AOS !== 'undefined') {
     AOS.init({
@@ -35,6 +29,15 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Preloader
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    // Use a small timeout to allow initial rendering before fading out
+    setTimeout(() => {
+      preloader.classList.add('hidden');
+    }, 100);
+  }
+
   // Navigation scroll effect with RequestAnimationFrame for smooth performance
   const navbar = document.getElementById('navbar');
   if (navbar) {

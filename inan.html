@@ -45,6 +45,123 @@
       font-size: 16px;
       font-weight: 500;
     }
+    .size-price-list {
+      list-style: none;
+      padding: 0 15px !important;
+      margin: 20px 0 !important;
+      text-align: left;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px 25px; /* Khoảng cách giữa các dòng và cột */
+    }
+    .size-price-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px dashed #eee;
+      font-size: 15px;
+    }
+    .features-list {
+      text-align: left;
+      display: inline-block;
+      margin-top: 15px;
+    }
+    .interactive-price-selector {
+      padding: 15px 20px;
+      margin-bottom: 15px;
+    }
+    .interactive-price-selector label {
+      font-weight: 500;
+      margin-bottom: 8px;
+      display: block;
+      font-size: 16px;
+    }
+    .size-selector {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      background-color: #fff;
+      cursor: pointer;
+    }
+    .size-selector:focus {
+      outline-color: var(--soft-gold);
+    }
+    /* Album Pricing Table Styles */
+    .album-pricing-section {
+      padding: 60px 0;
+      text-align: center;
+    }
+    .album-section-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr; /* Image column and Table column */
+      gap: 2.5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .album-table-container {
+      max-width: 900px;
+      margin: 0 auto;
+      overflow-x: auto; /* For smaller screens */
+    }
+    .album-pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      font-size: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .album-pricing-table th, .album-pricing-table td {
+      padding: 18px 15px;
+      text-align: center;
+    }
+    .album-pricing-table thead {
+      background-color: var(--deep-green);
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+    .album-pricing-table tbody tr {
+      border-bottom: 1px solid #f0f0f0;
+      background-color: #fff;
+    }
+    .album-pricing-table tbody tr:last-child {
+      border-bottom: none;
+    }
+    .album-pricing-table tbody tr:hover {
+      background-color: #fcfaf6;
+    }
+    .album-pricing-table td:first-child {
+      font-weight: 600;
+      color: var(--deep-green);
+    }
+    .album-image-showcase {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      background-color: #f0f0f0;
+    }
+    .album-image-showcase iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    @media (max-width: 992px) {
+      .album-section-wrapper { grid-template-columns: 1fr; }
+      .album-image-showcase { margin-bottom: 2rem; }
+    }
   </style>
 </head>
 <body>
@@ -79,14 +196,30 @@
 
       <!-- Ảnh Loại P -->
       <div class="price-card print-price-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="assets/img/portfolio/cuoi/Ngoại cảnh/ngoaicanh (1).webp" alt="Ảnh in loại P" class="card-image">
+        <iframe 
+            class="card-image" 
+            src="https://www.youtube.com/embed/tfbjxFydtAg?autoplay=1&mute=1&loop=1&playlist=tfbjxFydtAg&controls=0&modestbranding=1&showinfo=0" 
+            title="Video giới thiệu ảnh ép gỗ cao cấp loại P" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
         <div class="price-header">
           <h3>Ảnh Ép Gỗ Cao Cấp (Loại P)</h3>
         </div>
         <div class="price-body">
-          <div class="price-size">Kích thước: 60x90cm</div>
-          <div class="price-value">1.110.000đ</div>
-          <ul>
+          <div class="interactive-price-selector">
+            <label for="size-selector-p">Chọn kích thước:</label>
+            <select id="size-selector-p" class="size-selector">
+              <option value="135000">13x18 cm</option>
+              <option value="153000">15x21 cm</option>
+              <option value="350000">30x45 cm</option>
+              <option value="630000">40x60 cm</option>
+              <option value="990000">50x75 cm</option>
+              <option value="1110000" selected>60x90 cm</option>
+            </select>
+            <div id="price-display-p" class="price-value">1.110.000đ</div>
+          </div>
+          <ul class="features-list">
             <li>Cân đối hình ảnh trước khi in</li>
             <li>Bảo hành và đóng gói sản phẩm</li>
             <li>Miễn phí giao nội thành HCM</li>
@@ -100,7 +233,13 @@
 
       <!-- Ảnh Loại T -->
       <div class="price-card print-price-card" data-aos="fade-up" data-aos-delay="300">
-        <img src="assets/img/portfolio/cuoi/Studio/anh cuoi nen den (1).webp" alt="Ảnh in loại T" class="card-image">
+        <iframe 
+            class="card-image" 
+            src="https://www.youtube.com/embed/KKg_yw-Fiuc?autoplay=1&mute=1&loop=1&playlist=KKg_yw-Fiuc&controls=0&modestbranding=1&showinfo=0" 
+            title="Video giới thiệu ảnh tráng gương pha lê loại T" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
         <div class="price-header" style="background:#3A5A40;">
           <h3>Ảnh Tráng Gương Pha Lê (Loại T)</h3>
         </div>
@@ -112,6 +251,8 @@
             <li>Bảo hành và đóng gói sản phẩm</li>
             <li>Miễn phí giao nội thành HCM</li>
             <li>(Hoặc bán kính 5km từ studio)</li>
+            <li>Khung viền tùy chọn: Đen / Bạc</li>
+            <li>Bề mặt: Bóng (sang trọng) hoặc Mờ (chống chói)</li>
           </ul>
         </div>
         <div class="price-footer">
@@ -120,6 +261,56 @@
       </div>
 
     </div>
+
+    <!-- Album Pricing Section -->
+    <section class="album-pricing-section" data-aos="fade-up">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Bảng Giá Album Ảnh Thiết Kế</h2>
+      <p class="section-subtitle" style="text-align: center;">Chất liệu photobook cao cấp, bìa da/vải, thiết kế theo yêu cầu.</p>
+      <div class="gold-line" style="margin-bottom: 2.5rem;"></div>
+
+      <div class="album-section-wrapper">
+        <div class="album-image-showcase">
+          <iframe 
+            src="https://www.youtube.com/embed/IU9IMD1FiVc?autoplay=1&mute=1&loop=1&playlist=IU9IMD1FiVc&controls=0&modestbranding=1&showinfo=0" 
+            title="Video giới thiệu album ảnh thiết kế cao cấp" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="album-table-container">
+          <table class="album-pricing-table">
+            <thead>
+              <tr>
+                <th>Kích thước</th>
+                <th>Giá 20 trang</th>
+                <th>Giá 30 trang</th>
+                <th>Thêm 1 trang</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>20x20 cm</td><td>1tr494</td><td>1tr708</td><td>43k</td></tr>
+              <tr><td>25x25 cm</td><td>1tr724</td><td>2tr038</td><td>63k</td></tr>
+              <tr><td>30x30 cm</td><td>1tr760</td><td>2tr090</td><td>66k</td></tr>
+              <tr><td>20x30 cm</td><td>1tr602</td><td>1tr866</td><td>53k</td></tr>
+              <tr><td>25x35 cm</td><td>1tr760</td><td>2tr090</td><td>66k</td></tr>
+              <tr><td>30x40 cm</td><td>1tr911</td><td>2tr310</td><td>80k</td></tr>
+              <tr><td>30x45 cm</td><td>1tr940</td><td>2tr352</td><td>82k</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="pricing-footer" style="margin-top: 2rem;">
+        <p>
+          <strong>Lưu ý:</strong> Giảm ngay <strong>400.000đ</strong> cho album thứ 2 trở đi (sao chép / in lại từ file thiết kế có sẵn).
+        </p>
+        <p style="margin-top:15px;">
+          <a href="https://zalo.me/0379031662" class="btn">Tư vấn Album</a>
+        </p>
+      </div>
+    </section>
+
 
     <div class="pricing-footer" data-aos="fade-up">
       <p style="margin-top:15px;">
@@ -139,5 +330,33 @@
 
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="assets/js/pricing.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function formatPrice(price) {
+      if (price >= 1000000) {
+        const millions = Math.floor(price / 1000000);
+        const thousands = Math.round((price % 1000000) / 1000);
+        return thousands > 0 ? `${millions}tr${String(thousands).padStart(3, '0')}` : `${millions}tr`;
+      }
+      if (price >= 1000) {
+        return `${Math.round(price / 1000)}k`;
+      }
+      return new Intl.NumberFormat('vi-VN').format(price) + 'đ';
+    }
+
+    const sizeSelectorP = document.getElementById('size-selector-p');
+    const priceDisplayP = document.getElementById('price-display-p');
+
+    if (sizeSelectorP && priceDisplayP) {
+      // Initial format
+      priceDisplayP.textContent = formatPrice(parseInt(sizeSelectorP.value, 10));
+
+      sizeSelectorP.addEventListener('change', function() {
+        const selectedPrice = parseInt(this.value, 10);
+        priceDisplayP.textContent = formatPrice(selectedPrice);
+      });
+    }
+  });
+</script>
 </body>
 </html>
