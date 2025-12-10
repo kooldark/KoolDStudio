@@ -171,6 +171,27 @@
       .album-image-showcase { margin-bottom: 2rem; }
     }
   </style>
+  <style>
+    /* Album Price Display Styles */
+    .album-price-display {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+      text-align: center;
+    }
+    .album-price-item {
+      padding: 10px 5px;
+    }
+    .album-price-item .price-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #666;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .album-price-item .price-value { margin: 0; }
+  </style>
 </head>
 <body>
 
@@ -257,7 +278,7 @@
         </div>
         <div class="price-body">
           <div class="price-size">Kích thước: 60x90cm</div>
-          <div class="price-value">1.350.000đ</div>
+          <div class="price-value">1tr350</div>
            <ul>
             <li>Cân đối hình ảnh trước khi in</li>
             <li>Bảo hành và đóng gói sản phẩm</li>
@@ -290,26 +311,33 @@
             allowfullscreen>
           </iframe>
         </div>
-        <div class="album-table-container">
-          <table class="album-pricing-table">
-            <thead>
-              <tr>
-                <th>Kích thước</th>
-                <th>Giá 20 trang</th>
-                <th>Giá 30 trang</th>
-                <th>Thêm 1 trang</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>20x20 cm</td><td>1tr494</td><td>1tr708</td><td>43k</td></tr>
-              <tr><td>25x25 cm</td><td>1tr724</td><td>2tr038</td><td>63k</td></tr>
-              <tr><td>30x30 cm</td><td>1tr760</td><td>2tr090</td><td>66k</td></tr>
-              <tr><td>20x30 cm</td><td>1tr602</td><td>1tr866</td><td>53k</td></tr>
-              <tr><td>25x35 cm</td><td>1tr760</td><td>2tr090</td><td>66k</td></tr>
-              <tr><td>30x40 cm</td><td>1tr911</td><td>2tr310</td><td>80k</td></tr>
-              <tr><td>30x45 cm</td><td>1tr940</td><td>2tr352</td><td>82k</td></tr>
-            </tbody>
-          </table>
+        <div class="price-body" style="padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.05);">
+          <div class="interactive-price-selector">
+            <label for="album-size-selector">Chọn kích thước Album:</label>
+            <select id="album-size-selector" class="size-selector">
+              <option value='{"p20": 1494000, "p30": 1708000, "p_add": 43000}'>20x20 cm</option>
+              <option value='{"p20": 1724000, "p30": 2038000, "p_add": 63000}'>25x25 cm</option>
+              <option value='{"p20": 1760000, "p30": 2090000, "p_add": 66000}'>30x30 cm</option>
+              <option value='{"p20": 1602000, "p30": 1866000, "p_add": 53000}'>20x30 cm</option>
+              <option value='{"p20": 1760000, "p30": 2090000, "p_add": 66000}' selected>25x35 cm</option>
+              <option value='{"p20": 1911000, "p30": 2310000, "p_add": 80000}'>30x40 cm</option>
+              <option value='{"p20": 1940000, "p30": 2352000, "p_add": 82000}'>30x45 cm</option>
+            </select>
+          </div>
+          <div id="album-price-display" class="album-price-display">
+            <div class="album-price-item">
+              <span class="price-label">Giá 20 trang</span>
+              <div id="album-price-20p" class="price-value"></div>
+            </div>
+            <div class="album-price-item">
+              <span class="price-label">Giá 30 trang</span>
+              <div id="album-price-30p" class="price-value"></div>
+            </div>
+            <div class="album-price-item">
+              <span class="price-label">Thêm 1 trang</span>
+              <div id="album-price-add" class="price-value"></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -345,15 +373,17 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     function formatPrice(price) {
+      // Định dạng giá hàng triệu (e.g., 1.350.000 -> 1tr350)
       if (price >= 1000000) {
         const millions = Math.floor(price / 1000000);
         const thousands = Math.round((price % 1000000) / 1000);
         return thousands > 0 ? `${millions}tr${String(thousands).padStart(3, '0')}` : `${millions}tr`;
       }
+      // Định dạng giá hàng nghìn (e.g., 153.000 -> 153k)
       if (price >= 1000) {
         return `${Math.round(price / 1000)}k`;
       }
-      return new Intl.NumberFormat('vi-VN').format(price) + 'đ';
+      return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
     }
 
     const sizeSelectorP = document.getElementById('size-selector-p');
@@ -368,6 +398,28 @@
         priceDisplayP.textContent = formatPrice(selectedPrice);
       });
     }
+
+    // Album price handler
+    const albumSelector = document.getElementById('album-size-selector');
+    const albumPrice20p = document.getElementById('album-price-20p');
+    const albumPrice30p = document.getElementById('album-price-30p');
+    const albumPriceAdd = document.getElementById('album-price-add');
+
+    function updateAlbumPrices() {
+      if (!albumSelector) return;
+      const prices = JSON.parse(albumSelector.value);
+      albumPrice20p.textContent = formatPrice(prices.p20);
+      albumPrice30p.textContent = formatPrice(prices.p30);
+      albumPriceAdd.textContent = formatPrice(prices.p_add);
+    }
+
+    if (albumSelector && albumPrice20p && albumPrice30p && albumPriceAdd) {
+      // Initial update
+      updateAlbumPrices();
+      // Update on change
+      albumSelector.addEventListener('change', updateAlbumPrices);
+    }
+
   });
 </script>
 </body>
