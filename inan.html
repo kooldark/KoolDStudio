@@ -16,10 +16,18 @@
       flex-direction: column;
       text-align: center;
     }
-    .print-price-card .card-image {
+    .print-price-card .video-container-vertical {
+      position: relative;
       width: 100%;
-      height: 250px;
-      object-fit: cover;
+      padding-top: 177.77%; /* 9:16 Aspect Ratio */
+      overflow: hidden;
+    }
+    .print-price-card .card-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
     .print-price-card .price-header {
       background: var(--dusty-green);
@@ -196,13 +204,15 @@
 
       <!-- Ảnh Loại P -->
       <div class="price-card print-price-card" data-aos="fade-up" data-aos-delay="200">
-        <iframe 
-            class="card-image" 
-            src="https://www.youtube.com/embed/tfbjxFydtAg?autoplay=1&mute=1&loop=1&playlist=tfbjxFydtAg&controls=0&modestbranding=1&showinfo=0" 
-            title="Video giới thiệu ảnh ép gỗ cao cấp loại P" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen></iframe>
+        <div class="video-container-vertical">
+          <iframe 
+              class="card-image" 
+              src="https://www.youtube.com/embed/tfbjxFydtAg?autoplay=1&mute=1&loop=1&playlist=tfbjxFydtAg&controls=1&modestbranding=1&showinfo=0&start=35" 
+              title="Video giới thiệu ảnh ép gỗ cao cấp loại P" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+        </div>
         <div class="price-header">
           <h3>Ảnh Ép Gỗ Cao Cấp (Loại P)</h3>
         </div>
@@ -233,13 +243,15 @@
 
       <!-- Ảnh Loại T -->
       <div class="price-card print-price-card" data-aos="fade-up" data-aos-delay="300">
-        <iframe 
-            class="card-image" 
-            src="https://www.youtube.com/embed/KKg_yw-Fiuc?autoplay=1&mute=1&loop=1&playlist=KKg_yw-Fiuc&controls=0&modestbranding=1&showinfo=0" 
-            title="Video giới thiệu ảnh tráng gương pha lê loại T" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen></iframe>
+        <div class="video-container-vertical">
+          <iframe 
+              class="card-image" 
+              src="https://www.youtube.com/embed/KKg_yw-Fiuc?autoplay=1&mute=1&loop=1&playlist=KKg_yw-Fiuc&controls=1&modestbranding=1&showinfo=0" 
+              title="Video giới thiệu ảnh tráng gương pha lê loại T" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+        </div>
         <div class="price-header" style="background:#3A5A40;">
           <h3>Ảnh Tráng Gương Pha Lê (Loại T)</h3>
         </div>
@@ -271,7 +283,7 @@
       <div class="album-section-wrapper">
         <div class="album-image-showcase">
           <iframe 
-            src="https://www.youtube.com/embed/IU9IMD1FiVc?autoplay=1&mute=1&loop=1&playlist=IU9IMD1FiVc&controls=0&modestbranding=1&showinfo=0" 
+            src="https://www.youtube.com/embed/IU9IMD1FiVc?autoplay=1&mute=1&loop=1&playlist=IU9IMD1FiVc&controls=1&modestbranding=1&showinfo=0" 
             title="Video giới thiệu album ảnh thiết kế cao cấp" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

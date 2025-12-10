@@ -19,6 +19,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
+  // Shuffle the images array for random order
+  for (let i = images.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [images[i], images[j]] = [images[j], images[i]];
+  }
+
   // Populate the slider with images from the hero directory
   let heroHtml = '';
   images.forEach(imageFile => {
