@@ -89,9 +89,6 @@
     ]
   },
   "gia-dinh": {
-    "Ảnh lẻ": [
-      "gia dinh (1).webp"
-    ],
     "Cả nhà 1 tuổi": [
       "0chup anh gia dinh co em be (11).webp",
       "chup anh gia dinh co em be (10).webp",
@@ -107,18 +104,17 @@
       "chup anh gia dinh 4 nguoi (3).webp",
       "chup anh gia dinh 4 nguoi (4).webp",
       "chup anh gia dinh 4 nguoi (5).webp",
-      "chup anh gia dinh 4 nguoi (6).webp",
       "chup anh gia dinh 4 nguoi (7).webp",
       "chup anh gia dinh 4 nguoi (8).webp",
-      "chup anh gia dinh 4 nguoi (9).webp"
+      "chup anh gia dinh 4 nguoi (9).webp",
+      "gia dinh (1).webp"
     ],
     "Mẹ bầu 7 tháng": [
       "me bau hoa tim (1).webp",
       "me bau hoa tim (17).webp",
       "me bau hoa tim (18).webp",
       "me bau hoa tim (4).webp",
-      "me bau hoa tim (5).webp",
-      "me bau hoa tim (7).webp"
+      "me bau hoa tim (5).webp"
     ],
     "Sức mạnh của nhà tôi đây": [
       "0chup anh gia dinh 4 nguoi (2).webp",
@@ -127,7 +123,6 @@
       "chup anh gia dinh 4 nguoi (3).webp",
       "chup anh gia dinh 4 nguoi (4).webp",
       "chup anh gia dinh 4 nguoi (5).webp",
-      "chup anh gia dinh 4 nguoi (6).webp",
       "chup anh gia dinh 4 nguoi (7).webp",
       "chup anh gia dinh 4 nguoi (8).webp",
       "chup anh gia dinh 4 nguoi (9).webp"
@@ -139,7 +134,6 @@
       "ong ba (12).webp",
       "ong ba (14).webp",
       "ong ba (2).webp",
-      "ong ba (4).webp",
       "ong ba (5).webp",
       "ong ba (6).webp",
       "ong ba (7).webp",
@@ -148,21 +142,6 @@
     ]
   },
   "makeup": {
-    "Ảnh lẻ": [
-      "mauhong (2).webp",
-      "mk (1).webp",
-      "mk (2).webp"
-    ],
-    "Áo Dài Việt Nam": [
-      "0thuongaodai (7).webp",
-      "thuongaodai (1).webp",
-      "thuongaodai (3).webp",
-      "thuongaodai (4).webp",
-      "thuongaodai (5).webp",
-      "thuongaodai (6).webp",
-      "thuongaodai (8).webp",
-      "thuongaodai (9).webp"
-    ],
     "Beauty": [
       "trinhbt (1).webp",
       "trinhbt (3).webp",
@@ -172,33 +151,23 @@
     ],
     "Beauty bridal": [
       "hanbeauty (1).webp",
-      "hanbeauty (2).webp",
       "hanbeauty (3).webp",
       "hanbeauty (4).webp",
       "hanbeauty (5).webp",
-      "hanbeauty (6).webp",
-      "hanbeauty (7).webp",
-      "hanbeauty (8).webp",
-      "hanbeauty (9).webp"
+      "hanbeauty (8).webp"
     ],
     "Beauty màu Hồng": [
       "mauhong (2).webp",
-      "mauhong (3).webp",
-      "mauhong (4).webp",
       "mauhong (5).webp"
     ],
     "Bridal outside": [
       "0trinh cay (4).webp",
       "trinh cay (1).webp",
       "trinh cay (10).webp",
-      "trinh cay (11).webp",
-      "trinh cay (2).webp",
       "trinh cay (3).webp",
       "trinh cay (5).webp",
       "trinh cay (6).webp",
-      "trinh cay (7).webp",
-      "trinh cay (8).webp",
-      "trinh cay (9).webp"
+      "trinh cay (7).webp"
     ],
     "Bridal Thương Concept": [
       "0co dau xinh (17).webp",
@@ -208,42 +177,25 @@
       "co dau xinh (12).webp",
       "co dau xinh (13).webp",
       "co dau xinh (14).webp",
-      "co dau xinh (15).webp",
       "co dau xinh (16).webp",
-      "co dau xinh (2).webp",
-      "co dau xinh (3).webp",
       "co dau xinh (4).webp",
-      "co dau xinh (5).webp",
-      "co dau xinh (6).webp",
       "co dau xinh (7).webp",
-      "co dau xinh (8).webp",
-      "co dau xinh (9).webp"
+      "co dau xinh (8).webp"
     ],
     "Concept studio ngoài trời": [
       "0concept chup co dau bonsai (10).webp",
       "concept chup co dau bonsai (11).webp",
-      "concept chup co dau bonsai (12).webp",
-      "concept chup co dau bonsai (13).webp",
       "concept chup co dau bonsai (14).webp",
-      "concept chup co dau bonsai (16).webp",
       "concept chup co dau bonsai (17).webp",
-      "concept chup co dau bonsai (18).webp",
-      "concept chup co dau bonsai (19).webp",
-      "concept chup co dau bonsai (20).webp",
       "concept chup co dau bonsai (21).webp",
       "concept chup co dau bonsai (22).webp",
       "concept chup co dau bonsai (3).webp",
-      "concept chup co dau bonsai (4).webp",
       "concept chup co dau bonsai (5).webp",
-      "concept chup co dau bonsai (6).webp",
-      "concept chup co dau bonsai (7).webp",
-      "concept chup co dau bonsai (8).webp",
       "concept chup co dau bonsai (9).webp"
     ],
     "Cô dâu & La lá là": [
       "0trinh (4).webp",
       "trinh (1).webp",
-      "trinh (2).webp",
       "trinh (3).webp",
       "trinh (5).webp",
       "trinh (6).webp",
@@ -255,7 +207,6 @@
       "0han (8).webp",
       "han (1).webp",
       "han (10).webp",
-      "han (2).webp",
       "han (3).webp",
       "han (4).webp",
       "han (5).webp",
@@ -268,35 +219,31 @@
       "mk (2).webp"
     ],
     "PortraitConcept": [
-      " (2).webp",
-      " (3).webp",
       ".webp",
       "0 DAK_9435.webp",
       "0DAK_2822.webp",
       "0DAK_2902.webp",
-      "1.webp",
-      "3 DAK_9386.webp",
       "3 DAK_9432.webp",
       "3DAK_2835.webp",
       "anh bw tinh te (1).webp",
-      "anh bw tinh te (2).webp",
       "anh bw tinh te (3).webp",
       "anh bw tinh te (4).webp",
       "anh sinh nhat 27 (1).webp",
-      "anh sinh nhat 27 (3).webp",
       "anh sinh nhat 27 (4).webp",
       "anh sinh nhat 27 (5).webp",
       "anh sinh nhat 27 (6).webp",
       "anh sinh nhat 27 (7).webp",
-      "beauty bussines (1).webp",
-      "beauty bussines (3).webp",
       "beauty bussines (4).webp",
       "beauty bussines (5).webp",
-      "beauty bussines (6).webp",
-      "beauty bussines (7).webp",
       "DAK_3965.webp",
       "DAK_3974.webp",
-      "DAK_9328.webp"
+      "DAK_9328.webp",
+      "mauhong (2).webp",
+      "thuongaodai (1).webp",
+      "thuongaodai (3).webp",
+      "thuongaodai (6).webp",
+      "thuongaodai (8).webp",
+      "thuongaodai (9).webp"
     ]
   },
   "phong-su": {
