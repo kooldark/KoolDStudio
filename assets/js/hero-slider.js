@@ -39,10 +39,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Initialize the Hero Swiper after populating the slides
   new Swiper('.hero-swiper', {
     loop: images.length > 1, // Loop only if there is more than one image
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true
-    },
+    // effect: 'fade',
+    // fadeEffect: {
+    //   crossFade: true
+    // },
     autoplay: {
       delay: 4000,
       disableOnInteraction: false,
@@ -56,5 +56,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       el: '.swiper-pagination',
       clickable: true,
     },
+    // Cho phép kéo/vuốt slider bằng chuột hoặc cảm ứng
+    grabCursor: true,
+    simulateTouch: true,
+    allowTouchMove: true,
   });
 });
