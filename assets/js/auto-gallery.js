@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const galleryContainer = document.getElementById("auto-gallery");
   const categoryFiltersContainer = document.getElementById("portfolio-filters");
   const backButton = document.getElementById("back-button");
+  const categoryShareBtn = document.getElementById("category-share-btn");
   const pageSubtitle = document.querySelector('.page-subtitle');
   const lightbox = document.getElementById('lightbox');
   const lightboxClose = document.getElementById('lightbox-close');
@@ -146,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentCategory === 'all') {
       await renderImageGrid(getAllImages());
       backButton.classList.add('hidden');
+      categoryShareBtn.classList.add('hidden');
       pageSubtitle.textContent = originalSubtitle;
       updateMetaTags(
         'Portfolio - Kool D. Studio | Ảnh Cưới Hàn Quốc & Gia Đình',
@@ -157,8 +159,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const albumImages = data[currentAlbum].map(file => `assets/img/portfolio/${currentCategory}/${currentAlbum}/${file}`);
         await renderImageGrid(albumImages);
         backButton.classList.remove('hidden');
+        categoryShareBtn.classList.add('hidden');
         pageSubtitle.textContent = `Album: ${currentAlbum}`;
-        
+
         // Update meta tags for album sharing
         const firstImagePath = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${currentCategory}/${currentAlbum}/${data[currentAlbum][0]}`;
         const categoryTitle = titles[currentCategory]?.vn || currentCategory;
@@ -170,8 +173,9 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         await renderAlbumCovers(currentCategory, data);
         backButton.classList.add('hidden');
+        categoryShareBtn.classList.remove('hidden');
         pageSubtitle.textContent = `Chọn một album để khám phá`;
-        
+
         const categoryTitle = titles[currentCategory]?.vn || currentCategory;
         updateMetaTags(
           `${categoryTitle} - Kool D. Studio`,
@@ -183,8 +187,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const categoryImages = data.map(file => `assets/img/portfolio/${currentCategory}/${file}`);
       await renderImageGrid(categoryImages);
       backButton.classList.add('hidden');
+      categoryShareBtn.classList.remove('hidden');
       pageSubtitle.textContent = originalSubtitle;
-      
+
       const categoryTitle = titles[currentCategory]?.vn || currentCategory;
       updateMetaTags(
         `${categoryTitle} - Kool D. Studio`,
@@ -194,6 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       await renderImageGrid([]);
       backButton.classList.add('hidden');
+      categoryShareBtn.classList.add('hidden');
       updateMetaTags(
         'Portfolio - Kool D. Studio',
         'Portfolio ảnh cưới phong cách Hàn Quốc tinh tế, gia đình, makeup & phóng sự tại Kool D. Studio',
@@ -487,6 +493,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const img = gridItem.querySelector('img');
         if (img) openLightbox(img.src);
       }
+    });
+
+    categoryShareBtn.addEventListener('click', () => {
+      const categoryLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(currentCategory)}`;
+      copyToClipboard(categoryLink, categoryShareBtn);
     });
 
     lightboxClose.addEventListener('click', closeLightbox);
