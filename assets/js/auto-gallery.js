@@ -57,26 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
     tag.setAttribute('content', content);
   }
 
-  // --- PERFORMANCE OPTIMIZATION: IMAGE OBSERVER ---
-  function setupImageObserver(container) {
-    const images = container.querySelectorAll('img[loading="lazy"]');
-    
-    if ('IntersectionObserver' in window) {
-      const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            // Image is now in view, let browser handle native lazy loading
-            observer.unobserve(img);
-          }
-        });
-      }, {
-        rootMargin: '50px' // Start loading 50px before image enters viewport
-      });
-      
-      images.forEach(img => imageObserver.observe(img));
-    }
-  }
   
   async function init() {
     // --- VALIDATE DOM ---
@@ -247,9 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
     gridHtml += '</div>';
     galleryContainer.innerHTML = gridHtml;
     
-    // Use native lazy loading with IntersectionObserver for better performance
-    setupImageObserver(galleryContainer);
-    
     // Don't wait for images - refresh AOS immediately for faster render
     if (typeof AOS !== 'undefined') AOS.refresh();
   }
@@ -321,9 +298,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     gridHtml += '</div>';
     galleryContainer.innerHTML = gridHtml;
-
-    // Use native lazy loading with IntersectionObserver for better performance
-    setupImageObserver(galleryContainer);
 
     // Don't wait for images - refresh AOS immediately for faster render
     if (typeof AOS !== 'undefined') AOS.refresh();

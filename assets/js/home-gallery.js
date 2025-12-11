@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let portfolioData = {};
     try {
-        const res = await fetch('assets/js/portfolio-data.json?t=' + Date.now());
+        const res = await fetch('assets/js/portfolio-data.json');
         if (!res.ok) throw new Error(`Failed to load portfolio data, status: ${res.status}`);
         portfolioData = await res.json();
     } catch (e) {
