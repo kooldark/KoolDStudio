@@ -1527,6 +1527,64 @@ nav.scrolled {
 }
 
 .contact-cta-container {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* === FLOATING CONTACT RIBBON === */
+.contact-ribbon {
+  position: fixed;
+  right: 0;
+  bottom: 30px;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: 500;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 50px 0 0 50px;
+  padding: 12px 0;
+  border-left: 1px solid rgba(235, 149, 0, 0.15);
+  box-shadow: -2px 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.ribbon-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  color: var(--deep-green);
+  text-decoration: none;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+.ribbon-item .ribbon-icon {
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.ribbon-item:hover {
+  background: rgba(235, 149, 0, 0.1);
+  border-left-color: var(--soft-gold);
+  transform: translateX(-8px);
+}
+
+.ribbon-item:active {
+  transform: translateX(-4px) scale(0.95);
+}
+
+.ribbon-phone:hover .ribbon-icon { color: #34B7F1; }
+.ribbon-messenger:hover .ribbon-icon { color: #0084FF; }
+.ribbon-zalo:hover .ribbon-icon { color: #0084FF; }
   text-align: center;
 }
 
