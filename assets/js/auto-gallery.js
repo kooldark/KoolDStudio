@@ -238,6 +238,26 @@ document.addEventListener("DOMContentLoaded", () => {
   async function renderAlbumCovers(category, albums) {
     visibleImages = [];
     let gridHtml = '<div class="album-grid">';
+
+    // Load category description if available
+    let categoryDescription = '';
+    try {
+      const categoryInfoRes = await fetch(`assets/img/portfolio/${category}/category-info.json?t=${Date.now()}`);
+      if (categoryInfoRes.ok) {
+        const categoryInfo = await categoryInfoRes.json();
+        categoryDescription = categoryInfo.description || '';
+      }
+    } catch (e) {
+      console.log('No category description available');
+    }
+
+    // Add category description at the top if exists
+    if (categoryDescription) {
+      gridHtml += `<div class="category-description" data-aos="fade-down">
+        <p class="category-description-text">${categoryDescription}</p>
+      </div>`;
+    }
+
     for (const albumName in albums) {
       const albumFiles = albums[albumName];
       if (albumFiles.length === 0) continue;
@@ -245,16 +265,31 @@ document.addEventListener("DOMContentLoaded", () => {
       const basePath = `assets/img/portfolio/${category}/`;
       const imageFolder = isLoose ? '' : `${albumName}/`;
       const coverImage = basePath + imageFolder + albumFiles[0];
-      
+
       // Create shareable link for this album
       const albumLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(category)}&album=${encodeURIComponent(albumName)}`;
       const encodedLink = encodeURIComponent(albumLink);
-      
+
+      // Load album description
+      let albumDescription = '';
+      if (!isLoose) {
+        try {
+          const infoRes = await fetch(`${basePath}${albumName}/info.json?t=${Date.now()}`);
+          if (infoRes.ok) {
+            const info = await infoRes.json();
+            albumDescription = info.description || '';
+          }
+        } catch (e) {
+          console.log(`No description for album: ${albumName}`);
+        }
+      }
+
       gridHtml += `
         <div class="album-card" data-category="${category}" data-album="${albumName}" data-aos="fade-up">
           <img class="album-card-thumbnail" src="${coverImage}" alt="${albumName}" loading="lazy" decoding="async">
           <div class="album-card-overlay"></div>
           <h3 class="album-card-title">${albumName}</h3>
+          ${albumDescription ? `<p class="album-card-description">${albumDescription}</p>` : ''}
           <div class="album-card-actions">
             <button class="album-share-btn" data-link="${albumLink}" title="Sao chép link album">
               <span class="share-icon">🔗</span>
@@ -265,10 +300,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     gridHtml += '</div>';
     galleryContainer.innerHTML = gridHtml;
-    
+
     // Use native lazy loading with IntersectionObserver for better performance
     setupImageObserver(galleryContainer);
-    
+
     // Don't wait for images - refresh AOS immediately for faster render
     if (typeof AOS !== 'undefined') AOS.refresh();
   }
@@ -317,7 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (initialSlideIndex === -1) return;
 
     lightbox.style.display = 'block';
-    
+
     const swiperWrapper = lightbox.querySelector('.swiper-wrapper');
     swiperWrapper.innerHTML = visibleImages.map(src => `
         <div class="swiper-slide">
@@ -354,6 +389,60 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }, 50); // 50ms delay
   }
+
+  // --- WATERMARK AND DOWNLOAD FUNCTION ---
+  function downloadImageWithWatermark(imageSrc) {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+
+    img.crossOrigin = 'anonymous'; // Handle CORS
+    img.onload = function() {
+      // Set canvas size to match image
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      // Draw the original image
+      ctx.drawImage(img, 0, 0);
+
+      // Add watermark
+      ctx.save();
+
+      // Semi-transparent overlay
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Watermark text settings
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+      ctx.font = `bold ${Math.max(32, canvas.width / 25)}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      // Add single watermark text in center
+      const watermarkText = 'KoolDStudio.com';
+      ctx.fillText(watermarkText, canvas.width / 2, canvas.height / 2);
+
+      ctx.restore();
+
+      // Convert to blob and download
+      canvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'KoolDStudio_' + Date.now() + '.jpg';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 'image/jpeg', 0.95);
+    };
+
+    img.onerror = function() {
+      alert('Không thể tải ảnh để tải về. Vui lòng thử lại.');
+    };
+
+    img.src = imageSrc;
+  }
   
   const closeLightbox = () => {
     lightbox.style.display = 'none';
@@ -367,10 +456,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function addEventListeners() {
     categoryFiltersContainer.addEventListener('click', (e) => {
       if (!e.target.matches('.filter-btn')) return;
-      
+
       categoryFiltersContainer.querySelector('.active')?.classList.remove('active');
       e.target.classList.add('active');
-      
+
       currentCategory = e.target.dataset.filter;
       currentAlbum = null;
       render();
@@ -399,9 +488,23 @@ document.addEventListener("DOMContentLoaded", () => {
         if (img) openLightbox(img.src);
       }
     });
-    
+
     lightboxClose.addEventListener('click', closeLightbox);
-    
+
+    // Download button event listener
+    const downloadBtn = document.getElementById('lightbox-download');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', () => {
+        if (lightboxSwiper && visibleImages.length > 0) {
+          const currentSlideIndex = lightboxSwiper.activeIndex;
+          const currentImageSrc = visibleImages[currentSlideIndex];
+          if (currentImageSrc) {
+            downloadImageWithWatermark(currentImageSrc);
+          }
+        }
+      });
+    }
+
     document.addEventListener('keydown', (e) => {
       if (lightbox.style.display !== 'block') return;
       if (e.key === 'Escape') closeLightbox();
@@ -449,6 +552,8 @@ document.addEventListener("DOMContentLoaded", () => {
       button.classList.remove('copied');
     }, 2000);
   }
+
+
 
   // --- START THE APP ---
   init();

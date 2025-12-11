@@ -1,0 +1,497 @@
+{
+  "categories": [
+    {
+      "id": "cuoi",
+      "title": "Chuyện Của Hai Ta",
+      "description": "Hành trình yêu được kể bằng những khung hình tự nhiên và trong trẻo nhất. Kool D. Studio không chỉ chụp ảnh, mà còn lưu giữ từng ánh mắt, nụ cười và cảm xúc chân thật để câu chuyện tình yêu của bạn trở thành một thước phim lãng mạn, tinh tế và mãi mãi khắc sâu trong ký ức.",
+      "albums": [
+        {
+          "id": "Bridal Kool D. Studio 2025",
+          "title": "Bridal Kool D. Studio 2025",
+          "description": "",
+          "path": "cuoi/Bridal Kool D. Studio 2025",
+          "coverImage": "0bridal Trinh (9).webp",
+          "images": [
+            "0bridal Trinh (9).webp",
+            "bridal Trinh (10).webp",
+            "bridal Trinh (11).webp",
+            "bridal Trinh (12).webp",
+            "bridal Trinh (13).webp",
+            "bridal Trinh (14).webp",
+            "bridal Trinh (15).webp",
+            "bridal Trinh (16).webp",
+            "bridal Trinh (17).webp",
+            "bridal Trinh (18).webp",
+            "bridal Trinh (19).webp",
+            "bridal Trinh (2).webp",
+            "bridal Trinh (3).webp",
+            "bridal Trinh (4).webp",
+            "bridal Trinh (5).webp",
+            "bridal Trinh (6).webp",
+            "bridal Trinh (7).webp",
+            "bridal Trinh (8).webp"
+          ]
+        },
+        {
+          "id": "Concept & Posing",
+          "title": "Concept & Posing",
+          "description": "Nơi những ý tưởng chụp ảnh cưới độc đáo được hình thành, giúp bạn thể hiện cá tính riêng qua từng khung hình nghệ thuật.",
+          "path": "cuoi/Concept & Posing",
+          "coverImage": "0kdsconcept (2).webp",
+          "images": [
+            "0kdsconcept (2).webp",
+            "kdsconcept (1).webp",
+            "kdsconcept (10).webp",
+            "kdsconcept (3).webp",
+            "kdsconcept (4).webp",
+            "kdsconcept (5).webp",
+            "kdsconcept (6).webp",
+            "kdsconcept (7).webp",
+            "kdsconcept (8).webp",
+            "kdsconcept (9).webp"
+          ]
+        },
+        {
+          "id": "Ngoại cảnh",
+          "title": "Ngoại cảnh",
+          "description": "",
+          "path": "cuoi/Ngoại cảnh",
+          "coverImage": "0ngoaicanh (13).webp",
+          "images": [
+            "0ngoaicanh (13).webp",
+            "ngoaicanh (1).webp",
+            "ngoaicanh (14).webp",
+            "ngoaicanh (15).webp",
+            "ngoaicanh (16).webp",
+            "ngoaicanh (17).webp",
+            "ngoaicanh (18).webp",
+            "ngoaicanh (19).webp",
+            "ngoaicanh (2).webp",
+            "ngoaicanh (20).webp",
+            "ngoaicanh (21).webp",
+            "ngoaicanh (22).webp",
+            "ngoaicanh (23).webp",
+            "ngoaicanh (24).webp",
+            "ngoaicanh (25).webp",
+            "ngoaicanh (26).webp",
+            "ngoaicanh (27).webp",
+            "ngoaicanh (28).webp",
+            "ngoaicanh (29).webp",
+            "ngoaicanh (3).webp",
+            "ngoaicanh (30).webp",
+            "ngoaicanh (31).webp",
+            "ngoaicanh (32).webp",
+            "ngoaicanh (33).webp",
+            "ngoaicanh (34).webp",
+            "ngoaicanh (35).webp",
+            "ngoaicanh (36).webp",
+            "ngoaicanh (37).webp",
+            "ngoaicanh (38).webp",
+            "ngoaicanh (39).webp",
+            "ngoaicanh (4).webp",
+            "ngoaicanh (40).webp",
+            "ngoaicanh (41).webp",
+            "ngoaicanh (5).webp",
+            "ngoaicanh (6).webp"
+          ]
+        },
+        {
+          "id": "Ngân bridal",
+          "title": "Ngân bridal",
+          "description": "",
+          "path": "cuoi/Ngân bridal",
+          "coverImage": "ngan (1).webp",
+          "images": [
+            "ngan (1).webp",
+            "ngan (2).webp",
+            "ngan (3).webp",
+            "ngan (4).webp",
+            "ngan (5).webp",
+            "ngan (6).webp",
+            "ngan (7).webp",
+            "ngan (8).webp"
+          ]
+        },
+        {
+          "id": "Studio",
+          "title": "Studio",
+          "description": "",
+          "path": "cuoi/Studio",
+          "coverImage": "0anh cuoi nen den (3).webp",
+          "images": [
+            "0anh cuoi nen den (3).webp",
+            "anh cuoi nen den (1).webp",
+            "anh cuoi nen den (2).webp",
+            "anh cuoi nen den (4).webp",
+            "anh cuoi nen den (5).webp",
+            "anh cuoi nen den (6).webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gia-dinh",
+      "title": "Tổ Ấm An Nhiên",
+      "description": "Thời gian có thể trôi, nhưng kỷ niệm bên gia đình là vĩnh cửu. Hãy để chúng tôi giúp bạn ghi lại những khoảnh khắc sum vầy ấm áp, từ tiếng cười giòn tan của con trẻ đến vòng tay yêu thương của ông bà. Mỗi bức ảnh là một mảnh ghép quý giá tạo nên câu chuyện tổ ấm của riêng bạn.",
+      "albums": [
+        {
+          "id": "Cả nhà 1 tuổi",
+          "title": "Cả nhà 1 tuổi",
+          "description": "",
+          "path": "gia-dinh/Cả nhà 1 tuổi",
+          "coverImage": "0chup anh gia dinh co em be (11).webp",
+          "images": [
+            "0chup anh gia dinh co em be (11).webp",
+            "chup anh gia dinh co em be (10).webp",
+            "chup anh gia dinh co em be (4).webp",
+            "chup anh gia dinh co em be (5).webp",
+            "chup anh gia dinh co em be (7).webp",
+            "gia dinh (2).webp"
+          ]
+        },
+        {
+          "id": "Gia đình đoàn kết",
+          "title": "Gia đình đoàn kết",
+          "description": "",
+          "path": "gia-dinh/Gia đình đoàn kết",
+          "coverImage": "0chup anh gia dinh 4 nguoi (2).webp",
+          "images": [
+            "0chup anh gia dinh 4 nguoi (2).webp",
+            "chup anh gia dinh 4 nguoi (1).webp",
+            "chup anh gia dinh 4 nguoi (10).webp",
+            "chup anh gia dinh 4 nguoi (3).webp",
+            "chup anh gia dinh 4 nguoi (4).webp",
+            "chup anh gia dinh 4 nguoi (5).webp",
+            "chup anh gia dinh 4 nguoi (7).webp",
+            "chup anh gia dinh 4 nguoi (8).webp",
+            "chup anh gia dinh 4 nguoi (9).webp",
+            "gia dinh (1).webp"
+          ]
+        },
+        {
+          "id": "Mẹ bầu 7 tháng",
+          "title": "Mẹ bầu 7 tháng",
+          "description": "",
+          "path": "gia-dinh/Mẹ bầu 7 tháng",
+          "coverImage": "me bau hoa tim (1).webp",
+          "images": [
+            "me bau hoa tim (1).webp",
+            "me bau hoa tim (17).webp",
+            "me bau hoa tim (18).webp",
+            "me bau hoa tim (4).webp",
+            "me bau hoa tim (5).webp"
+          ]
+        },
+        {
+          "id": "Sức mạnh của nhà tôi đây",
+          "title": "Sức mạnh của nhà tôi đây",
+          "description": "",
+          "path": "gia-dinh/Sức mạnh của nhà tôi đây",
+          "coverImage": "0chup anh gia dinh 4 nguoi (2).webp",
+          "images": [
+            "0chup anh gia dinh 4 nguoi (2).webp",
+            "chup anh gia dinh 4 nguoi (1).webp",
+            "chup anh gia dinh 4 nguoi (10).webp",
+            "chup anh gia dinh 4 nguoi (3).webp",
+            "chup anh gia dinh 4 nguoi (4).webp",
+            "chup anh gia dinh 4 nguoi (5).webp",
+            "chup anh gia dinh 4 nguoi (7).webp",
+            "chup anh gia dinh 4 nguoi (8).webp",
+            "chup anh gia dinh 4 nguoi (9).webp"
+          ]
+        },
+        {
+          "id": "Ông bà Tôi",
+          "title": "Ông Bà Tôi",
+          "description": "Gìn giữ những khoảnh khắc vô giá bên ông bà, nơi tình yêu thương và sự ấm áp của gia đình được thể hiện qua nhiều thế hệ.",
+          "path": "gia-dinh/Ông bà Tôi",
+          "coverImage": "0ong ba (13).webp",
+          "images": [
+            "0ong ba (13).webp",
+            "ong ba (1).webp",
+            "ong ba (10).webp",
+            "ong ba (12).webp",
+            "ong ba (14).webp",
+            "ong ba (2).webp",
+            "ong ba (5).webp",
+            "ong ba (6).webp",
+            "ong ba (7).webp",
+            "ong ba (8).webp",
+            "ong ba (9).webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "makeup",
+      "title": "Nét Vẽ Thanh Xuân",
+      "description": "Nghệ thuật trang điểm là cách chúng tôi tôn vinh vẻ đẹp độc bản của mỗi người. Album này là nơi những đường nét tinh tế, màu sắc thời thượng và thần thái cuốn hút được thể hiện một cách trọn vẹn, giúp bạn khám phá và toả sáng với phiên bản hoàn hảo nhất của chính mình.",
+      "albums": [
+        {
+          "id": "Beauty",
+          "title": "Beauty",
+          "description": "",
+          "path": "makeup/Beauty",
+          "coverImage": "trinhbt (1).webp",
+          "images": [
+            "trinhbt (1).webp",
+            "trinhbt (3).webp",
+            "trinhbt (6).webp",
+            "trinhbt (7).webp",
+            "trinhbt (9).webp"
+          ]
+        },
+        {
+          "id": "Beauty bridal",
+          "title": "Beauty bridal",
+          "description": "",
+          "path": "makeup/Beauty bridal",
+          "coverImage": "hanbeauty (1).webp",
+          "images": [
+            "hanbeauty (1).webp",
+            "hanbeauty (3).webp",
+            "hanbeauty (4).webp",
+            "hanbeauty (5).webp",
+            "hanbeauty (8).webp"
+          ]
+        },
+        {
+          "id": "Beauty màu Hồng",
+          "title": "Beauty màu Hồng",
+          "description": "",
+          "path": "makeup/Beauty màu Hồng",
+          "coverImage": "mauhong (2).webp",
+          "images": [
+            "mauhong (2).webp",
+            "mauhong (5).webp"
+          ]
+        },
+        {
+          "id": "Bridal outside",
+          "title": "Bridal outside",
+          "description": "",
+          "path": "makeup/Bridal outside",
+          "coverImage": "0trinh cay (4).webp",
+          "images": [
+            "0trinh cay (4).webp",
+            "trinh cay (1).webp",
+            "trinh cay (10).webp",
+            "trinh cay (3).webp",
+            "trinh cay (5).webp",
+            "trinh cay (6).webp",
+            "trinh cay (7).webp"
+          ]
+        },
+        {
+          "id": "Bridal Thương Concept",
+          "title": "Bridal Thương Concept",
+          "description": "",
+          "path": "makeup/Bridal Thương Concept",
+          "coverImage": "0co dau xinh (17).webp",
+          "images": [
+            "0co dau xinh (17).webp",
+            "co dau xinh (1).webp",
+            "co dau xinh (10).webp",
+            "co dau xinh (11).webp",
+            "co dau xinh (12).webp",
+            "co dau xinh (13).webp",
+            "co dau xinh (14).webp",
+            "co dau xinh (16).webp",
+            "co dau xinh (4).webp",
+            "co dau xinh (7).webp",
+            "co dau xinh (8).webp"
+          ]
+        },
+        {
+          "id": "Concept studio ngoài trời",
+          "title": "Concept studio ngoài trời",
+          "description": "",
+          "path": "makeup/Concept studio ngoài trời",
+          "coverImage": "0concept chup co dau bonsai (10).webp",
+          "images": [
+            "0concept chup co dau bonsai (10).webp",
+            "concept chup co dau bonsai (11).webp",
+            "concept chup co dau bonsai (14).webp",
+            "concept chup co dau bonsai (17).webp",
+            "concept chup co dau bonsai (21).webp",
+            "concept chup co dau bonsai (22).webp",
+            "concept chup co dau bonsai (3).webp",
+            "concept chup co dau bonsai (5).webp",
+            "concept chup co dau bonsai (9).webp"
+          ]
+        },
+        {
+          "id": "Cô dâu & La lá là",
+          "title": "Cô dâu & La lá là",
+          "description": "",
+          "path": "makeup/Cô dâu & La lá là",
+          "coverImage": "0trinh (4).webp",
+          "images": [
+            "0trinh (4).webp",
+            "trinh (1).webp",
+            "trinh (3).webp",
+            "trinh (5).webp",
+            "trinh (6).webp",
+            "trinh (7).webp",
+            "trinh (8).webp",
+            "trinh (9).webp"
+          ]
+        },
+        {
+          "id": "Hân",
+          "title": "Hân",
+          "description": "",
+          "path": "makeup/Hân",
+          "coverImage": "0han (8).webp",
+          "images": [
+            "0han (8).webp",
+            "han (1).webp",
+            "han (10).webp",
+            "han (3).webp",
+            "han (4).webp",
+            "han (5).webp",
+            "han (6).webp",
+            "han (7).webp",
+            "han (9).webp"
+          ]
+        },
+        {
+          "id": "MakeupConcept",
+          "title": "MakeupConcept",
+          "description": "",
+          "path": "makeup/MakeupConcept",
+          "coverImage": "mk (1).webp",
+          "images": [
+            "mk (1).webp",
+            "mk (2).webp"
+          ]
+        },
+        {
+          "id": "PortraitConcept",
+          "title": "PortraitConcept",
+          "description": "",
+          "path": "makeup/PortraitConcept",
+          "coverImage": "0 DAK_9435.webp",
+          "images": [
+            ".webp",
+            "0 DAK_9435.webp",
+            "0DAK_2822.webp",
+            "0DAK_2902.webp",
+            "3 DAK_9432.webp",
+            "3DAK_2835.webp",
+            "DAK_3965.webp",
+            "DAK_3974.webp",
+            "DAK_9328.webp",
+            "anh bw tinh te (1).webp",
+            "anh bw tinh te (3).webp",
+            "anh bw tinh te (4).webp",
+            "anh sinh nhat 27 (1).webp",
+            "anh sinh nhat 27 (4).webp",
+            "anh sinh nhat 27 (5).webp",
+            "anh sinh nhat 27 (6).webp",
+            "anh sinh nhat 27 (7).webp",
+            "beauty bussines (4).webp",
+            "beauty bussines (5).webp",
+            "mauhong (2).webp",
+            "thuongaodai (1).webp",
+            "thuongaodai (3).webp",
+            "thuongaodai (6).webp",
+            "thuongaodai (8).webp",
+            "thuongaodai (9).webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phong-su",
+      "title": "Dòng Chảy Cảm Xúc",
+      "description": "Không kịch bản, chỉ có những cảm xúc chân thật. Chúng tôi âm thầm theo chân bạn để ghi lại những khoảnh khắc tự nhiên và ý nghĩa nhất trong ngày trọng đại hoặc sự kiện của bạn. Mỗi bức ảnh là một câu chuyện sống động, giúp bạn sống lại những ký ức tuyệt vời mỗi khi xem lại.",
+      "albums": [
+        {
+          "id": "Hội An Resort",
+          "title": "Hội An Resort",
+          "description": "",
+          "path": "phong-su/Hội An Resort",
+          "coverImage": "5F4A0130.webp",
+          "images": [
+            "5F4A0130.webp",
+            "5F4A0142.webp",
+            "5F4A0153.webp",
+            "5F4A0173.webp",
+            "5F4A0180.webp",
+            "5F4A0518.webp",
+            "5F4A0740 - Copy.webp",
+            "5F4A0740.webp",
+            "5F4A0793.webp",
+            "5F4A0808.webp",
+            "DJI_0010.webp"
+          ]
+        },
+        {
+          "id": "Sài Gòn",
+          "title": "Sài Gòn",
+          "description": "",
+          "path": "phong-su/Sài Gòn",
+          "coverImage": "tiec cuoi sai gon (1).webp",
+          "images": [
+            "tiec cuoi sai gon (1).webp",
+            "tiec cuoi sai gon (10).webp",
+            "tiec cuoi sai gon (11).webp",
+            "tiec cuoi sai gon (12).webp",
+            "tiec cuoi sai gon (13).webp",
+            "tiec cuoi sai gon (14).webp",
+            "tiec cuoi sai gon (15).webp",
+            "tiec cuoi sai gon (16).webp",
+            "tiec cuoi sai gon (17).webp",
+            "tiec cuoi sai gon (18).webp",
+            "tiec cuoi sai gon (19).webp",
+            "tiec cuoi sai gon (2).webp",
+            "tiec cuoi sai gon (20).webp",
+            "tiec cuoi sai gon (21).webp",
+            "tiec cuoi sai gon (22).webp",
+            "tiec cuoi sai gon (23).webp",
+            "tiec cuoi sai gon (24).webp",
+            "tiec cuoi sai gon (25).webp",
+            "tiec cuoi sai gon (26).webp",
+            "tiec cuoi sai gon (27).webp",
+            "tiec cuoi sai gon (28).webp",
+            "tiec cuoi sai gon (29).webp",
+            "tiec cuoi sai gon (3).webp",
+            "tiec cuoi sai gon (30).webp",
+            "tiec cuoi sai gon (31).webp",
+            "tiec cuoi sai gon (32).webp",
+            "tiec cuoi sai gon (33).webp",
+            "tiec cuoi sai gon (34).webp",
+            "tiec cuoi sai gon (35).webp",
+            "tiec cuoi sai gon (36).webp",
+            "tiec cuoi sai gon (4).webp",
+            "tiec cuoi sai gon (5).webp",
+            "tiec cuoi sai gon (6).webp",
+            "tiec cuoi sai gon (7).webp",
+            "tiec cuoi sai gon (8).webp",
+            "tiec cuoi sai gon (9).webp"
+          ]
+        },
+        {
+          "id": "VN - SG REST",
+          "title": "VN - SG REST",
+          "description": "",
+          "path": "phong-su/VN - SG REST",
+          "coverImage": "0baohy (9).webp",
+          "images": [
+            "0baohy (9).webp",
+            "baohy (1).webp",
+            "baohy (10).webp",
+            "baohy (2).webp",
+            "baohy (3).webp",
+            "baohy (4).webp",
+            "baohy (5).webp",
+            "baohy (6).webp",
+            "baohy (7).webp",
+            "baohy (8).webp"
+          ]
+        }
+      ]
+    }
+  ]
+}

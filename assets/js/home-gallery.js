@@ -1,81 +1,71 @@
-/**
- * Helper function to get a random item from an array
- */
-function getRandomItem(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
-  const galleryContainer = document.getElementById('home-gallery-container');
+    const galleryContainer = document.getElementById('home-gallery-container');
+    if (!galleryContainer) return;
 
-  if (!galleryContainer) return;
-
-  let galleryData = {};
-  try {
-    const res = await fetch('assets/img/portfolio/images-list.json?t=' + Date.now());
-    if (!res.ok) throw new Error(`Network response was not ok, status: ${res.status}`);
-    galleryData = await res.json();
-  } catch (e) {
-    console.error("Could not load gallery data.", e);
-    galleryContainer.innerHTML = "<p class='error-message'>Không thể tải thư viện ảnh.</p>";
-    return;
-  }
-
-  /**
-   * Get one random representative image from each category/album
-   */
-  function getHomepageImages() {
-    const images = [];
-    for (const category in galleryData) {
-      const content = galleryData[category];
-      if (Array.isArray(content)) {
-        // Simple category: get one random image
-        if (content.length > 0) {
-          const randomFile = getRandomItem(content);
-          images.push(`assets/img/portfolio/${category}/${randomFile}`);
-        }
-      } else if (typeof content === 'object' && content !== null) {
-        // Nested category: get one random image from each album
-        for (const album in content) {
-          const albumFiles = content[album];
-          if (Array.isArray(albumFiles) && albumFiles.length > 0) {
-            const isLoose = album === 'Ảnh lẻ';
-            const imageFolder = isLoose ? '' : `${album}/`;
-            const randomFile = getRandomItem(albumFiles);
-            images.push(`assets/img/portfolio/${category}/${imageFolder}${randomFile}`);
-          }
-        }
-      }
+    let portfolioData = {};
+    try {
+        const res = await fetch('assets/js/portfolio-data.json?t=' + Date.now());
+        if (!res.ok) throw new Error(`Failed to load portfolio data, status: ${res.status}`);
+        portfolioData = await res.json();
+    } catch (e) {
+        console.error("Could not load portfolio data.", e);
+        galleryContainer.innerHTML = "<p class='error-message'>Không thể tải thư viện ảnh.</p>";
+        return;
     }
-    return images;
-  }
 
-  // Lấy tất cả ảnh đại diện có thể có
-  const allImages = getHomepageImages();
+    /**
+     * Gets one random representative image from each album across all categories.
+     */
+    function getHomepageImages() {
+        const representativeImages = [];
+        if (!portfolioData.categories) return [];
 
-  // Xáo trộn mảng để mỗi lần tải lại trang sẽ có một bộ ảnh ngẫu nhiên khác nhau
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+        portfolioData.categories.forEach(category => {
+            category.albums.forEach(album => {
+                if (album.images && album.images.length > 0) {
+                    const randomImageFile = album.images[Math.floor(Math.random() * album.images.length)];
+                    const imagePath = `assets/img/portfolio/${album.path}/${randomImageFile}`;
+                    representativeImages.push(imagePath);
+                }
+            });
+        });
+        return representativeImages;
     }
-  }
-  shuffleArray(allImages);
 
-  // Xác định số lượng ảnh cần hiển thị dựa trên kích thước màn hình
-  const isMobile = window.innerWidth < 768;
-  const maxImages = isMobile ? 6 : 12;
+    // Get one image from every album
+    const allImages = getHomepageImages();
 
-  // Cắt mảng để chỉ lấy số lượng ảnh mong muốn
-  const galleryImages = allImages.slice(0, maxImages);
+    // Shuffle the array to ensure a different random set on each page load
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    shuffleArray(allImages);
 
-  let galleryHtml = '';
-  galleryImages.forEach(imgPath => {
-    galleryHtml += `
-      <div class="grid-item" data-aos="fade-up">
-        <img src="${imgPath}" alt="Kool D. Studio Work" loading="lazy" decoding="async">
-      </div>
-    `;
-  });
-  galleryContainer.innerHTML = galleryHtml;
+    // Determine the number of images to display based on screen size
+    const isMobile = window.innerWidth < 768;
+    const maxImages = isMobile ? 6 : 12;
+
+    // Slice the array to get the desired number of images for the gallery
+    const galleryImages = allImages.slice(0, maxImages);
+
+    let galleryHtml = '';
+    galleryImages.forEach(imgPath => {
+        // The lightbox functionality can be added here if desired.
+        // For now, it's just the grid item.
+        galleryHtml += `
+            <div class="grid-item" data-aos="fade-up">
+                <img src="${imgPath}" alt="Kool D. Studio Portfolio Image" loading="lazy" decoding="async">
+            </div>
+        `;
+    });
+
+    galleryContainer.innerHTML = galleryHtml;
+
+    // Re-initialize AOS if it's available
+    if (window.AOS) {
+        AOS.init({ once: true });
+    }
 });
