@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const categoryFiltersContainer = document.getElementById("portfolio-filters");
   const backButton = document.getElementById("back-button");
   const categoryShareBtn = document.getElementById("category-share-btn");
+  const albumShareBtn = document.getElementById("album-share-btn");
   const pageSubtitle = document.querySelector('.page-subtitle');
   const lightbox = document.getElementById('lightbox');
   const lightboxClose = document.getElementById('lightbox-close');
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let visibleImages = [];
   let currentCategory = 'all';
   let currentAlbum = null;
+  let currentAlbumLink = null; // Store album link for sharing
   let originalSubtitle = '';
   let lightboxSwiper = null; // To hold the Swiper instance
 
@@ -78,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   async function init() {
     // --- VALIDATE DOM ---
-    const requiredElements = [galleryContainer, categoryFiltersContainer, backButton, pageSubtitle, lightbox, lightboxClose, preloader];
+    const requiredElements = [galleryContainer, categoryFiltersContainer, backButton, pageSubtitle, lightbox, lightboxClose, preloader, albumShareBtn];
     if (requiredElements.some(el => !el)) {
       console.error("Gallery initialization failed: a required HTML element is missing.");
       galleryContainer.innerHTML = "<p class='error-message'>Lỗi giao diện. Vui lòng tải lại trang.</p>";
@@ -157,6 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
       await renderImageGrid(getAllImages());
       backButton.classList.add('hidden');
       categoryShareBtn.classList.add('hidden');
+      albumShareBtn.classList.add('hidden');
+      currentAlbumLink = null;
       pageSubtitle.textContent = originalSubtitle;
       updateMetaTags(
         'Portfolio - Kool D. Studio | Ảnh Cưới Hàn Quốc & Gia Đình',
@@ -313,12 +317,6 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="album-card-overlay"></div>
           <h3 class="album-card-title">${albumName}</h3>
           ${albumDescription ? `<p class="album-card-description">${albumDescription}</p>` : ''}
-          <div class="album-card-actions">
-            <button class="album-share-btn" data-link="${albumLink}" title="Sao chép link album">
-              <span class="share-icon">🔗</span>
-              <span class="share-text">Chia sẻ</span>
-            </button>
-          </div>
         </div>`;
     }
     gridHtml += '</div>';
@@ -431,19 +429,26 @@ document.addEventListener("DOMContentLoaded", () => {
       // Add watermark
       ctx.save();
 
-      // Semi-transparent overlay
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Watermark text settings
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-      ctx.font = `bold ${Math.max(32, canvas.width / 25)}px Arial`;
+      // Watermark text settings - elegant serif font
+      const watermarkFontSize = Math.max(28, canvas.width / 30);
+      ctx.font = `${watermarkFontSize}px 'Playfair Display', serif`;
       ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
+      ctx.textBaseline = 'bottom';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
 
-      // Add single watermark text in center
-      const watermarkText = 'KoolDStudio.com';
-      ctx.fillText(watermarkText, canvas.width / 2, canvas.height / 2);
+      // Add watermark text at bottom center with padding
+      const watermarkText = 'Kool D. Studio';
+      const watermarkY = canvas.height - Math.max(30, canvas.height / 20); // 30px or proportional padding from bottom
+      ctx.fillText(watermarkText, canvas.width / 2, watermarkY);
+
+      // Add subtle line above watermark
+      ctx.strokeStyle = 'rgba(235, 149, 0, 0.4)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      const lineWidth = Math.max(100, canvas.width / 6);
+      ctx.moveTo(canvas.width / 2 - lineWidth / 2, watermarkY - Math.max(15, watermarkFontSize / 2));
+      ctx.lineTo(canvas.width / 2 + lineWidth / 2, watermarkY - Math.max(15, watermarkFontSize / 2));
+      ctx.stroke();
 
       ctx.restore();
 
@@ -515,6 +520,12 @@ document.addEventListener("DOMContentLoaded", () => {
     categoryShareBtn.addEventListener('click', () => {
       const categoryLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(currentCategory)}`;
       copyToClipboard(categoryLink, categoryShareBtn);
+    });
+
+    albumShareBtn.addEventListener('click', () => {
+      if (currentAlbumLink) {
+        copyToClipboard(currentAlbumLink, albumShareBtn);
+      }
     });
 
     lightboxClose.addEventListener('click', closeLightbox);

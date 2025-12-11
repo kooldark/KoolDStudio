@@ -35,6 +35,7 @@
 
 html {
   overflow-x: hidden;
+  scrollbar-gutter: stable; /* Prevent layout shift when scrollbar appears */
 }
 
 body {
@@ -708,6 +709,69 @@ nav.scrolled {
   pointer-events: none !important;
 }
 
+/* === ALBUM SHARE BUTTON (Fixed) === */
+.album-share-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(235, 149, 0, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(235, 149, 0, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 99;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  pointer-events: none;
+}
+
+.album-share-btn:not(.hidden) {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.album-share-btn:hover {
+  background: rgba(235, 149, 0, 1);
+  transform: translateY(0) scale(1.1);
+  box-shadow: 0 6px 20px rgba(235, 149, 0, 0.4);
+}
+
+.album-share-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.album-share-btn.copied {
+  background: rgba(76, 175, 80, 0.9);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.album-share-btn .share-icon {
+  font-size: 20px;
+  display: block;
+  line-height: 1;
+}
+
+.album-share-btn .share-text {
+  display: none;
+}
+
+.album-share-btn.hidden {
+  opacity: 0 !important;
+  transform: translateY(20px) scale(0.8) !important;
+  pointer-events: none !important;
+}
+
 .hidden {
   display: none !important;
 }
@@ -806,53 +870,67 @@ nav.scrolled {
   opacity: 1;
 }
 
-.album-card-actions {
-  position: absolute;
-  bottom: 25px;
-  right: 25px;
-  z-index: 4;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.4s ease 0.15s;
-}
-
-.album-card:hover .album-card-actions {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.album-share-btn {
+/* === ALBUM SHARE BUTTON (Fixed) === */
+#album-share-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 10px 16px;
-  background: rgba(235, 149, 0, 0.95);
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(235, 149, 0, 0.9);
   color: white;
   border: none;
-  border-radius: 50px;
+  border-radius: 50%;
   cursor: pointer;
   font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  font-size: 18px;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(235, 149, 0, 0.3);
-  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(235, 149, 0, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 99;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  pointer-events: none;
 }
 
-.album-share-btn:hover {
+#album-share-btn:not(.hidden) {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+#album-share-btn:hover {
   background: rgba(235, 149, 0, 1);
-  transform: scale(1.08);
-  box-shadow: 0 8px 25px rgba(235, 149, 0, 0.4);
+  transform: translateY(0) scale(1.1);
+  box-shadow: 0 6px 20px rgba(235, 149, 0, 0.4);
 }
 
-.album-share-btn:active {
-  transform: scale(0.98);
+#album-share-btn:active {
+  transform: translateY(0) scale(0.95);
 }
 
-.album-share-btn.copied {
-  background: rgba(76, 175, 80, 0.95);
-  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+#album-share-btn.copied {
+  background: rgba(76, 175, 80, 0.9);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+#album-share-btn .share-icon {
+  font-size: 20px;
+  display: block;
+  line-height: 1;
+}
+
+#album-share-btn .share-text {
+  display: none;
+}
+
+#album-share-btn.hidden {
+  opacity: 0 !important;
+  transform: translateY(20px) scale(0.8) !important;
+  pointer-events: none !important;
 }
 
 .share-icon {
@@ -971,31 +1049,41 @@ nav.scrolled {
 #lightbox-download {
     position: absolute;
     top: 20px;
-    right: 80px;
-    font-size: 24px;
-    color: white;
-    background: rgba(0,0,0,0.6);
-    border: 2px solid rgba(255,255,255,0.3);
-    border-radius: 50px;
-    padding: 10px 16px;
+    right: 70px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(235, 149, 0, 0.3);
+    border-radius: 50%;
     cursor: pointer;
     z-index: 2010;
     transition: all 0.3s ease;
-    text-shadow: 0 0 10px rgba(0,0,0,0.5);
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    color: white;
+    padding: 0;
+}
+
+#lightbox-download .download-icon {
+    font-size: 18px;
+    display: block;
+    line-height: 1;
+    transition: transform 0.3s ease;
 }
 
 #lightbox-download:hover {
     background: rgba(235, 149, 0, 0.8);
     border-color: var(--soft-gold);
-    transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(235, 149, 0, 0.4);
+}
+
+#lightbox-download:hover .download-icon {
+    transform: translateY(-2px);
+}
+
+#lightbox-download:active {
+    transform: scale(0.95);
 }
 
 
@@ -1255,11 +1343,18 @@ nav.scrolled {
 
 .team-member-image-wrapper {
   position: relative;
-  height: 360px;
   overflow: hidden;
+  border-radius: 8px;
+  height: 0;
+  padding-bottom: 100%;
+  background: #f0f0f0;
+  margin-bottom: 20px;
 }
 
 .team-image {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;

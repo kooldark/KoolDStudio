@@ -115,6 +115,10 @@
       <span class="share-icon">🔗</span>
       <span class="share-text">Chia sẻ</span>
     </button>
+    <button id="album-share-btn" class="album-share-btn hidden" title="Sao chép link album">
+      <span class="share-icon">🔗</span>
+      <span class="share-text">Chia sẻ</span>
+    </button>
   </div>
 
   <!-- TỰ ĐỘNG TẢI TẤT CẢ ALBUM TỪ THƯ MỤC -->
@@ -143,8 +147,10 @@
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
-    <span id="lightbox-close">&times;</span>
-    <button id="lightbox-download" title="Tải ảnh với watermark">⬇️ Tải về</button>
+    <span id="lightbox-close" title="Đóng">&times;</span>
+    <button id="lightbox-download" class="lightbox-download-btn" title="Tải ảnh với watermark">
+      <span class="download-icon">⬇</span>
+    </button>
 </div>
 
 <script>

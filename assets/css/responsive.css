@@ -112,21 +112,16 @@
     padding-right: 50px;
   }
 
-  .album-card-actions {
+  #album-share-btn {
+    width: 45px;
+    height: 45px;
     bottom: 20px;
     right: 20px;
-    opacity: 1;
-    transform: scale(0.9);
+    font-size: 16px;
   }
 
-  .album-card:active .album-card-actions {
-    transform: scale(1);
-  }
-
-  .album-share-btn {
-    padding: 8px 12px;
-    font-size: 11px;
-    gap: 4px;
+  #album-share-btn .share-icon {
+    font-size: 18px;
   }
 
   .share-icon {
