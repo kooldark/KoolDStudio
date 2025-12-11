@@ -28,10 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- UPDATE META TAGS FOR SOCIAL SHARING ---
   function updateMetaTags(title, description, imageUrl) {
+    // Ensure imageUrl is absolute
+    const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : `https://kooldark.github.io/KoolDStudio/${imageUrl}`;
+    
     // Update Open Graph tags
     updateOrCreateMetaTag('property', 'og:title', title);
     updateOrCreateMetaTag('property', 'og:description', description);
-    updateOrCreateMetaTag('property', 'og:image', imageUrl);
+    updateOrCreateMetaTag('property', 'og:image', absoluteImageUrl);
     updateOrCreateMetaTag('property', 'og:image:width', '1200');
     updateOrCreateMetaTag('property', 'og:image:height', '630');
     updateOrCreateMetaTag('property', 'og:type', 'website');
@@ -41,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateOrCreateMetaTag('name', 'twitter:card', 'summary_large_image');
     updateOrCreateMetaTag('name', 'twitter:title', title);
     updateOrCreateMetaTag('name', 'twitter:description', description);
-    updateOrCreateMetaTag('name', 'twitter:image', imageUrl);
+    updateOrCreateMetaTag('name', 'twitter:image', absoluteImageUrl);
     
     // Update page title
     document.title = title;
