@@ -98,12 +98,6 @@
     </label>
   </div>
 
-  <!-- Preview Section -->
-  <div class="preview-section" id="previewSection" style="display: none;">
-    <div class="preview-title">Moodboard của bạn</div>
-    <div class="preview-grid" id="previewGrid"></div>
-  </div>
-
   <!-- Controls -->
   <div class="moodboard-controls">
     <button class="btn-control btn-primary" id="generateCodeBtn">Tạo mã moodboard</button>
@@ -112,20 +106,13 @@
 
   <!-- Code Section -->
   <div class="code-section" id="codeSection" style="display: none;">
-    <h3>Mã Moodboard Của Bạn</h3>
-    <p>Sao chép mã dưới đây hoặc chia sẻ link để lưu moodboard:</p>
+    <h3>Chia Sẻ Moodboard</h3>
+    <p>Copy link hoặc gửi qua Messenger:</p>
     
     <div style="margin: 20px 0;">
-      <label>Link chia sẻ:</label>
       <div class="code-box" id="shareLink"></div>
       <button class="copy-btn" onclick="copyToClipboard('shareLink')">Copy link</button>
-      <button class="copy-btn" id="messengerShareBtn" style="background: #0a66c2; margin-top: 8px;">Gửi qua Messenger</button>
-    </div>
-
-    <div style="margin: 20px 0;">
-      <label>Mã JSON:</label>
-      <div class="code-box" id="codeBox"></div>
-      <button class="copy-btn" onclick="copyToClipboard('codeBox')">Copy code</button>
+      <button class="copy-btn" id="messengerShareBtn" style="background: #0a66c2;">Gửi qua Messenger</button>
     </div>
   </div>
 </div>
