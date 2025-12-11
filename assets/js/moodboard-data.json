@@ -1,34 +1,23 @@
 {
   "categories": [
     {
-      "id": "demo",
-      "title": "Demo",
-      "path": "assets/img/moodboard/demo",
+      "id": "gia-đình-studio",
+      "title": "Gia đình studio",
+      "path": "assets/img/moodboard/Gia đình studio",
       "images": []
     },
     {
-      "id": "hien-dai",
-      "title": "Hien Dai",
-      "path": "assets/img/moodboard/hien-dai",
-      "images": []
-    },
-    {
-      "id": "lang-man",
-      "title": "Lang Man",
-      "path": "assets/img/moodboard/lang-man",
-      "images": []
-    },
-    {
-      "id": "toi-gian",
-      "title": "Toi Gian",
-      "path": "assets/img/moodboard/toi-gian",
-      "images": []
-    },
-    {
-      "id": "tuyen-bo",
-      "title": "Tuyen Bo",
-      "path": "assets/img/moodboard/tuyen-bo",
-      "images": []
+      "id": "wedding-studio",
+      "title": "Wedding Studio",
+      "path": "assets/img/moodboard/Wedding Studio",
+      "images": [
+        "mb (1).webp",
+        "mb (2).webp",
+        "mb (3).webp",
+        "mb (4).webp",
+        "mb (5).webp",
+        "mb (6).webp"
+      ]
     }
   ]
 }

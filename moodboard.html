@@ -44,11 +44,6 @@
     .copy-btn { padding: 8px 16px; background: #4caf50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; margin-top: 8px; }
     .copy-btn:hover { background: #45a049; }
     
-    .email-form { background: #f9f5f0; padding: 24px; border-radius: 12px; margin-top: 24px; }
-    .email-form input { width: 100%; padding: 12px; margin: 12px 0; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; }
-    .email-form textarea { width: 100%; padding: 12px; margin: 12px 0; border: 1px solid #ccc; border-radius: 6px; resize: vertical; min-height: 80px; }
-    .email-form button { width: 100%; padding: 12px; background: #eb9500; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
-    
     .empty-state { text-align: center; padding: 40px; color: #666; }
   </style>
 </head>
@@ -95,6 +90,14 @@
   <!-- Moodboard Grid -->
   <div class="moodboard-grid" id="moodboardGrid"></div>
 
+  <!-- Filter Toggle -->
+  <div style="text-align: center; margin: 40px 0;">
+    <label style="cursor: pointer; font-size: 14px; color: #3a5a40;">
+      <input type="checkbox" id="filterCheckbox" style="margin-right: 8px;">
+      📌 Chỉ hiển thị ảnh đã chọn
+    </label>
+  </div>
+
   <!-- Preview Section -->
   <div class="preview-section" id="previewSection" style="display: none;">
     <div class="preview-title">Moodboard của bạn</div>
@@ -116,23 +119,13 @@
       <label>Link chia sẻ:</label>
       <div class="code-box" id="shareLink"></div>
       <button class="copy-btn" onclick="copyToClipboard('shareLink')">Copy link</button>
+      <button class="copy-btn" id="messengerShareBtn" style="background: #0a66c2; margin-top: 8px;">Gửi qua Messenger</button>
     </div>
 
     <div style="margin: 20px 0;">
       <label>Mã JSON:</label>
       <div class="code-box" id="codeBox"></div>
       <button class="copy-btn" onclick="copyToClipboard('codeBox')">Copy code</button>
-    </div>
-
-    <!-- Email Form -->
-    <div class="email-form">
-      <h3>Hoặc gửi cho chúng tôi:</h3>
-      <form id="emailForm">
-        <input type="email" placeholder="Email của bạn" required>
-        <input type="text" placeholder="Tên của bạn" required>
-        <textarea placeholder="Ghi chú thêm (tùy chọn)"></textarea>
-        <button type="submit">Gửi moodboard</button>
-      </form>
     </div>
   </div>
 </div>

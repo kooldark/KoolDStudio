@@ -6,12 +6,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   const codeSection = document.getElementById('codeSection');
   const generateCodeBtn = document.getElementById('generateCodeBtn');
   const clearBtn = document.getElementById('clearBtn');
-  const emailForm = document.getElementById('emailForm');
+  const filterCheckbox = document.getElementById('filterCheckbox');
   const preloader = document.getElementById('preloader');
 
   let portfolioData = {};
   let selectedImages = [];
   let currentCategory = '';
+  let filterMode = false;
 
   // Fetch moodboard data
   try {
@@ -23,18 +24,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Load moodboard from URL if exists
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-    if (code) {
-      loadFromCode(code);
-    }
-
+    
     // Load from localStorage draft
     const draft = localStorage.getItem('moodboardDraft');
     if (draft && !code) {
       selectedImages = JSON.parse(draft);
-      updatePreview();
     }
 
     renderCategories();
+    
+    // Load from URL code AFTER categories are rendered
+    if (code) {
+      loadFromCode(code);
+    }
+    
     preloader.classList.add('hidden');
   } catch (e) {
     console.error('Error:', e);
@@ -49,6 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     categories.forEach((cat, idx) => {
       const btn = document.createElement('button');
       btn.className = `category-btn ${idx === 0 ? 'active' : ''}`;
+      btn.setAttribute('data-cat', cat.id);
       btn.textContent = cat.title;
       btn.onclick = () => selectCategory(cat.id, btn);
       categoryTabs.appendChild(btn);
@@ -71,6 +75,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!category || !category.images) return;
 
     category.images.forEach(img => {
+      // Skip if filter mode is on and this image is not selected
+      if (filterMode && !selectedImages.includes(img)) {
+        return;
+      }
+
       const itemDiv = document.createElement('div');
       itemDiv.className = 'moodboard-item';
       if (selectedImages.includes(img)) itemDiv.classList.add('selected');
@@ -105,13 +114,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     previewSection.style.display = 'block';
     previewGrid.innerHTML = '';
     
-    selectedImages.forEach(img => {
+    selectedImages.forEach((img, idx) => {
       const item = document.createElement('div');
       item.className = 'preview-item';
+      const imgPath = `assets/img/portfolio/${currentCategory}/${img}`;
       item.innerHTML = `
-        <img src="assets/img/portfolio/${currentCategory}/${img}" alt="preview" loading="lazy">
-        <button class="preview-remove" onclick="this.parentElement.remove()">✕</button>
+        <img src="${imgPath}" alt="preview" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23eee%22 width=%22200%22 height=%22200%22/%3E%3Ctext fill=%22%23999%22 text-anchor=%22middle%22 x=%2250%25%22 y=%2250%25%22%3EImage not found%3C/text%3E%3C/svg%3E'">
+        <button class="preview-remove" data-index="${idx}">✕</button>
       `;
+      const removeBtn = item.querySelector('.preview-remove');
+      removeBtn.onclick = (e) => {
+        e.stopPropagation();
+        selectedImages.splice(idx, 1);
+        localStorage.setItem('moodboardDraft', JSON.stringify(selectedImages));
+        updatePreview();
+      };
       previewGrid.appendChild(item);
     });
   }
@@ -149,45 +166,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   };
 
-  emailForm.onsubmit = async (e) => {
-    e.preventDefault();
-    
-    const email = emailForm.querySelector('input[type="email"]').value;
-    const name = emailForm.querySelector('input[type="text"]').value;
-    const note = emailForm.querySelector('textarea').value;
-
-    const moodboardData = {
-      images: selectedImages,
-      category: currentCategory,
-      created: new Date().toISOString(),
-      clientInfo: { email, name, note }
+  // Messenger share button
+  const messengerShareBtn = document.getElementById('messengerShareBtn');
+  if (messengerShareBtn) {
+    messengerShareBtn.onclick = () => {
+      const shareLink = document.getElementById('shareLink').innerText;
+      const message = `Xin chào! Tôi vừa tạo moodboard trên Kool D. Studio. Bạn có thể xem tại đây: ${shareLink}`;
+      const messengerUrl = `https://m.me/KoolDStudio?text=${encodeURIComponent(message)}`;
+      window.open(messengerUrl, '_blank');
     };
+  }
 
-    const encoded = btoa(encodeURIComponent(JSON.stringify(moodboardData)));
-    const shareUrl = `${window.location.origin}${window.location.pathname}?code=${encoded}`;
-
-    // Send via Formspree or similar
-    try {
-      const response = await fetch('https://formspree.io/f/xyzqwert', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          name,
-          note,
-          moodboardCode: encoded,
-          moodboardLink: shareUrl,
-          imagesCount: selectedImages.length
-        })
-      });
-
-      if (response.ok) {
-        alert('Gửi thành công! Chúng tôi sẽ xem xét moodboard của bạn.');
-        emailForm.reset();
-      }
-    } catch (err) {
-      console.error('Email error:', err);
-      alert('Lỗi gửi email. Vui lòng thử lại hoặc copy link chia sẻ.');
+  // Filter checkbox handler
+  filterCheckbox.onchange = () => {
+    filterMode = filterCheckbox.checked;
+    const activeBtn = document.querySelector('.category-btn.active');
+    if (activeBtn) {
+      const catId = activeBtn.getAttribute('data-cat');
+      selectCategory(catId, activeBtn);
     }
   };
 
@@ -197,9 +193,31 @@ document.addEventListener('DOMContentLoaded', async () => {
       const data = JSON.parse(decoded);
       selectedImages = data.images || [];
       currentCategory = data.category || '';
+      
+      // Auto-enable filter mode when loading code
+      filterMode = true;
+      filterCheckbox.checked = true;
+      
+      // Auto-select the category button and render grid
+      if (currentCategory) {
+        const categoryBtn = document.querySelector(`.category-btn[data-cat="${currentCategory}"]`);
+        if (categoryBtn) {
+          categoryBtn.click();
+        } else {
+          // If category button not found, use first category
+          const firstBtn = document.querySelector('.category-btn');
+          if (firstBtn) firstBtn.click();
+        }
+      } else {
+        // No category stored, use first category
+        const firstBtn = document.querySelector('.category-btn');
+        if (firstBtn) firstBtn.click();
+      }
+      
       updatePreview();
     } catch (e) {
       console.error('Invalid code:', e);
+      alert('Link moodboard không hợp lệ. Vui lòng thử lại.');
     }
   }
 
