@@ -153,6 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
         await renderImageGrid(albumImages);
         backButton.classList.remove('hidden');
         categoryShareBtn.classList.add('hidden');
+        albumShareBtn.classList.remove('hidden');
+        currentAlbumLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(currentCategory)}&album=${encodeURIComponent(currentAlbum)}`;
         pageSubtitle.textContent = `Album: ${currentAlbum}`;
 
         // Update meta tags for album sharing
