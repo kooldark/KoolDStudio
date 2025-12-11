@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "id": "demo",
+      "title": "Demo",
+      "path": "assets/img/moodboard/demo",
+      "images": []
+    },
+    {
+      "id": "hien-dai",
+      "title": "Hien Dai",
+      "path": "assets/img/moodboard/hien-dai",
+      "images": []
+    },
+    {
+      "id": "lang-man",
+      "title": "Lang Man",
+      "path": "assets/img/moodboard/lang-man",
+      "images": []
+    },
+    {
+      "id": "toi-gian",
+      "title": "Toi Gian",
+      "path": "assets/img/moodboard/toi-gian",
+      "images": []
+    },
+    {
+      "id": "tuyen-bo",
+      "title": "Tuyen Bo",
+      "path": "assets/img/moodboard/tuyen-bo",
+      "images": []
+    }
+  ]
+}

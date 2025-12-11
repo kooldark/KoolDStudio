@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moodboard Picker - Kool D. Studio</title>
+  <meta name="description" content="Tạo moodboard cá nhân hóa cho phóng sự của bạn"/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .moodboard-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .moodboard-header { text-align: center; margin-bottom: 60px; }
+    .category-tabs { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
+    .category-btn { padding: 10px 20px; border: 2px solid #eb9500; background: transparent; color: #3a5a40; cursor: pointer; border-radius: 50px; font-weight: 600; transition: all 0.3s; }
+    .category-btn.active { background: #eb9500; color: white; }
+    .category-btn:hover { transform: translateY(-2px); }
+    
+    .moodboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 60px; }
+    .moodboard-item { position: relative; cursor: pointer; border-radius: 8px; overflow: hidden; aspect-ratio: 1; }
+    .moodboard-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .moodboard-item:hover img { transform: scale(1.08); }
+    .moodboard-item.selected { border: 4px solid #eb9500; }
+    .moodboard-item.selected::after { content: '✓'; position: absolute; top: 8px; right: 8px; background: #eb9500; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+    
+    .moodboard-controls { background: rgba(249, 245, 240, 0.8); padding: 24px; border-radius: 12px; margin-bottom: 40px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .btn-control { padding: 12px 24px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+    .btn-primary { background: #eb9500; color: white; }
+    .btn-primary:hover { background: #d4800a; transform: translateY(-2px); }
+    .btn-secondary { background: white; color: #3a5a40; border: 2px solid #3a5a40; }
+    .btn-secondary:hover { background: #f9f5f0; }
+    
+    .preview-section { background: #f9f5f0; padding: 40px; border-radius: 12px; margin-bottom: 40px; }
+    .preview-title { font-size: 24px; font-weight: 600; margin-bottom: 20px; text-align: center; }
+    .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+    .preview-item { position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 1; }
+    .preview-item img { width: 100%; height: 100%; object-fit: cover; }
+    .preview-remove { position: absolute; top: 4px; right: 4px; background: rgba(235, 149, 0, 0.9); color: white; border: none; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 12px; font-weight: 700; }
+    
+    .code-section { background: white; padding: 24px; border-radius: 12px; border: 1px solid #e0e0e0; }
+    .code-box { background: #f5f5f5; padding: 16px; border-radius: 8px; margin: 12px 0; word-break: break-all; font-family: monospace; font-size: 12px; max-height: 200px; overflow-y: auto; }
+    .copy-btn { padding: 8px 16px; background: #4caf50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; margin-top: 8px; }
+    .copy-btn:hover { background: #45a049; }
+    
+    .email-form { background: #f9f5f0; padding: 24px; border-radius: 12px; margin-top: 24px; }
+    .email-form input { width: 100%; padding: 12px; margin: 12px 0; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; }
+    .email-form textarea { width: 100%; padding: 12px; margin: 12px 0; border: 1px solid #ccc; border-radius: 6px; resize: vertical; min-height: 80px; }
+    .email-form button { width: 100%; padding: 12px; background: #eb9500; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    
+    .empty-state { text-align: center; padding: 40px; color: #666; }
+  </style>
+</head>
+<body>
+
+<div id="preloader"><div class="spinner"></div></div>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">KOOL D. STUDIO</a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Trang chủ</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Bảng giá</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">☰</div>
+  </div>
+</nav>
+
+<!-- Floating Contact Ribbon -->
+<div class="contact-ribbon">
+  <a href="tel:0379031662" class="ribbon-item ribbon-phone" title="Gọi">
+    <span class="ribbon-icon">☎</span>
+  </a>
+  <a href="https://m.me/KoolDStudio" target="_blank" class="ribbon-item ribbon-messenger" title="Messenger">
+    <span class="ribbon-icon">M</span>
+  </a>
+  <a href="https://zalo.me/0379031662" target="_blank" class="ribbon-item ribbon-zalo" title="Zalo">
+    <span class="ribbon-icon">Z</span>
+  </a>
+</div>
+
+<div class="moodboard-container">
+  <div class="moodboard-header" data-aos="fade-up">
+    <h1 class="page-title">Tạo Moodboard Của Bạn</h1>
+    <p class="page-subtitle" data-aos="fade-up" data-aos-delay="100">Chọn phong cách yêu thích để tạo moodboard riêng</p>
+    <div class="gold-line" data-aos="zoom-in" data-aos-delay="200"></div>
+  </div>
+
+  <!-- Category Tabs -->
+  <div class="category-tabs" id="categoryTabs"></div>
+
+  <!-- Moodboard Grid -->
+  <div class="moodboard-grid" id="moodboardGrid"></div>
+
+  <!-- Preview Section -->
+  <div class="preview-section" id="previewSection" style="display: none;">
+    <div class="preview-title">Moodboard của bạn</div>
+    <div class="preview-grid" id="previewGrid"></div>
+  </div>
+
+  <!-- Controls -->
+  <div class="moodboard-controls">
+    <button class="btn-control btn-primary" id="generateCodeBtn">Tạo mã moodboard</button>
+    <button class="btn-control btn-secondary" id="clearBtn">Xóa tất cả</button>
+  </div>
+
+  <!-- Code Section -->
+  <div class="code-section" id="codeSection" style="display: none;">
+    <h3>Mã Moodboard Của Bạn</h3>
+    <p>Sao chép mã dưới đây hoặc chia sẻ link để lưu moodboard:</p>
+    
+    <div style="margin: 20px 0;">
+      <label>Link chia sẻ:</label>
+      <div class="code-box" id="shareLink"></div>
+      <button class="copy-btn" onclick="copyToClipboard('shareLink')">Copy link</button>
+    </div>
+
+    <div style="margin: 20px 0;">
+      <label>Mã JSON:</label>
+      <div class="code-box" id="codeBox"></div>
+      <button class="copy-btn" onclick="copyToClipboard('codeBox')">Copy code</button>
+    </div>
+
+    <!-- Email Form -->
+    <div class="email-form">
+      <h3>Hoặc gửi cho chúng tôi:</h3>
+      <form id="emailForm">
+        <input type="email" placeholder="Email của bạn" required>
+        <input type="text" placeholder="Tên của bạn" required>
+        <textarea placeholder="Ghi chú thêm (tùy chọn)"></textarea>
+        <button type="submit">Gửi moodboard</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="assets/js/moodboard.js"></script>
+<script>
+  AOS.init({duration: 800, once: true, offset: 50});
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navLinks = document.getElementById('nav-links');
+  mobileMenu.onclick = (e) => { e.stopPropagation(); navLinks.classList.toggle('active'); };
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && e.target !== mobileMenu) {
+      navLinks.classList.remove('active');
+    }
+  });
+
+  function copyToClipboard(elementId) {
+    const text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Đã sao chép!');
+    });
+  }
+</script>
+
+</body>
+</html>

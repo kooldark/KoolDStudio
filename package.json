@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node scripts/generate-gallery.js",
     "generate:hero": "node scripts/generate-hero-json.js",
+    "generate:moodboard": "node scripts/generate-moodboard-data.js",
     "watch:hero": "node scripts/watch-hero.js"
   },
   "keywords": [],
