@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đặt Lịch - Kool D. Studio</title>
+  <meta name="description" content="Đặt lịch chụp ảnh với Kool D. Studio - Nhanh, dễ, tiện"/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .booking-container { max-width: 800px; margin: 140px auto 80px; padding: 2rem; }
+    .booking-header { text-align: center; margin-bottom: 60px; }
+    
+    .booking-form { display: grid; gap: 40px; }
+    .form-section { border-bottom: 1px solid rgba(235, 149, 0, 0.1); padding-bottom: 40px; }
+    .form-section:last-child { border-bottom: none; }
+    
+    .section-label { font-size: 18px; font-weight: 600; color: #3a5a40; margin-bottom: 20px; }
+    
+    /* Package Selection */
+    .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    .package-card { 
+      padding: 20px; border: 2px solid #e0e0e0; border-radius: 12px; 
+      cursor: pointer; transition: all 0.3s; text-align: center;
+    }
+    .package-card:hover { border-color: #eb9500; background: rgba(235, 149, 0, 0.05); }
+    .package-card.selected { border-color: #eb9500; background: rgba(235, 149, 0, 0.1); }
+    .package-name { font-weight: 600; font-size: 16px; margin-bottom: 8px; }
+    .package-price { font-size: 14px; color: #666; }
+    
+    /* Date & Time */
+    .date-time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group label { display: block; font-size: 14px; color: #666; margin-bottom: 8px; font-weight: 500; }
+    .form-group input { width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 14px; }
+    .form-group input:focus { outline: none; border-color: #eb9500; box-shadow: 0 0 0 3px rgba(235, 149, 0, 0.1); }
+    
+    /* Time Slots */
+    .time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .time-slot { 
+      padding: 12px; border: 1px solid #ddd; border-radius: 8px; 
+      cursor: pointer; transition: all 0.2s; text-align: center; font-size: 14px;
+    }
+    .time-slot:hover { border-color: #eb9500; }
+    .time-slot.selected { background: #eb9500; color: white; border-color: #eb9500; }
+    
+    /* Contact Info */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .contact-grid input { width: 100%; }
+    
+    /* Submit Button */
+    .booking-actions { display: flex; gap: 16px; margin-top: 40px; }
+    .btn-book { 
+      flex: 1; padding: 16px; background: #eb9500; color: white; 
+      border: none; border-radius: 8px; font-weight: 600; cursor: pointer; 
+      font-size: 16px; transition: all 0.3s;
+    }
+    .btn-book:hover { background: #d4800a; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(235, 149, 0, 0.3); }
+    .btn-book:disabled { background: #ccc; cursor: not-allowed; }
+    
+    .btn-alternative { 
+      padding: 16px; background: transparent; color: #3a5a40; 
+      border: 2px solid #3a5a40; border-radius: 8px; font-weight: 600; 
+      cursor: pointer; transition: all 0.3s;
+    }
+    .btn-alternative:hover { background: #f9f5f0; }
+    
+    .booking-note { 
+      background: rgba(235, 149, 0, 0.05); padding: 20px; border-radius: 8px; 
+      margin-top: 40px; text-align: center; color: #666; font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="preloader"><div class="spinner"></div></div>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">KOOL D. STUDIO</a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Trang chủ</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Bảng giá</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">☰</div>
+  </div>
+</nav>
+
+<!-- Floating Contact Ribbon -->
+<div class="contact-ribbon">
+  <a href="tel:0379031662" class="ribbon-item ribbon-phone" title="Gọi">
+    <span class="ribbon-icon">☎</span>
+  </a>
+  <a href="https://m.me/KoolDStudio" target="_blank" class="ribbon-item ribbon-messenger" title="Messenger">
+    <span class="ribbon-icon">M</span>
+  </a>
+  <a href="https://zalo.me/0379031662" target="_blank" class="ribbon-item ribbon-zalo" title="Zalo">
+    <span class="ribbon-icon">Z</span>
+  </a>
+</div>
+
+<div class="booking-container">
+  <div class="booking-header" data-aos="fade-up">
+    <h1 class="page-title">Đặt Lịch Ngay</h1>
+    <p class="page-subtitle" data-aos="fade-up" data-aos-delay="100">Chọn gói, ngày, giờ - xong trong 10 giây</p>
+    <div class="gold-line" data-aos="zoom-in" data-aos-delay="200"></div>
+  </div>
+
+  <form class="booking-form" id="bookingForm">
+    <!-- 1. Package Selection -->
+    <div class="form-section" data-aos="fade-up">
+      <div class="section-label">1️⃣ Chọn Gói Dịch Vụ</div>
+      <div class="package-grid" id="packageGrid"></div>
+    </div>
+
+    <!-- 2. Date Selection -->
+    <div class="form-section" data-aos="fade-up">
+      <div class="section-label">2️⃣ Chọn Ngày</div>
+      <div class="form-group">
+        <input type="date" id="bookingDate" required>
+      </div>
+    </div>
+
+    <!-- 3. Time Selection -->
+    <div class="form-section" data-aos="fade-up">
+      <div class="section-label">3️⃣ Chọn Giờ</div>
+      <div class="time-grid" id="timeGrid"></div>
+    </div>
+
+    <!-- 4. Contact Info -->
+    <div class="form-section" data-aos="fade-up">
+      <div class="section-label">4️⃣ Thông Tin Của Bạn</div>
+      <div class="contact-grid">
+        <div class="form-group">
+          <label>Tên</label>
+          <input type="text" id="clientName" placeholder="Tên của bạn" required>
+        </div>
+        <div class="form-group">
+          <label>Số Điện Thoại</label>
+          <input type="tel" id="clientPhone" placeholder="0379031662" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Submit -->
+    <div class="booking-actions">
+      <button type="button" class="btn-book" id="bookBtn">Đặt Lịch qua Messenger</button>
+      <button type="button" class="btn-alternative" id="zaloBtn">Hoặc Zalo</button>
+    </div>
+  </form>
+
+  <div class="booking-note">
+    💬 Bấm nút trên sẽ mở ứng dụng chat với tất cả thông tin đã điền sẵn. Anh sẽ xác nhận lịch ngay!
+  </div>
+</div>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/booking.js"></script>
+<script>
+  AOS.init({duration: 800, once: true, offset: 50});
+</script>
+
+</body>
+</html>

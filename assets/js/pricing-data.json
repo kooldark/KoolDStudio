@@ -1,0 +1,40 @@
+{
+  "packages": [
+    {
+      "id": "studio",
+      "name": "Ảnh Cưới Studio",
+      "price": "4 - 8 triệu",
+      "description": "2–4 tiếng chụp trong studio với makeup và tóc"
+    },
+    {
+      "id": "makeup",
+      "name": "Trang Điểm Cô Dâu",
+      "price": "1.5 - 3 triệu",
+      "description": "Makeup & tóc chuyên nghiệp, tư vấn tone và màu sắc"
+    },
+    {
+      "id": "family",
+      "name": "Gia Đình & Chân Dung",
+      "price": "2 - 4 triệu",
+      "description": "Ảnh gia đình, kỷ niệm, 2–4 tiếng chụp studio"
+    },
+    {
+      "id": "event",
+      "name": "Ảnh Sự Kiện",
+      "price": "2.5 - 5 triệu",
+      "description": "Chụp sự kiện đặc biệt, thời gian linh hoạt"
+    },
+    {
+      "id": "prewedding",
+      "name": "Pre-Wedding",
+      "price": "6 - 12 triệu",
+      "description": "Chụp ngoài trời, concept sáng tạo, hàng trăm ảnh"
+    },
+    {
+      "id": "custom",
+      "name": "Gói Tùy Chỉnh",
+      "price": "Liên hệ",
+      "description": "Tất cả gói đều có thể tùy chỉnh theo yêu cầu riêng"
+    }
+  ]
+}

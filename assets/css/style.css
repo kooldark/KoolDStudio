@@ -352,6 +352,11 @@ nav.scrolled {
   box-shadow: 0 4px 12px rgba(235, 149, 0, 0.3);
 }
 
+.hero-cta {
+  margin-top: 40px;
+  animation: fadeInUp 0.8s ease-out 0.6s backwards;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -626,6 +631,32 @@ nav.scrolled {
 .filters-wrapper {
   margin-bottom: 70px;
   text-align: center;
+}
+
+.moodboard-footer-link {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(235, 149, 0, 0.1);
+}
+
+.moodboard-footer-link p {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.moodboard-footer-link a {
+  font-size: 14px;
+  color: #eb9500;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.moodboard-footer-link a:hover {
+  color: #d4800a;
 }
 
 .back-button {
