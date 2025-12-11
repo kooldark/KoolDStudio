@@ -21,7 +21,7 @@
     .section-label { font-size: 18px; font-weight: 600; color: #3a5a40; margin-bottom: 20px; }
     
     /* Package Selection */
-    .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
     .package-card { 
       padding: 20px; border: 2px solid #e0e0e0; border-radius: 12px; 
       cursor: pointer; transition: all 0.3s; text-align: center;
@@ -53,23 +53,119 @@
     /* Submit Button */
     .booking-actions { display: flex; gap: 16px; margin-top: 40px; }
     .btn-book { 
-      flex: 1; padding: 16px; background: #eb9500; color: white; 
-      border: none; border-radius: 8px; font-weight: 600; cursor: pointer; 
-      font-size: 16px; transition: all 0.3s;
+      flex: 1.2; padding: 18px; background: #eb9500; color: white; 
+      border: none; border-radius: 8px; font-weight: 700; cursor: pointer; 
+      font-size: 16px; transition: all 0.3s; box-shadow: 0 4px 16px rgba(235, 149, 0, 0.3);
     }
-    .btn-book:hover { background: #d4800a; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(235, 149, 0, 0.3); }
+    .btn-book:hover { background: #d4800a; box-shadow: 0 8px 24px rgba(235, 149, 0, 0.4); transform: translateY(-2px); }
     .btn-book:disabled { background: #ccc; cursor: not-allowed; }
     
     .btn-alternative { 
-      padding: 16px; background: transparent; color: #3a5a40; 
+      flex: 0.8; padding: 18px; background: transparent; color: #3a5a40; 
       border: 2px solid #3a5a40; border-radius: 8px; font-weight: 600; 
       cursor: pointer; transition: all 0.3s;
     }
-    .btn-alternative:hover { background: #f9f5f0; }
+    .btn-alternative:hover { background: rgba(235, 149, 0, 0.08); border-color: #eb9500; color: #eb9500; }
     
     .booking-note { 
       background: rgba(235, 149, 0, 0.05); padding: 20px; border-radius: 8px; 
       margin-top: 40px; text-align: center; color: #666; font-size: 14px;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .booking-container { 
+        margin-top: 100px;
+        padding: 1.5rem;
+      }
+      
+      .booking-header { 
+        margin-bottom: 40px;
+      }
+      
+      .section-label { 
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+      
+      .package-grid { 
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+      }
+      
+      .package-card {
+        padding: 16px;
+      }
+      
+      .package-name { 
+        font-size: 14px;
+      }
+      
+      .package-price { 
+        font-size: 12px;
+      }
+
+      .date-time-grid { 
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .time-grid { 
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .time-slot { 
+        padding: 10px 8px;
+        font-size: 12px;
+      }
+
+      .contact-grid { 
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .booking-actions { 
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn-book,
+      .btn-alternative { 
+        padding: 14px;
+        font-size: 14px;
+      }
+
+      .booking-note { 
+        padding: 16px;
+        font-size: 12px;
+        margin-top: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .booking-container { 
+        padding: 1rem;
+      }
+
+      .section-label { 
+        font-size: 15px;
+      }
+
+      .package-grid { 
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 10px;
+      }
+
+      .time-grid { 
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .btn-book,
+      .btn-alternative { 
+        padding: 12px;
+        font-size: 13px;
+      }
     }
   </style>
 </head>
