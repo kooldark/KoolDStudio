@@ -88,9 +88,18 @@ document.addEventListener("DOMContentLoaded", () => {
     originalSubtitle = pageSubtitle.textContent;
 
     try {
-      const res = await fetch("assets/img/portfolio/images-list.json?t=" + Date.now());
+      const res = await fetch("assets/js/portfolio-data.json");
       if (!res.ok) throw new Error(`Network response was not ok, status: ${res.status}`);
-      galleryData = await res.json();
+      const portfolioData = await res.json();
+      
+      // Transform portfolio-data.json format to match old structure
+      galleryData = {};
+      portfolioData.categories.forEach(cat => {
+        galleryData[cat.id] = {};
+        cat.albums.forEach(album => {
+          galleryData[cat.id][album.id] = album.images;
+        });
+      });
       
       renderCategoryFilters();
       
@@ -224,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (images.length > 0) {
       images.forEach(imgPath => {
         gridHtml += `
-          <div class="grid-item" data-aos="fade-up">
+          <div class="grid-item">
             <img src="${imgPath}" alt="Kool D. Studio Portfolio" loading="lazy" decoding="async">
           </div>`;
       });
@@ -248,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load category description if available
     let categoryDescription = '';
     try {
-      const categoryInfoRes = await fetch(`assets/img/portfolio/${category}/category-info.json?t=${Date.now()}`);
+      const categoryInfoRes = await fetch(`assets/img/portfolio/${category}/category-info.json`);
       if (categoryInfoRes.ok) {
         const categoryInfo = await categoryInfoRes.json();
         categoryDescription = categoryInfo.description || '';
@@ -259,14 +268,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Add category description at the top if exists
     if (categoryDescription) {
-      gridHtml += `<div class="category-description" data-aos="fade-down">
+      gridHtml += `<div class="category-description">
         <p class="category-description-text">${categoryDescription}</p>
       </div>`;
     }
 
+    // Lazy load: Limit albums shown at once
+    const MAX_ALBUMS = 12;
+    let albumCount = 0;
+    
     for (const albumName in albums) {
+      if (albumCount >= MAX_ALBUMS) break;
+      
       const albumFiles = albums[albumName];
       if (albumFiles.length === 0) continue;
+      albumCount++;
+      
       const isLoose = albumName === 'Ảnh lẻ';
       const basePath = `assets/img/portfolio/${category}/`;
       const imageFolder = isLoose ? '' : `${albumName}/`;
@@ -280,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let albumDescription = '';
       if (!isLoose) {
         try {
-          const infoRes = await fetch(`${basePath}${albumName}/info.json?t=${Date.now()}`);
+          const infoRes = await fetch(`${basePath}${albumName}/info.json`);
           if (infoRes.ok) {
             const info = await infoRes.json();
             albumDescription = info.description || '';
@@ -291,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       gridHtml += `
-        <div class="album-card" data-category="${category}" data-album="${albumName}" data-aos="fade-up">
+        <div class="album-card" data-category="${category}" data-album="${albumName}">
           <img class="album-card-thumbnail" src="${coverImage}" alt="${albumName}" loading="lazy" decoding="async">
           <div class="album-card-overlay"></div>
           <h3 class="album-card-title">${albumName}</h3>
