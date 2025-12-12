@@ -16,9 +16,10 @@
             --soft-gold: #eb9500;
             --cream: #f9f5f0;
             --light-gray: #E5E5E5;
-            --charcoal: #2a2a2a;
-            --white: #ffffff;
-            --text-secondary: #666666;
+            --charcoal: #1e1e1e;
+            --white: #fbf9f6;
+            --card-bg: #fbf8f3;
+            --text-secondary: #444444;
             --shadow-soft: 0 8px 32px rgba(42, 42, 42, 0.08);
             --shadow-card: 0 20px 60px rgba(58, 90, 64, 0.15);
         }
@@ -128,8 +129,8 @@
 
         /* INPUT CARD */
         .input-card {
-            background: #fdfdfb;
-            border: 1px solid #eee;
+            background: var(--card-bg);
+            border: 1px solid #e8e6e2;
             border-radius: 12px;
             padding: 0.75rem 1rem;
             transition: all 0.3s ease;
@@ -195,12 +196,12 @@
         /* SERVICE & PRODUCT CARDS */
         .service-card,
         .product-card {
-            background: #fdfdfb;
+            background: var(--card-bg);
             border-radius: 12px;
             padding: 1.2rem 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: var(--shadow-soft);
-            border: 1px solid #f0f0f0;
+            border: 1px solid #eee;
         }
 
         .editable-area {
@@ -288,7 +289,7 @@
 
         /* BANK INFO */
         .bank-box {
-            background: #f9f7f4;
+            background: var(--card-bg);
             border: 1px solid #e8e8e8;
             border-radius: 12px;
             padding: 1.2rem;

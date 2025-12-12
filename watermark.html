@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watermark - Kool D. Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Dm+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-green: #3a5a40;
+            --soft-gold: #eb9500;
+            --cream: #f9f5f0;
+            --gray: #666;
+            --white: #fff;
+            --charcoal: #2a2a2a;
+            --font-body: "Montserrat", sans-serif;
+            --font-heading: "Playfair Display", serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .watermark-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .watermark-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .demo-title {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .demo-frame {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #f5f1eb 0%, #ece8e1 100%);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(58, 90, 64, 0.3);
+        }
+
+        /* === WATERMARK STYLE 1: CENTER ELEGANT === */
+        .watermark-style-1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .watermark-style-1 .logo-text {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        .watermark-style-1 .studio-name {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--soft-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .watermark-style-1 .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--soft-gold), transparent);
+            margin: 8px 0;
+        }
+
+        /* === WATERMARK STYLE 2: DIAGONAL CORNER === */
+        .watermark-style-2 {
+            opacity: 0.35;
+            transform: rotate(-45deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .watermark-style-2 .text {
+            font-family: var(--font-heading);
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+        }
+
+        /* === WATERMARK STYLE 3: BOTTOM RIGHT CORNER === */
+        .watermark-style-3 {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.6;
+        }
+
+        .watermark-style-3 .mark {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .watermark-style-3 .name {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--deep-green);
+        }
+
+        .watermark-style-3 .subtitle {
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--soft-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .watermark-style-3 .icon {
+            width: 1px;
+            height: 20px;
+            background: var(--soft-gold);
+            margin-left: 8px;
+        }
+
+        /* === WATERMARK STYLE 4: CIRCULAR BADGE === */
+        .watermark-style-4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .watermark-circle {
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--soft-gold);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            position: relative;
+            opacity: 0.65;
+        }
+
+        .watermark-circle .studio-text {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--deep-green);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .watermark-circle .studio-subtitle {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--soft-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* === WATERMARK STYLE 5: MINIMALIST SIDE === */
+        .watermark-style-5 {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.5;
+        }
+
+        .watermark-style-5 .text {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--deep-green);
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            letter-spacing: 4px;
+        }
+
+        .watermark-style-5 .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--soft-gold);
+            border-radius: 50%;
+        }
+
+        /* === WATERMARK STYLE 6: HORIZONTAL BANNER === */
+        .watermark-style-6 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, var(--soft-gold), transparent);
+            height: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .watermark-style-6::before {
+            content: "© Kool D. Studio";
+            position: absolute;
+            bottom: 8px;
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--soft-gold);
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        /* === WATERMARK STYLE 7: MINIMALIST TEXT === */
+        .watermark-style-7 {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+            opacity: 0.55;
+        }
+
+        .watermark-style-7 .brand {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        .watermark-style-7 .tagline {
+            font-family: var(--font-body);
+            font-size: 9px;
+            font-weight: 500;
+            color: var(--soft-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* === WATERMARK STYLE 8: ELEGANT DIVIDER === */
+        .watermark-style-8 {
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.4;
+            width: 80%;
+        }
+
+        .watermark-style-8 .line-top {
+            width: 40px;
+            height: 1px;
+            background: var(--soft-gold);
+        }
+
+        .watermark-style-8 .text {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .watermark-style-8 .line-bottom {
+            width: 40px;
+            height: 1px;
+            background: var(--soft-gold);
+        }
+
+        /* === WATERMARK STYLE 9: LUXURY SIGNATURE === */
+        .watermark-style-9 {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            opacity: 0.5;
+        }
+
+        .watermark-style-9 .signature {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            font-style: italic;
+            color: var(--deep-green);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .watermark-style-9 .line {
+            width: 60px;
+            height: 1px;
+            background: var(--soft-gold);
+        }
+
+        .watermark-style-9 .year {
+            font-family: var(--font-body);
+            font-size: 10px;
+            color: var(--soft-gold);
+            letter-spacing: 1px;
+        }
+
+        /* === WATERMARK STYLE 10: GEOMETRIC === */
+        .watermark-style-10 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.45;
+        }
+
+        .watermark-style-10 .geo-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .watermark-style-10 .geo-line-1 {
+            width: 1px;
+            height: 30px;
+            background: var(--soft-gold);
+        }
+
+        .watermark-style-10 .geo-text {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 3px;
+        }
+
+        .watermark-style-10 .geo-line-2 {
+            width: 1px;
+            height: 30px;
+            background: var(--soft-gold);
+        }
+
+        /* === WATERMARK STYLE 11: PREMIUM CORNER FRAME === */
+        .watermark-style-11 {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+            opacity: 0.5;
+            padding: 10px;
+            border-right: 1px solid var(--soft-gold);
+            border-bottom: 1px solid var(--soft-gold);
+        }
+
+        .watermark-style-11 .brand-name {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--deep-green);
+        }
+
+        .watermark-style-11 .brand-desc {
+            font-family: var(--font-body);
+            font-size: 9px;
+            color: var(--soft-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* === WATERMARK STYLE 12: ABSTRACT ELEGANCE === */
+        .watermark-style-12 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.35;
+        }
+
+        .watermark-style-12 .dot-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .watermark-style-12 .dot-line .dot {
+            width: 4px;
+            height: 4px;
+            background: var(--soft-gold);
+            border-radius: 50%;
+        }
+
+        .watermark-style-12 .dot-line .line {
+            width: 30px;
+            height: 1px;
+            background: var(--soft-gold);
+        }
+
+        .watermark-style-12 .text {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        /* === WATERMARK STYLE 13: SPLIT NAME === */
+        .watermark-style-13 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0.6;
+        }
+
+        .watermark-style-13 .part1 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--soft-gold);
+            letter-spacing: 2px;
+        }
+
+        .watermark-style-13 .part2 {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        /* === WATERMARK STYLE 14: VERTICAL WITH ACCENT === */
+        .watermark-style-14 {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.5;
+        }
+
+        .watermark-style-14 .accent {
+            width: 2px;
+            height: 40px;
+            background: var(--soft-gold);
+        }
+
+        .watermark-style-14 .text {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+        }
+
+        /* === WATERMARK STYLE 15: CLASSIC FRAME === */
+        .watermark-style-15 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.65;
+            padding: 20px;
+            border: 2px solid var(--deep-green);
+            border-radius: 2px;
+        }
+
+        .watermark-style-15 .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .watermark-style-15 .name {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--deep-green);
+        }
+
+        .watermark-style-15 .tag {
+            font-family: var(--font-body);
+            font-size: 10px;
+            color: var(--soft-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* === WATERMARK STYLE 16: MODERN SANS === */
+        .watermark-style-16 {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            opacity: 0.55;
+        }
+
+        .watermark-style-16 .brand {
+            font-family: var(--font-body);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--deep-green);
+            letter-spacing: 3px;
+        }
+
+        .watermark-style-16 .dot {
+            width: 3px;
+            height: 3px;
+            background: var(--soft-gold);
+            border-radius: 50%;
+        }
+
+        /* === WATERMARK STYLE 17: ELEGANT WAVE === */
+        .watermark-style-17 {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.45;
+        }
+
+        .watermark-style-17 .wave {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--soft-gold) 30%, var(--soft-gold) 70%, transparent 100%);
+        }
+
+        .watermark-style-17 .text {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+        }
+
+        /* === WATERMARK STYLE 18: GOLD STRIPE === */
+        .watermark-style-18 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            opacity: 0.5;
+        }
+
+        .watermark-style-18 .stripe {
+            width: 80px;
+            height: 3px;
+            background: var(--soft-gold);
+            margin: 6px 0;
+        }
+
+        .watermark-style-18 .text {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+            padding: 8px 0;
+        }
+
+        /* === WATERMARK STYLE 19: DIAMOND SHAPE === */
+        .watermark-style-19 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.4;
+        }
+
+        .watermark-style-19 .diamond {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--soft-gold);
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .watermark-style-19 .text {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--soft-gold);
+            transform: rotate(-45deg);
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* === WATERMARK STYLE 20: ORNAMENT === */
+        .watermark-style-20 {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.5;
+        }
+
+        .watermark-style-20 .ornament {
+            font-size: 24px;
+            color: var(--soft-gold);
+            line-height: 1;
+        }
+
+        .watermark-style-20 .text {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        /* === WATERMARK STYLE 21: SERIF ELEGANT === */
+        .watermark-style-21 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            opacity: 0.6;
+        }
+
+        .watermark-style-21 .text {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+        }
+
+        .watermark-style-21 .sub {
+            font-family: var(--font-body);
+            font-size: 11px;
+            color: var(--soft-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* === WATERMARK STYLE 22: MODERN GEOMETRIC === */
+        .watermark-style-22 {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            opacity: 0.5;
+        }
+
+        .watermark-style-22 .box {
+            width: 60px;
+            height: 2px;
+            background: var(--soft-gold);
+        }
+
+        .watermark-style-22 .text {
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        /* === WATERMARK STYLE 23: ULTRA MINIMAL === */
+        .watermark-style-23 {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            opacity: 0.6;
+        }
+
+        .watermark-style-23 .text {
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* === WATERMARK STYLE 24: FLOWING SCRIPT === */
+        .watermark-style-24 {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            opacity: 0.5;
+        }
+
+        .watermark-style-24 .text {
+            font-family: "Dm Serif Display", serif;
+            font-size: 32px;
+            color: var(--deep-green);
+            font-style: italic;
+            letter-spacing: 0px;
+        }
+
+        /* === WATERMARK STYLE 25: CENTERED BOLD === */
+        .watermark-style-25 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            opacity: 0.55;
+        }
+
+        .watermark-style-25 .main {
+            font-family: "Poppins", sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        .watermark-style-25 .dot {
+            width: 4px;
+            height: 4px;
+            background: var(--soft-gold);
+            border-radius: 50%;
+        }
+
+        /* === WATERMARK STYLE 26: DOUBLE LINE === */
+        .watermark-style-26 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            opacity: 0.5;
+        }
+
+        .watermark-style-26 .line {
+            width: 50px;
+            height: 1px;
+            background: var(--soft-gold);
+        }
+
+        .watermark-style-26 .text {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--deep-green);
+            padding: 6px 0;
+            letter-spacing: 1px;
+        }
+
+        /* === WATERMARK STYLE 27: CORNER BADGE === */
+        .watermark-style-27 {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            opacity: 0.65;
+            padding: 12px;
+            border: 1px solid var(--soft-gold);
+        }
+
+        .watermark-style-27 .text {
+            font-family: "Poppins", sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        /* === WATERMARK STYLE 28: VINTAGE STYLE === */
+        .watermark-style-28 {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.45;
+        }
+
+        .watermark-style-28 .top-line {
+            width: 100px;
+            height: 1px;
+            background: var(--soft-gold);
+        }
+
+        .watermark-style-28 .text {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .watermark-style-28 .bottom-line {
+            width: 100px;
+            height: 1px;
+            background: var(--soft-gold);
+        }
+
+        /* === WATERMARK STYLE 29: MODERN BOLD === */
+        .watermark-style-29 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.65;
+        }
+
+        .watermark-style-29 .text {
+            font-family: "Poppins", sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--soft-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* === WATERMARK STYLE 30: CENTERED MINIMAL === */
+        .watermark-style-30 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            opacity: 0.65;
+        }
+
+        .watermark-style-30 .brand {
+            font-family: "Dm Serif Display", serif;
+            font-size: 40px;
+            color: var(--deep-green);
+            font-weight: 400;
+        }
+
+        .watermark-style-30 .year {
+            font-family: var(--font-body);
+            font-size: 9px;
+            color: var(--soft-gold);
+            letter-spacing: 2px;
+        }
+
+        /* === WATERMARK STYLE 31: SIDE ACCENT === */
+        .watermark-style-31 {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.65;
+        }
+
+        .watermark-style-31 .accent {
+            width: 3px;
+            height: 50px;
+            background: var(--soft-gold);
+        }
+
+        .watermark-style-31 .text {
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        /* === WATERMARK STYLE 32: DECORATIVE CENTER === */
+        .watermark-style-32 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0.45;
+        }
+
+        .watermark-style-32 .deco {
+            font-size: 28px;
+            color: var(--soft-gold);
+        }
+
+        .watermark-style-32 .text {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        /* === WATERMARK STYLE 33: ROUNDED FRAME === */
+        .watermark-style-33 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.4;
+            padding: 16px 24px;
+            border: 2px solid var(--soft-gold);
+            border-radius: 30px;
+        }
+
+        .watermark-style-33 .text {
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        /* === WATERMARK STYLE 34: ARTISTIC TEXT === */
+        .watermark-style-34 {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            opacity: 0.5;
+        }
+
+        .watermark-style-34 .line1 {
+            font-family: "Dm Serif Display", serif;
+            font-size: 18px;
+            color: var(--deep-green);
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .watermark-style-34 .line2 {
+            font-family: var(--font-body);
+            font-size: 10px;
+            color: var(--soft-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* === WATERMARK STYLE 35: BOLD UNDERLINE === */
+        .watermark-style-35 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0.65;
+        }
+
+        .watermark-style-35 .text {
+            font-family: "Poppins", sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        .watermark-style-35 .line {
+            width: 80px;
+            height: 2px;
+            background: var(--soft-gold);
+        }
+
+        /* === WATERMARK STYLE 36: TOP BADGE === */
+        .watermark-style-36 {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            opacity: 0.5;
+        }
+
+        .watermark-style-36 .badge {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--deep-green);
+        }
+
+        .watermark-style-36 .subtitle {
+            font-family: var(--font-body);
+            font-size: 9px;
+            color: var(--soft-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* === WATERMARK STYLE 37: ARTISTIC CORNER === */
+        .watermark-style-37 {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 3px;
+            opacity: 0.5;
+        }
+
+        .watermark-style-37 .text {
+            font-family: "Dm Serif Display", serif;
+            font-size: 16px;
+            color: var(--deep-green);
+        }
+
+        .watermark-style-37 .accent-line {
+            width: 40px;
+            height: 1px;
+            background: var(--soft-gold);
+        }
+
+        /* === WATERMARK STYLE 38: CENTERED POPPINS === */
+        .watermark-style-38 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            opacity: 0.7;
+        }
+
+        .watermark-style-38 .main {
+            font-family: "Poppins", sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--soft-gold);
+            letter-spacing: 0px;
+        }
+
+        .watermark-style-38 .sub {
+            font-family: var(--font-body);
+            font-size: 10px;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* === WATERMARK STYLE 39: ELEGANT SERIF === */
+        .watermark-style-39 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.45;
+        }
+
+        .watermark-style-39 .text {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        .watermark-style-39 .accent {
+            width: 60px;
+            height: 1px;
+            background: var(--soft-gold);
+        }
+
+        /* === WATERMARK STYLE 40: PREMIUM TEXT === */
+        .watermark-style-40 {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+            opacity: 0.5;
+        }
+
+        .watermark-style-40 .brand {
+            font-family: "Dm Serif Display", serif;
+            font-size: 20px;
+            color: var(--deep-green);
+            font-weight: 400;
+        }
+
+        .watermark-style-40 .tagline {
+            font-family: var(--font-body);
+            font-size: 8px;
+            color: var(--soft-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            color: var(--deep-green);
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            font-family: var(--font-body);
+            font-size: 16px;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .page-title h1 {
+                font-size: 36px;
+            }
+
+            .watermark-container {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-frame {
+                aspect-ratio: auto;
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-title">
+        <h1>Watermark Designs</h1>
+        <p>Kool D. Studio - Art & Elegance</p>
+    </div>
+
+    <div class="watermark-container">
+        <!-- Style 1: Center Elegant -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 1: Center Elegant</div>
+            <div class="demo-frame">
+                <div class="watermark-style-1">
+                    <div class="logo-text">Kool D.</div>
+                    <div class="divider"></div>
+                    <div class="studio-name">Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 2: Diagonal Background -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 2: Diagonal Overlay</div>
+            <div class="demo-frame">
+                <div class="watermark-style-2">
+                    <div class="text">Kool D. Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 3: Bottom Right Corner -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 3: Bottom Right Corner</div>
+            <div class="demo-frame">
+                <div class="watermark-style-3">
+                    <div class="mark">
+                        <div class="name">Kool D. Studio</div>
+                        <div class="subtitle">Photography</div>
+                    </div>
+                    <div class="icon"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 4: Circular Badge -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 4: Circular Badge</div>
+            <div class="demo-frame">
+                <div class="watermark-style-4">
+                    <div class="watermark-circle">
+                        <div class="studio-text">Kool D.<br>Studio</div>
+                        <div class="studio-subtitle">Est. 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 5: Minimalist Side -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 5: Minimalist Side</div>
+            <div class="demo-frame">
+                <div class="watermark-style-5">
+                    <div class="text">KOOL D STUDIO</div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 6: Bottom Banner -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 6: Bottom Banner</div>
+            <div class="demo-frame">
+                <div class="watermark-style-6"></div>
+            </div>
+        </div>
+
+        <!-- Style 7: Minimalist Text -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 7: Minimalist Text</div>
+            <div class="demo-frame">
+                <div class="watermark-style-7">
+                    <div class="brand">Kool D.</div>
+                    <div class="tagline">Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 8: Elegant Divider -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 8: Elegant Divider</div>
+            <div class="demo-frame">
+                <div class="watermark-style-8">
+                    <div class="line-top"></div>
+                    <div class="text">Kool D. Studio</div>
+                    <div class="line-bottom"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 9: Luxury Signature -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 9: Luxury Signature</div>
+            <div class="demo-frame">
+                <div class="watermark-style-9">
+                    <div class="signature">Kool D.</div>
+                    <div class="line"></div>
+                    <div class="year">2025</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 10: Geometric -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 10: Geometric</div>
+            <div class="demo-frame">
+                <div class="watermark-style-10">
+                    <div class="geo-wrapper">
+                        <div class="geo-line-1"></div>
+                        <div class="geo-text">Kool D. Studio</div>
+                        <div class="geo-line-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 11: Premium Corner Frame -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 11: Premium Corner</div>
+            <div class="demo-frame">
+                <div class="watermark-style-11">
+                    <div class="brand-name">Kool D. Studio</div>
+                    <div class="brand-desc">Est. 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 12: Abstract Elegance -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 12: Abstract</div>
+            <div class="demo-frame">
+                <div class="watermark-style-12">
+                    <div class="dot-line">
+                        <div class="dot"></div>
+                        <div class="line"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="text">STUDIO</div>
+                    <div class="dot-line">
+                        <div class="dot"></div>
+                        <div class="line"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 13: Split Name -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 13: Split Name</div>
+            <div class="demo-frame">
+                <div class="watermark-style-13">
+                    <div class="part1">Kool</div>
+                    <div class="part2">D. Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 14: Vertical With Accent -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 14: Vertical Accent</div>
+            <div class="demo-frame">
+                <div class="watermark-style-14">
+                    <div class="accent"></div>
+                    <div class="text">Kool D. Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 15: Classic Frame -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 15: Classic Frame</div>
+            <div class="demo-frame">
+                <div class="watermark-style-15">
+                    <div class="content">
+                        <div class="name">Kool D. Studio</div>
+                        <div class="tag">Est. 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 16: Modern Sans -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 16: Modern Sans</div>
+            <div class="demo-frame">
+                <div class="watermark-style-16">
+                    <div class="brand">Kool D. Studio</div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 17: Elegant Wave -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 17: Elegant Wave</div>
+            <div class="demo-frame">
+                <div class="watermark-style-17">
+                    <div class="wave"></div>
+                    <div class="text">Kool D. Studio</div>
+                    <div class="wave"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 18: Gold Stripe -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 18: Gold Stripe</div>
+            <div class="demo-frame">
+                <div class="watermark-style-18">
+                    <div class="stripe"></div>
+                    <div class="text">Kool D. Studio</div>
+                    <div class="stripe"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 19: Diamond Shape -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 19: Diamond</div>
+            <div class="demo-frame">
+                <div class="watermark-style-19">
+                    <div class="diamond">
+                        <div class="text">Kool D.<br>Studio</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 20: Ornament -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 20: Ornament</div>
+            <div class="demo-frame">
+                <div class="watermark-style-20">
+                    <div class="ornament">✦</div>
+                    <div class="text">Kool D. Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 21: Serif Elegant -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 21: Serif Elegant</div>
+            <div class="demo-frame">
+                <div class="watermark-style-21">
+                    <div class="text">Kool D. Studio</div>
+                    <div class="sub">Photography</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 22: Modern Geometric -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 22: Modern Geo</div>
+            <div class="demo-frame">
+                <div class="watermark-style-22">
+                    <div class="box"></div>
+                    <div class="text">Kool D. Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 23: Ultra Minimal -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 23: Ultra Minimal</div>
+            <div class="demo-frame">
+                <div class="watermark-style-23">
+                    <div class="text">Kool D. Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 24: Flowing Script -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 24: Flowing</div>
+            <div class="demo-frame">
+                <div class="watermark-style-24">
+                    <div class="text">Kool D. Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 25: Centered Bold -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 25: Bold Center</div>
+            <div class="demo-frame">
+                <div class="watermark-style-25">
+                    <div class="main">KOOL D. STUDIO</div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 26: Double Line -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 26: Double Line</div>
+            <div class="demo-frame">
+                <div class="watermark-style-26">
+                    <div class="line"></div>
+                    <div class="text">Kool D.</div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 27: Corner Badge -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 27: Badge</div>
+            <div class="demo-frame">
+                <div class="watermark-style-27">
+                    <div class="text">Kool D. Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 28: Vintage Style -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 28: Vintage</div>
+            <div class="demo-frame">
+                <div class="watermark-style-28">
+                    <div class="top-line"></div>
+                    <div class="text">Studio</div>
+                    <div class="bottom-line"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 29: Modern Bold -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 29: Modern Bold</div>
+            <div class="demo-frame">
+                <div class="watermark-style-29">
+                    <div class="text">Kool D. Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 30: Centered Minimal -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 30: Serif Center</div>
+            <div class="demo-frame">
+                <div class="watermark-style-30">
+                    <div class="brand">Kool D. Studio</div>
+                    <div class="year">Est. 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 31: Side Accent -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 31: Side Accent</div>
+            <div class="demo-frame">
+                <div class="watermark-style-31">
+                    <div class="accent"></div>
+                    <div class="text">Kool D. Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 32: Decorative Center -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 32: Decorative</div>
+            <div class="demo-frame">
+                <div class="watermark-style-32">
+                    <div class="deco">✦</div>
+                    <div class="text">Kool D. Studio</div>
+                    <div class="deco">✦</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 33: Rounded Frame -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 33: Rounded</div>
+            <div class="demo-frame">
+                <div class="watermark-style-33">
+                    <div class="text">Kool D. Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 34: Artistic Text -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 34: Artistic</div>
+            <div class="demo-frame">
+                <div class="watermark-style-34">
+                    <div class="line1">Kool D.</div>
+                    <div class="line2">Studio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 35: Bold Underline -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 35: Underline</div>
+            <div class="demo-frame">
+                <div class="watermark-style-35">
+                    <div class="text">Kool D. Studio</div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 36: Top Badge -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 36: Top Badge</div>
+            <div class="demo-frame">
+                <div class="watermark-style-36">
+                    <div class="badge">Kool D.</div>
+                    <div class="subtitle">Est. 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 37: Artistic Corner -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 37: Corner Serif</div>
+            <div class="demo-frame">
+                <div class="watermark-style-37">
+                    <div class="text">Kool D.</div>
+                    <div class="accent-line"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 38: Centered Poppins -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 38: Poppins Bold</div>
+            <div class="demo-frame">
+                <div class="watermark-style-38">
+                    <div class="main">Kool D. Studio</div>
+                    <div class="sub">Est. 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 39: Elegant Serif -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 39: Serif Accent</div>
+            <div class="demo-frame">
+                <div class="watermark-style-39">
+                    <div class="text">Kool D. Studio</div>
+                    <div class="accent"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Style 40: Premium Text -->
+        <div class="watermark-demo">
+            <div class="demo-title">Style 40: Premium</div>
+            <div class="demo-frame">
+                <div class="watermark-style-40">
+                    <div class="brand">Kool D. Studio</div>
+                    <div class="tagline">Photography</div>
+                </div>
+            </div>
+        </div>
