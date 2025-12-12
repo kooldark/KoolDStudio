@@ -697,78 +697,20 @@ nav.scrolled {
 }
 
 .category-share-btn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  background: rgba(235, 149, 0, 0.9);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 18px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(235, 149, 0, 0.3);
-  backdrop-filter: blur(10px);
-  z-index: 100;
-  opacity: 0;
-  transform: translateY(20px) scale(0.8);
-  pointer-events: none;
-}
-
-.category-share-btn:not(.hidden) {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-
-.category-share-btn:hover {
-  background: rgba(235, 149, 0, 1);
-  transform: translateY(0) scale(1.1);
-  box-shadow: 0 6px 20px rgba(235, 149, 0, 0.4);
-}
-
-.category-share-btn:active {
-  transform: translateY(0) scale(0.95);
-}
-
-.category-share-btn.copied {
-  background: rgba(76, 175, 80, 0.9);
-  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-}
-
-.category-share-btn .share-icon {
-  font-size: 20px;
-  display: block;
-  line-height: 1;
-}
-
-.category-share-btn .share-text {
-  display: none;
-}
-
-.category-share-btn.hidden {
-  opacity: 0 !important;
-  transform: translateY(20px) scale(0.8) !important;
-  pointer-events: none !important;
+  display: none !important;
 }
 
 /* === ALBUM SHARE BUTTON (Fixed) === */
 .album-share-btn {
   position: fixed;
   bottom: 30px;
-  right: 30px;
+  left: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 50px;
   height: 50px;
-  background: rgba(235, 149, 0, 0.9);
+  background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   border-radius: 50%;
@@ -776,9 +718,9 @@ nav.scrolled {
   font-weight: 600;
   font-size: 18px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(235, 149, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
-  z-index: 99;
+  z-index: 499;
   opacity: 0;
   transform: translateY(20px) scale(0.8);
   pointer-events: none;
@@ -791,9 +733,9 @@ nav.scrolled {
 }
 
 .album-share-btn:hover {
-  background: rgba(235, 149, 0, 1);
+  background: rgba(0, 0, 0, 0.7);
   transform: translateY(0) scale(1.1);
-  box-shadow: 0 6px 20px rgba(235, 149, 0, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .album-share-btn:active {
