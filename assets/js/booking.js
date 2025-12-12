@@ -35,6 +35,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   let selectedPackage = '';
   let selectedTime = '';
 
+  // Get package from URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const packageFromUrl = urlParams.get('package');
+
   // Render packages
   packageGrid.innerHTML = '';
   packages.forEach(pkg => {
@@ -44,6 +48,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="package-name">${pkg.name}</div>
       <div class="package-price">${pkg.price}</div>
     `;
+    
+    // Auto-select package from URL
+    if (packageFromUrl && pkg.id === packageFromUrl) {
+      card.classList.add('selected');
+      selectedPackage = pkg.name;
+    }
+    
     card.onclick = () => {
       document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
       card.classList.add('selected');

@@ -31,6 +31,12 @@
       "description": "Chụp ngoài trời, concept sáng tạo, hàng trăm ảnh"
     },
     {
+      "id": "art-elegant",
+      "name": "Art & Elegent",
+      "price": "5 - 10 triệu",
+      "description": "Gói nghệ thuật với concept tinh tế và sáng tạo"
+    },
+    {
       "id": "custom",
       "name": "Gói Tùy Chỉnh",
       "price": "Liên hệ",
