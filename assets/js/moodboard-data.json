@@ -1,10 +1,12 @@
 {
   "categories": [
     {
-      "id": "gia-đình-studio",
-      "title": "Gia đình studio",
-      "path": "assets/img/moodboard/Gia đình studio",
-      "images": []
+      "id": "gia-đình",
+      "title": "Gia Đình",
+      "path": "assets/img/moodboard/Gia Đình",
+      "images": [
+        "mb (4).webp"
+      ]
     },
     {
       "id": "wedding-studio",
