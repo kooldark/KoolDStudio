@@ -149,7 +149,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const encoded = btoa(encodeURIComponent(json));
     const shareUrl = `${window.location.origin}${window.location.pathname}?code=${encoded}`;
 
-    document.getElementById('codeBox').textContent = json;
     document.getElementById('shareLink').textContent = shareUrl;
     codeSection.style.display = 'block';
     
