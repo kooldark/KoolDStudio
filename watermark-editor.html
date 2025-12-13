@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watermark Editor - Kool D. Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Dm+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-green: #3a5a40;
+            --soft-gold: #eb9500;
+            --cream: #f9f5f0;
+            --gray: #666;
+            --white: #fff;
+            --charcoal: #2a2a2a;
+            --font-body: "Montserrat", sans-serif;
+            --font-heading: "Playfair Display", serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            color: var(--deep-green);
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            font-family: var(--font-body);
+            font-size: 16px;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        /* === EDITOR PANEL === */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .editor-panel {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(58, 90, 64, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .editor-panel h2 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--deep-green);
+            margin: 0;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--deep-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: #333;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--soft-gold);
+            box-shadow: 0 0 0 3px rgba(235, 149, 0, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--deep-green);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #2a4430;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(58, 90, 64, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--soft-gold);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: #d97e00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(235, 149, 0, 0.3);
+        }
+
+        .preview-container {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(58, 90, 64, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .preview-container h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            color: var(--deep-green);
+            margin: 0;
+            width: 100%;
+        }
+
+        #watermarkPreview {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #f5f1eb 0%, #ece8e1 100%);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(58, 90, 64, 0.3);
+        }
+
+        .info-box {
+            background: rgba(235, 149, 0, 0.1);
+            border-left: 3px solid var(--soft-gold);
+            padding: 15px;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 12px;
+            color: #333;
+            line-height: 1.6;
+            width: 100%;
+        }
+
+        /* Watermark Styles */
+        :root {
+            --deep-green: #3a5a40;
+            --soft-gold: #eb9500;
+            --cream: #f9f5f0;
+            --gray: #666;
+            --white: #fff;
+            --charcoal: #2a2a2a;
+            --font-body: "Montserrat", sans-serif;
+            --font-heading: "Playfair Display", serif;
+        }
+
+        /* === WATERMARK STYLE 1: CENTER ELEGANT === */
+        .watermark-style-1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .watermark-style-1 .logo-text {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        .watermark-style-1 .studio-name {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--soft-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .watermark-style-1 .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--soft-gold), transparent);
+            margin: 8px 0;
+        }
+
+        /* === WATERMARK STYLE 2: DIAGONAL CORNER === */
+        .watermark-style-2 {
+            opacity: 0.35;
+            transform: rotate(-45deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .watermark-style-2 .text {
+            font-family: var(--font-heading);
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+        }
+
+        /* === WATERMARK STYLE 3: BOTTOM RIGHT CORNER === */
+        .watermark-style-3 {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.6;
+        }
+
+        .watermark-style-3 .mark {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .watermark-style-3 .name {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--deep-green);
+        }
+
+        .watermark-style-3 .subtitle {
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--soft-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .watermark-style-3 .icon {
+            width: 1px;
+            height: 20px;
+            background: var(--soft-gold);
+            margin-left: 8px;
+        }
+
+        /* === WATERMARK STYLE 4: CIRCULAR BADGE === */
+        .watermark-style-4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .watermark-circle {
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--soft-gold);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            position: relative;
+            opacity: 0.65;
+        }
+
+        .watermark-circle .studio-text {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--deep-green);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .watermark-circle .studio-subtitle {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--soft-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* === WATERMARK STYLE 5: MINIMALIST SIDE === */
+        .watermark-style-5 {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.5;
+        }
+
+        .watermark-style-5 .text {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--deep-green);
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            letter-spacing: 4px;
+        }
+
+        .watermark-style-5 .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--soft-gold);
+            border-radius: 50%;
+        }
+
+        /* === WATERMARK STYLE 21: SERIF ELEGANT === */
+        .watermark-style-21 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            opacity: 0.6;
+        }
+
+        .watermark-style-21 .text {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+        }
+
+        .watermark-style-21 .sub {
+            font-family: var(--font-body);
+            font-size: 11px;
+            color: var(--soft-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* === WATERMARK STYLE 25: CENTERED BOLD === */
+        .watermark-style-25 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            opacity: 0.55;
+        }
+
+        .watermark-style-25 .main {
+            font-family: "Poppins", sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        .watermark-style-25 .dot {
+            width: 4px;
+            height: 4px;
+            background: var(--soft-gold);
+            border-radius: 50%;
+        }
+
+        /* === WATERMARK STYLE 30: CENTERED MINIMAL === */
+        .watermark-style-30 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            opacity: 0.65;
+        }
+
+        .watermark-style-30 .brand {
+            font-family: "Dm Serif Display", serif;
+            font-size: 40px;
+            color: var(--deep-green);
+            font-weight: 400;
+        }
+
+        .watermark-style-30 .year {
+            font-family: var(--font-body);
+            font-size: 9px;
+            color: var(--soft-gold);
+            letter-spacing: 2px;
+        }
+
+        /* === WATERMARK STYLE 35: BOLD UNDERLINE === */
+        .watermark-style-35 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0.65;
+        }
+
+        .watermark-style-35 .text {
+            font-family: "Poppins", sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--deep-green);
+            letter-spacing: 1px;
+        }
+
+        .watermark-style-35 .line {
+            width: 80px;
+            height: 2px;
+            background: var(--soft-gold);
+        }
+
+        /* === WATERMARK STYLE 38: CENTERED POPPINS === */
+        .watermark-style-38 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            opacity: 0.7;
+        }
+
+        .watermark-style-38 .main {
+            font-family: "Poppins", sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--soft-gold);
+            letter-spacing: 0px;
+        }
+
+        .watermark-style-38 .sub {
+            font-family: var(--font-body);
+            font-size: 10px;
+            color: var(--deep-green);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .page-title h1 {
+                font-size: 36px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            #watermarkPreview {
+                min-height: 300px;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <div class="page-title">
+        <h1>Watermark Editor</h1>
+        <p>Tạo và tải xuống watermark với định dạng PNG trong suốt</p>
+    </div>
+
+    <div class="container">
+        <!-- Editor Panel -->
+        <div class="editor-panel">
+            <h2>Chỉnh sửa Watermark</h2>
+            
+            <div class="form-group">
+                <label>Chọn Style</label>
+                <select id="styleSelect">
+                    <option value="1">Style 1: Center Elegant</option>
+                    <option value="2">Style 2: Diagonal Overlay</option>
+                    <option value="3">Style 3: Bottom Right Corner</option>
+                    <option value="4">Style 4: Circular Badge</option>
+                    <option value="5">Style 5: Minimalist Side</option>
+                    <option value="21">Style 21: Serif Elegant</option>
+                    <option value="25">Style 25: Bold Center</option>
+                    <option value="30">Style 30: Serif Center</option>
+                    <option value="35">Style 35: Underline</option>
+                    <option value="38">Style 38: Poppins Bold</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Dòng 1 (Main Text)</label>
+                <input type="text" id="line1Input" placeholder="e.g., Kool D." value="Kool D.">
+            </div>
+
+            <div class="form-group">
+                <label>Dòng 2 (Sub Text)</label>
+                <input type="text" id="line2Input" placeholder="e.g., Studio" value="Studio">
+            </div>
+
+            <div class="form-group">
+                <label>Dòng 3 (Optional)</label>
+                <input type="text" id="line3Input" placeholder="e.g., Est. 2025" value="Est. 2025">
+            </div>
+
+            <div class="info-box">
+                💡 <strong>Mẹo:</strong> PNG sẽ được tải xuống với nền trong suốt (transparent). Bạn có thể sử dụng nó trực tiếp trên ảnh của mình.
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="downloadWatermark()">⬇️ Tải PNG</button>
+                <button class="btn btn-secondary" onclick="resetPreview()">↺ Reset</button>
+            </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-container">
+            <h3>Xem trước</h3>
+            <div id="watermarkPreview"></div>
+        </div>
+    </div>
+
+    <script>
+        // Watermark templates
+        const watermarkTemplates = {
+            1: {
+                html: (line1, line2, line3) => `
+                    <div class="watermark-style-1">
+                        <div class="logo-text">${line1}</div>
+                        <div class="divider"></div>
+                        <div class="studio-name">${line2}</div>
+                    </div>
+                `,
+                size: 300
+            },
+            2: {
+                html: (line1, line2, line3) => `
+                    <div class="watermark-style-2">
+                        <div class="text">${line1} ${line2}</div>
+                    </div>
+                `,
+                size: 300
+            },
+            3: {
+                html: (line1, line2, line3) => `
+                    <div class="watermark-style-3">
+                        <div class="mark">
+                            <div class="name">${line1} ${line2}</div>
+                            <div class="subtitle">${line3}</div>
+                        </div>
+                        <div class="icon"></div>
+                    </div>
+                `,
+                size: 300
+            },
+            4: {
+                html: (line1, line2, line3) => `
+                    <div class="watermark-style-4">
+                        <div class="watermark-circle">
+                            <div class="studio-text">${line1}<br>${line2}</div>
+                            <div class="studio-subtitle">${line3}</div>
+                        </div>
+                    </div>
+                `,
+                size: 300
+            },
+            5: {
+                html: (line1, line2, line3) => `
+                    <div class="watermark-style-5">
+                        <div class="text">${(line1 + ' ' + line2).toUpperCase()}</div>
+                        <div class="dot"></div>
+                    </div>
+                `,
+                size: 300
+            },
+            21: {
+                html: (line1, line2, line3) => `
+                    <div class="watermark-style-21">
+                        <div class="text">${line1} ${line2}</div>
+                        <div class="sub">${line3}</div>
+                    </div>
+                `,
+                size: 300
+            },
+            25: {
+                html: (line1, line2, line3) => `
+                    <div class="watermark-style-25">
+                        <div class="main">${(line1 + ' ' + line2).toUpperCase()}</div>
+                        <div class="dot"></div>
+                    </div>
+                `,
+                size: 300
+            },
+            30: {
+                html: (line1, line2, line3) => `
+                    <div class="watermark-style-30">
+                        <div class="brand">${line1} ${line2}</div>
+                        <div class="year">${line3}</div>
+                    </div>
+                `,
+                size: 300
+            },
+            35: {
+                html: (line1, line2, line3) => `
+                    <div class="watermark-style-35">
+                        <div class="text">${line1} ${line2}</div>
+                        <div class="line"></div>
+                    </div>
+                `,
+                size: 300
+            },
+            38: {
+                html: (line1, line2, line3) => `
+                    <div class="watermark-style-38">
+                        <div class="main">${line1} ${line2}</div>
+                        <div class="sub">${line3}</div>
+                    </div>
+                `,
+                size: 300
+            }
+        };
+
+        // Initialize preview
+        function updatePreview() {
+            const styleId = document.getElementById('styleSelect').value;
+            const line1 = document.getElementById('line1Input').value || 'Kool D.';
+            const line2 = document.getElementById('line2Input').value || 'Studio';
+            const line3 = document.getElementById('line3Input').value || 'Est. 2025';
+            
+            const template = watermarkTemplates[styleId];
+            if (!template) return;
+            
+            const preview = document.getElementById('watermarkPreview');
+            preview.innerHTML = template.html(line1, line2, line3);
+        }
+
+        function resetPreview() {
+            document.getElementById('line1Input').value = 'Kool D.';
+            document.getElementById('line2Input').value = 'Studio';
+            document.getElementById('line3Input').value = 'Est. 2025';
+            updatePreview();
+        }
+
+        async function downloadWatermark() {
+            const styleId = document.getElementById('styleSelect').value;
+            const line1 = document.getElementById('line1Input').value || 'Kool D.';
+            const line2 = document.getElementById('line2Input').value || 'Studio';
+            const line3 = document.getElementById('line3Input').value || 'Est. 2025';
+            
+            const template = watermarkTemplates[styleId];
+            if (!template) return;
+
+            // Create temporary container with fixed size
+            const tempContainer = document.createElement('div');
+            tempContainer.style.width = '400px';
+            tempContainer.style.height = '400px';
+            tempContainer.style.background = 'transparent';
+            tempContainer.style.position = 'fixed';
+            tempContainer.style.left = '-9999px';
+            tempContainer.style.display = 'flex';
+            tempContainer.style.alignItems = 'center';
+            tempContainer.style.justifyContent = 'center';
+            tempContainer.style.padding = '40px';
+            
+            tempContainer.innerHTML = template.html(line1, line2, line3);
+            document.body.appendChild(tempContainer);
+
+            try {
+                const canvas = await html2canvas(tempContainer, {
+                    backgroundColor: null,
+                    scale: 3,
+                    allowTaint: true,
+                    useCORS: true,
+                    logging: false
+                });
+
+                // Download canvas as PNG
+                canvas.toBlob(blob => {
+                    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+                    saveAs(blob, `watermark-${timestamp}.png`);
+                });
+            } catch (error) {
+                console.error('Error generating watermark:', error);
+                alert('Lỗi khi tạo watermark. Vui lòng thử lại.');
+            } finally {
+                document.body.removeChild(tempContainer);
+            }
+        }
+
+        // Event listeners
+        document.getElementById('styleSelect').addEventListener('change', updatePreview);
+        document.getElementById('line1Input').addEventListener('input', updatePreview);
+        document.getElementById('line2Input').addEventListener('input', updatePreview);
+        document.getElementById('line3Input').addEventListener('input', updatePreview);
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', updatePreview);
+    </script>
+</body>
+</html>

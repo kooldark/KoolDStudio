@@ -1231,12 +1231,199 @@
                 min-height: 300px;
             }
         }
+        /* === EDITOR PANEL === */
+        .editor-panel {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(58, 90, 64, 0.15);
+            max-width: 500px;
+            margin: 0 auto 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .editor-panel h2 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--deep-green);
+            margin: 0;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--deep-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: #333;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--soft-gold);
+            box-shadow: 0 0 0 3px rgba(235, 149, 0, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--deep-green);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #2a4430;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(58, 90, 64, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--soft-gold);
+            color: var(--white);
+            flex: 1;
+        }
+
+        .btn-secondary:hover {
+            background: #d97e00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(235, 149, 0, 0.3);
+        }
+
+        .preview-section {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .preview-section p {
+            font-family: var(--font-body);
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        #watermarkPreview {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f5f1eb 0%, #ece8e1 100%);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(58, 90, 64, 0.3);
+        }
+
+        .info-box {
+            background: rgba(235, 149, 0, 0.1);
+            border-left: 3px solid var(--soft-gold);
+            padding: 15px;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 12px;
+            color: #333;
+            line-height: 1.6;
+        }
+
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 </head>
 <body>
     <div class="page-title">
         <h1>Watermark Designs</h1>
         <p>Kool D. Studio - Art & Elegance</p>
+    </div>
+
+    <!-- Editor Panel -->
+    <div class="editor-panel">
+        <h2>Chỉnh sửa Watermark</h2>
+        
+        <div class="form-group">
+            <label>Chọn Style</label>
+            <select id="styleSelect">
+                <option value="1">Style 1: Center Elegant</option>
+                <option value="2">Style 2: Diagonal Overlay</option>
+                <option value="3">Style 3: Bottom Right Corner</option>
+                <option value="4">Style 4: Circular Badge</option>
+                <option value="5">Style 5: Minimalist Side</option>
+                <option value="21">Style 21: Serif Elegant</option>
+                <option value="25">Style 25: Bold Center</option>
+                <option value="30">Style 30: Serif Center</option>
+                <option value="35">Style 35: Underline</option>
+                <option value="38">Style 38: Poppins Bold</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Dòng 1 (Main Text)</label>
+            <input type="text" id="line1Input" placeholder="e.g., Kool D." value="Kool D.">
+        </div>
+
+        <div class="form-group">
+            <label>Dòng 2 (Sub Text)</label>
+            <input type="text" id="line2Input" placeholder="e.g., Studio" value="Studio">
+        </div>
+
+        <div class="form-group">
+            <label>Dòng 3 (Optional)</label>
+            <input type="text" id="line3Input" placeholder="e.g., Est. 2025" value="Est. 2025">
+        </div>
+
+        <div class="preview-section">
+            <p>Xem trước:</p>
+            <div id="watermarkPreview" style="width: 300px; height: 300px; margin: 0 auto;"></div>
+        </div>
+
+        <div class="info-box">
+            💡 <strong>Mẹo:</strong> PNG sẽ được tải xuống với nền trong suốt (transparent). Bạn có thể sử dụng nó trực tiếp trên ảnh của mình.
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="downloadWatermark()">⬇️ Tải PNG</button>
+            <button class="btn btn-secondary" onclick="resetPreview()">↺ Reset</button>
+        </div>
     </div>
 
     <div class="watermark-container">
