@@ -88,14 +88,14 @@ function resetPreview() {
     if (line1Input) line1Input.value = 'Kool D.';
     if (line2Input) line2Input.value = 'Studio';
     if (line3Input) line3Input.value = 'Est. 2025';
-    if (opacitySlider) opacitySlider.value = 60;
-    if (opacityValue) opacityValue.textContent = '60%';
+    if (opacitySlider) opacitySlider.value = 80;
+    if (opacityValue) opacityValue.textContent = '80%';
     
     currentMainFont = 'Playfair';
     currentSubFont = 'Montserrat';
     
-    // Reset to classic palette
-    applyColorPalette('classic');
+    // Reset to sophisticate palette
+    applyColorPalette('sophisticate');
 
     // Manually set the active buttons for fonts
     document.querySelectorAll('.font-main-item').forEach(b => {
@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderFontLibrary();
     buildGallery();
     renderFavorites();
-    applyColorPalette('classic');
+    applyColorPalette('sophisticate');
     updatePreview();
 });
 

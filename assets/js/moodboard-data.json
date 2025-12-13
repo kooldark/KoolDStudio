@@ -1,35 +1,20 @@
 {
   "categories": [
     {
-      "id": "concep-chân-dung",
-      "title": "Concep chân dung",
-      "path": "assets/img/moodboard/Concep chân dung",
-      "images": []
-    },
-    {
-      "id": "hoa-cưới",
-      "title": "Hoa cưới",
-      "path": "assets/img/moodboard/Hoa cưới",
-      "images": []
-    },
-    {
-      "id": "tạo-dáng-ảnh-cưới",
-      "title": "Tạo dáng ảnh cưới",
-      "path": "assets/img/moodboard/Tạo dáng ảnh cưới",
+      "id": "ảnh-cưới",
+      "title": "Ảnh cưới",
+      "path": "assets/img/moodboard/Ảnh cưới",
       "images": [
+        "1(1).png",
+        "2.png",
         "mb (1).webp",
         "mb (2).webp",
         "mb (3).webp",
         "mb (4).webp",
         "mb (5).webp",
-        "mb (6).webp"
+        "mb (6).webp",
+        "Untitled-1.jpg"
       ]
-    },
-    {
-      "id": "tạo-dáng-gia-đình",
-      "title": "Tạo dáng gia đình",
-      "path": "assets/img/moodboard/Tạo dáng gia đình",
-      "images": []
     }
   ]
 }
