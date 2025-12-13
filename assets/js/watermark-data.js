@@ -43,16 +43,11 @@ const watermarkTemplates = {
 };
 
 const colorPalettes = {
-    minimal: { name: 'Minimal', primary: '#2c3e50', secondary: '#34495e', tertiary: '#ecf0f1' },
     elegant: { name: 'Elegant', primary: '#1a1a1a', secondary: '#d4af37', tertiary: '#f5f5f5' },
-    roseGold: { name: 'Rose Gold', primary: '#8b6f7a', secondary: '#e6b8a3', tertiary: '#f9f5f0' },
-    sophisticate: { name: 'Sophisticate', primary: '#2d5016', secondary: '#d4a574', tertiary: '#f5ede3' },
-    moody: { name: 'Moody', primary: '#3e3b52', secondary: '#d8b5a8', tertiary: '#ede7df' },
     noir: { name: 'Noir', primary: '#1f1f1f', secondary: '#e8dcc8', tertiary: '#fef9f3' },
-    forest: { name: 'Forest', primary: '#264653', secondary: '#e76f51', tertiary: '#f4f1de' },
-    blush: { name: 'Blush', primary: '#c9ada7', secondary: '#d5b9b2', tertiary: '#ffd6d0' },
-    slate: { name: 'Slate', primary: '#455659', secondary: '#c9b7a6', tertiary: '#eeebe3' },
-    muted: { name: 'Muted', primary: '#5f6368', secondary: '#c39c8a', tertiary: '#f8f6f2' }
+    luxury: { name: 'Luxury', primary: '#1a1a1a', secondary: '#c9a961', tertiary: '#f4f1e8' },
+    vintage: { name: 'Vintage', primary: '#5d4e37', secondary: '#d9b894', tertiary: '#fdf6f1' },
+    modern: { name: 'Modern', primary: '#2d3748', secondary: '#718096', tertiary: '#edf2f7' }
 };
 
 const fontLibrary = [

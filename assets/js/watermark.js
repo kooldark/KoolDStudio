@@ -1,5 +1,5 @@
 
-let currentColor = 'var(--deep-green)';
+let currentColor = '#1a1a1a';
 let currentMainFont = 'Playfair';
 let currentSubFont = 'Montserrat';
 let favorites = JSON.parse(localStorage.getItem('watermarkFavorites')) || [];
@@ -23,10 +23,7 @@ function applyColorPalette(paletteName) {
     const palette = colorPalettes[paletteName];
     currentColor = palette.primary;
 
-    document.documentElement.style.setProperty('--deep-green', palette.primary);
-    document.documentElement.style.setProperty('--soft-gold', palette.secondary);
-    document.documentElement.style.setProperty('--cream', palette.tertiary);
-
+    // Only update the watermark preview color, not the entire website
     // Set active palette button
     document.querySelectorAll('.color-palette-btn').forEach(b => b.classList.remove('active'));
     const activePaletteBtn = document.querySelector(`.color-palette-btn[data-palette="${paletteName}"]`);
@@ -94,8 +91,11 @@ function resetPreview() {
     currentMainFont = 'Playfair';
     currentSubFont = 'Montserrat';
     
-    // Reset to sophisticate palette
-    applyColorPalette('sophisticate');
+    // Reset to elegant palette
+    currentColor = colorPalettes['elegant'].primary;
+    document.querySelectorAll('.color-palette-btn').forEach(b => b.classList.remove('active'));
+    const elegantBtn = document.querySelector(`.color-palette-btn[data-palette="elegant"]`);
+    if (elegantBtn) elegantBtn.classList.add('active');
 
     // Manually set the active buttons for fonts
     document.querySelectorAll('.font-main-item').forEach(b => {
@@ -107,6 +107,43 @@ function resetPreview() {
         if (b.dataset.key === currentSubFont) b.classList.add('active');
     });
 
+    updatePreview();
+}
+
+function randomizeAll() {
+    // Random style (1-40)
+    const randomStyle = Math.floor(Math.random() * 40) + 1;
+    const styleSelect = document.getElementById('styleSelect');
+    if (styleSelect) {
+        styleSelect.value = randomStyle;
+    }
+    
+    // Random main font
+    const randomMainFontIndex = Math.floor(Math.random() * fontLibrary.length);
+    const randomMainFont = fontLibrary[randomMainFontIndex].key;
+    currentMainFont = randomMainFont;
+    document.querySelectorAll('.font-main-item').forEach(b => {
+        b.classList.remove('active');
+        if (b.dataset.key === randomMainFont) b.classList.add('active');
+    });
+    
+    // Random sub font
+    const randomSubFontIndex = Math.floor(Math.random() * fontLibrary.length);
+    const randomSubFont = fontLibrary[randomSubFontIndex].key;
+    currentSubFont = randomSubFont;
+    document.querySelectorAll('.font-sub-item').forEach(b => {
+        b.classList.remove('active');
+        if (b.dataset.key === randomSubFont) b.classList.add('active');
+    });
+    
+    // Random color palette
+    const paletteKeys = Object.keys(colorPalettes);
+    const randomPaletteKey = paletteKeys[Math.floor(Math.random() * paletteKeys.length)];
+    currentColor = colorPalettes[randomPaletteKey].primary;
+    document.querySelectorAll('.color-palette-btn').forEach(b => b.classList.remove('active'));
+    const randomPaletteBtn = document.querySelector(`.color-palette-btn[data-palette="${randomPaletteKey}"]`);
+    if (randomPaletteBtn) randomPaletteBtn.classList.add('active');
+    
     updatePreview();
 }
 
@@ -345,16 +382,46 @@ document.addEventListener('DOMContentLoaded', () => {
         styleSelect.appendChild(opt);
     });
 
-    // Populate color palettes
-    const paletteGroup = document.getElementById('paletteGroup');
-    if (paletteGroup) {
-        Object.keys(colorPalettes).forEach(key => {
-            const btn = document.createElement('button');
-            btn.className = `color-palette-btn font-btn ${key === 'classic' ? 'active' : ''}`;
-            btn.textContent = colorPalettes[key].name;
-            btn.dataset.palette = key;
-            btn.onclick = () => applyColorPalette(key);
-            paletteGroup.appendChild(btn);
+    // Color picker controls - IMPORTANT: Move this BEFORE other listeners
+    const colorPicker = document.getElementById('colorPicker');
+    const colorInput = document.getElementById('colorInput');
+    
+    if (colorPicker && colorInput) {
+        const handleColorChange = (newColor) => {
+            currentColor = newColor;
+            colorPicker.value = newColor;
+            colorInput.value = newColor;
+            updatePreview();
+        };
+        
+        colorPicker.addEventListener('change', (e) => {
+            handleColorChange(e.target.value);
+        });
+        colorPicker.addEventListener('input', (e) => {
+            handleColorChange(e.target.value);
+        });
+        
+        colorInput.addEventListener('input', (e) => {
+            let colorValue = e.target.value.trim();
+            if (colorValue === '') return;
+            if (!colorValue.startsWith('#')) {
+                colorValue = '#' + colorValue;
+            }
+            if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(colorValue)) {
+                handleColorChange(colorValue);
+            }
+        });
+        
+        colorInput.addEventListener('blur', (e) => {
+            let colorValue = e.target.value.trim();
+            if (!colorValue.startsWith('#')) {
+                colorValue = '#' + colorValue;
+            }
+            if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(colorValue)) {
+                handleColorChange(colorValue);
+            } else {
+                colorInput.value = currentColor;
+            }
         });
     }
 
@@ -431,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderFontLibrary();
     buildGallery();
     renderFavorites();
-    applyColorPalette('sophisticate');
+    currentColor = '#1a1a1a';
     updatePreview();
 });
 

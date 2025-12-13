@@ -68,8 +68,8 @@
         .feeling-btn:hover { background: var(--white); border-color: var(--soft-gold); color: var(--deep-green); box-shadow: 0 4px 12px rgba(235, 149, 0, 0.12); }
         .feeling-btn.active { background: var(--deep-green); color: var(--white); border-color: var(--deep-green); box-shadow: 0 6px 16px rgba(58, 90, 64, 0.25); }
 
-        .action-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
-        .btn { padding: 12px 16px; border: none; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.6px; transition: all 0.3s; }
+        .action-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .btn { padding: 9px 12px; border: none; border-radius: 8px; font-size: 10px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.6px; transition: all 0.3s; }
         .btn-primary { background: var(--deep-green); color: var(--white); box-shadow: 0 6px 16px rgba(58, 90, 64, 0.22); }
         .btn-primary:hover { background: #2a4430; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(58, 90, 64, 0.3); }
         .btn-primary:active { transform: translateY(-1px); }
