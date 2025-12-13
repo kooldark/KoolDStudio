@@ -1,19 +1,29 @@
 {
   "categories": [
     {
-      "id": "ảnh-cưới",
-      "title": "Ảnh cưới",
-      "path": "assets/img/moodboard/Ảnh cưới",
+      "id": "chụp-ảnh-cưới-studio",
+      "title": "Chụp ảnh cưới studio",
+      "path": "assets/img/moodboard/Chụp ảnh cưới studio",
       "images": [
-        "1(1).png",
-        "2.png",
-        "mb (1).webp",
-        "mb (2).webp",
-        "mb (3).webp",
-        "mb (4).webp",
-        "mb (5).webp",
-        "mb (6).webp",
-        "Untitled-1.jpg"
+        "wd (1).webp",
+        "wd (10).webp",
+        "wd (11).webp",
+        "wd (12).webp",
+        "wd (13).webp",
+        "wd (14).webp",
+        "wd (15).webp",
+        "wd (16).webp",
+        "wd (17).webp",
+        "wd (18).webp",
+        "wd (19).webp",
+        "wd (2).webp",
+        "wd (3).webp",
+        "wd (4).webp",
+        "wd (5).webp",
+        "wd (6).webp",
+        "wd (7).webp",
+        "wd (8).webp",
+        "wd (9).webp"
       ]
     }
   ]
