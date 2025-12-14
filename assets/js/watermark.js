@@ -43,9 +43,9 @@ function setTextColor(c, event) {
 
 function updatePreview() {
     const styleId = document.getElementById('styleSelect').value;
-    const l1 = document.getElementById('line1Input')?.value || 'Kool D.';
-    const l2 = document.getElementById('line2Input')?.value || 'Studio';
-    const l3 = document.getElementById('line3Input')?.value || 'Est. 2025';
+    const l1 = document.getElementById('line1Input')?.value || '';
+    const l2 = document.getElementById('line2Input')?.value || '';
+    const l3 = document.getElementById('line3Input')?.value || '';
     const opacitySlider = document.getElementById('opacitySlider');
     const opacity = opacitySlider ? opacitySlider.value / 100 : 0.6;
 
@@ -149,9 +149,9 @@ function randomizeAll() {
 
 async function downloadWatermark() {
     const styleId = document.getElementById('styleSelect').value;
-    const l1 = document.getElementById('line1Input').value || 'Kool D.';
-    const l2 = document.getElementById('line2Input').value || 'Studio';
-    const l3 = document.getElementById('line3Input').value || 'Est. 2025';
+    const l1 = document.getElementById('line1Input').value || '';
+    const l2 = document.getElementById('line2Input').value || '';
+    const l3 = document.getElementById('line3Input').value || '';
 
     const template = watermarkTemplates[styleId];
     if (!template) return;
