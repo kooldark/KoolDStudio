@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
+
 </head>
 <body>
     <!-- NAVIGATION -->
@@ -39,7 +40,6 @@
             <div class="editor-panel">
                 <div class="editor-header">
                     <h2>✏️ Chỉnh sửa</h2>
-                    <p>Tùy chỉnh watermark của bạn</p>
                 </div>
 
                 <!-- SECTION 1: STYLE -->
@@ -69,9 +69,9 @@
 
                 <!-- SECTION 3: ACTIONS -->
                 <div class="action-buttons">
-                    <button class="btn btn-primary" onclick="downloadWatermark()">⬇️ Tải PNG</button>
+                    <button class="btn btn-primary" onclick="downloadWatermark()">⬇️ Tải thiết kế</button>
                     <button class="btn btn-secondary" onclick="resetPreview()">↺ Reset</button>
-                    <button class="btn btn-secondary" onclick="randomizeAll()">🎲 Random</button>
+                    <button class="btn btn-secondary" onclick="randomizeAll()">🎲 Tự động</button>
                 </div>
 
                 <!-- ACCORDION: ADVANCED -->
@@ -95,7 +95,6 @@
 
                         <!-- Additional Actions -->
                         <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-                            <button class="btn btn-outline" style="flex:1; padding:9px; font-size:10px;" onclick="copyWatermarkConfig()">📋 Copy</button>
                             <button class="btn btn-outline" style="flex:1; padding:9px; font-size:10px;" onclick="saveFavorite()">⭐ Lưu</button>
                         </div>
 
@@ -109,7 +108,6 @@
             </div>
 
             <div class="preview-panel">
-                <h3>👁️ Xem trước</h3>
                 <div id="watermarkPreview"></div>
             </div>
         </div>

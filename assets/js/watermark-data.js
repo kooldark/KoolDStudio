@@ -1,9 +1,9 @@
 
 const watermarkTemplates = {
-    1: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-1" style="color:${c}; font-family:${getFontFamily(f)}"><div class="logo-text">${l1}</div><div class="divider"></div><div class="studio-name">${l2}</div></div>` },
+    1: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-1" style="color:${c}; font-family:${getFontFamily(f)}"><div class="logo-text">${l1}</div><div class="divider"></div><div class="studio-name">${l2}</div><div class="year-text">${l3}</div></div>` },
     2: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-2"><div class="text" style="color:${c}; font-family:${getFontFamily(f)}">${l1} ${l2}</div></div>` },
     3: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-3" style="color:${c}; font-family:${getFontFamily(f)}"><div class="mark"><div class="name">${l1}</div><div class="subtitle">${l2}</div></div></div>` },
-    4: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-4"><div class="watermark-circle" style="color:${c}; font-family:${getFontFamily(f)}"><div class="studio-text">${l1}<br>${l2}</div></div></div>` },
+    4: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-4"><div class="watermark-circle" style="color:${c}; font-family:${getFontFamily(f)}"><div class="studio-text">${l1}</div><div class="studio-subtitle">${l2}</div><div class="studio-year">${l3}</div></div></div>` },
     5: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-5" style="color:${c}; font-family:${getFontFamily(f)}"><div class="text">${(l1+' '+l2).toUpperCase()}</div></div>` },
     6: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-6"></div>` },
     7: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-7" style="color:${c}; font-family:${getFontFamily(f)}"><div class="brand">${l1}</div><div class="tagline">${l2}</div></div>` },
@@ -39,7 +39,8 @@ const watermarkTemplates = {
     37: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-37" style="color:${c}; font-family:${getFontFamily(f)}"><div class="text">${l1}</div><div class="accent-line"></div></div>` },
     38: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-38" style="color:${c}; font-family:${getFontFamily(f)}"><div class="main">${l1} ${l2}</div><div class="sub">${l3}</div></div>` },
     39: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-39" style="color:${c}; font-family:${getFontFamily(f)}"><div class="text">${l1}</div><div class="accent"></div></div>` },
-    40: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-40" style="color:${c}; font-family:${getFontFamily(f)}"><div class="brand">${l1}</div><div class="tagline">${l3}</div></div>` }
+    40: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-40" style="color:${c}; font-family:${getFontFamily(f)}"><div class="brand">${l1}</div><div class="tagline">${l3}</div></div>` },
+    41: { html: (l1, l2, l3, c, f) => `<div class="watermark-style-41" style="color:${c}; font-family:${getFontFamily(f)}"><div class="line-2-top">${l2}</div><div class="line-1-main">${l1}</div><div class="line-3-bottom">${l3}</div></div>` }
 };
 
 const colorPalettes = {
