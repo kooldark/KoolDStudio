@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         :root {
             --deep-green: #3a5a40;
@@ -773,6 +774,10 @@
     </div>
 
 <script>
+    // Load modal manager before DOMContentLoaded
+</script>
+<script src="assets/js/modal.js"></script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const els = {
             date: document.getElementById('contract-date'),
@@ -952,7 +957,7 @@
         function saveContract() {
             const contractName = els.contractNameInput.value.trim();
             if (!contractName) {
-                alert('Vui lòng nhập tên hợp đồng để lưu!');
+                modal.warning('Vui lòng nhập tên hợp đồng để lưu!', 'Cảnh báo');
                 return;
             }
 
@@ -967,10 +972,10 @@
 
             try {
                 localStorage.setItem(`contract_${contractName}`, JSON.stringify(savedContract));
-                alert(`Hợp đồng "${contractName}" đã được lưu thành công!`);
+                modal.success(`Hợp đồng "${contractName}" đã được lưu thành công!`, 'Thành công');
                 renderContractList();
             } catch (e) {
-                alert('Lỗi khi lưu hợp đồng: ' + e.message);
+                modal.error('Lỗi khi lưu hợp đồng: ' + e.message, 'Lỗi');
             }
         }
 
@@ -982,28 +987,30 @@
                     setContractData(parsedContract.data);
                     els.contractNameInput.value = contractName;
                     els.contractNotesInput.value = parsedContract.notes || '';
-                    alert(`Hợp đồng "${contractName}" đã được tải.`);
+                    modal.success(`Hợp đồng "${contractName}" đã được tải.`, 'Thành công');
                 } else {
-                    alert('Không tìm thấy hợp đồng này.');
+                    modal.info('Không tìm thấy hợp đồng này.', 'Thông báo');
                 }
             } catch (e) {
-                alert('Lỗi khi tải hợp đồng: ' + e.message);
+                modal.error('Lỗi khi tải hợp đồng: ' + e.message, 'Lỗi');
             }
         }
 
         function deleteContract(contractName) {
-            if (confirm(`Bạn có chắc chắn muốn xóa hợp đồng "${contractName}"?`)) {
-                try {
-                    localStorage.removeItem(`contract_${contractName}`);
-                    alert(`Hợp đồng "${contractName}" đã được xóa.`);
-                    renderContractList();
-                    if (els.contractNameInput.value === contractName) {
-                        clearCurrentContract();
+            modal.confirm(`Bạn có chắc chắn muốn xóa hợp đồng "${contractName}"?`, 'Xác nhận xóa').then(confirmed => {
+                if (confirmed) {
+                    try {
+                        localStorage.removeItem(`contract_${contractName}`);
+                        modal.success(`Hợp đồng "${contractName}" đã được xóa.`, 'Thành công');
+                        renderContractList();
+                        if (els.contractNameInput.value === contractName) {
+                            clearCurrentContract();
+                        }
+                    } catch (e) {
+                        modal.error('Lỗi khi xóa hợp đồng: ' + e.message, 'Lỗi');
                     }
-                } catch (e) {
-                    alert('Lỗi khi xóa hợp đồng: ' + e.message);
                 }
-            }
+            });
         }
 
         function clearCurrentContract() {
@@ -1072,9 +1079,9 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                alert('Ảnh chụp màn hình đã được lưu!');
+                modal.success('Ảnh chụp màn hình đã được lưu!', 'Thành công');
             } catch (e) {
-                alert('Lỗi khi chụp màn hình: ' + e.message);
+                modal.error('Lỗi khi chụp màn hình: ' + e.message, 'Lỗi');
             }
         }
 
@@ -1103,9 +1110,9 @@
                 }
 
                 pdf.save(`HopDong_${els.contractNameInput.value || 'Moi'}_${new Date().toISOString().slice(0,10)}.pdf`);
-                alert('Hợp đồng đã được xuất ra PDF!');
+                modal.success('Hợp đồng đã được xuất ra PDF!', 'Thành công');
             } catch (e) {
-                alert('Lỗi khi xuất PDF: ' + e.message);
+                modal.error('Lỗi khi xuất PDF: ' + e.message, 'Lỗi');
             }
         }
 

@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let lightboxSwiper = null; // To hold the Swiper instance
 
   const titles = {
-    cuoi:      { vn: "Ảnh Cưới",      en: "Pre-Wedding" },
-    makeup:    { vn: "Makeup",        en: "Bridal" },
-    "gia-dinh":{ vn: "Gia Đình",       en: "Family" },
-    "phong-su":{ vn: "Phóng Sự",  en: "Wedding Day" }
+    cuoi:      { vn: "Ảnh Cưới", en: "Fine Art Wedding" },
+    makeup:    { vn: "Makeup", en: "Artistic Makeup" },
+    "gia-dinh":{ vn: "Khoảnh Khắc Gia Đình", en: "Family Moments" },
+    "phong-su":{ vn: "Phóng Sự",  en: "Wedding Story" }
   };
 
   // --- UPDATE META TAGS FOR SOCIAL SHARING ---
@@ -146,8 +146,8 @@ document.addEventListener("DOMContentLoaded", () => {
       currentAlbumLink = null;
       pageSubtitle.textContent = originalSubtitle;
       updateMetaTags(
-        'Portfolio - Kool D. Studio | Ảnh Cưới Hàn Quốc & Gia Đình',
-        'Portfolio ảnh cưới phong cách Hàn Quốc tinh tế, gia đình, makeup & phóng sự tại Kool D. Studio',
+        'Portfolio | Kool D. Studio | Dấu Ấn Khoảnh Khắc',
+        'Tuyển tập những khoảnh khắc đẹp nhất được thực hiện bởi Kool D. Studio. Khám phá các câu chuyện tình yêu, gia đình và những ngày trọng đại.',
         'https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg'
       );
     } else if (data && typeof data === 'object' && !Array.isArray(data)) {
@@ -160,12 +160,11 @@ document.addEventListener("DOMContentLoaded", () => {
         currentAlbumLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(currentCategory)}&album=${encodeURIComponent(currentAlbum)}`;
         pageSubtitle.textContent = `Album: ${currentAlbum}`;
 
-        // Update meta tags for album sharing
         const firstImagePath = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${currentCategory}/${currentAlbum}/${data[currentAlbum][0]}`;
         const categoryTitle = titles[currentCategory]?.vn || currentCategory;
         updateMetaTags(
-          `${currentAlbum} - ${categoryTitle} | Kool D. Studio`,
-          `Album ${currentAlbum} từ bộ sưu tập ${categoryTitle} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
+          `Album "${currentAlbum}" | ${categoryTitle} | Kool D. Studio`,
+          `Album "${currentAlbum}" thuộc tuyển tập ${categoryTitle} của Kool D. Studio. Lắng nghe câu chuyện được kể qua từng khuôn hình.`,
           firstImagePath
         );
       } else {
@@ -176,8 +175,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const categoryTitle = titles[currentCategory]?.vn || currentCategory;
         updateMetaTags(
-          `${categoryTitle} - Kool D. Studio`,
-          `Khám phá bộ sưu tập ${categoryTitle} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
+          `${categoryTitle} | Kool D. Studio Portfolio`,
+          `Khám phá tuyển tập ${categoryTitle} tại Kool D. Studio. Mỗi tác phẩm là một câu chuyện độc đáo, được ghi lại bằng cả trái tim.`,
           'https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg'
         );
       }
@@ -190,8 +189,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const categoryTitle = titles[currentCategory]?.vn || currentCategory;
       updateMetaTags(
-        `${categoryTitle} - Kool D. Studio`,
-        `Khám phá bộ sưu tập ${categoryTitle} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
+        `${categoryTitle} | Kool D. Studio Portfolio`,
+        `Khám phá tuyển tập ${categoryTitle} tại Kool D. Studio. Mỗi tác phẩm là một câu chuyện độc đáo, được ghi lại bằng cả trái tim.`,
         'https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg'
       );
     } else {
@@ -199,8 +198,8 @@ document.addEventListener("DOMContentLoaded", () => {
       backButton.classList.add('hidden');
       categoryShareBtn.classList.add('hidden');
       updateMetaTags(
-        'Portfolio - Kool D. Studio',
-        'Portfolio ảnh cưới phong cách Hàn Quốc tinh tế, gia đình, makeup & phóng sự tại Kool D. Studio',
+        'Portfolio | Kool D. Studio',
+        'Tuyển tập những khoảnh khắc đẹp nhất được thực hiện bởi Kool D. Studio. Khám phá các câu chuyện tình yêu, gia đình và những ngày trọng đại.',
         'https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg'
       );
     }

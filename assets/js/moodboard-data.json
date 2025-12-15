@@ -1,29 +1,976 @@
 {
   "categories": [
     {
-      "id": "chụp-ảnh-cưới-studio",
-      "title": "Chụp ảnh cưới studio",
-      "path": "assets/img/moodboard/Chụp ảnh cưới studio",
+      "id": "1.sweet-&-romantic",
+      "title": "1.Sweet & Romantic",
+      "path": "assets/img/moodboard/1.Sweet & Romantic",
       "images": [
-        "wd (1).webp",
-        "wd (10).webp",
-        "wd (11).webp",
-        "wd (12).webp",
-        "wd (13).webp",
-        "wd (14).webp",
-        "wd (15).webp",
-        "wd (16).webp",
-        "wd (17).webp",
-        "wd (18).webp",
-        "wd (19).webp",
-        "wd (2).webp",
-        "wd (3).webp",
-        "wd (4).webp",
-        "wd (5).webp",
-        "wd (6).webp",
-        "wd (7).webp",
-        "wd (8).webp",
-        "wd (9).webp"
+        {
+          "name": "download (16).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (18).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (26).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (27).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (30).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (31).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (32).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (38).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (42).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (46).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (47).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (48).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (49).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (64).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (65).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (72).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (73).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (81).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (89).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (90).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (93).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (95).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (98).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download - 2025-12-14T112228.601.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download - 2025-12-14T112612.809.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download - 2025-12-14T120402.475.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "Wedding photo.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "아이웨딩 _ 브랜드 _ 웨딩스튜디오 _ 어바웃제인(웨딩스튜디오).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "아이웨딩 _ 브랜드 _ 화보 (1).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "아이웨딩 _ 브랜드 _ 화보 (2).webp",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "id": "2.fun-&-playful",
+      "title": "2.Fun & Playful",
+      "path": "assets/img/moodboard/2.Fun & Playful",
+      "images": [
+        {
+          "name": "download (19).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (23).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (25).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (28).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (34).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (39).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (40).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (43).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (49).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (51).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (53).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (54).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (55).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (56).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (62).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (70).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (77).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (80).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (84).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (85).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (87).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (97).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (99).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download - 2025-12-14T112241.155.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "Masterpiece　写真集 _ Wonkyu Japan.webp",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "id": "3.-minimal-&-editorial",
+      "title": "3. Minimal & Editorial",
+      "path": "assets/img/moodboard/3. Minimal & Editorial",
+      "images": [
+        {
+          "name": "download (22).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (29).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (33).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (36).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (37).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (41).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (57).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (58).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (59).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (60).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (67).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (68).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (71).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (74).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (88).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (91).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (94).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download - 2025-12-14T112221.039.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download - 2025-12-14T112534.227.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "Korean Pre-Wedding Studio Photoshoot.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "👰🏻🤵🏻.webp",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "id": "4.-close-up-emotions",
+      "title": "4. Close Up Emotions",
+      "path": "assets/img/moodboard/4. Close-Up Emotions",
+      "images": [
+        {
+          "name": "download (100).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (17).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (18).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (31).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (44).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (45).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (50).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (61).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (63).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (66).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (75).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (78).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (79).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (82).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (86).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "KOREAN WEDDING B-016 SEOLREM MAERYEOG JUYIBO STUDIO _ korea wedding pledge.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "아이웨딩.webp",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "id": "5.hands-&-details",
+      "title": "5.Hands & Details",
+      "path": "assets/img/moodboard/5.Hands & Details",
+      "images": [
+        {
+          "name": "-_잔뜩 보여주고 싶은 수줍음__🏷️_예약 및 문의 카카오톡 채널 _“무드보드제주”.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (17).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (19).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (20).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (21).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (22).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (23).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (24).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (25).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (26).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (27).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (43).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (44).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (45).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (46).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (47).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "milan.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "MY Studio - MY Studio added a new photo_.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "Çekim detayları.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "Фотосесія розпису😻.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "韓国前撮り.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "무드보드제주 _ 제주스냅 _ 부부작가 (@moodboard_jeju) · Instagram 照片和视频.webp",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "id": "6.-bridal-portrait",
+      "title": "6. Bridal Portrait",
+      "path": "assets/img/moodboard/6. Bridal Portrait",
+      "images": [
+        {
+          "name": "Blooming Days _ Korean Pre-wedding Photography _ RaRi Studio _ OneThreeOneFour.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (16).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (20).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (32).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (33).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (34).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (35).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (36).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (37).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (38).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (39).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (40).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (41).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (42).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (50).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (51).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (52).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "KOREAN WEDDING B-016 SEOLREM MAERYEOG JUYIBO STUDIO _ korea wedding pledge (1).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "Nuptial • Instagram.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "단정하게, 혹은 사랑스럽게 ⋆𖧷₊˚.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "아이웨딩 _ 브랜드 _ 웨딩스튜디오 _ 제이로그스튜디오 (2).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "아이웨딩 _ 브랜드 _ 화보 (1).webp",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "id": "7.-groom-portrait",
+      "title": "7. Groom Portrait",
+      "path": "assets/img/moodboard/7. Groom Portrait",
+      "images": [
+        {
+          "name": "download (16).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (18).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (22).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (23).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (24).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (25).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (26).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (27).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (29).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (48).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "KOREAN WEDDING D-001 OBRAMAESTRA STUDIO _ korea wedding pledge.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "아이웨딩 _ 브랜드 _ 웨딩스튜디오 _ 스튜디오바시움(웨딩스튜디오).webp",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "id": "8.-sitting-poses",
+      "title": "8. Sitting Poses",
+      "path": "assets/img/moodboard/8. Sitting Poses",
+      "images": [
+        {
+          "name": "download (19).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (21).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (35).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (52).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (53).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (54).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (69).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (83).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (92).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download (96).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "download - 2025-12-14T112301.999.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "xxx.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "그가사랑하는순간 💙 #그사순 2023 뉴샘플.webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "아이웨딩 _ 브랜드 _ 화보 (1).webp",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "id": "studio",
+      "title": "Studio",
+      "path": "assets/img/moodboard/Studio",
+      "images": [
+        {
+          "name": "wd (1).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (10).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (11).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (12).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (13).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (14).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (15).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (16).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (17).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (18).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (19).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (2).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (3).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (4).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (5).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (6).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (7).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (8).webp",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "name": "wd (9).webp",
+          "width": 0,
+          "height": 0
+        }
       ]
     }
   ]

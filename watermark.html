@@ -7,9 +7,11 @@
     <meta name="description" content="Tạo chữ ký / dòng chữ để in lên ảnh - Chỉnh sửa text, chọn style, tải PNG transparent">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Dm+Serif+Display&family=Roboto:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=Quicksand:wght@500;700&family=Oswald:wght@400;600&family=Raleway:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Lato:wght@400;700&family=Sora:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Abril+Fatface&family=Cinzel:wght@400;700&family=Unbounded:wght@400;700&family=Dancing+Script:wght@700&family=Satisfy&family=Pacifico&family=Fredoka:wght@400;600&family=Caveat:wght@400;700&family=Space+Mono:wght@400;700&family=Russo+One&family=Righteous&family=Playfair:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/improvements.css">
     <link rel="stylesheet" href="assets/css/watermark.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="assets/js/modal.js"></script>
 
 
 </head>
@@ -54,15 +56,15 @@
                     <div class="text-grid">
                         <div class="form-group">
                             <label>L1</label>
-                            <input type="text" id="line1Input" value="Kool D.">
+                            <input type="text" id="line1Input" value="Kool D." placeholder="Dòng 1" oninput="updatePreview()">
                         </div>
                         <div class="form-group">
                             <label>L2</label>
-                            <input type="text" id="line2Input" value="Studio">
+                            <input type="text" id="line2Input" value="Studio" placeholder="Dòng 2" oninput="updatePreview()">
                         </div>
                         <div class="form-group">
                             <label>L3</label>
-                            <input type="text" id="line3Input" value="2026">
+                            <input type="text" id="line3Input" value="2026" placeholder="Dòng 3" oninput="updatePreview()" style="cursor: text; pointer-events: auto; user-select: text;">
                         </div>
                     </div>
                 </div>
@@ -81,6 +83,12 @@
                         <span class="accordion-icon">▼</span>
                     </button>
                     <div class="accordion-content">
+                        <!-- Opacity Slider -->
+                        <div style="margin-bottom: 15px; display: none;">
+                            <label style="font-size:9px; color:#888; text-transform:uppercase; font-weight:600; display:block; margin-bottom:5px;">Độ mờ: <span id="opacityValue">100%</span></label>
+                            <input type="range" id="opacitySlider" min="0" max="100" value="100" style="width: 100%; cursor: pointer;" oninput="updatePreview(); document.getElementById('opacityValue').textContent = this.value + '%';">
+                        </div>
+
                         <!-- Fonts -->
                         <div style="display: flex; gap: 8px; margin-bottom: 10px;">
                             <div style="flex: 1;">
@@ -125,5 +133,11 @@
 
     <script src="assets/js/watermark-data.js"></script>
     <script src="assets/js/watermark.js"></script>
+    <script>
+        // Replace alert with modal in watermark context
+        window.showAlert = (message) => {
+            modal.info(message, 'Thông báo');
+        };
+    </script>
 </body>
 </html>

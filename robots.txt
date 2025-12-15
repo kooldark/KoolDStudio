@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /scripts/
 
-Sitemap: https://kooldark.github.io/KoolDStudio/sitemap.xml
+Sitemap: https://koolbstudio.com/sitemap.xml

@@ -36,7 +36,7 @@ echo.
 
 :: Tìm tất cả ảnh non-WebP trong thư mục và thư mục con
 set count=0
-for /r "%folder%" %%F in (*.jpg *.jpeg *.png *.tif *.tiff *.bmp) do if exist "%%F" set /a count+=1
+for /r "%folder%" %%F in (*.jpg *.jpeg *.png *.tif *.tiff *.jfif *.bmp) do if exist "%%F" set /a count+=1
 
 if %count%==0 (
     echo Không tìm thấy ảnh non-WebP nào để tối ưu!
@@ -45,7 +45,7 @@ if %count%==0 (
 )
 
 set n=0
-for /r "%folder%" %%F in (*.jpg *.jpeg *.png *.tif *.tiff *.bmp) do if exist "%%F" (
+for /r "%folder%" %%F in (*.jpg *.jpeg *.png *.tif *.tiff *.jfif *.bmp) do if exist "%%F" (
     set /a n+=1
     set "fullpath=%%F"
     set "dir=%%~dpF"

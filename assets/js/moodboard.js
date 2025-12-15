@@ -74,31 +74,43 @@ document.addEventListener('DOMContentLoaded', async () => {
     moodboardGrid.innerHTML = '';
     if (!category || !category.images) return;
 
-    category.images.forEach(img => {
-      // Skip if filter mode is on and this image is not selected
-      if (filterMode && !selectedImages.includes(img)) {
-        return;
-      }
+    const imagesToRender = filterMode
+      ? category.images.filter(img => selectedImages.includes(img.name))
+      : category.images;
 
-      const itemDiv = document.createElement('div');
-      itemDiv.className = 'moodboard-item';
-      if (selectedImages.includes(img)) itemDiv.classList.add('selected');
+    imagesToRender.forEach(img => {
+      const imgPath = `${category.path}/${img.name}`;
+      const anchor = document.createElement('a');
+      anchor.href = imgPath;
+      anchor.setAttribute('data-width', img.width);
+      anchor.setAttribute('data-height', img.height);
+
+      const imageElement = document.createElement('img');
+      imageElement.src = imgPath;
+      imageElement.alt = category.title;
+      imageElement.loading = 'lazy';
       
-      const imgPath = `${category.path}/${img}`;
-      itemDiv.innerHTML = `<img src="${imgPath}" alt="${category.title}" loading="lazy">`;
+      anchor.appendChild(imageElement);
+
+      if (selectedImages.includes(img.name)) {
+        anchor.classList.add('selected');
+      }
       
-      itemDiv.onclick = () => toggleImage(imgPath, img, itemDiv);
-      moodboardGrid.appendChild(itemDiv);
+      anchor.onclick = (e) => {
+        e.preventDefault();
+        toggleImage(imgPath, img.name, anchor);
+      };
+      moodboardGrid.appendChild(anchor);
     });
   }
 
-  function toggleImage(fullPath, imgName, itemEl) {
+  function toggleImage(fullPath, imgName, anchorEl) {
     if (selectedImages.includes(imgName)) {
       selectedImages = selectedImages.filter(i => i !== imgName);
-      itemEl.classList.remove('selected');
+      anchorEl.classList.remove('selected');
     } else {
       selectedImages.push(imgName);
-      itemEl.classList.add('selected');
+      anchorEl.classList.add('selected');
     }
     
     updatePreview();
@@ -114,10 +126,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     previewSection.style.display = 'block';
     previewGrid.innerHTML = '';
     
-    selectedImages.forEach((img, idx) => {
+    selectedImages.forEach((imgName, idx) => {
       const item = document.createElement('div');
       item.className = 'preview-item';
-      const imgPath = `assets/img/portfolio/${currentCategory}/${img}`;
+
+      // Find the category that this image belongs to
+      let categoryPath = '';
+      for (const cat of portfolioData.categories) {
+        if (cat.images.some(imageObj => imageObj.name === imgName)) {
+          categoryPath = cat.path;
+          break;
+        }
+      }
+
+      const imgPath = `${categoryPath}/${imgName}`;
       item.innerHTML = `
         <img src="${imgPath}" alt="preview" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23eee%22 width=%22200%22 height=%22200%22/%3E%3Ctext fill=%22%23999%22 text-anchor=%22middle%22 x=%2250%25%22 y=%2250%25%22%3EImage not found%3C/text%3E%3C/svg%3E'">
         <button class="preview-remove" data-index="${idx}">✕</button>
@@ -125,9 +147,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       const removeBtn = item.querySelector('.preview-remove');
       removeBtn.onclick = (e) => {
         e.stopPropagation();
-        selectedImages.splice(idx, 1);
+        const removedImgName = selectedImages.splice(idx, 1)[0];
         localStorage.setItem('moodboardDraft', JSON.stringify(selectedImages));
         updatePreview();
+
+        // Also unselect in the main grid
+        const mainGridImage = moodboardGrid.querySelector(`a[href*="${removedImgName}"]`);
+        if (mainGridImage) {
+          mainGridImage.classList.remove('selected');
+        }
       };
       previewGrid.appendChild(item);
     });
@@ -159,9 +187,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (confirm('Xóa tất cả lựa chọn?')) {
       selectedImages = [];
       localStorage.removeItem('moodboardDraft');
-      document.querySelectorAll('.moodboard-item.selected').forEach(el => el.classList.remove('selected'));
+      document.querySelectorAll('.moodboard-grid .jg-row > a.selected').forEach(el => el.classList.remove('selected'));
       previewSection.style.display = 'none';
       codeSection.style.display = 'none';
+      if ($(moodboardGrid).data('jg.data')) {
+          $(moodboardGrid).justifiedGallery('norewind');
+      }
     }
   };
 

@@ -2,6 +2,10 @@
 
 const fs = require('fs');
 const path = require('path');
+const imageSize = require('image-size');
+
+// Use the default export or the function directly
+const sizeOf = imageSize && imageSize.default ? imageSize.default : imageSize;
 
 const moodboardDir = path.join(__dirname, '../assets/img/moodboard');
 
@@ -19,8 +23,21 @@ const folders = fs.readdirSync(moodboardDir).filter(f => {
 folders.forEach(folder => {
   const folderPath = path.join(moodboardDir, folder);
   const images = fs.readdirSync(folderPath).filter(f => 
-    /\.(jpg|jpeg|png|webp)$/i.test(f)
-  );
+    /\.(jpg|jpeg|png|webp|gif)$/i.test(f) // Added .gif just in case
+  ).map(filename => {
+    try {
+      const filePath = path.join(folderPath, filename);
+      const dimensions = sizeOf(filePath);
+      return {
+        name: filename,
+        width: dimensions && dimensions.width ? dimensions.width : 0,
+        height: dimensions && dimensions.height ? dimensions.height : 0
+      };
+    } catch (e) {
+      // Silently skip problematic images but still add them with fallback dimensions
+      return { name: filename, width: 0, height: 0 }; // Fallback
+    }
+  });
 
   const categoryName = folder
     .split('-')

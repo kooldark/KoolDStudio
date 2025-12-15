@@ -47,7 +47,7 @@ function updatePreview() {
     const l2 = document.getElementById('line2Input')?.value || '';
     const l3 = document.getElementById('line3Input')?.value || '';
     const opacitySlider = document.getElementById('opacitySlider');
-    const opacity = opacitySlider ? opacitySlider.value / 100 : 0.6;
+    const opacity = opacitySlider ? opacitySlider.value / 100 : 1;
 
     const template = watermarkTemplates[styleId];
     if (!template) return;
@@ -56,6 +56,12 @@ function updatePreview() {
     if (!preview) return;
 
     preview.innerHTML = template.html(l1, l2, l3, currentColor, currentMainFont); 
+    
+    // Apply opacity to all text elements inside preview
+    const allElements = preview.querySelectorAll('*');
+    allElements.forEach(el => {
+        el.style.opacity = opacity;
+    });
     
     // Apply fonts to all text elements - support for future .line1/.line2 classes
     const line1El = preview.querySelector('.line1');
@@ -71,8 +77,6 @@ function updatePreview() {
             div.style.fontFamily = getFontFamily(currentMainFont);
         }
     });
-
-    preview.style.opacity = opacity;
 }
 
 function resetPreview() {
@@ -85,8 +89,8 @@ function resetPreview() {
     if (line1Input) line1Input.value = 'Kool D.';
     if (line2Input) line2Input.value = 'Studio';
     if (line3Input) line3Input.value = 'Est. 2025';
-    if (opacitySlider) opacitySlider.value = 80;
-    if (opacityValue) opacityValue.textContent = '80%';
+    if (opacitySlider) opacitySlider.value = 100;
+    if (opacityValue) opacityValue.textContent = '100%';
     
     currentMainFont = 'Playfair';
     currentSubFont = 'Montserrat';
@@ -194,7 +198,11 @@ async function downloadWatermark() {
             showLoading(false);
         });
     } catch (error) {
-        alert('Lỗi: ' + error.message);
+        if (typeof modal !== 'undefined') {
+            modal.error('Lỗi: ' + error.message, 'Lỗi');
+        } else {
+            alert('Lỗi: ' + error.message);
+        }
         showLoading(false);
     } finally {
         if (document.body.contains(tempContainer)) {
@@ -214,7 +222,13 @@ function copyWatermarkConfig() {
         mainFont: currentMainFont,
         subFont: currentSubFont,
     });
-    navigator.clipboard.writeText(config).then(() => alert('✅ Copied!'));
+    navigator.clipboard.writeText(config).then(() => {
+        if (typeof modal !== 'undefined') {
+            modal.success('Đã sao chép cấu hình!', 'Thành công');
+        } else {
+            alert('✅ Copied!');
+        }
+    });
 }
 
 function saveFavorite() {
@@ -440,6 +454,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (line2Input) line2Input.addEventListener('input', updatePreview);
     if (line3Input) line3Input.addEventListener('input', updatePreview);
     
+    // Fallback: add event listeners with delayed check
+    setTimeout(() => {
+        const delayedLine1 = document.getElementById('line1Input');
+        const delayedLine2 = document.getElementById('line2Input');
+        const delayedLine3 = document.getElementById('line3Input');
+        
+        if (delayedLine1 && !delayedLine1.hasListener) {
+            delayedLine1.addEventListener('input', updatePreview);
+            delayedLine1.hasListener = true;
+        }
+        if (delayedLine2 && !delayedLine2.hasListener) {
+            delayedLine2.addEventListener('input', updatePreview);
+            delayedLine2.hasListener = true;
+        }
+        if (delayedLine3 && !delayedLine3.hasListener) {
+            delayedLine3.addEventListener('input', updatePreview);
+            delayedLine3.hasListener = true;
+        }
+    }, 100);
+    
     if (opacitySlider) {
         opacitySlider.addEventListener('input', (e) => {
             const opacityValue = document.getElementById('opacityValue');
@@ -494,11 +528,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnCopy) btnCopy.addEventListener('click', copyWatermarkConfig);
     if (btnStar) btnStar.addEventListener('click', saveFavorite);
 
+    // Bind color palette buttons
+    document.querySelectorAll('.color-palette-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const paletteName = this.getAttribute('data-palette');
+            applyColorPalette(paletteName);
+        });
+    });
+
     // Initial setup
     renderFontLibrary();
     buildGallery();
     renderFavorites();
     currentColor = '#1a1a1a';
+    
+    // Set default opacity to 100%
+    const initialOpacitySlider = document.getElementById('opacitySlider');
+    const initialOpacityValue = document.getElementById('opacityValue');
+    if (initialOpacitySlider) {
+        initialOpacitySlider.value = 100;
+    }
+    if (initialOpacityValue) {
+        initialOpacityValue.textContent = '100%';
+    }
+    
     updatePreview();
 });
 

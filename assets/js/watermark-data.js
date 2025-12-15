@@ -48,7 +48,9 @@ const colorPalettes = {
     noir: { name: 'Noir', primary: '#1f1f1f', secondary: '#e8dcc8', tertiary: '#fef9f3' },
     luxury: { name: 'Luxury', primary: '#1a1a1a', secondary: '#c9a961', tertiary: '#f4f1e8' },
     vintage: { name: 'Vintage', primary: '#5d4e37', secondary: '#d9b894', tertiary: '#fdf6f1' },
-    modern: { name: 'Modern', primary: '#2d3748', secondary: '#718096', tertiary: '#edf2f7' }
+    modern: { name: 'Modern', primary: '#2d3748', secondary: '#718096', tertiary: '#edf2f7' },
+    romantic: { name: 'Romantic', primary: '#8b4545', secondary: '#d4a5a5', tertiary: '#faf6f3' },
+    vibrant: { name: 'Vibrant', primary: '#d84315', secondary: '#ff6f00', tertiary: '#fff3e0' }
 };
 
 const fontLibrary = [

@@ -3,45 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Kool D. Studio | Ảnh Cưới Hàn Quốc & Gia Đình</title>
-  <meta name="description" content="Portfolio ảnh cưới phong cách Hàn Quốc tinh tế, gia đình, makeup & phóng sự tại Kool D. Studio"/>
+  <title>Dấu Ấn Khoảnh Khắc: Portfolio Ảnh Cưới & Gia Đình | Kool D. Studio</title>
+  <meta name="description" content="Khám phá những câu chuyện tình yêu và khoảnh khắc gia đình ấm áp qua portfolio của Kool D. Studio. Mỗi album là một dấu ấn tinh tế, ghi lại cảm xúc chân thực.">
+  <meta name="keywords" content="portfolio ảnh cưới, album ảnh cưới, ảnh gia đình, phóng sự cưới, kool d studio, quảng ngãi, hcm, phong cách hàn quốc">
   
   <!-- Open Graph Meta Tags for Social Media Share -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Portfolio - Kool D. Studio" />
-  <meta property="og:description" content="Portfolio ảnh cưới phong cách Hàn Quốc tinh tế, gia đình, makeup & phóng sự tại Kool D. Studio" />
-  <meta property="og:url" content="https://kooldark.github.io/KoolDStudio/portfolio.html" />
-  <meta property="og:image" content="https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg" />
+  <meta property="og:title" content="Dấu Ấn Khoảnh Khắc: Portfolio | Kool D. Studio" />
+  <meta property="og:description" content="Khám phá những câu chuyện tình yêu và khoảnh khắc gia đình ấm áp qua portfolio của Kool D. Studio." />
+  <meta property="og:url" content="https://koolbstudio.com/portfolio.html" />
+  <meta property="og:image" content="https://koolbstudio.com/assets/img/portfolio/cuoi/Ngoa%CC%A3i%20ca%CC%89nh/0ngoaicanh%20(13).webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Portfolio - Kool D. Studio" />
-  <meta name="twitter:description" content="Portfolio ảnh cưới phong cách Hàn Quốc tinh tế, gia đình, makeup & phóng sự tại Kool D. Studio" />
-  <meta name="twitter:image" content="https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg" />
+  <meta name="twitter:title" content="Dấu Ấn Khoảnh Khắc: Portfolio | Kool D. Studio" />
+  <meta name="twitter:description" content="Khám phá những câu chuyện tình yêu và khoảnh khắc gia đình ấm áp qua portfolio của Kool D. Studio." />
+  <meta name="twitter:image" content="https://koolbstudio.com/assets/img/portfolio/cuoi/Ngoa%CC%A3i%20ca%CC%89nh/0ngoaicanh%20(13).webp" />
 
   <!-- JSON-LD Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": "Portfolio - Kool D. Studio",
-    "description": "Portfolio ảnh cưới phong cách Hàn Quốc tinh tế, gia đình, makeup & phóng sự",
-    "image": "https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg",
-    "url": "https://kooldark.github.io/KoolDStudio/portfolio.html",
+    "@type": "ImageGallery",
+    "name": "Portfolio 'Dấu Ấn Khoảnh Khắc' | Kool D. Studio",
+    "description": "Tuyển tập những câu chuyện được kể bằng hình ảnh, từ ảnh cưới lãng mạn, khoảnh khắc gia đình ấm cúng đến phóng sự chân thực, thực hiện bởi Kool D. Studio.",
+    "url": "https://koolbstudio.com/portfolio.html",
     "creator": {
-      "@type": "Organization",
-      "name": "Kool D. Studio"
-    }
+      "@type": "PhotographyStudio",
+      "name": "Kool D. Studio",
+      "url": "https://koolbstudio.com"
+    },
+    "keywords": "ảnh cưới, ảnh gia đình, phóng sự cưới, Bình Sơn, Quảng Ngãi, TP.HCM, nhẹ nhàng, tự nhiên, hàn quốc, tối giản"
   }
   </script>
+  
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/improvements.css">
 
   <script>
     // Pre-generate meta tags for social media crawlers (they don't execute JS)
@@ -66,16 +71,16 @@
             const categoryData = data[category];
             if (categoryData && categoryData[decodedAlbum]) {
               const firstFile = categoryData[decodedAlbum][0];
-              const imageUrl = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${category}/${decodedAlbum}/${firstFile}`;
+              const imageUrl = `/assets/img/portfolio/${category}/${decodedAlbum}/${firstFile}`;
               
               // Update meta tags
               const metaTags = {
                 'og:title': `${decodedAlbum} - ${categoryVn} | Kool D. Studio`,
-                'og:description': `Album ${decodedAlbum} từ bộ sưu tập ${categoryVn} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
+                'og:description': `Album ${decodedAlbum} trong bộ sưu tập ${categoryVn} của Kool D. Studio. Phong cách tự nhiên, Hàn Quốc.`,
                 'og:image': imageUrl,
                 'og:url': window.location.href,
                 'twitter:title': `${decodedAlbum} - ${categoryVn} | Kool D. Studio`,
-                'twitter:description': `Album ${decodedAlbum} từ bộ sưu tập ${categoryVn} của Kool D. Studio`,
+                'twitter:description': `Album ${decodedAlbum} trong bộ sưu tập ${categoryVn} của Kool D. Studio.`,
                 'twitter:image': imageUrl
               };
               
@@ -129,7 +134,7 @@
   <div class="page-header">
     <h1 class="page-title" data-aos="fade-down">Portfolio</h1>
     <p class="page-subtitle" data-aos="fade-up" data-aos-delay="100">
-      Những khoảnh khắc tự nhiên của Kool D. Studio 
+      Nơi mỗi khuôn hình là một câu chuyện, mỗi album là một kỷ niệm được khắc ghi.
     </p>
     <div class="gold-line" data-aos="zoom-in" data-aos-delay="200"></div>
   </div>

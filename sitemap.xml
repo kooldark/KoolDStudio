@@ -1,27 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kooldark.github.io/KoolDStudio/index.html</loc>
-    <lastmod>2025-12-11</lastmod>
+    <loc>https://koolbstudio.com/index.html</loc>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://kooldark.github.io/KoolDStudio/portfolio.html</loc>
-    <lastmod>2025-12-11</lastmod>
+    <loc>https://koolbstudio.com/portfolio.html</loc>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://kooldark.github.io/KoolDStudio/pricing.html</loc>
-    <lastmod>2025-12-11</lastmod>
+    <loc>https://koolbstudio.com/pricing.html</loc>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kooldark.github.io/KoolDStudio/about.html</loc>
-    <lastmod>2025-12-11</lastmod>
+    <loc>https://koolbstudio.com/about.html</loc>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://koolbstudio.com/booking.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://koolbstudio.com/moodboard.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://koolbstudio.com/watermark.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+    <url>
+    <loc>https://koolbstudio.com/inan.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>

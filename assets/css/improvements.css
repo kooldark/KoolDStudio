@@ -1,0 +1,346 @@
+/* ============================================
+   RESPONSIVE & MOBILE IMPROVEMENTS
+   ============================================ */
+
+/* Fix touch target sizes for accessibility */
+button, a.btn, input[type="button"], input[type="submit"] {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Improve input focus states */
+input:focus, 
+textarea:focus, 
+select:focus {
+  outline: none;
+  border-color: var(--soft-gold);
+  box-shadow: 0 0 0 3px rgba(235, 149, 0, 0.1);
+}
+
+/* Better placeholder styling */
+input::placeholder,
+textarea::placeholder {
+  color: #999;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+/* Mobile menu improvements */
+@media (max-width: 768px) {
+  /* Improve nav menu width */
+  .nav-links {
+    max-width: 85vw;
+    width: 85vw;
+  }
+  
+  /* Better touch targets on mobile */
+  .ribbon-item {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  
+  /* Improve button sizes on mobile */
+  .btn {
+    min-height: 48px;
+    min-width: 100%;
+  }
+  
+  /* Better form spacing on mobile */
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links a {
+    padding: 16px 0;
+    min-height: 48px;
+  }
+  
+  .btn {
+    font-size: 13px;
+    padding: 14px 20px;
+  }
+}
+
+/* ============================================
+   FORM VALIDATION IMPROVEMENTS
+   ============================================ */
+
+.form-group.has-error input {
+  border-color: #ef4444;
+}
+
+.form-group.has-error input:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+}
+
+.form-error {
+  display: block;
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.form-success {
+  display: block;
+  color: #10b981;
+  font-size: 12px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* ============================================
+   BUTTON GROUP IMPROVEMENTS
+   ============================================ */
+
+.btn-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-group .btn {
+  flex: 1;
+  min-width: 120px;
+}
+
+@media (max-width: 768px) {
+  .btn-group {
+    flex-direction: column;
+  }
+  
+  .btn-group .btn {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   LOADING STATE IMPROVEMENTS
+   ============================================ */
+
+.loading-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.btn.is-loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* ============================================
+   TEXT IMPROVEMENTS
+   ============================================ */
+
+/* Improve readability on all sizes */
+body {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 20px; }
+  h4 { font-size: 16px; }
+}
+
+/* Better text hierarchy */
+.section-title {
+  letter-spacing: 0.03em;
+  word-spacing: 0.05em;
+}
+
+/* ============================================
+   LINK & BUTTON FOCUS STATES
+   ============================================ */
+
+a:focus,
+button:focus {
+  outline: 2px solid var(--soft-gold);
+  outline-offset: 2px;
+}
+
+/* Remove outline from mouse users (show on keyboard) */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================
+   BOOKING FORM IMPROVEMENTS
+   ============================================ */
+
+.package-card {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.package-card:focus,
+.package-card:focus-visible {
+  outline: 2px solid var(--soft-gold);
+  outline-offset: -2px;
+}
+
+.time-slot {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-slot:focus,
+.time-slot:focus-visible {
+  outline: 2px solid var(--soft-gold);
+  outline-offset: -2px;
+}
+
+.time-slot:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   ERROR PAGE IMPROVEMENTS
+   ============================================ */
+
+.error-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.error-code {
+  animation: fadeInDown 0.6s ease;
+}
+
+.error-message {
+  animation: fadeInUp 0.6s ease 0.1s backwards;
+}
+
+.error-description {
+  animation: fadeInUp 0.6s ease 0.2s backwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   WATERMARK FORM IMPROVEMENTS
+   ============================================ */
+
+.form-section input,
+.form-section select {
+  font-size: 14px;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .form-section input,
+  .form-section select {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .text-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   PRICING CARD IMPROVEMENTS
+   ============================================ */
+
+.price-card {
+  min-height: 100%;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.price-card:hover {
+  border-color: var(--soft-gold);
+}
+
+.price-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 20px 20px;
+}
+
+.price-footer .btn {
+  width: 100%;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.gap-16 { gap: 16px; }
+
+/* Hidden on small screens */
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+/* Hidden on large screens */
+@media (min-width: 769px) {
+  .show-on-mobile {
+    display: none !important;
+  }
+}

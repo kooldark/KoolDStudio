@@ -48,6 +48,15 @@ if %errorlevel% neq 0 (
 echo ✅ Moodboard data generated
 
 echo.
+echo 🔍 Validating images...
+node scripts/validate-images.js
+if %errorlevel% neq 0 (
+  echo ⚠️  Some images may have issues (see above for details)
+  REM Don't exit - just warn
+)
+echo ✅ Image validation completed
+
+echo.
 echo ====================================
 echo ✨ All files generated successfully!
 echo ====================================

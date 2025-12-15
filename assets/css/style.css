@@ -9,7 +9,7 @@
   --text-primary: #2a2a2a;
   --text-secondary: #666666;
   --font-body: "Montserrat", sans-serif;
-  --font-heading: "Playfair Display", serif;
+  --font-heading: "Lora", serif;
   
   /* Premium Gradients */
   --gradient-hero: linear-gradient(135deg, rgba(58, 90, 64, 0.95) 0%, rgba(235, 149, 0, 0.15) 100%);
@@ -1646,16 +1646,327 @@ nav.scrolled {
 }
 
 /* === ADMIN LINK === */
-.admin-link {
-  display: inline-block;
-  font-size: 10px;
-  color: rgba(58, 90, 64, 0.2);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+/* === ADMIN TOOLS FOOTER === */
+.admin-tools-footer {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: 1px solid rgba(235, 149, 0, 0.05);
 }
 
-.admin-link:hover {
-  color: rgba(235, 149, 0, 0.5);
+.admin-tools-container {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-tool-link {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-tool-link:hover {
+  color: var(--soft-gold);
+  background: rgba(235, 149, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.admin-tool-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(235, 149, 0, 0.1);
+}
+
+/* === MODAL DIALOG === */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-dialog {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-dialog.error {
+  border-left: 4px solid #ef4444;
+}
+
+.modal-dialog.success {
+  border-left: 4px solid #10b981;
+}
+
+.modal-dialog.info {
+  border-left: 4px solid var(--soft-gold);
+}
+
+.modal-header {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-icon {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.modal-dialog.error .modal-icon {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.modal-dialog.success .modal-icon {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.modal-dialog.info .modal-icon {
+  background: rgba(235, 149, 0, 0.1);
+  color: var(--soft-gold);
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.modal-message {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  text-align: center;
+}
+
+.modal-btn-primary {
+  background: var(--soft-gold);
+  color: var(--white);
+}
+
+.modal-btn-primary:hover {
+  background: #d08400;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(235, 149, 0, 0.3);
+}
+
+.modal-btn-secondary {
+  background: rgba(235, 149, 0, 0.1);
+  color: var(--soft-gold);
+}
+
+.modal-btn-secondary:hover {
+  background: rgba(235, 149, 0, 0.2);
+}
+
+/* === FORM IMPROVEMENTS === */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--soft-gold);
+  box-shadow: 0 0 0 3px rgba(235, 149, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-help-text {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.form-error {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.form-group.has-error input {
+  border-color: #ef4444;
+}
+
+.form-group.has-error input:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* === BUTTON IMPROVEMENTS === */
+.btn-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn:disabled:hover {
+  transform: none;
+}
+
+/* === LOADING STATE === */
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.btn.is-loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* === TOAST NOTIFICATIONS === */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toast {
+  background: var(--white);
+  padding: 16px 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 300px;
+  animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast.success {
+  border-left: 4px solid #10b981;
+}
+
+.toast.error {
+  border-left: 4px solid #ef4444;
+}
+
+.toast.info {
+  border-left: 4px solid var(--soft-gold);
+}
+
+@media (max-width: 768px) {
+  .modal-dialog {
+    padding: 24px;
+    margin: 0 20px;
+  }
+  
+  .toast-container {
+    left: 20px;
+    right: 20px;
+  }
+  
+  .toast {
+    max-width: none;
+  }
 }

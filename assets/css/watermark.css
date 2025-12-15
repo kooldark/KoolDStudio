@@ -31,9 +31,12 @@
         .text-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
         .form-group { display: flex; flex-direction: column; gap: 6px; }
         .form-group label { font-size: 9px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
-        .form-group input { padding: 8px 10px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 12px; background: #fafaf8; transition: all 0.3s; font-family: var(--font-body); }
+        .form-group input { padding: 8px 10px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 12px; background: #fafaf8; transition: all 0.3s; font-family: var(--font-body); cursor: text; pointer-events: auto; position: relative; z-index: 10; }
         .form-group input:hover { background: var(--white); border-color: var(--soft-gold); }
         .form-group input:focus { outline: none; background: var(--white); border-color: var(--soft-gold); box-shadow: 0 0 0 3px rgba(235, 149, 0, 0.1); }
+        
+        /* Ensure L3 input is not blocked */
+        #line3Input { cursor: text !important; pointer-events: auto !important; user-select: text !important; }
         
         .palette-group { display: flex; flex-direction: column; gap: 10px; }
         .color-picker-group { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid #efefef; }
