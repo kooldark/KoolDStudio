@@ -1,44 +1,105 @@
 
 let currentColor = '#1a1a1a';
+let currentSecondaryColor = '#eb9500';
 let currentMainFont = 'Playfair';
 let currentSubFont = 'Montserrat';
 let favorites = JSON.parse(localStorage.getItem('watermarkFavorites')) || [];
-let allStyles = Array.from({length: 40}, (_, i) => i + 1);
+let allStyles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+
+// Debug: check if required libraries are loaded
+console.log('html2canvas available:', typeof html2canvas !== 'undefined');
+console.log('saveAs available:', typeof saveAs !== 'undefined');
 
 function applyMainFont(fontKey, event) {
     currentMainFont = fontKey;
-    document.querySelectorAll('.font-main-item').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
+    const mainSelect = document.getElementById('fontMainSelect');
+    if (mainSelect) {
+        mainSelect.value = fontKey;
+    }
     updatePreview();
 }
 
 function applySubFont(fontKey, event) {
     currentSubFont = fontKey;
-    document.querySelectorAll('.font-sub-item').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
+    const subSelect = document.getElementById('fontSubSelect');
+    if (subSelect) {
+        subSelect.value = fontKey;
+    }
     updatePreview();
 }
 
-function applyColorPalette(paletteName) {
-    const palette = colorPalettes[paletteName];
-    currentColor = palette.primary;
 
-    // Only update the watermark preview color, not the entire website
-    // Set active palette button
-    document.querySelectorAll('.color-palette-btn').forEach(b => b.classList.remove('active'));
-    const activePaletteBtn = document.querySelector(`.color-palette-btn[data-palette="${paletteName}"]`);
-    if (activePaletteBtn) activePaletteBtn.classList.add('active');
-    
-    updatePreview();
-}
 
 function setTextColor(c, event) {
     currentColor = c;
+    
+    // Auto-set complementary color when main color changes
+    currentSecondaryColor = getComplementaryColor(c);
+    
     document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
     if (event && event.target) {
         event.target.classList.add('active');
     }
+    updateColorSwatches();
     updatePreview();
+}
+
+function updateColorSwatches() {
+    const mainSwatch = document.getElementById('mainColorSwatch');
+    const secondarySwatch = document.getElementById('secondaryColorSwatch');
+    const mainColorCode = document.getElementById('mainColorCode');
+    const secondaryColorCode = document.getElementById('secondaryColorCode');
+    
+    if (mainSwatch) {
+        mainSwatch.style.background = currentColor;
+    }
+    if (secondarySwatch) {
+        secondarySwatch.style.background = currentSecondaryColor;
+        // Add professional animation when secondary color updates
+        secondarySwatch.classList.remove('harmony-update');
+        // Trigger reflow to restart animation
+        void secondarySwatch.offsetWidth;
+        secondarySwatch.classList.add('harmony-update');
+        // Remove class after animation completes
+        setTimeout(() => {
+            secondarySwatch.classList.remove('harmony-update');
+        }, 600);
+    }
+    if (mainColorCode) {
+        mainColorCode.textContent = currentColor;
+    }
+    if (secondaryColorCode) {
+        secondaryColorCode.textContent = currentSecondaryColor;
+    }
+}
+
+function copyColorCode(colorHex) {
+    navigator.clipboard.writeText(colorHex).then(() => {
+        const notification = document.createElement('div');
+        notification.textContent = `📋 Đã copy: ${colorHex}`;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #3a5a40;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        `;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }, 2000);
+    }).catch(err => {
+        console.error('Copy failed:', err);
+    });
 }
 
 function updatePreview() {
@@ -55,7 +116,7 @@ function updatePreview() {
     const preview = document.getElementById('watermarkPreview');
     if (!preview) return;
 
-    preview.innerHTML = template.html(l1, l2, l3, currentColor, currentMainFont); 
+    preview.innerHTML = template.html(l1, l2, l3, currentColor, currentMainFont, currentSecondaryColor); 
     
     // Apply opacity to all text elements inside preview
     const allElements = preview.querySelectorAll('*');
@@ -95,28 +156,20 @@ function resetPreview() {
     currentMainFont = 'Playfair';
     currentSubFont = 'Montserrat';
     
-    // Reset to elegant palette
-    currentColor = colorPalettes['elegant'].primary;
-    document.querySelectorAll('.color-palette-btn').forEach(b => b.classList.remove('active'));
-    const elegantBtn = document.querySelector(`.color-palette-btn[data-palette="elegant"]`);
-    if (elegantBtn) elegantBtn.classList.add('active');
-
-    // Manually set the active buttons for fonts
-    document.querySelectorAll('.font-main-item').forEach(b => {
-        b.classList.remove('active');
-        if (b.dataset.key === currentMainFont) b.classList.add('active');
-    });
-    document.querySelectorAll('.font-sub-item').forEach(b => {
-        b.classList.remove('active');
-        if (b.dataset.key === currentSubFont) b.classList.add('active');
-    });
+    currentColor = '#1a1a1a';
+    
+    // Update select dropdowns for fonts
+    const mainSelect = document.getElementById('fontMainSelect');
+    const subSelect = document.getElementById('fontSubSelect');
+    if (mainSelect) mainSelect.value = currentMainFont;
+    if (subSelect) subSelect.value = currentSubFont;
 
     updatePreview();
 }
 
 function randomizeAll() {
     // Random style (1-40)
-    const randomStyle = Math.floor(Math.random() * 40) + 1;
+    const randomStyle = allStyles[Math.floor(Math.random() * allStyles.length)];
     const styleSelect = document.getElementById('styleSelect');
     if (styleSelect) {
         styleSelect.value = randomStyle;
@@ -126,39 +179,38 @@ function randomizeAll() {
     const randomMainFontIndex = Math.floor(Math.random() * fontLibrary.length);
     const randomMainFont = fontLibrary[randomMainFontIndex].key;
     currentMainFont = randomMainFont;
-    document.querySelectorAll('.font-main-item').forEach(b => {
-        b.classList.remove('active');
-        if (b.dataset.key === randomMainFont) b.classList.add('active');
-    });
+    const mainSelect = document.getElementById('fontMainSelect');
+    if (mainSelect) mainSelect.value = randomMainFont;
     
     // Random sub font
     const randomSubFontIndex = Math.floor(Math.random() * fontLibrary.length);
     const randomSubFont = fontLibrary[randomSubFontIndex].key;
     currentSubFont = randomSubFont;
-    document.querySelectorAll('.font-sub-item').forEach(b => {
-        b.classList.remove('active');
-        if (b.dataset.key === randomSubFont) b.classList.add('active');
-    });
-    
-    // Random color palette
-    const paletteKeys = Object.keys(colorPalettes);
-    const randomPaletteKey = paletteKeys[Math.floor(Math.random() * paletteKeys.length)];
-    currentColor = colorPalettes[randomPaletteKey].primary;
-    document.querySelectorAll('.color-palette-btn').forEach(b => b.classList.remove('active'));
-    const randomPaletteBtn = document.querySelector(`.color-palette-btn[data-palette="${randomPaletteKey}"]`);
-    if (randomPaletteBtn) randomPaletteBtn.classList.add('active');
+    const subSelect = document.getElementById('fontSubSelect');
+    if (subSelect) subSelect.value = randomSubFont;
     
     updatePreview();
 }
 
 async function downloadWatermark() {
+    const btn = document.querySelector('.btn-primary');
     const styleId = document.getElementById('styleSelect').value;
     const l1 = document.getElementById('line1Input').value || '';
     const l2 = document.getElementById('line2Input').value || '';
     const l3 = document.getElementById('line3Input').value || '';
 
     const template = watermarkTemplates[styleId];
-    if (!template) return;
+    if (!template) {
+        console.error('Template not found for style:', styleId);
+        return;
+    }
+
+    // Add loading state to button
+    if (btn) {
+        btn.classList.add('loading');
+        btn.disabled = true;
+        btn.textContent = '⏳ Đang xử lý...';
+    }
 
     showLoading(true);
 
@@ -173,38 +225,107 @@ async function downloadWatermark() {
         align-items: center;
         justify-content: center;
         padding: 40px;
-        opacity: ${document.getElementById('opacitySlider').value / 100};
+        opacity: ${(document.getElementById('opacitySlider')?.value || 100) / 100};
     `;
     
-    // This is a temporary fix. The templates should be refactored to not need the font parameter.
-    tempContainer.innerHTML = template.html(l1, l2, l3, currentColor, currentMainFont);
-    const line1El = tempContainer.querySelector('.line1');
-    if (line1El) line1El.style.fontFamily = getFontFamily(currentMainFont);
-    const line2El = tempContainer.querySelector('.line2');
-    if (line2El) line2El.style.fontFamily = getFontFamily(currentSubFont);
+    tempContainer.innerHTML = template.html(l1, l2, l3, currentColor, currentMainFont, currentSecondaryColor);
+    
+    // Apply fonts and opacity to all elements
+    const allElements = tempContainer.querySelectorAll('*');
+    allElements.forEach(el => {
+        if (!el.style.fontFamily) {
+            el.style.fontFamily = getFontFamily(currentMainFont);
+        }
+    });
 
     document.body.appendChild(tempContainer);
 
     try {
+        // Wait for fonts to load before converting to canvas
+        await new Promise(resolve => setTimeout(resolve, 800));
+        
         const canvas = await html2canvas(tempContainer, { 
             backgroundColor: null, 
             scale: 3, 
             useCORS: true, 
-            logging: false 
+            logging: false
         });
-        canvas.toBlob(blob => {
-            const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
-            saveAs(blob, `watermark-${ts}.png`);
-            showLoading(false);
+        
+        // Convert canvas to blob using Promise
+        const blobPromise = new Promise((resolve, reject) => {
+            canvas.toBlob(
+                blob => {
+                    if (blob) {
+                        resolve(blob);
+                    } else {
+                        reject(new Error('Canvas to Blob conversion failed'));
+                    }
+                },
+                'image/png',
+                1.0
+            );
         });
-    } catch (error) {
-        if (typeof modal !== 'undefined') {
-            modal.error('Lỗi: ' + error.message, 'Lỗi');
+        
+        const blob = await blobPromise;
+        
+        // Generate filename with timestamp
+        const now = new Date();
+        const ts = now.toISOString().replace(/[:.]/g, '-').slice(0, -5);
+        const filename = `watermark-${ts}.png`;
+        
+        // Use FileSaver to save
+        if (typeof saveAs === 'function') {
+            saveAs(blob, filename);
+            console.log('File saved with FileSaver:', filename);
         } else {
-            alert('Lỗi: ' + error.message);
+            // Fallback: use download link
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            console.log('File saved with fallback method:', filename);
         }
+        
         showLoading(false);
+        
+        // Remove loading state
+        if (btn) {
+            btn.classList.remove('loading');
+            btn.disabled = false;
+            btn.textContent = '✓ Tải thành công!';
+            setTimeout(() => {
+                btn.textContent = '⬇️ Tải thiết kế';
+            }, 2000);
+        }
+        
+    } catch (error) {
+        console.error('Download error:', error);
+        showLoading(false);
+        
+        // Show error
+        const errorMsg = error?.message || 'Lỗi không xác định';
+        if (typeof modal !== 'undefined') {
+            modal.error('Lỗi download: ' + errorMsg, 'Lỗi');
+        } else {
+            alert('Lỗi download: ' + errorMsg);
+        }
+        
+        // Remove loading state on error
+        if (btn) {
+            btn.classList.remove('loading');
+            btn.disabled = false;
+            btn.textContent = '❌ Lỗi - thử lại';
+            setTimeout(() => {
+                btn.textContent = '⬇️ Tải thiết kế';
+            }, 3000);
+        }
+        
     } finally {
+        // Clean up
         if (document.body.contains(tempContainer)) {
             document.body.removeChild(tempContainer);
         }
@@ -277,13 +398,11 @@ function loadFavorite(id) {
     currentMainFont = fav.mainFont;
     currentSubFont = fav.subFont;
 
-    // Manually set active buttons
-     document.querySelectorAll('.font-main-item').forEach(b => {
-        b.classList.toggle('active', b.dataset.key === currentMainFont);
-    });
-    document.querySelectorAll('.font-sub-item').forEach(b => {
-        b.classList.toggle('active', b.dataset.key === currentSubFont);
-    });
+    // Update select dropdowns for fonts
+    const mainSelect = document.getElementById('fontMainSelect');
+    const subSelect = document.getElementById('fontSubSelect');
+    if (mainSelect) mainSelect.value = currentMainFont;
+    if (subSelect) subSelect.value = currentSubFont;
 
     updatePreview();
 }
@@ -310,10 +429,10 @@ function showLoading(show) {
 function buildGallery() {
     const container = document.getElementById('galleryContainer');
     const styleNames = [
-        'Classic', 'Modern', 'Elegant', 'Bold', 'Minimal', 'Artistic', 'Luxury', 'Fresh', 'Vintage', 'Professional',
-        'Glamour', 'Soft', 'Vibrant', 'Minimalist', 'Ornate', 'Simple', 'Romantic', 'Modern Pro', 'Artistic Chic', 'Studio',
-        'Serif', 'Corner', 'Bottom', 'Italic', 'Modern Gold', 'Decorative', 'Classic Frame', 'Center', 'Bold Text', 'Premium',
-        'Side Accent', 'Floral', 'Oval Badge', 'Subtitle', 'Modern Plus', 'Top Badge', 'Side Text', 'Gold Mark', 'Elegant Plus', 'Heritage'
+        'Logo + Divider', 'Rotated Diagonal', 'Corner Positioned', 'Circle Border', 'Vertical Text', 'Minimal Line', 'Lines Sandwich', 'Signature Style', 'Border Box', 'Dots Pattern',
+        'Two-Part', 'Horizontal Stripes', 'Diamond Shape', 'Main + Subtitle', 'Italic Corner', 'Bold Uppercase', 'Ornament Deco', 'Text + Accent',
+        'Floating Refined', 'Corner Elegant', 'Brushstroke', 'Modern Stacked', 'Vintage Border', 'Geometric Modern', 'Serif Elegance', 'Minimal Dots',
+        'Gradient Fade', 'Ornate Detail', 'Monogram Style', 'Contemporary Line'
     ];
     
     allStyles.forEach(i => {
@@ -322,8 +441,9 @@ function buildGallery() {
         
         let watermarkHTML = '';
         if (watermarkTemplates[i]) {
-            // The 'f' parameter is unused but required by the template function signature.
-            watermarkHTML = watermarkTemplates[i].html('Kool D', 'Studio', 'Est. 2025', 'var(--deep-green)', 'Playfair');
+            // Pass complementary secondary color for gallery preview
+            const secondaryColor = getComplementaryColor('var(--deep-green)');
+            watermarkHTML = watermarkTemplates[i].html('Kool D', 'Studio', 'Est. 2025', 'var(--deep-green)', 'Playfair', secondaryColor);
         } else {
             watermarkHTML = `<div class="watermark-style-${i}" style="color:var(--deep-green);"><div style="font-size:14px;font-weight:600;">Style ${i}</div></div>`;
         }
@@ -339,34 +459,32 @@ function buildGallery() {
 }
 
 function renderFontLibrary() {
-    const mainContainer = document.getElementById('fontMainTab');
-    if (!mainContainer) return;
-    mainContainer.innerHTML = '';
+    const mainSelect = document.getElementById('fontMainSelect');
+    if (!mainSelect) return;
+    mainSelect.innerHTML = '';
     fontLibrary.forEach((font) => {
-        const btn = document.createElement('button');
-        btn.className = `font-main-item feeling-btn ${font.key === currentMainFont ? 'active' : ''}`;
-        btn.textContent = font.name.split(' ')[0]; // Compact: first word only
-        btn.dataset.key = font.key;
-        btn.title = font.name; // Full name in tooltip
-        btn.style.fontFamily = getFontFamily(font.key);
-        btn.style.fontSize = '11px';
-        btn.onclick = (e) => applyMainFont(font.key, e);
-        mainContainer.appendChild(btn);
+        const option = document.createElement('option');
+        option.value = font.key;
+        option.textContent = font.name;
+        option.selected = font.key === currentMainFont;
+        mainSelect.appendChild(option);
+    });
+    mainSelect.addEventListener('change', (e) => {
+        applyMainFont(e.target.value, e);
     });
 
-    const subContainer = document.getElementById('fontSubTab');
-    if (!subContainer) return;
-    subContainer.innerHTML = '';
+    const subSelect = document.getElementById('fontSubSelect');
+    if (!subSelect) return;
+    subSelect.innerHTML = '';
     fontLibrary.forEach((font) => {
-        const btn = document.createElement('button');
-        btn.className = `font-sub-item feeling-btn ${font.key === currentSubFont ? 'active' : ''}`;
-        btn.textContent = font.name.split(' ')[0]; // Compact: first word only
-        btn.dataset.key = font.key;
-        btn.title = font.name; // Full name in tooltip
-        btn.style.fontFamily = getFontFamily(font.key);
-        btn.style.fontSize = '11px';
-        btn.onclick = (e) => applySubFont(font.key, e);
-        subContainer.appendChild(btn);
+        const option = document.createElement('option');
+        option.value = font.key;
+        option.textContent = font.name;
+        option.selected = font.key === currentSubFont;
+        subSelect.appendChild(option);
+    });
+    subSelect.addEventListener('change', (e) => {
+        applySubFont(e.target.value, e);
     });
 }
 
@@ -384,10 +502,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const styleNames = [
-        'Center Elegant', 'Diagonal', 'Corner', 'Circle', 'Minimal', 'Banner', 'Text', 'Divider', 'Signature', 'Geometric',
-        'Premium', 'Abstract', 'Split', 'Vertical', 'Classic', 'Modern', 'Wave', 'Stripe', 'Diamond', 'Ornament',
-        'Serif', 'Geo', 'Ultra', 'Flowing', 'Bold', 'Double', 'Badge', 'Vintage', 'Modern Bold', 'Display',
-        'Side', 'Deco', 'Rounded', 'Artistic', 'Underline', 'Badge Top', 'Corner', 'Modern', 'Serif 2', 'Premium 2'
+        'Logo + Divider', 'Rotated Diagonal', 'Corner Positioned', 'Circle Border', 'Vertical Text', 'Minimal Line', 'Lines Sandwich', 'Signature Style', 'Border Box', 'Dots Pattern',
+        'Two-Part', 'Horizontal Stripes', 'Diamond Shape', 'Main + Subtitle', 'Italic Corner', 'Bold Uppercase', 'Ornament Deco', 'Text + Accent',
+        'Floating Refined', 'Corner Elegant', 'Brushstroke', 'Modern Stacked', 'Vintage Border', 'Geometric Modern', 'Serif Elegance', 'Minimal Dots',
+        'Gradient Fade', 'Ornate Detail', 'Monogram Style', 'Contemporary Line'
     ];
     allStyles.forEach(i => {
         const opt = document.createElement('option');
@@ -403,8 +521,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (colorPicker && colorInput) {
         const handleColorChange = (newColor) => {
             currentColor = newColor;
+            currentSecondaryColor = getComplementaryColor(newColor);
             colorPicker.value = newColor;
             colorInput.value = newColor;
+            updateColorSwatches();
             updatePreview();
         };
         
@@ -447,8 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const line3Input = document.getElementById('line3Input');
     const opacitySlider = document.getElementById('opacitySlider');
     const customColor = document.getElementById('customColor');
-    const fontMainSelect = document.getElementById('fontMainSelect');
-    const fontSubSelect = document.getElementById('fontSubSelect');
+
     
     if (line1Input) line1Input.addEventListener('input', updatePreview);
     if (line2Input) line2Input.addEventListener('input', updatePreview);
@@ -488,34 +607,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Font dropdown support
-    if (fontMainSelect) {
-        fontLibrary.forEach((font) => {
-            const opt = document.createElement('option');
-            opt.value = font.key;
-            opt.textContent = font.name;
-            fontMainSelect.appendChild(opt);
-        });
-        fontMainSelect.value = currentMainFont;
-        fontMainSelect.addEventListener('change', (e) => {
-            currentMainFont = e.target.value;
-            updatePreview();
-        });
-    }
 
-    if (fontSubSelect) {
-        fontLibrary.forEach((font) => {
-            const opt = document.createElement('option');
-            opt.value = font.key;
-            opt.textContent = font.name;
-            fontSubSelect.appendChild(opt);
-        });
-        fontSubSelect.value = currentSubFont;
-        fontSubSelect.addEventListener('change', (e) => {
-            currentSubFont = e.target.value;
-            updatePreview();
-        });
-    }
 
     // Bind buttons
     const btnPrimary = document.querySelector('.btn-primary');
@@ -528,19 +620,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnCopy) btnCopy.addEventListener('click', copyWatermarkConfig);
     if (btnStar) btnStar.addEventListener('click', saveFavorite);
 
-    // Bind color palette buttons
-    document.querySelectorAll('.color-palette-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const paletteName = this.getAttribute('data-palette');
-            applyColorPalette(paletteName);
-        });
-    });
+
 
     // Initial setup
     renderFontLibrary();
     buildGallery();
     renderFavorites();
     currentColor = '#1a1a1a';
+    currentSecondaryColor = getComplementaryColor(currentColor);
     
     // Set default opacity to 100%
     const initialOpacitySlider = document.getElementById('opacitySlider');
@@ -552,7 +639,22 @@ document.addEventListener('DOMContentLoaded', () => {
         initialOpacityValue.textContent = '100%';
     }
     
+    updateColorSwatches();
     updatePreview();
+    
+    // Add keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey || e.metaKey) {
+            if (e.key === 's') {
+                e.preventDefault();
+                downloadWatermark();
+            }
+            if (e.key === 'r') {
+                e.preventDefault();
+                resetPreview();
+            }
+        }
+    });
 });
 
 // Accordion toggle function

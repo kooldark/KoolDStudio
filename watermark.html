@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Signature - Kool D. Studio</title>
-    <meta name="description" content="Tạo chữ ký / dòng chữ để in lên ảnh - Chỉnh sửa text, chọn style, tải PNG transparent">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Dm+Serif+Display&family=Roboto:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=Quicksand:wght@500;700&family=Oswald:wght@400;600&family=Raleway:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Lato:wght@400;700&family=Sora:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Abril+Fatface&family=Cinzel:wght@400;700&family=Unbounded:wght@400;700&family=Dancing+Script:wght@700&family=Satisfy&family=Pacifico&family=Fredoka:wght@400;600&family=Caveat:wght@400;700&family=Space+Mono:wght@400;700&family=Russo+One&family=Righteous&family=Playfair:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Tạo chữ ký chuyên nghiệp để in lên ảnh - 30 thiết kế, chỉnh sửa dễ dàng, tải PNG transparent">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Raleway:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Lato:wght@400;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/improvements.css">
     <link rel="stylesheet" href="assets/css/watermark.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="assets/js/modal.js"></script>
-
-
+    <script src="assets/js/watermark-data.js"></script>
 </head>
 <body>
-    <!-- NAVIGATION -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">KOOL D. STUDIO</a>
@@ -30,86 +27,76 @@
         </div>
     </nav>
 
-    <!-- PAGE TITLE -->
     <div class="page-title">
-        <h1>🖋️ Photo Signature</h1>
-        <p>Tạo chữ ký / dòng chữ để in lên ảnh</p>
+        <h1>Signature & Watermark</h1>
+        <p>Tạo chữ ký chuyên nghiệp để in lên ảnh của bạn</p>
     </div>
 
-    <!-- EDITOR SECTION -->
     <section class="editor-section">
         <div class="editor-container">
             <div class="editor-panel">
-                <div class="editor-header">
-                    <h2>✏️ Chỉnh sửa</h2>
-                </div>
-
-                <!-- SECTION 1: STYLE -->
                 <div class="form-section">
-                    <label class="section-label">Style</label>
+                    <label class="section-label">Kiểu</label>
                     <select id="styleSelect" class="style-select"></select>
                 </div>
 
-                <!-- SECTION 2: TEXT -->
                 <div class="form-section">
                     <label class="section-label">Văn bản</label>
                     <div class="text-grid">
-                        <div class="form-group">
-                            <label>L1</label>
-                            <input type="text" id="line1Input" value="Kool D." placeholder="Dòng 1" oninput="updatePreview()">
-                        </div>
-                        <div class="form-group">
-                            <label>L2</label>
-                            <input type="text" id="line2Input" value="Studio" placeholder="Dòng 2" oninput="updatePreview()">
-                        </div>
-                        <div class="form-group">
-                            <label>L3</label>
-                            <input type="text" id="line3Input" value="2026" placeholder="Dòng 3" oninput="updatePreview()" style="cursor: text; pointer-events: auto; user-select: text;">
-                        </div>
+                        <input type="text" id="line1Input" value="Kool D." placeholder="Dòng 1">
+                        <input type="text" id="line2Input" value="Studio" placeholder="Dòng 2">
+                        <input type="text" id="line3Input" value="2026" placeholder="Dòng 3">
                     </div>
                 </div>
 
-                <!-- SECTION 3: ACTIONS -->
                 <div class="action-buttons">
-                    <button class="btn btn-primary" onclick="downloadWatermark()">⬇️ Tải thiết kế</button>
-                    <button class="btn btn-secondary" onclick="resetPreview()">↺ Reset</button>
-                    <button class="btn btn-secondary" onclick="randomizeAll()">🎲 Tự động</button>
+                    <button class="btn btn-primary" onclick="downloadWatermark()">Tải</button>
+                    <button class="btn btn-secondary" onclick="resetPreview()">Reset</button>
+                    <button class="btn btn-secondary" onclick="randomizeAll()">Tự động</button>
                 </div>
 
-                <!-- ACCORDION: ADVANCED -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>⚙️ Nâng cao</span>
+                        <span>⚙️ Tuỳ chỉnh</span>
                         <span class="accordion-icon">▼</span>
                     </button>
                     <div class="accordion-content">
-                        <!-- Opacity Slider -->
-                        <div style="margin-bottom: 15px; display: none;">
-                            <label style="font-size:9px; color:#888; text-transform:uppercase; font-weight:600; display:block; margin-bottom:5px;">Độ mờ: <span id="opacityValue">100%</span></label>
-                            <input type="range" id="opacitySlider" min="0" max="100" value="100" style="width: 100%; cursor: pointer;" oninput="updatePreview(); document.getElementById('opacityValue').textContent = this.value + '%';">
-                        </div>
-
-                        <!-- Fonts -->
-                        <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-                            <div style="flex: 1;">
-                                <label style="font-size:9px; color:#888; text-transform:uppercase; font-weight:600; display:block; margin-bottom:5px;">Font chính</label>
-                                <select id="fontMainSelect" class="style-select"></select>
+                        <div class="color-harmony">
+                            <div class="color-swatch">
+                                <div class="swatch-label">Chính</div>
+                                <div id="mainColorSwatch"></div>
+                                <div class="swatch-code" id="mainColorCode">#1a1a1a</div>
                             </div>
-                            <div style="flex: 1;">
-                                <label style="font-size:9px; color:#888; text-transform:uppercase; font-weight:600; display:block; margin-bottom:5px;">Font phụ</label>
-                                <select id="fontSubSelect" class="style-select"></select>
+                            <div class="color-swatch">
+                                <div class="swatch-label">Phụ</div>
+                                <div id="secondaryColorSwatch"></div>
+                                <div class="swatch-code" id="secondaryColorCode">#eb9500</div>
                             </div>
                         </div>
 
-                        <!-- Additional Actions -->
-                        <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-                            <button class="btn btn-outline" style="flex:1; padding:9px; font-size:10px;" onclick="saveFavorite()">⭐ Lưu</button>
+                        <div>
+                            <label class="form-label" style="font-size: 10px; margin-bottom: 6px; display: block;">🎨 Màu</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorPicker" value="#1a1a1a">
+                                <input type="text" id="colorInput" value="#1a1a1a" placeholder="#1a1a1a">
+                            </div>
                         </div>
 
-                        <!-- Favorites Section -->
-                        <div id="favoritesSection" style="display:none;">
-                            <label style="font-size:9px; color:#666; text-transform:uppercase; font-weight:600; display:block; margin-bottom:6px;">Đã lưu</label>
-                            <div id="favoritesList" style="display: flex; flex-direction: column; gap: 6px;"></div>
+                        <div>
+                            <label class="section-label" style="font-size: 9px;">Font Chính</label>
+                            <select id="fontMainSelect" class="style-select" style="width: 100%; padding: 10px 12px; font-size: 12px;"></select>
+                        </div>
+
+                        <div>
+                            <label class="section-label" style="font-size: 9px;">Font Phụ</label>
+                            <select id="fontSubSelect" class="style-select" style="width: 100%; padding: 10px 12px; font-size: 12px;"></select>
+                        </div>
+
+                        <button class="btn btn-outline" onclick="saveFavorite()" style="width: 100%; padding: 8px 10px; font-size: 10px; margin-top: 8px;">💾 Lưu</button>
+
+                        <div id="favoritesSection" style="display:none; margin-top: 10px;">
+                            <label class="section-label" style="font-size: 9px;">Đã lưu</label>
+                            <div id="favoritesList"></div>
                         </div>
                     </div>
                 </div>
@@ -121,20 +108,19 @@
         </div>
     </section>
 
-    <!-- GALLERY SECTION -->
     <section class="gallery-section">
         <div class="gallery-container">
             <div class="gallery-title">
-                <h2>🎨 Tất cả 40 Style</h2>
+                <h2>30 Thiết Kế Chuyên Nghiệp</h2>
+                <p>Chọn một kiểu hoặc tùy chỉnh theo ý của bạn</p>
             </div>
             <div class="watermark-container" id="galleryContainer"></div>
         </div>
     </section>
 
-    <script src="assets/js/watermark-data.js"></script>
+    <script src="assets/js/watermark-styles.js"></script>
     <script src="assets/js/watermark.js"></script>
     <script>
-        // Replace alert with modal in watermark context
         window.showAlert = (message) => {
             modal.info(message, 'Thông báo');
         };
