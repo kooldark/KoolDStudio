@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentAlbumLink = null; // Store album link for sharing
   let originalSubtitle = '';
   let lightboxSwiper = null; // To hold the Swiper instance
+  let isRendering = false; // Prevent rapid re-renders
 
   const titles = {
     cuoi:      { vn: "Ảnh Cưới", en: "Fine Art Wedding" },
@@ -136,7 +137,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- CORE RENDER LOGIC ---
   async function render() {
-    const data = galleryData[currentCategory];
+    isRendering = true;
+    try {
+      const data = galleryData[currentCategory];
 
     if (currentCategory === 'all') {
       await renderImageGrid(getAllImages());
@@ -203,6 +206,9 @@ document.addEventListener("DOMContentLoaded", () => {
         'https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg'
       );
     }
+    } finally {
+      isRendering = false;
+    }
   }
   
   function renderCategoryFilters() {
@@ -239,24 +245,17 @@ document.addEventListener("DOMContentLoaded", () => {
     visibleImages = [];
     let gridHtml = '<div class="album-grid">';
 
-    // Load category description if available
+    // Load category description if available (async, non-blocking)
     let categoryDescription = '';
-    try {
-      const categoryInfoRes = await fetch(`assets/img/portfolio/${category}/category-info.json`);
-      if (categoryInfoRes.ok) {
-        const categoryInfo = await categoryInfoRes.json();
-        categoryDescription = categoryInfo.description || '';
-      }
-    } catch (e) {
-      console.log('No category description available');
-    }
-
-    // Add category description at the top if exists
-    if (categoryDescription) {
-      gridHtml += `<div class="category-description">
-        <p class="category-description-text">${categoryDescription}</p>
-      </div>`;
-    }
+    fetch(`assets/img/portfolio/${category}/category-info.json`)
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (data?.description) {
+          const descEl = document.querySelector('.category-description-text');
+          if (descEl) descEl.textContent = data.description;
+        }
+      })
+      .catch(() => {}); // Silently fail if not available
 
     // Lazy load: Limit albums shown at once
     const MAX_ALBUMS = 12;
@@ -278,26 +277,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const albumLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(category)}&album=${encodeURIComponent(albumName)}`;
       const encodedLink = encodeURIComponent(albumLink);
 
-      // Load album description
-      let albumDescription = '';
-      if (!isLoose) {
-        try {
-          const infoRes = await fetch(`${basePath}${albumName}/info.json`);
-          if (infoRes.ok) {
-            const info = await infoRes.json();
-            albumDescription = info.description || '';
-          }
-        } catch (e) {
-          console.log(`No description for album: ${albumName}`);
-        }
-      }
-
+      // Render without waiting for descriptions - much faster!
       gridHtml += `
         <div class="album-card" data-category="${category}" data-album="${albumName}">
           <img class="album-card-thumbnail" src="${coverImage}" alt="${albumName}" loading="lazy" decoding="async">
           <div class="album-card-overlay"></div>
           <h3 class="album-card-title">${albumName}</h3>
-          ${albumDescription ? `<p class="album-card-description">${albumDescription}</p>` : ''}
         </div>`;
     }
     gridHtml += '</div>';
@@ -462,21 +447,28 @@ document.addEventListener("DOMContentLoaded", () => {
   function addEventListeners() {
     categoryFiltersContainer.addEventListener('click', (e) => {
       if (!e.target.matches('.filter-btn')) return;
+      if (isRendering) return; // Prevent rapid clicks
+      
+      const newCategory = e.target.dataset.filter;
+      if (newCategory === currentCategory) return; // Already on this category
 
       categoryFiltersContainer.querySelector('.active')?.classList.remove('active');
       e.target.classList.add('active');
 
-      currentCategory = e.target.dataset.filter;
+      currentCategory = newCategory;
       currentAlbum = null;
       render();
     });
 
     backButton.addEventListener('click', () => {
+      if (isRendering) return; // Prevent rapid clicks
       currentAlbum = null;
       render();
     });
 
     galleryContainer.addEventListener('click', (e) => {
+      if (isRendering) return; // Prevent rapid clicks during render
+      
       const albumCard = e.target.closest('.album-card');
       const shareBtn = e.target.closest('.album-share-btn');
       const gridItem = e.target.closest('.grid-item');
