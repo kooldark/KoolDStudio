@@ -39,12 +39,13 @@
     .form-group input:focus { outline: none; border-color: #eb9500; box-shadow: 0 0 0 3px rgba(235, 149, 0, 0.1); }
     
     /* Time Slots */
-    .time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .time-slot { 
-      padding: 12px; border: 1px solid #ddd; border-radius: 8px; 
+      padding: 20px 12px; border: 2px solid #ddd; border-radius: 8px; 
       cursor: pointer; transition: all 0.2s; text-align: center; font-size: 14px;
+      background: white; min-height: 80px; display: flex; flex-direction: column; justify-content: center;
     }
-    .time-slot:hover { border-color: #eb9500; }
+    .time-slot:hover { border-color: #eb9500; background: rgba(235, 149, 0, 0.05); }
     .time-slot.selected { background: #eb9500; color: white; border-color: #eb9500; }
     
     /* Contact Info */
@@ -117,8 +118,9 @@
       }
 
       .time-slot { 
-        padding: 10px 8px;
+        padding: 12px 8px;
         font-size: 12px;
+        min-height: 70px;
       }
 
       .contact-grid { 
@@ -172,34 +174,8 @@
 </head>
 <body>
 
-<div id="preloader"><div class="spinner"></div></div>
-
-<nav id="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="logo">KOOL D. STUDIO</a>
-    <div class="nav-links" id="nav-links">
-      <a href="index.html">Trang chủ</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="pricing.html">Bảng giá</a>
-      <a href="about.html">About</a>
-      <a href="watermark.html">Watermark Tool</a>
-    </div>
-    <div class="menu-toggle" id="mobile-menu">☰</div>
-  </div>
-</nav>
-
-<!-- Floating Contact Ribbon -->
-<div class="contact-ribbon">
-  <a href="tel:0379031662" class="ribbon-item ribbon-phone" title="Gọi">
-    <span class="ribbon-icon">☎</span>
-  </a>
-  <a href="https://m.me/KoolDStudio" target="_blank" class="ribbon-item ribbon-messenger" title="Messenger">
-    <span class="ribbon-icon">M</span>
-  </a>
-  <a href="https://zalo.me/0379031662" target="_blank" class="ribbon-item ribbon-zalo" title="Zalo">
-    <span class="ribbon-icon">Z</span>
-  </a>
-</div>
+<!-- Header Template Container -->
+<div id="header-container"></div>
 
 <div class="booking-container">
   <div class="booking-header" data-aos="fade-up">
@@ -257,18 +233,15 @@
 </div>
 
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="assets/js/load-template.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/booking.js"></script>
 <script>
   AOS.init({duration: 800, once: true, offset: 50});
 </script>
 
-<!-- Admin & Tools Links -->
-<div style="text-align: center; padding: 20px 0; font-size: 12px; display: flex; justify-content: center; gap: 16px; align-items: center;">
-  <a href="hopdong.html" class="admin-link">✦</a>
-  <span style="color: #ddd;">|</span>
-  <a href="watermark.html" style="color: #999; text-decoration: none; font-size: 11px; transition: color 0.3s;" onmouseover="this.style.color='#eb9500'" onmouseout="this.style.color='#999'">Chọn Watermark</a>
-</div>
+<!-- Footer Template Container -->
+<div id="footer-container"></div>
 
 </body>
 </html>

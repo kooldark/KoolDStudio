@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Báo Giá Chụp Ảnh Gia Đình Linh Hoạt | Kool D. Studio</title>
+  <meta name="description" content="Xây dựng gói chụp ảnh gia đình theo ý bạn. Tùy chỉnh makeup, album và sản phẩm in ấn cao cấp. Báo giá minh bạch, chuyên nghiệp từ Kool D. Studio.">
+  <meta name="keywords" content="báo giá chụp ảnh gia đình, giá chụp ảnh gia đình, kool d studio, chụp ảnh gia đình quảng ngãi, studio gia đình, tự xây dựng gói chụp">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  
+  <link rel="stylesheet" href="assets/css/bgcuoi-studio-new.css">
+  <link rel="icon" type="image/webp" href="assets/img/brand/favicon.webp">
+  <style>
+    .upsell-card .checkmark {
+      display: none;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: var(--soft-gold);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-weight: bold;
+      font-size: 16px;
+      z-index: 2;
+      transform: scale(0);
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .upsell-card.selected .checkmark {
+      display: block;
+      transform: scale(1);
+    }
+  </style>
+
+</head>
+<body>
+
+<!-- Header Template Container -->
+<div id="header-container"></div>
+
+<div class="container">
+
+  <!-- PRICING SECTION -->
+  <section class="pricing-section" data-aos="fade-up">
+
+    <!-- BASE PACKAGE -->
+    <div class="base-package" data-price="1500">
+      <div class="package-header">
+        <span class="package-badge" id="package-badge">Phổ Biến</span>
+        <h2 class="package-title" id="package-title">Gói Gia Đình — Sum Vầy</h2>
+        <p class="total-price-display" id="total-price-display">Tổng cộng: 1.500k</p>
+        <p class="package-subtitle" id="package-subtitle">Gói chụp trọn vẹn cho gia đình nhỏ, lưu giữ khoảnh khắc đáng nhớ</p>
+      </div>
+
+            <div class="package-body">
+
+              <div class="sliders-section" style="padding-bottom: 40px; border-bottom: 1px solid var(--border-light); margin-bottom: 30px;">
+
+                <div class="slider-item">
+
+                  <div class="label">
+
+                    <span>Số thành viên gia đình</span>
+
+                    <strong id="membersVal">3</strong>
+
+                  </div>
+
+                  <input type="range" min="1" max="15" value="3" id="members">
+
+                  <p class="hint" id="membersHint">Gia đình nhỏ ấm cúng</p>
+
+                </div>
+
+            
+
+                <div class="slider-item">
+
+                  <div class="label">
+
+                    <span>Makeup & Tóc</span>
+
+                    <strong id="makeupVal">1</strong>
+
+                  </div>
+
+                  <input type="range" min="0" max="3" value="1" id="makeup">
+
+                  <p class="hint" id="makeupHint">Miễn phí cho 01 người đầu</p>
+
+                </div>
+
+              </div>
+
+      
+
+              <ul class="feature-list">
+
+                <li><span class="feature-icon">📸</span><strong>Buổi chụp tự nhiên, không giới hạn file để bắt trọn khoảnh khắc yêu thương.</strong></li>
+                <li><span class="feature-icon">💾</span><strong>Toàn bộ file ảnh gốc</strong></li>
+                <li><span class="feature-icon">✨</span><strong><span id="retouch-count">15</span> ảnh chỉnh sửa chi tiết</strong></li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+      
+
+          <!-- UPSELL OPTIONS -->
+
+          <div class="upsell-section">
+
+            <h3 class="upsell-title">Những Nâng Cấp Tùy Chọn</h3>
+
+            <p class="upsell-subtitle">Thêm dấu ấn cá nhân cho album của gia đình bạn.</p>
+
+            <div class="upsell-grid">
+
+
+
+            
+
+      
+
+              <div class="upsell-card" data-price="1500">
+                <div class="checkmark">✓</div>
+
+                <div class="upsell-icon">📖</div>
+
+                <h4 class="upsell-name">Album Photobook</h4>
+
+                <p class="upsell-description">Album cao cấp 20 trang, món quà ý nghĩa cho ông bà.</p>
+
+                <p class="upsell-price">+1.500k</p>
+
+              </div>
+
+              
+
+              <div class="upsell-card" data-price="800" data-price-display="800k">
+                <div class="checkmark">✓</div>
+
+                <div class="upsell-icon">🖼️</div>
+
+                <h4 class="upsell-name">Thêm Ảnh Phóng Lớn</h4>
+
+                <p class="upsell-description">01 ảnh gỗ pha lê size 60x90cm trang trí phòng khách.</p>
+
+                <p class="upsell-price">+800k</p>
+
+              </div>
+
+              
+
+            </div>
+
+          </div>
+
+      
+
+          <!-- TOTAL SECTION -->
+
+          <div class="total-section">
+
+              <div class="selected-list" id="selected-upgrades-list">
+
+                <!-- JS will fill this -->
+
+              </div>
+
+              <div class="total-divider"></div>
+
+              <div class="total-line final-total">
+
+                  <span>Tổng Cộng</span>
+
+                  <span id="final-price">2.500k</span>
+
+              </div>
+
+              <div class="cta-section">
+
+                   <button class="btn" id="messenger-btn">Liên Hệ Messenger</button>
+
+                   <button class="btn btn-zalo" id="zalo-btn">Liên Hệ Zalo</button>
+
+              </div>
+
+          </div>
+
+        </section>
+
+        
+
+        <!-- FAQ SECTION -->
+
+        <section class="faq-section" data-aos="fade-up">
+
+          <h2 class="section-title">Câu Hỏi Thường Gặp</h2>
+
+          
+
+          <div class="faq-container">
+
+            <div class="faq-item" data-aos="fade-up">
+              <div class="faq-question">
+                <span class="faq-icon">Q</span>
+                <h3>Gói chụp có bao gồm trang phục không?</h3>
+              </div>
+              <div class="faq-answer">
+                <p>Gói cơ bản chưa bao gồm trang phục. Kool D. Studio khuyến khích gia đình tự chuẩn bị trang phục để thể hiện đúng phong cách và cá tính riêng. Chúng tôi sẽ tư vấn về màu sắc và kiểu dáng để cả nhà có một bộ ảnh hài hòa nhất.</p>
+              </div>
+            </div>
+      
+            <div class="faq-item" data-aos="fade-up">
+              <div class="faq-question">
+                <span class="faq-icon">Q</span>
+                <h3>Nếu gia đình tôi có nhiều hơn 4 người thì sao?</h3>
+              </div>
+              <div class="faq-answer">
+                <p>Chúng tôi hoàn toàn có thể phục vụ các gia đình lớn. Phụ thu cho mỗi thành viên thêm là 300k/người. Vui lòng liên hệ để chúng tôi chuẩn bị và tư vấn gói chụp phù hợp nhất.</p>
+              </div>
+            </div>
+      
+            <div class="faq-item" data-aos="fade-up">
+              <div class="faq-question">
+                <span class="faq-icon">Q</span>
+                <h3>Thời gian chụp một buổi là bao lâu?</h3>
+              </div>
+              <div class="faq-answer">
+                <p>Một buổi chụp gia đình thường kéo dài từ 2-3 tiếng. Đây là khoảng thời gian hợp lý để các thành viên, đặc biệt là các bé, cảm thấy thoải mái và không bị mệt, giúp bắt được những khoảnh khắc tự nhiên nhất.</p>
+              </div>
+            </div>
+      
+      
+            <div class="faq-item" data-aos="fade-up">
+              <div class="faq-question">
+                <span class="faq-icon">Q</span>
+                <h3>Sau bao lâu thì chúng tôi nhận được ảnh?</h3>
+              </div>
+              <div class="faq-answer">
+                <p>Ảnh gốc sẽ được gửi cho bạn ngay sau buổi chụp. Ảnh chỉnh sửa chi tiết sẽ được giao trong vòng 5-7 ngày làm việc. Đối với các sản phẩm in ấn như album hoặc ảnh phóng lớn, thời gian hoàn thiện sẽ từ 7-10 ngày sau khi bạn duyệt file ảnh cuối cùng.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION -->
+
+        <section class="testimonials-section" data-aos="fade-up">
+
+          <h2 class="section-title">Gia Đình Khách Hàng Nói Gì?</h2>
+
+          
+
+          <div class="testimonials-container">
+
+            <div class="testimonial-card" data-aos="fade-up">
+
+              <div class="testimonial-stars">★★★★★</div>
+
+              <p class="testimonial-text">"Cả nhà mình đã có một buổi chụp hình rất vui và thoải mái. Nhiếp ảnh gia rất kiên nhẫn với 2 đứa nhỏ nhà mình. Ảnh ra đẹp tự nhiên, mình rất hài lòng."</p>
+
+              <div class="testimonial-author">
+
+                <strong>Gia đình chị Mai</strong>
+
+                <span>2024</span>
+
+              </div>
+
+            </div>
+
+      
+
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+
+              <div class="testimonial-stars">★★★★★</div>
+
+              <p class="testimonial-text">"Studio tư vấn gói chụp rất hợp lý. Mình thích nhất là có thể tự chọn thêm các sản phẩm in ấn theo ý muốn. Chất lượng ảnh in ra cũng rất sắc nét."</p>
+
+              <div class="testimonial-author">
+
+                <strong>Gia đình anh Long</strong>
+
+                <span>2024</span>
+
+              </div>
+
+            </div>
+
+      
+
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+
+              <div class="testimonial-stars">★★★★★</div>
+
+              <p class="testimonial-text">"Book lịch chụp cho ba mẹ kỷ niệm 30 năm ngày cưới, hai cụ vui lắm. Cảm ơn Kool D. đã giúp gia đình mình ghi lại một kỷ niệm thật đẹp và ý nghĩa."</p>
+
+              <div class="testimonial-author">
+
+                <strong>Gia đình chị Thảo</strong>
+
+                <span>2023</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      
+
+                                <div style="text-align:center; margin: 40px 0;">
+
+      
+
+                                  <a href="pricing.html" style="color:var(--deep-green); font-weight:500; text-decoration:underline;">← Quay lại Bảng Giá chung</a>
+
+      
+
+                                </div>
+
+      
+
+                              <!-- FINAL CTA SECTION -->
+
+      <section class="final-cta" data-aos="fade-up">
+
+        <div class="container">
+
+          <h2 style="font-size: 28px; margin-bottom: 15px; text-align: center;">Lưu Giữ Kỷ Niệm Gia Đình?</h2>
+
+          <p style="font-size: 16px; text-align: center; color: #666; max-width: 600px; margin: 0 auto 30px;">
+
+            Hãy để chúng tôi giúp bạn ghi lại những khoảnh khắc ấm áp và hạnh phúc nhất.
+
+          </p>
+
+          <div style="text-align: center;">
+
+            <p style="margin-top: 15px; color: #888; font-size: 14px;">
+
+              Gọi: <a href="tel:0379031662" style="color: var(--deep-green); font-weight: 600;">0379.031.662</a> 
+
+              • <a href="https://m.me/KoolDStudio" target="_blank" style="color: var(--deep-green); font-weight: 600;">Messenger</a>
+
+              • <a href="https://zalo.me/0379031662" target="_blank" style="color: var(--deep-green); font-weight: 600;">Zalo</a>
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      
+
+      <footer class="footer" id="footer-container"></footer>
+
+      
+
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+      <script>AOS.init({duration: 800, once: true});</script>
+
+      <script src="assets/js/load-template.js"></script>
+
+      <script src="assets/js/main.js" defer></script>
+
+      <script src="assets/js/bggiadinh.js" defer></script>
+      
+
+      </body>
+
+      </html>
+
+      

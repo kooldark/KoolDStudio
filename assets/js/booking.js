@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     ];
   }
 
-  const timeSlots = [
-    '08:00', '09:00', '10:00',
-    '14:00', '15:00', '16:00',
-    '17:00', '18:00', '19:00'
+  const timePeriods = [
+    { id: 'morning', label: '☀️ Sáng', time: '8:00 - 12:00' },
+    { id: 'afternoon', label: '🌤️ Chiều', time: '13:00 - 17:00' },
+    { id: 'evening', label: '🌙 Tối', time: '18:00 - 22:00' }
   ];
 
   let selectedPackage = '';
@@ -63,18 +63,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     packageGrid.appendChild(card);
   });
 
-  // Render time slots
+  // Render time periods
   timeGrid.innerHTML = '';
-  timeSlots.forEach(time => {
+  timePeriods.forEach(period => {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'time-slot';
-    btn.textContent = time;
+    btn.innerHTML = `<div style="font-weight: 600; font-size: 16px;">${period.label}</div><div style="font-size: 12px; color: inherit; opacity: 0.8;">${period.time}</div>`;
     btn.onclick = (e) => {
       e.preventDefault();
       document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
-      selectedTime = time;
+      selectedTime = period.label;
     };
     timeGrid.appendChild(btn);
   });
@@ -85,12 +85,35 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Generate message
   function generateMessage() {
-    return `Tôi muốn đặt lịch chụp ảnh:
-- Gói: ${selectedPackage || '(chưa chọn)'}
+    const storedDetails = localStorage.getItem('bookingDetails');
+    let detailsMessage = '';
+
+    if (storedDetails) {
+        const details = JSON.parse(storedDetails);
+        detailsMessage = `
+--- CHI TIẾT GÓI TÙY CHỈNH ---
+- Gói: ${details.packageName}
+- Số thành viên: ${details.members}
+- Số người makeup: ${details.makeup}
+- Dịch vụ thêm: ${details.upgrades.length > 0 ? details.upgrades.join(', ') : 'Không có'}
+- Tổng chi phí dự kiến: ${details.totalPrice}
+------------------------------------
+`;
+    }
+
+    const bookingInfo = `
+--- THÔNG TIN ĐẶT LỊCH ---
+- Gói chính: ${selectedPackage || '(chưa chọn)'}
 - Ngày: ${bookingDate.value || '(chưa chọn)'}
 - Giờ: ${selectedTime || '(chưa chọn)'}
 - Tên: ${clientName.value || '(chưa nhập)'}
 - SĐT: ${clientPhone.value || '(chưa nhập)'}`;
+
+    if (detailsMessage) {
+      return `Tôi muốn đặt lịch với các chi tiết sau:${detailsMessage}${bookingInfo}`;
+    }
+    
+    return `Tôi muốn đặt lịch chụp ảnh:${bookingInfo}`;
   }
 
   // Messenger booking
@@ -101,6 +124,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const message = generateMessage();
     const messengerUrl = `https://m.me/KoolDStudio?text=${encodeURIComponent(message)}`;
     window.open(messengerUrl, '_blank');
+    localStorage.removeItem('bookingDetails');
   };
 
   // Zalo booking
@@ -111,6 +135,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const message = generateMessage();
     const zaloUrl = `https://zalo.me/0379031662?text=${encodeURIComponent(message)}`;
     window.open(zaloUrl, '_blank');
+    localStorage.removeItem('bookingDetails');
   };
 
   function validateForm() {

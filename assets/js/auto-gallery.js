@@ -78,14 +78,30 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!res.ok) throw new Error(`Network response was not ok, status: ${res.status}`);
       const portfolioData = await res.json();
       
+      // Validate data
+      if (!portfolioData || !portfolioData.categories) {
+        throw new Error('Portfolio data is missing categories');
+      }
+      
       // Transform portfolio-data.json format to match old structure
       galleryData = {};
       portfolioData.categories.forEach(cat => {
+        if (!cat.id || !Array.isArray(cat.albums)) {
+          console.warn('Skipping invalid category:', cat);
+          return;
+        }
         galleryData[cat.id] = {};
         cat.albums.forEach(album => {
-          galleryData[cat.id][album.id] = album.images;
+          if (album.id && Array.isArray(album.images)) {
+            galleryData[cat.id][album.id] = album.images;
+          }
         });
       });
+      
+      // Verify we have data
+      if (Object.keys(galleryData).length === 0) {
+        throw new Error('No valid categories found in portfolio data');
+      }
       
       renderCategoryFilters();
       

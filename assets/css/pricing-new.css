@@ -1,24 +1,23 @@
 :root {
-  /* High-Contrast Brand Theme */
-  --primary-dark: #3a5a40; /* Deep Green */
-  --accent-orange: #eb9500;   /* Vibrant, classic orange */
-  --bg-white: #FFFFFF;     /* Pure white for crisp background */
-  --text-secondary-dark: #555555; /* Darker gray for secondary text */
-  --border-light: #EAEAEA; /* Lighter, subtle border */
-  --white: #fff;
+  /* Core Colors from main style.css */
+  --primary-dark: #424D4D; /* A deep, desaturated teal/green */
+  --accent-bronze: #B38E75; /* A refined, earthy bronze */
+  --bg-light: #FCFBF9; /* A soft, warm off-white */
+  --text-medium-gray: #888A8A; /* Medium gray for secondary text/borders */
+  --text-dark-charcoal: #33373B; /* Deep charcoal for main text */
+  --white: #fff; /* Keep pure white for certain elements */
 
-  /* Semantic Mappings */
+  /* Semantic Mappings from main style.css */
   --primary-color: var(--primary-dark);
-  --accent-color: var(--accent-orange);
-  --card-bg-color: var(--bg-white);
-  --border-color: var(--border-light);
-  --text-color: var(--primary-dark);
-  --text-color-secondary: var(--text-secondary-dark);
+  --accent-color: var(--accent-bronze);
+  --card-bg-color: var(--white);
+  --border-color: #E0E0E0; /* Light, subtle border */
+  --text-color: var(--text-dark-charcoal);
+  --text-color-secondary: var(--text-medium-gray);
 
   /* Shadows for consistency */
-  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.05);
-  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.07);
-  --shadow-large: 0 20px 40px rgba(0, 0, 0, 0.1);
+  --shadow-soft: 0 8px 32px rgba(51, 55, 59, 0.08); 
+  --shadow-card: 0 20px 60px rgba(66, 77, 77, 0.15); 
 }
 
 * {
@@ -29,7 +28,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: var(--bg-white);
+  background: var(--bg-light);
   color: var(--text-color);
   line-height: 1.7;
 }
@@ -89,7 +88,7 @@ nav.scrolled {
   padding: 0.8rem 0;
   background: rgba(252, 251, 249, 0.96);
   box-shadow: 0 8px 40px rgba(66, 77, 77, 0.1);
-  border-bottom: 1px solid rgba(235, 149, 0, 0.15);
+  border-bottom: 1px solid rgba(179, 142, 117, 0.15);
 }
 
 .nav-container {
@@ -167,10 +166,10 @@ section {
 .gold-line {
   width: 100px; 
   height: 2px; 
-  background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent-bronze), transparent);
   margin: 30px auto; 
   border-radius: 2px;
-  box-shadow: 0 4px 12px rgba(235, 149, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(179, 142, 117, 0.2);
 }
 
 .pricing-hero {
@@ -227,17 +226,17 @@ section {
 
 .price-card:hover::before {
   width: 40%;
-  background: var(--accent-color);
+  background: var(--accent-bronze);
 }
 
 .price-card.recommended {
   transform: scale(1.03);
   box-shadow: var(--shadow-card);
-  border-color: rgba(235, 149, 0, 0.4);
+  border-color: rgba(179, 142, 117, 0.3);
 }
 .price-card.recommended::before {
   width: 40%;
-  background: var(--accent-color);
+  background: var(--accent-bronze);
 }
 .price-card.recommended:hover {
   transform: scale(1.05) translateY(-8px);
@@ -282,7 +281,7 @@ section {
   padding: 10px 0;
   position: relative;
   padding-left: 28px;
-  border-bottom: 1px dotted rgba(235, 149, 0, 0.2);
+  border-bottom: 1px dotted rgba(179, 142, 117, 0.15);
   color: var(--text-color-secondary);
   font-size: 14px;
 }
@@ -297,7 +296,7 @@ section {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--accent-color); 
+  color: var(--accent-bronze);
   font-size: 16px;
   font-weight: 600;
 }
@@ -324,41 +323,37 @@ section {
 }
 
 .btn:hover {
-  background: #2a402d;
+  background: #2e4833;
   transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 12px 48px rgba(66, 77, 77, 0.12);
 }
 
 .btn-primary {
   background: var(--primary-dark);
   color: var(--white);
-  border-color: var(--primary-dark);
+  border-color: transparent;
 }
 .btn-primary:hover {
-  background: #2a402d;
-  border-color: #2a402d;
+  background: #2e4833; /* Darken primary color */
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--primary-dark);
-  border-color: var(--border-color);
+  border-color: var(--primary-dark);
 }
 .btn-secondary:hover {
   background: var(--primary-dark);
   color: var(--white);
-  border-color: var(--primary-dark);
 }
 
 .btn-tertiary {
-  background: var(--accent-orange);
-  color: var(--white);
-  border-color: var(--accent-orange);
-  font-weight: 700;
+  background: transparent;
+  color: var(--accent-bronze);
+  border-color: var(--accent-bronze);
 }
 .btn-tertiary:hover {
-  background: #d38600;
-  border-color: #d38600;
+  background: var(--accent-bronze);
   color: var(--white);
 }
 
@@ -380,7 +375,7 @@ section {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--accent-color);
+  background: var(--accent-bronze);
   transition: width 0.3s ease;
 }
 
@@ -402,11 +397,11 @@ section {
     top: -1px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--accent-color);
-    color: #fff;
-    font-weight: 700;
+    background: var(--accent-bronze);
+    color: white;
     padding: 6px 20px;
     font-size: 11px;
+    font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
     border-radius: 0 0 8px 8px;
@@ -439,14 +434,14 @@ section {
 }
 
 .pricing-footer a {
-  color: var(--primary-dark);
+  color: var(--accent-color);
   font-weight: 600;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .pricing-footer a:hover {
-  color: var(--accent-color);
+  color: var(--primary-color);
 }
 
 /* Responsive Styles */
@@ -655,7 +650,7 @@ section {
 
 .benefit-card:hover {
   border-color: var(--accent-color);
-  box-shadow: 0 12px 40px rgba(235, 149, 0, 0.1);
+  box-shadow: 0 12px 40px rgba(179, 142, 117, 0.1);
   transform: translateY(-4px);
 }
 
@@ -693,5 +688,5 @@ section {
 }
 
 .back-to-home-link:hover {
-  color: var(--primary-dark);
+  color: var(--accent-bronze);
 }

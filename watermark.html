@@ -14,18 +14,8 @@
     <script src="assets/js/watermark-data.js"></script>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">KOOL D. STUDIO</a>
-            <div class="nav-links">
-                <a href="index.html">Trang chủ</a>
-                <a href="portfolio.html">Portfolio</a>
-                <a href="pricing.html">Bảng giá</a>
-                <a href="about.html">About</a>
-            </div>
-            <div class="menu-toggle" id="mobile-menu">☰</div>
-        </div>
-    </nav>
+    <!-- Header Template Container -->
+    <div id="header-container"></div>
 
     <div class="page-title">
         <h1>Signature & Watermark</h1>
@@ -119,11 +109,15 @@
     </section>
 
     <script src="assets/js/watermark-styles.js"></script>
+    <script src="assets/js/load-template.js"></script>
     <script src="assets/js/watermark.js"></script>
     <script>
         window.showAlert = (message) => {
             modal.info(message, 'Thông báo');
         };
     </script>
+
+    <!-- Footer Template Container -->
+    <div id="footer-container"></div>
 </body>
 </html>

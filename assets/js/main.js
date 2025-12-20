@@ -145,4 +145,30 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (navLinks) {
     observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
   }
+
+  // FAQ Interactivity
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (question) {
+      question.addEventListener('click', () => {
+        item.classList.toggle('active');
+        
+        // Close other FAQ items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+      });
+    }
+  });
+
+  // Show first 2 FAQ items by default
+  if (faqItems.length > 0) {
+    faqItems[0].classList.add('active');
+    if (faqItems.length > 1) {
+      faqItems[1].classList.add('active');
+    }
+  }
 });
