@@ -33,33 +33,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   const galleryContainer = document.getElementById('home-gallery-container');
   if (galleryContainer) {
     try {
-      const res = await fetch('assets/js/portfolio-data.json');
-      if (!res.ok) throw new Error(`Failed to load portfolio data, status: ${res.status}`);
-      const portfolioData = await res.json();
+      const res = await fetch('assets/js/home-portfolio-data.json');
+      if (!res.ok) throw new Error(`Failed to load home portfolio data, status: ${res.status}`);
+      let galleryImages = await res.json();
 
-      // Get one random image from each album
-      const allImages = [];
-      portfolioData.categories?.forEach(category => {
-        category.albums?.forEach(album => {
-          if (album.images?.length > 0) {
-            const randomImg = album.images[Math.floor(Math.random() * album.images.length)];
-            allImages.push(`assets/img/portfolio/${album.path}/${randomImg}`);
-          }
-        });
-      });
-
-      // Shuffle and limit based on screen size
-      for (let i = allImages.length - 1; i > 0; i--) {
+      // Shuffle images for variety on each load
+      for (let i = galleryImages.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [allImages[i], allImages[j]] = [allImages[j], allImages[i]];
+        [galleryImages[i], galleryImages[j]] = [galleryImages[j], galleryImages[i]];
       }
-
+      // Limit images based on screen size, if home-portfolio-data.json has more than maxImages
       const maxImages = window.innerWidth < 768 ? 6 : 12;
-      const galleryImages = allImages.slice(0, maxImages);
+      galleryImages = galleryImages.slice(0, maxImages);
 
       let html = '';
       galleryImages.forEach(img => {
-        html += `<div class="grid-item" data-aos="fade-up"><img src="${img}" alt="Kool D. Studio Portfolio" loading="lazy" decoding="async"></div>`;
+        html += `<div class="grid-item" data-aos="fade-up"><img src="assets/img/portfolio/${img}" alt="Kool D. Studio Portfolio" loading="lazy" decoding="async"></div>`;
       });
 
       galleryContainer.innerHTML = html;
@@ -97,10 +86,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   const navLinks = document.getElementById('nav-links');
   const mobileMenu = document.getElementById('mobile-menu');
   if (navLinks && mobileMenu) {
-    mobileMenu.onclick = (e) => {
+    mobileMenu.addEventListener('click', (e) => {
       e.stopPropagation();
       navLinks.classList.toggle('active');
-    };
+    });
 
     // Close menu when link is clicked
     document.querySelectorAll('.nav-links a').forEach(link => {
