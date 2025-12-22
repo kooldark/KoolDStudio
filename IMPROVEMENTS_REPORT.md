@@ -1,22 +1,24 @@
-# Improvement Report
+# Báo cáo các tệp không cần thiết
 
-## Summary
-The user requested to send the booking information from the `bggiadinh.html` page to Zalo or Messenger. I have implemented a solution that captures the user's customized package details, passes them to the final booking page, and includes them in the message sent to the studio.
+Sau khi quét qua dự án, tôi đã xác định được một số tệp có thể không cần thiết cho hoạt động của trang web.
 
-## Changes Made
-1.  **`bggiadinh.html`**:
-    *   Updated the "Tư Vấn & Đặt Lịch" button's `href` to `booking.html?package=family`. This leverages the existing logic on the booking page to pre-select the "Gia Đình" (Family) package.
+## Các tệp có thể xóa an toàn
 
-2.  **`assets/js/bggiadinh.js`**:
-    *   Added an event listener to the "Tư Vấn & Đặt Lịch" button.
-    *   When the button is clicked, a `bookingDetails` object containing the number of members, makeup selections, chosen upgrades, and the final calculated price is created.
-    *   This object is then stored in the browser's `localStorage` as a JSON string.
+Những tệp này không được tham chiếu ở bất kỳ đâu trong các trang HTML và có vẻ như là các phiên bản cũ hoặc không được sử dụng.
 
-3.  **`assets/js/booking.js`**:
-    *   Modified the `generateMessage` function to check for the `bookingDetails` item in `localStorage`.
-    *   If the item exists, it's parsed, and a detailed summary of the custom package is created.
-    *   This detailed summary is prepended to the standard booking information (name, phone, date, etc.).
-    *   The `localStorage` item is removed after the message is generated and the Zalo/Messenger link is opened, ensuring that the data is used only once and doesn't persist for future bookings.
+*   `assets/css/bgcuoi-studio.css`: Đây là phiên bản cũ của `bgcuoi-studio-new.css`.
+*   `assets/css/pricing-new.css`: Tệp này không được sử dụng. Trang định giá đang dùng `pricing.css`.
+*   `assets/js/bgcuoi-studio-optimized.js`: Không được sử dụng.
+*   `assets/js/bgcuoi-studio.js`: Không được sử dụng.
 
-## Result
-When a user now navigates from the family package calculator to the booking page and clicks to send a message via Zalo or Messenger, the message will contain all the specific details of the package they configured. This provides the studio with complete information, fulfilling the user's request.
+## Các tệp liên quan đến quy trình Build
+
+Những tệp này là một phần của quy trình tạo dữ liệu cho trang portfolio. Mặc dù chúng không được sử dụng trực tiếp trên trang web đã xuất bản, nhưng **bạn nên giữ lại chúng** nếu bạn có ý định chạy lại các tập lệnh trong thư mục `scripts` để cập nhật dữ liệu portfolio.
+
+*   `assets/js/portfolio-data.json`: Đây là tệp dữ liệu nguồn, được sử dụng bởi `scripts/split-portfolio-data.js` để tạo các tệp JSON riêng lẻ cho từng danh mục portfolio.
+*   `assets/js/categories.json`: Tệp này được tạo tự động bởi `scripts/split-portfolio-data.js` và chứa danh sách các danh mục. Mặc dù nó không được gọi trực tiếp từ bất kỳ trang HTML nào, nhưng nó có thể được sử dụng cho các mục đích gỡ lỗi hoặc phát triển trong tương lai.
+
+## Đề xuất
+
+1.  **Xóa các tệp không sử dụng:** Bạn có thể xóa 4 tệp được liệt kê trong phần "Các tệp có thể xóa an toàn" để dọn dẹp dự án.
+2.  **Giữ lại các tệp Build:** Giữ lại `portfolio-data.json` và `categories.json` nếu bạn muốn tiếp tục sử dụng các tập lệnh để quản lý dữ liệu portfolio của mình.
