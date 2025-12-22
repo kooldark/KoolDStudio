@@ -1,8 +1,32 @@
 /* === GENERAL RESPONSIVE === */
 @media (max-width: 768px) {
-  body, html {
+  body {
     overflow-x: hidden;
+    position: relative; /* Needed for the overlay */
   }
+
+  body.menu-open {
+    overflow: hidden; /* Prevent scrolling when menu is open */
+  }
+
+  body.menu-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 999; /* Below the menu, above everything else */
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+
+  /* Adjustments for when menu is open and overlay is active */
+  body:not(.menu-open) .nav-links {
+    left: -100%;
+  }
+
   .nav-links { position: fixed; top: 0; left: -100%; width: 80%; max-width: 320px; height: 100vh; background: rgba(249, 245, 240, 0.98); flex-direction: column; align-items: center; padding-top: 120px; transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 8px 0 30px rgba(58, 90, 64, 0.15); overflow-y: auto; backdrop-filter: blur(10px); }
   .nav-links.active { left: 0; }
   .nav-links a { display: block; padding: 15px 0; width: 100%; text-align: center; border-bottom: 1px solid rgba(235, 149, 0, 0.05); animation: slideInDown 0.3s ease forwards; min-height: 44px; }

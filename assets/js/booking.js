@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 - SĐT: ${clientPhone.value || '(chưa nhập)'}`;
 
     if (detailsMessage) {
-      return `Tôi muốn đặt lịch với các chi tiết sau:${detailsMessage}${bookingInfo}`;
+      return `Mình muốn giữ lịch với các chi tiết sau:${detailsMessage}${bookingInfo}`;
     }
     
-    return `Tôi muốn đặt lịch chụp ảnh:${bookingInfo}`;
+    return `Mình muốn giữ lịch chụp ảnh:${bookingInfo}`;
   }
 
   // Messenger booking
@@ -140,23 +140,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function validateForm() {
     if (!selectedPackage) {
-      alert('Vui lòng chọn gói dịch vụ');
+      alert('Bạn vui lòng chọn gói dịch vụ nhé');
       return false;
     }
     if (!bookingDate.value) {
-      alert('Vui lòng chọn ngày');
+      alert('Bạn vui lòng chọn ngày nhé');
       return false;
     }
     if (!selectedTime) {
-      alert('Vui lòng chọn giờ');
+      alert('Bạn vui lòng chọn giờ nhé');
       return false;
     }
     if (!clientName.value) {
-      alert('Vui lòng nhập tên');
+      alert('Bạn vui lòng nhập tên nhé');
       return false;
     }
     if (!clientPhone.value) {
-      alert('Vui lòng nhập số điện thoại');
+      alert('Bạn vui lòng nhập số điện thoại nhé');
       return false;
     }
     return true;

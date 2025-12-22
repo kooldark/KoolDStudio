@@ -82,31 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // Mobile menu with smooth animations
-  const navLinks = document.getElementById('nav-links');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (navLinks && mobileMenu) {
-    mobileMenu.addEventListener('click', (e) => {
-      e.stopPropagation();
-      navLinks.classList.toggle('active');
-    });
-
-    // Close menu when link is clicked
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (navLinks.classList.contains('active') && 
-          !navLinks.contains(e.target) && 
-          e.target !== mobileMenu) {
-        navLinks.classList.remove('active');
-      }
-    });
-  }
+  
 
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -122,18 +98,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // Prevent scroll on body when mobile menu is open
-  const observer = new MutationObserver(() => {
-    if (navLinks && navLinks.classList.contains('active')) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  });
-
-  if (navLinks) {
-    observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
+  // Mobile Menu Toggle
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navLinks = document.getElementById('nav-links');
+  if (mobileMenu && navLinks) {
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      document.body.classList.toggle('menu-open'); // Add a class to body for potential overlay
+    });
   }
+
+  // Close mobile menu when a nav link is clicked
+  const navLinksList = document.querySelectorAll('#nav-links a');
+  navLinksList.forEach(link => {
+    link.addEventListener('click', () => {
+      if (navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    });
+  });
 
   // FAQ Interactivity
   const faqItems = document.querySelectorAll('.faq-item');
