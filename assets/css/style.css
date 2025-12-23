@@ -94,7 +94,7 @@ nav {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   z-index: 1000;
-  padding: 1.3rem 0;
+  padding: max(1.3rem, env(safe-area-inset-top)) 0 1.3rem 0;
   box-shadow: 0 4px 30px rgba(58, 90, 64, 0.08);
   border-bottom: 1px solid var(--border-light);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -102,13 +102,13 @@ nav {
 }
 
 nav.scrolled { 
-  padding: 0.8rem 0; 
+  padding: max(0.8rem, env(safe-area-inset-top)) 0 0.8rem 0; 
   background: rgba(249, 245, 240, 0.96); 
   box-shadow: 0 8px 40px rgba(58, 90, 64, 0.15);
   border-bottom: 1px solid var(--border-orange);
 }
 
-.nav-container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+.nav-container { max-width: 1300px; margin: 0 auto; padding: 0 max(2rem, calc(2rem + env(safe-area-inset-right))) 0 max(2rem, calc(2rem + env(safe-area-inset-left))); display: flex; justify-content: space-between; align-items: center; }
 
 .logo { 
   font-family: var(--font-heading); 
