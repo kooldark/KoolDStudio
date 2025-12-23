@@ -54,12 +54,14 @@
       mobileMenu.addEventListener('click', (e) => {
         e.stopPropagation();
         navLinks.classList.toggle('active');
+        document.body.classList.toggle('menu-open'); // Toggle overlay
       });
       
       // Close menu when a link is clicked
       navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
           navLinks.classList.remove('active');
+          document.body.classList.remove('menu-open'); // Remove overlay
         });
       });
 
@@ -69,6 +71,7 @@
             !navLinks.contains(e.target) && 
             e.target !== mobileMenu) {
           navLinks.classList.remove('active');
+          document.body.classList.remove('menu-open'); // Remove overlay
         }
       });
 
