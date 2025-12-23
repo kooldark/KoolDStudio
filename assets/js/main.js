@@ -98,27 +98,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // Mobile Menu Toggle
-  const mobileMenu = document.getElementById('mobile-menu');
-  const navLinks = document.getElementById('nav-links');
-  if (mobileMenu && navLinks) {
-    mobileMenu.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      document.body.classList.toggle('menu-open'); // Add a class to body for potential overlay
-    });
-  }
-
-  // Close mobile menu when a nav link is clicked
-  const navLinksList = document.querySelectorAll('#nav-links a');
-  navLinksList.forEach(link => {
-    link.addEventListener('click', () => {
-      if (navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        document.body.classList.remove('menu-open');
-      }
-    });
-  });
-
   // FAQ Interactivity
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
