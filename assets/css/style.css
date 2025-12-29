@@ -1965,17 +1965,237 @@ nav.scrolled {
 }
 
 @media (max-width: 768px) {
+
   .modal-dialog {
+
     padding: 24px;
+
     margin: 0 20px;
+
   }
+
   
+
   .toast-container {
+
     left: 20px;
+
     right: 20px;
+
   }
+
   
+
   .toast {
+
     max-width: none;
+
   }
+
+}
+
+
+
+/*
+
+---
+
+Footer Styles
+
+---
+
+*/
+
+
+
+.main-footer {
+
+    background-color: #fdfaf6; /* A very light, warm off-white, matching the about page bg */
+
+    color: #6c757d; /* Soft text color */
+
+    padding: 60px 0 20px 0;
+
+    font-family: 'Montserrat', sans-serif;
+
+    border-top: 1px solid rgba(58, 90, 64, 0.1); /* Subtle top border */
+
+}
+
+
+
+.footer-content {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 40px;
+
+    margin-bottom: 40px;
+
+}
+
+
+
+.footer-brand .studio-name-footer {
+
+    font-family: 'Lora', serif;
+
+    font-size: 24px;
+
+    color: var(--primary-dark);
+
+    margin: 0;
+
+}
+
+
+
+.footer-brand p {
+
+    font-size: 14px;
+
+    margin-top: 5px;
+
+    color: var(--text-medium-gray);
+
+}
+
+
+
+.footer-links h4,
+
+.footer-social h4 {
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    color: var(--primary-dark);
+
+    margin-bottom: 15px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+
+
+.footer-links ul,
+
+.footer-social ul {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+
+}
+
+
+
+.footer-links ul li,
+
+.footer-social ul li {
+
+    margin-bottom: 10px;
+
+}
+
+
+
+.footer-links a,
+
+.footer-social a {
+
+    color: var(--text-medium-gray);
+
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+
+}
+
+
+
+.footer-links a:hover,
+
+.footer-social a:hover {
+
+    color: var(--accent-orange);
+
+}
+
+
+
+.footer-bottom {
+
+    border-top: 1px solid rgba(58, 90, 64, 0.1);
+
+    padding-top: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 13px;
+
+    color: var(--text-medium-gray);
+
+}
+
+
+
+.footer-bottom a {
+
+    color: var(--text-medium-gray);
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+}
+
+
+
+.footer-bottom a:hover {
+
+    color: var(--accent-orange);
+
+    text-decoration: underline;
+
+}
+
+
+
+/* Responsive Footer */
+
+@media (max-width: 768px) {
+
+    .footer-content {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+    .footer-bottom {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+        text-align: center;
+
+    }
+
 }

@@ -35,14 +35,15 @@
                     <div class="text-grid">
                         <input type="text" id="line1Input" value="Kool D." placeholder="Dòng 1">
                         <input type="text" id="line2Input" value="Studio" placeholder="Dòng 2">
-                        <input type="text" id="line3Input" value="2026" placeholder="Dòng 3">
+                        <input type="text" id="line3Input" value="2025" placeholder="Dòng 3">
                     </div>
                 </div>
 
                 <div class="action-buttons">
-                    <button class="btn btn-primary" onclick="downloadWatermark()">Tải</button>
+                    <button class="btn btn-primary">Tải</button>
                     <button class="btn btn-secondary" onclick="resetPreview()">Reset</button>
-                    <button class="btn btn-secondary" onclick="randomizeAll()">Tự động</button>
+                    <button class="btn btn-secondary" onclick="randomizeAll()">Auto</button>
+                    <button class="btn btn-secondary" onclick="copyShareableLink()">Sao chép cấu hình</button>
                 </div>
 
                 <div class="accordion-item">
@@ -80,6 +81,14 @@
                         <div>
                             <label class="section-label" style="font-size: 9px;">Font Phụ</label>
                             <select id="fontSubSelect" class="style-select" style="width: 100%; padding: 10px 12px; font-size: 12px;"></select>
+                        </div>
+
+                        <div>
+                            <label class="form-label" for="opacitySlider" style="font-size: 10px; margin-bottom: 6px; display: block;">💧 Độ mờ</label>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="range" id="opacitySlider" min="0" max="100" value="100" style="width: 100%;">
+                                <span id="opacityValue" style="font-size: 11px; font-weight: 500; min-width: 32px;">100%</span>
+                            </div>
                         </div>
 
                         <button class="btn btn-outline" onclick="saveFavorite()" style="width: 100%; padding: 8px 10px; font-size: 10px; margin-top: 8px;">💾 Lưu</button>

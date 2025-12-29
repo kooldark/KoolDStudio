@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
   
   <link rel="stylesheet" href="assets/css/pricing.css">
+  <link rel="stylesheet" href="assets/css/pricing-tabs.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
 
   <style>
@@ -41,6 +43,7 @@
       max-width: 1200px;
       margin: 40px auto 0;
       padding: 0 20px;
+      justify-content: center; /* Center items in the grid */
     }
 
     .price-card {
@@ -347,91 +350,171 @@
       <div class="gold-line" data-aos="zoom-in" data-aos-delay="200"></div>
     </div>
 
-    <div class="pricing-grid">
+    <div class="tabs-container" data-aos="fade-up" data-aos-delay="300">
+      <div class="tab-buttons">        
+        <button class="tab-button" data-tab="studio">Studio Pre-wedding</button>
+        <button class="tab-button" data-tab="giadinh">Ảnh Gia đình</button>
+        <button class="tab-button" data-tab="makeup">Makeup</button>
+        <button class="tab-button active" data-tab="cuoi">Phóng sự & Sự kiện</button>
+      </div>
 
-      <!-- Ảnh gia đình / chân dung -->
-      <div class="price-card basic" data-aos="fade-up" data-aos-delay="200">
-        <div class="card-accent"></div>
-        <div class="price-header">
-          <h3 style="text-transform: uppercase;">Khoảnh Khắc Yêu Thương</h3>
-          <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Ghi dấu yêu thương gia đình bạn</p>
-          <div class="price-range">Từ 1.5 triệu</div>          
+      <div class="tab-content active" id="cuoi">
+        <div class="pricing-grid">
+          <div class="price-card premium">
+            <div class="card-accent"></div>
+            <div class="price-header">
+              <h3 style="text-transform: uppercase;">Ngày Trọn Vẹn</h3>
+              <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Bắt trọn mọi cảm xúc</p>
+              <div class="price-range">Từ 2.5 triệu</div>
+            </div>
+            <div class="price-body">
+              <ul>
+                <li>Bắt trọn cảm xúc chân thật</li>
+                <li>Góc máy phóng sự kể chuyện</li>
+                <li>Chỉnh sửa màu sắc chỉn chu</li>
+                <li>Lưu giữ trọn vẹn ngày vui</li>
+              </ul>
+            </div>
+            <div class="price-footer">
+              <a href="booking.html?package=event" class="btn btn-secondary">Giữ lịch chụp</a>
+            </div>
+          </div>
         </div>
-        <div class="price-body">
-          <ul>
-            <li>Ghi dấu khoảnh khắc sum vầy</li>
-            <li>Không gian studio ấm cúng</li>
-            <li>Thoải mái cho bé & gia đình</li>
-            <li>Sản phẩm in ấn bền đẹp</li>
-          </ul>
-        </div>
-        <div class="price-footer">
-          <a href="booking.html?package=family" class="btn btn-secondary">Giữ lịch chụp</a>
-          <a href="pgiadinh.html" class="btn-text-link">Xem Chi Tiết Gói Gia Đình</a>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header">Thông tin dịch vụ & Quy định hậu kỳ</button>
+            <div class="accordion-content">
+              <div class="accordion-inner-content">
+                <p><strong>Quy định về Hậu kỳ (Ảnh Tiệc/Phóng sự):</strong></p>
+                <ul>
+                  <li><strong>Xử lý bối cảnh:</strong> Đối với ảnh chụp tại các địa điểm như quê nhà hoặc nhà hàng, Studio tập trung làm sạch phông nền, xoá các chi tiết thừa không cần thiết. Da và dáng được chỉnh sửa một cách tự nhiên, giữ lại nét chân thực.</li>
+                  <li><strong>Phong cách màu sắc:</strong> Ảnh sẽ được chỉnh màu theo phong cách đặc trưng của Kool D. Studio, đảm bảo tính nhất quán và nghệ thuật.</li>
+                  <li><strong>Số lần chỉnh sửa:</strong> Khách hàng được yêu cầu gộp các phản hồi chỉnh sửa tối đa 02 lần để hoàn thiện sản phẩm.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Ảnh cưới studio -->
-      <div class="price-card standard recommended" data-aos="fade-up" data-aos-delay="300">
-        <div class="card-accent featured"></div>
-        <div class="price-header">
-          <h3 style="text-transform: uppercase;">Chuyện Tình Yêu</h3>
-          <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Album cưới kể câu chuyện của riêng bạn</p>
-          <div class="price-range">Từ 3.5 triệu</div>
+      <div class="tab-content" id="studio">
+        <div class="pricing-grid">
+            <div class="price-card standard recommended">
+              <div class="card-accent featured"></div>
+              <div class="price-header">
+                <h3 style="text-transform: uppercase;">Ảnh cưới Studio</h3>
+                <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Album cưới kể câu chuyện của riêng bạn</p>
+                <div class="price-range">Từ 3.5 triệu</div>
+              </div>
+              <div class="price-body">
+                <ul>
+                  <li>Phong cách Hàn Quốc tinh tế</li>
+                  <li>Trang phục cưới tinh gọn</li>
+                  <li>Makeup tôn vinh nét tự nhiên</li>
+                  <li>Album Photobook hiện đại</li>            
+                </ul>
+              </div>
+              <div class="price-footer">
+                <a href="booking.html?package=studio" class="btn btn-primary">Giữ lịch chụp</a>
+                <a href="pcuoi.html" class="btn-text-link">Xem Chi Tiết Gói Cưới</a>
+              </div>
+            </div>
         </div>
-        <div class="price-body">
-          <ul>
-            <li>Phong cách Hàn Quốc tinh tế</li>
-            <li>Trang phục cưới tinh gọn</li>
-            <li>Makeup tôn vinh nét tự nhiên</li>
-            <li>Album Photobook hiện đại</li>            
-          </ul>
-        </div>
-        <div class="price-footer">
-          <a href="booking.html?package=studio" class="btn btn-primary">Giữ lịch chụp</a>
-          <a href="pcuoi.html" class="btn-text-link">Xem Chi Tiết Gói Cưới</a>
-        </div>
-      </div>
-
-      <!-- Ảnh Sự Kiện -->
-      <div class="price-card premium" data-aos="fade-up" data-aos-delay="350">
-        <div class="card-accent"></div>
-        <div class="price-header">
-          <h3 style="text-transform: uppercase;">Ngày Trọn Vẹn</h3>
-          <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Bắt trọn mọi cảm xúc ngày trọng đại</p>
-          <div class="price-range">Từ 2.5 triệu</div>
-        </div>
-        <div class="price-body">
-          <ul>
-            <li>Bắt trọn cảm xúc chân thật</li>
-            <li>Góc máy phóng sự kể chuyện</li>
-            <li>Chỉnh sửa màu sắc chỉn chu</li>
-            <li>Lưu giữ trọn vẹn ngày vui</li>
-          </ul>
-        </div>
-        <div class="price-footer">
-          <a href="booking.html?package=event" class="btn btn-secondary">Giữ lịch chụp</a>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header">Thông tin dịch vụ & Quy định hậu kỳ</button>
+            <div class="accordion-content">
+              <div class="accordion-inner-content">
+                <p><strong>Quy định về Hậu kỳ & Dịch vụ Studio:</strong></p>
+                <ul>
+                  <li><strong>Chất lượng Retouch:</strong> Ảnh chụp tại studio được retouch chuyên sâu (high-end), tập trung vào chi tiết da, tóc, trang phục và bóp dáng kỹ lưỡng để tạo ra sản phẩm hoàn hảo nhất.</li>
+                  <li><strong>Thời gian chọn ảnh:</strong> Khách hàng vui lòng chọn ảnh gốc trong vòng 07 ngày sau buổi chụp để team hậu kỳ tiến hành thực hiện.</li>
+                  <li><strong>Thời gian bàn giao:</strong> File ảnh chỉnh sửa hoàn thiện sẽ được bàn giao sau 10-15 ngày làm việc kể từ ngày khách hàng xác nhận ảnh đã chọn.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Makeup cô dâu -->
-      <div class="price-card special" data-aos="fade-up" data-aos-delay="400">
-        <div class="card-accent"></div>
-        <div class="price-header">
-          <h3 style="text-transform: uppercase;">Rạng Rỡ Ngày Vui</h3>
-          <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Tôn vinh vẻ đẹp tự nhiên của bạn</p>
-          <div class="price-range">Từ 1.5 triệu</div>
+      <div class="tab-content" id="giadinh">
+        <div class="pricing-grid">
+          <div class="price-card basic">
+            <div class="card-accent"></div>
+            <div class="price-header">
+              <h3 style="text-transform: uppercase;">Khoảnh Khắc Yêu Thương</h3>
+              <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Ghi dấu yêu thương gia đình bạn</p>
+              <div class="price-range">Từ 1.5 triệu</div>          
+            </div>
+            <div class="price-body">
+              <ul>
+                <li>Ghi dấu khoảnh khắc sum vầy</li>
+                <li>Không gian studio ấm cúng</li>
+                <li>Thoải mái cho bé & gia đình</li>
+                <li>Sản phẩm in ấn bền đẹp</li>
+              </ul>
+            </div>
+            <div class="price-footer">
+              <a href="booking.html?package=family" class="btn btn-secondary">Giữ lịch chụp</a>
+              <a href="pgiadinh.html" class="btn-text-link">Xem Chi Tiết Gói Gia Đình</a>
+            </div>
+          </div>
         </div>
-        <div class="price-body">
-          <ul>
-            <li>Lớp nền mỏng nhẹ, tự nhiên</li>
-            <li>Tư vấn layout phù hợp gương mặt</li>
-            <li>Mỹ phẩm chính hãng an toàn</li>
-            <li>Giữ tone bền đẹp suốt tiệc</li>            
-          </ul>
+         <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header">Thông tin dịch vụ & Quy định hậu kỳ</button>
+            <div class="accordion-content">
+               <div class="accordion-inner-content">
+                 <p><strong>Quy định về Hậu kỳ (Ảnh Gia đình):</strong></p>
+                  <ul>
+                      <li><strong>Tiêu chuẩn hậu kỳ:</strong> Chúng tôi tập trung vào việc giữ lại những khoảnh khắc tự nhiên nhất. Ảnh sẽ được xử lý màu sắc, ánh sáng và chỉnh sửa da, dáng một cách nhẹ nhàng để đảm bảo tính chân thực.</li>
+                      <li><strong>Địa điểm chụp:</strong> Áp dụng cho các buổi chụp tại studio. </li>
+                      <li><strong>Số lần chỉnh sửa:</strong> Khách hàng được yêu cầu gộp các phản hồi chỉnh sửa tối đa 02 lần để hoàn thiện sản phẩm.</li>
+                  </ul>
+               </div>
+            </div>
+          </div>
         </div>
-        <div class="price-footer">
-          <a href="https://zalo.me/0976839250" class="btn btn-tertiary">Tư vấn với Makeup Artist</a>        </div>
+      </div>
+
+      <div class="tab-content" id="makeup">
+        <div class="pricing-grid">
+          <div class="price-card special">
+            <div class="card-accent"></div>
+            <div class="price-header">
+              <h3 style="text-transform: uppercase;">Trang điểm cô dâu</h3>
+              <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Tôn vinh vẻ đẹp tự nhiên của bạn</p>
+              <div class="price-range">Từ 1.5 triệu</div>
+            </div>
+            <div class="price-body">
+              <ul>
+                <li>Lớp nền mỏng nhẹ, tự nhiên</li>
+                <li>Tư vấn layout phù hợp gương mặt</li>
+                <li>Mỹ phẩm chính hãng an toàn</li>
+                <li>Giữ tone bền đẹp suốt tiệc</li>            
+              </ul>
+            </div>
+            <div class="price-footer">
+              <a href="https://zalo.me/0976839250" class="btn btn-tertiary">Tư vấn với Makeup Artist</a>
+            </div>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header">Thông tin dịch vụ & Quy định chung</button>
+            <div class="accordion-content">
+              <div class="accordion-inner-content">
+                <p><strong>Quy định Dịch vụ Makeup:</strong></p>
+                <ul>
+                  <li><strong>Thời gian có mặt:</strong> Chuyên viên makeup sẽ có mặt đúng giờ đã hẹn. Để đảm bảo chất lượng dịch vụ, khách hàng vui lòng có mặt đúng giờ.</li>
+                  <li><strong>Chi phí chờ:</strong> Trong trường hợp khách hàng đến muộn, chi phí chờ sẽ được áp dụng là 200,000 VNĐ/giờ, tính sau 30 phút so với lịch hẹn.</li>
+                  <li><strong>Thay đổi phong cách:</strong> Mọi yêu cầu thay đổi về layout makeup hoặc kiểu tóc sau khi đã hoàn thiện và được khách hàng đồng ý sẽ được xem là một layout mới và phát sinh chi phí tương ứng.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -473,11 +556,11 @@
       </div>
       <div class="benefit-card" data-aos="fade-up" data-aos-delay="400">
         <h4>Hoàn Hảo</h4>
-        <p>Album thủ công & chất liệu in ấn cao cấp nhất</p>
+        <p>Album  & chất liệu in ấn hiện đại nhất</p>
       </div>
       <div class="benefit-card" data-aos="fade-up" data-aos-delay="500">
         <h4>Tận Tâm</h4>
-        <p>Luôn lắng nghe & tư vấn giải pháp tốt nhất</p>
+        <p>Luôn lắng nghe & tư vấn giải pháp tốt nhất cho khách hàng</p>
       </div>
     </div>
 

@@ -1,0 +1,137 @@
+/* Minimalist Tab and Accordion Styles */
+
+/* Tabs Container */
+.tabs-container {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 30px;
+}
+
+.tab-button {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-light);
+  background: none;
+  border: none;
+  padding: 15px 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px; /* Align with container border */
+}
+
+.tab-button:hover {
+  color: var(--text-dark);
+}
+
+.tab-button.active {
+  color: var(--deep-green);
+  border-bottom-color: var(--deep-green);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Accordion */
+.accordion {
+  margin: 40px auto;
+  max-width: 900px; /* More focused reading width */
+  border-top: 1px solid #eee;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #eee;
+}
+
+.accordion-header {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 20px 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.accordion-header:hover {
+  background-color: #f9f9f9;
+}
+
+.accordion-header::after {
+  content: '+'; /* Plus icon */
+  font-size: 22px;
+  color: var(--text-light);
+  transition: transform 0.3s ease;
+}
+
+.accordion-header.active::after {
+  content: '−'; /* Minus icon */
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  background: #fafafa;
+}
+
+.accordion-inner-content {
+  padding: 20px;
+}
+
+.accordion-content p,
+.accordion-content ul {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;;
+  line-height: 1.7;
+  color: var(--text-light);
+}
+.accordion-content ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+.accordion-content li {
+  margin-bottom: 10px;
+}
+
+.btn-text-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: var(--deep-green);
+    font-weight: 600;
+    text-decoration: none;
+}
+.btn-text-link:hover {
+    text-decoration: underline;
+}

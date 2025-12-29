@@ -193,7 +193,6 @@ function randomizeAll() {
 }
 
 async function downloadWatermark() {
-    const btn = document.querySelector('.btn-primary');
     const styleId = document.getElementById('styleSelect').value;
     const l1 = document.getElementById('line1Input').value || '';
     const l2 = document.getElementById('line2Input').value || '';
@@ -204,15 +203,6 @@ async function downloadWatermark() {
         console.error('Template not found for style:', styleId);
         return;
     }
-
-    // Add loading state to button
-    if (btn) {
-        btn.classList.add('loading');
-        btn.disabled = true;
-        btn.textContent = '⏳ Đang xử lý...';
-    }
-
-    showLoading(true);
 
     const tempContainer = document.createElement('div');
     tempContainer.style.cssText = `
@@ -230,7 +220,6 @@ async function downloadWatermark() {
     
     tempContainer.innerHTML = template.html(l1, l2, l3, currentColor, currentMainFont, currentSecondaryColor);
     
-    // Apply fonts and opacity to all elements
     const allElements = tempContainer.querySelectorAll('*');
     allElements.forEach(el => {
         if (!el.style.fontFamily) {
@@ -241,9 +230,9 @@ async function downloadWatermark() {
     document.body.appendChild(tempContainer);
 
     try {
-        // Wait for fonts to load before converting to canvas
-        await new Promise(resolve => setTimeout(resolve, 800));
-        
+        // Wait for fonts to load before converting to canvas.
+        await new Promise(resolve => setTimeout(resolve, 300));
+
         const canvas = await html2canvas(tempContainer, { 
             backgroundColor: null, 
             scale: 3, 
@@ -251,81 +240,25 @@ async function downloadWatermark() {
             logging: false
         });
         
-        // Convert canvas to blob using Promise
-        const blobPromise = new Promise((resolve, reject) => {
-            canvas.toBlob(
-                blob => {
-                    if (blob) {
-                        resolve(blob);
-                    } else {
-                        reject(new Error('Canvas to Blob conversion failed'));
-                    }
-                },
-                'image/png',
-                1.0
-            );
-        });
-        
-        const blob = await blobPromise;
-        
-        // Generate filename with timestamp
-        const now = new Date();
-        const ts = now.toISOString().replace(/[:.]/g, '-').slice(0, -5);
-        const filename = `watermark-${ts}.png`;
-        
-        // Use FileSaver to save
-        if (typeof saveAs === 'function') {
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png', 1.0));
+
+        if (blob) {
+            const now = new Date();
+            const ts = now.toISOString().replace(/[:.]/g, '-').slice(0, -5);
+            const filename = `watermark-${ts}.png`;
             saveAs(blob, filename);
-            console.log('File saved with FileSaver:', filename);
         } else {
-            // Fallback: use download link
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-            console.log('File saved with fallback method:', filename);
+            console.error('Canvas to Blob conversion failed');
+            if (typeof modal !== 'undefined') {
+                modal.error('Lỗi khi tạo file ảnh. Vui lòng thử lại.', 'Lỗi');
+            }
         }
-        
-        showLoading(false);
-        
-        // Remove loading state
-        if (btn) {
-            btn.classList.remove('loading');
-            btn.disabled = false;
-            btn.textContent = '✓ Tải thành công!';
-            setTimeout(() => {
-                btn.textContent = '⬇️ Tải thiết kế';
-            }, 2000);
-        }
-        
     } catch (error) {
         console.error('Download error:', error);
-        showLoading(false);
-        
-        // Show error
-        const errorMsg = error?.message || 'Lỗi không xác định';
         if (typeof modal !== 'undefined') {
-            modal.error('Lỗi download: ' + errorMsg, 'Lỗi');
-        } else {
-            alert('Lỗi download: ' + errorMsg);
+            modal.error('Lỗi download: ' + error.message, 'Lỗi');
         }
-        
-        // Remove loading state on error
-        if (btn) {
-            btn.classList.remove('loading');
-            btn.disabled = false;
-            btn.textContent = '❌ Lỗi - thử lại';
-            setTimeout(() => {
-                btn.textContent = '⬇️ Tải thiết kế';
-            }, 3000);
-        }
-        
     } finally {
-        // Clean up
         if (document.body.contains(tempContainer)) {
             document.body.removeChild(tempContainer);
         }
@@ -350,6 +283,84 @@ function copyWatermarkConfig() {
             alert('✅ Copied!');
         }
     });
+}
+
+function copyShareableLink() {
+    const opacitySlider = document.getElementById('opacitySlider');
+    const config = {
+        style: document.getElementById('styleSelect').value,
+        line1: document.getElementById('line1Input').value,
+        line2: document.getElementById('line2Input').value,
+        line3: document.getElementById('line3Input').value,
+        color: currentColor,
+        color2: currentSecondaryColor,
+        font1: currentMainFont,
+        font2: currentSubFont,
+        opacity: opacitySlider ? opacitySlider.value : '100',
+    };
+
+    const jsonConfig = JSON.stringify(config);
+    const encodedConfig = btoa(jsonConfig);
+    const url = `${window.location.origin}${window.location.pathname}?config=${encodedConfig}`;
+
+    navigator.clipboard.writeText(url).then(() => {
+        if (typeof modal !== 'undefined') {
+            modal.success('Đã sao chép liên kết chia sẻ!', 'Thành công');
+        } else {
+            alert('✅ Link copied to clipboard!');
+        }
+    }).catch(err => {
+        console.error('Failed to copy link: ', err);
+        if (typeof modal !== 'undefined') {
+            modal.error('Không thể sao chép liên kết.', 'Lỗi');
+        } else {
+            alert('❌ Could not copy link.');
+        }
+    });
+}
+
+function applyConfiguration(config) {
+    if (!config) return;
+
+    try {
+        document.getElementById('styleSelect').value = config.style;
+        document.getElementById('line1Input').value = config.line1;
+        document.getElementById('line2Input').value = config.line2;
+        document.getElementById('line3Input').value = config.line3;
+        
+        currentColor = config.color;
+        currentSecondaryColor = config.color2;
+        currentMainFont = config.font1;
+        currentSubFont = config.font2;
+
+        // Update UI elements
+        const mainSelect = document.getElementById('fontMainSelect');
+        const subSelect = document.getElementById('fontSubSelect');
+        const colorPicker = document.getElementById('colorPicker');
+        const colorInput = document.getElementById('colorInput');
+        const opacitySlider = document.getElementById('opacitySlider');
+        const opacityValue = document.getElementById('opacityValue');
+
+        if (mainSelect) mainSelect.value = currentMainFont;
+        if (subSelect) subSelect.value = currentSubFont;
+        if (colorPicker) colorPicker.value = currentColor;
+        if (colorInput) colorInput.value = currentColor;
+        if (opacitySlider && config.opacity) {
+            opacitySlider.value = config.opacity;
+        }
+        if (opacityValue && config.opacity) {
+            opacityValue.textContent = config.opacity + '%';
+        }
+
+        updateColorSwatches();
+        updatePreview();
+
+    } catch (error) {
+        console.error("Failed to apply configuration:", error);
+        if (typeof modal !== 'undefined') {
+            modal.error('Cấu hình trong liên kết bị lỗi hoặc không hợp lệ.', 'Lỗi');
+        }
+    }
 }
 
 function saveFavorite() {
@@ -620,6 +631,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnCopy) btnCopy.addEventListener('click', copyWatermarkConfig);
     if (btnStar) btnStar.addEventListener('click', saveFavorite);
 
+
+
+    // Check for configuration in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const configParam = urlParams.get('config');
+    if (configParam) {
+        try {
+            const decodedConfig = atob(configParam);
+            const config = JSON.parse(decodedConfig);
+            applyConfiguration(config);
+        } catch (error) {
+            console.error('Failed to parse config from URL:', error);
+            if (typeof modal !== 'undefined') {
+                modal.error('Cấu hình trong URL không hợp lệ.', 'Lỗi');
+            }
+        }
+    }
 
 
     // Initial setup
