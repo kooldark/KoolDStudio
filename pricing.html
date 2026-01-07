@@ -16,91 +16,131 @@
   <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
 
   <style>
-    /* Custom Pricing Styles for better readability and colors */
+    /* Art & Elegant Pricing Styles */
     :root {
       --accent-orange: #eb9500;
       --deep-green: #3a5a40;
       --soft-cream: #f9f5f0;
       --white: #ffffff;
       --text-dark: #1a1a1a;
-      --text-light: #555;
+      --text-light: #666;
+      --border-light: #e8e3de;
     }
 
     .gold-line {
         background: var(--accent-orange);
+        height: 2px;
+        width: 50px;
+        margin: 24px auto 0;
     }
 
     .pricing-hero {
-      background-color: var(--soft-cream);
+      background: linear-gradient(135deg, var(--soft-cream) 0%, #fbf7f2 100%);
       padding-top: 140px;
-      padding-bottom: 60px;
+      padding-bottom: 90px;
+    }
+
+    .pricing-intro {
+      margin-bottom: 50px;
+    }
+
+    .pricing-packages {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    @media (max-width: 1024px) {
+      .pricing-packages {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pricing-packages {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 0 16px;
+      }
     }
 
     .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 40px auto 0;
-      padding: 0 20px;
-      justify-content: center; /* Center items in the grid */
+      display: contents;
     }
 
     .price-card {
       background: var(--white);
-      border-radius: 24px;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(58, 90, 64, 0.06);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
       display: flex;
       flex-direction: column;
-      border: 1px solid rgba(0,0,0,0.02);
+      border: 1px solid var(--border-light);
       position: relative;
+      height: 100%;
     }
 
     .price-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      transform: translateY(-14px);
+      box-shadow: 0 20px 50px rgba(58, 90, 64, 0.12);
+      border: 1px solid rgba(235, 149, 0, 0.1);
     }
 
     .card-accent {
-      height: 6px;
+      height: 3px;
       width: 100%;
     }
 
     /* Color coding for categories */
-    .price-card.basic .card-accent { background: #8cb369; } /* Family - Green */
+    .price-card.basic .card-accent { background: #8cb369; }
     .price-card.basic .price-range { color: #5c8040; }
     
-    .price-card.standard .card-accent { background: var(--deep-green); } /* Wedding - Green */
+    .price-card.standard .card-accent { background: var(--deep-green); }
     .price-card.standard .price-range { color: var(--deep-green); }
     
-    .price-card.premium .card-accent { background: #457b9d; } /* Event - Blue */
+    .price-card.premium .card-accent { background: #457b9d; }
     .price-card.premium .price-range { color: #2a5d7d; }
     
-    .price-card.special .card-accent { background: #e63946; } /* Makeup - Red/Pink */
-    .price-card.special .price-range { color: #c92a37; }
+    .price-card.special .card-accent { background: #d4755f; }
+    .price-card.special .price-range { color: #a85a45; }
 
     .price-header {
-      padding: 30px 20px 15px;
+      padding: 42px 32px 24px;
       text-align: center;
+      border-bottom: 1px solid var(--border-light);
     }
 
     .price-header h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
+      font-family: 'Lora', serif;
+      font-size: 24px;
       color: var(--deep-green);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .price-subtitle {
+      font-size: 13px;
+      color: #999;
+      margin: 8px 0 16px;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.3px;
     }
 
     .price-range {
       font-family: 'Montserrat', sans-serif;
-      font-size: 24px;
+      font-size: 30px;
       font-weight: 700;
     }
 
     .price-body {
-      padding: 10px 30px 20px;
+      padding: 30px 32px 24px;
       flex-grow: 1;
     }
 
@@ -111,56 +151,66 @@
     }
 
     .price-body li {
-      padding: 12px 0;
-      border-bottom: 1px dashed #eee;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-light);
       color: var(--text-light);
-      font-size: 15px;
+      font-size: 14px;
       position: relative;
-      padding-left: 24px;
+      padding-left: 28px;
       text-align: left;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    .price-body li:last-child {
+      border-bottom: none;
     }
 
     .price-body li::before {
       content: '✓';
       position: absolute;
       left: 0;
-      color: #888; /* Neutral checkmark */
+      color: #aaa;
       font-weight: bold;
+      font-size: 15px;
     }
     
-    /* Match checkmark color to card accent */
     .price-card.basic li::before { color: #8cb369; }
     .price-card.standard li::before { color: var(--deep-green); }
     .price-card.premium li::before { color: #457b9d; }
-    .price-card.special li::before { color: #e63946; }
+    .price-card.special li::before { color: #d4755f; }
 
     .price-footer {
-      padding: 20px 30px 35px;
+      padding: 28px 28px 35px;
       text-align: center;
+      border-top: 1px solid var(--border-light);
     }
 
     .btn {
-      padding: 12px 28px;
+      padding: 14px 40px;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: all 0.3s;
+      letter-spacing: 0.9px;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
       display: inline-block;
       text-decoration: none;
+      cursor: pointer;
+      border: 2px solid;
     }
     
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
     }
 
     .btn-primary {
       background: var(--deep-green);
       color: var(--white);
-      border: 2px solid var(--deep-green);
+      border-color: var(--deep-green);
     }
+    
     .btn-primary:hover {
       background: #2a402d;
       border-color: #2a402d;
@@ -169,7 +219,7 @@
     .btn-secondary {
         background: transparent;
         color: var(--deep-green);
-        border: 2px solid var(--deep-green);
+        border-color: var(--deep-green);
     }
 
     .btn-secondary:hover {
@@ -178,66 +228,91 @@
     }
 
     .btn-tertiary {
-      background: var(--accent-orange);
+      background: #d4755f;
       color: var(--white);
-      border: 2px solid var(--accent-orange);
+      border-color: #d4755f;
     }
+    
     .btn-tertiary:hover {
-      background: #d38600;
-      border-color: #d38600;
+      background: #c25f48;
+      border-color: #c25f48;
       color: var(--white);
+    }
+
+    .detail-link {
+      display: block;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--deep-green);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+    }
+
+    .detail-link:hover {
+      letter-spacing: 1px;
     }
 
     /* Process Section Styles */
     .process-section {
-      padding: 60px 20px;
+      padding: 100px 30px;
       text-align: center;
-      background-color: #fff;
+      background: linear-gradient(180deg, #fff 0%, var(--soft-cream) 100%);
     }
     
     .process-steps {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 40px;
-      margin-top: 40px;
-      max-width: 1000px;
+      gap: 60px;
+      margin-top: 60px;
+      max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
     }
     
     .step-item {
       flex: 1;
-      min-width: 250px;
+      min-width: 260px;
       position: relative;
     }
     
     .step-icon {
-      width: 80px;
-      height: 80px;
-      background: var(--soft-cream);
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, rgba(235, 149, 0, 0.1) 0%, rgba(235, 149, 0, 0.05) 100%);
+      border: 2px solid rgba(235, 149, 0, 0.2);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 32px;
-      color: var(--accent-orange);
-      box-shadow: 0 8px 20px rgba(235, 149, 0, 0.15);
+      margin: 0 auto 28px;
+      font-size: 42px;
     }
     
     .step-title {
       font-family: 'Lora', serif;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       color: var(--deep-green);
     }
     
     .step-desc {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-light);
-      line-height: 1.6;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .process-section {
+        padding: 60px 20px;
+      }
+      
+      .process-steps {
+        gap: 35px;
+      }
     }
   </style>
 
@@ -272,35 +347,35 @@
         "priceSpecification": {
           "@type": "PriceSpecification",
           "priceCurrency": "VND",
-          "minPrice": "4000000",
+          "minPrice": "3500000",
           "maxPrice": "8000000"
         },
         "itemOffered": {
           "@type": "Service",
           "name": "Nhiếp Ảnh Cưới Studio",
-          "description": "Kiến tạo album cưới trong studio với phong cách Hàn Quốc sang trọng, đã bao gồm trang phục, makeup và thành phẩm in ấn cao cấp.",
+          "description": "Album cưới studio với phong cách Hàn Quốc sang trọng, bao gồm trang phục, makeup và thành phẩm in ấn cao cấp.",
           "areaServed": ["Bình Sơn", "Quảng Ngãi", "TP.HCM"]
         }
       },
       {
         "@type": "Offer",
-        "name": "Gói Khoảnh Khắc Gia Đình & Chân Dung",
+        "name": "Gói Khoảnh Khắc Gia Đình",
         "priceSpecification": {
           "@type": "PriceSpecification",
           "priceCurrency": "VND",
-          "minPrice": "2000000",
+          "minPrice": "1500000",
           "maxPrice": "4000000"
         },
         "itemOffered": {
           "@type": "Service",
           "name": "Nhiếp Ảnh Gia Đình & Chân Dung",
-          "description": "Lưu giữ những khoảnh khắc ấm cúng của gia đình hoặc thể hiện cá tính qua những bộ ảnh chân dung nghệ thuật.",
+          "description": "Ghi lại những khoảnh khắc ấm cúng của gia đình hoặc thể hiện cá tính qua bộ ảnh chân dung nghệ thuật.",
           "areaServed": ["Bình Sơn", "Quảng Ngãi", "TP.HCM"]
         }
       },
       {
         "@type": "Offer",
-        "name": "Gói Makeup Cô Dâu Chuyên Nghiệp",
+        "name": "Gói Trang Điểm Cô Dâu",
         "priceSpecification": {
           "@type": "PriceSpecification",
           "priceCurrency": "VND",
@@ -326,7 +401,7 @@
         "itemOffered": {
           "@type": "Service",
           "name": "Nhiếp Ảnh Sự Kiện & Phóng Sự Cưới",
-          "description": "Ghi lại từng khoảnh khắc chân thực và giàu cảm xúc trong ngày cưới, tiệc báo hỷ hay các sự kiện quan trọng của bạn.",
+          "description": "Ghi lại từng khoảnh khắc chân thực và giàu cảm xúc trong ngày cưới, tiệc báo hỷ hay các sự kiện quan trọng.",
           "areaServed": ["Bình Sơn", "Quảng Ngãi", "TP.HCM"]
         }
       }
@@ -350,169 +425,99 @@
       <div class="gold-line" data-aos="zoom-in" data-aos-delay="200"></div>
     </div>
 
-    <div class="tabs-container" data-aos="fade-up" data-aos-delay="300">
-      <div class="tab-buttons">        
-        <button class="tab-button active" data-tab="studio">Studio Pre-wedding</button>
-        <button class="tab-button" data-tab="giadinh">Ảnh Gia đình</button>
-        <button class="tab-button" data-tab="makeup">Makeup</button>
-        <button class="tab-button" data-tab="cuoi">Phóng sự & Sự kiện</button>
-      </div>
-
-      <div class="tab-content" id="cuoi">
-        <div class="pricing-grid">
-          <div class="price-card premium">
-            <div class="card-accent"></div>
-            <div class="price-header">
-              <h3 style="text-transform: uppercase;">Ngày Trọn Vẹn</h3>
-              <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Bắt trọn mọi cảm xúc</p>
-              <div class="price-range">Từ 2.5 triệu</div>
-            </div>
-            <div class="price-body">
-              <ul>
-                <li>Bắt trọn cảm xúc chân thật</li>
-                <li>Góc máy phóng sự kể chuyện</li>
-                <li>Chỉnh sửa màu sắc chỉn chu</li>
-                <li>Lưu giữ trọn vẹn ngày vui</li>
-              </ul>
-            </div>
-            <div class="price-footer">
-              <a href="booking.html?package=event" class="btn btn-secondary">Giữ lịch chụp</a>
-            </div>
+    <!-- Pricing Packages Grid -->
+    <div class="pricing-packages" data-aos="fade-up" data-aos-delay="300">
+      
+      <!-- 1. Studio Pre-Wedding Package -->
+      <div class="pricing-grid">
+        <div class="price-card standard recommended">
+          <div class="card-accent"></div>
+          <div class="price-header">
+            <h3>Studio Pre-Wedding</h3>
+            <p class="price-subtitle">Album cưới tinh tế kiểu Hàn Quốc</p>
+            <div class="price-range">Từ 3.5 triệu</div>
           </div>
-        </div>
-
-        <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-header">Thông tin dịch vụ & Quy định hậu kỳ</button>
-            <div class="accordion-content">
-              <div class="accordion-inner-content">
-                <p><strong>Quy định về Hậu kỳ (Ảnh Tiệc/Phóng sự):</strong></p>
-                <ul>
-                  <li><strong>Xử lý bối cảnh:</strong> Đối với ảnh chụp tại các địa điểm như quê nhà hoặc nhà hàng, Studio tập trung làm sạch phông nền, xoá các chi tiết thừa không cần thiết. Da và dáng được chỉnh sửa một cách tự nhiên, giữ lại nét chân thực.</li>
-                  <li><strong>Phong cách màu sắc:</strong> Ảnh sẽ được chỉnh màu theo phong cách đặc trưng của Kool D. Studio, đảm bảo tính nhất quán và nghệ thuật.</li>
-                  <li><strong>Số lần chỉnh sửa:</strong> Khách hàng được yêu cầu gộp các phản hồi chỉnh sửa tối đa 02 lần để hoàn thiện sản phẩm.</li>
-                </ul>
-              </div>
-            </div>
+          <div class="price-body">
+            <ul>
+              <li>Phong cách Hàn Quốc sang trọng</li>
+              <li>Trang phục cưới & phụ kiện</li>
+              <li>Makeup & styling chuyên nghiệp</li>
+              <li>Album Photobook cao cấp</li>            
+            </ul>
+          </div>
+          <div class="price-footer">
+            <a href="booking.html?package=studio" class="btn btn-primary">Giữ lịch chụp</a>
+            <a href="pcuoi.html" class="detail-link">Xem chi tiết gói →</a>
           </div>
         </div>
       </div>
 
-      <div class="tab-content active" id="studio">
-        <div class="pricing-grid">
-            <div class="price-card standard recommended">
-              <div class="card-accent featured"></div>
-              <div class="price-header">
-                <h3 style="text-transform: uppercase;">Ảnh cưới Studio</h3>
-                <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Album cưới kể câu chuyện của riêng bạn</p>
-                <div class="price-range">Từ 3.5 triệu</div>
-              </div>
-              <div class="price-body">
-                <ul>
-                  <li>Phong cách Hàn Quốc tinh tế</li>
-                  <li>Trang phục cưới tinh gọn</li>
-                  <li>Makeup tôn vinh nét tự nhiên</li>
-                  <li>Album Photobook hiện đại</li>            
-                </ul>
-              </div>
-              <div class="price-footer">
-                <a href="booking.html?package=studio" class="btn btn-primary">Giữ lịch chụp</a>
-                <a href="pcuoi.html" class="btn-text-link">Xem Chi Tiết Gói Cưới</a>
-              </div>
-            </div>
-        </div>
-        <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-header">Thông tin dịch vụ & Quy định hậu kỳ</button>
-            <div class="accordion-content">
-              <div class="accordion-inner-content">
-                <p><strong>Quy định về Hậu kỳ & Dịch vụ Studio:</strong></p>
-                <ul>
-                  <li><strong>Chất lượng Retouch:</strong> Ảnh chụp tại studio được retouch chuyên sâu (high-end), tập trung vào chi tiết da, tóc, trang phục và bóp dáng kỹ lưỡng để tạo ra sản phẩm hoàn hảo nhất.</li>
-                  <li><strong>Thời gian chọn ảnh:</strong> Khách hàng vui lòng chọn ảnh gốc trong vòng 07 ngày sau buổi chụp để team hậu kỳ tiến hành thực hiện.</li>
-                  <li><strong>Thời gian bàn giao:</strong> File ảnh chỉnh sửa hoàn thiện sẽ được bàn giao sau 10-15 ngày làm việc kể từ ngày khách hàng xác nhận ảnh đã chọn.</li>
-                </ul>
-              </div>
-            </div>
+      <!-- 2. Family Moments Package -->
+      <div class="pricing-grid">
+        <div class="price-card basic">
+          <div class="card-accent"></div>
+          <div class="price-header">
+            <h3>Khoảnh Khắc Gia Đình</h3>
+            <p class="price-subtitle">Ghi dấu yêu thương gia đình</p>
+            <div class="price-range">Từ 1.5 triệu</div>          
+          </div>
+          <div class="price-body">
+            <ul>
+              <li>Ghi dấu khoảnh khắc sum vầy</li>
+              <li>Không gian studio ấm cúng</li>
+              <li>Thoải mái cho bé & gia đình</li>
+              <li>Sản phẩm in ấn bền đẹp</li>
+            </ul>
+          </div>
+          <div class="price-footer">
+            <a href="booking.html?package=family" class="btn btn-secondary">Giữ lịch chụp</a>
+            <a href="pgiadinh.html" class="detail-link" style="color: #5c8040;">Xem chi tiết gói →</a>
           </div>
         </div>
       </div>
 
-      <div class="tab-content" id="giadinh">
-        <div class="pricing-grid">
-          <div class="price-card basic">
-            <div class="card-accent"></div>
-            <div class="price-header">
-              <h3 style="text-transform: uppercase;">Khoảnh Khắc Yêu Thương</h3>
-              <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Ghi dấu yêu thương gia đình bạn</p>
-              <div class="price-range">Từ 1.5 triệu</div>          
-            </div>
-            <div class="price-body">
-              <ul>
-                <li>Ghi dấu khoảnh khắc sum vầy</li>
-                <li>Không gian studio ấm cúng</li>
-                <li>Thoải mái cho bé & gia đình</li>
-                <li>Sản phẩm in ấn bền đẹp</li>
-              </ul>
-            </div>
-            <div class="price-footer">
-              <a href="booking.html?package=family" class="btn btn-secondary">Giữ lịch chụp</a>
-              <a href="pgiadinh.html" class="btn-text-link">Xem Chi Tiết Gói Gia Đình</a>
-            </div>
+      <!-- 3. Makeup Artist Service -->
+      <div class="pricing-grid">
+        <div class="price-card special">
+          <div class="card-accent"></div>
+          <div class="price-header">
+            <h3>Trang Điểm Cô Dâu</h3>
+            <p class="price-subtitle">Tôn vinh vẻ đẹp tự nhiên</p>
+            <div class="price-range">Từ 1.5 triệu</div>
           </div>
-        </div>
-         <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-header">Thông tin dịch vụ & Quy định hậu kỳ</button>
-            <div class="accordion-content">
-               <div class="accordion-inner-content">
-                 <p><strong>Quy định về Hậu kỳ (Ảnh Gia đình):</strong></p>
-                  <ul>
-                      <li><strong>Tiêu chuẩn hậu kỳ:</strong> Chúng tôi tập trung vào việc giữ lại những khoảnh khắc tự nhiên nhất. Ảnh sẽ được xử lý màu sắc, ánh sáng và chỉnh sửa da, dáng một cách nhẹ nhàng để đảm bảo tính chân thực.</li>
-                      <li><strong>Địa điểm chụp:</strong> Áp dụng cho các buổi chụp tại studio. </li>
-                      <li><strong>Số lần chỉnh sửa:</strong> Khách hàng được yêu cầu gộp các phản hồi chỉnh sửa tối đa 02 lần để hoàn thiện sản phẩm.</li>
-                  </ul>
-               </div>
-            </div>
+          <div class="price-body">
+            <ul>
+              <li>Lớp nền mỏng nhẹ, tự nhiên</li>
+              <li>Tư vấn layout phù hợp gương mặt</li>
+              <li>Mỹ phẩm chính hãng an toàn</li>
+              <li>Giữ tone bền đẹp suốt tiệc</li>            
+            </ul>
+          </div>
+          <div class="price-footer">
+            <a href="https://zalo.me/0976839250" class="btn btn-tertiary">Tư vấn ngay</a>
           </div>
         </div>
       </div>
 
-      <div class="tab-content" id="makeup">
-        <div class="pricing-grid">
-          <div class="price-card special">
-            <div class="card-accent"></div>
-            <div class="price-header">
-              <h3 style="text-transform: uppercase;">Trang điểm cô dâu</h3>
-              <p style="font-size: 15px; color: #555; margin-top: -5px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">Tôn vinh vẻ đẹp tự nhiên của bạn</p>
-              <div class="price-range">Từ 1.5 triệu</div>
-            </div>
-            <div class="price-body">
-              <ul>
-                <li>Lớp nền mỏng nhẹ, tự nhiên</li>
-                <li>Tư vấn layout phù hợp gương mặt</li>
-                <li>Mỹ phẩm chính hãng an toàn</li>
-                <li>Giữ tone bền đẹp suốt tiệc</li>            
-              </ul>
-            </div>
-            <div class="price-footer">
-              <a href="https://zalo.me/0976839250" class="btn btn-tertiary">Tư vấn với Makeup Artist</a>
-            </div>
+      <!-- 4. Full Day Event Package -->
+      <div class="pricing-grid">
+        <div class="price-card premium">
+          <div class="card-accent"></div>
+          <div class="price-header">
+            <h3>Ngày Trọn Vẹn</h3>
+            <p class="price-subtitle">Bắt trọn mọi cảm xúc chân thật</p>
+            <div class="price-range">Từ 2.5 triệu</div>
           </div>
-        </div>
-        <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-header">Thông tin dịch vụ & Quy định chung</button>
-            <div class="accordion-content">
-              <div class="accordion-inner-content">
-                <p><strong>Quy định Dịch vụ Makeup:</strong></p>
-                <ul>
-                  <li><strong>Thời gian có mặt:</strong> Chuyên viên makeup sẽ có mặt đúng giờ đã hẹn. Để đảm bảo chất lượng dịch vụ, khách hàng vui lòng có mặt đúng giờ.</li>
-                  <li><strong>Chi phí chờ:</strong> Trong trường hợp khách hàng đến muộn, chi phí chờ sẽ được áp dụng là 200,000 VNĐ/giờ, tính sau 30 phút so với lịch hẹn.</li>
-                  <li><strong>Thay đổi phong cách:</strong> Mọi yêu cầu thay đổi về layout makeup hoặc kiểu tóc sau khi đã hoàn thiện và được khách hàng đồng ý sẽ được xem là một layout mới và phát sinh chi phí tương ứng.</li>
-                </ul>
-              </div>
-            </div>
+          <div class="price-body">
+            <ul>
+              <li>Bắt trọn cảm xúc chân thật</li>
+              <li>Góc máy phóng sự kể chuyện</li>
+              <li>Chỉnh sửa màu sắc chỉn chu</li>
+              <li>Lưu giữ trọn vẹn ngày vui</li>
+            </ul>
+          </div>
+          <div class="price-footer">
+            <a href="booking.html?package=event" class="btn btn-secondary">Giữ lịch chụp</a>
           </div>
         </div>
       </div>
@@ -521,24 +526,24 @@
 
   <!-- Process Section -->
   <section class="process-section" data-aos="fade-up">
-    <h2 class="section-title" style="font-size: 28px;">Quy Trình Đơn Giản</h2>
-    <p class="section-subtitle" style="margin-bottom: 10px;">Để bạn thoải mái tận hưởng buổi chụp</p>
+    <h2 class="section-title" style="font-size: 32px; margin-bottom: 8px;">Quy Trình Đơn Giản</h2>
+    <p class="section-subtitle" style="margin-bottom: 0;">Để bạn thoải mái tận hưởng buổi chụp</p>
     
     <div class="process-steps">
       <div class="step-item">
         <div class="step-icon">💬</div>
-        <h3 class="step-title">1. Trao đổi & Chọn Gói</h3>
+        <h3 class="step-title">Trao Đổi & Chọn Gói</h3>
         <p class="step-desc">Cùng trò chuyện để chọn gói chụp phù hợp nhất với bạn.</p>
       </div>
       <div class="step-item">
         <div class="step-icon">📸</div>
-        <h3 class="step-title">2. Giữ khoảnh khắc & Tận hưởng</h3>
-        <p class="step-desc">Ekip sẽ đồng hành để bạn là chính mình và thoải mái nhất trước ống kính.</p>
+        <h3 class="step-title">Giữ Khoảnh Khắc</h3>
+        <p class="step-desc">Ekip sẽ đồng hành để bạn là chính mình và thoải mái nhất.</p>
       </div>
       <div class="step-item">
         <div class="step-icon">🎁</div>
-        <h3 class="step-title">3. Nhận thành phẩm & Lưu giữ</h3>
-        <p class="step-desc">Bản chỉnh sửa và album hoàn thiện sẽ được gửi đến tận tay bạn.</p>
+        <h3 class="step-title">Nhận Thành Phẩm</h3>
+        <p class="step-desc">Bản chỉnh sửa và album hoàn thiện được gửi tận tay bạn.</p>
       </div>
     </div>
   </section>
@@ -548,7 +553,7 @@
     <div class="benefits-grid">
       <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
         <h4>Linh Hoạt</h4>
-        <p>Thiết kế gói chụp theo nhu cầu riêng biệt của bạn</p>
+        <p>Thiết kế gói chụp theo nhu cầu riêng của bạn</p>
       </div>
       <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
         <h4>Tri Ân</h4>
@@ -556,21 +561,21 @@
       </div>
       <div class="benefit-card" data-aos="fade-up" data-aos-delay="400">
         <h4>Hoàn Hảo</h4>
-        <p>Album  & chất liệu in ấn hiện đại nhất</p>
+        <p>Album & chất liệu in ấn hiện đại nhất</p>
       </div>
       <div class="benefit-card" data-aos="fade-up" data-aos-delay="500">
         <h4>Tận Tâm</h4>
-        <p>Luôn lắng nghe & tư vấn giải pháp tốt nhất cho khách hàng</p>
+        <p>Luôn lắng nghe & tư vấn giải pháp tốt nhất</p>
       </div>
     </div>
 
     <div class="pricing-footer" data-aos="fade-up">
       <div class="footer-content">
-        <p style="margin-bottom: 16px; font-size: 17px; color: var(--deep-green); font-weight: 600;">Bắt đầu ngay hôm nay</p>
+        <p style="margin-bottom: 16px; font-size: 17px; color: var(--deep-green); font-weight: 600;">Bắt đầu hành trình của bạn</p>
         <p>
-          <a href="tel:0379031662" style="font-size: 18px;">0379 031 662</a> — Hotline / Zalo
+          <a href="tel:0379031662" style="font-size: 18px; color: var(--deep-green); text-decoration: none; font-weight: 600;">0379 031 662</a> — Hotline / Zalo
         </p>
-        <p style="margin-top: 16px; font-size: 13px; color: #999;">Kool D. Studio</p>
+        <p style="margin-top: 16px; font-size: 13px; color: #bbb;">Kool D. Studio</p>
       </div>
     </div>
   </section>

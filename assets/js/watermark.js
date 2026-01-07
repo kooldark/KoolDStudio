@@ -4,7 +4,7 @@ let currentSecondaryColor = '#eb9500';
 let currentMainFont = 'Playfair';
 let currentSubFont = 'Montserrat';
 let favorites = JSON.parse(localStorage.getItem('watermarkFavorites')) || [];
-let allStyles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+let allStyles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
 
 // Debug: check if required libraries are loaded
 console.log('html2canvas available:', typeof html2canvas !== 'undefined');
@@ -287,6 +287,9 @@ function copyWatermarkConfig() {
 
 function copyShareableLink() {
     const opacitySlider = document.getElementById('opacitySlider');
+    const copyBtn = document.getElementById('copyLinkBtn');
+    const originalText = copyBtn ? copyBtn.textContent : 'Sao chép thiết kế';
+    
     const config = {
         style: document.getElementById('styleSelect').value,
         line1: document.getElementById('line1Input').value,
@@ -304,6 +307,16 @@ function copyShareableLink() {
     const url = `${window.location.origin}${window.location.pathname}?config=${encodedConfig}`;
 
     navigator.clipboard.writeText(url).then(() => {
+        // Update button with success indicator
+        if (copyBtn) {
+            copyBtn.textContent = '✓ Đã sao chép';
+            copyBtn.style.opacity = '0.8';
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.opacity = '1';
+            }, 2000);
+        }
+        
         if (typeof modal !== 'undefined') {
             modal.success('Đã sao chép liên kết chia sẻ!', 'Thành công');
         } else {
@@ -443,7 +456,9 @@ function buildGallery() {
         'Logo + Divider', 'Rotated Diagonal', 'Corner Positioned', 'Circle Border', 'Vertical Text', 'Minimal Line', 'Lines Sandwich', 'Signature Style', 'Border Box', 'Dots Pattern',
         'Two-Part', 'Horizontal Stripes', 'Diamond Shape', 'Main + Subtitle', 'Italic Corner', 'Bold Uppercase', 'Ornament Deco', 'Text + Accent',
         'Floating Refined', 'Corner Elegant', 'Brushstroke', 'Modern Stacked', 'Vintage Border', 'Geometric Modern', 'Serif Elegance', 'Minimal Dots',
-        'Gradient Fade', 'Ornate Detail', 'Monogram Style', 'Contemporary Line'
+        'Gradient Fade', 'Ornate Detail', 'Monogram Style', 'Contemporary Line',
+        'Gold Elegance', 'Green Serif', 'Gold Divider', 'Dark Green', 'Gold Corner Right', 'Green Corner Left', 'Gold Top', 'Green Minimal', 'Gold Corner Frame', 'Luxury Green',
+        'Gold Center Art', 'Green Accent', 'Gold Green Mix', 'Accent Border', 'Gold Premium', 'Two-Tone Border', 'Side Accent', 'Minimal Gold', 'Corner Gold Green', 'Gradient Green Gold'
     ];
     
     allStyles.forEach(i => {

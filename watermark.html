@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Photo Signature - Kool D. Studio</title>
-    <meta name="description" content="Tạo chữ ký chuyên nghiệp để in lên ảnh - 30 thiết kế, chỉnh sửa dễ dàng, tải PNG transparent">
+    <meta name="description" content="Tạo chữ ký chuyên nghiệp để in lên ảnh - 50 thiết kế, chỉnh sửa dễ dàng, tải PNG transparent">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Raleway:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Lato:wght@400;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/watermark.css">
@@ -43,7 +43,7 @@
                     <button class="btn btn-primary">Tải</button>
                     <button class="btn btn-secondary" onclick="resetPreview()">Reset</button>
                     <button class="btn btn-secondary" onclick="randomizeAll()">Auto</button>
-                    <button class="btn btn-secondary" onclick="copyShareableLink()">Sao chép thiết kế</button>
+                    <button class="btn btn-secondary" id="copyLinkBtn" onclick="copyShareableLink()">Sao chép</button>
                 </div>
 
                 <div class="accordion-item">
@@ -110,7 +110,7 @@
     <section class="gallery-section">
         <div class="gallery-container">
             <div class="gallery-title">
-                <h2>30 Thiết Kế Chuyên Nghiệp</h2>
+                <h2>50 Thiết Kế Chuyên Nghiệp</h2>
                 <p>Chọn một kiểu hoặc tùy chỉnh theo ý của bạn</p>
             </div>
             <div class="watermark-container" id="galleryContainer"></div>
