@@ -908,14 +908,14 @@ nav.scrolled{padding:0.9rem 0; box-shadow:0 4px 20px rgba(0,0,0,0.05);}
   .feature-icon { font-size: 20px; margin-bottom: 3px; }
 
   .upsell-section { margin-top: 0; }
-  .upsell-title { font-size: 24px; margin-bottom: 8px; }
-  .upsell-subtitle { font-size: 13px; margin-bottom: 20px; }
-  .upsell-grid { grid-template-columns: 1fr; gap: 15px; }
-  .upsell-card { padding: 20px 15px; }
-  .upsell-icon { font-size: 28px; margin-bottom: 10px; }
-  .upsell-name { font-size: 15px; margin-bottom: 8px; }
-  .upsell-description { font-size: 12px; margin-bottom: 10px; min-height: unset; }
-  .upsell-price { font-size: 16px; }
+  .upsell-title { font-size: 22px; margin-bottom: 6px; }
+  .upsell-subtitle { font-size: 12px; margin-bottom: 16px; }
+  .upsell-grid { grid-template-columns: 1fr; gap: 10px; }
+  .upsell-card { padding: 14px 12px; border-radius: 12px; }
+  .upsell-icon { font-size: 24px; margin-bottom: 8px; }
+  .upsell-name { font-size: 13px; margin-bottom: 6px; font-weight: 600; }
+  .upsell-description { font-size: 11px; margin-bottom: 8px; min-height: unset; line-height: 1.5; }
+  .upsell-price { font-size: 14px; font-weight: 700; }
 
   .total-section { padding: 20px 15px; margin-top: 40px; }
   .upgrade-item { font-size: 12px; padding: 5px 0; }

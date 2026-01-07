@@ -123,4 +123,40 @@ document.addEventListener('DOMContentLoaded', async () => {
       faqItems[1].classList.add('active');
     }
   }
+
+  // Auto-hide/show contact ribbon on scroll
+  const contactRibbon = document.querySelector('.contact-ribbon');
+  if (contactRibbon) {
+    let lastScrollTop = 0;
+    let isHidden = false;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Only auto-hide after scrolling more than 100px from top
+      if (currentScroll > 100) {
+        if (currentScroll > lastScrollTop) {
+          // Scrolling DOWN - hide ribbon
+          if (!isHidden) {
+            contactRibbon.classList.add('hidden');
+            isHidden = true;
+          }
+        } else {
+          // Scrolling UP - show ribbon
+          if (isHidden) {
+            contactRibbon.classList.remove('hidden');
+            isHidden = false;
+          }
+        }
+      } else {
+        // Near top of page - always show
+        if (isHidden) {
+          contactRibbon.classList.remove('hidden');
+          isHidden = false;
+        }
+      }
+      
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, false);
+  }
 });

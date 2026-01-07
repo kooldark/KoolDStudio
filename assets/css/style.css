@@ -1549,6 +1549,13 @@ nav.scrolled {
   padding: 12px 0;
   border-left: 1px solid rgba(235, 149, 0, 0.15);
   box-shadow: -2px 4px 16px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.contact-ribbon.hidden {
+  transform: translateX(100px);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .ribbon-item {

@@ -306,30 +306,69 @@ function copyShareableLink() {
     const encodedConfig = btoa(jsonConfig);
     const url = `${window.location.origin}${window.location.pathname}?config=${encodedConfig}`;
 
-    navigator.clipboard.writeText(url).then(() => {
-        // Update button with success indicator
-        if (copyBtn) {
-            copyBtn.textContent = '✓ Đã sao chép';
-            copyBtn.style.opacity = '0.8';
-            setTimeout(() => {
-                copyBtn.textContent = originalText;
-                copyBtn.style.opacity = '1';
-            }, 2000);
-        }
+    // Try modern clipboard API first, fallback to legacy method for mobile
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+            handleCopySuccess(copyBtn, originalText);
+        }).catch(err => {
+            console.warn('Clipboard API failed, using fallback method:', err);
+            copyUsingFallback(url, copyBtn, originalText);
+        });
+    } else {
+        // Fallback for older browsers and mobile devices
+        copyUsingFallback(url, copyBtn, originalText);
+    }
+}
+
+function copyUsingFallback(text, copyBtn, originalText) {
+    try {
+        // Create temporary textarea element
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        textarea.style.left = '-999999px';
+        document.body.appendChild(textarea);
         
-        if (typeof modal !== 'undefined') {
-            modal.success('Đã sao chép liên kết chia sẻ!', 'Thành công');
+        // Focus and select
+        textarea.focus();
+        textarea.select();
+        
+        // Copy
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        
+        if (successful) {
+            handleCopySuccess(copyBtn, originalText);
         } else {
-            alert('✅ Link copied to clipboard!');
+            throw new Error('execCommand copy failed');
         }
-    }).catch(err => {
-        console.error('Failed to copy link: ', err);
+    } catch (err) {
+        console.error('Fallback copy failed:', err);
         if (typeof modal !== 'undefined') {
             modal.error('Không thể sao chép liên kết.', 'Lỗi');
         } else {
-            alert('❌ Could not copy link.');
+            alert('❌ Không thể sao chép. Vui lòng thử lại.');
         }
-    });
+    }
+}
+
+function handleCopySuccess(copyBtn, originalText) {
+    // Update button with success indicator
+    if (copyBtn) {
+        copyBtn.textContent = '✓ Đã sao chép';
+        copyBtn.style.opacity = '0.8';
+        setTimeout(() => {
+            copyBtn.textContent = originalText;
+            copyBtn.style.opacity = '1';
+        }, 2000);
+    }
+    
+    if (typeof modal !== 'undefined') {
+        modal.success('Đã sao chép liên kết chia sẻ!', 'Thành công');
+    } else {
+        alert('✅ Đã sao chép liên kết!');
+    }
 }
 
 function applyConfiguration(config) {
