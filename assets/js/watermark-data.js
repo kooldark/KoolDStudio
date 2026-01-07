@@ -63,62 +63,100 @@ const colorPalettes = {
 };
 
 const fontLibrary = [
-    { name: 'Playfair Display', key: 'Playfair', category: 'Serif' },
-    { name: 'Cormorant Garamond', key: 'Cormorant', category: 'Serif' },
-    { name: 'Lora', key: 'Lora', category: 'Serif' },
-    { name: 'Merriweather', key: 'Merriweather', category: 'Serif' },
-    { name: 'Crimson Text', key: 'CrimsonText', category: 'Serif' },
-    { name: 'Abril Fatface', key: 'AbrilFatface', category: 'Serif' },
-    { name: 'Cinzel', key: 'Cinzel', category: 'Serif' },
-    { name: 'Montserrat', key: 'Montserrat', category: 'Sans-serif' },
-    { name: 'Poppins', key: 'Poppins', category: 'Sans-serif' },
-    { name: 'Roboto', key: 'Roboto', category: 'Sans-serif' },
-    { name: 'Raleway', key: 'Raleway', category: 'Sans-serif' },
-    { name: 'Lato', key: 'Lato', category: 'Sans-serif' },
-    { name: 'Sora', key: 'Sora', category: 'Sans-serif' },
-    { name: 'Quicksand', key: 'Quicksand', category: 'Sans-serif' },
-    { name: 'Oswald', key: 'Oswald', category: 'Sans-serif' },
-    { name: 'Space Mono', key: 'SpaceMono', category: 'Monospace' },
-    { name: 'Russo One', key: 'RussoOne', category: 'Sans-serif' },
-    { name: 'Righteous', key: 'Righteous', category: 'Sans-serif' },
-    { name: 'Dancing Script', key: 'DancingScript', category: 'Handwriting' },
-    { name: 'Satisfy', key: 'Satisfy', category: 'Handwriting' },
-    { name: 'Pacifico', key: 'Pacifico', category: 'Handwriting' },
-    { name: 'Caveat', key: 'Caveat', category: 'Handwriting' },
-    { name: 'Fredoka', key: 'Fredoka', category: 'Sans-serif' },
-    { name: 'Dm Serif Display', key: 'DmSerif', category: 'Serif' },
-    { name: 'Unbounded', key: 'Unbounded', category: 'Sans-serif' }
+    // 1️⃣ Sans-serif (Hiện đại, dễ đọc, gần gũi)
+    { name: 'Raleway', key: 'Raleway', category: '1️⃣ Sans-serif', group: 'Sans-serif' },
+    { name: 'Lato', key: 'Lato', category: '1️⃣ Sans-serif', group: 'Sans-serif' },
+    { name: 'Poppins', key: 'Poppins', category: '1️⃣ Sans-serif', group: 'Sans-serif' },
+    
+    // 2️⃣ Serif (Ấm áp, truyền thống, đáng tin cậy)
+    { name: 'Playfair Display', key: 'Playfair', category: '2️⃣ Serif', group: 'Serif' },
+    { name: 'Merriweather', key: 'Merriweather', category: '2️⃣ Serif', group: 'Serif' },
+    { name: 'Lora', key: 'Lora', category: '2️⃣ Serif', group: 'Serif' },
+    
+    // 3️⃣ Script (Lãng mạn, cảm xúc, cá nhân)
+    { name: 'Pacifico', key: 'Pacifico', category: '3️⃣ Script', group: 'Script' },
+    { name: 'Dancing Script', key: 'DancingScript', category: '3️⃣ Script', group: 'Script' },
+    { name: 'Satisfy', key: 'Satisfy', category: '3️⃣ Script', group: 'Script' },
+    
+    // 4️⃣ Handwritten (Viết tay tự nhiên, đời thường)
+    { name: 'Caveat', key: 'Caveat', category: '4️⃣ Handwritten', group: 'Handwritten' },
+    { name: 'Indie Flower', key: 'IndieFlower', category: '4️⃣ Handwritten', group: 'Handwritten' },
+    { name: 'Patrick Hand', key: 'PatrickHand', category: '4️⃣ Handwritten', group: 'Handwritten' },
+    { name: 'Great Vibes', key: 'GreatVibes', category: '4️⃣ Handwritten', group: 'Handwritten' },
+    { name: 'Amatic SC', key: 'AmaticSC', category: '4️⃣ Handwritten', group: 'Handwritten' },
+    { name: 'Comforter', key: 'Comforter', category: '4️⃣ Handwritten', group: 'Handwritten' },
+    { name: 'Tangerine', key: 'Tangerine', category: '4️⃣ Handwritten', group: 'Handwritten' },
+    { name: 'Allura', key: 'Allura', category: '4️⃣ Handwritten', group: 'Handwritten' },
+    { name: 'Alex Brush', key: 'AlexBrush', category: '4️⃣ Handwritten', group: 'Handwritten' },
+    { name: 'Sacramento', key: 'Sacramento', category: '4️⃣ Handwritten', group: 'Handwritten' },
+    
+    // 5️⃣ Rounded Font (Thân thiện, vui vẻ, mềm mại)
+    { name: 'Quicksand', key: 'Quicksand', category: '5️⃣ Rounded', group: 'Rounded' },
+    { name: 'Nunito', key: 'Nunito', category: '5️⃣ Rounded', group: 'Rounded' },
+    { name: 'Fredoka', key: 'Fredoka', category: '5️⃣ Rounded', group: 'Rounded' },
+    
+    // 6️⃣ Display/Decorative (Nổi bật, cá tính)
+    { name: 'Abril Fatface', key: 'AbrilFatface', category: '6️⃣ Display', group: 'Display' },
+    { name: 'Oswald', key: 'Oswald', category: '6️⃣ Display', group: 'Display' },
+    
+    // 7️⃣ Humanist (Tự nhiên, dễ đọc, đời sống)
+    { name: 'Roboto', key: 'Roboto', category: '7️⃣ Humanist', group: 'Humanist' },
+    { name: 'Source Sans Pro', key: 'SourceSansPro', category: '7️⃣ Humanist', group: 'Humanist' },
+    
+    // 8️⃣ Minimal/Modern (Nhẹ nhàng, tinh tế, hợp lifestyle)
+    { name: 'Sora', key: 'Sora', category: '8️⃣ Minimal', group: 'Minimal' },
+    { name: 'Unbounded', key: 'Unbounded', category: '8️⃣ Minimal', group: 'Minimal' },
+    { name: 'Inter', key: 'Inter', category: '8️⃣ Minimal', group: 'Minimal' }
 ];
 
 function getFontFamily(f) {
     const fonts = {
-        'Playfair': "'Playfair Display', serif",
-        'Cormorant': "'Cormorant Garamond', serif",
-        'Lora': "'Lora', serif",
-        'Merriweather': "'Merriweather', serif",
-        'CrimsonText': "'Crimson Text', serif",
-        'AbrilFatface': "'Abril Fatface', serif",
-        'Cinzel': "'Cinzel', serif",
-        'Montserrat': "'Montserrat', sans-serif",
-        'Poppins': "'Poppins', sans-serif",
-        'Roboto': "'Roboto', sans-serif",
+        // Sans-serif
         'Raleway': "'Raleway', sans-serif",
         'Lato': "'Lato', sans-serif",
-        'Sora': "'Sora', sans-serif",
-        'Quicksand': "'Quicksand', sans-serif",
-        'Oswald': "'Oswald', sans-serif",
-        'SpaceMono': "'Space Mono', monospace",
-        'RussoOne': "'Russo One', sans-serif",
-        'Righteous': "'Righteous', sans-serif",
+        'Poppins': "'Poppins', sans-serif",
+        
+        // Serif
+        'Playfair': "'Playfair Display', serif",
+        'Merriweather': "'Merriweather', serif",
+        'Lora': "'Lora', serif",
+        
+        // Script
+        'Pacifico': "'Pacifico', cursive",
         'DancingScript': "'Dancing Script', cursive",
         'Satisfy': "'Satisfy', cursive",
-        'Pacifico': "'Pacifico', cursive",
+        
+        // Handwritten
         'Caveat': "'Caveat', cursive",
+        'IndieFlower': "'Indie Flower', cursive",
+        'PatrickHand': "'Patrick Hand', cursive",
+        'GreatVibes': "'Great Vibes', cursive",
+        'AmaticSC': "'Amatic SC', cursive",
+        'Comforter': "'Comforter', cursive",
+        'Tangerine': "'Tangerine', cursive",
+        'Allura': "'Allura', cursive",
+        'AlexBrush': "'Alex Brush', cursive",
+        'Sacramento': "'Sacramento', cursive",
+        
+        // Rounded
+        'Quicksand': "'Quicksand', sans-serif",
+        'Nunito': "'Nunito', sans-serif",
         'Fredoka': "'Fredoka', sans-serif",
-        'DmSerif': "'Dm Serif Display', serif",
-        'Unbounded': "'Unbounded', sans-serif"
+        
+        // Display
+        'AbrilFatface': "'Abril Fatface', serif",
+        'Oswald': "'Oswald', sans-serif",
+        
+        // Humanist
+        'Roboto': "'Roboto', sans-serif",
+        'SourceSansPro': "'Source Sans Pro', sans-serif",
+        
+        // Minimal
+        'Sora': "'Sora', sans-serif",
+        'Unbounded': "'Unbounded', sans-serif",
+        'Inter': "'Inter', sans-serif"
     };
-    return fonts[f] || fonts['Playfair'];
+    return fonts[f] || fonts['Raleway'];
 }
 
 function hexToRgb(hex) {

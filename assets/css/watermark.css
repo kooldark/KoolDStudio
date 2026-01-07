@@ -79,6 +79,18 @@ body { font-family: var(--font-body); background: var(--cream); color: #333; mar
 .color-input-group input[type="color"] { width: 50px; height: 44px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; padding: 2px; }
 .color-input-group input[type="text"] { flex: 1; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; font-family: monospace; min-height: 44px; }
 
+/* Quick Color Palette */
+.color-quick-palette { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 8px; }
+.color-swatch-quick { 
+    width: 100%; aspect-ratio: 1; border-radius: 4px; cursor: pointer; 
+    border: 2px solid transparent; transition: all 0.2s ease; min-height: 44px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.color-swatch-quick:hover { 
+    transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    border-color: var(--soft-gold);
+}
+
 .preview-panel { display: flex; flex-direction: column; position: sticky; top: 85px; }
 #watermarkPreview { 
     width: 100%; aspect-ratio: 1; max-width: 500px; margin: 0 auto;

@@ -6,9 +6,31 @@ let currentSubFont = 'Montserrat';
 let favorites = JSON.parse(localStorage.getItem('watermarkFavorites')) || [];
 let allStyles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
 
+const styleNames = [
+    'Logo + Divider', 'Rotated Diagonal', 'Corner Positioned', 'Circle Border', 'Vertical Text', 'Minimal Line', 'Lines Sandwich', 'Signature Style', 'Border Box', 'Dots Pattern',
+    'Two-Part', 'Horizontal Stripes', 'Diamond Shape', 'Main + Subtitle', 'Italic Corner', 'Bold Uppercase', 'Ornament Deco', 'Text + Accent',
+    'Floating Refined', 'Corner Elegant', 'Brushstroke', 'Modern Stacked', 'Vintage Border', 'Geometric Modern', 'Serif Elegance', 'Minimal Dots',
+    'Gradient Fade', 'Ornate Detail', 'Monogram Style', 'Contemporary Line',
+    'Gold Elegance', 'Green Serif', 'Gold Divider', 'Dark Green', 'Gold Corner Right', 'Green Corner Left', 'Gold Top', 'Green Minimal', 'Gold Corner Frame', 'Luxury Green',
+    'Gold Center Art', 'Green Accent', 'Gold Green Mix', 'Accent Border', 'Gold Premium', 'Two-Tone Border', 'Side Accent', 'Minimal Gold', 'Corner Gold Green', 'Gradient Green Gold'
+];
+
 // Debug: check if required libraries are loaded
 console.log('html2canvas available:', typeof html2canvas !== 'undefined');
 console.log('saveAs available:', typeof saveAs !== 'undefined');
+
+function setColorQuick(color) {
+    currentColor = color;
+    currentSecondaryColor = getComplementaryColor(color);
+    
+    const colorPicker = document.getElementById('colorPicker');
+    const colorInput = document.getElementById('colorInput');
+    if (colorPicker) colorPicker.value = color;
+    if (colorInput) colorInput.value = color;
+    
+    updateColorSwatches();
+    updatePreview();
+}
 
 function applyMainFont(fontKey, event) {
     currentMainFont = fontKey;
@@ -45,32 +67,7 @@ function setTextColor(c, event) {
 }
 
 function updateColorSwatches() {
-    const mainSwatch = document.getElementById('mainColorSwatch');
-    const secondarySwatch = document.getElementById('secondaryColorSwatch');
-    const mainColorCode = document.getElementById('mainColorCode');
-    const secondaryColorCode = document.getElementById('secondaryColorCode');
-    
-    if (mainSwatch) {
-        mainSwatch.style.background = currentColor;
-    }
-    if (secondarySwatch) {
-        secondarySwatch.style.background = currentSecondaryColor;
-        // Add professional animation when secondary color updates
-        secondarySwatch.classList.remove('harmony-update');
-        // Trigger reflow to restart animation
-        void secondarySwatch.offsetWidth;
-        secondarySwatch.classList.add('harmony-update');
-        // Remove class after animation completes
-        setTimeout(() => {
-            secondarySwatch.classList.remove('harmony-update');
-        }, 600);
-    }
-    if (mainColorCode) {
-        mainColorCode.textContent = currentColor;
-    }
-    if (secondaryColorCode) {
-        secondaryColorCode.textContent = currentSecondaryColor;
-    }
+    // Swatches removed - keeping function for backward compatibility
 }
 
 function copyColorCode(colorHex) {
@@ -118,24 +115,32 @@ function updatePreview() {
 
     preview.innerHTML = template.html(l1, l2, l3, currentColor, currentMainFont, currentSecondaryColor); 
     
-    // Apply opacity to all text elements inside preview
+    // Apply opacity to all elements inside preview
     const allElements = preview.querySelectorAll('*');
     allElements.forEach(el => {
         el.style.opacity = opacity;
     });
     
-    // Apply fonts to all text elements - support for future .line1/.line2 classes
-    const line1El = preview.querySelector('.line1');
-    if (line1El) line1El.style.fontFamily = getFontFamily(currentMainFont);
-
-    const line2El = preview.querySelector('.line2');
-    if (line2El) line2El.style.fontFamily = getFontFamily(currentSubFont);
-
-    // Also apply main font to all divs by default
-    const allDivs = preview.querySelectorAll('div');
-    allDivs.forEach(div => {
-        if (!div.style.fontFamily) {
-            div.style.fontFamily = getFontFamily(currentMainFont);
+    // Apply fonts properly based on content (line1 = mainFont, line2,3 = subFont)
+    const mainFontFamily = getFontFamily(currentMainFont);
+    const subFontFamily = getFontFamily(currentSubFont);
+    
+    // Mark elements containing specific lines and apply fonts
+    const allDivs = preview.querySelectorAll('div, span, p');
+    allDivs.forEach(el => {
+        const text = el.textContent || '';
+        const hasChildren = el.querySelector('*');
+        
+        // Only apply to leaf elements (no children)
+        if (!hasChildren) {
+            if (text.includes(l1) && l1) {
+                el.style.fontFamily = mainFontFamily;
+            } else if ((text.includes(l2) && l2) || (text.includes(l3) && l3)) {
+                el.style.fontFamily = subFontFamily;
+            } else {
+                // Default to main font if no specific content match
+                el.style.fontFamily = mainFontFamily;
+            }
         }
     });
 }
@@ -189,6 +194,8 @@ function randomizeAll() {
     const subSelect = document.getElementById('fontSubSelect');
     if (subSelect) subSelect.value = randomSubFont;
     
+
+    
     updatePreview();
 }
 
@@ -220,10 +227,25 @@ async function downloadWatermark() {
     
     tempContainer.innerHTML = template.html(l1, l2, l3, currentColor, currentMainFont, currentSecondaryColor);
     
-    const allElements = tempContainer.querySelectorAll('*');
-    allElements.forEach(el => {
-        if (!el.style.fontFamily) {
-            el.style.fontFamily = getFontFamily(currentMainFont);
+    // Apply fonts to all elements - mimic updatePreview behavior
+    const mainFontFamily = getFontFamily(currentMainFont);
+    const subFontFamily = getFontFamily(currentSubFont);
+    
+    // Mark elements containing specific lines and apply fonts
+    const allTextElements = tempContainer.querySelectorAll('div, span, p');
+    allTextElements.forEach(el => {
+        const text = el.textContent || '';
+        const hasChildren = el.querySelector('*');
+        
+        // Only apply to leaf elements (no children)
+        if (!hasChildren) {
+            if (text.includes(l1) && l1) {
+                el.style.fontFamily = mainFontFamily;
+            } else if ((text.includes(l2) && l2) || (text.includes(l3) && l3)) {
+                el.style.fontFamily = subFontFamily;
+            } else {
+                el.style.fontFamily = mainFontFamily;
+            }
         }
     });
 
@@ -491,14 +513,6 @@ function showLoading(show) {
 
 function buildGallery() {
     const container = document.getElementById('galleryContainer');
-    const styleNames = [
-        'Logo + Divider', 'Rotated Diagonal', 'Corner Positioned', 'Circle Border', 'Vertical Text', 'Minimal Line', 'Lines Sandwich', 'Signature Style', 'Border Box', 'Dots Pattern',
-        'Two-Part', 'Horizontal Stripes', 'Diamond Shape', 'Main + Subtitle', 'Italic Corner', 'Bold Uppercase', 'Ornament Deco', 'Text + Accent',
-        'Floating Refined', 'Corner Elegant', 'Brushstroke', 'Modern Stacked', 'Vintage Border', 'Geometric Modern', 'Serif Elegance', 'Minimal Dots',
-        'Gradient Fade', 'Ornate Detail', 'Monogram Style', 'Contemporary Line',
-        'Gold Elegance', 'Green Serif', 'Gold Divider', 'Dark Green', 'Gold Corner Right', 'Green Corner Left', 'Gold Top', 'Green Minimal', 'Gold Corner Frame', 'Luxury Green',
-        'Gold Center Art', 'Green Accent', 'Gold Green Mix', 'Accent Border', 'Gold Premium', 'Two-Tone Border', 'Side Accent', 'Minimal Gold', 'Corner Gold Green', 'Gradient Green Gold'
-    ];
     
     allStyles.forEach(i => {
         const div = document.createElement('div');
@@ -527,13 +541,32 @@ function renderFontLibrary() {
     const mainSelect = document.getElementById('fontMainSelect');
     if (!mainSelect) return;
     mainSelect.innerHTML = '';
+    
+    // Group fonts by category
+    const groupedFonts = {};
     fontLibrary.forEach((font) => {
-        const option = document.createElement('option');
-        option.value = font.key;
-        option.textContent = font.name;
-        option.selected = font.key === currentMainFont;
-        mainSelect.appendChild(option);
+        if (!groupedFonts[font.category]) {
+            groupedFonts[font.category] = [];
+        }
+        groupedFonts[font.category].push(font);
     });
+    
+    // Add grouped options to main font select
+    Object.keys(groupedFonts).forEach((category) => {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = category;
+        
+        groupedFonts[category].forEach((font) => {
+            const option = document.createElement('option');
+            option.value = font.key;
+            option.textContent = font.name;
+            option.selected = font.key === currentMainFont;
+            optgroup.appendChild(option);
+        });
+        
+        mainSelect.appendChild(optgroup);
+    });
+    
     mainSelect.addEventListener('change', (e) => {
         applyMainFont(e.target.value, e);
     });
@@ -541,13 +574,23 @@ function renderFontLibrary() {
     const subSelect = document.getElementById('fontSubSelect');
     if (!subSelect) return;
     subSelect.innerHTML = '';
-    fontLibrary.forEach((font) => {
-        const option = document.createElement('option');
-        option.value = font.key;
-        option.textContent = font.name;
-        option.selected = font.key === currentSubFont;
-        subSelect.appendChild(option);
+    
+    // Add grouped options to sub font select
+    Object.keys(groupedFonts).forEach((category) => {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = category;
+        
+        groupedFonts[category].forEach((font) => {
+            const option = document.createElement('option');
+            option.value = font.key;
+            option.textContent = font.name;
+            option.selected = font.key === currentSubFont;
+            optgroup.appendChild(option);
+        });
+        
+        subSelect.appendChild(optgroup);
     });
+    
     subSelect.addEventListener('change', (e) => {
         applySubFont(e.target.value, e);
     });
@@ -566,12 +609,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const styleNames = [
-        'Logo + Divider', 'Rotated Diagonal', 'Corner Positioned', 'Circle Border', 'Vertical Text', 'Minimal Line', 'Lines Sandwich', 'Signature Style', 'Border Box', 'Dots Pattern',
-        'Two-Part', 'Horizontal Stripes', 'Diamond Shape', 'Main + Subtitle', 'Italic Corner', 'Bold Uppercase', 'Ornament Deco', 'Text + Accent',
-        'Floating Refined', 'Corner Elegant', 'Brushstroke', 'Modern Stacked', 'Vintage Border', 'Geometric Modern', 'Serif Elegance', 'Minimal Dots',
-        'Gradient Fade', 'Ornate Detail', 'Monogram Style', 'Contemporary Line'
-    ];
     allStyles.forEach(i => {
         const opt = document.createElement('option');
         opt.value = i;
@@ -723,6 +760,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     updateColorSwatches();
     updatePreview();
+
+    // Add download button listener
+    const downloadBtn = document.getElementById('downloadBtn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', downloadWatermark);
+    }
     
     // Add keyboard shortcuts
     document.addEventListener('keydown', (e) => {
@@ -739,21 +782,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Accordion toggle function
+// Accordion toggle function - kept for compatibility
 function toggleAccordion(header) {
-    const content = header.nextElementSibling;
-    const isActive = content.classList.contains('active');
-    
-    // Close all other accordions
-    document.querySelectorAll('.accordion-content.active').forEach(c => {
-        c.classList.remove('active');
-        c.previousElementSibling.classList.remove('active');
-    });
-    
-    // Toggle current
-    if (!isActive) {
-        content.classList.add('active');
-        header.classList.add('active');
-    }
+    // No longer used after UI simplification
 }
 

@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Photo Signature - Kool D. Studio</title>
     <meta name="description" content="Tạo chữ ký chuyên nghiệp để in lên ảnh - 50 thiết kế, chỉnh sửa dễ dàng, tải PNG transparent">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Raleway:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Lato:wght@400;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Raleway:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Lato:wght@400;700&family=Sora:wght@400;600;700&family=Merriweather:wght@400;700&family=Dancing+Script:wght@400;700&family=Pacifico&family=Satisfy&family=Great+Vibes&family=Tangerine:wght@400;700&family=Allura&family=Alex+Brush&family=Sacramento&family=Caveat:wght@400;700&family=Indie+Flower&family=Patrick+Hand&family=Amatic+SC:wght@400;700&family=Comforter:wght@400;700&family=Quicksand:wght@400;600;700&family=Nunito:wght@400;600;700&family=Fredoka:wght@400;600&family=Oswald:wght@400;600;700&family=Abril+Fatface&family=Source+Sans+Pro:wght@400;600;700&family=Unbounded:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/watermark.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="assets/js/modal.js"></script>
-    <script src="assets/js/watermark-data.js"></script>
 </head>
 <body>
     <!-- Header Template Container -->
@@ -40,64 +39,54 @@
                 </div>
 
                 <div class="action-buttons">
-                    <button class="btn btn-primary">Tải</button>
+                    <button class="btn btn-primary" id="downloadBtn">Tải</button>
                     <button class="btn btn-secondary" onclick="resetPreview()">Reset</button>
                     <button class="btn btn-secondary" onclick="randomizeAll()">Auto</button>
                     <button class="btn btn-secondary" id="copyLinkBtn" onclick="copyShareableLink()">Sao chép</button>
                 </div>
 
-                <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>⚙️ Tuỳ chỉnh</span>
-                        <span class="accordion-icon">▼</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="color-harmony">
-                            <div class="color-swatch">
-                                <div class="swatch-label">Chính</div>
-                                <div id="mainColorSwatch"></div>
-                                <div class="swatch-code" id="mainColorCode">#1a1a1a</div>
-                            </div>
-                            <div class="color-swatch">
-                                <div class="swatch-label">Phụ</div>
-                                <div id="secondaryColorSwatch"></div>
-                                <div class="swatch-code" id="secondaryColorCode">#eb9500</div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="form-label" style="font-size: 10px; margin-bottom: 6px; display: block;">🎨 Màu</label>
-                            <div class="color-input-group">
-                                <input type="color" id="colorPicker" value="#1a1a1a">
-                                <input type="text" id="colorInput" value="#1a1a1a" placeholder="#1a1a1a">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="section-label" style="font-size: 9px;">Font Chính</label>
-                            <select id="fontMainSelect" class="style-select" style="width: 100%; padding: 10px 12px; font-size: 12px;"></select>
-                        </div>
-
-                        <div>
-                            <label class="section-label" style="font-size: 9px;">Font Phụ</label>
-                            <select id="fontSubSelect" class="style-select" style="width: 100%; padding: 10px 12px; font-size: 12px;"></select>
-                        </div>
-
-                        <div>
-                            <label class="form-label" for="opacitySlider" style="font-size: 10px; margin-bottom: 6px; display: block;">💧 Độ mờ</label>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="range" id="opacitySlider" min="0" max="100" value="100" style="width: 100%;">
-                                <span id="opacityValue" style="font-size: 11px; font-weight: 500; min-width: 32px;">100%</span>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-outline" onclick="saveFavorite()" style="width: 100%; padding: 8px 10px; font-size: 10px; margin-top: 8px;">💾 Lưu</button>
-
-                        <div id="favoritesSection" style="display:none; margin-top: 10px;">
-                            <label class="section-label" style="font-size: 9px;">Đã lưu</label>
-                            <div id="favoritesList"></div>
-                        </div>
+                <!-- Simplified Color Picker -->
+                <div class="form-section">
+                    <label class="section-label">🎨 Màu</label>
+                    <div class="color-quick-palette">
+                        <div class="color-swatch-quick" style="background:#1a1a1a;" onclick="setColorQuick('#1a1a1a')" title="Đen"></div>
+                        <div class="color-swatch-quick" style="background:#2d5a3d;" onclick="setColorQuick('#2d5a3d')" title="Xanh lá"></div>
+                        <div class="color-swatch-quick" style="background:#8b4545;" onclick="setColorQuick('#8b4545')" title="Nâu đỏ"></div>
+                        <div class="color-swatch-quick" style="background:#5d4e37;" onclick="setColorQuick('#5d4e37')" title="Nâu cổ điển"></div>
+                        <div class="color-swatch-quick" style="background:#2d3748;" onclick="setColorQuick('#2d3748')" title="Xám hiện đại"></div>
+                        <div class="color-swatch-quick" style="background:#1f1f1f;" onclick="setColorQuick('#1f1f1f')" title="Đen Noir"></div>
                     </div>
+                    <div class="color-input-group" style="margin-top: 8px;">
+                        <input type="color" id="colorPicker" value="#1a1a1a">
+                        <input type="text" id="colorInput" value="#1a1a1a" placeholder="#1a1a1a">
+                    </div>
+                </div>
+
+                <!-- Font Controls -->
+                <div class="form-section">
+                    <label class="section-label">Font Chính</label>
+                    <select id="fontMainSelect" class="style-select" style="width: 100%; padding: 10px 12px; font-size: 12px;"></select>
+                </div>
+
+                <div class="form-section">
+                    <label class="section-label">Font Phụ</label>
+                    <select id="fontSubSelect" class="style-select" style="width: 100%; padding: 10px 12px; font-size: 12px;"></select>
+                </div>
+
+                <!-- Opacity Control -->
+                <div class="form-section">
+                    <label class="form-label" style="font-size: 10px; margin-bottom: 6px; display: block;">💧 Độ mờ</label>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <input type="range" id="opacitySlider" min="0" max="100" value="100" style="width: 100%;">
+                        <span id="opacityValue" style="font-size: 11px; font-weight: 500; min-width: 32px;">100%</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-outline" onclick="saveFavorite()" style="width: 100%; padding: 8px 10px; font-size: 10px; margin-top: 8px;">💾 Lưu</button>
+
+                <div id="favoritesSection" style="display:none; margin-top: 10px;">
+                    <label class="section-label" style="font-size: 9px;">Đã lưu</label>
+                    <div id="favoritesList"></div>
                 </div>
             </div>
 
@@ -118,6 +107,7 @@
     </section>
 
     <script src="assets/js/watermark-styles.js"></script>
+    <script src="assets/js/watermark-data.js"></script>
     <script src="assets/js/load-template.js"></script>
     <script src="assets/js/watermark.js"></script>
     <script>
