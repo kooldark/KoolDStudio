@@ -4,15 +4,20 @@ let currentSecondaryColor = '#eb9500';
 let currentMainFont = 'Playfair';
 let currentSubFont = 'Montserrat';
 let favorites = JSON.parse(localStorage.getItem('watermarkFavorites')) || [];
+let currentBgImage = null;
+let currentSize = 100;
 let allStyles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
+let freeStyles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+let proStyles = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
+let currentFilter = 'all'; // 'all', 'free', 'pro'
 
 const styleNames = [
     'Logo + Divider', 'Rotated Diagonal', 'Corner Positioned', 'Circle Border', 'Vertical Text', 'Minimal Line', 'Lines Sandwich', 'Signature Style', 'Border Box', 'Dots Pattern',
     'Two-Part', 'Horizontal Stripes', 'Diamond Shape', 'Main + Subtitle', 'Italic Corner', 'Bold Uppercase', 'Ornament Deco', 'Text + Accent',
     'Floating Refined', 'Corner Elegant', 'Brushstroke', 'Modern Stacked', 'Vintage Border', 'Geometric Modern', 'Serif Elegance', 'Minimal Dots',
-    'Gradient Fade', 'Ornate Detail', 'Monogram Style', 'Contemporary Line',
-    'Gold Elegance', 'Green Serif', 'Gold Divider', 'Dark Green', 'Gold Corner Right', 'Green Corner Left', 'Gold Top', 'Green Minimal', 'Gold Corner Frame', 'Luxury Green',
-    'Gold Center Art', 'Green Accent', 'Gold Green Mix', 'Accent Border', 'Gold Premium', 'Two-Tone Border', 'Side Accent', 'Minimal Gold', 'Corner Gold Green', 'Gradient Green Gold'
+    'Gradient Fade [PRO]', 'Ornate Detail [PRO]', 'Monogram Style [PRO]', 'Contemporary Line [PRO]',
+    'Gold Elegance [PRO]', 'Green Serif [PRO]', 'Gold Divider [PRO]', 'Dark Green [PRO]', 'Gold Corner Right [PRO]', 'Green Corner Left [PRO]', 'Gold Top [PRO]', 'Green Minimal [PRO]', 'Gold Corner Frame [PRO]', 'Luxury Green [PRO]',
+    'Gold Center Art [PRO]', 'Green Accent [PRO]', 'Gold Green Mix [PRO]', 'Accent Border [PRO]', 'Gold Premium [PRO]', 'Two-Tone Border [PRO]', 'Side Accent [PRO]', 'Minimal Gold [PRO]', 'Corner Gold Green [PRO]', 'Gradient Green Gold [PRO]'
 ];
 
 // Debug: check if required libraries are loaded
@@ -99,13 +104,32 @@ function copyColorCode(colorHex) {
     });
 }
 
+// Background Image Functions
+function handleBgImageUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            currentBgImage = e.target.result;
+            updatePreview();
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function clearBgImage() {
+    currentBgImage = null;
+    const input = document.getElementById('bgImageInput');
+    if (input) input.value = '';
+    updatePreview();
+}
+
 function updatePreview() {
     const styleId = document.getElementById('styleSelect').value;
     const l1 = document.getElementById('line1Input')?.value || '';
     const l2 = document.getElementById('line2Input')?.value || '';
     const l3 = document.getElementById('line3Input')?.value || '';
-    const opacitySlider = document.getElementById('opacitySlider');
-    const opacity = opacitySlider ? opacitySlider.value / 100 : 1;
+    const opacity = 1; // Always 100% opacity
 
     const template = watermarkTemplates[styleId];
     if (!template) return;
@@ -113,7 +137,25 @@ function updatePreview() {
     const preview = document.getElementById('watermarkPreview');
     if (!preview) return;
 
+    // Set background image if available
+    if (currentBgImage) {
+        preview.style.backgroundImage = `url('${currentBgImage}')`;
+        preview.style.backgroundSize = 'cover';
+        preview.style.backgroundPosition = 'center';
+    } else {
+        preview.style.backgroundImage = 'none';
+        preview.style.background = 'linear-gradient(135deg, #ffffff 0%, #fafaf8 100%)';
+    }
+
     preview.innerHTML = template.html(l1, l2, l3, currentColor, currentMainFont, currentSecondaryColor); 
+    
+    // Apply size scaling
+    const watermarkContainer = preview.querySelector('[class*="watermark-style"]');
+    if (watermarkContainer) {
+        const sizeScale = currentSize / 100;
+        watermarkContainer.style.transform = `scale(${sizeScale})`;
+        watermarkContainer.style.transformOrigin = 'center center';
+    }
     
     // Apply opacity to all elements inside preview
     const allElements = preview.querySelectorAll('*');
@@ -149,14 +191,10 @@ function resetPreview() {
     const line1Input = document.getElementById('line1Input');
     const line2Input = document.getElementById('line2Input');
     const line3Input = document.getElementById('line3Input');
-    const opacitySlider = document.getElementById('opacitySlider');
-    const opacityValue = document.getElementById('opacityValue');
     
     if (line1Input) line1Input.value = 'Kool D.';
     if (line2Input) line2Input.value = 'Studio';
     if (line3Input) line3Input.value = 'Est. 2025';
-    if (opacitySlider) opacitySlider.value = 100;
-    if (opacityValue) opacityValue.textContent = '100%';
     
     currentMainFont = 'Playfair';
     currentSubFont = 'Montserrat';
@@ -222,7 +260,7 @@ async function downloadWatermark() {
         align-items: center;
         justify-content: center;
         padding: 40px;
-        opacity: ${(document.getElementById('opacitySlider')?.value || 100) / 100};
+        opacity: 1;
     `;
     
     tempContainer.innerHTML = template.html(l1, l2, l3, currentColor, currentMainFont, currentSecondaryColor);
@@ -293,7 +331,6 @@ function copyWatermarkConfig() {
         line1: document.getElementById('line1Input').value,
         line2: document.getElementById('line2Input').value,
         line3: document.getElementById('line3Input').value,
-        opacity: document.getElementById('opacitySlider').value,
         color: currentColor,
         mainFont: currentMainFont,
         subFont: currentSubFont,
@@ -308,7 +345,6 @@ function copyWatermarkConfig() {
 }
 
 function copyShareableLink() {
-    const opacitySlider = document.getElementById('opacitySlider');
     const copyBtn = document.getElementById('copyLinkBtn');
     const originalText = copyBtn ? copyBtn.textContent : 'Sao chép thiết kế';
     
@@ -321,7 +357,6 @@ function copyShareableLink() {
         color2: currentSecondaryColor,
         font1: currentMainFont,
         font2: currentSubFont,
-        opacity: opacitySlider ? opacitySlider.value : '100',
     };
 
     const jsonConfig = JSON.stringify(config);
@@ -412,19 +447,11 @@ function applyConfiguration(config) {
         const subSelect = document.getElementById('fontSubSelect');
         const colorPicker = document.getElementById('colorPicker');
         const colorInput = document.getElementById('colorInput');
-        const opacitySlider = document.getElementById('opacitySlider');
-        const opacityValue = document.getElementById('opacityValue');
 
         if (mainSelect) mainSelect.value = currentMainFont;
         if (subSelect) subSelect.value = currentSubFont;
         if (colorPicker) colorPicker.value = currentColor;
         if (colorInput) colorInput.value = currentColor;
-        if (opacitySlider && config.opacity) {
-            opacitySlider.value = config.opacity;
-        }
-        if (opacityValue && config.opacity) {
-            opacityValue.textContent = config.opacity + '%';
-        }
 
         updateColorSwatches();
         updatePreview();
@@ -443,7 +470,6 @@ function saveFavorite() {
         line1: document.getElementById('line1Input').value,
         line2: document.getElementById('line2Input').value,
         line3: document.getElementById('line3Input').value,
-        opacity: document.getElementById('opacitySlider').value,
         color: currentColor,
         mainFont: currentMainFont,
         subFont: currentSubFont,
@@ -477,8 +503,6 @@ function loadFavorite(id) {
     document.getElementById('line1Input').value = fav.line1;
     document.getElementById('line2Input').value = fav.line2;
     document.getElementById('line3Input').value = fav.line3;
-    document.getElementById('opacitySlider').value = fav.opacity;
-    document.getElementById('opacityValue').textContent = fav.opacity + '%';
     currentColor = fav.color;
     currentMainFont = fav.mainFont;
     currentSubFont = fav.subFont;
@@ -514,9 +538,20 @@ function showLoading(show) {
 function buildGallery() {
     const container = document.getElementById('galleryContainer');
     
-    allStyles.forEach(i => {
+    // Filter styles based on current filter
+    let stylesToShow = allStyles;
+    if (currentFilter === 'free') {
+        stylesToShow = freeStyles;
+    } else if (currentFilter === 'pro') {
+        stylesToShow = proStyles;
+    }
+    
+    stylesToShow.forEach(i => {
         const div = document.createElement('div');
         div.className = 'watermark-demo';
+        if (watermarkMetadata.isPro(i)) {
+            div.classList.add('watermark-pro');
+        }
         
         let watermarkHTML = '';
         if (watermarkTemplates[i]) {
@@ -527,13 +562,30 @@ function buildGallery() {
             watermarkHTML = `<div class="watermark-style-${i}" style="color:var(--deep-green);"><div style="font-size:14px;font-weight:600;">Style ${i}</div></div>`;
         }
         
+        const proBadge = watermarkMetadata.isPro(i) ? '<span class="pro-badge">PRO</span>' : '';
         div.innerHTML = `
             <div class="demo-title">${String(i).padStart(2, '0')}. ${styleNames[i-1] || 'Custom'}</div>
             <div class="demo-frame" onclick="document.getElementById('styleSelect').value = '${i}'; updatePreview(); document.querySelector('.editor-section').scrollIntoView({behavior:'smooth'});">
                 ${watermarkHTML}
             </div>
+            ${proBadge}
         `;
         container.appendChild(div);
+    });
+}
+
+function filterGallery(filter) {
+    currentFilter = filter;
+    const container = document.getElementById('galleryContainer');
+    container.innerHTML = '';
+    buildGallery();
+    
+    // Update filter button styles
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.filter === filter) {
+            btn.classList.add('active');
+        }
     });
 }
 
@@ -667,7 +719,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const line1Input = document.getElementById('line1Input');
     const line2Input = document.getElementById('line2Input');
     const line3Input = document.getElementById('line3Input');
-    const opacitySlider = document.getElementById('opacitySlider');
     const customColor = document.getElementById('customColor');
 
     
@@ -695,10 +746,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 100);
     
-    if (opacitySlider) {
-        opacitySlider.addEventListener('input', (e) => {
-            const opacityValue = document.getElementById('opacityValue');
-            if (opacityValue) opacityValue.textContent = e.target.value + '%';
+    // Background image upload
+    const bgImageInput = document.getElementById('bgImageInput');
+    if (bgImageInput) {
+        bgImageInput.addEventListener('change', handleBgImageUpload);
+    }
+    
+    // Size control
+    const sizeSlider = document.getElementById('sizeSlider');
+    if (sizeSlider) {
+        sizeSlider.addEventListener('input', (e) => {
+            currentSize = parseInt(e.target.value);
+            const sizeValue = document.getElementById('sizeValue');
+            if (sizeValue) sizeValue.textContent = e.target.value + '%';
             updatePreview();
         });
     }
@@ -747,16 +807,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderFavorites();
     currentColor = '#1a1a1a';
     currentSecondaryColor = getComplementaryColor(currentColor);
-    
-    // Set default opacity to 100%
-    const initialOpacitySlider = document.getElementById('opacitySlider');
-    const initialOpacityValue = document.getElementById('opacityValue');
-    if (initialOpacitySlider) {
-        initialOpacitySlider.value = 100;
-    }
-    if (initialOpacityValue) {
-        initialOpacityValue.textContent = '100%';
-    }
     
     updateColorSwatches();
     updatePreview();

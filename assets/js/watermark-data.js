@@ -276,3 +276,8 @@ function rgbToHex(r, g, b) {
         return hex.length === 1 ? '0' + hex : hex;
     }).join('').toUpperCase();
 }
+// Metadata for watermarks (1-25: Free, 26-50: Pro)
+const watermarkMetadata = {
+    isPro: (styleId) => styleId >= 26 && styleId <= 50,
+    getLabel: (styleId) => styleId >= 26 ? ' [PRO]' : ''
+};
