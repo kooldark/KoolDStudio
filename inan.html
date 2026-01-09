@@ -223,12 +223,18 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowfullscreen></iframe>
         </div>
-        <div class="price-header" style="background:#3A5A40;">
+        <div class="price-header" style="background:#ffffff;">
           <h3>Ảnh Tráng Gương Pha Lê (Loại T)</h3>
         </div>
-        <div class="price-body">
-          <div class="price-size">Kích thước: 60x90cm</div>
-          <div class="price-value">1tr350</div>
+        <div class="price-body">          
+          <div class="interactive-price-selector">
+            <label for="size-selector-t">Chọn kích thước:</label>
+            <select id="size-selector-t" class="size-selector">
+              <option value="1350000">60x90 cm</option>
+              <option value="1760000" selected>70x110 cm</option>
+            </select>
+            <div id="price-display-t" class="price-value">1tr760</div>
+          </div>
            <ul>
             <li>Cân chỉnh & kiểm tra ảnh trước khi in</li>
             <li>Bảo hành và đóng gói sản phẩm</li>
@@ -260,8 +266,8 @@
           <div class="interactive-price-selector">
             <label for="size-selector-p">Chọn kích thước:</label>
             <select id="size-selector-p" class="size-selector">
-              <option value="135000">13x18 cm</option>
-              <option value="153000">15x21 cm</option>
+              <option value="195000">13x18 cm</option>
+              <option value="210000">15x21 cm</option>
               <option value="350000">30x45 cm</option>
               <option value="630000">40x60 cm</option>
               <option value="990000">50x75 cm</option>
@@ -376,6 +382,21 @@
       return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
     }
 
+    // Loại T size selector
+    const sizeSelectorT = document.getElementById('size-selector-t');
+    const priceDisplayT = document.getElementById('price-display-t');
+
+    if (sizeSelectorT && priceDisplayT) {
+      // Initial format
+      priceDisplayT.textContent = formatPrice(parseInt(sizeSelectorT.value, 10));
+
+      sizeSelectorT.addEventListener('change', function() {
+        const selectedPrice = parseInt(this.value, 10);
+        priceDisplayT.textContent = formatPrice(selectedPrice);
+      });
+    }
+
+    // Loại P size selector
     const sizeSelectorP = document.getElementById('size-selector-p');
     const priceDisplayP = document.getElementById('price-display-p');
 
