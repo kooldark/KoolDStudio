@@ -40,9 +40,17 @@
     </label>
   </div>
 
+  <!-- Selection Counter -->
+  <div class="selection-counter" id="selectionCounter" style="display: none;">
+    <p>Đã chọn: <span id="selectedCount">0</span> ảnh</p>
+  </div>
+
   <!-- Controls -->
   <div class="moodboard-controls">
-    <button class="btn-control btn-primary" id="generateCodeBtn">Tạo mã moodboard</button>
+    <button class="btn-control btn-primary" id="generateCodeBtn">
+      <span id="btnText">Tạo mã moodboard</span>
+      <span id="btnLoader" style="display: none;">⏳ Đang tạo...</span>
+    </button>
     <button class="btn-control btn-secondary" id="clearBtn">Xóa tất cả</button>
   </div>
 
