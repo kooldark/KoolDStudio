@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tết 2026 - Chiến Dịch Gia Đình | Kool D. Studio</title>
+  <meta name="description" content="Chiến dịch chụp ảnh gia đình nhân kỷ niệm Tết 2026 tại Kool D. Studio. Lưu giữ những khoảnh khắc ấm áp và ý nghĩa của gia đình bạn.">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/improvements.css">
+  <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
+  
+  <style>
+    /* === TET EVENT SPECIFIC STYLES === */
+    :root {
+      /* Modern Vietnamese Tet Colors */
+      --tet-red: #8B0000;        /* Dark red - sophisticated & premium */
+      --tet-gold: #F77F00;       /* Modern warm gold - elegant & contemporary */
+      --tet-light-gold: #FCB627; /* Bright gold accent - vibrant */
+      --tet-green: #1D9B6E;      /* Modern teal-green - fresh & modern */
+      --tet-soft-gold: #FFFBF0;  /* Soft warm white - premium look */
+      --tet-dark: #a06d6d;       /* Deep charcoal - sophisticated */
+      --tet-gray: #F0F0F0;       /* Light gray - clean background */
+    }
+
+    /* Hero Section - Minimal & Elegant Tet Theme */
+    .tet-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(42, 42, 42, 0.85) 0%, rgba(26, 26, 26, 0.85) 100%), 
+                  url('assets/img/event/placeholder-hero.jpg') center/cover no-repeat;
+      background-blend-mode: overlay;
+      padding-top: 100px;
+    }
+
+    .tet-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(247, 127, 0, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(29, 155, 110, 0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .tet-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      max-width: 800px;
+      padding: 0 2rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .tet-hero-content h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      color: #f5f5f5;
+      letter-spacing: 2px;
+      animation: slideDown 0.8s ease;
+      text-transform: uppercase;
+      word-spacing: 10px;
+    }
+
+    .tet-subtitle {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      animation: slideUp 0.8s ease 0.2s both;
+      letter-spacing: 1px;
+      line-height: 1.9;
+    }
+
+    .tet-cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: slideUp 0.8s ease 0.4s both;
+    }
+
+    .tet-btn {
+      padding: 1.2rem 3rem;
+      border-radius: 60px;
+      border: none;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .tet-btn-primary {
+      background: #333;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tet-btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--tet-red);
+      transition: width 0.3s ease;
+      z-index: -1;
+    }
+
+    .tet-btn-primary:hover::before {
+      width: 100%;
+    }
+
+    .tet-btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+      background: #2a2a2a;
+    }
+
+    .tet-btn-secondary {
+      background: rgba(255, 255, 255, 0.98);
+      color: #333;
+    }
+
+    .tet-btn-secondary:hover {
+      background: white;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Festive Decorative Elements - Minimal */
+    .tet-decorative {
+      position: absolute;
+      opacity: 0.05;
+      font-size: 4rem;
+    }
+
+    .tet-deco-1 { top: 10%; left: 5%; animation: float 4s ease-in-out infinite; }
+    .tet-deco-2 { top: 20%; right: 8%; animation: float 5s ease-in-out infinite 0.5s; }
+    .tet-deco-3 { bottom: 15%; left: 10%; animation: float 4.5s ease-in-out infinite 1s; }
+    .tet-deco-4 { bottom: 20%; right: 5%; animation: float 5.5s ease-in-out infinite 1.5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Campaign Features Section */
+    .campaign-features {
+      padding: 5rem 0;
+      background: #f9f9f9;
+    }
+
+    .campaign-features h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #333;
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 1px solid #e8e8e8;
+      border-top: 3px solid var(--tet-gold);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+    }
+
+    .feature-image.loaded {
+      opacity: 1;
+      animation: none;
+      background: none;
+    }
+
+    .feature-card:hover .feature-image {
+      transform: scale(1.05);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 24px 64px rgba(214, 40, 40, 0.15);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .feature-card h3 {
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .feature-card h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 1px;
+      background: var(--tet-gold);
+    }
+
+    .feature-card p {
+      color: var(--text-color-secondary);
+      line-height: 1.9;
+      letter-spacing: 0.5px;
+    }
+
+    /* Pricing Section */
+    .campaign-pricing {
+      padding: 5rem 0;
+      background: white;
+    }
+
+    .campaign-pricing h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #333;
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: white;
+      padding: 3rem 2.5rem;
+      border-radius: 12px;
+      border: 1px solid #e8e8e8;
+      border-top: 3px solid var(--tet-red);
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-16px);
+      box-shadow: 0 28px 80px rgba(214, 40, 40, 0.2);
+    }
+
+    .pricing-title {
+      color: #333;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .pricing-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 1px;
+      background: var(--tet-green);
+    }
+
+    .pricing-price {
+      color: #333;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -2px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pricing-price span {
+      font-size: 1rem;
+      color: var(--text-color-secondary);
+    }
+
+    .pricing-list {
+      list-style: none;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .pricing-list li {
+      padding: 0.8rem 0;
+      color: var(--text-color);
+      border-bottom: 1px solid rgba(196, 30, 58, 0.1);
+    }
+
+    .pricing-list li::before {
+      content: '✓ ';
+      color: var(--tet-green);
+      font-weight: 700;
+      margin-right: 0.5rem;
+    }
+
+    /* Gallery Section */
+    .campaign-gallery {
+      padding: 5rem 0;
+      background: #1a1a1a;
+      color: white;
+    }
+
+    .campaign-gallery h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: white;
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid rgba(255, 215, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      position: relative;
+      background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+    }
+
+    .gallery-item:focus {
+      outline: 3px solid var(--tet-gold);
+      outline-offset: 2px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-item img.loaded {
+      opacity: 1;
+      animation: none;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      border-color: var(--tet-gold);
+      box-shadow: 0 8px 32px rgba(255, 215, 0, 0.2);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Timeline Section */
+    .campaign-timeline {
+      padding: 5rem 0;
+      background: white;
+    }
+
+    .campaign-timeline h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #333;
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 100%;
+      background: #ddd;
+      border-radius: 10px;
+    }
+
+    .timeline-item {
+      margin-bottom: 2rem;
+      position: relative;
+      padding: 0 2rem;
+    }
+
+    .timeline-item:nth-child(odd) {
+      padding-left: 0;
+      padding-right: 52%;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      padding-right: 0;
+      padding-left: 52%;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 24px;
+      background: var(--tet-gold);
+      border: 5px solid white;
+      border-radius: 50%;
+      top: 0;
+      box-shadow: 0 0 0 5px #ddd;
+      z-index: 1;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border-left: 3px solid var(--tet-green);
+    }
+
+    .timeline-date {
+      color: #333;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .timeline-description {
+      color: var(--text-color);
+      line-height: 1.8;
+      letter-spacing: 0.5px;
+    }
+
+    /* CTA Section */
+    .campaign-cta {
+      padding: 5rem 2rem;
+      background: #2a2a2a;
+      text-align: center;
+      color: white;
+      border-radius: 12px;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .campaign-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .campaign-cta p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 15px;
+      }
+
+      .timeline-item {
+        padding: 0 0 0 50px !important;
+      }
+
+      .timeline-item:nth-child(odd) {
+        padding-left: 50px !important;
+        padding-right: 0 !important;
+        text-align: left;
+      }
+
+      .timeline-dot {
+        left: 15px;
+      }
+
+      .tet-cta-buttons {
+        flex-direction: column;
+      }
+
+      .tet-btn {
+        width: 100%;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-image {
+        height: 180px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .gallery-item {
+        aspect-ratio: auto;
+        height: 150px;
+      }
+    }
+    
+    /* Lightbox Styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      animation: slideIn 0.3s ease;
+    }
+
+    .lightbox-img {
+      width: 100%;
+      height: auto;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      background: rgba(255, 255, 255, 0.1);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: none;
+    }
+
+    .lightbox-close:focus {
+      outline: 3px solid var(--tet-gold);
+      outline-offset: 2px;
+    }
+
+    .lightbox-close:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 1rem;
+      user-select: none;
+      transition: all 0.2s ease;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+    }
+
+    .lightbox-nav:focus {
+      outline: 3px solid var(--tet-gold);
+      outline-offset: 2px;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .lightbox-prev {
+      left: 20px;
+    }
+
+    .lightbox-next {
+      right: 20px;
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Image Loading Animation */
+    .image-loader {
+      position: relative;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 15px;
+      }
+
+      .timeline-item {
+        padding: 0 0 0 50px !important;
+      }
+
+      .timeline-item:nth-child(odd) {
+        padding-left: 50px !important;
+        padding-right: 0 !important;
+        text-align: left;
+      }
+
+      .timeline-dot {
+        left: 15px;
+      }
+
+      .tet-cta-buttons {
+        flex-direction: column;
+      }
+
+      .tet-btn {
+        width: 100%;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-image {
+        height: 180px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .gallery-item {
+        aspect-ratio: auto;
+        height: 150px;
+      }
+
+      .pricing-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tet-hero-content h1 {
+        font-size: 1.8rem;
+      }
+
+      .tet-subtitle {
+        font-size: 0.95rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card h3 {
+        font-size: 1.1rem;
+      }
+
+      .lightbox-close {
+        top: -35px;
+        width: 40px;
+        height: 40px;
+        font-size: 2rem;
+      }
+
+      .lightbox-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+      }
+
+      .lightbox-prev {
+        left: 10px;
+      }
+
+      .lightbox-next {
+        right: 10px;
+      }
+
+      .lightbox-counter {
+        bottom: -30px;
+        font-size: 0.85rem;
+      }
+
+      .gallery-item {
+        cursor: pointer;
+      }
+
+      .feature-image {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="preloader"><div class="spinner"></div></div>
+
+<!-- Header Template Container -->
+<div id="header-container"></div>
+
+<!-- Hero Section -->
+<section class="tet-hero">
+  <div class="tet-decorative tet-deco-1">🎊</div>
+  <div class="tet-decorative tet-deco-2">🧧</div>
+  <div class="tet-decorative tet-deco-3">🎇</div>
+  <div class="tet-decorative tet-deco-4">🌸</div>
+  
+  <div class="tet-hero-content">
+    <h1>Lưu Giữ Tết Cùng Gia Đình</h1>
+    <p class="tet-subtitle">Những khoảnh khắc ấm áp, đẹp đẽ của gia đình bạn</p>
+    <div class="tet-cta-buttons">
+      <button class="tet-btn tet-btn-primary" onclick="document.querySelector('.campaign-cta').scrollIntoView({behavior: 'smooth'})">Đặt Lịch Ngay</button>
+      <button class="tet-btn tet-btn-secondary" onclick="document.querySelector('.campaign-features').scrollIntoView({behavior: 'smooth'})">Xem Chi Tiết</button>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="campaign-features container">
+  <h2>Tại Sao Bạn Nên Chọn Chúng Tôi?</h2>
+  <div class="features-grid">
+    <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+      <img src="assets/img/event/gallery-1.jpg" alt="Studio Sạch & Tối Giản" class="feature-image">
+      <div class="feature-icon">📸</div>
+      <h3>Studio Sạch & Tối Giản</h3>
+      <p>Không gian studio sáng sạch với nền trắng, để bạn tỏa sáng một cách tự nhiên nhất.</p>
+    </div>
+    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="assets/img/event/gallery-2.jpg" alt="Makeup Chuyên Nghiệp" class="feature-image">
+      <div class="feature-icon">💄</div>
+      <h3>Makeup Chuyên Nghiệp</h3>
+      <p>Các chuyên gia makeup sẽ giúp bạn tự tin và rạng rỡ, từ makeup nhẹ nhàng đến kiểu đầy đủ tùy ý.</p>
+    </div>
+    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+      <img src="assets/img/event/gallery-3.jpg" alt="Ảnh In Treo Tường Đẹp" class="feature-image">
+      <div class="feature-icon">🖼️</div>
+      <h3>Ảnh In Treo Tường Đẹp</h3>
+      <p>Ảnh được in trên những chất liệu cao cấp (Canvas, Acrylite, Metal) với màu sắc sống động, bền đẹp lâu lâu.</p>
+    </div>
+    <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+      <img src="assets/img/event/gallery-4.jpg" alt="Album Lụa Cao Cấp" class="feature-image">
+      <div class="feature-icon">📖</div>
+      <h3>Album Lụa Cao Cấp</h3>
+      <p>Album được thiết kế chỉnh chu, vừa lưu giữ kỷ niệm vừa có thể tặng những người thân yêu.</p>
+    </div>
+    <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+      <img src="assets/img/event/gallery-5.jpg" alt="Chỉnh Sửa Ảnh Đẹp" class="feature-image">
+      <div class="feature-icon">✨</div>
+      <h3>Chỉnh Sửa Ảnh Đẹp</h3>
+      <p>Mỗi bức ảnh được chỉnh sửa kỹ lưỡng nhưng vẫn giữ nguyên sự tự nhiên và cảm xúc thật.</p>
+    </div>
+    <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+      <img src="assets/img/event/gallery-6.jpg" alt="Nhanh Gọn & Hiệu Quả" class="feature-image">
+      <div class="feature-icon">⏱️</div>
+      <h3>Nhanh Gọn & Hiệu Quả</h3>
+      <p>Buổi chụp chỉ mất 45-60 phút nhưng đảm bảo bạn có đủ ảnh đẹp để chọn.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="campaign-pricing container">
+  <h2>Chọn Gói Phù Hợp Với Bạn</h2>
+  <div class="pricing-cards">
+    <div class="pricing-card" data-aos="fade-up" data-aos-delay="0">
+      <h3 class="pricing-title">Gói Ảnh Treo Tường</h3>
+      <div class="pricing-price">1.99<span> triệu</span></div>
+      <ul class="pricing-list">
+        <li>Chụp ảnh 45 phút</li>
+        <li>Makeup chuyên nghiệp</li>
+        <li>20 ảnh chỉnh sửa</li>
+        <li>1 bức ảnh in treo tường (40x60cm)</li>
+        <li>Chất liệu: Canvas hoặc Acrylite</li>
+        <li>File ảnh kỹ thuật số</li>
+      </ul>
+      <button class="tet-btn tet-btn-primary" onclick="window.location.href='booking.html'">Chọn Gói Này</button>
+    </div>
+
+    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+      <h3 class="pricing-title">Gói Ưa Thích ⭐</h3>
+      <div class="pricing-price">3.49<span> triệu</span></div>
+      <ul class="pricing-list">
+        <li>Chụp ảnh 60 phút</li>
+        <li>Makeup chuyên nghiệp</li>
+        <li>40 ảnh chỉnh sửa</li>
+        <li>Album lụa 20 trang cao cấp</li>
+        <li>2 bức in treo tường (30x45cm)</li>
+        <li>File ảnh kỹ thuật số 4K</li>
+      </ul>
+      <button class="tet-btn tet-btn-primary" onclick="window.location.href='booking.html'">Chọn Gói Này</button>
+    </div>
+
+    <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
+      <h3 class="pricing-title">Gói Hoàn Toàn</h3>
+      <div class="pricing-price">5.99<span> triệu</span></div>
+      <ul class="pricing-list">
+        <li>Chụp ảnh 90 phút</li>
+        <li>Makeup + Touch-up suốt buổi</li>
+        <li>60 ảnh chỉnh sửa chuyên nghiệp</li>
+        <li>Album lụa 30 trang cao cấp</li>
+        <li>3 bức in treo tường (40x60cm)</li>
+        <li>1 bức in Metal trang trí</li>
+        <li>File ảnh 4K RAW</li>
+      </ul>
+      <button class="tet-btn tet-btn-primary" onclick="window.location.href='booking.html'">Chọn Gói Này</button>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="campaign-gallery container">
+  <h2>Những Khoảnh Khắc Đẹp</h2>
+  <div class="gallery-grid" id="gallery-grid">
+    <!-- Auto-loaded from event folder -->
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox" role="dialog" aria-label="Xem ảnh phóng to" aria-hidden="true">
+  <div class="lightbox-content">
+    <span class="lightbox-close" onclick="closeLightbox()" role="button" tabindex="0" onkeypress="if(event.key==='Escape') closeLightbox()" aria-label="Đóng">&times;</span>
+    <img id="lightbox-img" class="lightbox-img" src="" alt="">
+    <span class="lightbox-prev" onclick="changeImage(-1)" role="button" tabindex="0" onkeypress="if(event.key==='ArrowLeft') changeImage(-1)" aria-label="Ảnh trước">&lt;</span>
+    <span class="lightbox-next" onclick="changeImage(1)" role="button" tabindex="0" onkeypress="if(event.key==='ArrowRight') changeImage(1)" aria-label="Ảnh tiếp theo">&gt;</span>
+    <div class="lightbox-counter">
+      <span id="lightbox-counter">1 / 6</span>
+    </div>
+  </div>
+</div>
+
+<!-- Timeline Section -->
+<section class="campaign-timeline container">
+  <h2>Quy Trình Thực Hiện</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">Bước 1: Liên Hệ Với Chúng Tôi</div>
+        <div class="timeline-description">Hãy cho chúng tôi biết bạn chọn gói nào, thời gian bạn muốn chụp, và phong cách makeup, trang phục bạn thích.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">Bước 2: Chuẩn Bị Hôm Chụp</div>
+        <div class="timeline-description">Mang theo 2-3 bộ trang phục bạn yêu thích. Tới studio sớm 15 phút để thư giãn và quen với không gian.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">Bước 3: Làm Tóc & Makeup</div>
+        <div class="timeline-description">Chuyên gia makeup sẽ làm cho bạn sáng rỡ và tự tin. Chúng tôi tạo không gian thoải mái để bạn có thể thư giãn.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">Bước 4: Chụp Ảnh</div>
+        <div class="timeline-description">Nhiếp ảnh gia sẽ hướng dẫn bạn những tư thế tự nhiên. Chúng tôi tập trung để bắt được vẻ đẹp thật của bạn.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">Bước 5: Nhận Ảnh</div>
+        <div class="timeline-description">Ảnh được chỉnh sửa đẹp, in trên vật liệu cao cấp, đóng album, và giao cho bạn trong 2-3 tuần.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="campaign-cta container">
+  <h2>Sẵn Sàng Chưa?</h2>
+  <p>Liên hệ với chúng tôi ngay hôm nay để đặt lịch chụp. Slot có hạn nên bạn nên nhanh tay nhé!</p>
+  <div class="tet-cta-buttons">
+    <button class="tet-btn tet-btn-primary" onclick="window.location.href='booking.html'">Đặt Lịch Ngay</button>
+    <button class="tet-btn tet-btn-secondary" onclick="window.open('tel:0379031662')">Gọi Cho Chúng Tôi</button>
+  </div>
+</section>
+
+<!-- Footer Template Container -->
+<div id="footer-container"></div>
+
+<!-- Scripts -->
+<script src="assets/js/load-template.js"></script>
+<script src="assets/js/event-gallery-auto.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  // Lightbox functionality
+  let currentImageIndex = 0;
+  let galleryImages = []; // Will be populated by event-gallery-auto.js
+
+  function openLightbox(index) {
+    currentImageIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    const counter = document.getElementById('lightbox-counter');
+    
+    img.src = galleryImages[index];
+    img.alt = `Khoảnh khắc gia đình ${index + 1}`;
+    counter.textContent = `${index + 1} / ${galleryImages.length}`;
+    
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    
+    // Focus trap
+    lightbox.focus();
+  }
+
+  function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = 'auto';
+  }
+
+  function changeImage(direction) {
+    currentImageIndex += direction;
+    if (currentImageIndex >= galleryImages.length) {
+      currentImageIndex = 0;
+    } else if (currentImageIndex < 0) {
+      currentImageIndex = galleryImages.length - 1;
+    }
+    
+    const img = document.getElementById('lightbox-img');
+    const counter = document.getElementById('lightbox-counter');
+    
+    img.src = galleryImages[currentImageIndex];
+    img.alt = `Khoảnh khắc gia đình ${currentImageIndex + 1}`;
+    counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+  }
+
+  // Close lightbox on ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+    if (e.key === 'ArrowLeft') {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox.classList.contains('active')) {
+        changeImage(-1);
+      }
+    }
+    if (e.key === 'ArrowRight') {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox.classList.contains('active')) {
+        changeImage(1);
+      }
+    }
+  });
+
+  // Close lightbox when clicking outside
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeLightbox();
+    }
+  });
+
+  // Lazy loading for images
+  function lazyLoadImages() {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            img.classList.add('loaded');
+            observer.unobserve(img);
+          }
+        });
+      });
+      
+      images.forEach(img => observer.observe(img));
+    } else {
+      // Fallback for browsers that don't support IntersectionObserver
+      images.forEach(img => {
+        img.src = img.dataset.src || img.src;
+        img.classList.add('loaded');
+      });
+    }
+  }
+
+  // Call lazy load when images are ready
+  window.addEventListener('load', lazyLoadImages);
+  
+  // Add loaded class after natural load
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('load', function() {
+      this.classList.add('loaded');
+    });
+    
+    // For cached images
+    if (img.complete) {
+      img.classList.add('loaded');
+    }
+  });
+
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true,
+  });
+
+  // Smooth scroll for mobile
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Remove preloader
+  window.addEventListener('load', function() {
+    document.getElementById('preloader').classList.add('hidden');
+  });
+</script>
+</body>
+</html>

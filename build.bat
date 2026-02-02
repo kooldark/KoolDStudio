@@ -8,6 +8,11 @@ echo   KoolDStudio - Auto Build System
 echo ====================================
 echo.
 
+echo 🔄 Optimizing images to WebP...
+call assets\img\Q_resize_webp.bat
+echo ✅ Image optimization completed
+
+echo.
 echo 🔄 Generating gallery data...
 node scripts/generate-gallery.js
 if %errorlevel% neq 0 (

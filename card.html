@@ -1,0 +1,2248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kool D. Studio - Bộ Tài Liệu In Ấn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-dark: #3a5a40;
+      --accent-orange: #eb9500;
+      --bg-light: #FCFBF9;
+      --text-dark: #33373B;
+      --text-gray: #888A8A;
+      --white: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #f0f0f0;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+    }
+
+    /* ===== CARD STYLES ===== */
+    
+    /* CARD 1: ELEGANT FRONT DESIGN */
+    .card {
+      position: relative;
+      width: 320px;
+      height: 200px;
+      perspective: 1000px;
+      cursor: pointer;
+      margin: 20px auto;
+    }
+
+    .card.card-1 {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 40px rgba(58, 90, 64, 0.2);
+      color: var(--white);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card.card-1::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(235, 149, 0, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(40px, -40px);
+    }
+
+    .card.card-1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(235, 149, 0, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(-30px, 30px);
+    }
+
+    .card-1-header {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-1-logo {
+      font-size: 28px;
+      font-weight: 700;
+      font-family: "Lora", serif;
+      margin-bottom: 4px;
+      letter-spacing: 2px;
+    }
+
+    .card-1-tagline {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      color: var(--accent-orange);
+    }
+
+    .card-1-footer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(235, 149, 0, 0.3);
+      padding-top: 12px;
+    }
+
+    .card-1-info {
+      font-size: 10px;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .card-1-icon {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--accent-orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    /* CARD 2: MINIMALIST DESIGN */
+    .card.card-2 {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 40px rgba(58, 90, 64, 0.15);
+      border-left: 4px solid var(--accent-orange);
+      color: var(--text-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card.card-2::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(235, 149, 0, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .card-2-header {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-2-logo {
+      font-size: 26px;
+      font-weight: 700;
+      font-family: "Lora", serif;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .card-2-tagline {
+      font-size: 10px;
+      color: var(--accent-orange);
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .card-2-divider {
+      width: 30px;
+      height: 2px;
+      background: var(--accent-orange);
+      margin: 12px 0;
+    }
+
+    .card-2-description {
+      font-size: 9px;
+      color: var(--text-gray);
+      line-height: 1.6;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-2-footer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-2-contact {
+      font-size: 9px;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    .card-2-social {
+      display: flex;
+      gap: 8px;
+    }
+
+    .social-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary-dark);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--accent-orange);
+      transform: scale(1.1);
+    }
+
+    /* CARD 3: PREMIUM DESIGN WITH PATTERN */
+    .card.card-3 {
+      background: linear-gradient(135deg, #FCFBF9 0%, #f8f5f0 100%);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 15px 50px rgba(58, 90, 64, 0.1);
+      color: var(--text-dark);
+      position: relative;
+      border: 1px solid rgba(235, 149, 0, 0.2);
+    }
+
+    .card-3-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(235, 149, 0, 0.03) 10px, rgba(235, 149, 0, 0.03) 20px);
+      pointer-events: none;
+      border-radius: 8px;
+    }
+
+    .card-3-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-3-header {
+      margin-bottom: 16px;
+    }
+
+    .card-3-logo {
+      font-size: 24px;
+      font-weight: 700;
+      font-family: "Lora", serif;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+    }
+
+    .card-3-subtitle {
+      font-size: 8px;
+      color: var(--accent-orange);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .card-3-body {
+      margin: 14px 0;
+      font-size: 9px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    .card-3-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-top: 12px;
+      border-top: 1px solid rgba(235, 149, 0, 0.2);
+    }
+
+    .card-3-contact {
+      font-size: 8px;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .card-3-badge {
+      background: var(--accent-orange);
+      color: var(--white);
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 7px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* CARD 4: MODERN GEOMETRIC */
+    .card.card-4 {
+      background: var(--white);
+      border-radius: 0;
+      padding: 0;
+      display: flex;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .card-4-left {
+      background: var(--primary-dark);
+      color: var(--white);
+      width: 40%;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-4-left::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(235, 149, 0, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(40px, -40px);
+    }
+
+    .card-4-right {
+      background: var(--white);
+      width: 60%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--text-dark);
+    }
+
+    .card-4-logo {
+      font-size: 20px;
+      font-weight: 700;
+      font-family: "Lora", serif;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-4-tagline {
+      font-size: 9px;
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-orange);
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-4-phone {
+      position: relative;
+      z-index: 1;
+      font-size: 9px;
+      opacity: 0.9;
+      margin-top: auto;
+    }
+
+    .card-4-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 8px;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+
+    .card-4-detail-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-4-detail-label {
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 2px;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .cards-container {
+        grid-template-columns: 1fr;
+        gap: 20mm;
+        max-width: 100%;
+      }
+
+      .card {
+        page-break-inside: avoid;
+        width: 85mm;
+        height: 53mm;
+        margin: 0;
+      }
+
+      .card-1,
+      .card-2,
+      .card-3,
+      .card-4 {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .cards-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* TITLE & INSTRUCTIONS */
+    .page-title {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: var(--text-dark);
+      font-family: "Lora", serif;
+    }
+
+    .page-title h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+      color: var(--primary-dark);
+    }
+
+    .page-title p {
+      font-size: 12px;
+      color: var(--text-gray);
+    }
+
+    .print-note {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent-orange);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .print-note:hover {
+      background: #d97d00;
+      box-shadow: 0 5px 15px rgba(235, 149, 0, 0.3);
+    }
+
+    @media print {
+      .page-title,
+      .print-note {
+        display: none;
+      }
+    }
+
+    /* NAVIGATION STYLES */
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%);
+      color: white;
+      padding: 16px 20px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(58, 90, 64, 0.2);
+    }
+
+    .nav-title {
+      font-family: "Lora", serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 8px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active {
+      background: var(--accent-orange);
+      border-color: var(--accent-orange);
+      box-shadow: 0 4px 12px rgba(235, 149, 0, 0.3);
+    }
+
+    body {
+      padding-top: 70px;
+    }
+
+    /* CONTENT SECTIONS */
+    .content-section {
+      display: none;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    /* DOWNLOAD BUTTON */
+    .download-btns {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .download-btn {
+      background: var(--accent-orange);
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: #d97d00;
+      box-shadow: 0 5px 15px rgba(235, 149, 0, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* LOGO PACK STYLES */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .logo-item {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(58, 90, 64, 0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 250px;
+    }
+
+    .logo-display {
+      font-family: "Lora", serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .logo-full { font-size: 32px; color: var(--primary-dark); }
+    .logo-icon { font-size: 48px; color: var(--accent-orange); }
+    .logo-dark { font-size: 28px; color: var(--primary-dark); }
+    .logo-white { font-size: 28px; color: white; background: var(--primary-dark); padding: 20px; border-radius: 4px; width: 100%; }
+    .logo-mono { font-size: 28px; color: black; }
+
+    .logo-label {
+      font-size: 12px;
+      color: var(--text-gray);
+      margin-top: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ALBUM BOX STYLES */
+    .album-box {
+      width: 300px;
+      height: 280px;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%);
+      color: white;
+      padding: 40px 30px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 60px rgba(58, 90, 64, 0.25);
+      margin: 40px auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .album-box::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -30%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(235, 149, 0, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .album-header {
+      position: relative;
+      z-index: 1;
+    }
+
+    .album-title {
+      font-family: "Lora", serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .album-subtitle {
+      font-size: 12px;
+      color: var(--accent-orange);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .album-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .album-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      opacity: 0.8;
+    }
+
+    .album-desc {
+      font-size: 11px;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+
+    /* VOUCHER STYLES */
+    .voucher {
+      width: 280px;
+      height: 140px;
+      background: linear-gradient(135deg, var(--accent-orange) 0%, #d97d00 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 40px rgba(235, 149, 0, 0.2);
+      margin: 20px auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .voucher::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background: #f0f0f0;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .voucher::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background: #f0f0f0;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .voucher-left {
+      flex: 1;
+      padding-left: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .voucher-discount {
+      font-size: 28px;
+      font-weight: 700;
+      font-family: "Lora", serif;
+      line-height: 1;
+    }
+
+    .voucher-text {
+      font-size: 10px;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .voucher-code {
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 8px;
+      font-family: monospace;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 8px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .voucher-right {
+      flex: 1;
+      text-align: right;
+      padding-right: 30px;
+      position: relative;
+      z-index: 2;
+      border-left: 1px dashed rgba(255, 255, 255, 0.4);
+    }
+
+    .voucher-brand {
+      font-family: "Lora", serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .voucher-tag {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.85;
+    }
+
+    /* POSTER STYLES */
+    .poster {
+      width: 200px;
+      height: 280px;
+      background: linear-gradient(135deg, #f8f5f0 0%, var(--bg-light) 100%);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 40px rgba(58, 90, 64, 0.15);
+      margin: 20px auto;
+      position: relative;
+      border: 1px solid rgba(235, 149, 0, 0.2);
+    }
+
+    .poster-top {
+      text-align: center;
+    }
+
+    .poster-logo {
+      font-family: "Lora", serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .poster-accent {
+      width: 30px;
+      height: 2px;
+      background: var(--accent-orange);
+      margin: 8px auto;
+    }
+
+    .poster-emoji {
+      font-size: 48px;
+      margin: 12px 0;
+    }
+
+    .poster-text {
+      font-size: 10px;
+      color: var(--text-gray);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .poster-bottom {
+      text-align: center;
+      padding-top: 12px;
+      border-top: 1px solid rgba(235, 149, 0, 0.2);
+    }
+
+    .poster-cta {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-orange);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* FACEBOOK COVER STYLES */
+    .fb-cover {
+      width: 820px;
+      height: 312px;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%);
+      color: white;
+      padding: 40px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 15px 50px rgba(58, 90, 64, 0.2);
+      margin: 20px auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fb-cover::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -150px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(235, 149, 0, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    .fb-content {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+
+    .fb-title {
+      font-family: "Lora", serif;
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .fb-tagline {
+      font-size: 18px;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .fb-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.9;
+      max-width: 400px;
+    }
+
+    .fb-icon {
+      font-size: 120px;
+      opacity: 0.15;
+    }
+
+    /* BAG STYLES */
+    .bag {
+      width: 240px;
+      height: 320px;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%);
+      color: white;
+      padding: 30px 20px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 15px 50px rgba(58, 90, 64, 0.2);
+      margin: 20px auto;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid rgba(235, 149, 0, 0.3);
+    }
+
+    .bag::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -40%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(235, 149, 0, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .bag-header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .bag-logo {
+      font-family: "Lora", serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .bag-tagline {
+      font-size: 10px;
+      color: var(--accent-orange);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .bag-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .bag-emoji {
+      font-size: 56px;
+      margin-bottom: 12px;
+    }
+
+    .bag-text {
+      font-size: 11px;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+
+    .bag-footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding-top: 12px;
+      border-top: 1px solid rgba(235, 149, 0, 0.3);
+    }
+
+    .bag-web {
+      font-size: 9px;
+      opacity: 0.8;
+    }
+
+    /* BUSINESS CARD STYLES */
+    .business-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      padding: 20px;
+    }
+
+    .business-card {
+      position: relative;
+      width: 320px;
+      height: 200px;
+      margin: 20px auto;
+    }
+
+    /* RESPONSIVE FOR FB COVER */
+    @media (max-width: 1024px) {
+      .fb-cover {
+        width: 100%;
+        height: auto;
+        padding: 30px 20px;
+      }
+
+      .fb-title {
+        font-size: 32px;
+      }
+
+      .fb-icon {
+        display: none;
+      }
+    }
+
+    /* SOCIAL MEDIA TEMPLATES */
+    .social-template {
+      position: relative;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(58, 90, 64, 0.15);
+      overflow: hidden;
+      margin: 20px auto;
+    }
+
+    .ig-story {
+      width: 270px;
+      height: 480px;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%);
+      color: white;
+    }
+
+    .ig-reel {
+      width: 270px;
+      height: 480px;
+      background: linear-gradient(135deg, var(--accent-orange) 0%, #d97d00 100%);
+      color: white;
+    }
+
+    .fb-post {
+      width: 400px;
+      height: 210px;
+      background: linear-gradient(135deg, #f8f5f0 0%, var(--bg-light) 100%);
+      color: var(--text-dark);
+      border: 1px solid rgba(235, 149, 0, 0.2);
+    }
+
+    .tiktok-reel {
+      width: 270px;
+      height: 480px;
+      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+      color: white;
+    }
+
+    .social-content {
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-content::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -40%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(235, 149, 0, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .social-header {
+      position: relative;
+      z-index: 1;
+    }
+
+    .social-title {
+      font-family: "Lora", serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .social-subtitle {
+      font-size: 11px;
+      opacity: 0.85;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .social-body {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .social-emoji {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    .social-text {
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .social-footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .social-cta {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 30px;
+      padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .template-label {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .fb-post .social-content {
+      padding: 24px;
+      justify-content: space-between;
+    }
+
+    .fb-post .social-title {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .fb-post .social-subtitle {
+      font-size: 10px;
+      margin-bottom: 12px;
+    }
+
+    .fb-post .social-text {
+      font-size: 12px;
+      text-align: left;
+      color: var(--text-gray);
+    }
+
+    .tiktok-reel .social-content::before {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    }
+
+    .tiktok-icon {
+      font-size: 16px;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 10;
+    }
+
+    /* LARGE PHOTO BAG STYLES - 60x90cm */
+    .large-photo-bag-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .large-photo-bag {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(58, 90, 64, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* VERTICAL 60x90cm */
+    .large-photo-bag.vertical {
+      width: 240px;
+      height: 360px;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%);
+      color: white;
+      padding: 40px 30px;
+    }
+
+    /* HORIZONTAL 90x60cm */
+    .large-photo-bag.horizontal {
+      width: 360px;
+      height: 240px;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%);
+      color: white;
+      padding: 30px 40px;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .large-photo-bag::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(235, 149, 0, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .large-photo-bag::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -40%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(235, 149, 0, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .lpb-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .lpb-header {
+      text-align: center;
+    }
+
+    .lpb-logo {
+      font-family: "Lora", serif;
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .lpb-tagline {
+      font-size: 11px;
+      color: var(--accent-orange);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .lpb-divider {
+      width: 50px;
+      height: 2px;
+      background: var(--accent-orange);
+      margin: 0 auto 16px;
+    }
+
+    .lpb-main-text {
+      font-size: 14px;
+      line-height: 1.7;
+      text-align: center;
+      opacity: 0.95;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .lpb-emoji {
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 12px;
+      opacity: 0.9;
+    }
+
+    .lpb-footer {
+      text-align: center;
+      padding-top: 16px;
+      border-top: 1px solid rgba(235, 149, 0, 0.3);
+    }
+
+    .lpb-contact {
+      font-size: 11px;
+      opacity: 0.9;
+      margin-bottom: 8px;
+    }
+
+    .lpb-website {
+      font-size: 10px;
+      opacity: 0.8;
+      color: var(--accent-orange);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* LIGHT VARIANT */
+    .large-photo-bag.light {
+      background: linear-gradient(135deg, #f8f5f0 0%, var(--bg-light) 100%);
+      color: var(--text-dark);
+      border: 2px solid rgba(235, 149, 0, 0.2);
+    }
+
+    .large-photo-bag.light .lpb-logo {
+      color: var(--primary-dark);
+    }
+
+    .large-photo-bag.light .lpb-tagline {
+      color: var(--accent-orange);
+    }
+
+    .large-photo-bag.light .lpb-main-text {
+      color: var(--text-gray);
+    }
+
+    .large-photo-bag.light .lpb-divider {
+      background: var(--accent-orange);
+    }
+
+    .large-photo-bag.light .lpb-footer {
+      border-top: 1px solid rgba(235, 149, 0, 0.2);
+    }
+
+    .large-photo-bag.light .lpb-contact {
+      color: var(--text-dark);
+    }
+
+    .large-photo-bag.light .lpb-website {
+      color: var(--accent-orange);
+    }
+
+    /* HORIZONTAL SPECIFIC STYLES */
+    .large-photo-bag.horizontal .lpb-content {
+      width: 100%;
+    }
+
+    .large-photo-bag.horizontal .lpb-header {
+      text-align: left;
+      flex: 1;
+      margin-right: 30px;
+    }
+
+    .large-photo-bag.horizontal .lpb-divider {
+      margin: 12px 0 12px 0;
+      width: 40px;
+    }
+
+    .large-photo-bag.horizontal .lpb-main-text {
+      text-align: left;
+      font-size: 13px;
+      margin-bottom: 0;
+    }
+
+    .large-photo-bag.horizontal .lpb-emoji {
+      position: absolute;
+      right: 40px;
+      bottom: 30px;
+      font-size: 56px;
+      opacity: 0.15;
+      margin: 0;
+    }
+
+    .large-photo-bag.horizontal .lpb-footer {
+      position: absolute;
+      bottom: 30px;
+      left: 40px;
+      border-top: none;
+      text-align: left;
+      padding-top: 0;
+    }
+
+    .lpb-badge {
+      display: inline-block;
+      background: var(--accent-orange);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 12px;
+    }
+
+    .large-photo-bag.light .lpb-badge {
+      background: var(--primary-dark);
+      color: white;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .large-photo-bag.vertical {
+        width: 100%;
+        max-width: 240px;
+        margin: 0 auto;
+      }
+
+      .large-photo-bag.horizontal {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+        flex-direction: column;
+      }
+
+      .large-photo-bag.horizontal .lpb-header {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .large-photo-bag.horizontal .lpb-emoji {
+        position: static;
+        margin-bottom: 12px;
+        opacity: 0.9;
+      }
+
+      .large-photo-bag.horizontal .lpb-footer {
+        position: static;
+        border-top: 1px solid rgba(235, 149, 0, 0.3);
+        padding-top: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION BAR -->
+  <div class="nav-bar">
+    <div class="nav-title">📦 Kool D. Studio - Bộ In Ấn</div>
+    <div class="nav-buttons">
+      <button class="nav-btn active" onclick="showSection('card')">📇 Thẻ Bao Bì</button>
+      <button class="nav-btn" onclick="showSection('logo')">🎨 Logo Pack</button>
+      <button class="nav-btn" onclick="showSection('album')">📕 Album Box</button>
+      <button class="nav-btn" onclick="showSection('bag')">👜 Túi Ảnh</button>
+      <button class="nav-btn" onclick="showSection('business')">💼 Danh Thiếp</button>
+      <button class="nav-btn" onclick="showSection('voucher')">🎟️ Voucher</button>
+      <button class="nav-btn" onclick="showSection('poster')">📌 Poster Mini</button>
+      <button class="nav-btn" onclick="showSection('facebook')">👍 Facebook</button>
+      <button class="nav-btn" onclick="showSection('social')">📱 Social Media</button>
+      <button class="nav-btn" onclick="showSection('large-bag')">🎨 Túi Phóng Lớn</button>
+    </div>
+  </div>
+
+  <!-- SECTION 1: PACKAGING CARD -->
+  <div id="card" class="content-section active">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; padding: 20px; max-width: 1200px; margin: 0 auto;">
+    <!-- CARD 1: ELEGANT DARK -->
+    <div class="card card-1">
+      <div class="card-1-header">
+        <div class="card-1-logo">Kool D. Studio</div>
+        <div class="card-1-tagline">Art Of Your Story</div>
+      </div>
+      <div class="card-1-footer">
+        <div class="card-1-info">
+          <div>+84 (37) 903 1662</div>
+          <div style="font-size: 9px; margin-top: 3px;">Quảng Ngãi & TP.HCM</div>
+        </div>
+        <div class="card-1-icon">♡</div>
+      </div>
+    </div>
+
+    <!-- CARD 2: MINIMALIST CLEAN -->
+    <div class="card card-2">
+      <div class="card-2-header">
+        <div class="card-2-logo">Kool D.</div>
+        <div class="card-2-tagline">Photography Studio</div>
+        <div class="card-2-divider"></div>
+        <div class="card-2-description">Ảnh Cưới & Gia Đình<br>Quảng Ngãi & TP.HCM</div>
+      </div>
+      <div class="card-2-footer">
+        <div class="card-2-contact">
+          <div>+84 379 031 662</div>
+          <div style="font-size: 8px; margin-top: 2px;">koolbstudio.com</div>
+        </div>
+        <div class="card-2-social">
+          <div class="social-icon">f</div>
+          <div class="social-icon">i</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3: PREMIUM WITH PATTERN -->
+    <div class="card card-3">
+      <div class="card-3-pattern"></div>
+      <div class="card-3-content">
+        <div class="card-3-header">
+          <div class="card-3-logo">Kool D. Studio</div>
+          <div class="card-3-subtitle">Premium Photography</div>
+        </div>
+        <div class="card-3-body">
+          Ghi dấu khoảnh khắc<br>của những người bạn yêu
+        </div>
+        <div class="card-3-footer">
+          <div class="card-3-contact">
+            <div><strong>Điện thoại:</strong></div>
+            <div style="margin-top: 3px;">+84 (37) 903 1662</div>
+            <div style="margin-top: 6px;"><strong>Website:</strong></div>
+            <div>koolbstudio.com</div>
+          </div>
+          <div class="card-3-badge">New 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4: MODERN SPLIT -->
+    <div class="card card-4">
+      <div class="card-4-left">
+        <div>
+          <div class="card-4-logo">Kool D.</div>
+          <div class="card-4-tagline">Art of Your Story</div>
+        </div>
+        <div class="card-4-phone">+84 379 031 662</div>
+      </div>
+      <div class="card-4-right">
+        <div class="card-4-details">
+          <div class="card-4-detail-item">
+            <div class="card-4-detail-label">Dịch vụ</div>
+            <div>Cưới • Gia Đình • Phóng Sự</div>
+          </div>
+          <div class="card-4-detail-item">
+            <div class="card-4-detail-label">Địa chỉ</div>
+            <div>Quảng Ngãi & TP.HCM</div>
+          </div>
+          <div class="card-4-detail-item">
+            <div class="card-4-detail-label">Web</div>
+            <div>koolbstudio.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: LOGO PACK -->
+  <div id="logo" class="content-section">
+    <div style="padding: 40px 20px; text-align: center;">
+      <h2 style="font-family: 'Lora', serif; font-size: 32px; color: var(--primary-dark); margin-bottom: 30px;">Logo Pack</h2>
+      <div class="logo-grid">
+        <div class="logo-item">
+          <div class="logo-display logo-full">Kool D. Studio</div>
+          <div class="logo-label">Full Logo</div>
+        </div>
+        <div class="logo-item">
+          <div class="logo-display logo-icon">K.D</div>
+          <div class="logo-label">Monogram</div>
+        </div>
+        <div class="logo-item">
+          <div class="logo-display logo-dark">Kool D.</div>
+          <div class="logo-label">Short Version</div>
+        </div>
+        <div class="logo-item">
+          <div class="logo-display logo-white">Kool D. Studio</div>
+          <div class="logo-label">White Version</div>
+        </div>
+        <div class="logo-item">
+          <div class="logo-display logo-mono" style="font-size: 28px;">■ Kool D. Studio</div>
+          <div class="logo-label">Monochrome</div>
+        </div>
+        <div class="logo-item">
+          <div class="logo-display" style="font-size: 14px; color: var(--accent-orange); font-weight: 700; letter-spacing: 2px;">K.D.S<br><span style="font-size: 11px; color: var(--text-gray); margin-top: 8px; display: block;">ART OF YOUR STORY</span></div>
+          <div class="logo-label">Vertical Stacked</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: ALBUM BOX -->
+  <div id="album" class="content-section">
+    <div style="padding: 40px 20px; text-align: center;">
+      <h2 style="font-family: 'Lora', serif; font-size: 32px; color: var(--primary-dark); margin-bottom: 30px;">Album Box Design</h2>
+      <div class="album-box">
+        <div class="album-header">
+          <div class="album-title">Album</div>
+          <div class="album-subtitle">Premium Collection 2025</div>
+        </div>
+        <div class="album-content">
+          <div class="album-icon">📸</div>
+          <div class="album-desc">
+            Ghi dấu khoảnh khắc của bạn<br>trong từng trang giấy cao cấp
+          </div>
+        </div>
+      </div>
+      <div class="album-box" style="background: linear-gradient(135deg, var(--bg-light) 0%, #f8f5f0 100%); color: var(--text-dark); border: 1px solid rgba(235, 149, 0, 0.2); margin-top: 40px;">
+        <div class="album-header" style="color: var(--text-dark);">
+          <div class="album-title" style="color: var(--primary-dark);">Album</div>
+          <div class="album-subtitle" style="color: var(--accent-orange);">Standard Collection</div>
+        </div>
+        <div class="album-content">
+          <div class="album-icon">✨</div>
+          <div class="album-desc" style="color: var(--text-gray);">
+            Lựa chọn hoàn hảo cho<br>những khoảnh khắc đặc biệt
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: TÚICHÍ ÃNH -->
+  <div id="bag" class="content-section">
+    <div style="padding: 40px 20px; text-align: center;">
+      <h2 style="font-family: 'Lora', serif; font-size: 32px; color: var(--primary-dark); margin-bottom: 30px;">Túi Ảnh</h2>
+      <div class="bag">
+        <div class="bag-header">
+          <div class="bag-logo">Kool D.</div>
+          <div class="bag-tagline">Photography Studio</div>
+        </div>
+        <div class="bag-content">
+          <div class="bag-emoji">📦</div>
+          <div class="bag-text">Bảo vệ ảnh của bạn<br>với tình yêu và sự chăm sóc</div>
+        </div>
+        <div class="bag-footer">
+          <div class="bag-web">koolbstudio.com</div>
+        </div>
+      </div>
+      <div class="bag" style="background: linear-gradient(135deg, #f8f5f0 0%, var(--bg-light) 100%); color: var(--text-dark); border: 1px solid rgba(235, 149, 0, 0.3); margin-top: 40px;">
+        <div class="bag-header">
+          <div class="bag-logo" style="color: var(--primary-dark);">Kool D.</div>
+          <div class="bag-tagline">Premium Packaging</div>
+        </div>
+        <div class="bag-content">
+          <div class="bag-emoji">🎁</div>
+          <div class="bag-text" style="color: var(--text-gray);">Thiết kế sang trọng,<br>gói gọn tình yêu của bạn</div>
+        </div>
+        <div class="bag-footer">
+          <div class="bag-web" style="color: var(--text-dark); opacity: 1;">+84 379 031 662</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: DANH THIẾP -->
+  <div id="business" class="content-section">
+    <div style="padding: 40px 20px;">
+      <h2 style="font-family: 'Lora', serif; font-size: 32px; color: var(--primary-dark); margin-bottom: 30px; text-align: center;">Danh Thiếp</h2>
+      <div class="business-card-grid">
+        <!-- Business Card 1 -->
+        <div class="card card-1">
+          <div class="card-1-header">
+            <div class="card-1-logo">Kool D. Studio</div>
+            <div class="card-1-tagline">Photography</div>
+          </div>
+          <div class="card-1-footer">
+            <div class="card-1-info">
+              <div>+84 (37) 903 1662</div>
+              <div style="font-size: 9px; margin-top: 3px;">koolbstudio.com</div>
+            </div>
+            <div class="card-1-icon">K</div>
+          </div>
+        </div>
+
+        <!-- Business Card 2 -->
+        <div class="card card-2">
+          <div class="card-2-header">
+            <div class="card-2-logo">Kool D.</div>
+            <div class="card-2-tagline">Photographer</div>
+            <div class="card-2-divider"></div>
+            <div class="card-2-description">Sáng tạo & Cảm xúc</div>
+          </div>
+          <div class="card-2-footer">
+            <div class="card-2-contact">
+              <div style="font-weight: 600;">+84 379 031 662</div>
+              <div style="font-size: 8px;">koolbstudio.com</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Card 3 -->
+        <div class="card card-3">
+          <div class="card-3-pattern"></div>
+          <div class="card-3-content">
+            <div class="card-3-header">
+              <div class="card-3-logo">Kool D.</div>
+              <div class="card-3-subtitle">Studio</div>
+            </div>
+            <div class="card-3-footer">
+              <div class="card-3-contact">
+                <div style="font-weight: 600;">Liên hệ:</div>
+                <div style="margin-top: 3px;">+84 (37) 903 1662</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: VOUCHER -->
+  <div id="voucher" class="content-section">
+    <div style="padding: 40px 20px; text-align: center;">
+      <h2 style="font-family: 'Lora', serif; font-size: 32px; color: var(--primary-dark); margin-bottom: 30px;">Voucher</h2>
+      
+      <div class="voucher">
+        <div class="voucher-left">
+          <div class="voucher-discount">20%</div>
+          <div class="voucher-text">Giảm giá</div>
+          <div class="voucher-code">WELCOME20</div>
+        </div>
+        <div class="voucher-right">
+          <div class="voucher-brand">Kool D.</div>
+          <div class="voucher-tag">Ảnh Cưới & Gia Đình</div>
+        </div>
+      </div>
+
+      <div class="voucher" style="background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%);">
+        <div class="voucher-left">
+          <div class="voucher-discount">500K</div>
+          <div class="voucher-text">Ưu đãi</div>
+          <div class="voucher-code">GIFT500K</div>
+        </div>
+        <div class="voucher-right">
+          <div class="voucher-brand" style="color: var(--accent-orange);">Kool D. Studio</div>
+          <div class="voucher-tag">Cam kết chất lượng</div>
+        </div>
+      </div>
+
+      <div class="voucher" style="background: linear-gradient(135deg, #d97d00 0%, var(--accent-orange) 100%);">
+        <div class="voucher-left">
+          <div class="voucher-discount">1+1</div>
+          <div class="voucher-text">Album</div>
+          <div class="voucher-code">DOUBLE25</div>
+        </div>
+        <div class="voucher-right">
+          <div class="voucher-brand">Mua 2</div>
+          <div class="voucher-tag">Giảm 25%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: POSTER MINI -->
+  <div id="poster" class="content-section">
+    <div style="padding: 40px 20px; text-align: center;">
+      <h2 style="font-family: 'Lora', serif; font-size: 32px; color: var(--primary-dark); margin-bottom: 30px;">Poster Mini Treo Studio</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; padding: 20px; max-width: 1000px; margin: 0 auto;">
+        <div class="poster">
+          <div class="poster-top">
+            <div class="poster-logo">Kool D.</div>
+            <div class="poster-accent"></div>
+            <div class="poster-emoji">💍</div>
+            <div class="poster-text">Ảnh Cưới<br>Tự Nhiên & Tinh Tế</div>
+          </div>
+          <div class="poster-bottom">
+            <div class="poster-cta">Ghi dấu tình yêu</div>
+          </div>
+        </div>
+
+        <div class="poster">
+          <div class="poster-top">
+            <div class="poster-logo">Kool D.</div>
+            <div class="poster-accent"></div>
+            <div class="poster-emoji">👨‍👩‍👧‍👦</div>
+            <div class="poster-text">Ảnh Gia Đình<br>Đầy Cảm Xúc</div>
+          </div>
+          <div class="poster-bottom">
+            <div class="poster-cta">Lưu Giữ Khoảnh Khắc</div>
+          </div>
+        </div>
+
+        <div class="poster">
+          <div class="poster-top">
+            <div class="poster-logo">Kool D.</div>
+            <div class="poster-accent"></div>
+            <div class="poster-emoji">📸</div>
+            <div class="poster-text">Phóng Sự Cưới<br>Chuyên Nghiệp</div>
+          </div>
+          <div class="poster-bottom">
+            <div class="poster-cta">Chuyên Nghiệp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: FACEBOOK COVER -->
+  <div id="facebook" class="content-section">
+    <div style="padding: 40px 20px; text-align: center;">
+      <h2 style="font-family: 'Lora', serif; font-size: 32px; color: var(--primary-dark); margin-bottom: 30px;">Facebook Cover</h2>
+      
+      <div class="fb-cover">
+        <div class="fb-content">
+          <div class="fb-title">Kool D. Studio</div>
+          <div class="fb-tagline">Art Of Your Story</div>
+          <div class="fb-desc">Chúng tôi kể câu chuyện tình yêu của bạn qua những thước ảnh cưới, gia đình và phóng sự tinh tế.</div>
+        </div>
+        <div class="fb-icon">📸</div>
+      </div>
+
+      <div class="fb-cover" style="background: linear-gradient(135deg, var(--accent-orange) 0%, #d97d00 100%); margin-top: 30px;">
+        <div class="fb-content">
+          <div class="fb-title" style="color: white;">Chuyên Ảnh Cưới<br>& Gia Đình</div>
+          <div class="fb-tagline" style="color: white;">📍 Quảng Ngãi & TP.HCM</div>
+          <div class="fb-desc" style="color: rgba(255,255,255,0.9);">Ghi dấu khoảnh khắc đặc biệt của bạn với phong cách tự nhiên, tinh tế và đầy cảm xúc.</div>
+        </div>
+        <div class="fb-icon" style="opacity: 0.15; color: var(--primary-dark);">💍</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 9: SOCIAL MEDIA TEMPLATES -->
+  <div id="social" class="content-section">
+    <div style="padding: 40px 20px;">
+      <h2 style="font-family: 'Lora', serif; font-size: 32px; color: var(--primary-dark); margin-bottom: 10px; text-align: center;">📱 Social Media Templates</h2>
+      <p style="text-align: center; color: var(--text-gray); margin-bottom: 30px; font-size: 14px;">Instagram Story • Instagram Reels • Facebook Post • TikTok Reels</p>
+      
+      <div class="social-grid">
+        <!-- INSTAGRAM STORY 1 -->
+        <div class="social-template ig-story">
+          <div class="social-content">
+            <div class="social-header">
+              <div class="social-title">Kool D.</div>
+              <div class="social-subtitle">Studio</div>
+            </div>
+            <div class="social-body">
+              <div class="social-emoji">💍</div>
+              <div class="social-text">Ảnh Cưới<br>Tự Nhiên & Tinh Tế</div>
+            </div>
+            <div class="social-footer">
+              <div class="social-cta">Liên hệ ngay</div>
+            </div>
+          </div>
+          <div class="template-label">1080x1920</div>
+        </div>
+
+        <!-- INSTAGRAM STORY 2 -->
+        <div class="social-template ig-story">
+          <div class="social-content">
+            <div class="social-header">
+              <div class="social-title">Kool D.</div>
+              <div class="social-subtitle">Photography</div>
+            </div>
+            <div class="social-body">
+              <div class="social-emoji">👨‍👩‍👧</div>
+              <div class="social-text">Ảnh Gia Đình<br>Đầy Cảm Xúc</div>
+            </div>
+            <div class="social-footer">
+              <div class="social-cta">Đặt lịch hôm nay</div>
+            </div>
+          </div>
+          <div class="template-label">1080x1920</div>
+        </div>
+
+        <!-- INSTAGRAM REEL 1 -->
+        <div class="social-template ig-reel">
+          <div class="social-content">
+            <div class="social-header">
+              <div class="social-title">Kool D. Studio</div>
+              <div class="social-subtitle">Behind The Scenes</div>
+            </div>
+            <div class="social-body">
+              <div class="social-emoji">🎬</div>
+              <div class="social-text">Hậu trường<br>Tuyệt Vời</div>
+            </div>
+            <div class="social-footer">
+              <div class="social-cta">Xem Reels</div>
+            </div>
+          </div>
+          <div class="template-label">1080x1920</div>
+        </div>
+
+        <!-- INSTAGRAM REEL 2 -->
+        <div class="social-template ig-reel">
+          <div class="social-content">
+            <div class="social-header">
+              <div class="social-title">Kool D.</div>
+              <div class="social-subtitle">Portfolio Highlight</div>
+            </div>
+            <div class="social-body">
+              <div class="social-emoji">✨</div>
+              <div class="social-text">Tuyệt Tác<br>Của Chúng Tôi</div>
+            </div>
+            <div class="social-footer">
+              <div class="social-cta">Follow Ngay</div>
+            </div>
+          </div>
+          <div class="template-label">1080x1920</div>
+        </div>
+
+        <!-- FACEBOOK POST 1 -->
+        <div class="social-template fb-post">
+          <div class="social-content">
+            <div class="social-header">
+              <div class="social-title" style="color: var(--primary-dark); font-size: 16px;">Kool D. Studio</div>
+              <div class="social-subtitle" style="color: var(--accent-orange);">📸 Ảnh Cưới Mới</div>
+            </div>
+            <div class="social-text">
+              Ghi dấu khoảnh khắc đặc biệt của bạn với phong cách tự nhiên, tinh tế và đầy cảm xúc. Đặt lịch chụp ngay!
+            </div>
+          </div>
+          <div class="template-label">1200x628</div>
+        </div>
+
+        <!-- FACEBOOK POST 2 -->
+        <div class="social-template fb-post" style="background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%); color: white;">
+          <div class="social-content">
+            <div class="social-header">
+              <div class="social-title" style="color: white; font-size: 16px;">Kool D. Studio</div>
+              <div class="social-subtitle" style="color: var(--accent-orange);">🎁 Ưu Đãi Đặc Biệt</div>
+            </div>
+            <div class="social-text" style="color: rgba(255,255,255,0.9);">
+              Giảm 20% cho khách hàng mới. Chuyên ảnh cưới, gia đình & phóng sự. Liên hệ: 0379031662
+            </div>
+          </div>
+          <div class="template-label">1200x628</div>
+        </div>
+
+        <!-- TIKTOK REEL 1 -->
+        <div class="social-template tiktok-reel">
+          <div class="social-content">
+            <div class="social-header">
+              <div class="social-title" style="font-size: 20px;">Kool D. Studio</div>
+              <div class="social-subtitle">TikTok</div>
+            </div>
+            <div class="social-body">
+              <div class="social-emoji">🎥</div>
+              <div class="social-text" style="font-size: 12px;">Ảnh Cưới<br>Trend TikTok</div>
+            </div>
+            <div class="social-footer">
+              <div class="social-cta" style="color: #ff0050;">Theo dõi</div>
+            </div>
+          </div>
+          <div class="tiktok-icon">♪</div>
+          <div class="template-label">1080x1920</div>
+        </div>
+
+        <!-- TIKTOK REEL 2 -->
+        <div class="social-template tiktok-reel">
+          <div class="social-content">
+            <div class="social-header">
+              <div class="social-title" style="font-size: 20px;">Kool D.</div>
+              <div class="social-subtitle">Photography</div>
+            </div>
+            <div class="social-body">
+              <div class="social-emoji">💍</div>
+              <div class="social-text" style="font-size: 12px;">Wedding<br>Moments</div>
+            </div>
+            <div class="social-footer">
+              <div class="social-cta" style="color: #ff0050;">Xem Thêm</div>
+            </div>
+          </div>
+          <div class="tiktok-icon">♪</div>
+          <div class="template-label">1080x1920</div>
+        </div>
+      </div>
+
+      <!-- INFO BOX -->
+      <div style="background: var(--bg-light); border-left: 4px solid var(--accent-orange); padding: 20px; max-width: 900px; margin: 40px auto; border-radius: 4px;">
+        <h3 style="color: var(--primary-dark); font-weight: 600; margin-bottom: 10px;">💡 Gợi ý sử dụng:</h3>
+        <ul style="color: var(--text-gray); font-size: 13px; line-height: 1.8; margin-left: 20px;">
+          <li><strong>Instagram Story:</strong> Đăng hàng ngày, tạo sự gắn kết với followers</li>
+          <li><strong>Instagram Reels:</strong> Video ngắn 15-30 giây, tăng reach & engagement</li>
+          <li><strong>Facebook Post:</strong> Quảng cáo dịch vụ & ưu đãi cho khách hàng trung tuổi</li>
+          <li><strong>TikTok Reels:</strong> Thử nghiệm xu hướng, nhắm tới khách trẻ tuổi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 10: LARGE PHOTO BAG 60x90cm - PRINT DESIGN -->
+  <div id="large-bag" class="content-section">
+    <div style="padding: 40px 20px;">
+      <h2 style="font-family: 'Lora', serif; font-size: 32px; color: var(--primary-dark); margin-bottom: 15px; text-align: center;">🎨 Thiết Kế In Túi Ảnh Phóng (60x90cm)</h2>
+      <p style="text-align: center; color: var(--text-gray); margin-bottom: 40px; font-size: 13px; max-width: 800px; margin-left: auto; margin-right: auto;">Thiết kế để in lên túi đựng ảnh phóng lớn. Có sẵn 2 khổ: <strong>60×90cm (dọc)</strong> và <strong>90×60cm (ngang)</strong>. Tỉ lệ khung hình 2:3 chuẩn để cắt và in trên máy in công nghiệp.</p>
+      
+      <div style="background: #fff3cd; border-left: 4px solid #ff9800; padding: 16px; max-width: 900px; margin: 0 auto 40px; border-radius: 4px; font-size: 12px; color: #663c00; line-height: 1.6;">
+        <strong>💡 Hướng dẫn sử dụng:</strong><br>
+        • Xuất file: PNG hoặc PDF ở độ phân giải <strong>300 DPI</strong><br>
+        • Tạo vùng an toàn: <strong>1cm margin</strong> từ các cạnh để tránh mất design khi cắt<br>
+        • Gửi cho công ty in với kích thước: <strong>60cm × 90cm</strong> (hoặc 90cm × 60cm)
+      </div>
+
+      <!-- DESIGN DISPLAY -->
+      <div style="max-width: 1100px; margin: 0 auto;">
+        <!-- VERTICAL DESIGNS -->
+        <h3 style="font-family: 'Lora', serif; font-size: 20px; color: var(--primary-dark); margin-top: 40px; margin-bottom: 20px; text-align: center;">📐 Khổ Dọc: 60×90cm</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 50px;">
+          
+          <!-- VERTICAL DESIGN 1 - DARK ELEGANT -->
+          <div style="position: relative; width: 240px; height: 360px; margin: 0 auto; background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%); color: white; padding: 40px 25px; border-radius: 8px; box-shadow: 0 20px 60px rgba(58, 90, 64, 0.25); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">
+            <div style="position: absolute; top: -50%; right: -50%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(235, 149, 0, 0.12) 0%, transparent 70%); border-radius: 50%; z-index: 0;"></div>
+            
+            <div style="position: relative; z-index: 1; text-align: center;">
+              <div style="font-family: 'Lora', serif; font-size: 36px; font-weight: 700; letter-spacing: 2px; margin-bottom: 4px;">Kool D.</div>
+              <div style="font-size: 10px; color: var(--accent-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Photography Studio</div>
+              <div style="width: 45px; height: 2px; background: var(--accent-orange); margin: 0 auto;"></div>
+            </div>
+
+            <div style="position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+              <div style="font-size: 45px; margin-bottom: 10px;">💍</div>
+              <div style="font-size: 13px; line-height: 1.6; font-weight: 500;">Ảnh Cưới<br>Tự Nhiên & Tinh Tế</div>
+            </div>
+
+            <div style="position: relative; z-index: 1; text-align: center; font-size: 10px; padding-top: 12px; border-top: 1px solid rgba(235, 149, 0, 0.3);">
+              <div style="opacity: 0.9; margin-bottom: 4px;">+84 (37) 903 1662</div>
+              <div style="opacity: 0.8; color: var(--accent-orange); font-size: 9px;">koolbstudio.com</div>
+            </div>
+          </div>
+
+          <!-- VERTICAL DESIGN 2 - DARK MODERN -->
+          <div style="position: relative; width: 240px; height: 360px; margin: 0 auto; background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%); color: white; padding: 40px 25px; border-radius: 8px; box-shadow: 0 20px 60px rgba(58, 90, 64, 0.25); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">
+            <div style="position: absolute; bottom: -40%; left: -40%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(235, 149, 0, 0.08) 0%, transparent 70%); border-radius: 50%; z-index: 0;"></div>
+            
+            <div style="position: relative; z-index: 1; text-align: center;">
+              <div style="font-family: 'Lora', serif; font-size: 36px; font-weight: 700; letter-spacing: 2px; margin-bottom: 4px;">Kool D.</div>
+              <div style="font-size: 10px; color: var(--accent-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Studio</div>
+              <div style="width: 45px; height: 2px; background: var(--accent-orange); margin: 0 auto;"></div>
+            </div>
+
+            <div style="position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+              <div style="font-size: 45px; margin-bottom: 10px;">👨‍👩‍👧‍👦</div>
+              <div style="font-size: 13px; line-height: 1.6; font-weight: 500;">Ảnh Gia Đình<br>Đầy Cảm Xúc</div>
+            </div>
+
+            <div style="position: relative; z-index: 1; text-align: center; font-size: 10px; padding-top: 12px; border-top: 1px solid rgba(235, 149, 0, 0.3);">
+              <div style="opacity: 0.9; margin-bottom: 4px;">+84 379 031 662</div>
+              <div style="opacity: 0.8; color: var(--accent-orange); font-size: 9px;">koolbstudio.com</div>
+            </div>
+          </div>
+
+          <!-- VERTICAL DESIGN 3 - LIGHT ELEGANT -->
+          <div style="position: relative; width: 240px; height: 360px; margin: 0 auto; background: linear-gradient(135deg, #f8f5f0 0%, var(--bg-light) 100%); color: var(--text-dark); padding: 40px 25px; border-radius: 8px; box-shadow: 0 20px 60px rgba(58, 90, 64, 0.15); border: 2px solid rgba(235, 149, 0, 0.2); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">
+            
+            <div style="position: relative; z-index: 1; text-align: center;">
+              <div style="font-family: 'Lora', serif; font-size: 36px; font-weight: 700; letter-spacing: 2px; color: var(--primary-dark); margin-bottom: 4px;">Kool D.</div>
+              <div style="font-size: 10px; color: var(--accent-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Premium</div>
+              <div style="width: 45px; height: 2px; background: var(--accent-orange); margin: 0 auto;"></div>
+            </div>
+
+            <div style="position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+              <div style="font-size: 45px; margin-bottom: 10px;">✨</div>
+              <div style="font-size: 13px; line-height: 1.6; font-weight: 500; color: var(--text-gray);">In Ảnh Phóng<br>Chất Lượng Cao</div>
+            </div>
+
+            <div style="position: relative; z-index: 1; text-align: center; font-size: 10px; padding-top: 12px; border-top: 1px solid rgba(235, 149, 0, 0.2);">
+              <div style="color: var(--text-dark); margin-bottom: 4px;">+84 (37) 903 1662</div>
+              <div style="color: var(--accent-orange); font-size: 9px;">koolbstudio.com</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HORIZONTAL DESIGNS -->
+        <h3 style="font-family: 'Lora', serif; font-size: 20px; color: var(--primary-dark); margin-top: 40px; margin-bottom: 20px; text-align: center;">📐 Khổ Ngang: 90×60cm</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; margin-bottom: 50px;">
+          
+          <!-- HORIZONTAL DESIGN 1 - DARK -->
+          <div style="position: relative; width: 360px; height: 240px; margin: 0 auto; background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%); color: white; padding: 30px 40px; border-radius: 8px; box-shadow: 0 20px 60px rgba(58, 90, 64, 0.25); display: flex; flex-direction: row; align-items: center; justify-content: space-between; overflow: hidden;">
+            <div style="position: absolute; top: -50%; right: -50%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(235, 149, 0, 0.12) 0%, transparent 70%); border-radius: 50%; z-index: 0;"></div>
+            
+            <div style="position: relative; z-index: 1; flex: 1; text-align: left;">
+              <div style="font-family: 'Lora', serif; font-size: 32px; font-weight: 700; letter-spacing: 2px; margin-bottom: 4px;">Kool D. Studio</div>
+              <div style="font-size: 9px; color: var(--accent-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">Art Of Your Story</div>
+              <div style="width: 35px; height: 2px; background: var(--accent-orange); margin-bottom: 8px;"></div>
+              <div style="font-size: 11px; line-height: 1.5;">Bảo vệ ảnh phóng<br>của bạn với tình yêu</div>
+            </div>
+
+            <div style="position: relative; z-index: 1; text-align: right; margin-left: 20px;">
+              <div style="font-size: 48px; opacity: 0.15;">📸</div>
+              <div style="font-size: 9px; margin-top: 8px;">+84 (37) 903 1662</div>
+            </div>
+          </div>
+
+          <!-- HORIZONTAL DESIGN 2 - DARK VARIANT -->
+          <div style="position: relative; width: 360px; height: 240px; margin: 0 auto; background: linear-gradient(135deg, var(--primary-dark) 0%, #2f4a35 100%); color: white; padding: 30px 40px; border-radius: 8px; box-shadow: 0 20px 60px rgba(58, 90, 64, 0.25); display: flex; flex-direction: row; align-items: center; justify-content: space-between; overflow: hidden;">
+            <div style="position: absolute; bottom: -40%; left: -40%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(235, 149, 0, 0.08) 0%, transparent 70%); border-radius: 50%; z-index: 0;"></div>
+            
+            <div style="position: relative; z-index: 1; flex: 1; text-align: left;">
+              <div style="font-family: 'Lora', serif; font-size: 32px; font-weight: 700; letter-spacing: 2px; margin-bottom: 4px;">Kool D.</div>
+              <div style="font-size: 9px; color: var(--accent-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">Chuyên Ảnh Cưới & Gia Đình</div>
+              <div style="width: 35px; height: 2px; background: var(--accent-orange); margin-bottom: 8px;"></div>
+              <div style="font-size: 11px; line-height: 1.5;">Ghi dấu khoảnh khắc<br>đặc biệt của bạn</div>
+            </div>
+
+            <div style="position: relative; z-index: 1; text-align: right; margin-left: 20px;">
+              <div style="font-size: 48px; opacity: 0.15;">💍</div>
+              <div style="font-size: 9px; margin-top: 8px;">koolbstudio.com</div>
+            </div>
+          </div>
+
+          <!-- HORIZONTAL DESIGN 3 - LIGHT -->
+          <div style="position: relative; width: 360px; height: 240px; margin: 0 auto; background: linear-gradient(135deg, #f8f5f0 0%, var(--bg-light) 100%); color: var(--text-dark); padding: 30px 40px; border-radius: 8px; box-shadow: 0 20px 60px rgba(58, 90, 64, 0.15); border: 2px solid rgba(235, 149, 0, 0.2); display: flex; flex-direction: row; align-items: center; justify-content: space-between; overflow: hidden;">
+            
+            <div style="position: relative; z-index: 1; flex: 1; text-align: left;">
+              <div style="font-family: 'Lora', serif; font-size: 32px; font-weight: 700; letter-spacing: 2px; color: var(--primary-dark); margin-bottom: 4px;">Kool D. Studio</div>
+              <div style="font-size: 9px; color: var(--accent-orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">Premium Packaging</div>
+              <div style="width: 35px; height: 2px; background: var(--accent-orange); margin-bottom: 8px;"></div>
+              <div style="font-size: 11px; line-height: 1.5; color: var(--text-gray);">In ảnh phóng lớn<br>chất lượng cao</div>
+            </div>
+
+            <div style="position: relative; z-index: 1; text-align: right; margin-left: 20px;">
+              <div style="font-size: 48px; opacity: 0.1;">🎁</div>
+              <div style="font-size: 9px; color: var(--primary-dark);">+84 379 031 662</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DETAILED INFO BOX -->
+      <div style="background: var(--bg-light); border-left: 4px solid var(--accent-orange); padding: 28px; max-width: 950px; margin: 50px auto; border-radius: 4px;">
+        <h3 style="color: var(--primary-dark); font-weight: 600; margin-bottom: 16px; font-size: 16px;">📋 Hướng Dẫn In Túi Ảnh Phóng:</h3>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 12px; color: var(--text-gray); line-height: 1.8;">
+          <div>
+            <strong style="color: var(--primary-dark); display: block; margin-bottom: 8px;">📐 Kích Thước In:</strong>
+            <div>• Khổ dọc: 60cm (W) × 90cm (H)</div>
+            <div>• Khổ ngang: 90cm (W) × 60cm (H)</div>
+            <div>• Tỉ lệ khung hình: 2:3 chuẩn</div>
+          </div>
+          
+          <div>
+            <strong style="color: var(--primary-dark); display: block; margin-bottom: 8px;">🖨️ Thông Số Kỹ Thuật:</strong>
+            <div>• Độ phân giải: 300 DPI (tối thiểu)</div>
+            <div>• File format: PNG, PDF hoặc TIFF</div>
+            <div>• Màu sắc: CMYK (cho in offset)</div>
+          </div>
+          
+          <div>
+            <strong style="color: var(--primary-dark); display: block; margin-bottom: 8px;">🛡️ Vùng An Toàn:</strong>
+            <div>• Lề an toàn: 1cm từ mép cắt</div>
+            <div>• Tránh đặt nội dung gần viền</div>
+            <div>• Chừa chỗ để cắt & gấp sọc</div>
+          </div>
+          
+          <div>
+            <strong style="color: var(--primary-dark); display: block; margin-bottom: 8px;">📦 Vật Liệu Gợi Ý:</strong>
+            <div>• Giấy mỹ thuật 250-350gsm</div>
+            <div>• Hoàn thiện: Cán bóng/mờ, UV spot</div>
+            <div>• In: 4 mặt hoặc toàn bộ</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(235, 149, 0, 0.2);">
+          <strong style="color: var(--primary-dark); display: block; margin-bottom: 8px;">💡 Lưu Ý Quan Trọng:</strong>
+          <ul style="margin: 0; padding-left: 20px; font-size: 12px; color: var(--text-gray);">
+            <li>Export file ở 300 DPI để đảm bảo chất lượng in rõ nét</li>
+            <li>Sử dụng CMYK thay vì RGB để màu in chính xác hơn</li>
+            <li>Kiểm tra vùng an toàn để không mất logo/text khi cắt</li>
+            <li>Gửi file cho công ty in để xác nhận trước khi in tập lớn</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOWNLOAD BUTTONS -->
+  <div class="download-btns">
+    <button class="download-btn" onclick="downloadAsImage()">⬇️ PNG</button>
+    <button class="download-btn" onclick="window.print()">🖨️ In</button>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      // Hide all sections
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.classList.remove('active'));
+      
+      // Show selected section
+      document.getElementById(sectionId).classList.add('active');
+      
+      // Update nav buttons
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Scroll to top
+      window.scrollTo(0, 70);
+    }
+
+    function downloadAsImage() {
+      alert('Tính năng tải về sẽ được cập nhật. Hiện tại bạn có thể:\n\n1. Nhấn Ctrl+S để lưu trang\n2. Sử dụng Print > Save as PDF\n3. Screenshot các thiết kế');
+    }
+
+    // Add print styles
+    const style = document.createElement('style');
+    style.textContent = `
+      @page {
+        margin: 0;
+        size: A4;
+      }
+      
+      @media print {
+        .nav-bar, .download-btns {
+          display: none !important;
+        }
+        
+        .content-section {
+          display: block !important;
+          page-break-inside: avoid;
+        }
+        
+        .fb-cover {
+          width: 100%;
+          margin-bottom: 20mm;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
