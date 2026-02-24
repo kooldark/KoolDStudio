@@ -36,12 +36,6 @@ textarea::placeholder {
     width: 85vw;
   }
   
-  /* Better touch targets on mobile */
-  .ribbon-item {
-    min-height: 48px;
-    min-width: 48px;
-  }
-  
   /* Improve button sizes on mobile */
   .btn {
     min-height: 48px;

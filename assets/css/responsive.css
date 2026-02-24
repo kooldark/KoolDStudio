@@ -31,24 +31,6 @@
   .menu-toggle:active { transform: scale(0.95); }
   .section-title { font-size: 36px; display: block; text-align: center; padding-left: 0; left: auto; transform: none; }
   .section-title::before { display: none; }
-  
-  /* Contact Ribbon Mobile */
-  .contact-ribbon {
-    width: 44px;
-    padding: 6px 0;
-    bottom: max(15px, calc(15px + env(safe-area-inset-bottom)));
-    right: max(0px, env(safe-area-inset-right));
-  }
-  
-  .ribbon-item {
-    width: 44px;
-    height: 44px;
-    font-size: 18px;
-  }
-  
-  .ribbon-item:hover {
-    transform: translateX(-4px);
-  }
 }
 
 @keyframes slideInDown {

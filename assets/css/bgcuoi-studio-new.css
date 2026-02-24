@@ -698,40 +698,6 @@ nav.scrolled{padding:0.9rem 0; box-shadow:0 4px 20px rgba(0,0,0,0.05);}
   opacity: 0.7;
 }
 
-/* --- Contact Ribbon --- */
-.contact-ribbon {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  z-index: 999;
-}
-
-.ribbon-item {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--deep-green);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-  font-size: 24px;
-}
-
-.ribbon-item:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.ribbon-phone {
-  background: var(--soft-gold);
-}
-
 /* --- Slider Styling (Range Input) --- */
 .slider-item {
   display: flex;
@@ -868,16 +834,7 @@ nav.scrolled{padding:0.9rem 0; box-shadow:0 4px 20px rgba(0,0,0,0.05);}
         gap: 30px;
     }
 
-    .contact-ribbon {
-        right: 10px;
-        gap: 10px;
-    }
 
-    .ribbon-item {
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-    }
 }
 
 @media (max-width: 768px) {
@@ -951,9 +908,6 @@ nav.scrolled{padding:0.9rem 0; box-shadow:0 4px 20px rgba(0,0,0,0.05);}
   .footer-section h4 { font-size: 14px; margin-bottom: 8px; }
   .footer-section p { font-size: 12px; }
   .footer-bottom { font-size: 11px; padding-top: 20px; }
-
-  .contact-ribbon { right: 10px; gap: 10px; }
-  .ribbon-item { width: 45px; height: 45px; font-size: 20px; }
 
   .menu-toggle { display: block; cursor: pointer; z-index: 1001; }
   .nav-links { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; position: fixed; top: 0; left: -100%; width: 80%; max-width: 320px; height: 100vh; background: var(--cream); padding-top: 100px; transition: left 0.4s ease-in-out; box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1); z-index: 1000; }
@@ -1032,9 +986,6 @@ nav.scrolled{padding:0.9rem 0; box-shadow:0 4px 20px rgba(0,0,0,0.05);}
   .nav-container { padding: 0 1rem; }
   .logo { font-size: 18px; }
   .nav-links { width: 90%; max-width: none; }
-
-  .contact-ribbon { right: 8px; gap: 8px; }
-  .ribbon-item { width: 40px; height: 40px; font-size: 18px; }
 }
 
 @media (max-width: 360px) {
