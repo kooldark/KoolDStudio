@@ -29,11 +29,14 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
+  // --- PATH DETECTION FOR PAGES/ SUBDIRECTORY ---
+  const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+  
   // Home gallery initialization
   const galleryContainer = document.getElementById('home-gallery-container');
   if (galleryContainer) {
     try {
-      const res = await fetch('assets/js/home-portfolio-data.json');
+      const res = await fetch(basePath + 'config/home-portfolio-data.json');
       if (!res.ok) throw new Error(`Failed to load home portfolio data, status: ${res.status}`);
       let galleryImages = await res.json();
 
@@ -48,7 +51,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       let html = '';
       galleryImages.forEach(img => {
-        html += `<div class="grid-item" data-aos="fade-up"><img src="assets/img/portfolio/${img}" alt="Kool D. Studio Portfolio" loading="lazy" decoding="async"></div>`;
+        // Determine category based on folder structure
+        let category = 'cuoi'; // default
+        if (img.includes('gia-dinh')) category = 'gia-dinh';
+        else if (img.includes('phong-su')) category = 'phong-su';
+        else if (img.includes('makeup')) category = 'makeup';
+        
+        html += `<div class="gallery-item" data-category="${category}" data-aos="fade-up"><img src="${basePath}assets/img/portfolio/${img}" alt="Kool D. Studio Portfolio" loading="lazy" decoding="async"></div>`;
       });
 
       galleryContainer.innerHTML = html;
@@ -58,17 +67,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       galleryContainer.innerHTML = "<p class='error-message'>Không thể tải thư viện ảnh.</p>";
     }
   }
-  // Preloader
-  const preloader = document.getElementById('preloader');
-  if (preloader) {
-    // Use a small timeout to allow initial rendering before fading out
-    setTimeout(() => {
-      preloader.classList.add('hidden');
-    }, 100);
-  }
+  // Preloader handling (removed from new design)
+  // The new design doesn't use a preloader element
 
   // Navigation scroll effect with RequestAnimationFrame for smooth performance
-  const navbar = document.getElementById('navbar');
+  const navbar = document.getElementById('main-header');
   if (navbar) {
     let ticking = false;
     window.addEventListener('scroll', () => {

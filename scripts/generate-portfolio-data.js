@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 
 const PORTFOLIO_DIR = path.join(__dirname, '../assets/img/portfolio');
-const OUTPUT_FILE = path.join(__dirname, '../assets/js/portfolio-data.json');
+const OUTPUT_FILE = path.join(__dirname, '../config/portfolio-data.json');
 
 async function generatePortfolioData() {
     console.log('Starting portfolio data generation...');

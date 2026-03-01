@@ -39,14 +39,21 @@
   }
   </script>
   
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@300;400;500&display=swap" as="style">
+  <link rel="preload" href="https://unpkg.com/aos@next/dist/aos.css" as="style">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <link rel="stylesheet" href="assets/css/improvements.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <link rel="stylesheet" href="../assets/css/improvements.css">
+  <link rel="stylesheet" href="../assets/css/professional-layout.css">
+  <link rel="stylesheet" href="../assets/css/portfolio-optimized.css">
 
   <script>
     // Pre-generate meta tags for social media crawlers (they don't execute JS)
@@ -65,13 +72,13 @@
         }[category] || category;
         
         // Fetch images list to get real file names
-        fetch('assets/img/portfolio/images-list.json?t=' + Date.now())
+        fetch('../assets/img/portfolio/images-list.json?t=' + Date.now())
           .then(res => res.json())
           .then(data => {
             const categoryData = data[category];
             if (categoryData && categoryData[decodedAlbum]) {
               const firstFile = categoryData[decodedAlbum][0];
-              const imageUrl = `/assets/img/portfolio/${category}/${decodedAlbum}/${firstFile}`;
+              const imageUrl = `../assets/img/portfolio/${category}/${decodedAlbum}/${firstFile}`;
               
               // Update meta tags
               const metaTags = {
@@ -156,14 +163,14 @@
   </section>
 
   <div style="text-align:center;">
-    <a href="index.html" class="back-home-btn">← Quay lại Trang chủ</a>
+    <a href="../index.html" class="back-home-btn">← Quay lại Trang chủ</a>
 </div>
 
 <!-- Scripts -->
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="assets/js/load-template.js"></script>
-<script src="assets/js/auto-gallery.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script src="../assets/js/load-template.js" defer data-header-path="../assets/html/header.html" data-footer-path="../assets/html/footer.html"></script>
+<script src="../assets/js/auto-gallery.js" defer></script>
 
 <!-- Swiper Lightbox -->
 <div id="lightbox" class="swiper-lightbox" style="display:none;">

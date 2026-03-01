@@ -1,9 +1,9 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const sourceFilePath = path.join(__dirname, '../assets/js/portfolio-data.json');
-const outputDir = path.join(__dirname, '../assets/js/portfolio-data');
-const categoriesFilePath = path.join(__dirname, '../assets/js/categories.json');
+const sourceFilePath = path.join(__dirname, '../config/portfolio-data.json');
+const outputDir = path.join(__dirname, '../config/portfolio-data');
+const categoriesFilePath = path.join(__dirname, '../config/categories.json');
 
 async function splitPortfolioData() {
   try {

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function fetchPortfolioData() {
         if (portfolioData) return portfolioData;
         try {
-            const res = await fetch('assets/js/portfolio-data.json?t=' + Date.now());
+            const res = await fetch('config/portfolio-data.json?t=' + Date.now());
             if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
             portfolioData = await res.json();
             return portfolioData;

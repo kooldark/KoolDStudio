@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  // --- PATH DETECTION FOR PAGES/ SUBDIRECTORY ---
+  const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+  
   const categoryTabs = document.getElementById('categoryTabs');
   const moodboardGrid = document.getElementById('moodboardGrid');
   const previewSection = document.getElementById('previewSection') || null;
@@ -188,7 +191,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Fetch moodboard data
   try {
-    const res = await fetch('assets/js/moodboard-data.json');
+    const res = await fetch(basePath + 'config/moodboard-data.json');
     if (!res.ok) throw new Error('Failed to load');
     const data = await res.json();
     portfolioData = data;

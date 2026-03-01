@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  // --- PATH DETECTION FOR PAGES/ SUBDIRECTORY ---
+  const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+  
   const packageGrid = document.getElementById('packageGrid');
   const timeGrid = document.getElementById('timeGrid');
   const bookingForm = document.getElementById('bookingForm');
@@ -12,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Fetch pricing data
   try {
-    const res = await fetch('assets/js/pricing-data.json');
+    const res = await fetch(basePath + 'config/pricing-data.json');
     if (!res.ok) throw new Error('Failed to load');
     const data = await res.json();
     packages = data.packages || [];

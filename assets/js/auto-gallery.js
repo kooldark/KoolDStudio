@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // --- PATH DETECTION FOR PAGES/ SUBDIRECTORY ---
+  // Detect if we're being loaded from pages/ directory by checking if the current page is in /pages/
+  const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+  
   // --- DOM ELEMENTS ---
   const galleryContainer = document.getElementById("auto-gallery");
   const categoryFiltersContainer = document.getElementById("portfolio-filters");
@@ -74,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     originalSubtitle = pageSubtitle.textContent;
 
     try {
-      const res = await fetch("assets/js/portfolio-data.json");
+      const res = await fetch(basePath + "config/portfolio-data.json");
       if (!res.ok) throw new Error(`Network response was not ok, status: ${res.status}`);
       const portfolioData = await res.json();
       
@@ -171,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     } else if (data && typeof data === 'object' && !Array.isArray(data)) {
       if (currentAlbum) {
-        const albumImages = data[currentAlbum].map(file => `assets/img/portfolio/${currentCategory}/${currentAlbum}/${file}`);
+        const albumImages = data[currentAlbum].map(file => `${basePath}assets/img/portfolio/${currentCategory}/${currentAlbum}/${file}`);
         await renderImageGrid(albumImages);
         backButton.classList.remove('hidden');
         categoryShareBtn.classList.add('hidden');
@@ -200,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       }
     } else if (data && Array.isArray(data)) {
-      const categoryImages = data.map(file => `assets/img/portfolio/${currentCategory}/${file}`);
+      const categoryImages = data.map(file => `${basePath}assets/img/portfolio/${currentCategory}/${file}`);
       await renderImageGrid(categoryImages);
       backButton.classList.add('hidden');
       categoryShareBtn.classList.remove('hidden');
@@ -263,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Load category description if available (async, non-blocking)
     let categoryDescription = '';
-    fetch(`assets/img/portfolio/${category}/category-info.json`)
+    fetch(`${basePath}assets/img/portfolio/${category}/category-info.json`)
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data?.description) {
@@ -285,9 +289,9 @@ document.addEventListener("DOMContentLoaded", () => {
       albumCount++;
       
       const isLoose = albumName === 'Ảnh lẻ';
-      const basePath = `assets/img/portfolio/${category}/`;
+      const imageBasePath = `${basePath}assets/img/portfolio/${category}/`;
       const imageFolder = isLoose ? '' : `${albumName}/`;
-      const coverImage = basePath + imageFolder + albumFiles[0];
+      const coverImage = imageBasePath + imageFolder + albumFiles[0];
 
       // Create shareable link for this album
       const albumLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(category)}&album=${encodeURIComponent(albumName)}`;
@@ -335,10 +339,10 @@ document.addEventListener("DOMContentLoaded", () => {
           const albumFiles = content[album];
           if (Array.isArray(albumFiles) && albumFiles.length > 0) {
             const isLoose = album === 'Ảnh lẻ';
-            const basePath = `assets/img/portfolio/${category}/`;
+            const imageBasePath = `${basePath}assets/img/portfolio/${category}/`;
             const imageFolder = isLoose ? '' : `${album}/`;
             const randomFile = getRandomItem(albumFiles);
-            all.push(basePath + imageFolder + randomFile);
+            all.push(imageBasePath + imageFolder + randomFile);
           }
         }
       }
