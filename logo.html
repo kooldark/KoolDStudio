@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Kool D Logo</title>
+<style>
+  body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f4f4f4;
+  }
+  svg{
+    width:420px;
+    height:420px;
+  }
+</style>
+</head>
+<body>
+
+<svg viewBox="0 0 500 500" fill="none"
+     stroke="url(#grad)"
+     stroke-width="20"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+  <defs>
+    <linearGradient id="grad" x1="0" y1="500" x2="500" y2="0">
+      <stop offset="0%" stop-color="#4ea8a1"/>
+      <stop offset="100%" stop-color="#6bc17e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Vòng tròn hở (vẽ bằng arc để chủ động điểm hở) -->
+  <path d="
+    M 250 30
+    A 220 220 0 1 1 470 250
+    A 220 220 0 1 1 250 470
+  " />
+
+  <!-- Đường chéo -->
+  <line x1="150" y1="150" x2="380" y2="380" />
+
+  <!-- Tam giác trái -->
+  <polygon points="150,150 150,350 250,250" />
+
+</svg>
+
+</body>
+</html>
