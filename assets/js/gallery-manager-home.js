@@ -127,8 +127,8 @@ function createAlbumElement(album, categoryId) {
   
   // Add click handler to open portfolio
   div.addEventListener('click', () => {
-    // Could open modal or navigate to portfolio
-    window.location.href = `portfolio.html#${categoryId}`;
+    // Navigate to portfolio with category parameter
+    window.location.href = `portfolio.html?category=${categoryId}`;
   });
   
   return div;
@@ -141,7 +141,7 @@ function createSeeAllButton(categoryId, totalAlbums) {
   const div = document.createElement('div');
   div.className = 'see-all-container';
   div.innerHTML = `
-    <a href="portfolio.html#${categoryId}" class="btn btn-secondary see-all-btn">
+    <a href="portfolio.html?category=${categoryId}" class="btn btn-secondary see-all-btn">
       Xem Tất Cả ${totalAlbums} Album
       <i class="fas fa-arrow-right"></i>
     </a>

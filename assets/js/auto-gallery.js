@@ -112,38 +112,49 @@ document.addEventListener("DOMContentLoaded", () => {
       
       renderCategoryFilters();
       
-      // Check if URL has shared album parameters
+      // Check if URL has shared album parameters (query string or hash)
       const urlParams = new URLSearchParams(window.location.search);
       const sharedCategory = urlParams.get('category');
       const sharedAlbum = urlParams.get('album');
       
-      if (sharedCategory && sharedAlbum) {
-        currentCategory = sharedCategory;
-        currentAlbum = sharedAlbum;
+      // Also check hash anchor for backward compatibility (#gia-dinh)
+      const hashCategory = window.location.hash.substring(1); // Remove #
+      
+      // Priority: query parameter > hash anchor
+      const categoryToLoad = sharedCategory || hashCategory;
+      const albumToLoad = sharedAlbum;
+      
+      if (categoryToLoad) {
+        currentCategory = categoryToLoad;
         
-        // Immediately set meta tags for social media crawlers
-        const data = galleryData[sharedCategory];
-        if (data && data[sharedAlbum]) {
-          const firstFile = data[sharedAlbum][0];
-          const categoryTitle = titles[sharedCategory]?.vn || sharedCategory;
-          const imageUrl = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${sharedCategory}/${sharedAlbum}/${firstFile}`;
-          
-          updateMetaTags(
-            `${sharedAlbum} - ${categoryTitle} | Kool D. Studio`,
-            `Album ${sharedAlbum} từ bộ sưu tập ${categoryTitle} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
-            imageUrl
-          );
-        }
-        
-        // Update active filter
+        // Update active filter button
         const filterBtns = categoryFiltersContainer.querySelectorAll('.filter-btn');
         filterBtns.forEach(btn => {
-          if (btn.dataset.filter === sharedCategory) {
+          if (btn.dataset.filter === categoryToLoad) {
             btn.classList.add('active');
           } else {
             btn.classList.remove('active');
           }
         });
+        
+        // If specific album is shared
+        if (albumToLoad) {
+          currentAlbum = albumToLoad;
+          
+          // Immediately set meta tags for social media crawlers
+          const data = galleryData[categoryToLoad];
+          if (data && data[albumToLoad]) {
+            const firstFile = data[albumToLoad][0];
+            const categoryTitle = titles[categoryToLoad]?.vn || categoryToLoad;
+            const imageUrl = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${categoryToLoad}/${albumToLoad}/${firstFile}`;
+            
+            updateMetaTags(
+              `${albumToLoad} - ${categoryTitle} | Kool D. Studio`,
+              `Album ${albumToLoad} từ bộ sưu tập ${categoryTitle} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
+              imageUrl
+            );
+          }
+        }
       }
       
       await render();
@@ -197,7 +208,8 @@ document.addEventListener("DOMContentLoaded", () => {
         await renderAlbumCovers(currentCategory, data);
         backButton.classList.add('hidden');
         categoryShareBtn.classList.remove('hidden');
-        pageSubtitle.textContent = originalSubtitle;
+        albumShareBtn.classList.add('hidden');
+        pageSubtitle.textContent = `Chọn một album để khám phá`;
 
         const categoryTitle = titles[currentCategory]?.vn || currentCategory;
         updateMetaTags(

@@ -49,52 +49,51 @@
   }
 
   function initializeMobileMenu() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.getElementById('nav-links');
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
     
-    if (!mobileMenu || !navLinks) {
-      console.warn('Mobile menu elements not found');
+    if (!navToggle || !navMenu) {
+      // console.warn('Mobile menu elements not found');
       return;
     }
     
     // Toggle menu on hamburger click
-    mobileMenu.addEventListener('click', (e) => {
+    navToggle.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      console.log('Menu toggle clicked');
-      navLinks.classList.toggle('active');
+      navMenu.classList.toggle('active');
       document.body.classList.toggle('menu-open');
     });
     
     // Close menu when a link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
+    navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', (e) => {
         e.stopPropagation();
-        navLinks.classList.remove('active');
+        navMenu.classList.remove('active');
         document.body.classList.remove('menu-open');
       });
     });
 
     // Close menu when clicking outside (on overlay)
     document.addEventListener('click', (e) => {
-      if (navLinks.classList.contains('active') && 
-          !navLinks.contains(e.target) && 
-          !mobileMenu.contains(e.target)) {
-        navLinks.classList.remove('active');
+      if (navMenu.classList.contains('active') && 
+          !navMenu.contains(e.target) && 
+          !navToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
         document.body.classList.remove('menu-open');
       }
     });
 
     // Prevent scroll on body when mobile menu is open
     const observer = new MutationObserver(() => {
-      if (navLinks.classList.contains('active')) {
+      if (navMenu.classList.contains('active')) {
         document.body.style.overflow = 'hidden';
       } else {
         document.body.style.overflow = '';
       }
     });
 
-    observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
+    observer.observe(navMenu, { attributes: true, attributeFilter: ['class'] });
   }
 
   // Load both on DOM ready
