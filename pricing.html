@@ -18,50 +18,81 @@
   <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
 
   <style>
-    /* ===== PRICING PAGE - ELEGANT & MODERN REDESIGN ===== */
+    /* ===== PRICING PAGE - NEW ELEGANT DESIGN ===== */
     :root {
-      --primary-tan: #d4a574;
-      --dark-green: #2d5a4a;
-      --accent-gray: #6b6b6b;
-      --light-bg: #faf7f2;
-      --white: #ffffff;
-      --border-color: #e0dbd6;
+      --color-primary: #d4a574;
+      --color-primary-dark: #b8956a;
+      --color-primary-light: #ddb892;
+      --color-darkgreen: #2d5a4a;
+      --color-darkgreen-light: #3d7a5f;
+      --color-white: #ffffff;
+      --color-light-cream: #faf7f2;
+      --color-light-gray: #f5f3f0;
+      --color-gray: #8b8680;
+      --color-dark-gray: #4a4a48;
+      --color-dark: #2a2a28;
+      --color-border: #e0dbd6;
+      
+      --font-primary: 'Playfair Display', serif;
+      --font-secondary: 'Lora', serif;
+      --font-tertiary: 'Montserrat', sans-serif;
+      
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-slow: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     /* ===== PRICING HERO SECTION ===== */
     .pricing-hero {
-      padding: 120px 40px 80px;
+      padding: 100px 40px;
       text-align: center;
-      background: linear-gradient(180deg, #ffffff 0%, var(--light-bg) 100%);
+      background: linear-gradient(135deg, var(--color-white) 0%, var(--color-light-cream) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
     }
 
     .pricing-intro {
-      max-width: 700px;
-      margin: 0 auto 60px;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      color: var(--dark-green);
+      font-family: var(--font-primary);
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      color: var(--color-darkgreen);
       margin-bottom: 20px;
       letter-spacing: -1px;
+      font-weight: 700;
     }
 
     .section-subtitle {
-      font-family: 'Montserrat', sans-serif;
+      font-family: var(--font-tertiary);
       font-size: 1.1rem;
-      color: var(--accent-gray);
+      color: var(--color-gray);
       line-height: 1.8;
       font-weight: 300;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
+      margin-bottom: 40px;
     }
 
     .gold-line {
-      height: 2px;
-      width: 60px;
-      background: var(--primary-tan);
-      margin: 30px auto;
+      height: 3px;
+      width: 80px;
+      background: var(--color-primary);
+      margin: 0 auto 50px;
       border-radius: 2px;
     }
 
@@ -69,15 +100,17 @@
     .pricing-packages {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-      max-width: 1100px;
+      gap: 35px;
+      max-width: 1300px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     @media (max-width: 1024px) {
       .pricing-packages {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 30px;
       }
     }
 
@@ -87,14 +120,15 @@
 
     /* ===== PRICE CARD STYLES ===== */
     .price-card {
-      background: var(--white);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
+      background: var(--color-white);
+      border: 1.5px solid var(--color-border);
+      border-radius: 16px;
       overflow: hidden;
-      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transition: var(--transition-slow);
       display: flex;
       flex-direction: column;
       position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
 
     .price-card::before {
@@ -103,68 +137,84 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: var(--primary-tan);
+      height: 5px;
+      background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
       transition: height 0.4s ease;
     }
 
     .price-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 25px 50px rgba(45, 90, 74, 0.12);
-      border-color: var(--primary-tan);
+      transform: translateY(-12px);
+      box-shadow: 0 20px 50px rgba(45, 90, 74, 0.15);
+      border-color: var(--color-primary);
     }
 
     .price-card.recommended {
-      border: 2px solid var(--primary-tan);
+      border: 2px solid var(--color-primary);
       transform: scale(1.02);
-      box-shadow: 0 15px 40px rgba(212, 165, 116, 0.15);
+      box-shadow: 0 15px 45px rgba(212, 165, 116, 0.2);
+      position: relative;
+    }
+
+    .price-card.recommended::after {
+      content: 'Được Yêu Thích';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: 6px 20px;
+      font-family: var(--font-tertiary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-radius: 20px;
+      text-transform: uppercase;
     }
 
     .price-card.recommended:hover {
-      transform: scale(1.04) translateY(-10px);
-      box-shadow: 0 30px 60px rgba(212, 165, 116, 0.2);
-    }
-
-    .card-accent {
-      display: none;
+      transform: scale(1.04) translateY(-12px);
+      box-shadow: 0 30px 65px rgba(212, 165, 116, 0.25);
     }
 
     /* ===== PRICE HEADER ===== */
     .price-header {
-      padding: 50px 35px 0;
+      padding: 55px 40px 30px;
       text-align: center;
+      border-bottom: 1px solid var(--color-light-gray);
     }
 
     .price-header h3 {
-      font-family: 'Lora', serif;
-      font-size: 1.8rem;
-      color: var(--dark-green);
+      font-family: var(--font-secondary);
+      font-size: 1.7rem;
+      color: var(--color-darkgreen);
       margin-bottom: 8px;
       font-weight: 700;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.5px;
     }
 
     .price-subtitle {
-      font-family: 'Montserrat', sans-serif;
+      font-family: var(--font-tertiary);
       font-size: 0.95rem;
-      color: var(--accent-gray);
-      margin: 10px 0 25px;
-      font-weight: 400;
+      color: var(--color-gray);
+      margin: 12px 0 20px;
+      font-weight: 300;
       letter-spacing: 0.3px;
     }
 
     .price-range {
-      font-family: 'Lora', serif;
-      font-size: 2.5rem;
+      font-family: var(--font-primary);
+      font-size: 2.8rem;
       font-weight: 700;
-      color: var(--primary-tan);
+      color: var(--color-primary);
       line-height: 1;
       letter-spacing: -1px;
+      margin-bottom: 8px;
     }
 
     /* ===== PRICE BODY - FEATURES LIST ===== */
     .price-body {
-      padding: 40px 35px;
+      padding: 40px 40px;
       flex-grow: 1;
     }
 
@@ -175,13 +225,14 @@
     }
 
     .price-body li {
-      padding: 16px 0 16px 32px;
+      padding: 18px 0 18px 35px;
       position: relative;
-      color: var(--accent-gray);
+      color: var(--color-dark-gray);
       font-size: 1rem;
-      line-height: 1.6;
-      border-bottom: 1px solid #f0ede8;
-      font-weight: 400;
+      line-height: 1.7;
+      border-bottom: 1px solid var(--color-light-gray);
+      font-weight: 300;
+      transition: all 0.3s ease;
     }
 
     .price-body li:last-child {
@@ -190,31 +241,38 @@
     }
 
     .price-body li::before {
-      content: '✓';
+      content: '•';
       position: absolute;
       left: 0;
-      color: var(--primary-tan);
+      color: var(--color-primary);
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .price-card:hover .price-body li {
+      color: var(--color-dark);
     }
 
     /* ===== PRICE FOOTER - BUTTONS ===== */
     .price-footer {
-      padding: 35px;
+      padding: 40px;
       text-align: center;
-      border-top: 1px solid #f0ede8;
     }
 
     .btn {
-      display: inline-block;
-      padding: 14px 48px;
-      font-family: 'Montserrat', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 42px;
+      font-family: var(--font-tertiary);
       font-size: 0.9rem;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
-      border-radius: 50px;
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      border-radius: 8px;
+      transition: var(--transition);
       text-decoration: none;
       border: 2px solid;
       cursor: pointer;
@@ -222,13 +280,13 @@
 
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
     }
 
     .btn-primary {
-      background: var(--dark-green);
-      color: var(--white);
-      border-color: var(--dark-green);
+      background: var(--color-darkgreen);
+      color: var(--color-white);
+      border-color: var(--color-darkgreen);
     }
 
     .btn-primary:hover {
@@ -238,63 +296,64 @@
 
     .btn-secondary {
       background: transparent;
-      color: var(--dark-green);
-      border-color: var(--dark-green);
+      color: var(--color-darkgreen);
+      border-color: var(--color-darkgreen);
     }
 
     .btn-secondary:hover {
-      background: var(--dark-green);
-      color: var(--white);
+      background: var(--color-darkgreen);
+      color: var(--color-white);
     }
 
     .btn-tertiary {
-      background: var(--primary-tan);
-      color: var(--white);
-      border-color: var(--primary-tan);
+      background: var(--color-primary);
+      color: var(--color-white);
+      border-color: var(--color-primary);
     }
 
     .btn-tertiary:hover {
-      background: #be9363;
-      border-color: #be9363;
+      background: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
     }
 
     .detail-link {
       display: block;
-      margin-top: 18px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
+      margin-top: 16px;
+      font-family: var(--font-tertiary);
+      font-size: 0.85rem;
       font-weight: 600;
-      color: var(--dark-green);
+      color: var(--color-darkgreen);
       text-decoration: none;
       letter-spacing: 0.5px;
       transition: all 0.3s ease;
     }
 
     .detail-link:hover {
-      color: var(--primary-tan);
-      letter-spacing: 1px;
+      color: var(--color-primary);
+      transform: translateX(5px);
     }
 
     /* ===== PROCESS SECTION ===== */
     .process-section {
       padding: 100px 40px;
       text-align: center;
-      background: var(--light-bg);
+      background: var(--color-light-cream);
     }
 
     .process-section .section-title {
-      margin-bottom: 10px;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
     }
 
     .process-section .section-subtitle {
-      margin-bottom: 50px;
+      margin-bottom: 55px;
     }
 
     .process-steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 50px;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
@@ -306,27 +365,27 @@
     }
 
     .step-item {
-      padding: 0 20px;
+      padding: 0 15px;
     }
 
     .step-icon {
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       margin-bottom: 25px;
       display: inline-block;
     }
 
     .step-title {
-      font-family: 'Lora', serif;
+      font-family: var(--font-secondary);
       font-size: 1.4rem;
       font-weight: 700;
-      color: var(--dark-green);
-      margin-bottom: 15px;
+      color: var(--color-darkgreen);
+      margin-bottom: 12px;
     }
 
     .step-desc {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      color: var(--accent-gray);
+      font-family: var(--font-tertiary);
+      font-size: 0.95rem;
+      color: var(--color-gray);
       line-height: 1.7;
       font-weight: 300;
     }
@@ -339,143 +398,150 @@
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-      max-width: 1100px;
-      margin: 80px auto;
+      gap: 35px;
+      max-width: 1200px;
+      margin: 100px auto;
       padding: 0 40px;
     }
 
     @media (max-width: 768px) {
       .benefits-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 25px;
         padding: 0 20px;
       }
     }
 
     .benefit-card {
-      padding: 40px;
+      padding: 45px;
       text-align: center;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      background: var(--white);
-      transition: all 0.4s ease;
+      border: 1.5px solid var(--color-border);
+      border-radius: 16px;
+      background: var(--color-white);
+      transition: var(--transition-slow);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
     }
 
     .benefit-card:hover {
-      box-shadow: 0 15px 40px rgba(45, 90, 74, 0.08);
-      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(45, 90, 74, 0.1);
+      transform: translateY(-8px);
+      border-color: var(--color-primary);
     }
 
     .benefit-card h4 {
-      font-family: 'Lora', serif;
-      font-size: 1.4rem;
-      color: var(--dark-green);
-      margin-bottom: 12px;
+      font-family: var(--font-secondary);
+      font-size: 1.5rem;
+      color: var(--color-darkgreen);
+      margin-bottom: 15px;
       font-weight: 700;
     }
 
     .benefit-card p {
-      font-family: 'Montserrat', sans-serif;
+      font-family: var(--font-tertiary);
       font-size: 1rem;
-      color: var(--accent-gray);
-      line-height: 1.6;
+      color: var(--color-gray);
+      line-height: 1.7;
       font-weight: 300;
     }
 
     /* ===== PRICING FOOTER ===== */
     .pricing-footer {
       text-align: center;
-      margin: 80px auto 50px;
-      padding: 60px 40px;
-      max-width: 700px;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      background: var(--white);
+      margin: 100px auto 50px;
+      padding: 60px 50px;
+      max-width: 750px;
+      border: 1.5px solid var(--color-border);
+      border-radius: 16px;
+      background: var(--color-white);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
     }
 
     .footer-content p {
-      font-family: 'Montserrat', sans-serif;
+      font-family: var(--font-tertiary);
       margin: 15px 0;
       font-size: 1rem;
+      color: var(--color-dark);
     }
 
     .footer-content p:first-child {
-      font-size: 1.1rem;
-      color: var(--dark-green);
+      font-size: 1.2rem;
+      color: var(--color-darkgreen);
       font-weight: 600;
       letter-spacing: 0.5px;
     }
 
     .footer-content a {
-      color: var(--primary-tan);
+      color: var(--color-primary);
       text-decoration: none;
       font-weight: 700;
       transition: color 0.3s;
     }
 
     .footer-content a:hover {
-      color: var(--dark-green);
+      color: var(--color-darkgreen);
     }
 
     .footer-content p:last-child {
-      color: #c4bfb9;
+      color: var(--color-gray);
       font-size: 0.9rem;
       margin-top: 20px;
+      font-weight: 300;
     }
 
     /* ===== BACK TO HOME LINK ===== */
     .back-to-home-link {
-      display: inline-block;
-      margin: 40px auto;
-      color: var(--accent-gray);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 50px auto;
+      color: var(--color-gray);
       text-decoration: none;
       font-weight: 500;
-      transition: all 0.3s;
-      font-family: 'Montserrat', sans-serif;
+      transition: var(--transition);
+      font-family: var(--font-tertiary);
       font-size: 1rem;
     }
 
     .back-to-home-link:hover {
-      color: var(--primary-tan);
-      transform: translateX(-5px);
+      color: var(--color-primary);
+      transform: translateX(-8px);
     }
 
     /* ===== FOOTER DIVIDER SECTION ===== */
     .footer-divider-section {
       margin-top: 80px;
-      padding: 60px 40px;
+      padding: 80px 40px;
       text-align: center;
-      background: var(--light-bg);
+      background: var(--color-light-cream);
     }
 
     .divider-line {
       height: 1px;
-      background: var(--border-color);
-      margin: 30px auto;
-      width: 100px;
+      background: var(--color-border);
+      margin: 0 auto 35px;
+      width: 120px;
     }
 
     .footer-divider-content {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
     .divider-subtitle {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      color: var(--accent-gray);
-      letter-spacing: 1px;
+      font-family: var(--font-tertiary);
+      font-size: 0.85rem;
+      color: var(--color-gray);
+      letter-spacing: 1.2px;
       text-transform: uppercase;
-      margin-bottom: 8px;
-      font-weight: 500;
+      margin-bottom: 12px;
+      font-weight: 600;
     }
 
     .divider-title {
-      font-family: 'Lora', serif;
-      font-size: 2rem;
-      color: var(--dark-green);
-      margin-bottom: 35px;
+      font-family: var(--font-primary);
+      font-size: 2.2rem;
+      color: var(--color-darkgreen);
+      margin-bottom: 40px;
       font-weight: 700;
       letter-spacing: -0.5px;
     }
@@ -483,7 +549,7 @@
     .footer-contact-cta {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
@@ -491,14 +557,14 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 24px;
-      border: 2px solid var(--border-color);
+      padding: 14px 28px;
+      border: 2px solid var(--color-border);
       border-radius: 50px;
       text-decoration: none;
-      color: var(--accent-gray);
+      color: var(--color-gray);
       font-weight: 600;
-      font-family: 'Montserrat', sans-serif;
-      transition: all 0.3s ease;
+      font-family: var(--font-tertiary);
+      transition: var(--transition);
       font-size: 0.95rem;
     }
 
@@ -507,43 +573,22 @@
     }
 
     .contact-link:hover {
-      border-color: var(--primary-tan);
-      color: var(--primary-tan);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(212, 165, 116, 0.15);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(212, 165, 116, 0.2);
     }
 
     .contact-link.primary {
-      background: var(--dark-green);
-      color: var(--white);
-      border-color: var(--dark-green);
+      background: var(--color-darkgreen);
+      color: var(--color-white);
+      border-color: var(--color-darkgreen);
     }
 
     .contact-link.primary:hover {
       background: #1e3f38;
       border-color: #1e3f38;
-      box-shadow: 0 8px 20px rgba(45, 90, 74, 0.2);
-    }
-
-    @media (max-width: 768px) {
-      .footer-divider-section {
-        padding: 50px 20px;
-        margin-top: 60px;
-      }
-
-      .divider-title {
-        font-size: 1.5rem;
-        margin-bottom: 25px;
-      }
-
-      .footer-contact-cta {
-        gap: 15px;
-      }
-
-      .contact-link {
-        padding: 10px 18px;
-        font-size: 0.9rem;
-      }
+      box-shadow: 0 10px 30px rgba(45, 90, 74, 0.25);
     }
 
     /* ===== RESPONSIVE ADJUSTMENTS ===== */
@@ -552,20 +597,26 @@
         padding: 80px 20px 60px;
       }
 
+      .pricing-hero::before {
+        width: 300px;
+        height: 300px;
+        right: -15%;
+      }
+
       .pricing-packages {
         padding: 0 20px;
       }
 
       .price-header {
-        padding: 40px 25px 0;
+        padding: 40px 30px 25px;
       }
 
       .price-body {
-        padding: 30px 25px;
+        padding: 30px 30px;
       }
 
       .price-footer {
-        padding: 25px;
+        padding: 30px 25px;
       }
 
       .process-section {
@@ -573,13 +624,66 @@
       }
 
       .benefits-grid {
-        margin: 60px auto;
+        margin: 80px auto;
         padding: 0 20px;
       }
 
       .pricing-footer {
-        padding: 40px 25px;
-        margin: 60px 20px 40px;
+        padding: 40px 30px;
+        margin: 80px 20px 50px;
+      }
+
+      .footer-divider-section {
+        padding: 60px 20px;
+      }
+
+      .divider-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+      }
+
+      .footer-contact-cta {
+        gap: 12px;
+      }
+
+      .contact-link {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+
+      .section-subtitle {
+        font-size: 0.95rem;
+      }
+
+      .pricing-packages {
+        gap: 20px;
+      }
+
+      .price-header h3 {
+        font-size: 1.4rem;
+      }
+
+      .price-range {
+        font-size: 2.2rem;
+      }
+
+      .benefit-card {
+        padding: 30px 20px;
+      }
+
+      .process-steps {
+        gap: 30px;
+      }
+
+      .step-icon {
+        font-size: 2.8rem;
       }
     }
   </style>
@@ -686,12 +790,13 @@
 
   <section class="pricing-hero">
     <div class="pricing-intro">
-      <h1 class="section-title" data-aos="fade-down">Bảng Giá 2026</h1>
+      <span class="divider-subtitle" data-aos="fade-down" style="display: block; margin-bottom: 15px;">Bảng Giá Dịch Vụ</span>
+      <h1 class="section-title" data-aos="fade-down">Gói Chụp Ảnh 2026</h1>
       <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
         Mỗi khung hình là một tác phẩm sáng tạo. Chúng tôi mang đến các gói dịch vụ được thiết kế tinh tế, phù hợp với từng câu chuyện độc đáo của bạn.
       </p>
       <div class="gold-line" data-aos="zoom-in" data-aos-delay="200"></div>
-    </div>
+      </div>
 
     <!-- Pricing Packages Grid -->
     <div class="pricing-packages" data-aos="fade-up" data-aos-delay="300">
@@ -701,21 +806,22 @@
         <div class="price-card standard recommended">
           <div class="card-accent"></div>
           <div class="price-header">
-            <h3>Studio Pre-Wedding</h3>
-            <p class="price-subtitle">Album cưới tinh tế kiểu Hàn Quốc</p>
-            <div class="price-range">Từ 3.5 triệu</div>
+            <h3>Album Ảnh Cưới Studio</h3>
+            <p class="price-subtitle">Phong cách Hàn Quốc tinh tế</p>
+            <div class="price-range">3.5 - 8 Triệu ₫</div>
           </div>
           <div class="price-body">
             <ul>
-              <li>Phong cách Hàn Quốc sang trọng</li>
-              <li>Trang phục cưới & phụ kiện</li>
+              <li>Phong cách Hàn Quốc sang trọng & tự nhiên</li>
+              <li>Hỗ trợ chọn lựa trang phục & phụ kiện</li>
               <li>Makeup & styling chuyên nghiệp</li>
-              <li>Album Photobook cao cấp</li>            
+              <li>Chỉnh sửa màu sắc tinh tế</li>
+              <li>Album Photobook cao cấp bìa da</li>            
             </ul>
           </div>
           <div class="price-footer">
-            <a href="booking.html?package=studio" class="btn btn-primary">Giữ lịch chụp</a>
-            <a href="pcuoi.html" class="detail-link">Xem chi tiết gói →</a>
+            <a href="booking.html?package=studio" class="btn btn-primary">Đặt Lịch Ngay</a>
+            <a href="pcuoi.html" class="detail-link">Xem chi tiết →</a>
           </div>
         </div>
       </div>
@@ -727,19 +833,20 @@
           <div class="price-header">
             <h3>Khoảnh Khắc Gia Đình</h3>
             <p class="price-subtitle">Ghi dấu yêu thương gia đình</p>
-            <div class="price-range">Từ 1.5 triệu</div>          
+            <div class="price-range">1.5 - 4 Triệu ₫</div>          
           </div>
           <div class="price-body">
             <ul>
-              <li>Ghi dấu khoảnh khắc sum vầy</li>
-              <li>Không gian studio ấm cúng</li>
-              <li>Thoải mái cho bé & gia đình</li>
-              <li>Sản phẩm in ấn bền đẹp</li>
+              <li>Ghi lại khoảnh khắc ấm cúng sum vầy</li>
+              <li>Không gian studio thoải mái cho mọi tuổi</li>
+              <li>Phong cách tự nhiên & gần gũi</li>
+              <li>In ấn bền đẹp trên giấy chất lượng</li>
+              <li>Lưu trữ kỷ niệm đặc biệt suốt đời</li>
             </ul>
           </div>
           <div class="price-footer">
-            <a href="booking.html?package=family" class="btn btn-secondary">Giữ lịch chụp</a>
-            <a href="pgiadinh.html" class="detail-link" style="color: var(--deep-green);">Xem chi tiết gói →</a>
+            <a href="booking.html?package=family" class="btn btn-secondary">Đặt Lịch Ngay</a>
+            <a href="pgiadinh.html" class="detail-link">Xem chi tiết →</a>
           </div>
         </div>
       </div>
@@ -751,18 +858,19 @@
           <div class="price-header">
             <h3>Trang Điểm Cô Dâu</h3>
             <p class="price-subtitle">Tôn vinh vẻ đẹp tự nhiên</p>
-            <div class="price-range">Từ 1.5 triệu</div>
+            <div class="price-range">1.5 - 3 Triệu ₫</div>
           </div>
           <div class="price-body">
             <ul>
-              <li>Lớp nền mỏng nhẹ, tự nhiên</li>
-              <li>Tư vấn layout phù hợp gương mặt</li>
-              <li>Mỹ phẩm chính hãng an toàn</li>
-              <li>Giữ tone bền đẹp suốt tiệc</li>            
+              <li>Tư vấn layout & tone makeup phù hợp</li>
+              <li>Lớp nền mỏng nhẹ tự nhiên & bền</li>
+              <li>Mỹ phẩm chính hãng an toàn cho da</li>
+              <li>Giữ tone đẹp suốt ngày tiệc & chụp ảnh</li>
+              <li>Hỗ trợ chọn kiểu tóc hợp khuôn mặt</li>            
             </ul>
           </div>
           <div class="price-footer">
-            <a href="https://zalo.me/0976839250" class="btn btn-tertiary">Tư vấn ngay</a>
+            <a href="https://zalo.me/0976839250" class="btn btn-tertiary">Tư Vấn Ngay</a>
           </div>
         </div>
       </div>
@@ -772,20 +880,22 @@
         <div class="price-card premium">
           <div class="card-accent"></div>
           <div class="price-header">
-            <h3>Ngày Trọn Vẹn</h3>
+            <h3>Phóng Sự Ngày Trọn Vẹn</h3>
             <p class="price-subtitle">Bắt trọn mọi cảm xúc chân thật</p>
-            <div class="price-range">Từ 2.5 triệu</div>
+            <div class="price-range">2.5 - 5 Triệu ₫</div>
           </div>
           <div class="price-body">
             <ul>
-              <li>Bắt trọn cảm xúc chân thật</li>
-              <li>Góc máy phóng sự kể chuyện</li>
-              <li>Chỉnh sửa màu sắc chỉn chu</li>
-              <li>Lưu giữ trọn vẹn ngày vui</li>
+              <li>Bắt trọn từng khoảnh khắc cảm xúc chân thật</li>
+              <li>Góc máy phóng sự kể chuyện chuyên nghiệp</li>
+              <li>Chỉnh sửa ánh sáng & màu sắc chỉn chu</li>
+              <li>Phim quay 4K lưu giữ nguyên vẹn</li>
+              <li>Deliver đầy đủ ảnh & video chất lượng cao</li>
             </ul>
           </div>
           <div class="price-footer">
-            <a href="booking.html?package=event" class="btn btn-secondary">Giữ lịch chụp</a>
+            <a href="booking.html?package=event" class="btn btn-secondary">Đặt Lịch Ngay</a>
+            <a href="#" class="detail-link">Xem chi tiết →</a>
           </div>
         </div>
       </div>
@@ -794,24 +904,26 @@
 
   <!-- Process Section -->
   <section class="process-section" data-aos="fade-up">
-    <h2 class="section-title" style="font-size: 32px; margin-bottom: 8px;">Quy Trình Đơn Giản</h2>
-    <p class="section-subtitle" style="margin-bottom: 0;">Để bạn thoải mái tận hưởng buổi chụp</p>
-    
-    <div class="process-steps">
-      <div class="step-item">
-        <div class="step-icon">💬</div>
-        <h3 class="step-title">Trao Đổi & Chọn Gói</h3>
-        <p class="step-desc">Cùng trò chuyện để chọn gói chụp phù hợp nhất với bạn.</p>
-      </div>
-      <div class="step-item">
-        <div class="step-icon">📸</div>
-        <h3 class="step-title">Giữ Khoảnh Khắc</h3>
-        <p class="step-desc">Ekip sẽ đồng hành để bạn là chính mình và thoải mái nhất.</p>
-      </div>
-      <div class="step-item">
-        <div class="step-icon">🎁</div>
-        <h3 class="step-title">Nhận Thành Phẩm</h3>
-        <p class="step-desc">Bản chỉnh sửa và album hoàn thiện được gửi tận tay bạn.</p>
+    <div class="container">
+      <h2 class="section-title">Quy Trình Đơn Giản</h2>
+      <p class="section-subtitle">Để bạn thoải mái tận hưởng buổi chụp ảnh</p>
+      
+      <div class="process-steps">
+        <div class="step-item">
+          <div class="step-icon">📋</div>
+          <h3 class="step-title">Trao Đổi & Tư Vấn</h3>
+          <p class="step-desc">Nói chuyện để hiểu rõ nhu cầu, phong cách bạn yêu thích và chọn gói dịch vụ phù hợp nhất.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-icon">📸</div>
+          <h3 class="step-title">Giữ Lấy Khoảnh Khắc</h3>
+          <p class="step-desc">Ekip nhiếp ảnh & makeup chuyên nghiệp đồng hành, giúp bạn thoải mái và là chính mình.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-icon">🎁</div>
+          <h3 class="step-title">Nhận Thành Phẩm</h3>
+          <p class="step-desc">Bản chỉnh sửa đẹp và album hoàn thiện được gửi tận tay kèm các tệp ảnh chất lượng cao.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -820,44 +932,46 @@
   <section class="pricing-benefits">
     <div class="benefits-grid">
       <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
-        <h4>Linh Hoạt</h4>
-        <p>Thiết kế gói chụp theo nhu cầu riêng của bạn</p>
+        <h4>💎 Chất Lượng Cao</h4>
+        <p>Công nghệ chụp ảnh hiện đại, chỉnh sửa chuyên nghiệp, album in ấn hạng nhất</p>
       </div>
       <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
-        <h4>Tri Ân</h4>
-        <p>Ưu đãi đặc biệt dành cho khách hàng đặt lịch sớm</p>
+        <h4>🎯 Linh Hoạt</h4>
+        <p>Thiết kế gói chụp theo từng nhu cầu riêng, không bắt buộc gói cố định</p>
       </div>
       <div class="benefit-card" data-aos="fade-up" data-aos-delay="400">
-        <h4>Hoàn Hảo</h4>
-        <p>Album & chất liệu in ấn hiện đại nhất</p>
+        <h4>💚 Tâm Huyết</h4>
+        <p>Đội ngũ lắng nghe, tư vấn giải pháp tốt nhất cho ảnh đẹp nhất của bạn</p>
       </div>
       <div class="benefit-card" data-aos="fade-up" data-aos-delay="500">
-        <h4>Tận Tâm</h4>
-        <p>Luôn lắng nghe & tư vấn giải pháp tốt nhất</p>
+        <h4>✨ Đặc Biệt</h4>
+        <p>Ưu đãi riêng cho tân thành viên, khách tái lai & đặt lịch theo mùa</p>
       </div>
     </div>
 
     <div class="pricing-footer" data-aos="fade-up">
       <div class="footer-content">
-        <p style="margin-bottom: 16px; font-size: 17px; color: var(--deep-green); font-weight: 600;">Bắt đầu hành trình của bạn</p>
+        <p style="margin-bottom: 14px;">Sẵn sàng bắt đầu hành trình của bạn?</p>
         <p>
-          <a href="tel:0379031662" style="font-size: 18px; color: var(--deep-green); text-decoration: none; font-weight: 600;">0379 031 662</a> — Hotline / Zalo
+          <a href="tel:0379031662">☎️ 0379 031 662</a>
+          <span style="margin: 0 12px; color: var(--color-gray);">|</span>
+          <a href="https://zalo.me/0379031662">💬 Zalo Chat</a>
         </p>
-        <p style="margin-top: 16px; font-size: 13px; color: #bbb;">Kool D. Studio</p>
+        <p style="margin-top: 18px; font-size: 0.9rem;">Kool D. Studio — Lưu giữ ký ức, trao đi yêu thương</p>
       </div>
     </div>
   </section>
 
-  <div style="text-align:center;margin:40px 0;">
-    <a href="../index.html" class="back-to-home-link">← Quay lại Trang chủ</a>
+  <div style="text-align:center;margin:60px 0;">
+    <a href="index.html" class="back-to-home-link">← Quay lại Trang Chủ</a>
   </div>
 
   <!-- Footer Divider Section -->
   <section class="footer-divider-section">
     <div class="divider-line"></div>
     <div class="footer-divider-content">
-      <p class="divider-subtitle">Cần tư vấn hoặc đặt lịch?</p>
-      <h3 class="divider-title">Liên Hệ Chúng Tôi</h3>
+      <p class="divider-subtitle">Cần tư vấn hoặc có thắc mắc?</p>
+      <h3 class="divider-title">Hãy Liên Hệ Với Chúng Tôi Ngay</h3>
       <div class="footer-contact-cta">
         <a href="tel:0379031662" class="contact-link">
           <i class="fas fa-phone"></i>
@@ -865,10 +979,10 @@
         </a>
         <a href="https://zalo.me/0379031662" class="contact-link">
           <i class="fas fa-comment"></i>
-          <span>Zalo</span>
+          <span>Nhắn Zalo</span>
         </a>
         <a href="booking.html" class="contact-link primary">
-          <i class="fas fa-calendar"></i>
+          <i class="fas fa-calendar-check"></i>
           <span>Đặt Lịch Ngay</span>
         </a>
       </div>

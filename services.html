@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dịch Vụ & Báo Giá Chuyên Nghiệp | Kool D. Studio</title>
+  <meta name="description" content="Khám phá dịch vụ chụp ảnh cưới, gia đình, trang điểm, sự kiện tại Kool D. Studio. Báo giá linh hoạt, tùy chỉnh gói chụp theo nhu cầu của bạn.">
+  <meta name="keywords" content="báo giá chụp ảnh, dịch vụ nhiếp ảnh, kool d studio, chụp ảnh cưới, ảnh gia đình, trang điểm">
+  
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  
+  <link rel="stylesheet" href="assets/css/home-elegant.css">
+  <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
+
+  <style>
+    /* ===== ROOT VARIABLES ===== */
+    :root {
+      --color-primary: #d4a574;
+      --color-primary-dark: #b8956a;
+      --color-primary-light: #ddb892;
+      --color-darkgreen: #2d5a4a;
+      --color-darkgreen-light: #3d7a5f;
+      --color-white: #ffffff;
+      --color-light-cream: #faf7f2;
+      --color-light-gray: #f5f3f0;
+      --color-gray: #8b8680;
+      --color-dark-gray: #4a4a48;
+      --color-dark: #2a2a28;
+      --color-border: #e0dbd6;
+      
+      --font-primary: 'Playfair Display', serif;
+      --font-secondary: 'Lora', serif;
+      --font-tertiary: 'Montserrat', sans-serif;
+      
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-slow: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .services-hero {
+      padding: 100px 40px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--color-white) 0%, var(--color-light-cream) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .services-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-family: var(--font-primary);
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      color: var(--color-darkgreen);
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      font-family: var(--font-tertiary);
+      font-size: 1.1rem;
+      color: var(--color-gray);
+      line-height: 1.8;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      margin-bottom: 30px;
+    }
+
+    .gold-line {
+      height: 3px;
+      width: 80px;
+      background: var(--color-primary);
+      margin: 0 auto 40px;
+      border-radius: 2px;
+    }
+
+    /* ===== TABS SECTION ===== */
+    .service-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tab-btn {
+      padding: 14px 32px;
+      background: var(--color-white);
+      border: 2px solid var(--color-border);
+      border-radius: 50px;
+      font-family: var(--font-tertiary);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+
+    .tab-btn.active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: var(--color-white);
+      box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+    }
+
+    /* ===== CONTENT SECTION ===== */
+    .services-content {
+      max-width: 1200px;
+      margin: 80px auto 0;
+      padding: 0 40px;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== PRICING CALCULATOR ===== */
+    .calculator-section {
+      background: var(--color-white);
+      border: 1.5px solid var(--color-border);
+      border-radius: 16px;
+      padding: 50px 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 60px;
+    }
+
+    .calculator-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .calculator-title {
+      font-family: var(--font-secondary);
+      font-size: 2rem;
+      color: var(--color-darkgreen);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .calculator-subtitle {
+      font-family: var(--font-tertiary);
+      font-size: 1rem;
+      color: var(--color-gray);
+      font-weight: 300;
+    }
+
+    /* ===== OPTIONS GRID ===== */
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .option-group {
+      padding: 30px;
+      background: var(--color-light-cream);
+      border-radius: 12px;
+      border: 1px solid var(--color-light-gray);
+    }
+
+    .option-label {
+      font-family: var(--font-secondary);
+      font-size: 1.1rem;
+      color: var(--color-darkgreen);
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .option-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .option-item:hover {
+      background: var(--color-white);
+    }
+
+    .option-item input[type="checkbox"],
+    .option-item input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--color-primary);
+    }
+
+    .option-text {
+      flex: 1;
+      font-family: var(--font-tertiary);
+      font-size: 0.95rem;
+      color: var(--color-dark);
+      font-weight: 400;
+    }
+
+    .option-price {
+      font-family: var(--font-secondary);
+      font-size: 1rem;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    /* ===== SLIDERS ===== */
+    .slider-group {
+      padding: 30px;
+      background: var(--color-light-cream);
+      border-radius: 12px;
+      border: 1px solid var(--color-light-gray);
+    }
+
+    .slider-label {
+      font-family: var(--font-secondary);
+      font-size: 1.1rem;
+      color: var(--color-darkgreen);
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slider-value {
+      font-family: var(--font-primary);
+      font-size: 1.3rem;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .slider-hint {
+      font-family: var(--font-tertiary);
+      font-size: 0.85rem;
+      color: var(--color-gray);
+      margin-top: 12px;
+      font-weight: 300;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--color-border);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      margin-top: 16px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(212, 165, 116, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+      box-shadow: 0 4px 12px rgba(212, 165, 116, 0.6);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 8px rgba(212, 165, 116, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    /* ===== SUMMARY SECTION ===== */
+    .calculator-summary {
+      background: linear-gradient(135deg, var(--color-light-cream) 0%, var(--color-white) 100%);
+      border: 2px solid var(--color-primary);
+      border-radius: 16px;
+      padding: 40px;
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .summary-label {
+      font-family: var(--font-tertiary);
+      font-size: 0.95rem;
+      color: var(--color-gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .summary-price {
+      font-family: var(--font-primary);
+      font-size: 3rem;
+      color: var(--color-primary);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .summary-description {
+      font-family: var(--font-tertiary);
+      font-size: 0.95rem;
+      color: var(--color-gray);
+      margin-bottom: 30px;
+    }
+
+    .summary-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .summary-item {
+      padding: 10px 20px;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+      font-family: var(--font-tertiary);
+      font-size: 0.9rem;
+      color: var(--color-dark);
+      font-weight: 500;
+    }
+
+    /* ===== CTA BUTTONS ===== */
+    .calculator-cta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 40px;
+      font-family: var(--font-tertiary);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-radius: 8px;
+      transition: var(--transition);
+      text-decoration: none;
+      border: 2px solid;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary {
+      background: var(--color-darkgreen);
+      color: var(--color-white);
+      border-color: var(--color-darkgreen);
+    }
+
+    .btn-primary:hover {
+      background: #1e3f38;
+      border-color: #1e3f38;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-darkgreen);
+      border-color: var(--color-darkgreen);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-darkgreen);
+      color: var(--color-white);
+    }
+
+    /* ===== PROCESS SECTION ===== */
+    .process-section {
+      padding: 100px 40px;
+      text-align: center;
+      background: var(--color-light-cream);
+      margin-top: 100px;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+      max-width: 1200px;
+      margin: 60px auto 0;
+    }
+
+    .step-item {
+      padding: 0 15px;
+    }
+
+    .step-icon {
+      font-size: 3.2rem;
+      margin-bottom: 25px;
+      display: inline-block;
+    }
+
+    .step-title {
+      font-family: var(--font-secondary);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--color-darkgreen);
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-family: var(--font-tertiary);
+      font-size: 0.95rem;
+      color: var(--color-gray);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ===== BENEFITS SECTION ===== */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 35px;
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 0 40px;
+    }
+
+    .benefit-card {
+      padding: 45px;
+      text-align: center;
+      border: 1.5px solid var(--color-border);
+      border-radius: 16px;
+      background: var(--color-white);
+      transition: var(--transition-slow);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    }
+
+    .benefit-card:hover {
+      box-shadow: 0 15px 40px rgba(45, 90, 74, 0.1);
+      transform: translateY(-8px);
+      border-color: var(--color-primary);
+    }
+
+    .benefit-card h4 {
+      font-family: var(--font-secondary);
+      font-size: 1.5rem;
+      color: var(--color-darkgreen);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .benefit-card p {
+      font-family: var(--font-tertiary);
+      font-size: 1rem;
+      color: var(--color-gray);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ===== FAQ SECTION ===== */
+    .faq-section {
+      padding: 100px 40px;
+      text-align: center;
+    }
+
+    .faq-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 60px auto 0;
+    }
+
+    .faq-item {
+      text-align: left;
+      padding: 30px;
+      background: var(--color-light-cream);
+      border-radius: 12px;
+      border: 1px solid var(--color-light-gray);
+      transition: var(--transition);
+    }
+
+    .faq-item:hover {
+      background: var(--color-white);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+
+    .faq-icon {
+      background: var(--color-primary);
+      color: var(--color-white);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .faq-question h3 {
+      font-family: var(--font-secondary);
+      font-size: 1.1rem;
+      color: var(--color-darkgreen);
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .faq-answer {
+      display: none;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .faq-answer.active {
+      display: block;
+    }
+
+    .faq-answer p {
+      font-family: var(--font-tertiary);
+      font-size: 0.95rem;
+      color: var(--color-gray);
+      line-height: 1.7;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    /* ===== TESTIMONIALS SECTION ===== */
+    .testimonials-section {
+      padding: 100px 40px;
+      text-align: center;
+      background: var(--color-light-cream);
+    }
+
+    .testimonials-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 60px auto 0;
+    }
+
+    .testimonial-card {
+      background: var(--color-white);
+      padding: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+      transition: var(--transition-slow);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-stars {
+      color: var(--color-primary);
+      font-size: 1rem;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-text {
+      font-family: var(--font-tertiary);
+      font-size: 0.95rem;
+      color: var(--color-gray);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .testimonial-author {
+      text-align: center;
+      border-top: 1px solid var(--color-light-gray);
+      padding-top: 20px;
+    }
+
+    .testimonial-author strong {
+      font-family: var(--font-secondary);
+      font-size: 1rem;
+      color: var(--color-darkgreen);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .testimonial-author span {
+      font-family: var(--font-tertiary);
+      font-size: 0.9rem;
+      color: var(--color-gray);
+      font-weight: 300;
+    }
+
+    /* ===== FOOTER CTA ===== */
+    .footer-cta-section {
+      padding: 80px 40px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--color-light-cream) 0%, var(--color-white) 100%);
+    }
+
+    .footer-cta-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .divider-line {
+      height: 1px;
+      background: var(--color-border);
+      margin: 0 auto 35px;
+      width: 120px;
+    }
+
+    .divider-subtitle {
+      font-family: var(--font-tertiary);
+      font-size: 0.85rem;
+      color: var(--color-gray);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .divider-title {
+      font-family: var(--font-primary);
+      font-size: 2rem;
+      color: var(--color-darkgreen);
+      margin-bottom: 35px;
+      font-weight: 700;
+    }
+
+    .footer-contact-cta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border: 2px solid var(--color-border);
+      border-radius: 50px;
+      text-decoration: none;
+      color: var(--color-gray);
+      font-weight: 600;
+      font-family: var(--font-tertiary);
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .contact-link i {
+      font-size: 1.1rem;
+    }
+
+    .contact-link:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(212, 165, 116, 0.2);
+    }
+
+    .contact-link.primary {
+      background: var(--color-darkgreen);
+      color: var(--color-white);
+      border-color: var(--color-darkgreen);
+    }
+
+    .contact-link.primary:hover {
+      background: #1e3f38;
+      border-color: #1e3f38;
+      box-shadow: 0 10px 30px rgba(45, 90, 74, 0.25);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .services-intro {
+        margin-bottom: 40px;
+      }
+
+      .service-tabs {
+        gap: 12px;
+      }
+
+      .tab-btn {
+        padding: 12px 24px;
+        font-size: 0.85rem;
+      }
+
+      .options-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .faq-container {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .services-hero {
+        padding: 80px 20px;
+      }
+
+      .services-content {
+        padding: 0 20px;
+      }
+
+      .calculator-section {
+        padding: 30px 20px;
+      }
+
+      .calculator-title {
+        font-size: 1.5rem;
+      }
+
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .option-group {
+        padding: 20px;
+      }
+
+      .summary-price {
+        font-size: 2.2rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .process-section {
+        padding: 60px 20px;
+      }
+
+      .faq-section {
+        padding: 60px 20px;
+      }
+
+      .testimonials-section {
+        padding: 60px 20px;
+      }
+
+      .testimonials-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-cta-section {
+        padding: 60px 20px;
+      }
+
+      .divider-title {
+        font-size: 1.5rem;
+      }
+
+      .footer-contact-cta {
+        gap: 12px;
+      }
+
+      .contact-link {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .services-hero {
+        padding: 60px 16px;
+      }
+
+      .service-tabs {
+        gap: 8px;
+      }
+
+      .tab-btn {
+        padding: 10px 16px;
+        font-size: 0.75rem;
+        flex: 1;
+        min-width: 80px;
+      }
+
+      .calculator-section {
+        padding: 20px 16px;
+      }
+
+      .option-group,
+      .slider-group {
+        padding: 16px;
+      }
+
+      .calculator-cta {
+        gap: 10px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: 0.85rem;
+        flex: 1;
+      }
+
+      .summary-price {
+        font-size: 1.8rem;
+      }
+
+      .summary-items {
+        gap: 10px;
+      }
+
+      .summary-item {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Template Container -->
+<div id="header-container"></div>
+
+<!-- HERO & TABS SECTION -->
+<section class="services-hero" data-aos="fade-up">
+  <div class="services-intro">
+    <span class="divider-subtitle" data-aos="fade-down" style="display: block; margin-bottom: 15px;">Dịch Vụ & Báo Giá</span>
+    <h1 class="section-title" data-aos="fade-down">Gói Chụp Ảnh 2026</h1>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+      Mỗi khung hình là một tác phẩm sáng tạo. Chọn gói dịch vụ phù hợp, tùy chỉnh chi tiết, tính giá trực tiếp.
+    </p>
+    <div class="gold-line" data-aos="zoom-in" data-aos-delay="200"></div>
+  </div>
+
+  <!-- TAB BUTTONS -->
+  <div class="service-tabs" data-aos="fade-up" data-aos-delay="300">
+    <button class="tab-btn active" data-tab="studio">
+      <i class="fas fa-ring"></i> Ảnh Cưới Studio
+    </button>
+    <button class="tab-btn" data-tab="family">
+      <i class="fas fa-home"></i> Gia Đình
+    </button>
+    <button class="tab-btn" data-tab="makeup">
+      <i class="fas fa-wand-magic-sparkles"></i> Trang Điểm
+    </button>
+    <button class="tab-btn" data-tab="event">
+      <i class="fas fa-camera"></i> Sự Kiện
+    </button>
+  </div>
+</section>
+
+<!-- CONTENT SECTION -->
+<div class="services-content">
+  
+  <!-- TAB 1: STUDIO WEDDING -->
+  <div class="tab-content active" id="studio-content" data-aos="fade-up">
+    <div class="calculator-section">
+      <div class="calculator-header">
+        <h2 class="calculator-title">Album Ảnh Cưới Studio</h2>
+        <p class="calculator-subtitle">Xây dựng gói chụp ảnh cưới hoàn hảo của bạn</p>
+      </div>
+
+      <div class="options-grid">
+        <!-- OUTFIT -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-shirt"></i> Trang Phục</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="radio" name="studio-outfit" value="2-2" data-price="0" checked>
+              <span class="option-text">02 Váy cưới, 02 Vest</span>
+              <span class="option-price">Cơ bản</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="studio-outfit" value="3-3" data-price="500">
+              <span class="option-text">03 Váy cưới, 03 Vest</span>
+              <span class="option-price">+500k</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="studio-outfit" value="4-4" data-price="1000">
+              <span class="option-text">04 Váy cưới, 04 Vest</span>
+              <span class="option-price">+1.000k</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- CASUAL OUTFIT -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-vest-patches"></i> Trang Phục Tự Do</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="checkbox" name="studio-casual" value="casual" data-price="0">
+              <span class="option-text">Chụp với trang phục tự chọn</span>
+              <span class="option-price">Cơ bản</span>
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="studio-casual-2" value="casual-2" data-price="500">
+              <span class="option-text">Thêm 01 bộ trang phục khác</span>
+              <span class="option-price">+500k</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- RETOUCHING -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-wand-magic-sparkles"></i> Chỉnh Sửa Ảnh</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="radio" name="studio-retouch" value="12" data-price="0" checked>
+              <span class="option-text">12 ảnh chỉnh sửa chi tiết</span>
+              <span class="option-price">Cơ bản</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="studio-retouch" value="20" data-price="500">
+              <span class="option-text">20 ảnh chỉnh sửa chi tiết</span>
+              <span class="option-price">+500k</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- PRINTS -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-image"></i> Ảnh In Lớn</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="radio" name="studio-prints" value="2" data-price="0" checked>
+              <span class="option-text">02 ảnh 60x90cm</span>
+              <span class="option-price">Cơ bản</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="studio-prints" value="3" data-price="1000">
+              <span class="option-text">03 ảnh 60x90cm</span>
+              <span class="option-price">+1.000k</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ALBUM -->
+        <div class="option-group">
+          <div class="option-label">📖 Album Photobook</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="checkbox" name="studio-album" value="album" data-price="2000">
+              <span class="option-text">Album 20 trang, 25 ảnh</span>
+              <span class="option-price">+2.000k</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- SLIDESHOW -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-video"></i> Video/Slideshow</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="checkbox" name="studio-slideshow" value="slideshow" data-price="500">
+              <span class="option-text">Video slideshow trình chiếu</span>
+              <span class="option-price">+500k</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="calculator-summary">
+        <div class="summary-label">Tổng Giá Dự Kiến</div>
+        <div class="summary-price" id="studio-price">3.500k</div>
+        <div class="summary-description">Giá bao gồm makeup, làm tóc chuyên nghiệp và toàn bộ file ảnh gốc</div>
+        <div class="summary-items" id="studio-items"></div>
+        <div class="calculator-cta">
+          <a href="booking.html?package=studio" class="btn btn-primary">
+            <i class="fas fa-calendar"></i> Đặt Lịch Ngay
+          </a>
+          <a href="https://zalo.me/0379031662" class="btn btn-secondary">
+            <i class="fas fa-comments"></i> Tư Vấn Zalo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: FAMILY -->
+  <div class="tab-content" id="family-content" data-aos="fade-up">
+    <div class="calculator-section">
+      <div class="calculator-header">
+        <h2 class="calculator-title">Khoảnh Khắc Gia Đình</h2>
+        <p class="calculator-subtitle">Tùy chỉnh gói chụp theo kích cỡ gia đình của bạn</p>
+      </div>
+
+      <div class="options-grid">
+        <!-- MEMBERS SLIDER -->
+        <div class="slider-group" style="grid-column: 1">
+          <div class="slider-label">
+            <span><i class="fas fa-users"></i> Số Thành Viên</span>
+            <span class="slider-value" id="family-members">3</span>
+          </div>
+          <input type="range" id="family-members-slider" min="1" max="15" value="3" data-base-price="1500" data-per-person="300">
+          <p class="slider-hint" id="family-members-hint">Gia đình nhỏ ấm cúng</p>
+        </div>
+
+        <!-- MAKEUP SLIDER -->
+        <div class="slider-group" style="grid-column: 2">
+          <div class="slider-label">
+            <span><i class="fas fa-wand-magic-sparkles"></i> Makeup & Tóc</span>
+            <span class="slider-value" id="family-makeup">1</span>
+          </div>
+          <input type="range" id="family-makeup-slider" min="0" max="4" value="1" data-price-per="400">
+          <p class="slider-hint" id="family-makeup-hint">Miễn phí cho 01 người đầu</p>
+        </div>
+
+        <!-- ALBUM -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-book"></i> Album Photobook</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="checkbox" name="family-album" value="album" data-price="1500">
+              <span class="option-text">Album 20 trang, lưu kỷ niệm</span>
+              <span class="option-price">+1.500k</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- PRINTS -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-image"></i> Ảnh Phóng Lớn</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="checkbox" name="family-prints" value="prints" data-price="800">
+              <span class="option-text">01 ảnh gỗ pha lê 60x90cm</span>
+              <span class="option-price">+800k</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="calculator-summary">
+        <div class="summary-label">Tổng Giá Dự Kiến</div>
+        <div class="summary-price" id="family-price">1.500k</div>
+        <div class="summary-description">15 ảnh chỉnh sửa chi tiết + toàn bộ file gốc</div>
+        <div class="summary-items" id="family-items"></div>
+        <div class="calculator-cta">
+          <a href="booking.html?package=family" class="btn btn-primary">
+            <i class="fas fa-calendar"></i> Đặt Lịch Ngay
+          </a>
+          <a href="https://zalo.me/0379031662" class="btn btn-secondary">
+            <i class="fas fa-comments"></i> Tư Vấn Zalo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: MAKEUP -->
+  <div class="tab-content" id="makeup-content" data-aos="fade-up">
+    <div class="calculator-section">
+      <div class="calculator-header">
+        <h2 class="calculator-title">Dịch Vụ Trang Điểm Cô Dâu</h2>
+        <p class="calculator-subtitle">Tôn vinh vẻ đẹp tự nhiên của bạn</p>
+      </div>
+
+      <div class="options-grid">
+        <!-- MAKEUP TYPE -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-wand-magic-sparkles"></i> Loại Makeup</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="radio" name="makeup-type" value="base" data-price="1500" checked>
+              <span class="option-text">Gói Cơ Bản - Tự Nhiên</span>
+              <span class="option-price">1.500k</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="makeup-type" value="premium" data-price="2000">
+              <span class="option-text">Gói Premium - Sang Trọng</span>
+              <span class="option-price">2.000k</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="makeup-type" value="luxury" data-price="3000">
+              <span class="option-text">Gói Luxury - Hoàn Hảo</span>
+              <span class="option-price">3.000k</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- HAIR -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-spa"></i> Làm Tóc</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="radio" name="makeup-hair" value="none" data-price="0" checked>
+              <span class="option-text">Hiệp màu trình chỉnh sửa</span>
+              <span class="option-price">Cơ bản</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="makeup-hair" value="style" data-price="300">
+              <span class="option-text">Tạo kiểu tóc chuyên nghiệp</span>
+              <span class="option-price">+300k</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- TOUCH UP -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-star"></i> Dịch Vụ Thêm</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="checkbox" name="makeup-touchup" value="touchup" data-price="500">
+              <span class="option-text">Touch up trong suốt ngày tiệc</span>
+              <span class="option-price">+500k</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="calculator-summary">
+        <div class="summary-label">Tổng Giá Dự Kiến</div>
+        <div class="summary-price" id="makeup-price">1.500k</div>
+        <div class="summary-description">Mỹ phẩm chính hãng, an toàn cho da & bền suốt ngày</div>
+        <div class="summary-items" id="makeup-items"></div>
+        <div class="calculator-cta">
+          <a href="https://zalo.me/0379031662" class="btn btn-primary">
+            <i class="fas fa-phone"></i> Liên Hệ Tư Vấn
+          </a>
+          <a href="booking.html?package=makeup" class="btn btn-secondary">
+            <i class="fas fa-calendar"></i> Đặt Lịch
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: EVENT -->
+  <div class="tab-content" id="event-content" data-aos="fade-up">
+    <div class="calculator-section">
+      <div class="calculator-header">
+        <h2 class="calculator-title">Phóng Sự Ngày Trọn Vẹn</h2>
+        <p class="calculator-subtitle">Bắt trọn mọi cảm xúc chân thật</p>
+      </div>
+
+      <div class="options-grid">
+        <!-- DURATION -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-hourglass-end"></i> Thời Gian Chụp</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="radio" name="event-duration" value="4h" data-price="2500" checked>
+              <span class="option-text">04 Tiếng - Sáng/Chiều</span>
+              <span class="option-price">2.500k</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="event-duration" value="8h" data-price="4000">
+              <span class="option-text">08 Tiếng - Cả Ngày</span>
+              <span class="option-price">4.000k</span>
+            </label>
+            <label class="option-item">
+              <input type="radio" name="event-duration" value="12h" data-price="5000">
+              <span class="option-text">12 Tiếng - Sáng Tối Hôm</span>
+              <span class="option-price">5.000k</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- VIDEOGRAPHY -->
+        <div class="option-group">
+          <div class="option-label">🎥 Video</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="checkbox" name="event-video" value="video" data-price="1500">
+              <span class="option-text">Quay video 4K + highlight 3 phút</span>
+              <span class="option-price">+1.500k</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- PRINTS -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-book"></i> Album</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="checkbox" name="event-album" value="album" data-price="2000">
+              <span class="option-text">Album Photobook 30 trang</span>
+              <span class="option-price">+2.000k</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- DRONE -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-camera"></i> Chụp Drone</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="checkbox" name="event-drone" value="drone" data-price="1000">
+              <span class="option-text">Chụp ảnh từ drone (nếu cho phép)</span>
+              <span class="option-price">+1.000k</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="calculator-summary">
+        <div class="summary-label">Tổng Giá Dự Kiến</div>
+        <div class="summary-price" id="event-price">2.500k</div>
+        <div class="summary-description">Toàn bộ file ảnh + video chất lượng cao</div>
+        <div class="summary-items" id="event-items"></div>
+        <div class="calculator-cta">
+          <a href="booking.html?package=event" class="btn btn-primary">
+            <i class="fas fa-calendar"></i> Đặt Lịch Ngay
+          </a>
+          <a href="https://zalo.me/0379031662" class="btn btn-secondary">
+            <i class="fas fa-comments"></i> Tư Vấn Zalo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PROCESS SECTION -->
+<section class="process-section" data-aos="fade-up">
+  <div class="container">
+    <h2 class="section-title">Quy Trình Đơn Giản</h2>
+    <p class="section-subtitle">Để bạn thoải mái tận hưởng buổi chụp ảnh</p>
+    
+    <div class="process-steps">
+      <div class="step-item">
+        <div class="step-icon"><i class="fas fa-clipboard"></i></div>
+        <h3 class="step-title">Trao Đổi & Tư Vấn</h3>
+        <p class="step-desc">Nói chuyện để hiểu rõ nhu cầu, chọn gói và tùy chỉnh chi tiết phù hợp nhất.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-icon"><i class="fas fa-camera"></i></div>
+        <h3 class="step-title">Giữ Lấy Khoảnh Khắc</h3>
+        <p class="step-desc">Ekip nhiếp ảnh & makeup chuyên nghiệp đồng hành, giúp bạn thoải mái nhất.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-icon"><i class="fas fa-gift"></i></div>
+        <h3 class="step-title">Nhận Thành Phẩm</h3>
+        <p class="step-desc">Ảnh chỉnh sửa đẹp & album hoàn thiện được gửi tận tay kèm file chất lượng cao.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS SECTION -->
+<section class="pricing-benefits">
+  <div class="benefits-grid">
+    <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+      <h4><i class="fas fa-gem"></i> Chất Lượng Cao</h4>
+      <p>Công nghệ chụp ảnh hiện đại, chỉnh sửa chuyên nghiệp, album in ấn hạng nhất</p>
+    </div>
+    <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+      <h4><i class="fas fa-bullseye"></i> Linh Hoạt</h4>
+      <p>Thiết kế gói chụp theo từng nhu cầu riêng, không bắt buộc gói cố định</p>
+    </div>
+    <div class="benefit-card" data-aos="fade-up" data-aos-delay="400">
+      <h4><i class="fas fa-heart"></i> Tâm Huyết</h4>
+      <p>Đội ngũ lắng nghe, tư vấn giải pháp tốt nhất cho ảnh đẹp nhất của bạn</p>
+    </div>
+    <div class="benefit-card" data-aos="fade-up" data-aos-delay="500">
+      <h4><i class="fas fa-sparkles"></i> Đặc Biệt</h4>
+      <p>Ưu đãi riêng cho tân thành viên, khách tái lai & đặt lịch theo mùa</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section" data-aos="fade-up">
+  <h2 class="section-title">Câu Hỏi Thường Gặp</h2>
+  
+  <div class="faq-container">
+    <div class="faq-item" data-aos="fade-up">
+      <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+        <span class="faq-icon">Q</span>
+        <h3>Giá hiển thị bao gồm những gì?</h3>
+      </div>
+      <div class="faq-answer">
+        <p>Giá gói cơ bản bao gồm: makeup & làm tóc chuyên nghiệp, buổi chụp, chỉnh sửa ảnh chi tiết, và toàn bộ file gốc. Các sản phẩm in ấn, album, video là các nâng cấp tùy chọn.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-aos="fade-up">
+      <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+        <span class="faq-icon">Q</span>
+        <h3>Có thể thay đổi gói sau khi đặt lịch không?</h3>
+      </div>
+      <div class="faq-answer">
+        <p>Có, hoàn toàn có thể! Nếu bạn muốn nâng cấp thêm ảnh, album hay video, hãy liên hệ với team trước 03 ngày chụp.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-aos="fade-up">
+      <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+        <span class="faq-icon">Q</span>
+        <h3>Khi nào nhận được ảnh?</h3>
+      </div>
+      <div class="faq-answer">
+        <p>Ảnh gốc được gửi ngay sau buổi chụp. Ảnh chỉnh sửa chi tiết sẽ giao trong vòng 5-7 ngày. Album & sản phẩm in ấn từ 7-10 ngày.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-aos="fade-up">
+      <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+        <span class="faq-icon">Q</span>
+        <h3>Báo giá trênpage này chính xác không?</h3>
+      </div>
+      <div class="faq-answer">
+        <p>Đúng! Giá dự kiến trên page là chính xác. Team sẽ xác nhận chi tiết khi bạn đặt lịch, không có phát sinh ngoài dự kiến.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-aos="fade-up">
+      <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+        <span class="faq-icon">Q</span>
+        <h3>Có chế độ thanh toán nào không?</h3>
+      </div>
+      <div class="faq-answer">
+        <p>Có. Thường thanh toán 50% đặt cọc khi đặt lịch, 50% còn lại khi nhận ảnh chỉnh sửa. Liên hệ để trao đổi cách thanh toán phù hợp.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-aos="fade-up">
+      <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+        <span class="faq-icon">Q</span>
+        <h3>Có hoàn tiền nếu hủy lịch không?</h3>
+      </div>
+      <div class="faq-answer">
+        <p>Nếu hủy trước 14 ngày, hoàn 100% tiền đặt cọc. Nếu hủy từ 7-13 ngày, hoàn 50%. Từ 7 ngày trở lại không hoàn.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-aos="fade-up">
+      <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+        <span class="faq-icon">Q</span>
+        <h3>Có bảo hành ảnh hay album không?</h3>
+      </div>
+      <div class="faq-answer">
+        <p>Có. Album in ấn bảo hành chất lượng 5 năm. Nếu có lỗi in ấn, làm lại miễn phí trong thời hạn này.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section class="testimonials-section" data-aos="fade-up">
+  <h2 class="section-title">Khách Hàng Nói Gì Về Chúng Tôi?</h2>
+  
+  <div class="testimonials-container">
+    <div class="testimonial-card" data-aos="fade-up">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Ảnh tự nhiên, dễ thương, cảm giác zui zẻ trong buổi chụp. Màu sắc trong sáng, và album in ra đẹp lắm. Giá cũng minh bạch, không có surprise gì hết."</p>
+      <div class="testimonial-author">
+        <strong>Quỳnh & Hào</strong>
+        <span>Ảnh Cưới - 2024</span>
+      </div>
+    </div>
+
+    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Cả nhà rất hài lòng. Team chuyên nghiệp, kiên nhẫn với 2 bé nhỏ. Ảnh out tự nhiên mà vẫn đẹp, chất lượng in ấn tuyệt vời."</p>
+      <div class="testimonial-author">
+        <strong>Gia đình chị Mai</strong>
+        <span>Ảnh Gia Đình - 2024</span>
+      </div>
+    </div>
+
+    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Book trang điểm cho ngày cưới, Ny tư vấn rất tâm huyết. Lớp makeup mỏng nhẹ mà bền, giữ tone đẹp suốt ngày tiệc. Sẽ giới thiệu cho bạn!"</p>
+      <div class="testimonial-author">
+        <strong>Hương & Tuấn</strong>
+        <span>Trang Điểm - 2024</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA SECTION -->
+<section class="footer-cta-section" data-aos="fade-up">
+  <div class="footer-cta-content">
+    <div class="divider-line"></div>
+    <p class="divider-subtitle">Sẵn sàng bắt đầu?</p>
+    <h3 class="divider-title">Liên Hệ Chúng Tôi Ngay</h3>
+    <div class="footer-contact-cta">
+      <a href="tel:0379031662" class="contact-link">
+        <i class="fas fa-phone"></i>
+        <span>0379 031 662</span>
+      </a>
+      <a href="https://zalo.me/0379031662" class="contact-link">
+        <i class="fas fa-comments"></i>
+        <span>Zalo Chat</span>
+      </a>
+      <a href="booking.html" class="contact-link primary">
+        <i class="fas fa-calendar-check"></i>
+        <span>Đặt Lịch Ngay</span>
+      </a>
+    </div>
+    <div class="divider-line"></div>
+  </div>
+</section>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="assets/js/load-template.js"></script>
+<script src="assets/js/services-calculator.js" defer></script>
+
+<!-- Footer Template Container -->
+<div id="footer-container"></div>
+
+<script>
+  AOS.init({duration: 800, once: true, offset: 50});
+</script>
+
+</body>
+</html>
