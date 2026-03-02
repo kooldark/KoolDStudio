@@ -1,0 +1,9 @@
+/* ============================================
+   BASE CSS - Consolidated Stylesheet
+   Imports all base styling for consistency
+   ============================================ */
+
+@import url('style.css');
+@import url('responsive.css');
+@import url('improvements.css');
+@import url('professional-layout.css');
