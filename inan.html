@@ -8,7 +8,7 @@
   
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usKFqyUKV7Fs+aIGLPy8bLLBoDwJstMVBbpFagpF+Xg/Hp3+ymodeva/WCHD5w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
   
   <link rel="stylesheet" href="assets/css/home-elegant.css">
@@ -195,6 +195,110 @@
       margin-bottom: 5px;
     }
     .album-price-item .price-value { margin: 0; }
+
+    /* ===== FOOTER DIVIDER SECTION ===== */
+    .footer-divider-section {
+      padding: 60px 40px;
+      text-align: center;
+      background: #faf7f2;
+    }
+
+    .divider-line {
+      height: 1px;
+      background: #e0dbd6;
+      margin: 30px auto;
+      width: 100px;
+    }
+
+    .footer-divider-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .divider-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: #6b6b6b;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .divider-title {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      color: #2d5a4a;
+      margin-bottom: 35px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .footer-contact-cta {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border: 2px solid #e0dbd6;
+      border-radius: 50px;
+      text-decoration: none;
+      color: #6b6b6b;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .contact-link i {
+      font-size: 1.1rem;
+    }
+
+    .contact-link:hover {
+      border-color: #d4a574;
+      color: #d4a574;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(212, 165, 116, 0.15);
+    }
+
+    .contact-link.primary {
+      background: #2d5a4a;
+      color: #ffffff;
+      border-color: #2d5a4a;
+    }
+
+    .contact-link.primary:hover {
+      background: #1e3f38;
+      border-color: #1e3f38;
+      box-shadow: 0 8px 20px rgba(45, 90, 74, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .footer-divider-section {
+        padding: 50px 20px;
+        margin-top: 60px;
+      }
+
+      .divider-title {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+      }
+
+      .footer-contact-cta {
+        gap: 15px;
+      }
+
+      .contact-link {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -454,6 +558,30 @@
 <div style="text-align:center; margin-top: 40px; margin-bottom: 40px;">
   <a href="pricing.html" style="color:var(--deep-green);font-weight:500;text-decoration:underline;">← Quay lại Bảng Giá</a>
 </div>
+
+<!-- Footer Divider Section -->
+<section class="footer-divider-section" style="margin-top: 60px;">
+  <div class="divider-line"></div>
+  <div class="footer-divider-content">
+    <p class="divider-subtitle">Hài lòng với mẫu in ảnh?</p>
+    <h3 class="divider-title">Đặt Hàng Ngay</h3>
+    <div class="footer-contact-cta">
+      <a href="tel:0379031662" class="contact-link">
+        <i class="fas fa-phone"></i>
+        <span>0379 031 662</span>
+      </a>
+      <a href="https://zalo.me/0379031662" class="contact-link">
+        <i class="fas fa-comments"></i>
+        <span>Liên Hệ Zalo</span>
+      </a>
+      <a href="booking.html" class="contact-link primary">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Mua Ngay</span>
+      </a>
+    </div>
+  </div>
+  <div class="divider-line"></div>
+</section>
 
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>AOS.init({duration: 800, once: true});</script>

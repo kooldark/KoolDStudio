@@ -413,8 +413,14 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // --- LIGHTBOX with SWIPER ---
   function openLightbox(clickedImgSrc) {
-    const initialSlideIndex = visibleImages.findIndex(src => src === clickedImgSrc);
-    if (initialSlideIndex === -1) return;
+    // Normalize the clicked image source to absolute URL
+    const absoluteClickedSrc = new URL(clickedImgSrc, window.location.origin).href;
+    const initialSlideIndex = visibleImages.findIndex(src => src === absoluteClickedSrc);
+    
+    if (initialSlideIndex === -1) {
+      console.warn('Image not found in visible images', { clicked: absoluteClickedSrc, visible: visibleImages.slice(0, 3) });
+      return;
+    }
 
     lightbox.style.display = 'block';
 
@@ -431,27 +437,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Add a small delay to ensure the lightbox is fully displayed before Swiper initializes
     setTimeout(() => {
-      lightboxSwiper = new Swiper(lightbox.querySelector('.swiper-container'), {
-          initialSlide: initialSlideIndex,
-          loop: false,
-          slidesPerView: 1,
-          spaceBetween: 20,
-          navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-          },
-          pagination: {
-              el: '.swiper-pagination',
-              type: 'fraction',
-          },
-          keyboard: {
-              enabled: true,
-          },
-          zoom: {
-              maxRatio: 2,
-              toggle: true,
-          },
-      });
+      if (typeof Swiper !== 'undefined') {
+        try {
+          lightboxSwiper = new Swiper(lightbox.querySelector('.swiper-container'), {
+              initialSlide: initialSlideIndex,
+              loop: false,
+              slidesPerView: 1,
+              spaceBetween: 20,
+              navigation: {
+                  nextEl: lightbox.querySelector('.swiper-button-next'),
+                  prevEl: lightbox.querySelector('.swiper-button-prev'),
+              },
+              pagination: {
+                  el: lightbox.querySelector('.swiper-pagination'),
+                  type: 'fraction',
+              },
+              keyboard: {
+                  enabled: true,
+              },
+              zoom: {
+                  maxRatio: 2,
+                  toggle: true,
+              },
+          });
+          console.log('✨ Lightbox Swiper initialized successfully');
+        } catch (err) {
+          console.error('Error initializing lightbox Swiper:', err);
+        }
+      } else {
+        console.warn('Swiper library not loaded');
+      }
     }, 50); // 50ms delay
   }
 

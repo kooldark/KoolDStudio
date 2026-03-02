@@ -9,7 +9,7 @@
   
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usKFqyUKV7Fs+aIGLPy8bLLBoDwJstMVBbpFagpF+Xg/Hp3+ymodeva/WCHD5w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
   
   <link rel="stylesheet" href="assets/css/home-elegant.css">
@@ -18,56 +18,66 @@
   <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
 
   <style>
-    /* Art & Elegant Pricing Styles */
+    /* ===== PRICING PAGE - ELEGANT & MODERN REDESIGN ===== */
     :root {
-      --accent-orange: #eb9500;
-      --deep-green: #3a5a40;
-      --soft-cream: #f9f5f0;
+      --primary-tan: #d4a574;
+      --dark-green: #2d5a4a;
+      --accent-gray: #6b6b6b;
+      --light-bg: #faf7f2;
       --white: #ffffff;
-      --text-dark: #1a1a1a;
-      --text-light: #666;
-      --border-light: #e8e3de;
+      --border-color: #e0dbd6;
     }
 
-    .gold-line {
-        background: var(--accent-orange);
-        height: 2px;
-        width: 50px;
-        margin: 24px auto 0;
-    }
-
+    /* ===== PRICING HERO SECTION ===== */
     .pricing-hero {
-      background: linear-gradient(135deg, var(--soft-cream) 0%, #fbf7f2 100%);
-      padding-top: 140px;
-      padding-bottom: 90px;
+      padding: 120px 40px 80px;
+      text-align: center;
+      background: linear-gradient(180deg, #ffffff 0%, var(--light-bg) 100%);
     }
 
     .pricing-intro {
-      margin-bottom: 50px;
+      max-width: 700px;
+      margin: 0 auto 60px;
     }
 
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--dark-green);
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .section-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: var(--accent-gray);
+      line-height: 1.8;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+    }
+
+    .gold-line {
+      height: 2px;
+      width: 60px;
+      background: var(--primary-tan);
+      margin: 30px auto;
+      border-radius: 2px;
+    }
+
+    /* ===== PRICING PACKAGES GRID ===== */
     .pricing-packages {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 50px;
+      gap: 40px;
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 40px;
     }
 
     @media (max-width: 1024px) {
       .pricing-packages {
         grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 0 30px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .pricing-packages {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 0 16px;
+        gap: 35px;
       }
     }
 
@@ -75,74 +85,86 @@
       display: contents;
     }
 
+    /* ===== PRICE CARD STYLES ===== */
     .price-card {
       background: var(--white);
-      border-radius: 18px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(58, 90, 64, 0.06);
-      transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
       display: flex;
       flex-direction: column;
-      border: 1px solid var(--border-light);
       position: relative;
-      height: 100%;
+    }
+
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary-tan);
+      transition: height 0.4s ease;
     }
 
     .price-card:hover {
-      transform: translateY(-14px);
-      box-shadow: 0 20px 50px rgba(58, 90, 64, 0.12);
-      border: 1px solid rgba(235, 149, 0, 0.1);
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(45, 90, 74, 0.12);
+      border-color: var(--primary-tan);
+    }
+
+    .price-card.recommended {
+      border: 2px solid var(--primary-tan);
+      transform: scale(1.02);
+      box-shadow: 0 15px 40px rgba(212, 165, 116, 0.15);
+    }
+
+    .price-card.recommended:hover {
+      transform: scale(1.04) translateY(-10px);
+      box-shadow: 0 30px 60px rgba(212, 165, 116, 0.2);
     }
 
     .card-accent {
-      height: 3px;
-      width: 100%;
+      display: none;
     }
 
-    /* Color coding for categories */
-    .price-card.basic .card-accent { background: #8cb369; }
-    .price-card.basic .price-range { color: #5c8040; }
-    
-    .price-card.standard .card-accent { background: var(--deep-green); }
-    .price-card.standard .price-range { color: var(--deep-green); }
-    
-    .price-card.premium .card-accent { background: #457b9d; }
-    .price-card.premium .price-range { color: #2a5d7d; }
-    
-    .price-card.special .card-accent { background: #d4755f; }
-    .price-card.special .price-range { color: #a85a45; }
-
+    /* ===== PRICE HEADER ===== */
     .price-header {
-      padding: 42px 32px 24px;
+      padding: 50px 35px 0;
       text-align: center;
-      border-bottom: 1px solid var(--border-light);
     }
 
     .price-header h3 {
       font-family: 'Lora', serif;
-      font-size: 24px;
-      color: var(--deep-green);
-      margin-bottom: 10px;
+      font-size: 1.8rem;
+      color: var(--dark-green);
+      margin-bottom: 8px;
       font-weight: 700;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
     }
 
     .price-subtitle {
-      font-size: 13px;
-      color: #999;
-      margin: 8px 0 16px;
       font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      color: var(--accent-gray);
+      margin: 10px 0 25px;
+      font-weight: 400;
       letter-spacing: 0.3px;
     }
 
     .price-range {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 30px;
+      font-family: 'Lora', serif;
+      font-size: 2.5rem;
       font-weight: 700;
+      color: var(--primary-tan);
+      line-height: 1;
+      letter-spacing: -1px;
     }
 
+    /* ===== PRICE BODY - FEATURES LIST ===== */
     .price-body {
-      padding: 30px 32px 24px;
+      padding: 40px 35px;
       flex-grow: 1;
     }
 
@@ -153,167 +175,411 @@
     }
 
     .price-body li {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border-light);
-      color: var(--text-light);
-      font-size: 14px;
+      padding: 16px 0 16px 32px;
       position: relative;
-      padding-left: 28px;
-      text-align: left;
-      line-height: 1.65;
-      font-weight: 500;
+      color: var(--accent-gray);
+      font-size: 1rem;
+      line-height: 1.6;
+      border-bottom: 1px solid #f0ede8;
+      font-weight: 400;
     }
 
     .price-body li:last-child {
       border-bottom: none;
+      padding-bottom: 0;
     }
 
     .price-body li::before {
       content: '✓';
       position: absolute;
       left: 0;
-      color: #aaa;
-      font-weight: bold;
-      font-size: 15px;
+      color: var(--primary-tan);
+      font-weight: 700;
+      font-size: 1.2rem;
     }
-    
-    .price-card.basic li::before { color: #8cb369; }
-    .price-card.standard li::before { color: var(--deep-green); }
-    .price-card.premium li::before { color: #457b9d; }
-    .price-card.special li::before { color: #d4755f; }
 
+    /* ===== PRICE FOOTER - BUTTONS ===== */
     .price-footer {
-      padding: 28px 28px 35px;
+      padding: 35px;
       text-align: center;
-      border-top: 1px solid var(--border-light);
+      border-top: 1px solid #f0ede8;
     }
 
     .btn {
-      padding: 14px 40px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.9px;
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
       display: inline-block;
+      padding: 14px 48px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
       text-decoration: none;
-      cursor: pointer;
       border: 2px solid;
+      cursor: pointer;
     }
-    
+
     .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
     .btn-primary {
-      background: var(--deep-green);
+      background: var(--dark-green);
       color: var(--white);
-      border-color: var(--deep-green);
+      border-color: var(--dark-green);
     }
-    
+
     .btn-primary:hover {
-      background: #2a402d;
-      border-color: #2a402d;
+      background: #1e3f38;
+      border-color: #1e3f38;
     }
 
     .btn-secondary {
-        background: transparent;
-        color: var(--deep-green);
-        border-color: var(--deep-green);
+      background: transparent;
+      color: var(--dark-green);
+      border-color: var(--dark-green);
     }
 
     .btn-secondary:hover {
-        background: var(--deep-green);
-        color: var(--white);
+      background: var(--dark-green);
+      color: var(--white);
     }
 
     .btn-tertiary {
-      background: #d4755f;
+      background: var(--primary-tan);
       color: var(--white);
-      border-color: #d4755f;
+      border-color: var(--primary-tan);
     }
-    
+
     .btn-tertiary:hover {
-      background: #c25f48;
-      border-color: #c25f48;
-      color: var(--white);
+      background: #be9363;
+      border-color: #be9363;
     }
 
     .detail-link {
       display: block;
-      margin-top: 16px;
-      font-size: 13px;
-      color: var(--deep-green);
-      text-decoration: none;
+      margin-top: 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
       font-weight: 600;
+      color: var(--dark-green);
+      text-decoration: none;
       letter-spacing: 0.5px;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
     }
 
     .detail-link:hover {
+      color: var(--primary-tan);
       letter-spacing: 1px;
     }
 
-    /* Process Section Styles */
+    /* ===== PROCESS SECTION ===== */
     .process-section {
-      padding: 100px 30px;
+      padding: 100px 40px;
       text-align: center;
-      background: linear-gradient(180deg, #fff 0%, var(--soft-cream) 100%);
+      background: var(--light-bg);
     }
-    
+
+    .process-section .section-title {
+      margin-bottom: 10px;
+    }
+
+    .process-section .section-subtitle {
+      margin-bottom: 50px;
+    }
+
     .process-steps {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 60px;
-      margin-top: 60px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .step-item {
-      flex: 1;
-      min-width: 260px;
-      position: relative;
-    }
-    
-    .step-icon {
-      width: 100px;
-      height: 100px;
-      background: linear-gradient(135deg, rgba(235, 149, 0, 0.1) 0%, rgba(235, 149, 0, 0.05) 100%);
-      border: 2px solid rgba(235, 149, 0, 0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 28px;
-      font-size: 42px;
-    }
-    
-    .step-title {
-      font-family: 'Lora', serif;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 14px;
-      color: var(--deep-green);
-    }
-    
-    .step-desc {
-      font-size: 15px;
-      color: var(--text-light);
-      line-height: 1.8;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
     @media (max-width: 768px) {
-      .process-section {
-        padding: 60px 20px;
-      }
-      
       .process-steps {
-        gap: 35px;
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .step-item {
+      padding: 0 20px;
+    }
+
+    .step-icon {
+      font-size: 3.5rem;
+      margin-bottom: 25px;
+      display: inline-block;
+    }
+
+    .step-title {
+      font-family: 'Lora', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark-green);
+      margin-bottom: 15px;
+    }
+
+    .step-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      color: var(--accent-gray);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ===== BENEFITS SECTION ===== */
+    .pricing-benefits {
+      padding: 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 0 40px;
+    }
+
+    @media (max-width: 768px) {
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 20px;
+      }
+    }
+
+    .benefit-card {
+      padding: 40px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      background: var(--white);
+      transition: all 0.4s ease;
+    }
+
+    .benefit-card:hover {
+      box-shadow: 0 15px 40px rgba(45, 90, 74, 0.08);
+      transform: translateY(-5px);
+    }
+
+    .benefit-card h4 {
+      font-family: 'Lora', serif;
+      font-size: 1.4rem;
+      color: var(--dark-green);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .benefit-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      color: var(--accent-gray);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ===== PRICING FOOTER ===== */
+    .pricing-footer {
+      text-align: center;
+      margin: 80px auto 50px;
+      padding: 60px 40px;
+      max-width: 700px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      background: var(--white);
+    }
+
+    .footer-content p {
+      font-family: 'Montserrat', sans-serif;
+      margin: 15px 0;
+      font-size: 1rem;
+    }
+
+    .footer-content p:first-child {
+      font-size: 1.1rem;
+      color: var(--dark-green);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-content a {
+      color: var(--primary-tan);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+
+    .footer-content a:hover {
+      color: var(--dark-green);
+    }
+
+    .footer-content p:last-child {
+      color: #c4bfb9;
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+
+    /* ===== BACK TO HOME LINK ===== */
+    .back-to-home-link {
+      display: inline-block;
+      margin: 40px auto;
+      color: var(--accent-gray);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+    }
+
+    .back-to-home-link:hover {
+      color: var(--primary-tan);
+      transform: translateX(-5px);
+    }
+
+    /* ===== FOOTER DIVIDER SECTION ===== */
+    .footer-divider-section {
+      margin-top: 80px;
+      padding: 60px 40px;
+      text-align: center;
+      background: var(--light-bg);
+    }
+
+    .divider-line {
+      height: 1px;
+      background: var(--border-color);
+      margin: 30px auto;
+      width: 100px;
+    }
+
+    .footer-divider-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .divider-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: var(--accent-gray);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .divider-title {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      color: var(--dark-green);
+      margin-bottom: 35px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .footer-contact-cta {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border: 2px solid var(--border-color);
+      border-radius: 50px;
+      text-decoration: none;
+      color: var(--accent-gray);
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .contact-link i {
+      font-size: 1.1rem;
+    }
+
+    .contact-link:hover {
+      border-color: var(--primary-tan);
+      color: var(--primary-tan);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(212, 165, 116, 0.15);
+    }
+
+    .contact-link.primary {
+      background: var(--dark-green);
+      color: var(--white);
+      border-color: var(--dark-green);
+    }
+
+    .contact-link.primary:hover {
+      background: #1e3f38;
+      border-color: #1e3f38;
+      box-shadow: 0 8px 20px rgba(45, 90, 74, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .footer-divider-section {
+        padding: 50px 20px;
+        margin-top: 60px;
+      }
+
+      .divider-title {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+      }
+
+      .footer-contact-cta {
+        gap: 15px;
+      }
+
+      .contact-link {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* ===== RESPONSIVE ADJUSTMENTS ===== */
+    @media (max-width: 768px) {
+      .pricing-hero {
+        padding: 80px 20px 60px;
+      }
+
+      .pricing-packages {
+        padding: 0 20px;
+      }
+
+      .price-header {
+        padding: 40px 25px 0;
+      }
+
+      .price-body {
+        padding: 30px 25px;
+      }
+
+      .price-footer {
+        padding: 25px;
+      }
+
+      .process-section {
+        padding: 80px 20px;
+      }
+
+      .benefits-grid {
+        margin: 60px auto;
+        padding: 0 20px;
+      }
+
+      .pricing-footer {
+        padding: 40px 25px;
+        margin: 60px 20px 40px;
       }
     }
   </style>
@@ -473,7 +739,7 @@
           </div>
           <div class="price-footer">
             <a href="booking.html?package=family" class="btn btn-secondary">Giữ lịch chụp</a>
-            <a href="pgiadinh.html" class="detail-link" style="color: #5c8040;">Xem chi tiết gói →</a>
+            <a href="pgiadinh.html" class="detail-link" style="color: var(--deep-green);">Xem chi tiết gói →</a>
           </div>
         </div>
       </div>
@@ -585,6 +851,30 @@
   <div style="text-align:center;margin:40px 0;">
     <a href="../index.html" class="back-to-home-link">← Quay lại Trang chủ</a>
   </div>
+
+  <!-- Footer Divider Section -->
+  <section class="footer-divider-section">
+    <div class="divider-line"></div>
+    <div class="footer-divider-content">
+      <p class="divider-subtitle">Cần tư vấn hoặc đặt lịch?</p>
+      <h3 class="divider-title">Liên Hệ Chúng Tôi</h3>
+      <div class="footer-contact-cta">
+        <a href="tel:0379031662" class="contact-link">
+          <i class="fas fa-phone"></i>
+          <span>0379 031 662</span>
+        </a>
+        <a href="https://zalo.me/0379031662" class="contact-link">
+          <i class="fas fa-comment"></i>
+          <span>Zalo</span>
+        </a>
+        <a href="booking.html" class="contact-link primary">
+          <i class="fas fa-calendar"></i>
+          <span>Đặt Lịch Ngay</span>
+        </a>
+      </div>
+    </div>
+    <div class="divider-line"></div>
+  </section>
 
 </div>
 
