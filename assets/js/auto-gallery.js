@@ -131,7 +131,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const sharedAlbum = urlParams.get('album');
       
       // Also check hash anchor for backward compatibility (#gia-dinh)
-      const hashCategory = window.location.hash.substring(1); // Remove #
+      let hashCategory = window.location.hash.substring(1); // Remove #
+      
+      // Map hash aliases to actual categories
+      const hashAliases = {
+        'documentary': 'phong-su'
+      };
+      
+      // Convert alias to actual category if exists
+      if (hashAliases[hashCategory]) {
+        hashCategory = hashAliases[hashCategory];
+      }
       
       // Priority: query parameter > hash anchor
       const categoryToLoad = sharedCategory || hashCategory;
