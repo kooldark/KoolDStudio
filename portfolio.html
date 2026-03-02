@@ -188,7 +188,22 @@
 </div>
 
 <script>
-  AOS.init({duration: 800, once: true, offset: 50});
+  // Wait for AOS to be defined before initializing
+  function initAOS() {
+    if (typeof AOS !== 'undefined') {
+      AOS.init({duration: 800, once: true, offset: 50});
+    } else {
+      // Retry in 100ms
+      setTimeout(initAOS, 100);
+    }
+  }
+  
+  // Start checking for AOS when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAOS);
+  } else {
+    initAOS();
+  }
 </script>
 
 <!-- Footer Template Container -->

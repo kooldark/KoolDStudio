@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- STATE ---
   let galleryData = {};
+  let albumPaths = {}; // Store album paths for correct folder names
   let portfolioData = {}; // Store full portfolio data for descriptions
   let visibleImages = [];
   let currentCategory = 'all';
@@ -74,8 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const requiredElements = [galleryContainer, categoryFiltersContainer, backButton, pageSubtitle, lightbox, lightboxClose, preloader, albumShareBtn];
     if (requiredElements.some(el => !el)) {
       console.error("Gallery initialization failed: a required HTML element is missing.");
-      galleryContainer.innerHTML = "<p class='error-message'>Lỗi giao diện. Vui lòng tải lại trang.</p>";
-      preloader?.classList.add('hidden');
+      if (galleryContainer) galleryContainer.innerHTML = "<p class='error-message'>Lỗi giao diện. Vui lòng tải lại trang.</p>";
+      if (preloader) preloader.classList.add('hidden');
       return;
     }
     originalSubtitle = pageSubtitle.textContent;
@@ -92,15 +93,27 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // Transform portfolio-data.json format to match old structure
       galleryData = {};
+      albumPaths = {}; // Initialize album paths
       portfolioData.categories.forEach(cat => {
         if (!cat.id || !Array.isArray(cat.albums)) {
           console.warn('Skipping invalid category:', cat);
           return;
         }
         galleryData[cat.id] = {};
+        albumPaths[cat.id] = {};
         cat.albums.forEach(album => {
           if (album.id && Array.isArray(album.images)) {
-            galleryData[cat.id][album.id] = album.images;
+            // Normalize album.id to NFC form for consistency
+            const normalizedId = album.id.normalize('NFC');
+            galleryData[cat.id][normalizedId] = album.images;
+            // Extract folder name from path (e.g., "cuoi/Ngoại cảnh" -> "Ngoại cảnh")
+            // Or use id if path not available
+            let folderName = album.id;
+            if (album.path) {
+              const pathParts = album.path.split('/');
+              folderName = pathParts[pathParts.length - 1];
+            }
+            albumPaths[cat.id][normalizedId] = folderName;
           }
         });
       });
@@ -139,18 +152,18 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // If specific album is shared
         if (albumToLoad) {
-          currentAlbum = albumToLoad;
+          currentAlbum = albumToLoad.normalize('NFC');
           
           // Immediately set meta tags for social media crawlers
           const data = galleryData[categoryToLoad];
-          if (data && data[albumToLoad]) {
-            const firstFile = data[albumToLoad][0];
+          if (data && data[currentAlbum]) {
+            const firstFile = data[currentAlbum][0];
             const categoryTitle = titles[categoryToLoad]?.vn || categoryToLoad;
-            const imageUrl = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${categoryToLoad}/${albumToLoad}/${firstFile}`;
+            const imageUrl = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${categoryToLoad}/${currentAlbum}/${firstFile}`;
             
             updateMetaTags(
-              `${albumToLoad} - ${categoryTitle} | Kool D. Studio`,
-              `Album ${albumToLoad} từ bộ sưu tập ${categoryTitle} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
+              `${currentAlbum} - ${categoryTitle} | Kool D. Studio`,
+              `Album ${currentAlbum} từ bộ sưu tập ${categoryTitle} của Kool D. Studio. Ảnh cưới & gia đình phong cách Hàn Quốc.`,
               imageUrl
             );
           }
@@ -159,13 +172,20 @@ document.addEventListener("DOMContentLoaded", () => {
       
       await render();
       // Hide preloader immediately - don't wait for images
-      requestAnimationFrame(() => preloader.classList.add('hidden'));
+      if (preloader) {
+        requestAnimationFrame(() => preloader.classList.add('hidden'));
+      }
       addEventListeners();
 
     } catch (e) {
       console.error("Failed to load or initialize gallery:", e);
-      galleryContainer.innerHTML = "<p class='error-message'>Không thể tải album. Vui lòng thử lại sau.</p>";
-      preloader.classList.add('hidden');
+      if (galleryContainer) galleryContainer.innerHTML = "<p class='error-message'>Không thể tải album. Vui lòng thử lại sau.</p>";
+      if (preloader) preloader.classList.add('hidden');
+    } finally {
+      // Force hide preloader after 5 seconds as fallback
+      setTimeout(() => {
+        if (preloader) preloader.classList.add('hidden');
+      }, 5000);
     }
   }
 
@@ -174,6 +194,8 @@ document.addEventListener("DOMContentLoaded", () => {
     isRendering = true;
     try {
       const data = galleryData[currentCategory];
+      
+      console.log('Rendering:', { currentCategory, currentAlbum, data });
 
     if (currentCategory === 'all') {
       await renderImageGrid(getAllImages());
@@ -189,22 +211,33 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     } else if (data && typeof data === 'object' && !Array.isArray(data)) {
       if (currentAlbum) {
-        const albumImages = data[currentAlbum].map(file => `${basePath}assets/img/portfolio/${currentCategory}/${currentAlbum}/${file}`);
-        await renderImageGrid(albumImages);
+        // Normalize currentAlbum to ensure it matches keys in galleryData
+        const normalizedAlbum = currentAlbum.normalize('NFC');
+        const albumFolderPath = albumPaths[currentCategory]?.[normalizedAlbum] || normalizedAlbum;
+        const albumImages = data[normalizedAlbum];
+        
+        if (!albumImages) {
+          console.warn('Album images not found:', { category: currentCategory, album: normalizedAlbum, availableAlbums: Object.keys(data) });
+          throw new Error(`Album "${normalizedAlbum}" not found`);
+        }
+        
+        const imagePaths = albumImages.map(file => `${basePath}assets/img/portfolio/${currentCategory}/${albumFolderPath}/${file}`);
+        await renderImageGrid(imagePaths);
         backButton.classList.remove('hidden');
         categoryShareBtn.classList.add('hidden');
         albumShareBtn.classList.remove('hidden');
-        currentAlbumLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(currentCategory)}&album=${encodeURIComponent(currentAlbum)}`;
-        pageSubtitle.textContent = `Album: ${currentAlbum}`;
+        currentAlbumLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(currentCategory)}&album=${encodeURIComponent(normalizedAlbum)}`;
+        pageSubtitle.textContent = `Album: ${normalizedAlbum}`;
 
-        const firstImagePath = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${currentCategory}/${currentAlbum}/${data[currentAlbum][0]}`;
+        const firstImagePath = `https://kooldark.github.io/KoolDStudio/assets/img/portfolio/${currentCategory}/${albumFolderPath}/${albumImages[0]}`;
         const categoryTitle = titles[currentCategory]?.vn || currentCategory;
         updateMetaTags(
-          `Album "${currentAlbum}" | ${categoryTitle} | Kool D. Studio`,
-          `Album "${currentAlbum}" thuộc tuyển tập ${categoryTitle} của Kool D. Studio. Lắng nghe câu chuyện được kể qua từng khuôn hình.`,
+          `Album "${normalizedAlbum}" | ${categoryTitle} | Kool D. Studio`,
+          `Album "${normalizedAlbum}" thuộc tuyển tập ${categoryTitle} của Kool D. Studio. Lắng nghe câu chuyện được kể qua từng khuôn hình.`,
           firstImagePath
         );
       } else {
+        console.log('Rendering album covers for category:', currentCategory, 'with', Object.keys(data).length, 'albums');
         await renderAlbumCovers(currentCategory, data);
         backButton.classList.add('hidden');
         categoryShareBtn.classList.remove('hidden');
@@ -232,6 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
         'https://kooldark.github.io/KoolDStudio/assets/img/portfolio/makeup/Beauty/1.jpg'
       );
     } else {
+      console.error('Invalid data for category:', currentCategory, data);
       await renderImageGrid([]);
       backButton.classList.add('hidden');
       categoryShareBtn.classList.add('hidden');
@@ -308,21 +342,26 @@ document.addEventListener("DOMContentLoaded", () => {
       if (albumFiles.length === 0) continue;
       albumCount++;
       
-      const isLoose = albumName === 'Ảnh lẻ';
+      // Normalize album name to NFC for consistency
+      const normalizedAlbumName = albumName.normalize('NFC');
+      // Get actual folder path from stored paths (preserves Unicode)
+      const albumFolderPath = albumPaths[category]?.[normalizedAlbumName] || normalizedAlbumName;
+      
+      const isLoose = normalizedAlbumName === 'Ảnh lẻ';
       const imageBasePath = `${basePath}assets/img/portfolio/${category}/`;
-      const imageFolder = isLoose ? '' : `${albumName}/`;
+      const imageFolder = isLoose ? '' : `${albumFolderPath}/`;
       const coverImage = imageBasePath + imageFolder + albumFiles[0];
 
       // Create shareable link for this album
-      const albumLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(category)}&album=${encodeURIComponent(albumName)}`;
+      const albumLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(category)}&album=${encodeURIComponent(normalizedAlbumName)}`;
       const encodedLink = encodeURIComponent(albumLink);
 
       // Render without waiting for descriptions - much faster!
       gridHtml += `
-        <div class="album-card" data-category="${category}" data-album="${albumName}" data-aos="zoom-in" data-aos-delay="${albumCount * 50}">
-          <img class="album-card-thumbnail" src="${coverImage}" alt="${albumName}" loading="lazy" decoding="async">
+        <div class="album-card" data-category="${category}" data-album="${normalizedAlbumName}" data-album-path="${albumFolderPath}" data-aos="zoom-in" data-aos-delay="${albumCount * 50}">
+          <img class="album-card-thumbnail" src="${coverImage}" alt="${normalizedAlbumName}" loading="lazy" decoding="async">
           <div class="album-card-overlay"></div>
-          <h3 class="album-card-title">${albumName}</h3>
+          <h3 class="album-card-title">${normalizedAlbumName}</h3>
         </div>`;
     }
     gridHtml += '</div>';
