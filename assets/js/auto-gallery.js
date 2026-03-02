@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- STATE ---
   let galleryData = {};
+  let portfolioData = {}; // Store full portfolio data for descriptions
   let visibleImages = [];
   let currentCategory = 'all';
   let currentAlbum = null;
@@ -28,7 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
     cuoi:      { vn: "Ảnh Cưới", en: "Fine Art Wedding" },
     makeup:    { vn: "Makeup", en: "Artistic Makeup" },
     "gia-dinh":{ vn: "Khoảnh Khắc Gia Đình", en: "Family Moments" },
-    "phong-su":{ vn: "Phóng Sự",  en: "Wedding Story" }
+    "phong-su":{ vn: "Phóng Sự",  en: "Wedding Story" },
+    "art-elegent":{ vn: "Art & Elegent", en: "Art & Elegent" },
+    "pro":     { vn: "Pro Collection", en: "Pro Collection" }
   };
 
   // --- UPDATE META TAGS FOR SOCIAL SHARING ---
@@ -78,9 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
     originalSubtitle = pageSubtitle.textContent;
 
     try {
-      const res = await fetch(basePath + "config/portfolio-data.json");
+      const res = await fetch(basePath + "assets/js/portfolio-data.json");
       if (!res.ok) throw new Error(`Network response was not ok, status: ${res.status}`);
-      const portfolioData = await res.json();
+      portfolioData = await res.json(); // Store full data
       
       // Validate data
       if (!portfolioData || !portfolioData.categories) {
@@ -194,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
         await renderAlbumCovers(currentCategory, data);
         backButton.classList.add('hidden');
         categoryShareBtn.classList.remove('hidden');
-        pageSubtitle.textContent = `Chọn một album để khám phá`;
+        pageSubtitle.textContent = originalSubtitle;
 
         const categoryTitle = titles[currentCategory]?.vn || currentCategory;
         updateMetaTags(
@@ -263,19 +266,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function renderAlbumCovers(category, albums) {
     visibleImages = [];
-    let gridHtml = '<div class="album-grid">';
+    
+    // Get category info from portfolioData
+    const categoryInfo = portfolioData.categories.find(c => c.id === category);
+    const categoryTitle = categoryInfo?.title || titles[category]?.vn || category;
+    const categoryDescription = categoryInfo?.description || '';
 
-    // Load category description if available (async, non-blocking)
-    let categoryDescription = '';
-    fetch(`${basePath}assets/img/portfolio/${category}/category-info.json`)
-      .then(res => res.ok ? res.json() : null)
-      .then(data => {
-        if (data?.description) {
-          const descEl = document.querySelector('.category-description-text');
-          if (descEl) descEl.textContent = data.description;
-        }
-      })
-      .catch(() => {}); // Silently fail if not available
+    // Build category description section
+    let descriptionHtml = '';
+    if (categoryDescription) {
+      descriptionHtml = `
+        <div class="category-description" data-aos="fade-up">
+          <h2>${categoryTitle}</h2>
+          <p>${categoryDescription}</p>
+        </div>
+      `;
+    }
+
+    let gridHtml = '<div class="album-grid">';
 
     // Lazy load: Limit albums shown at once
     const MAX_ALBUMS = 12;
@@ -299,16 +307,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Render without waiting for descriptions - much faster!
       gridHtml += `
-        <div class="album-card" data-category="${category}" data-album="${albumName}">
+        <div class="album-card" data-category="${category}" data-album="${albumName}" data-aos="zoom-in" data-aos-delay="${albumCount * 50}">
           <img class="album-card-thumbnail" src="${coverImage}" alt="${albumName}" loading="lazy" decoding="async">
           <div class="album-card-overlay"></div>
           <h3 class="album-card-title">${albumName}</h3>
         </div>`;
     }
     gridHtml += '</div>';
-    galleryContainer.innerHTML = gridHtml;
+    
+    // Combine description + grid
+    galleryContainer.innerHTML = descriptionHtml + gridHtml;
 
-    // Don't wait for images - refresh AOS immediately for faster render
+    // Refresh AOS for new animations
     if (typeof AOS !== 'undefined') AOS.refresh();
   }
 

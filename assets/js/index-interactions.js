@@ -34,7 +34,7 @@
 // ============================================
 // GALLERY FILTER FUNCTIONALITY
 // ============================================
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -74,7 +74,7 @@
       }
     });
   });
-})();
+});
 
 // ============================================
 // SMOOTH SCROLL FOR ANCHOR LINKS

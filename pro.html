@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pro - Art & Elegent Portfolio | Kool D. Studio</title>
+  <meta name="description" content="Khám phá bộ sưu tập Pro - Art & Elegent: Những tác phẩm nghệ thuật sáng tạo, tinh tế và chuyên nghiệp từ Kool D. Studio.">
+  <meta name="keywords" content="art & elegent portfolio, phong cách sáng tạo, studio chụp ảnh chuyên nghiệp, kool d studio, art direction">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Pro - Art & Elegent Portfolio | Kool D. Studio" />
+  <meta property="og:description" content="Những tác phẩm nghệ thuật sáng tạo, tinh tế và chuyên nghiệp" />
+  <meta property="og:url" content="https://koolbstudio.com/pro.html" />
+  
+  <!-- Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- AOS Animation -->
+  <link rel="preload" href="https://unpkg.com/aos@next/dist/aos.css" as="style">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/responsive.css">
+  <link rel="stylesheet" href="./assets/css/improvements.css">
+  <link rel="stylesheet" href="./assets/css/professional-layout.css">
+  
+  <!-- Pro Portfolio Custom Styles -->
+  <style>
+    :root {
+      --primary-dark: #1a1a1a;
+      --primary-light: #f5f5f5;
+      --accent-gold: #d4af37;
+      --accent-rose: #e8d4c4;
+      --text-light: #999;
+      --text-dark: #333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-dark);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    /* PRO HERO SECTION */
+    .pro-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pro-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(232, 212, 196, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .pro-hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .pro-hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      font-weight: 600;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.2s forwards;
+    }
+
+    .pro-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      margin: 20px 0;
+      letter-spacing: -1px;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.4s forwards;
+      line-height: 1.1;
+    }
+
+    .pro-hero h1 .highlight {
+      color: var(--accent-gold);
+    }
+
+    .pro-hero .subtitle {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.6s forwards;
+      line-height: 1.8;
+    }
+
+    .pro-hero-divider {
+      width: 50px;
+      height: 2px;
+      background: var(--accent-gold);
+      margin: 0 auto 40px;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.5s forwards;
+    }
+
+    .pro-cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.8s forwards;
+    }
+
+    .pro-btn {
+      padding: 12px 40px;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 2px solid var(--accent-gold);
+      background: transparent;
+      color: var(--accent-gold);
+      cursor: pointer;
+      transition: all 0.5s ease;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pro-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-gold);
+      z-index: -1;
+      transition: left 0.5s ease;
+    }
+
+    .pro-btn:hover {
+      color: var(--primary-dark);
+      left: 0;
+    }
+
+    .pro-btn:hover::before {
+      left: 0;
+    }
+
+    .pro-btn.solid {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+    }
+
+    /* PORTFOLIO GRID SECTION */
+    .pro-portfolio-section {
+      padding: 80px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .pro-section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .pro-section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--primary-dark);
+      margin-bottom: 15px;
+      opacity: 0;
+      animation: slideInUp 0.8s ease forwards;
+    }
+
+    .pro-section-header p {
+      font-size: 1rem;
+      color: var(--text-light);
+      max-width: 500px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: slideInUp 0.8s ease 0.2s forwards;
+    }
+
+    /* ALBUM GRID */
+    .pro-album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+
+    .pro-album-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      group: album-card;
+    }
+
+    .pro-album-image {
+      position: relative;
+      padding-bottom: 100%;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+
+    .pro-album-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .pro-album-card:hover .pro-album-image img {
+      transform: scale(1.08);
+    }
+
+    .pro-album-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+      z-index: 2;
+    }
+
+    .pro-album-card:hover .pro-album-overlay {
+      opacity: 1;
+    }
+
+    .pro-album-info {
+      color: white;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .pro-album-card:hover .pro-album-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pro-album-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .pro-album-desc {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .pro-album-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    /* CATEGORY FILTER */
+    .pro-category-filter {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .pro-filter-btn {
+      padding: 10px 25px;
+      border: 1px solid var(--text-light);
+      background: transparent;
+      color: var(--text-dark);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .pro-filter-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-gold);
+      transition: width 0.4s ease;
+    }
+
+    .pro-filter-btn:hover::after,
+    .pro-filter-btn.active::after {
+      width: 100%;
+    }
+
+    .pro-filter-btn.active {
+      color: var(--primary-dark);
+      border-color: var(--accent-gold);
+    }
+
+    /* STATS SECTION */
+    .pro-stats {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: white;
+      padding: 80px 20px;
+      margin-top: 100px;
+    }
+
+    .pro-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 60px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pro-stat-item h3 {
+      font-size: 2.5rem;
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .pro-stat-item p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* LIGHTBOX */
+    .pro-lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .pro-lightbox.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pro-lightbox-content {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      animation: zoomIn 0.3s ease;
+    }
+
+    .pro-lightbox-image {
+      width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .pro-lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      border: none;
+      cursor: pointer;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .pro-lightbox-close:hover {
+      transform: scale(1.1);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .pro-hero {
+        min-height: 80vh;
+      }
+
+      .pro-portfolio-section {
+        padding: 60px 20px;
+      }
+
+      .pro-section-header {
+        margin-bottom: 60px;
+      }
+
+      .pro-album-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .pro-stats {
+        padding: 60px 20px;
+      }
+
+      .pro-stats-grid {
+        gap: 40px;
+      }
+    }
+  </style>
+
+  <link rel="icon" type="image/webp" href="./assets/img/brand/favicon.webp">
+</head>
+<body>
+
+<!-- Header -->
+<div id="header-container"></div>
+
+<!-- HERO SECTION -->
+<section class="pro-hero" id="hero">
+  <div class="pro-hero-content">
+    <div class="pro-hero-badge" data-aos="fade-up">Premium Collection</div>
+    <div class="pro-hero-divider" data-aos="fade-up" data-aos-delay="100"></div>
+    <h1 data-aos="fade-up" data-aos-delay="200">
+      Pro <span class="highlight">&</span> <span class="highlight">Elegent</span>
+    </h1>
+    <p class="subtitle" data-aos="fade-up" data-aos-delay="300">
+      Những tác phẩm nghệ thuật sáng tạo, tinh tế và chuyên nghiệp.<br>
+      Mỗi khung hình là một câu chuyện vượt thời gian.
+    </p>
+    <div class="pro-cta-buttons" data-aos="fade-up" data-aos-delay="400">
+      <button class="pro-btn solid" onclick="document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'})">Khám Phá</button>
+      <button class="pro-btn" onclick="alert('Liên hệ studio để booking')">Đặt Lịch</button>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO SECTION -->
+<section class="pro-portfolio-section" id="portfolio">
+  <div class="pro-section-header">
+    <h2 data-aos="fade-up">Bộ Sưu Tập</h2>
+    <p data-aos="fade-up" data-aos-delay="100">Khám phá những album được tuyển chọn từ phong cách Art & Elegent</p>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="pro-category-filter" data-aos="fade-up" data-aos-delay="200">
+    <button class="pro-filter-btn active" onclick="filterAlbums('all')">Tất Cả</button>
+    <button class="pro-filter-btn" onclick="filterAlbums('bridal')">Bridal</button>
+    <button class="pro-filter-btn" onclick="filterAlbums('lifestyle')">Lifestyle</button>
+    <button class="pro-filter-btn" onclick="filterAlbums('beauty')">Beauty</button>
+  </div>
+
+  <!-- Albums Grid -->
+  <div class="pro-album-grid" id="albumGrid">
+    <!-- Albums will be dynamically loaded here -->
+  </div>
+</section>
+
+<!-- STATS SECTION -->
+<section class="pro-stats">
+  <div class="pro-stats-grid">
+    <div class="pro-stat-item" data-aos="fade-up">
+      <h3>500+</h3>
+      <p>Hình Ảnh Tuyệt Vời</p>
+    </div>
+    <div class="pro-stat-item" data-aos="fade-up" data-aos-delay="100">
+      <h3>50+</h3>
+      <p>Album Được Tạo</p>
+    </div>
+    <div class="pro-stat-item" data-aos="fade-up" data-aos-delay="200">
+      <h3>1000+</h3>
+      <p>Khách Hàng Hài Lòng</p>
+    </div>
+    <div class="pro-stat-item" data-aos="fade-up" data-aos-delay="300">
+      <h3>15+</h3>
+      <p>Năm Kinh Nghiệm</p>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="pro-lightbox" id="lightbox">
+  <div class="pro-lightbox-content">
+    <button class="pro-lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img id="lightboxImage" class="pro-lightbox-image" src="" alt="">
+  </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-container"></div>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="./assets/js/load-template.js"></script>
+
+<script>
+  // Sample Portfolio Data
+  const portfolioData = {
+    albums: [
+      {
+        id: 1,
+        title: "Bridal Concept",
+        category: "bridal",
+        description: "Những khung hình cô dâu với ý tưởng sáng tạo",
+        image: "./assets/img/portfolio/makeup/Beauty/trinhbt (1).webp",
+        count: "12 Photos"
+      },
+      {
+        id: 2,
+        title: "Engagement Session",
+        category: "bridal",
+        description: "Khoảnh khắc hứa hẹn của cặp đôi",
+        image: "./assets/img/portfolio/makeup/Beauty/trinhbt (3).webp",
+        count: "15 Photos"
+      },
+      {
+        id: 3,
+        title: "Beauty & Makeup",
+        category: "beauty",
+        description: "Nghệ thuật trang điểm chuyên nghiệp",
+        image: "./assets/img/portfolio/makeup/Beauty/trinhbt (6).webp",
+        count: "10 Photos"
+      },
+      {
+        id: 4,
+        title: "Lifestyle Moments",
+        category: "lifestyle",
+        description: "Khoảnh khắc tự nhiên từ cuộc sống",
+        image: "./assets/img/portfolio/makeup/Beauty/trinhbt (7).webp",
+        count: "18 Photos"
+      },
+      {
+        id: 5,
+        title: "Couple Portrait",
+        category: "bridal",
+        description: "Chân dung đôi uyên ương tinh tế",
+        image: "./assets/img/portfolio/makeup/Beauty/trinhbt (9).webp",
+        count: "14 Photos"
+      },
+      {
+        id: 6,
+        title: "Editorial Shoot",
+        category: "lifestyle",
+        description: "Phong cách editorial sáng tạo mạnh mẽ",
+        image: "./assets/img/portfolio/makeup/Beauty/trinhbt (1).webp",
+        count: "20 Photos"
+      }
+    ]
+  };
+
+  function renderAlbums(filter = 'all') {
+    const grid = document.getElementById('albumGrid');
+    grid.innerHTML = '';
+
+    const filtered = filter === 'all' 
+      ? portfolioData.albums 
+      : portfolioData.albums.filter(album => album.category === filter);
+
+    filtered.forEach((album, index) => {
+      const card = document.createElement('div');
+      card.className = 'pro-album-card';
+      card.setAttribute('data-aos', 'fade-up');
+      card.setAttribute('data-aos-delay', (index * 100));
+      card.onclick = () => openLightbox(album.image);
+
+      card.innerHTML = `
+        <div class="pro-album-image">
+          <img src="${album.image}" alt="${album.title}" loading="lazy">
+          <div class="pro-album-overlay">
+            <div class="pro-album-info">
+              <h3 class="pro-album-title">${album.title}</h3>
+              <p class="pro-album-desc">${album.description}</p>
+              <div class="pro-album-meta">
+                <span>📸 ${album.count}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    AOS.refresh();
+  }
+
+  function filterAlbums(category) {
+    // Update active button
+    document.querySelectorAll('.pro-filter-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+
+    renderAlbums(category);
+  }
+
+  function openLightbox(imageSrc) {
+    document.getElementById('lightbox').classList.add('active');
+    document.getElementById('lightboxImage').src = imageSrc;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  document.getElementById('lightbox').onclick = function(e) {
+    if (e.target === this) closeLightbox();
+  };
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+    renderAlbums();
+  });
+</script>
+
+</body>
+</html>

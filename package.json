@@ -7,13 +7,17 @@
     "start": "node scripts/generate-gallery.js",
     "generate:hero": "node scripts/generate-hero-json.js",
     "generate:moodboard": "node scripts/generate-moodboard-data.js",
-    "watch:hero": "node scripts/watch-hero.js"
+    "watch:hero": "node scripts/watch-hero.js",
+    "gallery:generate": "node scripts/gallery-manager.js",
+    "gallery:watch": "node scripts/gallery-manager.js --watch",
+    "gallery:setup": "node scripts/gallery-setup.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "glob": "^13.0.0",
-    "image-size": "^2.0.2"
+    "image-size": "^2.0.2",
+    "chokidar": "^3.5.3"
   }
 }

@@ -1,41 +1,20 @@
 {
   "categories": [
     {
+      "id": "art-elegent",
+      "title": "Art & Elegent",
+      "description": "Những tác phẩm nghệ thuật tuyệt vời với phong cách tao nhã và tinh tế. Mỗi bức ảnh là sự kết hợp hoàn hảo giữa ánh sáng, hình ảnh và cảm xúc, tạo nên những khoảnh khắc vô cùng đẹp mắt.",
+      "albums": []
+    },
+    {
       "id": "cuoi",
       "title": "Chuyện Của Hai Ta",
       "description": "Hành trình yêu được kể bằng những khung hình tự nhiên và trong trẻo nhất. Kool D. Studio không chỉ chụp ảnh, mà còn lưu giữ từng ánh mắt, nụ cười và cảm xúc chân thật để câu chuyện tình yêu của bạn trở thành một thước phim lãng mạn, tinh tế và mãi mãi khắc sâu trong ký ức.",
       "albums": [
         {
-          "id": "Bridal Kool D. Studio 2025",
-          "title": "Bridal Kool D. Studio 2025",
-          "description": "",
-          "path": "cuoi/Bridal Kool D. Studio 2025",
-          "coverImage": "0bridal Trinh (9).webp",
-          "images": [
-            "0bridal Trinh (9).webp",
-            "bridal Trinh (10).webp",
-            "bridal Trinh (11).webp",
-            "bridal Trinh (12).webp",
-            "bridal Trinh (13).webp",
-            "bridal Trinh (14).webp",
-            "bridal Trinh (15).webp",
-            "bridal Trinh (16).webp",
-            "bridal Trinh (17).webp",
-            "bridal Trinh (18).webp",
-            "bridal Trinh (19).webp",
-            "bridal Trinh (2).webp",
-            "bridal Trinh (3).webp",
-            "bridal Trinh (4).webp",
-            "bridal Trinh (5).webp",
-            "bridal Trinh (6).webp",
-            "bridal Trinh (7).webp",
-            "bridal Trinh (8).webp"
-          ]
-        },
-        {
           "id": "Concept & Posing",
           "title": "Concept & Posing",
-          "description": "Nơi những ý tưởng chụp ảnh cưới độc đáo được hình thành, giúp bạn thể hiện cá tính riêng qua từng khung hình nghệ thuật.",
+          "description": "",
           "path": "cuoi/Concept & Posing",
           "coverImage": "0kdsconcept (2).webp",
           "images": [
@@ -146,6 +125,33 @@
             "_KDS9809.webp",
             "_KDS9827.webp"
           ]
+        },
+        {
+          "id": "Bridal Kool D. Studio 2025",
+          "title": "Bridal Kool D. Studio 2025",
+          "description": "",
+          "path": "cuoi/Bridal Kool D. Studio 2025",
+          "coverImage": "0bridal Trinh (9).webp",
+          "images": [
+            "0bridal Trinh (9).webp",
+            "bridal Trinh (10).webp",
+            "bridal Trinh (11).webp",
+            "bridal Trinh (12).webp",
+            "bridal Trinh (13).webp",
+            "bridal Trinh (14).webp",
+            "bridal Trinh (15).webp",
+            "bridal Trinh (16).webp",
+            "bridal Trinh (17).webp",
+            "bridal Trinh (18).webp",
+            "bridal Trinh (19).webp",
+            "bridal Trinh (2).webp",
+            "bridal Trinh (3).webp",
+            "bridal Trinh (4).webp",
+            "bridal Trinh (5).webp",
+            "bridal Trinh (6).webp",
+            "bridal Trinh (7).webp",
+            "bridal Trinh (8).webp"
+          ]
         }
       ]
     },
@@ -154,21 +160,6 @@
       "title": "Tổ Ấm An Nhiên",
       "description": "Thời gian có thể trôi, nhưng kỷ niệm bên gia đình là vĩnh cửu. Hãy để chúng tôi giúp bạn ghi lại những khoảnh khắc sum vầy ấm áp, từ tiếng cười giòn tan của con trẻ đến vòng tay yêu thương của ông bà. Mỗi bức ảnh là một mảnh ghép quý giá tạo nên câu chuyện tổ ấm của riêng bạn.",
       "albums": [
-        {
-          "id": "Cả nhà 1 tuổi",
-          "title": "Cả nhà 1 tuổi",
-          "description": "",
-          "path": "gia-dinh/Cả nhà 1 tuổi",
-          "coverImage": "0chup anh gia dinh co em be (11).webp",
-          "images": [
-            "0chup anh gia dinh co em be (11).webp",
-            "chup anh gia dinh co em be (10).webp",
-            "chup anh gia dinh co em be (4).webp",
-            "chup anh gia dinh co em be (5).webp",
-            "chup anh gia dinh co em be (7).webp",
-            "gia dinh (2).webp"
-          ]
-        },
         {
           "id": "Gia đình đoàn kết",
           "title": "Gia đình đoàn kết",
@@ -186,20 +177,6 @@
             "chup anh gia dinh 4 nguoi (8).webp",
             "chup anh gia dinh 4 nguoi (9).webp",
             "gia dinh (1).webp"
-          ]
-        },
-        {
-          "id": "Mẹ bầu 7 tháng",
-          "title": "Mẹ bầu 7 tháng",
-          "description": "",
-          "path": "gia-dinh/Mẹ bầu 7 tháng",
-          "coverImage": "me bau hoa tim (1).webp",
-          "images": [
-            "me bau hoa tim (1).webp",
-            "me bau hoa tim (17).webp",
-            "me bau hoa tim (18).webp",
-            "me bau hoa tim (4).webp",
-            "me bau hoa tim (5).webp"
           ]
         },
         {
@@ -222,8 +199,8 @@
         },
         {
           "id": "Ông bà Tôi",
-          "title": "Ông Bà Tôi",
-          "description": "Gìn giữ những khoảnh khắc vô giá bên ông bà, nơi tình yêu thương và sự ấm áp của gia đình được thể hiện qua nhiều thế hệ.",
+          "title": "Ông bà Tôi",
+          "description": "",
           "path": "gia-dinh/Ông bà Tôi",
           "coverImage": "0ong ba (13).webp",
           "images": [
@@ -238,6 +215,33 @@
             "ong ba (7).webp",
             "ong ba (8).webp",
             "ong ba (9).webp"
+          ]
+        },
+        {
+          "id": "Cả nhà 1 tuổi",
+          "title": "Cả nhà 1 tuổi",
+          "description": "",
+          "path": "gia-dinh/Cả nhà 1 tuổi",
+          "coverImage": "chup anh gia dinh co em be (10).webp",
+          "images": [
+            "chup anh gia dinh co em be (10).webp",
+            "chup anh gia dinh co em be (4).webp",
+            "chup anh gia dinh co em be (5).webp",
+            "chup anh gia dinh co em be (7).webp"
+          ]
+        },
+        {
+          "id": "Mẹ bầu 7 tháng",
+          "title": "Mẹ bầu 7 tháng",
+          "description": "",
+          "path": "gia-dinh/Mẹ bầu 7 tháng",
+          "coverImage": "me bau hoa tim (1).webp",
+          "images": [
+            "me bau hoa tim (1).webp",
+            "me bau hoa tim (17).webp",
+            "me bau hoa tim (18).webp",
+            "me bau hoa tim (4).webp",
+            "me bau hoa tim (5).webp"
           ]
         }
       ]
@@ -393,7 +397,6 @@
           "path": "makeup/PortraitConcept",
           "coverImage": "0 DAK_9435.webp",
           "images": [
-            ".webp",
             "0 DAK_9435.webp",
             "0DAK_2822.webp",
             "0DAK_2902.webp",
@@ -512,6 +515,12 @@
           ]
         }
       ]
+    },
+    {
+      "id": "pro",
+      "title": "Pro Collection",
+      "description": "Bộ sưu tập chuyên nghiệp với những hình ảnh chất lượng cao và sáng tạo vượt trội. Nơi những ý tưởng cách tân được biến thành hiện thực qua từng khung hình.",
+      "albums": []
     }
   ]
 }
