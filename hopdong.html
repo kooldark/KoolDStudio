@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Hợp Đồng Dịch Vụ - Kool D. Studio | Quản Lý Chuyên Nghiệp</title>
+    <meta name="description" content="Quản lý hợp đồng dịch vụ chuyên nghiệp - tạo, lưu, xuất PDF hợp đồng chụp ảnh, makeup, sự kiện tại Kool D. Studio.">
+    <meta name="keywords" content="hợp đồng dịch vụ, quản lý hợp đồng, chụp ảnh cưới, makeup, Kool D Studio">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kooldstudio.com/hopdong.html">
+    <meta property="og:title" content="Hợp Đồng Dịch Vụ - Kool D. Studio">
+    <meta property="og:description" content="Quản lý hợp đồng dịch vụ chuyên nghiệp - tạo, lưu, xuất PDF hợp đồng chụp ảnh và makeup.">
+    <meta property="og:image" content="https://kooldstudio.com/assets/img/brand/favicon.png">
+    
+    <!-- Canonical URL -->
+    <meta name="canonical" href="https://kooldstudio.com/hopdong.html">
+    
+    <!-- Additional SEO Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Vietnamese">
+    <meta name="author" content="Kool D. Studio">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usKFqyUKV7Fs+aIGLPy8bLLBoDwJstMVBbpFagpF+Xg/Hp3+ymodeva/WCHD5w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="assets/css/home-elegant.css">
+    <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
+    <style>
+        :root {
+            --primary-green: #2d4a35;
+            --accent-gold: #d4a574;
+            --light-bg: #faf8f5;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-secondary: #555555;
+            --border-light: #e8e5e0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 16px 40px rgba(45, 74, 53, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f2ed 0%, #faf8f5 100%);
+            color: var(--text-dark);
+            font-size: 15px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+
+        .page-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ============ HEADER ============ */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 1rem;
+        }
+
+        .header-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            word-spacing: 0.2em;
+        }
+
+        .header-tagline {
+            font-size: 13px;
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .header-divider {
+            width: 60px;
+            height: 2.5px;
+            background: var(--accent-gold);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* ============ MAIN CONTAINER ============ */
+        .contract-container {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .contract-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green) 0%, var(--accent-gold) 100%);
+        }
+
+        #contract-content {
+            padding: 3.5rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============ CONTRACT HEADER ============ */
+        .contract-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .contract-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.08em;
+        }
+
+        .contract-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.8rem;
+        }
+
+        .contract-meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 13px;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .contract-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contract-meta-item strong {
+            color: var(--primary-green);
+        }
+
+        /* ============ SECTION STYLING ============ */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .section-header::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: 0.03em;
+            margin: 0;
+        }
+
+        /* ============ TWO COLUMN LAYOUT ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        /* ============ FORM INPUTS ============ */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .form-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            padding: 1rem;
+            border: 1.5px solid var(--border-light);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            color: var(--text-dark);
+            background: var(--light-bg);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #999;
+        }
+
+        .form-textarea {
+            resize: none;
+            min-height: 80px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-end;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-row .form-label {
+            display: none;
+        }
+
+        .time-picker {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* ============ CARD STYLING ============ */
+        .card {
+            background: var(--light-bg);
+            border: 1.5px solid var(--border-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-title::before {
+            content: '';
+            display: block;
+            width: 2px;
+            height: 14px;
+            background: var(--accent-gold);
+            border-radius: 1px;
+        }
+
+        .card-content {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .card-content p {
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content strong {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        /* ============ SERVICE & PRODUCT SECTIONS ============ */
+        .service-product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .editable-box {
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border: 1.5px solid var(--border-light);
+            border-radius: 12px;
+            min-height: 120px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .editable-box:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+        }
+
+        .editable-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .editable-box li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .editable-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* ============ COST SECTION ============ */
+        .cost-table {
+            background: var(--light-bg);
+            border: 1.5px solid var(--border-light);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+
+        .cost-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            align-items: center;
+        }
+
+        .cost-row:last-child {
+            border-bottom: none;
+        }
+
+        .cost-row.header {
+            background: var(--primary-green);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: none;
+        }
+
+        .cost-row.total {
+            background: linear-gradient(135deg, rgba(45, 74, 53, 0.05) 0%, rgba(212, 165, 116, 0.05) 100%);
+            border-top: 2px solid var(--accent-gold);
+            font-weight: 700;
+            padding: 1.5rem;
+        }
+
+        .cost-label {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .cost-input {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 0.8rem;
+            text-align: right;
+            font-weight: 600;
+            color: var(--primary-green);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+        }
+
+        .cost-input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 2px rgba(212, 165, 116, 0.1);
+        }
+
+        #remaining-balance {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-align: right;
+        }
+
+        .cost-note {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: right;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* ============ BANK INFO ============ */
+        .bank-info {
+            background: linear-gradient(135deg, rgba(45, 74, 53, 0.05) 0%, rgba(212, 165, 116, 0.05) 100%);
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .bank-info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .bank-info-label {
+            font-weight: 600;
+            color: var(--primary-green);
+            min-width: 120px;
+        }
+
+        /* ============ TERMS & CONDITIONS ============ */
+        .terms-section {
+            margin-bottom: 3rem;
+        }
+
+        .terms-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .radio-card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .radio-card input[type="radio"] {
+            display: none;
+        }
+
+        .radio-card-label {
+            display: block;
+            padding: 1.2rem;
+            background: var(--light-bg);
+            border: 2px solid var(--border-light);
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .radio-card input[type="radio"]:checked + .radio-card-label {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+            box-shadow: var(--shadow-md);
+        }
+
+        .terms-content {
+            background: var(--light-bg);
+            border: 1.5px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2rem;
+            line-height: 1.8;
+        }
+
+        .terms-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .terms-content li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .terms-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        /* ============ SIGNATURE SECTION ============ */
+        .signature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 12px;
+        }
+
+        .signature-block {
+            text-align: center;
+        }
+
+        .signature-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .signature-line {
+            border-top: 2px solid var(--primary-green);
+            height: 80px;
+            margin-bottom: 0.8rem;
+        }
+
+        .signature-name {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* ============ BUTTONS ============ */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.9rem 1.8rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background: #1f3a27;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .btn-accent {
+            background: var(--accent-gold);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background: #c49461;
+            transform: translateY(-2px);
+        }
+
+        /* ============ CONTRACT MANAGEMENT ============ */
+        .management-section {
+            background: var(--light-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .management-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contract-history {
+            margin-top: 2rem;
+        }
+
+        .contract-list {
+            list-style: none;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .contract-list li {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contract-list li:hover {
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contract-list-info {
+            flex: 1;
+        }
+
+        .contract-name {
+            font-weight: 600;
+            color: var(--primary-green);
+            font-size: 14px;
+            margin-bottom: 0.3rem;
+        }
+
+        .contract-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .contract-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 11px;
+            border-radius: 6px;
+            border: 1px solid var(--border-light);
+            background: white;
+            color: var(--primary-green);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-small:hover {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+        }
+
+        /* ============ SCROLLBAR ============ */
+        .contract-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .contract-list::-webkit-scrollbar-track {
+            background: var(--light-bg);
+            border-radius: 3px;
+        }
+
+        .contract-list::-webkit-scrollbar-thumb {
+            background: var(--accent-gold);
+            border-radius: 3px;
+        }
+
+        .contract-list::-webkit-scrollbar-thumb:hover {
+            background: #b8924d;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .two-column,
+            .service-product-grid,
+            .signature-section,
+            .management-intro,
+            .terms-selector {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            #contract-content {
+                padding: 2rem;
+            }
+
+            .header-brand {
+                font-size: 1.6rem;
+            }
+
+            .contract-title {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .contract-meta-info {
+                gap: 1rem;
+            }
+
+            .time-picker {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        /* ============ PRINT STYLES ============ */
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .page-header,
+            .management-section {
+                display: none !important;
+            }
+
+            .contract-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .contract-container::before {
+                display: none;
+            }
+
+            #contract-content {
+                padding: 1.5rem;
+            }
+
+            .terms-selector {
+                display: none !important;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
+</head>
+<body>
+<div id="header-container"></div>
+
+<div class="page-wrapper">
+    <!-- Header -->
+    <div class="page-header">
+        <div class="header-brand">Kool D. Studio</div>
+        <div class="header-tagline">Art of Your Story</div>
+        <div class="header-divider"></div>
+    </div>
+
+    <!-- Contract Container -->
+    <div class="contract-container">
+        <div id="contract-content">
+            <!-- Contract Header -->
+            <div class="contract-header">
+                <h1 class="contract-title">Hợp Đồng Dịch Vụ</h1>
+                <p class="contract-subtitle">Service Agreement</p>
+                <div class="contract-meta-info">
+                    <div class="contract-meta-item">
+                        <strong>Ngày:</strong>
+                        <span id="contract-date"></span>
+                    </div>
+                </div>
+            </div>
+
+            <main>
+                <!-- CUSTOMER & STUDIO INFO -->
+                <section class="section">
+                    <div class="two-column">
+                        <!-- Customer Info -->
+                        <div class="column">
+                            <div class="section-header">
+                                <h3 class="section-title">Bên A: Khách Hàng</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Tên Khách Hàng</label>
+                                <input type="text" id="customer-name" class="form-input" placeholder="Nhập tên khách hàng" autocomplete="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Số Điện Thoại</label>
+                                <input type="tel" id="customer-phone" class="form-input" placeholder="Nhập số điện thoại" inputmode="tel" autocomplete="tel">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Ngày & Giờ Thực Hiện Dịch Vụ</label>
+                                <div id="appointment-display" style="padding: 0.8rem; background: var(--light-bg); border-radius: 8px; color: var(--primary-green); font-weight: 500; min-height: 40px; display: flex; align-items: center;">
+                                    <small>(Chọn ngày và giờ bên dưới)</small>
+                                </div>
+                                <div class="time-picker">
+                                    <input type="time" id="appointment-time" class="form-input">
+                                    <input type="date" id="appointment-date" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Studio Info -->
+                        <div class="column">
+                            <div class="section-header">
+                                <h3 class="section-title">Bên B: Studio</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Đại Diện Studio</label>
+                                <input type="text" id="studio-rep" class="form-input" placeholder="Nhập tên đại diện" autocomplete="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Số Điện Thoại</label>
+                                <input type="text" id="studio-phone" class="form-input" value="0379031662 - 0976839250" inputmode="tel">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Địa Điểm Thực Hiện</label>
+                                <input type="text" id="location" class="form-input" value="Kool D. Studio" placeholder="Nhập địa điểm">
+                            </div>
+
+                            <div class="card">
+                                <div class="card-title">Thông Tin Liên Hệ</div>
+                                <div class="card-content">
+                                    <p><strong>Website:</strong> www.kooldstudio.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SERVICE & PRODUCTS -->
+                <section class="section">
+                    <div class="section-header">
+                        <h3 class="section-title">Gói Dịch Vụ & Sản Phẩm</h3>
+                    </div>
+
+                    <div class="service-product-grid">
+                        <div>
+                            <div class="card-title" style="margin-bottom: 1rem; padding-left: 0;">Gói Dịch Vụ</div>
+                            <div class="editable-box" id="service-details" contenteditable="true">
+                                <ul>
+                                    <li>Gói chụp, thời gian, địa điểm...</li>
+                                    <li>Quá trình chụp ảnh chuyên nghiệp</li>
+                                    <li>Hỗ trợ tư vấn tư thế và styling</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="card-title" style="margin-bottom: 1rem; padding-left: 0;">Sản Phẩm & Kèm Theo</div>
+                            <div class="editable-box" id="included-products" contenteditable="true">
+                                <ul>
+                                    <li>Ảnh gốc chưa chỉnh sửa</li>
+                                    <li>Ảnh chỉnh sửa (file mềm)</li>
+                                    <li>Album hoặc in ấn (tùy gói)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- COST & PAYMENT -->
+                <section class="section">
+                    <div class="two-column">
+                        <div>
+                            <div class="section-header">
+                                <h3 class="section-title">Chi Phí & Thanh Toán</h3>
+                            </div>
+
+                            <div class="cost-table">
+                                <div class="cost-row header">
+                                    <span>Hạng Mục</span>
+                                    <span>Số Tiền (VNĐ)</span>
+                                </div>
+
+                                <div class="cost-row">
+                                    <span class="cost-label">Tổng Chi Phí</span>
+                                    <input type="text" id="total-cost" class="cost-input currency-input" placeholder="0" inputmode="numeric">
+                                </div>
+
+                                <div class="cost-row">
+                                    <span class="cost-label">Đặt Cọc Lần 1</span>
+                                    <input type="text" id="deposit-1" class="cost-input currency-input" placeholder="0" inputmode="numeric">
+                                </div>
+
+                                <div class="cost-row">
+                                    <span class="cost-label">Thanh Toán Lần 2</span>
+                                    <input type="text" id="deposit-2" class="cost-input currency-input" placeholder="0" inputmode="numeric">
+                                </div>
+
+                                <div class="cost-row total">
+                                    <span>Số Dư Còn Lại</span>
+                                    <div style="text-align: right;">
+                                        <div id="remaining-balance">0 VNĐ</div>
+                                        <div class="cost-note">
+                                            <textarea id="remaining-note" style="background: transparent; border: none; padding: 0; font-size: 12px; width: 100%; resize: none; font-style: italic; color: var(--text-secondary);" rows="1" placeholder="Ghi chú (vd: thanh toán khi nhận ảnh)"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bank Info -->
+                        <div>
+                            <div class="section-header">
+                                <h3 class="section-title">Thông Tin Tài Khoản</h3>
+                            </div>
+
+                            <div class="bank-info">
+                                <div class="bank-info-row">
+                                    <span class="bank-info-label">Ngân Hàng:</span>
+                                    <span>Vietcombank</span>
+                                </div>
+                                <div class="bank-info-row">
+                                    <span class="bank-info-label">Chủ Tài:</span>
+                                    <span>Trần Như Tuấn</span>
+                                </div>
+                                <div class="bank-info-row">
+                                    <span class="bank-info-label">Số TK:</span>
+                                    <span>0071000763310</span>
+                                </div>
+                                <div class="bank-info-row" style="margin-top: 1rem; border-top: 1px solid rgba(45, 74, 53, 0.1); padding-top: 1rem;">
+                                    <span class="bank-info-label">Nội Dung:</span>
+                                    <span style="font-style: italic;">Tên khách hàng</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TERMS & CONDITIONS -->
+                <section class="section terms-section">
+                    <div class="section-header">
+                        <h3 class="section-title">Điều Khoản & Điều Kiện</h3>
+                    </div>
+
+                    <div class="terms-selector">
+                        <label class="radio-card">
+                            <input type="radio" name="terms-type" value="photo" checked>
+                            <div class="radio-card-label">
+                                <i class="fas fa-camera" style="margin-right: 0.5rem;"></i>
+                                Gói Chụp Ảnh
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="terms-type" value="makeup">
+                            <div class="radio-card-label">
+                                <i class="fas fa-sparkles" style="margin-right: 0.5rem;"></i>
+                                Gói Makeup
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="terms-content">
+                        <ul id="terms-photo">
+                            <li>Studio giao ảnh gốc trong 48h, ảnh chỉnh sửa (file mềm) trong 15 ngày làm việc kể từ khi Khách hàng chốt list. Album/in ấn hoàn thiện trong 25-30 ngày làm việc.</li>
+                            <li>Studio có thể sử dụng một số hình ảnh để quảng bá. Nếu yêu cầu riêng tư 100%, vui lòng thông báo trước.</li>
+                            <li>Hủy hợp đồng: đặt cọc lần 1 không hoàn lại. Hoãn lịch 1 lần miễn phí (thông báo trước 7 ngày), lần 2 trở đi phí 10% giá trị hợp đồng.</li>
+                            <li>Dịch vụ ngoài hợp đồng thanh toán 100% ngay. Giao sản phẩm tại studio; nếu giao tận nơi, Khách chịu phí & rủi ro vận chuyển.</li>
+                        </ul>
+                        <ul id="terms-makeup" style="display: none;">
+                            <li>Thời Gian: Khách hàng vui lòng đúng giờ hẹn. Trễ hơn 30 phút không thông báo: Studio có quyền điều chỉnh quy trình hoặc hủy dịch vụ.</li>
+                            <li>Trách Nhiệm Cơ Địa: Khách hàng cần thông báo về mọi dị ứng/tình trạng da nhạy cảm trước khi làm dịch vụ. Studio miễn trừ trách nhiệm nếu xảy ra phản ứng.</li>
+                            <li>Thử Mẫu (Cô Dâu): Phí thử mẫu là không hoàn lại. Yêu cầu thực hiện ít nhất 10 ngày trước ngày chính thức.</li>
+                            <li>Hủy Hợp Đồng: Đặt cọc không hoàn lại (theo Điều Khoản Chung).</li>
+                            <li>Hoãn Lịch: Hoãn miễn phí 1 lần khi báo trước 7 ngày làm việc. Báo trước 3-6 ngày tính phí 10%. Báo trước &lt;48 giờ tính phí 30%.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- SIGNATURE SECTION -->
+                <section class="section">
+                    <div class="signature-section">
+                        <div class="signature-block">
+                            <div class="signature-label">Ký & Ghi Rõ Họ Tên</div>
+                            <div class="signature-line"></div>
+                            <p class="signature-name">Đại Diện Khách Hàng</p>
+                        </div>
+                        <div class="signature-block">
+                            <div class="signature-label">Ký & Ghi Rõ Họ Tên</div>
+                            <div class="signature-line"></div>
+                            <p class="signature-name">Đại Diện Studio</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Contract Management Section -->
+    <div class="management-section">
+        <div class="section-header">
+            <h3 class="section-title">Quản Lý Hợp Đồng</h3>
+        </div>
+
+        <div class="management-intro">
+            <div>
+                <div class="form-group">
+                    <label class="form-label">Tên Hợp Đồng</label>
+                    <input type="text" id="contract-name-input" class="form-input" placeholder="Ví dụ: HD_AnhCuoi_NguyenVanA_2026-03-03">
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label class="form-label">Ghi Chú</label>
+                    <textarea id="contract-notes-input" class="form-textarea" placeholder="Thêm ghi chú về hợp đồng này..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-primary" id="save-contract-btn">
+                <i class="fas fa-save"></i> Lưu Hợp Đồng
+            </button>
+            <button class="btn btn-secondary" id="load-contract-btn">
+                <i class="fas fa-folder-open"></i> Tải Hợp Đồng
+            </button>
+            <button class="btn btn-secondary" id="delete-contract-btn">
+                <i class="fas fa-trash"></i> Xóa
+            </button>
+            <button class="btn btn-accent" id="capture-screenshot-btn">
+                <i class="fas fa-camera"></i> Chụp Màn Hình
+            </button>
+            <button class="btn btn-accent" id="export-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Xuất PDF
+            </button>
+        </div>
+
+        <div class="contract-history">
+            <h4 class="section-title" style="margin-bottom: 1.5rem; font-size: 1.2rem;">
+                <i class="fas fa-history" style="margin-right: 0.5rem; color: var(--accent-gold);"></i>
+                Lịch Sử Hợp Đồng
+            </h4>
+            <ul class="contract-list" id="contract-list">
+                <li style="justify-content: center; color: var(--text-secondary);">
+                    <i class="fas fa-inbox" style="margin-right: 0.5rem;"></i>
+                    Chưa có hợp đồng nào được lưu
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="footer-container"></div>
+
+<script src="assets/js/modal.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const els = {
+            // Contract header
+            date: document.getElementById('contract-date'),
+
+            // Customer info
+            customerName: document.getElementById('customer-name'),
+            customerPhone: document.getElementById('customer-phone'),
+            appointmentTime: document.getElementById('appointment-time'),
+            appointmentDate: document.getElementById('appointment-date'),
+            appointmentDisplay: document.getElementById('appointment-display'),
+
+            // Studio info
+            studioRep: document.getElementById('studio-rep'),
+            studioPhone: document.getElementById('studio-phone'),
+            location: document.getElementById('location'),
+
+            // Service & products
+            serviceDetails: document.getElementById('service-details'),
+            includedProducts: document.getElementById('included-products'),
+
+            // Cost
+            totalCost: document.getElementById('total-cost'),
+            deposit1: document.getElementById('deposit-1'),
+            deposit2: document.getElementById('deposit-2'),
+            remainingBalance: document.getElementById('remaining-balance'),
+            remainingNote: document.getElementById('remaining-note'),
+
+            // Terms
+            termsPhotoRadio: document.querySelector('input[name="terms-type"][value="photo"]'),
+            termsMakeupRadio: document.querySelector('input[name="terms-type"][value="makeup"]'),
+            termsPhotoList: document.getElementById('terms-photo'),
+            termsMakeupList: document.getElementById('terms-makeup'),
+
+            // Contract management
+            contractNameInput: document.getElementById('contract-name-input'),
+            contractNotesInput: document.getElementById('contract-notes-input'),
+            saveBtn: document.getElementById('save-contract-btn'),
+            loadBtn: document.getElementById('load-contract-btn'),
+            deleteBtn: document.getElementById('delete-contract-btn'),
+            captureBtn: document.getElementById('capture-screenshot-btn'),
+            exportPdfBtn: document.getElementById('export-pdf-btn'),
+            contractList: document.getElementById('contract-list'),
+        };
+
+        // Set contract date
+        function setDate() {
+            const d = new Date();
+            els.date.textContent = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+            autoGenerateContractName();
+        }
+
+        // Auto-generate contract name based on customer name and date
+        function autoGenerateContractName() {
+            const customerName = els.customerName.value.trim();
+            const contractDate = els.date.textContent.replace(/\//g, '-');
+
+            if (!customerName) {
+                els.contractNameInput.value = '';
+                return;
+            }
+
+            const slug = customerName
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/đ/g, 'd').replace(/Đ/g, 'D')
+                .replace(/[^\w\s-]/g, '')
+                .trim()
+                .replace(/\s+/g, '_');
+
+            els.contractNameInput.value = `HD_${slug}_${contractDate}`;
+        }
+
+        // Currency formatting
+        const formatter = new Intl.NumberFormat('vi-VN');
+        const format = (v) => v ? formatter.format(v) : '0';
+        const parse = (v) => parseFloat(String(v).replace(/\./g, '')) || 0;
+
+        // Calculate remaining balance
+        function calculateRemaining() {
+            const total = parse(els.totalCost.value);
+            const dep1 = parse(els.deposit1.value);
+            const dep2 = parse(els.deposit2.value);
+            els.remainingBalance.textContent = format(total - dep1 - dep2) + ' VNĐ';
+        }
+
+        // Handle currency input formatting
+        document.querySelectorAll('.currency-input').forEach(input => {
+            input.addEventListener('input', (e) => {
+                let val = e.target.value.replace(/\D/g, '');
+                e.target.value = format(val);
+                calculateRemaining();
+            });
+        });
+
+        // Auto-grow textarea
+        document.querySelectorAll('textarea').forEach(textarea => {
+            textarea.addEventListener('input', () => {
+                textarea.style.height = 'auto';
+                textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';
+            });
+        });
+
+        // Update appointment display
+        function updateAppointmentDisplay() {
+            const time = els.appointmentTime.value;
+            const date = els.appointmentDate.value;
+
+            if (!time || !date) {
+                els.appointmentDisplay.innerHTML = '<small style="color: #999;">(Chọn ngày và giờ)</small>';
+                return;
+            }
+
+            const [hours, minutes] = time.split(':').map(Number);
+            let period = '';
+            if (hours >= 5 && hours < 12) period = '☀️ Sáng';
+            else if (hours >= 12 && hours < 18) period = '🌤️ Chiều';
+            else period = '🌙 Tối';
+
+            const d = new Date(date + 'T00:00:00');
+            const dateStr = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+
+            els.appointmentDisplay.innerHTML = `<strong>${period} ${hours}:${String(minutes).padStart(2, '0')} ngày ${dateStr}</strong>`;
+        }
+
+        [els.appointmentTime, els.appointmentDate].forEach(el => {
+            el.addEventListener('change', updateAppointmentDisplay);
+            el.addEventListener('input', updateAppointmentDisplay);
+        });
+
+        // Get contract data
+        function getContractData() {
+            return {
+                customerName: els.customerName.value,
+                customerPhone: els.customerPhone.value,
+                appointmentTime: els.appointmentTime.value,
+                appointmentDate: els.appointmentDate.value,
+                studioRep: els.studioRep.value,
+                studioPhone: els.studioPhone.value,
+                location: els.location.value,
+                serviceDetails: els.serviceDetails.innerHTML,
+                includedProducts: els.includedProducts.innerHTML,
+                totalCost: els.totalCost.value,
+                deposit1: els.deposit1.value,
+                deposit2: els.deposit2.value,
+                remainingNote: els.remainingNote.value,
+                contractDate: els.date.textContent,
+                termsType: els.termsPhotoRadio.checked ? 'photo' : 'makeup',
+            };
+        }
+
+        // Set contract data
+        function setContractData(data) {
+            els.customerName.value = data.customerName || '';
+            els.customerPhone.value = data.customerPhone || '';
+            els.appointmentTime.value = data.appointmentTime || '';
+            els.appointmentDate.value = data.appointmentDate || '';
+            els.studioRep.value = data.studioRep || '';
+            els.studioPhone.value = data.studioPhone || '0379031662 - 0976839250';
+            els.location.value = data.location || 'Kool D. Studio';
+            els.serviceDetails.innerHTML = DOMPurify.sanitize(data.serviceDetails || '<ul><li>Gói chụp, thời gian, địa điểm...</li></ul>');
+            els.includedProducts.innerHTML = DOMPurify.sanitize(data.includedProducts || '<ul><li>Album, ảnh lớn, file ảnh...</li></ul>');
+            els.totalCost.value = data.totalCost || '';
+            els.deposit1.value = data.deposit1 || '';
+            els.deposit2.value = data.deposit2 || '';
+            els.remainingNote.value = data.remainingNote || '';
+            els.date.textContent = data.contractDate || new Date().toLocaleDateString('vi-VN');
+
+            if (data.termsType === 'makeup') {
+                els.termsMakeupRadio.checked = true;
+                els.termsPhotoList.style.display = 'none';
+                els.termsMakeupList.style.display = 'block';
+            } else {
+                els.termsPhotoRadio.checked = true;
+                els.termsPhotoList.style.display = 'block';
+                els.termsMakeupList.style.display = 'none';
+            }
+
+            document.querySelectorAll('textarea').forEach(t => {
+                t.style.height = 'auto';
+                t.style.height = Math.min(t.scrollHeight, 200) + 'px';
+            });
+
+            updateAppointmentDisplay();
+            calculateRemaining();
+        }
+
+        // Save contract
+        function saveContract() {
+            const contractName = els.contractNameInput.value.trim();
+            if (!contractName) {
+                modal.warning('Vui lòng nhập tên hợp đồng', 'Cảnh báo');
+                return;
+            }
+
+            try {
+                const savedData = {
+                    data: getContractData(),
+                    notes: els.contractNotesInput.value.trim(),
+                    timestamp: new Date().toLocaleString('vi-VN'),
+                };
+                localStorage.setItem(`contract_${contractName}`, JSON.stringify(savedData));
+                modal.success(`Hợp đồng "${contractName}" đã được lưu!`, 'Thành công');
+                renderContractList();
+            } catch (e) {
+                modal.error('Lỗi: ' + e.message);
+            }
+        }
+
+        // Load contract
+        function loadContract(contractName) {
+            try {
+                const savedData = localStorage.getItem(`contract_${contractName}`);
+                if (savedData) {
+                    const parsed = JSON.parse(savedData);
+                    setContractData(parsed.data);
+                    els.contractNameInput.value = contractName;
+                    els.contractNotesInput.value = parsed.notes || '';
+                    modal.success(`Hợp đồng "${contractName}" đã được tải!`, 'Thành công');
+                    document.getElementById('contract-content').scrollIntoView({ behavior: 'smooth' });
+                }
+            } catch (e) {
+                modal.error('Lỗi: ' + e.message);
+            }
+        }
+
+        // Delete contract
+        function deleteContract(contractName) {
+            modal.confirm(`Xóa hợp đồng "${contractName}"?`, 'Xác nhận').then(confirmed => {
+                if (confirmed) {
+                    localStorage.removeItem(`contract_${contractName}`);
+                    modal.success('Hợp đồng đã được xóa!', 'Thành công');
+                    renderContractList();
+                }
+            });
+        }
+
+        // Render contract list
+        function renderContractList() {
+            els.contractList.innerHTML = '';
+            const contracts = Object.keys(localStorage)
+                .filter(key => key.startsWith('contract_'))
+                .map(key => ({
+                    name: key.replace('contract_', ''),
+                    data: JSON.parse(localStorage.getItem(key))
+                }))
+                .sort((a, b) => new Date(b.data.timestamp) - new Date(a.data.timestamp));
+
+            if (contracts.length === 0) {
+                els.contractList.innerHTML = '<li style="justify-content: center; color: var(--text-secondary);"><i class="fas fa-inbox" style="margin-right: 0.5rem;"></i>Chưa có hợp đồng nào được lưu</li>';
+                return;
+            }
+
+            contracts.forEach(contract => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <div class="contract-list-info">
+                        <div class="contract-name">${contract.name}</div>
+                        <div class="contract-meta">${contract.data.notes || 'Không có ghi chú'}</div>
+                        <div class="contract-meta" style="font-size: 11px;">📅 ${contract.data.timestamp}</div>
+                    </div>
+                    <div class="contract-actions">
+                        <button class="btn-small" onclick="loadContractByName('${contract.name}')">Tải</button>
+                        <button class="btn-small" onclick="deleteContractByName('${contract.name}')">Xóa</button>
+                    </div>
+                `;
+                els.contractList.appendChild(li);
+            });
+        }
+
+        // Global functions for inline onclick
+        window.loadContractByName = loadContract;
+        window.deleteContractByName = deleteContract;
+
+        // Capture screenshot
+        async function captureScreenshot() {
+            const content = document.getElementById('contract-content');
+            try {
+                const canvas = await html2canvas(content, { scale: 2 });
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = `HopDong_${els.contractNameInput.value || 'Moi'}_${new Date().toISOString().split('T')[0]}.png`;
+                link.click();
+                modal.success('Ảnh chụp màn hình đã được lưu!', 'Thành công');
+            } catch (e) {
+                modal.error('Lỗi: ' + e.message);
+            }
+        }
+
+        // Export to PDF
+        async function exportToPdf() {
+            const content = document.getElementById('contract-content');
+            try {
+                const canvas = await html2canvas(content, { scale: 2 });
+                const imgData = canvas.toDataURL('image/png');
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+
+                const imgWidth = 210;
+                const pageHeight = 297;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+
+                pdf.save(`HopDong_${els.contractNameInput.value || 'Moi'}_${new Date().toISOString().split('T')[0]}.pdf`);
+                modal.success('Hợp đồng đã được xuất ra PDF!', 'Thành công');
+            } catch (e) {
+                modal.error('Lỗi: ' + e.message);
+            }
+        }
+
+        // Event listeners
+        els.customerName.addEventListener('input', autoGenerateContractName);
+        els.saveBtn.addEventListener('click', saveContract);
+        els.loadBtn.addEventListener('click', () => {
+            const contracts = Object.keys(localStorage)
+                .filter(key => key.startsWith('contract_'))
+                .map(key => key.replace('contract_', ''));
+
+            if (contracts.length === 0) {
+                modal.info('Chưa có hợp đồng nào được lưu', 'Thông báo');
+                return;
+            }
+
+            const firstContract = contracts[0];
+            loadContract(firstContract);
+        });
+        els.deleteBtn.addEventListener('click', () => {
+            const name = els.contractNameInput.value.trim();
+            if (!name) {
+                modal.warning('Vui lòng tải hợp đồng trước khi xóa', 'Cảnh báo');
+                return;
+            }
+            deleteContract(name);
+        });
+        els.captureBtn.addEventListener('click', captureScreenshot);
+        els.exportPdfBtn.addEventListener('click', exportToPdf);
+
+        // Terms toggle
+        document.querySelectorAll('input[name="terms-type"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (els.termsPhotoRadio.checked) {
+                    els.termsPhotoList.style.display = 'block';
+                    els.termsMakeupList.style.display = 'none';
+                } else {
+                    els.termsPhotoList.style.display = 'none';
+                    els.termsMakeupList.style.display = 'block';
+                }
+            });
+        });
+
+        // Initialize
+        setDate();
+        calculateRemaining();
+        updateAppointmentDisplay();
+        renderContractList();
+    });
+</script>
+
+<script src="assets/js/load-template.js"></script>
+</body>
+</html>

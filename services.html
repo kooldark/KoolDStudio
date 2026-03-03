@@ -1468,6 +1468,179 @@
   </div>
 </section>
 
+<!-- CONTRACT MANAGEMENT CTA SECTION -->
+<section class="contract-cta-section" data-aos="fade-up">
+  <div class="container">
+    <div class="contract-cta-wrapper">
+      <div class="contract-cta-content">
+        <div class="contract-cta-icon">
+          <i class="fas fa-file-contract"></i>
+        </div>
+        <h3 class="contract-cta-title">Quản Lý Hợp Đồng Dịch Vụ</h3>
+        <p class="contract-cta-description">
+          Tạo, quản lý và xuất hợp đồng dịch vụ một cách chuyên nghiệp. 
+          Hệ thống tự động tính toán chi phí, lưu trữ dữ liệu và xuất PDF chỉ với vài cú click.
+        </p>
+        <div class="contract-cta-features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Tạo hợp đồng chuyên nghiệp</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Quản lý lịch sử hợp đồng</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Xuất PDF & hình ảnh</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Tính toán tự động chi phí</span>
+          </div>
+        </div>
+        <a href="hopdong.html" class="cta-button">
+          <span>Quản Lý Hợp Đồng</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="contract-cta-image">
+        <div class="cta-image-placeholder">
+          <i class="fas fa-document-alt"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contract-cta-section {
+    padding: 80px 40px;
+    background: linear-gradient(135deg, var(--color-light-cream) 0%, rgba(212, 165, 116, 0.05) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contract-cta-section::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -15%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .contract-cta-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contract-cta-icon {
+    font-size: 60px;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+  }
+
+  .contract-cta-title {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    color: var(--color-darkgreen);
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .contract-cta-description {
+    font-size: 1.05rem;
+    color: var(--color-gray);
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+
+  .contract-cta-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-dark-gray);
+    font-size: 0.95rem;
+  }
+
+  .feature-item i {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 40px;
+    background: var(--color-darkgreen);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--color-darkgreen);
+  }
+
+  .cta-button:hover {
+    background: transparent;
+    color: var(--color-darkgreen);
+    transform: translateX(5px);
+  }
+
+  .cta-image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(45, 90, 74, 0.1) 100%);
+    border-radius: 16px;
+    font-size: 100px;
+    color: rgba(212, 165, 116, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .contract-cta-section {
+      padding: 60px 30px;
+    }
+
+    .contract-cta-wrapper {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .contract-cta-title {
+      font-size: 1.8rem;
+    }
+
+    .contract-cta-features {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-image-placeholder {
+      height: 200px;
+      font-size: 70px;
+    }
+  }
+</style>
+
 <!-- FOOTER CTA SECTION -->
 <section class="footer-cta-section" data-aos="fade-up">
   <div class="footer-cta-content">

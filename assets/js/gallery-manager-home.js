@@ -187,9 +187,8 @@ function initLazyLoading() {
             imageObserver.unobserve(img);
           };
           tempImg.onerror = () => {
-            // Fallback: still set src even if loading fails
-            img.src = src;
-            img.classList.add('loaded');
+            // Hide broken images instead of showing fallback
+            img.style.display = 'none';
             imageObserver.unobserve(img);
           };
           tempImg.src = src;

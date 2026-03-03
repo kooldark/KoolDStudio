@@ -313,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
       images.forEach(imgPath => {
         gridHtml += `
           <div class="grid-item">
-            <img src="${imgPath}" alt="Kool D. Studio Portfolio" loading="lazy" decoding="async">
+            <img src="${imgPath}" alt="Kool D. Studio Portfolio" loading="lazy" decoding="async" onerror="this.closest('.grid-item').style.display='none'">
           </div>`;
       });
     } else {
@@ -376,7 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Render without waiting for descriptions - much faster!
       gridHtml += `
         <div class="album-card" data-category="${category}" data-album="${normalizedAlbumName}" data-album-path="${albumFolderPath}" data-aos="zoom-in" data-aos-delay="${albumCount * 50}">
-          <img class="album-card-thumbnail" src="${coverImage}" alt="${normalizedAlbumName}" loading="lazy" decoding="async">
+          <img class="album-card-thumbnail" src="${coverImage}" alt="${normalizedAlbumName}" loading="lazy" decoding="async" onerror="this.closest('.album-card').style.display='none'">
           <div class="album-card-overlay"></div>
           <h3 class="album-card-title">${normalizedAlbumName}</h3>
         </div>`;
