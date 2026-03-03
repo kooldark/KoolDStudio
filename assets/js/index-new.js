@@ -57,14 +57,10 @@ function populateHeroGallery() {
   }
 
   try {
-    // Select 6 random images from all categories
+    // Select 6 random images from weddings and makeups categories only
     const allImages = [
-      ...galleryData.featured.map(item => item.src),
       ...galleryData.weddings,
-      ...galleryData.families,
-      ...galleryData.makeups,
-      ...galleryData.portraits,
-      ...galleryData.documentaries
+      ...galleryData.makeups
     ].filter(src => src && src.trim());
 
     if (allImages.length === 0) {

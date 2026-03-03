@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Moodboard - Minimal Test</title>
+  <style>
+    body { font-family: Arial; margin: 0; padding: 20px; background: #f5f5f5; }
+    #categoryTabs { margin: 20px 0; }
+    #categoryTabs button { padding: 10px 15px; margin: 5px; cursor: pointer; border: 2px solid #ccc; background: white;  }
+    #categoryTabs button.active { background: #FFD700; border-color: #FFA500; }
+    #moodboardGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin: 20px 0; }
+    #moodboardGrid a { position: relative; border: 2px solid #ccc; border-radius: 8px; overflow: hidden; cursor: pointer; text-decoration: none; display: block; aspect-ratio: 1; }
+    #moodboardGrid a:hover { border-color: #FFD700; }
+    #moodboardGrid a.selected { border: 4px solid #FFD700; background: #FFF8DC; }
+    #moodboardGrid img { width: 100%; height: 100%; object-fit: cover; }
+    #previewSection { margin-top: 40px; }
+    #previewSection h3 { margin-top: 0; }
+    #previewGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+    .preview-item { position: relative; }
+    .preview-item img { width: 100%; height: auto; }
+    .preview-remove { position: absolute; top: 5px; right: 5px; background: red; color: white; border: none; width: 25px; height: 25px; border-radius: 50%; cursor: pointer; }
+    .btn { padding: 10px 20px; margin: 5px; cursor: pointer; border: 1px solid #ccc; background: white; }
+    .btn.primary { background: #FFD700; font-weight: bold; }
+    #codeSection { background: white; padding: 20px; margin-top: 20px; border-radius: 8px; }
+    #shareLink { background: #f0f0f0; padding: 10px; margin: 10px 0; word-break: break-all; border: 1px solid #ccc; border-radius: 4px; }
+    .empty-state { text-align: center; color: #999; padding: 40px; }
+  </style>
+</head>
+<body>
+
+<h1>Tạo Moodboard</h1>
+
+<!-- Debug Log -->
+<div id="debug" style="background: #f5f5f5; padding: 10px; margin: 10px 0; border-left: 3px solid orange; max-height: 100px; overflow-y: auto; font-size: 12px;"></div>
+
+<!-- Categories -->
+<h2>Chọn Phong Cách</h2>
+<div id="categoryTabs"></div>
+
+<!-- Gallery -->
+<h2>Thư viện ảnh</h2>
+<label><input type="checkbox" id="filterCheckbox"> Chỉ ảnh đã chọn</label>
+<div id="moodboardGrid"></div>
+
+<!-- Preview -->
+<div id="previewSection" style="display: none;">
+  <h2>Ảnh đã chọn (<span id="selectedCount">0</span>)</h2>
+  <div id="previewGrid"></div>
+</div>
+
+<!-- Controls -->
+<div style="margin: 20px 0;">
+  <button class="btn primary" id="generateCodeBtn">Tạo mã chia sẻ</button>
+  <button class="btn" id="clearBtn">Xóa tất cả</button>
+</div>
+
+<!-- Share Code Section -->
+<div id="codeSection" style="display: none;">
+  <h3>Chia Sẻ Moodboard</h3>
+  <div id="shareLink"></div>
+  <button class="btn primary" onclick="copyToClipboard('shareLink')">Sao chép</button>
+  <button class="btn" id="messengerShareBtn">Gửi Messenger</button>
+</div>
+
+<!-- Load the original moodboard.js -->
+<script src="assets/js/moodboard.js" defer></script>
+
+<script>
+  // Debug helper
+  function debug(msg) {
+    const debugDiv = document.getElementById('debug');
+    const line = document.createElement('div');
+    line.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+    debugDiv.appendChild(line);
+    debugDiv.scrollTop = debugDiv.scrollHeight;
+    console.log(msg);
+  }
+  
+  // Override window.addDebugLog if it exists elsewhere
+  window.addDebugLog = debug;
+  
+  debug('✅ HTML loaded');
+  
+  // Monitor if moodboard.js is working
+  const originalFetch = window.fetch;
+  window.fetch = function(...args) {
+    debug(`📡 Fetching: ${args[0]}`);
+    return originalFetch(...args).then(res => {
+      debug(`  → Status: ${res.status}`);
+      return res;
+    }).catch(err => {
+      debug(`  → Error: ${err.message}`);
+      throw err;
+    });
+  };
+</script>
+
+</body>
+</html>

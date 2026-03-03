@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test Moodboard Simple</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    #categoryTabs { margin: 20px 0; }
+    #moodboardGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
+    #moodboardGrid a { border: 1px solid #ccc; padding: 10px; text-align: center; text-decoration: none; color: #333; }
+    #moodboardGrid a.selected { background: yellow; border: 3px solid red; }
+    #moodboardGrid img { width: 100%; height: auto; }
+    .btn { padding: 10px 20px; margin: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Test Moodboard</h1>
+  
+  <h2>Categories</h2>
+  <div id="categoryTabs"></div>
+  
+  <h2>Images</h2>
+  <div id="moodboardGrid"></div>
+  
+  <h2>Selected (<span id="selectedCount">0</span>)</h2>
+  <div id="previewGrid"></div>
+  
+  <button class="btn" id="generateCodeBtn">Generate Code</button>
+  <button class="btn" id="clearBtn">Clear</button>
+  
+  <div id="codeSection" style="display:none;">
+    <h3>Share Code</h3>
+    <div id="shareLink"></div>
+    <button onclick="copyToClipboard('shareLink')">Copy</button>
+  </div>
+
+  <script>
+    // Inline minimal moodboard logic for testing
+    document.addEventListener('DOMContentLoaded', async () => {
+      console.log('DOM loaded');
+      
+      const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+      console.log('basePath:', basePath);
+      
+      const categoryTabs = document.getElementById('categoryTabs');
+      const moodboardGrid = document.getElementById('moodboardGrid');
+      const codeSection = document.getElementById('codeSection');
+      const generateCodeBtn = document.getElementById('generateCodeBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      
+      let selectedImages = [];
+      let portfolioData = {};
+      
+      try {
+        console.log('Fetching config...');
+        const res = await fetch(basePath + 'config/moodboard-data.json');
+        console.log('Fetch status:', res.status);
+        
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        
+        const data = await res.json();
+        portfolioData = data;
+        console.log('Categories loaded:', data.categories.length);
+        console.log('First category:', data.categories[0].title);
+        console.log('First category images:', data.categories[0].images.length);
+        
+        // Render categories
+        data.categories.forEach((cat, idx) => {
+          const btn = document.createElement('button');
+          btn.textContent = cat.title;
+          btn.className = idx === 0 ? 'active' : '';
+          btn.onclick = () => selectCategory(cat);
+          categoryTabs.appendChild(btn);
+        });
+        
+        // Render first category
+        selectCategory(data.categories[0]);
+        
+      } catch (e) {
+        console.error('Error:', e);
+        moodboardGrid.innerHTML = '<p>ERROR: ' + e.message + '</p>';
+      }
+      
+      function selectCategory(category) {
+        console.log('Selecting category:', category.title);
+        moodboardGrid.innerHTML = '';
+        
+        category.images.forEach(img => {
+          const imgName = typeof img === 'string' ? img : img.name;
+          const imgPath = category.path + '/' + imgName;
+          
+          const link = document.createElement('a');
+          link.href = '#';
+          link.onclick = (e) => {
+            e.preventDefault();
+            if (selectedImages.includes(imgName)) {
+              selectedImages = selectedImages.filter(x => x !== imgName);
+              link.classList.remove('selected');
+            } else {
+              selectedImages.push(imgName);
+              link.classList.add('selected');
+            }
+            document.getElementById('selectedCount').textContent = selectedImages.length;
+          };
+          
+          const img_el = document.createElement('img');
+          img_el.src = imgPath;
+          img_el.alt = imgName;
+          img_el.style.height = '150px';
+          img_el.style.objectFit = 'cover';
+          img_el.onerror = () => {
+            img_el.alt = 'Not found: ' + imgName;
+            img_el.style.background = '#eee';
+          };
+          
+          link.appendChild(img_el);
+          link.appendChild(document.createElement('br'));
+          link.appendChild(document.createTextNode(imgName.substring(0, 20)));
+          
+          moodboardGrid.appendChild(link);
+        });
+      }
+      
+      generateCodeBtn.onclick = () => {
+        if (selectedImages.length === 0) {
+          alert('Select at least 1 image');
+          return;
+        }
+        const code = btoa(JSON.stringify({images: selectedImages}));
+        document.getElementById('shareLink').textContent = window.location.origin + window.location.pathname + '?code=' + code;
+        codeSection.style.display = 'block';
+      };
+      
+      clearBtn.onclick = () => {
+        selectedImages = [];
+        document.querySelectorAll('#moodboardGrid a').forEach(a => a.classList.remove('selected'));
+        document.getElementById('selectedCount').textContent = '0';
+      };
+    });
+  </script>
+</body>
+</html>

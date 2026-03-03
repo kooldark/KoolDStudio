@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Moodboard</title>
+  <style>
+    body { font-family: Arial; margin: 20px; background: #f5f5f5; }
+    .log { background: white; padding: 10px; margin: 10px 0; border-left: 4px solid #4CAF50; }
+    .error { border-left-color: #f44336; }
+    pre { overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>🧪 Test Moodboard JavaScript</h1>
+  <div id="logs"></div>
+
+  <script>
+    const logs = document.getElementById('logs');
+    
+    function log(msg, type = 'info') {
+      const div = document.createElement('div');
+      div.className = `log ${type}`;
+      div.innerHTML = `<strong>${type.toUpperCase()}:</strong> <pre>${JSON.stringify(msg, null, 2)}</pre>`;
+      logs.appendChild(div);
+      console.log(msg);
+    }
+
+    async function test() {
+      try {
+        log('1️⃣ Testing fetch config...');
+        const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+        log(`basePath: ${basePath}`);
+        
+        const res = await fetch(basePath + 'config/moodboard-data.json');
+        log(`Response status: ${res.status} ${res.statusText}`);
+        
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
+        
+        const data = await res.json();
+        log(`✅ JSON loaded successfully!`);
+        log(`Categories count: ${data.categories?.length}`);
+        log(`First category:`, data.categories?.[0]);
+        
+        // Test image format
+        const firstCategory = data.categories[0];
+        const firstImage = firstCategory.images[0];
+        log(`First image type: ${typeof firstImage}`);
+        log(`First image value: ${firstImage}`);
+        
+      } catch (e) {
+        log(`❌ Error: ${e.message}`, 'error');
+        log(e, 'error');
+      }
+    }
+
+    test();
+  </script>
+</body>
+</html>

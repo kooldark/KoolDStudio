@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  // --- DEBUG ---
+  if (window.addDebugLog) {
+    window.addDebugLog('DOMContentLoaded started');
+  }
+  
   // --- PATH DETECTION FOR PAGES/ SUBDIRECTORY ---
   const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
   
@@ -11,6 +16,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const clearBtn = document.getElementById('clearBtn');
   const filterCheckbox = document.getElementById('filterCheckbox');
   const preloader = document.getElementById('preloader');
+
+  if (window.addDebugLog) {
+    window.addDebugLog('basePath: ' + basePath);
+    window.addDebugLog('categoryTabs: ' + (categoryTabs ? '✓' : '✗'));
+    window.addDebugLog('moodboardGrid: ' + (moodboardGrid ? '✓' : '✗'));
+  }
 
   let portfolioData = {};
   let selectedImages = [];
@@ -50,7 +61,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Find the category that this image belongs to
       let categoryPath = '';
       for (const cat of portfolioData.categories) {
-        if (cat.images.some(imageObj => imageObj.name === imgName)) {
+        const found = cat.images.some(imageObj => {
+          const name = typeof imageObj === 'string' ? imageObj : imageObj.name;
+          return name === imgName;
+        });
+        if (found) {
           categoryPath = cat.path;
           break;
         }
@@ -122,17 +137,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     moodboardGrid.innerHTML = '';
     if (!category || !category.images) return;
 
+    // Handle both string and object formats
     const imagesToRender = filterMode
-      ? category.images.filter(img => selectedImages.includes(img.name))
+      ? category.images.filter(img => {
+          const imgName = typeof img === 'string' ? img : img.name;
+          return selectedImages.includes(imgName);
+        })
       : category.images;
 
     imagesToRender.forEach(img => {
-      const imgPath = `${category.path}/${img.name}`;
+      // Handle both string and object formats
+      const imgName = typeof img === 'string' ? img : img.name;
+      const imgPath = `${category.path}/${imgName}`;
       const anchor = document.createElement('a');
       anchor.href = imgPath;
-      anchor.setAttribute('data-width', img.width);
-      anchor.setAttribute('data-height', img.height);
-
+      
       const imageElement = document.createElement('img');
       imageElement.src = imgPath;
       imageElement.alt = category.title;
@@ -140,13 +159,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       anchor.appendChild(imageElement);
 
-      if (selectedImages.includes(img.name)) {
+      if (selectedImages.includes(imgName)) {
         anchor.classList.add('selected');
       }
       
       anchor.onclick = (e) => {
         e.preventDefault();
-        toggleImage(imgPath, img.name, anchor);
+        toggleImage(imgPath, imgName, anchor);
       };
       moodboardGrid.appendChild(anchor);
     });
@@ -191,10 +210,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Fetch moodboard data
   try {
+    if (window.addDebugLog) window.addDebugLog('Fetching config...');
     const res = await fetch(basePath + 'config/moodboard-data.json');
+    if (window.addDebugLog) window.addDebugLog(`Fetch response: ${res.status}`);
+    
     if (!res.ok) throw new Error('Failed to load');
     const data = await res.json();
     portfolioData = data;
+
+    if (window.addDebugLog) {
+      window.addDebugLog(`✓ Data loaded: ${data.categories?.length} categories`);
+      window.addDebugLog(`First category: ${data.categories[0]?.title}`);
+    }
 
     // Load moodboard from URL if exists
     const urlParams = new URLSearchParams(window.location.search);
