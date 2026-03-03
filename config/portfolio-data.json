@@ -125,18 +125,18 @@
           "imageCount": 4
         },
         {
-          "id": "Viên & Hoa",
-          "title": "Viên & Hoa",
+          "id": "VIEN and Hoa",
+          "title": "VIEN and Hoa",
           "description": "",
-          "path": "cuoi/Viên & Hoa",
-          "coverImage": "_KDS9190.webp",
+          "path": "cuoi/VIEN and Hoa",
+          "coverImage": "coverimage.webp",
           "images": [
+            "coverimage.webp",
             "_KDS9190.webp",
             "_KDS9265.webp",
             "_KDS9267.webp",
             "_KDS9315.webp",
             "_KDS9668.webp",
-            "_KDS9720.webp",
             "_KDS9808.webp",
             "_KDS9809.webp",
             "_KDS9827.webp"

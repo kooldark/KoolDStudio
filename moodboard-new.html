@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tạo Moodboard - Kool D. Studio</title>
+  <meta name="description" content="Khám phá và tạo moodboard cá nhân hóa cho phóng sự của bạn"/>
+  
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usKFqyUKV7Fs+aIGLPy8bLLBoDwJstMVBbpFagpF+Xg/Hp3+ymodeva/WCHD5w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="assets/css/home-elegant.css">
+  <link rel="stylesheet" href="assets/css/moodboard-professional.css">
+  <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
+</head>
+<body>
+
+<!-- Header Template Container -->
+<div id="header-container"></div>
+
+<div class="moodboard-wrapper">
+  <!-- Hero Section -->
+  <section class="moodboard-hero" data-aos="fade-up">
+    <div class="hero-content">
+      <h1 class="hero-title">Tạo Moodboard Của Bạn</h1>
+      <p class="hero-subtitle">Chọn các phong cách yêu thích để hình dung bảng giá và booking hoàn hảo cho ngày đặc biệt của bạn</p>
+      <div class="hero-divider"></div>
+    </div>
+  </section>
+
+  <div class="moodboard-container">
+    <!-- Category Navigation -->
+    <div class="categories-wrapper">
+      <div class="categories-header">
+        <h2>Chọn Phong Cách</h2>
+        <span class="categories-count">8 danh mục</span>
+      </div>
+      <div class="category-tabs" id="categoryTabs"></div>
+    </div>
+
+    <!-- Main Grid Section -->
+    <div class="gallery-section">
+      <div class="gallery-header">
+        <div class="gallery-info">
+          <h3>Thư viện ảnh</h3>
+          <p id="categoryDescription">Khám phá các moodboard đẹp</p>
+        </div>
+        <div class="gallery-stats">
+          <label class="filter-toggle">
+            <input type="checkbox" id="filterCheckbox" class="filter-input">
+            <span class="filter-label">
+              <i class="fas fa-filter"></i> Chỉ ảnh đã chọn
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Moodboard Grid -->
+      <div class="moodboard-grid" id="moodboardGrid"></div>
+    </div>
+
+    <!-- Selection Summary -->
+    <div class="selection-summary" id="selectionSummary" style="display: none;">
+      <div class="summary-content">
+        <div class="summary-stat">
+          <span class="stat-icon">📸</span>
+          <span class="stat-text">Đã chọn <strong id="selectedCount">0</strong> ảnh</span>
+        </div>
+        <div class="summary-actions">
+          <button class="btn btn-primary" id="generateCodeBtn">
+            <span id="btnText">
+              <i class="fas fa-share-alt"></i> Chia sẻ Moodboard
+            </span>
+            <span id="btnLoader" style="display: none;">
+              <i class="fas fa-spinner fa-spin"></i> Đang xử lý...
+            </span>
+          </button>
+          <button class="btn btn-secondary" id="clearBtn">
+            <i class="fas fa-trash"></i> Xóa tất cả
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Share Code Section -->
+    <div class="share-section" id="codeSection" style="display: none;" data-aos="fade-up">
+      <div class="share-header">
+        <h3>Chia Sẻ Moodboard</h3>
+        <p>Gửi link cho bạn, gia đình hoặc nhận xét từ các chuyên gia</p>
+      </div>
+      
+      <div class="share-options">
+        <div class="share-box">
+          <div class="share-label">
+            <i class="fas fa-link"></i> Sao chép Link
+          </div>
+          <div class="code-box" id="shareLink"></div>
+          <button class="copy-btn" onclick="copyToClipboard('shareLink')">
+            <i class="fas fa-copy"></i> Sao chép
+          </button>
+        </div>
+
+        <div class="share-divider">hoặc</div>
+
+        <div class="share-box">
+          <div class="share-label">
+            <i class="fab fa-facebook-messenger"></i> Gửi qua Messenger
+          </div>
+          <button class="messenger-btn" id="messengerShareBtn">
+            <i class="fab fa-facebook-messenger"></i> Gửi Messenger
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section" data-aos="fade-up">
+      <div class="cta-content">
+        <h3>Bạn đã sẵn sàng?</h3>
+        <p>Bạn đã tạo moodboard hoàn hảo. Hãy liên hệ với chúng tôi để hoàn tất đặt lịch chụp ảnh</p>
+        <div class="cta-actions">
+          <a href="pricing.html" class="cta-link primary">
+            <i class="fas fa-tags"></i> Xem Bảng Giá
+          </a>
+          <a href="booking.html" class="cta-link">
+            <i class="fas fa-calendar-check"></i> Đặt Lịch Ngay
+          </a>
+          <a href="tel:0379031662" class="cta-link">
+            <i class="fas fa-phone"></i> Hotline Tư Vấn
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back Navigation -->
+    <div class="back-navigation">
+      <a href="portfolio.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Quay lại Portfolio
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="assets/js/load-template.js"></script>
+<script src="assets/js/moodboard.js" defer></script>
+
+<script>
+  AOS.init({duration: 800, once: true, offset: 50});
+
+  // Extend the existing copyToClipboard function
+  window.copyToClipboard = function(elementId) {
+    const text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = event.target;
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-check"></i> Đã sao chép!';
+      btn.classList.add('copied');
+      
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  };
+
+  // Update the selection summary display
+  const observer = new MutationObserver(() => {
+    const selectionSummary = document.getElementById('selectionSummary');
+    const selectedCount = document.getElementById('selectedCount');
+    const moodboardGrid = document.getElementById('moodboardGrid');
+    
+    if (moodboardGrid) {
+      const selectedItems = moodboardGrid.querySelectorAll('.selected').length;
+      if (selectedItems > 0) {
+        selectedCount.textContent = selectedItems;
+        selectionSummary.style.display = 'block';
+      }
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>
+
+<!-- Footer Template Container -->
+<div id="footer-container"></div>
+
+</body>
+</html>
