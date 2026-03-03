@@ -66,7 +66,7 @@ function displayCategoryGallery(category) {
     'gia-dinh': '.family-gallery .category-grid',
     'makeup': '.makeup-gallery .category-grid',
     'phong-su': '.documentary-gallery .category-grid',
-    'pro': '.portrait-gallery .category-grid'
+    'portrait': '.portrait-gallery .category-grid'
   };
   
   const selector = sectionMap[category.id];

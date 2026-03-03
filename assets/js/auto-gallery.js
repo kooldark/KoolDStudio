@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- STATE ---
   let galleryData = {};
   let albumPaths = {}; // Store album paths for correct folder names
+  let albumCovers = {}; // Store album cover images
   let portfolioData = {}; // Store full portfolio data for descriptions
   let visibleImages = [];
   let currentCategory = 'all';
@@ -27,12 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let isRendering = false; // Prevent rapid re-renders
 
   const titles = {
-    cuoi:      { vn: "Ảnh Cưới", en: "Fine Art Wedding" },
+    cuoi:      { vn: "Wedding", en: "Fine Art Wedding" },
     makeup:    { vn: "Makeup", en: "Artistic Makeup" },
     "gia-dinh":{ vn: "Khoảnh Khắc Gia Đình", en: "Family Moments" },
     "phong-su":{ vn: "Phóng Sự",  en: "Wedding Story" },
-    "art-elegent":{ vn: "Art & Elegent", en: "Art & Elegent" },
-    "pro":     { vn: "Pro Collection", en: "Pro Collection" }
+    "portrait":{ vn: "Ảnh Cá Nhân", en: "Personal Portraits" },
+   // "art-elegent":{ vn: "Art & Elegent", en: "Art & Elegent" },
+    //"pro":     { vn: "Pro Collection", en: "Pro Collection" }
   };
 
   // --- UPDATE META TAGS FOR SOCIAL SHARING ---
@@ -94,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Transform portfolio-data.json format to match old structure
       galleryData = {};
       albumPaths = {}; // Initialize album paths
+      albumCovers = {}; // Initialize album covers
       portfolioData.categories.forEach(cat => {
         if (!cat.id || !Array.isArray(cat.albums)) {
           console.warn('Skipping invalid category:', cat);
@@ -101,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         galleryData[cat.id] = {};
         albumPaths[cat.id] = {};
+        albumCovers[cat.id] = {};
         cat.albums.forEach(album => {
           if (album.id && Array.isArray(album.images)) {
             // Normalize album.id to NFC form for consistency
@@ -114,6 +118,8 @@ document.addEventListener("DOMContentLoaded", () => {
               folderName = pathParts[pathParts.length - 1];
             }
             albumPaths[cat.id][normalizedId] = folderName;
+            // Store cover image if specified, otherwise use first image
+            albumCovers[cat.id][normalizedId] = album.coverImage || album.images[0];
           }
         });
       });
@@ -360,7 +366,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const isLoose = normalizedAlbumName === 'Ảnh lẻ';
       const imageBasePath = `${basePath}assets/img/portfolio/${category}/`;
       const imageFolder = isLoose ? '' : `${albumFolderPath}/`;
-      const coverImage = imageBasePath + imageFolder + albumFiles[0];
+      const coverImageFilename = albumCovers[category]?.[normalizedAlbumName] || albumFiles[0];
+      const coverImage = imageBasePath + imageFolder + coverImageFilename;
 
       // Create shareable link for this album
       const albumLink = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(category)}&album=${encodeURIComponent(normalizedAlbumName)}`;

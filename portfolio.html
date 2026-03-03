@@ -61,10 +61,11 @@
       if (category && album) {
         const decodedAlbum = decodeURIComponent(album);
         const categoryVn = {
-          'cuoi': 'Ảnh Wedding',
+          'cuoi': 'Ảnh Cưới',
           'makeup': 'Makeup',
           'gia-dinh': 'Gia Đình',
-          'phong-su': 'Phóng Sự'
+          'phong-su': 'Phóng Sự',
+          'portrait': 'Ảnh Cá Nhân'
         }[category] || category;
         
         // Fetch images list to get real file names

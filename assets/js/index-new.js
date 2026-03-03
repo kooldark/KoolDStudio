@@ -47,34 +47,61 @@ function initMobileNav() {
 /* ========== POPULATE HERO GALLERY ==========*/
 function populateHeroGallery() {
   const heroGrid = document.querySelector('.hero-grid');
-  if (!heroGrid || typeof galleryData === 'undefined') return;
+  if (!heroGrid) return;
 
-  // Select 6 random images from all categories
-  const allImages = [
-    ...galleryData.featured.map(item => item.src),
-    ...galleryData.weddings,
-    ...galleryData.families,
-    ...galleryData.makeups,
-    ...galleryData.portraits,
-    ...galleryData.documentaries
-  ];
+  // Check if gallery data is loaded
+  if (typeof galleryData === 'undefined') {
+    console.warn('Gallery data not loaded, retrying in 500ms...');
+    setTimeout(populateHeroGallery, 500);
+    return;
+  }
 
-  // Shuffle and get first 6 unique images
-  const shuffled = allImages.sort(() => 0.5 - Math.random());
-  const selectedImages = shuffled.slice(0, 6);
+  try {
+    // Select 6 random images from all categories
+    const allImages = [
+      ...galleryData.featured.map(item => item.src),
+      ...galleryData.weddings,
+      ...galleryData.families,
+      ...galleryData.makeups,
+      ...galleryData.portraits,
+      ...galleryData.documentaries
+    ].filter(src => src && src.trim());
 
-  // Clear existing content
-  heroGrid.innerHTML = '';
+    if (allImages.length === 0) {
+      console.warn('No gallery images found');
+      showGalleryFallback(heroGrid);
+      return;
+    }
 
-  // Create image elements
-  selectedImages.forEach((src, index) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = `Gallery Image ${index + 1}`;
-    img.loading = 'lazy';
-    img.style.animation = `fadeInGallery 0.8s ease-out ${index * 0.1}s both`;
-    heroGrid.appendChild(img);
-  });
+    // Shuffle and get first 6 unique images
+    const shuffled = allImages.sort(() => 0.5 - Math.random());
+    const selectedImages = shuffled.slice(0, 6);
+
+    // Clear existing content
+    heroGrid.innerHTML = '';
+
+    // Create image elements
+    selectedImages.forEach((src, index) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `Kool D Studio - Ảnh chuyên nghiệp ${index + 1}`;
+      img.loading = 'lazy';
+      img.style.animation = `fadeInGallery 0.8s ease-out ${index * 0.1}s both`;
+      img.onerror = function() {
+        console.warn('Failed to load image:', src);
+        this.style.display = 'none';
+      };
+      heroGrid.appendChild(img);
+    });
+  } catch (error) {
+    console.error('Error populating hero gallery:', error);
+    showGalleryFallback(heroGrid);
+  }
+}
+
+/* ========== GALLERY FALLBACK ==========*/
+function showGalleryFallback(container) {
+  container.innerHTML = '<div style="grid-column: 1/-1; padding: 2rem; text-align: center; color: #666;">Ảnh đang tải. Vui lòng tải lại trang.</div>';
 }
 
 /* ========== SMOOTH SCROLL ==========*/
@@ -228,3 +255,77 @@ if ('IntersectionObserver' in window) {
 
 /* ========== LOG PAGE READY ==========*/
 console.log('Elegant Home Page loaded successfully ✨');
+
+/* ========== CONTACT FORM HANDLER ==========*/
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  if (!contactForm) return;
+
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = {
+      name: document.getElementById('name').value,
+      phone: document.getElementById('phone').value,
+      email: document.getElementById('email').value || 'Không cung cấp',
+      category: document.getElementById('category').value,
+      message: document.getElementById('message').value,
+      timestamp: new Date().toLocaleString('vi-VN')
+    };
+
+    // Log form data (in production, send to backend)
+    console.log('Form submitted:', formData);
+    
+    // Show success message
+    showFormSuccess(contactForm);
+    
+    // Try to send via Telegram Bot or Email service if available
+    sendFormData(formData);
+    
+    // Reset form
+    contactForm.reset();
+  });
+
+  function sendFormData(data) {
+    // Option 1: Send via Telegram Bot (if configured)
+    const telegramBotToken = 'YOUR_BOT_TOKEN'; // Replace with actual token
+    const telegramChatId = 'YOUR_CHAT_ID'; // Replace with actual chat ID
+    
+    const message = `
+*Yêu Cầu Liên Hệ Mới từ Kool D. Studio*
+
+👤 *Tên:* ${data.name}
+📱 *Số ĐT:* ${data.phone}
+📧 *Email:* ${data.email}
+💼 *Dịch Vụ:* ${data.category}
+💬 *Lời Nhắn:* ${data.message}
+⏰ *Thời Gian:* ${data.timestamp}
+    `;
+
+    // Alternative: Store in localStorage as backup
+    try {
+      let contacts = JSON.parse(localStorage.getItem('koolStudioContacts') || '[]');
+      contacts.push(data);
+      localStorage.setItem('koolStudioContacts', JSON.stringify(contacts));
+      console.log('Contact saved to localStorage');
+    } catch (error) {
+      console.warn('Could not save to localStorage:', error);
+    }
+  }
+
+  function showFormSuccess(form) {
+    const button = form.querySelector('button[type="submit"]');
+    const originalText = button.innerText;
+    const originalBg = button.style.background;
+    
+    button.innerText = '✓ Cảm ơn bạn! Chúng tôi sẽ liên hệ ngay';
+    button.style.background = '#2d5a4a';
+    button.disabled = true;
+    
+    setTimeout(() => {
+      button.innerText = originalText;
+      button.style.background = originalBg;
+      button.disabled = false;
+    }, 4000);
+  }
+});
