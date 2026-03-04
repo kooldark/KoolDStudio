@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sản Phẩm In Ảnh - Kool D. Studio</title>
+  <meta name="description" content="Bộ sưu tập sản phẩm in ảnh cao cấp: ảnh tráng gương pha lê, ảnh ép gỗ và album thiết kế. Chất lượng hàng đầu, bảo hành toàn diện và giao hàng miễn phí."/>
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="assets/css/home-elegant.css">
+  <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
+
+  <style>
+    /* ===== PRODUCTS PAGE STYLES ===== */
+
+    .products-hero {
+      padding: 100px 20px 60px;
+      text-align: center;
+      background: linear-gradient(135deg, #faf7f2 0%, #f5f0ea 100%);
+      margin-bottom: 60px;
+    }
+
+    .products-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--color-dark);
+      margin-bottom: 12px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    .products-hero p {
+      font-size: 1.05rem;
+      color: var(--color-gray);
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ===== PRODUCTS SECTION ===== */
+    .products-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 100px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 40px;
+      margin-bottom: 100px;
+    }
+
+    /* ===== PRODUCT CARD ===== */
+    .product-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .product-card:hover {
+      transform: translateY(-14px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-video {
+      position: relative;
+      width: 100%;
+      padding-top: 177.77%;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    }
+
+    .product-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .product-video::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(212, 165, 116, 0.06) 0%, rgba(45, 90, 74, 0.06) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .product-card:hover .product-video::after {
+      opacity: 1;
+    }
+
+    .product-content {
+      padding: 32px 28px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--color-dark);
+      margin-bottom: 8px;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    .product-subtitle {
+      font-size: 0.85rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    /* ===== SIZE SELECTOR ===== */
+    .size-group {
+      margin-bottom: 24px;
+    }
+
+    .size-group label {
+      display: block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-dark);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .size-selector {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1.5px solid #e0dbd6;
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      background: white;
+      cursor: pointer;
+      color: var(--color-dark);
+      transition: all 0.3s ease;
+    }
+
+    .size-selector:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 12px rgba(212, 165, 116, 0.12);
+    }
+
+    .size-selector:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+    }
+
+    /* ===== PRICE DISPLAY ===== */
+    .price-display {
+      margin: 24px 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #faf7f2 0%, #f5f0ea 100%);
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid rgba(212, 165, 116, 0.1);
+    }
+
+    .price-label {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--color-gray);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .price-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--color-primary);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    /* ===== FEATURES ===== */
+    .features {
+      list-style: none;
+      margin-bottom: 28px;
+      padding: 0;
+    }
+
+    .features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--color-gray);
+      line-height: 1.65;
+      margin-bottom: 11px;
+    }
+
+    .features li::before {
+      content: '●';
+      color: var(--color-primary);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .cta-button {
+      margin-top: auto;
+      width: 100%;
+      padding: 13px 20px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(212, 165, 116, 0.3);
+    }
+
+    /* ===== DIVIDER ===== */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e0dbd6, transparent);
+      margin: 80px 0;
+    }
+
+    /* ===== ALBUM SECTION ===== */
+    .album-section {
+      background: linear-gradient(135deg, #faf7f2 0%, #f5f0ea 100%);
+      padding: 60px 40px;
+      border-radius: 20px;
+      margin-bottom: 80px;
+    }
+
+    .album-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--color-dark);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .album-section p {
+      color: var(--color-gray);
+      font-size: 1rem;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .album-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .album-video {
+      position: relative;
+      padding-top: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      background: white;
+    }
+
+    .album-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .album-options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .album-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: white;
+      border: 1.5px solid #e0dbd6;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .album-option:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 6px 16px rgba(212, 165, 116, 0.15);
+      transform: translateX(6px);
+    }
+
+    .album-option input[type="radio"] {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--color-primary);
+    }
+
+    .album-size-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-dark);
+    }
+
+    .album-prices {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid #e0dbd6;
+    }
+
+    .album-price-item {
+      text-align: center;
+      padding: 16px 12px;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid #f0f0f0;
+    }
+
+    .album-price-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--color-gray);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .album-price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .album-note {
+      margin-top: 20px;
+      padding: 14px;
+      background: white;
+      border-left: 3px solid var(--color-primary);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--color-dark);
+    }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: white;
+      padding: 60px 40px;
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .final-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .final-cta p {
+      font-size: 1rem;
+      margin-bottom: 32px;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      padding: 14px 36px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .cta-btn-primary {
+      background: white;
+      color: var(--color-primary);
+    }
+
+    .cta-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .cta-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: white;
+      transform: translateY(-3px);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .back-link a {
+      color: var(--color-primary);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .back-link a:hover {
+      gap: 12px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .products-hero {
+        padding: 80px 20px 50px;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 60px;
+      }
+
+      .album-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .album-section {
+        padding: 40px 20px;
+      }
+
+      .album-prices {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .final-cta {
+        padding: 40px 20px;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .cta-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .section-divider {
+        margin: 60px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
+  <div id="header-container"></div>
+
+  <!-- HERO SECTION -->
+  <section class="products-hero" data-aos="fade-down">
+    <h1>Sản Phẩm In Ảnh Cao Cấp</h1>
+    <p>Biến những khoảnh khắc đẹp nhất thành những tác phẩm vật chất bền vĩnh. Chất lượng hàng đầu, thiết kế theo yêu cầu, bảo hành toàn diện.</p>
+  </section>
+
+  <!-- PRODUCTS WRAPPER -->
+  <div class="products-wrapper">
+    <!-- PRODUCTS GRID -->
+    <div class="products-grid">
+      <!-- PRODUCT 1: LOẠI T -->
+      <div class="product-card" data-aos="fade-up">
+        <div class="product-video">
+          <iframe src="https://www.youtube.com/embed/KKg_yw-Fiuc?autoplay=1&mute=1&loop=1&playlist=KKg_yw-Fiuc&controls=1&modestbranding=1&showinfo=0" title="Ảnh tráng gương pha lê loại T"></iframe>
+        </div>
+        <div class="product-content">
+          <span class="product-subtitle">In Ảnh Premium</span>
+          <h3 class="product-title">Ảnh Tráng Gương Pha Lê</h3>
+
+          <div class="size-group">
+            <label for="size-t">Chọn Kích Thước</label>
+            <select id="size-t" class="size-selector">
+              <option value="1350000">60 × 90 cm</option>
+              <option value="1760000" selected>70 × 110 cm</option>
+            </select>
+          </div>
+
+          <div class="price-display">
+            <span class="price-label">Giá từ</span>
+            <div class="price-value" id="price-t">1tr760</div>
+          </div>
+
+          <ul class="features">
+            <li>Cân chỉnh & kiểm tra ảnh trước khi in</li>
+            <li>Bảo hành và đóng gói sản phẩm</li>
+            <li>Miễn phí giao nội thành HCM (bán kính 5km)</li>
+            <li>Khung viền tùy chọn: Đen / Bạc</li>
+            <li>Bề mặt: Bóng (sang trọng) hoặc Mờ (chống chói)</li>
+          </ul>
+
+          <a href="https://zalo.me/0379031662" class="cta-button">
+            <i class="fas fa-comments"></i> Tư Vấn Ngay
+          </a>
+        </div>
+      </div>
+
+      <!-- PRODUCT 2: LOẠI P -->
+      <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="product-video">
+          <iframe src="https://www.youtube.com/embed/tfbjxFydtAg?autoplay=1&mute=1&loop=1&playlist=tfbjxFydtAg&controls=1&modestbranding=1&showinfo=0&start=35" title="Ảnh ép gỗ cao cấp loại P"></iframe>
+        </div>
+        <div class="product-content">
+          <span class="product-subtitle">In Ảnh Premium</span>
+          <h3 class="product-title">Ảnh Ép Gỗ Cao Cấp</h3>
+
+          <div class="size-group">
+            <label for="size-p">Chọn Kích Thước</label>
+            <select id="size-p" class="size-selector">
+              <option value="195000">13 × 18 cm</option>
+              <option value="210000">15 × 21 cm</option>
+              <option value="350000">30 × 45 cm</option>
+              <option value="630000">40 × 60 cm</option>
+              <option value="990000">50 × 75 cm</option>
+              <option value="1110000" selected>60 × 90 cm</option>
+            </select>
+          </div>
+
+          <div class="price-display">
+            <span class="price-label">Giá từ</span>
+            <div class="price-value" id="price-p">1.110.000đ</div>
+          </div>
+
+          <ul class="features">
+            <li>Cân chỉnh & kiểm tra ảnh trước khi in</li>
+            <li>Bảo hành và đóng gói sản phẩm</li>
+            <li>Miễn phí giao nội thành HCM (bán kính 5km)</li>
+            <li>Đa dạng kích thước phù hợp mọi không gian</li>
+          </ul>
+
+          <a href="https://zalo.me/0379031662" class="cta-button">
+            <i class="fas fa-comments"></i> Tư Vấn Ngay
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="section-divider"></div>
+
+    <!-- ALBUM SECTION -->
+    <section class="album-section" data-aos="fade-up">
+      <h2>Album Ảnh Thiết Kế</h2>
+      <p>Photobook cao cấp với bìa da/vải, thiết kế chuyên nghiệp theo yêu cầu của bạn.</p>
+
+      <div class="album-layout">
+        <div class="album-video">
+          <iframe src="https://www.youtube.com/embed/IU9IMD1FiVc?autoplay=1&mute=1&loop=1&playlist=IU9IMD1FiVc&controls=1&modestbranding=1&showinfo=0" title="Album ảnh thiết kế cao cấp"></iframe>
+        </div>
+
+        <div>
+          <div class="size-group">
+            <label for="album-size">Chọn Kích Thước Album</label>
+          </div>
+          <div class="album-options">
+            <label class="album-option">
+              <input type="radio" name="album-size" value='{"p20": 1494000, "p30": 1708000, "p_add": 43000}' />
+              <span class="album-size-name">20 × 20 cm</span>
+            </label>
+            <label class="album-option">
+              <input type="radio" name="album-size" value='{"p20": 1724000, "p30": 2038000, "p_add": 63000}' />
+              <span class="album-size-name">25 × 25 cm</span>
+            </label>
+            <label class="album-option">
+              <input type="radio" name="album-size" value='{"p20": 1760000, "p30": 2090000, "p_add": 66000}' />
+              <span class="album-size-name">30 × 30 cm</span>
+            </label>
+            <label class="album-option">
+              <input type="radio" name="album-size" value='{"p20": 1602000, "p30": 1866000, "p_add": 53000}' />
+              <span class="album-size-name">20 × 30 cm</span>
+            </label>
+            <label class="album-option">
+              <input type="radio" name="album-size" value='{"p20": 1760000, "p30": 2090000, "p_add": 66000}' checked/>
+              <span class="album-size-name">25 × 35 cm</span>
+            </label>
+            <label class="album-option">
+              <input type="radio" name="album-size" value='{"p20": 1911000, "p30": 2310000, "p_add": 80000}' />
+              <span class="album-size-name">30 × 40 cm</span>
+            </label>
+            <label class="album-option">
+              <input type="radio" name="album-size" value='{"p20": 1940000, "p30": 2352000, "p_add": 82000}' />
+              <span class="album-size-name">30 × 45 cm</span>
+            </label>
+          </div>
+
+          <div class="album-prices">
+            <div class="album-price-item">
+              <span class="album-price-label">20 Trang</span>
+              <div class="album-price-amount" id="album-p20">1tr760</div>
+            </div>
+            <div class="album-price-item">
+              <span class="album-price-label">30 Trang</span>
+              <div class="album-price-amount" id="album-p30">2tr90</div>
+            </div>
+            <div class="album-price-item">
+              <span class="album-price-label">Thêm 1 Trang</span>
+              <div class="album-price-amount" id="album-add">66k</div>
+            </div>
+          </div>
+
+          <div class="album-note">
+            <strong>Ưu đãi:</strong> Giảm 400.000đ cho album thứ 2 trở đi (sao chép / in lại từ file thiết kế có sẵn)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" data-aos="fade-up">
+      <h2>Sẵn Sàng Sở Hữu Tác Phẩm Của Bạn?</h2>
+      <p>Liên hệ với chúng tôi để được tư vấn về kích thước, chất liệu và các sản phẩm khác</p>
+      <div class="cta-buttons">
+        <a href="https://zalo.me/0379031662" class="cta-btn cta-btn-primary">
+          <i class="fas fa-comments"></i> Tư Vấn Qua Zalo
+        </a>
+        <a href="tel:0379031662" class="cta-btn cta-btn-secondary">
+          <i class="fas fa-phone"></i> Gọi Hotline: 0379 031 662
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- BACK LINK -->
+  <div class="back-link">
+    <a href="index.html">
+      <i class="fas fa-arrow-left"></i> Quay lại Trang Chủ
+    </a>
+  </div>
+
+  <div id="footer-container"></div>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, once: true });</script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      function formatPrice(price) {
+        if (price >= 1000000) {
+          const millions = Math.floor(price / 1000000);
+          const thousands = Math.round((price % 1000000) / 1000);
+          return thousands > 0 ? `${millions}tr${String(thousands).padStart(3, '0')}` : `${millions}tr`;
+        }
+        if (price >= 1000) {
+          return `${Math.round(price / 1000)}k`;
+        }
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+      }
+
+      // Loại T
+      const sizeT = document.getElementById('size-t');
+      const priceT = document.getElementById('price-t');
+      if (sizeT && priceT) {
+        priceT.textContent = formatPrice(parseInt(sizeT.value, 10));
+        sizeT.addEventListener('change', function() {
+          priceT.textContent = formatPrice(parseInt(this.value, 10));
+        });
+      }
+
+      // Loại P
+      const sizeP = document.getElementById('size-p');
+      const priceP = document.getElementById('price-p');
+      if (sizeP && priceP) {
+        priceP.textContent = formatPrice(parseInt(sizeP.value, 10));
+        sizeP.addEventListener('change', function() {
+          priceP.textContent = formatPrice(parseInt(this.value, 10));
+        });
+      }
+
+      // Album
+      const albumRadios = document.querySelectorAll('input[name="album-size"]');
+      const albumP20 = document.getElementById('album-p20');
+      const albumP30 = document.getElementById('album-p30');
+      const albumAdd = document.getElementById('album-add');
+
+      function updateAlbum() {
+        const checked = document.querySelector('input[name="album-size"]:checked');
+        if (!checked) return;
+        const prices = JSON.parse(checked.value);
+        albumP20.textContent = formatPrice(prices.p20);
+        albumP30.textContent = formatPrice(prices.p30);
+        albumAdd.textContent = formatPrice(prices.p_add);
+      }
+
+      if (albumRadios.length > 0) {
+        updateAlbum();
+        albumRadios.forEach(radio => {
+          radio.addEventListener('change', updateAlbum);
+        });
+      }
+    });
+  </script>
+
+  <script src="assets/js/load-template.js"></script>
+</body>
+</html>
