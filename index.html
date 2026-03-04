@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Kool D. Studio | Lưu Giữ Khoảnh Khắc Tình Yêu</title>
-  <meta name="description" content="Kool D. Studio - Studio chuyên chụp ảnh cưới, gia đình và trang điểm với phong cách tự nhiên, tinh tế và chuyên nghiệp. Lưu giữ những khoảnh khắc đẹp nhất của bạn.">
-  <meta name="keywords" content="chụp ảnh cưới, studio chụp ảnh, ảnh gia đình, trang điểm, Quảng Ngãi, TP.HCM, phong cách tự nhiên">
+  <meta name="description" content="Kool D. Studio - Chuyên chụp ảnh cưới, ảnh gia đình, pre-wedding, ảnh tiệc sự kiện, trang điểm cô dâu. Có studio tại HCM (ảnh tiệc nhà hàng) & Quảng Ngãi (ảnh studio ngoài trời). In ảnh treo tường, album, ảnh gỗ pha lê.">
+  <meta name="keywords" content="chụp ảnh cưới HCM, ảnh cưới Quảng Ngãi, studio ảnh gia đình, pre-wedding, makeup cô dâu, ảnh tiệc, in ảnh gỗ, album cưới, chụp ảnh HCM, chụp ảnh Bình Sơn">
   <meta name="theme-color" content="#d4a574">
   <meta name="google-site-verification" content="">
   
@@ -44,50 +44,76 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "PhotographyStudio",
+    "@type": "Organization",
     "name": "Kool D. Studio",
-    "description": "Studio chuyên chụp ảnh cưới, gia đình và trang điểm chuyên nghiệp",
+    "description": "Studio chuyên chụp ảnh cưới, gia đình, pre-wedding, ảnh sự kiện, trang điểm",
+    "url": "https://koolbstudio.com",
+    "telephone": "+84379031662",
+    "sameAs": [
+      "https://facebook.com/koolastudio",
+      "https://instagram.com/koolastudio",
+      "https://zalo.me/84379031662"
+    ],
+    "hasLocation": [
+      {
+        "@type": "Place",
+        "name": "Kool D. Studio HCM",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "485/10 Phan Văn Trị",
+          "addressLocality": "Gò Vấp",
+          "addressRegion": "TP.HCM",
+          "postalCode": "70000",
+          "addressCountry": "VN"
+        },
+        "description": "Studio chặp ảnh cưới tiệc nhà hàng, ảnh sự kiện, trang điểm cô dâu tại TP.HCM"
+      },
+      {
+        "@type": "Place",
+        "name": "Kool D. Studio Quảng Ngãi",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Ngã 3 Trà Bồng, QL1A",
+          "addressLocality": "Bình Sơn",
+          "addressRegion": "Quảng Ngãi",
+          "addressCountry": "VN"
+        },
+        "description": "Studio chụp ảnh cưới, pre-wedding, ảnh gia đình ngoài trời tại Bình Sơn, Quảng Ngãi"
+      }
+    ],
+    "image": "https://koolbstudio.com/assets/img/hero/hero%20(1).webp"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Kool D. Studio",
+    "image": "https://koolbstudio.com/assets/img/hero/hero%20(1).webp",
+    "description": "Studio nhiếp ảnh chuyên nghiệp - Chụp ảnh cưới, gia đình, pre-wedding, sự kiện, trang điểm",
     "telephone": "+84379031662",
     "url": "https://koolbstudio.com",
-    "addressCountry": "VN"
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "485/10 Phan Văn Trị, P.5, Gò Vấp",
+      "addressLocality": "TP.HCM",
+      "postalCode": "70000",
+      "addressCountry": "VN"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "priceRange": "VND"
   }
   </script>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-content">
-        <div class="logo">
-          <a href="index.html" class="logo-link">
-            <div class="logo-text">
-              <h1 class="logo-title">
-                <span class="logo-line">Kool D <span class="logo-dot">.</span></span>
-                <p class="logo-tagline"><span>STUDIO</span> <span>PHOTOGRAPHY</span></p>
-              </h1>
-            </div>
-          </a>
-        </div>
-        
-        <div class="nav-toggle" id="navToggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <ul class="nav-menu" id="navMenu">
-          <li><a href="#portfolio" class="nav-link">Tác Phẩm</a></li>
-          <li><a href="#galleries" class="nav-link">Bộ Sưu Tập</a></li>
-          <li><a href="#about" class="nav-link">Về Studio</a></li>
-          <li><a href="#contact" class="nav-link">Liên Hệ</a></li>
-          <li><a href="booking.html" class="nav-link nav-cta">
-            <i class="fas fa-calendar-check"></i>
-            <span>Đặt Lịch</span>
-          </a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- Navigation - Loaded from template -->
+  <div id="header-container"></div>
 
   <!-- Hero Section - Image Focused -->
   <section class="hero">
@@ -117,19 +143,6 @@
     <div class="hero-scroll">
       <span>Cuộn Xuống</span>
       <i class="fas fa-chevron-down"></i>
-    </div>
-  </section>
-
-  <!-- Featured Gallery Section -->
-  <section class="featured-gallery" id="portfolio">
-    <div class="container">
-      <div class="gallery-title" data-aos="fade-up">
-        <h2>Những Khoảnh Khắc Đẹp Nhất</h2>
-      </div>
-      
-      <div class="gallery-masonry">
-        <!-- Gallery items will be populated by JavaScript -->
-      </div>
     </div>
   </section>
 
@@ -407,93 +420,173 @@
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
+  <!-- About Section - New Modern Design -->
+  <section id="about" class="about-new">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-image" data-aos="fade-right">
-          <!-- About section image can be added here -->
+      <!-- About Header -->
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">Về Kool D. Studio</h2>
+        <p class="section-description">
+          Hành trình ghi lại những câu chuyện tình yêu, gia đình và cá nhân tuyệt vời nhất
+        </p>
+      </div>
+
+      <!-- About Story Grid -->
+      <div class="about-story-grid">
+        <div class="about-story-card story-card-1" data-aos="fade-up">
+          <div class="story-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Về Chúng Tôi</h3>
+          <p>
+            Kool D. Studio được thành lập từ tình yêu thương và đam mê với nhiếp ảnh. Chúng tôi tin rằng mỗi khoảnh khắc đều quý giá, mỗi câu chuyện đều xứng đáng được ghi lại bằng những bức ảnh tuyệt vời.
+          </p>
         </div>
 
-        <div class="about-content" data-aos="fade-left">
-          <div class="about-inner">
-            <div class="about-text-section">
-              <div class="about-text-block">
-                <h2 class="section-title">Về Chúng Tôi</h2>
-                <p class="about-intro">
-                  Kool D. Studio được thành lập với tình yêu thương và đam mê với nhiếp ảnh.
-                </p>
-                
-                <div class="about-body">
-                  <p>
-                    Chúng tôi tin rằng mỗi khoảnh khắc đều quý giá, mỗi câu chuyện đều xứng đáng được ghi lại bằng những bức ảnh tuyệt vời.
-                  </p>
+        <div class="about-story-card story-card-2" data-aos="fade-up" data-aos-delay="100">
+          <div class="story-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Kinh Nghiệm</h3>
+          <p>
+            Với hơn 8 năm kinh nghiệm, chúng tôi đã phục vụ hơn 500 cặp dâu rể, gia đình và cá nhân. Mỗi dự án đều là một bộ tác phẩm độc đáo, mỗi khách hàng đều là một phần của gia đình chúng tôi.
+          </p>
+        </div>
 
-                  <p>
-                    Với hơn 8 năm kinh nghiệm, chúng tôi đã phục vụ hơn 500 cặp dâu rể, gia đình và cá nhân. Mỗi dự án đều là một bộ tác phẩm, mỗi khách hàng đều là một gia đình.
-                  </p>
+        <div class="about-story-card story-card-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="story-icon">
+            <i class="fas fa-camera"></i>
+          </div>
+          <h3>Phong Cách</h3>
+          <p>
+            Tự nhiên, tinh tế, chuyên nghiệp - đó là phong cách của Kool D. Studio. Chúng tôi không chỉ chụp ảnh, chúng tôi kể câu chuyện riêng của bạn qua từng bức hình.
+          </p>
+        </div>
+      </div>
 
-                  <p>
-                    Phong cách của chúng tôi là tự nhiên, tinh tế, chuyên nghiệp. Chúng tôi không chỉ chụp ảnh - chúng tôi kể câu chuyện.
-                  </p>
-                </div>
-              </div>
+      <!-- Team Section - Modern Design -->
+      <div class="team-section-new">
+        <div class="team-header" data-aos="fade-up">
+          <h2 class="section-title">Đội Ngũ Chuyên Nghiệp</h2>
+          <p class="section-description">Những người tài năng đổi tâm huyết cho mỗi khoảnh khắc của bạn</p>
+        </div>
 
-              <div class="about-ctas">
-                <a href="booking.html" class="btn btn-primary">Đặt Lịch Ngay</a>
-                <a href="portfolio.html" class="btn btn-secondary">Xem Thêm Tác Phẩm</a>
-              </div>
+        <div class="team-grid-modern">
+          <!-- Team Member 1 -->
+          <div class="team-card" data-aos="fade-up">
+            <div class="team-image-wrapper">
+              <img src="assets/img/team/Tuan.webp" alt="Tuấn - Nhiếp ảnh gia chính - Kool D. Studio" loading="lazy">
+              <div class="team-overlay"></div>
             </div>
+            <div class="team-info">
+              <h3 class="team-name">Tuấn</h3>
+              <p class="team-role">Nhiếp Ảnh Gia Chính</p>
+              <p class="team-desc">Chuyên về pre-wedding album, ảnh cưới và ảnh gia đình với phong cách tự nhiên, tinh tế</p>
+            </div>
+          </div>
 
-            <!-- Team Members -->
-            <div class="team-section">
-              <h3>Đội Ngũ Của Chúng Tôi</h3>
-              <div class="team-grid">
-                <div class="team-member" data-aos="fade-up">
-                  <div class="team-avatar">
-                    <img src="assets/img/team/Tuan.webp" alt="Tuấn - Nhiếp ảnh gia Kool D. Studio" loading="lazy">
-                  </div>
-                  <p class="team-name">Tuấn</p>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
-                  <div class="team-avatar">
-                    <img src="assets/img/team/Vu.webp" alt="Vũ - Nhiếp ảnh gia Kool D. Studio" loading="lazy">
-                  </div>
-                  <p class="team-name">Vũ</p>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
-                  <div class="team-avatar">
-                    <img src="assets/img/team/Hieu.webp" alt="Hiệu - Nhiếp ảnh gia Kool D. Studio" loading="lazy">
-                  </div>
-                  <p class="team-name">Hiệu</p>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
-                  <div class="team-avatar">
-                    <img src="assets/img/team/Dung.webp" alt="Dung - Trang điểm Kool D. Studio" loading="lazy">
-                  </div>
-                  <p class="team-name">Dung</p>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="400">
-                  <div class="team-avatar">
-                    <img src="assets/img/team/Tai.webp" alt="Tài - Thành viên Kool D. Studio" loading="lazy">
-                  </div>
-                  <p class="team-name">Tài</p>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="500">
-                  <div class="team-avatar">
-                    <img src="assets/img/team/Ny.webp" alt="Ny - Thành viên Kool D. Studio" loading="lazy">
-                  </div>
-                  <p class="team-name">Ny</p>
-                </div>
-              </div>
+          <!-- Team Member 2 -->
+          <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-image-wrapper">
+              <img src="assets/img/team/Vu.webp" alt="Vũ - Makeup Artist - Kool D. Studio" loading="lazy">
+              <div class="team-overlay"></div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Vũ</h3>
+              <p class="team-role">Makeup Artist</p>
+              <p class="team-desc">Makeup artist chuyên về tạo hình cô dâu , nâng tầm vẻ đẹp tự nhiên với kỹ thuật chuyên nghiệp</p>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-image-wrapper">
+              <img src="assets/img/team/Hieu.webp" alt="Hiệu - Nhiếp ảnh gia - Kool D. Studio" loading="lazy">
+              <div class="team-overlay"></div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Hiệu</h3>
+              <p class="team-role">Nhiếp Ảnh Gia</p>
+              <p class="team-desc">Chuyên phóng sự cưới, sự kiện với khả năng ghi hình độc đáo tại khu vực Quảng Ngãi</p>
+            </div>
+          </div>
+
+          <!-- Team Member 4 -->
+          <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="team-image-wrapper">
+              <img src="assets/img/team/Dung.webp" alt="Dung - Nhiếp ảnh gia - Kool D. Studio" loading="lazy">
+              <div class="team-overlay"></div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Dũng</h3>
+              <p class="team-role">Nhiếp Ảnh Gia</p>
+              <p class="team-desc">Chuyên ảnh cưới nhà hàng, sự kiện lễ tiệc tại TP.HCM với experience lâu năm</p>
+            </div>
+          </div>
+
+          <!-- Team Member 5 -->
+          <div class="team-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-image-wrapper">
+              <img src="assets/img/team/Tai.webp" alt="Tài - Nhiếp ảnh gia - Kool D. Studio" loading="lazy">
+              <div class="team-overlay"></div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Tài</h3>
+              <p class="team-role">Nhiếp Ảnh Gia</p>
+              <p class="team-desc">Photographer cưới nhà hàng, sự kiện lễ tiệc trên toàn khu vực HCM &amp; Nha Trang</p>
+            </div>
+          </div>
+
+          <!-- Team Member 6 -->
+          <div class="team-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="team-image-wrapper">
+              <img src="assets/img/team/Ny.webp" alt="Ny - Phụ Trợ & Makeup Artist - Kool D. Studio" loading="lazy">
+              <div class="team-overlay"></div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Ny</h3>
+              <p class="team-role">Phụ Trợ & Makeup Artist</p>
+              <p class="team-desc">Makeup styling cô dâu và tư vấn concept &amp; trang phục</p>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- About Stats -->
+      <div class="about-stats" data-aos="zoom-in">
+        <div class="stat-item">
+          <div class="stat-number">8+</div>
+          <p class="stat-label">Năm Kinh Nghiệm</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">500+</div>
+          <p class="stat-label">Cặp Vợ Chồng</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1000+</div>
+          <p class="stat-label">Gia Đình</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99%</div>
+          <p class="stat-label">Độ Hài Lòng</p>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="about-cta" data-aos="fade-up">
+        <a href="booking.html" class="btn btn-primary btn-large">
+          <i class="fas fa-calendar-alt"></i>
+          Đặt Lịch Chụp Ngay
+        </a>
+        <a href="portfolio.html" class="btn btn-secondary btn-large">
+          <i class="fas fa-images"></i>
+          Xem Toàn Bộ Tác Phẩm
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- Call to Action - Ready to Book -->
   <section class="cta-section">
     <div class="container">
       <div class="cta-content" data-aos="zoom-in">
@@ -501,7 +594,7 @@
         <p>Hãy liên hệ với chúng tôi để tư vấn và xem lịch có sẵn</p>
         <div class="cta-buttons">
           <a href="booking.html" class="btn btn-light">Đặt Lịch Chụp</a>
-          <a href="#contact" class="btn btn-outline-light">Liên Hệ Chúng Tôi</a>
+          <a href="#contact" class="btn btn-outline-light">Liên Hệ Ngay</a>
         </div>
       </div>
     </div>
@@ -521,7 +614,7 @@
       <div class="alternative-contact" data-aos="fade-up">
         <a href="https://m.me/koolastudio" target="_blank" class="contact-link-button facebook">
           <i class="fab fa-facebook-messenger"></i>
-          <span>Facebook Messenger</span>
+          <span>Facebook</span>
         </a>
         <a href="tel:0379031662" class="contact-link-button phone">
           <i class="fas fa-phone"></i>
@@ -568,57 +661,12 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Kool D. Studio</h3>
-          <p>Studio chuyên chụp ảnh cưới, gia đình và trang điểm chuyên nghiệp với phong cách tự nhiên.</p>
-        </div>
-
-        <div class="footer-section">
-          <h4>Liên Kết Nhanh</h4>
-          <ul>
-            <li><a href="#portfolio">Tác Phẩm</a></li>
-            <li><a href="#galleries">Ảnh Theo Chuyên Mục</a></li>
-            <li><a href="#about">Về Chúng Tôi</a></li>
-            <li><a href="services.html">Dịch Vụ & Báo Giá</a></li>
-            <li><a href="booking.html">Đặt Lịch</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h4>Chuyên Mục Ảnh</h4>
-          <ul>
-            <li><a href="#">Ảnh Cưới</a></li>
-            <li><a href="#">Ảnh Gia Đình</a></li>
-            <li><a href="#">Trang Điểm</a></li>
-            <li><a href="#">Ảnh Cá Nhân</a></li>
-            <li><a href="portfolio.html#documentary">Phóng Sự Cưới</a></li>
-            <li><a href="inan.html">In Ảnh & Lưu Trữ</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h4>Liên Hệ</h4>
-          <p><strong>Điện thoại:</strong> +84 379 031 662</p>
-          <p><strong>Địa chỉ:</strong> 485/10 Phan Văn Trị, P.5, Gò Vấp, TP.HCM</p>
-          <p><strong>Địa chỉ Quảng Ngãi:</strong><br/>Ngã 3 Trà Bồng, QL1A, Bình Sơn, Quảng Ngãi</p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Kool D. Studio</p>
-        <div class="footer-links">
-          <a href="terms.html">Điều Khoản Sử Dụng</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer - Loaded from template -->
+  <div id="footer-container"></div>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="assets/js/load-template.js"></script>
   <script src="assets/js/gallery-data.js"></script>
   <script src="assets/js/gallery-manager-home.js"></script>
   <script src="assets/js/index-new.js"></script>

@@ -5,7 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Giữ Lịch - Kool D. Studio</title>
   <meta name="description" content="Giữ lịch chụp ảnh với Kool D. Studio - Nhanh, dễ, tiện"/>
-  
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://koolbstudio.com/booking.html">
+  <meta property="og:title" content="Giữ Lịch - Kool D. Studio">
+  <meta property="og:description" content="Giữ lịch chụp ảnh với Kool D. Studio - Nhanh, dễ, tiện">
+  <meta property="og:image" content="https://koolbstudio.com/assets/img/hero/hero%20(2).webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://koolbstudio.com/booking.html">
+  <meta property="twitter:title" content="Giữ Lịch - Kool D. Studio">
+  <meta property="twitter:description" content="Giữ lịch chụp ảnh với Kool D. Studio - Nhanh, dễ, tiện">
+  <meta property="twitter:image" content="https://koolbstudio.com/assets/img/hero/hero%20(2).webp">
+
+  <!-- Canonical URL -->
+  <meta name="canonical" href="https://koolbstudio.com/booking.html">
+
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -13,120 +32,523 @@
   <link rel="stylesheet" href="assets/css/home-elegant.css">
   <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
   <style>
-    .booking-container { max-width: 800px; margin: 140px auto 80px; padding: 2rem; }
-    .booking-header { text-align: center; margin-bottom: 60px; }
-    
-    .booking-form { display: grid; gap: 40px; }
-    .form-section { border-bottom: 1px solid rgba(235, 149, 0, 0.1); padding-bottom: 40px; }
-    .form-section:last-child { border-bottom: none; }
-    
-    .section-label { font-size: 18px; font-weight: 600; color: #3a5a40; margin-bottom: 20px; }
-    
+    :root {
+      --primary: #d4a574;
+      --primary-dark: #b8956a;
+      --dark-green: #2d5a4a;
+      --dark-green-light: #3d7a5f;
+      --light-cream: #faf7f2;
+      --light-gray: #f5f3f0;
+      --gray: #8b8680;
+      --dark: #2a2a28;
+    }
+
+    .booking-container { 
+      max-width: 900px; 
+      margin: 0 auto; 
+      padding: 60px 2rem 80px;
+    }
+
+    .booking-header { 
+      text-align: center; 
+      margin-bottom: 70px; 
+    }
+
+    .booking-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .booking-header p {
+      font-size: 1.1rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Progress Indicator */
+    .progress-indicator {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 60px;
+      align-items: center;
+    }
+
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--light-gray);
+      border: 2px solid var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--gray);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      font-size: 14px;
+    }
+
+    .step-number.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+    }
+
+    .step-number.completed {
+      background: var(--dark-green);
+      color: white;
+      border-color: var(--dark-green);
+    }
+
+    .step-label {
+      font-size: 12px;
+      color: var(--gray);
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* Form Sections */
+    .booking-form { 
+      display: grid; 
+      gap: 50px; 
+    }
+
+    .form-section { 
+      border-bottom: 1px solid var(--light-gray);
+      padding-bottom: 50px;
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+
+    .form-section.active {
+      opacity: 1;
+    }
+
+    .form-section:last-child { 
+      border-bottom: none; 
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .section-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .section-label { 
+      font-size: 1.3rem; 
+      font-weight: 600; 
+      color: var(--dark);
+      font-family: 'Playfair Display', serif;
+    }
+
     /* Package Selection */
-    .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+    .package-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+      gap: 20px; 
+    }
+
     .package-card { 
-      padding: 20px; border: 2px solid #e0e0e0; border-radius: 12px; 
-      cursor: pointer; transition: all 0.3s; text-align: center;
+      padding: 24px; 
+      border: 2px solid var(--light-gray); 
+      border-radius: 12px; 
+      cursor: pointer; 
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      text-align: center;
+      background: white;
+      position: relative;
+      overflow: hidden;
     }
-    .package-card:hover { border-color: #eb9500; background: rgba(235, 149, 0, 0.05); }
-    .package-card.selected { border-color: #eb9500; background: rgba(235, 149, 0, 0.1); }
-    .package-name { font-weight: 600; font-size: 16px; margin-bottom: 8px; }
-    .package-price { font-size: 14px; color: #666; }
-    
+
+    .package-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .package-card:hover {
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(212, 165, 116, 0.05), rgba(45, 90, 74, 0.02));
+      box-shadow: 0 8px 24px rgba(212, 165, 116, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .package-card:hover::before {
+      left: 100%;
+    }
+
+    .package-card.selected { 
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(45, 90, 74, 0.05));
+      box-shadow: 0 8px 24px rgba(212, 165, 116, 0.2);
+    }
+
+    .package-card.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      width: 24px;
+      height: 24px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .package-name { 
+      font-weight: 600; 
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+      font-family: 'Lora', serif;
+    }
+
+    .package-price { 
+      font-size: 0.95rem; 
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .package-description{
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
     /* Date & Time */
-    .date-time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .form-group label { display: block; font-size: 14px; color: #666; margin-bottom: 8px; font-weight: 500; }
-    .form-group input { width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 14px; }
-    .form-group input:focus { outline: none; border-color: #eb9500; box-shadow: 0 0 0 3px rgba(235, 149, 0, 0.1); }
-    
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label { 
+      display: block; 
+      font-size: 0.95rem; 
+      color: var(--dark);
+      margin-bottom: 10px; 
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group textarea { 
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--light-gray);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--dark);
+      transition: all 0.3s;
+      background: white;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--gray);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus { 
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.1);
+      background: var(--light-cream);
+    }
+
     /* Time Slots */
-    .time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .time-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+      gap: 16px; 
+    }
+
     .time-slot { 
-      padding: 20px 12px; border: 2px solid #ddd; border-radius: 8px; 
-      cursor: pointer; transition: all 0.2s; text-align: center; font-size: 14px;
-      background: white; min-height: 80px; display: flex; flex-direction: column; justify-content: center;
+      padding: 24px 16px; 
+      border: 2px solid var(--light-gray); 
+      border-radius: 8px; 
+      cursor: pointer; 
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      text-align: center; 
+      background: white;
+      min-height: 100px;
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
-    .time-slot:hover { border-color: #eb9500; background: rgba(235, 149, 0, 0.05); }
-    .time-slot.selected { background: #eb9500; color: white; border-color: #eb9500; }
-    
-    /* Contact Info */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .contact-grid input { width: 100%; }
-    
+
+    .time-slot::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .time-slot:hover { 
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(212, 165, 116, 0.05), rgba(45, 90, 74, 0.02));
+      box-shadow: 0 4px 12px rgba(212, 165, 116, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .time-slot:hover::before {
+      left: 100%;
+    }
+
+    .time-slot.selected { 
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white; 
+      border-color: var(--primary);
+      box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+    }
+
+    .time-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .time-label {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .time-range {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    /* Contact Grid */
+    .contact-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px; 
+    }
+
     /* Submit Button */
-    .booking-actions { display: flex; gap: 16px; margin-top: 40px; }
+    .booking-actions { 
+      display: flex; 
+      gap: 16px;
+      margin-top: 50px;
+      justify-content: center;
+    }
+
     .btn-book { 
-      flex: 1.2; padding: 18px; background: #eb9500; color: white; 
-      border: none; border-radius: 8px; font-weight: 700; cursor: pointer; 
-      font-size: 16px; transition: all 0.3s; box-shadow: 0 4px 16px rgba(235, 149, 0, 0.3);
+      padding: 16px 48px;
+      background: var(--primary);
+      color: white; 
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer; 
+      font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 16px rgba(212, 165, 116, 0.3);
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-    .btn-book:hover { background: #d4800a; box-shadow: 0 8px 24px rgba(235, 149, 0, 0.4); transform: translateY(-2px); }
-    .btn-book:disabled { background: #ccc; cursor: not-allowed; }
-    
+
+    .btn-book:hover { 
+      background: var(--primary-dark);
+      box-shadow: 0 8px 32px rgba(212, 165, 116, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-book:disabled { 
+      background: var(--gray);
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
     .btn-alternative { 
-      flex: 0.8; padding: 18px; background: transparent; color: #3a5a40; 
-      border: 2px solid #3a5a40; border-radius: 8px; font-weight: 600; 
-      cursor: pointer; transition: all 0.3s;
+      padding: 16px 40px;
+      background: transparent; 
+      color: var(--dark-green);
+      border: 2px solid var(--dark-green);
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer; 
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.95rem;
     }
-    .btn-alternative:hover { background: rgba(235, 149, 0, 0.08); border-color: #eb9500; color: #eb9500; }
-    
+
+    .btn-alternative:hover { 
+      background: var(--dark-green);
+      color: white;
+      box-shadow: 0 4px 12px rgba(45, 90, 74, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Booking Note */
     .booking-note { 
-      background: rgba(235, 149, 0, 0.05); padding: 20px; border-radius: 8px; 
-      margin-top: 40px; text-align: center; color: #666; font-size: 14px;
+      background: linear-gradient(135deg, rgba(212, 165, 116, 0.08), rgba(45, 90, 74, 0.03));
+      border-left: 4px solid var(--primary);
+      padding: 24px;
+      border-radius: 8px;
+      margin-top: 50px;
+      text-align: center;
+      color: var(--dark);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .booking-note i {
+      color: var(--primary);
+      margin-right: 8px;
+    }
+
+    /* Form validation feedback */
+    .form-feedback {
+      font-size: 0.85rem;
+      margin-top: 6px;
+      color: #d32f2f;
+      display: none;
+    }
+
+    .form-group.error .form-feedback {
+      display: block;
+    }
+
+    .form-group.error input,
+    .form-group.error textarea {
+      border-color: #d32f2f;
+      background-color: rgba(211, 47, 47, 0.02);
+    }
+
+    .form-group.success input {
+      border-color: #388e3c;
+      background-color: rgba(56, 142, 60, 0.02);
     }
 
     /* Mobile Responsive */
     @media (max-width: 768px) {
       .booking-container { 
-        margin-top: 100px;
-        padding: 1.5rem;
+        padding: 40px 1.5rem;
       }
-      
-      .booking-header { 
+
+      .booking-header h1 {
+        font-size: 2rem;
+      }
+
+      .booking-header p {
+        font-size: 1rem;
+      }
+
+      .progress-indicator {
+        gap: 8px;
         margin-bottom: 40px;
       }
-      
+
+      .step-label {
+        font-size: 11px;
+      }
+
       .section-label { 
-        font-size: 16px;
-        margin-bottom: 16px;
+        font-size: 1.1rem;
       }
-      
+
       .package-grid { 
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 12px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
       }
-      
+
       .package-card {
         padding: 16px;
       }
-      
+
       .package-name { 
-        font-size: 14px;
-      }
-      
-      .package-price { 
-        font-size: 12px;
+        font-size: 0.95rem;
       }
 
-      .date-time-grid { 
-        grid-template-columns: 1fr;
-        gap: 16px;
+      .package-description {
+        font-size: 0.8rem;
       }
 
       .time-grid { 
         grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+        gap: 12px;
       }
 
       .time-slot { 
-        padding: 12px 8px;
-        font-size: 12px;
-        min-height: 70px;
+        padding: 16px 12px;
+        font-size: 0.95rem;
+        min-height: 90px;
+      }
+
+      .time-icon {
+        font-size: 18px;
+      }
+
+      .time-label {
+        font-size: 0.9rem;
+      }
+
+      .time-range {
+        font-size: 0.8rem;
       }
 
       .contact-grid { 
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 20px;
       }
 
       .booking-actions { 
@@ -137,38 +559,112 @@
       .btn-book,
       .btn-alternative { 
         padding: 14px;
-        font-size: 14px;
+        font-size: 0.9rem;
       }
 
       .booking-note { 
-        padding: 16px;
-        font-size: 12px;
-        margin-top: 30px;
+        padding: 20px;
+        font-size: 0.9rem;
+        margin-top: 40px;
       }
     }
 
     @media (max-width: 480px) {
       .booking-container { 
-        padding: 1rem;
+        padding: 30px 1rem;
+      }
+
+      .booking-header h1 {
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+      }
+
+      .booking-header p {
+        font-size: 0.95rem;
+      }
+
+      .progress-indicator {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 30px;
+      }
+
+      .step-number {
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
+      }
+
+      .section-header {
+        margin-bottom: 20px;
+        gap: 8px;
+      }
+
+      .section-number {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
       }
 
       .section-label { 
-        font-size: 15px;
+        font-size: 1rem;
       }
 
       .package-grid { 
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-        gap: 10px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .package-card {
+        padding: 12px;
+      }
+
+      .package-name { 
+        font-size: 0.9rem;
       }
 
       .time-grid { 
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .time-slot { 
+        padding: 12px;
+        font-size: 0.85rem;
+        min-height: 80px;
+      }
+
+      .time-icon {
+        font-size: 16px;
+      }
+
+      .time-label {
+        font-size: 0.85rem;
+      }
+
+      .time-range {
+        font-size: 0.75rem;
       }
 
       .btn-book,
       .btn-alternative { 
         padding: 12px;
-        font-size: 13px;
+        font-size: 0.85rem;
+      }
+
+      .form-group label {
+        font-size: 0.9rem;
+      }
+
+      .form-group input {
+        padding: 12px 12px;
+        font-size: 0.95rem;
+      }
+
+      .booking-note {
+        padding: 16px;
+        font-size: 0.85rem;
+        margin-top: 30px;
       }
     }
   </style>
@@ -179,57 +675,98 @@
 <div id="header-container"></div>
 
 <div class="booking-container">
+  <!-- Page Header -->
   <div class="booking-header" data-aos="fade-up">
-    <h1 class="page-title">Giữ lịch chụp</h1>
-    <p class="page-subtitle" data-aos="fade-up" data-aos-delay="100">Chọn gói & thời gian phù hợp, studio sẽ liên hệ xác nhận</p>
+    <h1>Giữ Lịch Chụp Ảnh</h1>
+    <p>Lựa chọn gói dịch vụ, ngày giờ phù hợp và để studio liên hệ xác nhận. Quy trình đơn giản, nhanh chóng, chuyên nghiệp.</p>
     <div class="gold-line" data-aos="zoom-in" data-aos-delay="200"></div>
+  </div>
+
+  <!-- Progress Indicator -->
+  <div class="progress-indicator" data-aos="fade-up">
+    <div class="progress-step">
+      <div class="step-number active">1</div>
+      <div class="step-label">Chọn Gói</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">2</div>
+      <div class="step-label">Chọn Ngày</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">3</div>
+      <div class="step-label">Chọn Giờ</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">4</div>
+      <div class="step-label">Thông Tin</div>
+    </div>
   </div>
 
   <form class="booking-form" id="bookingForm">
     <!-- 1. Package Selection -->
-    <div class="form-section" data-aos="fade-up">
-      <div class="section-label">1️⃣ Chọn Gói Dịch Vụ</div>
+    <div class="form-section active" data-aos="fade-up">
+      <div class="section-header">
+        <div class="section-number">1</div>
+        <div class="section-label">Chọn Gói Dịch Vụ</div>
+      </div>
       <div class="package-grid" id="packageGrid"></div>
     </div>
 
     <!-- 2. Date Selection -->
-    <div class="form-section" data-aos="fade-up">
-      <div class="section-label">2️⃣ Chọn Ngày</div>
+    <div class="form-section" data-aos="fade-up" data-aos-delay="50">
+      <div class="section-header">
+        <div class="section-number">2</div>
+        <div class="section-label">Chọn Ngày Chụp</div>
+      </div>
       <div class="form-group">
+        <label for="bookingDate">📅 Ngày</label>
         <input type="date" id="bookingDate" required>
       </div>
     </div>
 
     <!-- 3. Time Selection -->
-    <div class="form-section" data-aos="fade-up">
-      <div class="section-label">3️⃣ Chọn Giờ</div>
+    <div class="form-section" data-aos="fade-up" data-aos-delay="100">
+      <div class="section-header">
+        <div class="section-number">3</div>
+        <div class="section-label">Chọn Khung Giờ</div>
+      </div>
       <div class="time-grid" id="timeGrid"></div>
     </div>
 
     <!-- 4. Contact Info -->
-    <div class="form-section" data-aos="fade-up">
-      <div class="section-label">4️⃣ Thông Tin Của Bạn</div>
+    <div class="form-section" data-aos="fade-up" data-aos-delay="150">
+      <div class="section-header">
+        <div class="section-number">4</div>
+        <div class="section-label">Thông Tin Của Bạn</div>
+      </div>
       <div class="contact-grid">
         <div class="form-group">
-          <label>Tên</label>
-          <input type="text" id="clientName" placeholder="Tên của bạn" required>
+          <label for="clientName">👤 Tên Đầy Đủ</label>
+          <input type="text" id="clientName" placeholder="Nhập tên của bạn" required>
+          <div class="form-feedback">Vui lòng nhập tên</div>
         </div>
         <div class="form-group">
-          <label>Số Điện Thoại</label>
+          <label for="clientPhone">📱 Số Điện Thoại</label>
           <input type="tel" id="clientPhone" placeholder="0379031662" required>
+          <div class="form-feedback">Vui lòng nhập số điện thoại hợp lệ</div>
         </div>
       </div>
     </div>
 
     <!-- 5. Submit -->
     <div class="booking-actions">
-      <button type="button" class="btn-book" id="bookBtn">Bắt đầu tư vấn</button>
-      <button type="button" class="btn-alternative" id="zaloBtn">Trao đổi qua Zalo</button>
+      <button type="button" class="btn-book" id="bookBtn">
+        <i class="fas fa-check-circle"></i> Bắt Đầu Tư Vấn
+      </button>
+      <button type="button" class="btn-alternative" id="zaloBtn">
+        <i class="fab fa-whatsapp"></i> Zalo
+      </button>
     </div>
   </form>
 
   <div class="booking-note">
-    Nếu bạn có bất đắc dĩ nào, đừng ngần ngại trao đổi để team tìm phương án phù hợp với bạn nhé! Team sẽ liên hệ để xác nhận sau.
+    <i class="fas fa-info-circle"></i>
+    <span>Không có gì là cố định. Nếu bạn có bất kỳ thay đổi nào, hãy liên hệ team để thảo luận. Studio sẽ liên hệ lại trong vòng 24 giờ để xác nhận lịch chụp.</span>
   </div>
 </div>
 
@@ -237,7 +774,91 @@
 <script src="assets/js/load-template.js"></script>
 <script src="assets/js/booking.js"></script>
 <script>
-  AOS.init({duration: 800, once: true, offset: 50});
+  // Enhanced Booking Form Logic
+  document.addEventListener('DOMContentLoaded', function() {
+    const progressSteps = document.querySelectorAll('.step-number');
+    const formSections = document.querySelectorAll('.form-section');
+    const bookingForm = document.getElementById('bookingForm');
+    const packageGrid = document.getElementById('packageGrid');
+    const timeGrid = document.getElementById('timeGrid');
+    const bookingDate = document.getElementById('bookingDate');
+    const clientName = document.getElementById('clientName');
+    const clientPhone = document.getElementById('clientPhone');
+
+    let selectedStep = 0;
+
+    // Update progress indicator
+    function updateProgress() {
+      progressSteps.forEach((step, idx) => {
+        step.classList.remove('active', 'completed');
+        if (idx < selectedStep) {
+          step.classList.add('completed');
+        } else if (idx === selectedStep) {
+          step.classList.add('active');
+        }
+      });
+
+      formSections.forEach((section, idx) => {
+        section.classList.toggle('active', idx === selectedStep);
+      });
+    }
+
+    // Update step when package is selected
+    packageGrid.addEventListener('click', (e) => {
+      if (e.target.closest('.package-card')) {
+        selectedStep = 1;
+        updateProgress();
+      }
+    });
+
+    // Update step when date is selected
+    bookingDate.addEventListener('change', () => {
+      if (bookingDate.value) {
+        selectedStep = 2;
+        updateProgress();
+      }
+    });
+
+    // Update step when time is selected
+    timeGrid.addEventListener('click', (e) => {
+      if (e.target.closest('.time-slot')) {
+        selectedStep = 3;
+        updateProgress();
+      }
+    });
+
+    // Validate inputs on blur
+    clientName.addEventListener('blur', validateName);
+    clientPhone.addEventListener('blur', validatePhone);
+
+    function validateName() {
+      const nameField = clientName.parentElement;
+      if (clientName.value.trim().length < 2) {
+        nameField.classList.add('error');
+        nameField.classList.remove('success');
+      } else {
+        nameField.classList.remove('error');
+        nameField.classList.add('success');
+      }
+    }
+
+    function validatePhone() {
+      const phoneField = clientPhone.parentElement;
+      const phoneRegex = /^[0-9]{10,}$/;
+      if (!phoneRegex.test(clientPhone.value.replace(/\D/g, ''))) {
+        phoneField.classList.add('error');
+        phoneField.classList.remove('success');
+      } else {
+        phoneField.classList.remove('error');
+        phoneField.classList.add('success');
+      }
+    }
+
+    // Initialize AOS
+    if (typeof AOS !== 'undefined') {
+      AOS.init({duration: 800, once: true, offset: 50});
+    }
+  });
 </script>
 
 <!-- Footer Template Container -->
