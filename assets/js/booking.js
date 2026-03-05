@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   const clientPhone = document.getElementById('clientPhone');
 
   let packages = [];
+  let selectedPackageData = null;
+
+  // Load booking details from localStorage
+  const storedBookingData = localStorage.getItem('bookingDetails');
+  if (storedBookingData) {
+    selectedPackageData = JSON.parse(storedBookingData);
+  }
 
   // Fetch pricing data
   try {
@@ -35,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     { id: 'evening', label: '🌙 Tối', time: '18:00 - 22:00' }
   ];
 
-  let selectedPackage = '';
+  let selectedPackage = selectedPackageData ? selectedPackageData.packageName : '';
   let selectedTime = '';
 
   // Get package from URL parameter
@@ -52,19 +59,31 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="package-price">${pkg.price}</div>
     `;
     
-    // Auto-select package from URL
-    if (packageFromUrl && pkg.id === packageFromUrl) {
+    // Auto-select package from stored data or URL
+    if (selectedPackageData && pkg.id === selectedPackageData.packageType) {
       card.classList.add('selected');
-      selectedPackage = pkg.name;
+      selectPackageCard(card, pkg.name);
+    } else if (packageFromUrl && pkg.id === packageFromUrl) {
+      card.classList.add('selected');
+      selectPackageCard(card, pkg.name);
     }
     
     card.onclick = () => {
       document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
       card.classList.add('selected');
-      selectedPackage = pkg.name;
+      selectPackageCard(card, pkg.name);
     };
     packageGrid.appendChild(card);
   });
+
+  function selectPackageCard(card, name) {
+    selectedPackage = name;
+    // Clear stored data when manually selecting new package
+    if (!selectedPackageData || selectedPackageData.packageName !== name) {
+      localStorage.removeItem('bookingDetails');
+      selectedPackageData = null;
+    }
+  }
 
   // Render time periods
   timeGrid.innerHTML = '';
@@ -88,29 +107,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Generate message
   function generateMessage() {
-    const storedDetails = localStorage.getItem('bookingDetails');
     let detailsMessage = '';
 
-    if (storedDetails) {
-        const details = JSON.parse(storedDetails);
-        detailsMessage = `
---- CHI TIẾT GÓI TÙY CHỈNH ---
-- Gói: ${details.packageName}
-- Số thành viên: ${details.members}
-- Số người makeup: ${details.makeup}
-- Dịch vụ thêm: ${details.upgrades.length > 0 ? details.upgrades.join(', ') : 'Không có'}
-- Tổng chi phí dự kiến: ${details.totalPrice}
-------------------------------------
+    if (selectedPackageData) {
+      detailsMessage = `
+--- CHI TIẾT GÓI CHỌN ---
+- Gói: ${selectedPackageData.packageName}
+${selectedPackageData.details ? `- Tùy chỉnh: ${selectedPackageData.details}\n` : ''}${selectedPackageData.price ? `- Giá dự kiến: ${selectedPackageData.price}\n` : ''}------------------------------------
 `;
     }
 
     const bookingInfo = `
 --- THÔNG TIN ĐẶT LỊCH ---
 - Gói chính: ${selectedPackage || '(chưa chọn)'}
-- Ngày: ${bookingDate.value || '(chưa chọn)'}
-- Giờ: ${selectedTime || '(chưa chọn)'}
-- Tên: ${clientName.value || '(chưa nhập)'}
-- SĐT: ${clientPhone.value || '(chưa nhập)'}`;
+${selectedPackageData && selectedPackageData.price ? `- Giá: ${selectedPackageData.price}\n` : ''}${!selectedPackageData && packages.find(p => p.name === selectedPackage) ? `- Giá: ${packages.find(p => p.name === selectedPackage).price}\n` : ''}${bookingDate.value ? `- Ngày: ${new Date(bookingDate.value).toLocaleDateString('vi-VN')}\n` : ''}${selectedTime ? `- Giờ: ${selectedTime}\n` : ''}${clientName.value ? `- Tên: ${clientName.value}\n` : ''}${clientPhone.value ? `- SĐT: ${clientPhone.value}` : ''}`;
 
     if (detailsMessage) {
       return `Mình muốn giữ lịch với các chi tiết sau:${detailsMessage}${bookingInfo}`;

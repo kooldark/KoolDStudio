@@ -304,6 +304,70 @@ function formatPrice(price) {
   return price.toLocaleString('vi-VN') + ' ₫';
 }
 
+// ===== SAVE BOOKING DETAILS TO LOCALSTORAGE =====
+function saveBookingDetails(packageName, price, details, packageType) {
+  const bookingData = {
+    packageName: packageName,
+    price: price,
+    details: details,
+    packageType: packageType,
+    savedAt: new Date().toISOString()
+  };
+  localStorage.setItem('bookingDetails', JSON.stringify(bookingData));
+}
+
+// Add click handlers to "Đặt Lịch" buttons
+document.addEventListener('click', function(e) {
+  const bookingLink = e.target.closest('a[href*="booking.html"]');
+  if (!bookingLink) return;
+  
+  const tab = document.querySelector('.tab-content.active');
+  if (!tab) return;
+  
+  let packageName = '';
+  let price = '';
+  let details = '';
+  let packageType = '';
+  
+  if (tab.id === 'studio-content') {
+    packageName = 'Album Ảnh Cưới Studio';
+    price = document.getElementById('studio-price').textContent;
+    packageType = 'studio';
+    
+    const items = Array.from(document.querySelectorAll('#studio-items .summary-item'))
+      .map(item => item.textContent);
+    details = items.join(' | ');
+  } else if (tab.id === 'family-content') {
+    packageName = 'Khoảnh Khắc Gia Đình';
+    price = document.getElementById('family-price').textContent;
+    packageType = 'family';
+    
+    const items = Array.from(document.querySelectorAll('#family-items .summary-item'))
+      .map(item => item.textContent);
+    details = items.join(' | ');
+  } else if (tab.id === 'makeup-content') {
+    packageName = 'Trang Điểm & Làm Tóc';
+    price = document.getElementById('makeup-price').textContent;
+    packageType = 'makeup';
+    
+    const items = Array.from(document.querySelectorAll('#makeup-items .summary-item'))
+      .map(item => item.textContent);
+    details = items.join(' | ');
+  } else if (tab.id === 'event-content') {
+    packageName = 'Chụp Ảnh Sự Kiện';
+    price = document.getElementById('event-price').textContent;
+    packageType = 'event';
+    
+    const items = Array.from(document.querySelectorAll('#event-items .summary-item'))
+      .map(item => item.textContent);
+    details = items.join(' | ');
+  }
+  
+  if (packageName && price) {
+    saveBookingDetails(packageName, price, details, packageType);
+  }
+});
+
 // ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href*="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
