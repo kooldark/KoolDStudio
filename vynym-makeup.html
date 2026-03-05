@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vy Ny - Make-up Artist Chuyên Nghiệp | Kool D. Studio</title>
+  <meta name="description" content="Vy Ny - Make-up Artist chuyên về trang điểm cô dâu, make-up sự kiện, tư vấn làm đẹp chuyên sâu. Giá trị thẫm mỹ tinh tế, chuyên nghiệp, đẹp tự nhiên."/>
+  <meta name="keywords" content="makeup artist, trang điểm cô dâu, makeup cưới, makeup sự kiện, Vy Ny, Kool D Studio">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://koolbstudio.com/vynym-makeup.html">
+  <meta property="og:title" content="Vy Ny - Make-up Artist Chuyên Nghiệp | Kool D. Studio">
+  <meta property="og:description" content="Make-up artist Vy Ny - Trang điểm cô dâu, makeup sự kiện với giá trị thẫm mỹ tinh tế và chuyên nghiệp.">
+  <meta property="og:image" content="https://koolbstudio.com/assets/img/brand/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons && AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usKFqyUKV7Fs+aIGLPy8bLLBoDwJstMVBbpFagpF+Xg/Hp3+ymodeva/WCHD5w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  
+  <!-- Main CSS & Icon -->
+  <link rel="stylesheet" href="assets/css/home-elegant.css">
+  <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
+
+  <!-- Custom Styles for Vy Ny Page -->
+  <style>
+    :root {
+      --primary: #d4a574;
+      --primary-dark: #b8956a;
+      --dark-green: #2d5a4a;
+      --dark-green-light: #3d7a5f;
+      --light-cream: #faf7f2;
+      --light-gray: #f5f3f0;
+      --gray: #8b8680;
+      --dark: #2a2a28;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .vynym-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--light-cream) 0%, #f0e8dd 100%);
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .vynym-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(30px); }
+    }
+
+    .vynym-hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .vynym-hero-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .vynym-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .vynym-hero-tagline {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--gray);
+      margin-bottom: 3rem;
+      font-weight: 400;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .vynym-hero-cta {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .vynym-btn {
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 0.5px;
+    }
+
+    .vynym-btn-primary {
+      background-color: var(--primary);
+      color: var(--dark);
+    }
+
+    .vynym-btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+    }
+
+    .vynym-btn-secondary {
+      background-color: transparent;
+      color: var(--dark);
+      border: 2px solid var(--primary);
+    }
+
+    .vynym-btn-secondary:hover {
+      background-color: var(--primary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    /* ========== ABOUT SECTION ========== */
+    .vynym-section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .vynym-about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .vynym-about-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .vynym-about-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .vynym-about-text {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .vynym-values-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+
+    .vynym-values-list li {
+      padding: 1rem 0 1rem 3rem;
+      position: relative;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    .vynym-values-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .vynym-about-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .vynym-about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ========== VALUES SECTION ========== */
+    .vynym-values {
+      background: var(--light-cream);
+      padding: 5rem 2rem;
+    }
+
+    .vynym-values-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .vynym-values-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .vynym-values-header p {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    .vynym-values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .vynym-value-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      border-top: 4px solid var(--primary);
+    }
+
+    .vynym-value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .vynym-value-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .vynym-value-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .vynym-value-card p {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ========== SERVICES SECTION ========== */
+    .vynym-services {
+      padding: 5rem 2rem;
+    }
+
+    .vynym-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .vynym-section-desc {
+      text-align: center;
+      color: var(--gray);
+      font-family: 'Lora', serif;
+      margin-bottom: 4rem;
+      font-size: 1.1rem;
+    }
+
+    .vynym-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .vynym-service-card {
+      background: white;
+      border: 1px solid #e0ddd8;
+      padding: 2.5rem;
+      border-radius: 12px;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .vynym-service-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-5px);
+    }
+
+    .vynym-service-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .vynym-service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .vynym-service-card p {
+      font-family: 'Lora', serif;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .vynym-service-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      color: var(--primary);
+      font-weight: 600;
+      display: none;
+    }
+
+    /* ========== GALLERY SECTION ========== */
+    .vynym-gallery {
+      background: var(--light-gray);
+      padding: 5rem 2rem;
+    }
+
+    .vynym-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .vynym-gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      aspect-ratio: 1;
+      background: #ddd;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .vynym-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .vynym-gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .vynym-gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(45, 90, 74, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .vynym-gallery-item:hover .vynym-gallery-overlay {
+      opacity: 1;
+    }
+
+    .vynym-gallery-overlay-text {
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      text-align: center;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ========== WHY CHOOSE SECTION ========== */
+    .vynym-why {
+      padding: 5rem 2rem;
+      background: white;
+    }
+
+    .vynym-why-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .vynym-why-image {
+      position: relative;
+      order: 2;
+    }
+
+    .vynym-why-image img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .vynym-why-content {
+      padding: 2rem;
+    }
+
+    .vynym-why-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .vynym-why-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+
+    .vynym-why-list li {
+      padding: 1.2rem 0;
+      padding-left: 3.5rem;
+      position: relative;
+      font-family: 'Lora', serif;
+      color: var(--gray);
+      line-height: 1.6;
+      border-bottom: 1px solid #e0ddd8;
+    }
+
+    .vynym-why-list li:last-child {
+      border-bottom: none;
+    }
+
+    .vynym-why-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    /* ========== TESTIMONIALS SECTION ========== */
+    .vynym-testimonials {
+      background: linear-gradient(135deg, #f0e8dd 0%, var(--light-cream) 100%);
+      padding: 5rem 2rem;
+    }
+
+    .vynym-testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .vynym-testimonial-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .vynym-testimonial-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-5px);
+    }
+
+    .vynym-testimonial-stars {
+      color: var(--primary);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .vynym-testimonial-text {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .vynym-testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .vynym-author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .vynym-author-info h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .vynym-author-info p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    /* ========== CONTACT CTA SECTION ========== */
+    .vynym-cta {
+      background: linear-gradient(135deg, var(--dark-green) 0%, #1f3d30 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    .vynym-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .vynym-cta p {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .vynym-cta-buttons {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .vynym-btn-white {
+      padding: 1rem 2.5rem;
+      background-color: white;
+      color: var(--dark);
+      border: none;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: 0.5px;
+    }
+
+    .vynym-btn-white:hover {
+      background-color: var(--light-cream);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+    }
+
+    .vynym-btn-outline {
+      padding: 1rem 2.5rem;
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: 0.5px;
+    }
+
+    .vynym-btn-outline:hover {
+      background-color: white;
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .vynym-about,
+      .vynym-why-container {
+        grid-template-columns: 1fr;
+      }
+
+      .vynym-why-image {
+        order: -1;
+      }
+
+      .vynym-hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .vynym-btn {
+        width: 100%;
+      }
+
+      .vynym-cta-buttons {
+        flex-direction: column;
+      }
+
+      .vynym-btn-white,
+      .vynym-btn-outline {
+        width: 100%;
+      }
+
+      .vynym-section {
+        padding: 3rem 1.5rem;
+      }
+
+      .vynym-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .vynym-gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .vynym-testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Template Container -->
+<div id="header-container"></div>
+
+<!-- ========== HERO SECTION ========== -->
+<section class="vynym-hero" data-aos="fade-up">
+  <div class="vynym-hero-content">
+    <span class="vynym-hero-subtitle">Make-Up Artist</span>
+    <h1 class="vynym-hero-title">Vy Ny</h1>
+    <p class="vynym-hero-tagline">Khai Phóng Vẻ Đẹp Tự Nhiên Thành Câu Chuyện Tinh Tế</p>
+    <div class="vynym-hero-cta">
+      <button class="vynym-btn vynym-btn-primary" onclick="document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})">
+        <i class="fas fa-calendar-check"></i> Đặt Lịch Tư Vấn
+      </button>
+      <button class="vynym-btn vynym-btn-secondary" onclick="document.getElementById('about-section').scrollIntoView({behavior: 'smooth'})">
+        Tìm Hiểu Thêm
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT SECTION ========== -->
+<section class="vynym-section" id="about-section" data-aos="fade-up">
+  <div class="vynym-about">
+    <div class="vynym-about-content">
+      <span class="vynym-about-subtitle">Về Vy Ny</span>
+      <h2>Nữ Nghệ Sỹ Thẫm Mỹ Chuyên Nghiệp</h2>
+      <p class="vynym-about-text">
+        Với hơn 8 năm kinh nghiệm trong lĩnh vực trang điểm chuyên nghiệp, Vy Ny đã xây dựng phong cách độc đáo kết hợp xu hướng trang điểm hiện đại với các giá trị thẫm mỹ truyền thống.
+      </p>
+      <p class="vynym-about-text">
+        Mỗi khách hàng không chỉ nhận được lớp trang điểm hoàn hảo mà còn được tư vấn làm đẹp toàn diện, giúp bạn khám phá và tôn vinh vẻ đẹp tự nhiên cũng như sự tự tin của chính mình.
+      </p>
+      
+      <h3 style="font-family: 'Playfair Display', serif; color: var(--dark); margin-top: 2rem; margin-bottom: 1rem;">Chuyên Môn Của Vy Ny</h3>
+      <ul class="vynym-values-list">
+        <li>Trang điểm cô dâu và cô dâu phụ - Make-up tự nhiên, bền vững cả ngày</li>
+        <li>Make-up sự kiện - Tạo điểm nhấn tinh tế, tự tin suốt ngày dài</li>
+        <li>Tư vấn làm đẹp cá nhân hóa - Khám phá phong cách makeup riêng của bạn</li>
+        <li>Kỹ thuật trang điểm chuyên sâu - Ưu tiên sức khỏe da và độ bền</li>
+      </ul>
+    </div>
+
+    <div class="vynym-about-image" data-aos="fade-left">
+      <img src="assets/img/team/Ny.webp" alt="Vy Ny - Make-up Artist Chuyên Nghiệp">
+    </div>
+  </div>
+</section>
+
+<!-- ========== VALUES SECTION ========== -->
+<section class="vynym-values" data-aos="fade-up">
+  <div class="vynym-values-header">
+    <h2>Giá Trị Thẫm Mỹ Của Vy Ny</h2>
+    <p>Không chỉ là trang điểm, mà là sự khai phóng tự tin và tôn vinh vẻ đẹp tự nhiên</p>
+  </div>
+
+  <div class="vynym-values-grid">
+    <div class="vynym-value-card" data-aos="fade-up" data-aos-delay="0">
+      <span class="vynym-value-icon"><i class="fas fa-star"></i></span>
+      <h3>Tự Nhiên & Tinh Tế</h3>
+      <p>Trang điểm giúp bạn tỏa sáng mà không che khuất vẻ đẹp tự nhiên, tạo cảm giác như không trang điểm nhưng lại còn hoàn hảo hơn.</p>
+    </div>
+
+    <div class="vynym-value-card" data-aos="fade-up" data-aos-delay="100">
+      <span class="vynym-value-icon"><i class="fas fa-heart"></i></span>
+      <h3>Sức Khỏe Da Trên Hết</h3>
+      <p>Sử dụng mỹ phẩm cao cấp và an toàn. Mỗi bước trang điểm không chỉ làm bạn đẹp mà còn chăm sóc da một cách tôn trọng.</p>
+    </div>
+
+    <div class="vynym-value-card" data-aos="fade-up" data-aos-delay="200">
+      <span class="vynym-value-icon"><i class="fas fa-lightbulb"></i></span>
+      <h3>Tư Vấn Chuyên Sâu</h3>
+      <p>Hiểu rõ về màu sắc, khuôn mặt và phong cách cá nhân. Vy Ny tư vấn giúp bạn tìm ra makeup phù hợp nhất.</p>
+    </div>
+
+    <div class="vynym-value-card" data-aos="fade-up" data-aos-delay="300">
+      <span class="vynym-value-icon"><i class="fas fa-clock"></i></span>
+      <h3>Lâu Phai & Đáng Tin Cậy</h3>
+      <p>Công thức trang điểm bền vững suốt ngày, tươi tắn từ sáng đến tối. Không lo trôi, nứt hay bết dính.</p>
+    </div>
+
+    <div class="vynym-value-card" data-aos="fade-up" data-aos-delay="400">
+      <span class="vynym-value-icon"><i class="fas fa-smile"></i></span>
+      <h3>Khai Phóng Tự Tin</h3>
+      <p>Không chỉ trang điểm mà còn là tư vấn làm đẹp, giúp bạn yêu quý chính mình hơn.</p>
+    </div>
+
+    <div class="vynym-value-card" data-aos="fade-up" data-aos-delay="500">
+      <span class="vynym-value-icon"><i class="fas fa-sparkles"></i></span>
+      <h3>Trải Nghiệm Cao Cấp</h3>
+      <p>Từ tiếp đón đến tư vấn và trang điểm, mọi chi tiết được chăm sóc để bạn cảm thấy tôn trọng và đặc biệt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES SECTION ========== -->
+<section class="vynym-section" id="booking-section" data-aos="fade-up">
+  <h2 class="vynym-section-title">Dịch Vụ Chuyên Nghiệp</h2>
+  <p class="vynym-section-desc">Các gói trang điểm được thiết kế riêng để đáp ứng mọi nhu cầu của bạn</p>
+
+  <div class="vynym-services-grid">
+    <div class="vynym-service-card" data-aos="fade-up" data-aos-delay="0">
+      <div class="vynym-service-icon"><i class="fas fa-heart"></i></div>
+      <h3>Makeup Cô Dâu Classic</h3>
+      <p>Trang điểm cô dâu với phong cách kinh điển, nhấn mạnh vẻ đẹp tự nhiên. Bền vững cả ngày tiệc với công thức chuyên dụng.</p>
+      <span class="vynym-service-price">800K - 1.200K VND</span>
+    </div>
+
+    <div class="vynym-service-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="vynym-service-icon"><i class="fas fa-crown"></i></div>
+      <h3>Makeup Cô Dâu Luxury</h3>
+      <p>Gói trị giá cao với tư vấn chi tiết, makeup toàn diện, kiểm tra và chỉnh sửa trong ngày. Sử dụng mỹ phẩm premium từ các thương hiệu quốc tế.</p>
+      <span class="vynym-service-price">1.500K - 2.200K VND</span>
+    </div>
+
+    <div class="vynym-service-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="vynym-service-icon"><i class="fas fa-sparkles"></i></div>
+      <h3>Makeup Sự Kiện</h3>
+      <p>Trang điểm cho tiệc cưới và các sự kiện đặc biệt. Thiết kế makeup phù hợp với phong cách sự kiện, tạo điểm nhấn tinh tế.</p>
+      <span class="vynym-service-price">500K - 900K VND</span>
+    </div>
+
+    <div class="vynym-service-card" data-aos="fade-up" data-aos-delay="300">
+      <div class="vynym-service-icon"><i class="fas fa-camera"></i></div>
+      <h3>Makeup Chụp Ảnh</h3>
+      <p>Makeup đặc biệt dành cho chụp ảnh với kỹ thuật tạo khối và làm sáng khuôn mặt. Phù hợp với ánh sáng máy quay.</p>
+      <span class="vynym-service-price">600K - 1.000K VND</span>
+    </div>
+
+    <div class="vynym-service-card" data-aos="fade-up" data-aos-delay="400">
+      <div class="vynym-service-icon"><i class="fas fa-lightbulb"></i></div>
+      <h3>Tư Vấn Làm Đẹp</h3>
+      <p>Buổi tư vấn 1-1 về phong cách, màu sắc phù hợp, skincare và makeup routine. Khám phá vẻ đẹp tiềm ẩn của bạn.</p>
+      <span class="vynym-service-price">300K - 500K VND</span>
+    </div>
+
+    <div class="vynym-service-card" data-aos="fade-up" data-aos-delay="500">
+      <div class="vynym-service-icon"><i class="fas fa-users"></i></div>
+      <h3>Makeup Nhóm</h3>
+      <p>Gói makeup cho nhóm cô dâu và phụ nữ dự tiệc. Giảm giá theo số lượng, đảm bảo thống nhất style và độ bền.</p>
+      <span class="vynym-service-price">400K - 700K VND/người</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY SECTION ========== -->
+<section class="vynym-gallery" data-aos="fade-up">
+  <h2 class="vynym-section-title">Những Tác Phẩm Tiêu Biểu</h2>
+  <p class="vynym-section-desc">Mỗi makeup là một câu chuyện về sự tự tin và vẻ đẹp</p>
+
+  <div class="vynym-gallery-grid">
+    <div class="vynym-gallery-item" data-aos="fade-up">
+      <img src="assets/img/portfolio/makeup/Beauty bridal/hanbeauty (4).webp" alt="Makeup Cô Dâu Đẹp">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Makeup Cô Dâu</span>
+      </div>
+    </div>
+
+    <div class="vynym-gallery-item" data-aos="fade-up" data-aos-delay="100">
+      <img src="assets/img/portfolio/makeup/Beauty bridal/hanbeauty (5).webp" alt="Makeup Cô Dâu Lãng Mạn">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Makeup Lãng Mạn</span>
+      </div>
+    </div>
+
+    <div class="vynym-gallery-item" data-aos="fade-up" data-aos-delay="200">
+      <img src="assets/img/portfolio/makeup/Beauty bridal/hanbeauty (8).webp" alt="Makeup Cô Dâu Thanh Lịch">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Makeup Thanh Lịch</span>
+      </div>
+    </div>
+
+    <div class="vynym-gallery-item" data-aos="fade-up" data-aos-delay="300">
+      <img src="assets/img/hero/hero (2).webp" alt="Makeup Chuyên Nghiệp">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Makeup Chuyên Nghiệp</span>
+      </div>
+    </div>
+
+    <div class="vynym-gallery-item" data-aos="fade-up" data-aos-delay="400">
+      <img src="assets/img/hero/hero (3).webp" alt="Makeup Tinh Tế Tự Nhiên">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Makeup Tinh Tế</span>
+      </div>
+    </div>
+
+    <div class="vynym-gallery-item" data-aos="fade-up" data-aos-delay="500">
+      <img src="assets/img/hero/hero (5).webp" alt="Makeup Cá Nhân Hóa">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Makeup Cá Nhân</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHY CHOOSE SECTION ========== -->
+<section class="vynym-why" data-aos="fade-up">
+  <div class="vynym-why-container">
+    <div class="vynym-why-image" data-aos="fade-right">
+      <img src="assets/img/hero/hero (6).webp" alt="Tại Sao Chọn Vy Ny">
+    </div>
+
+    <div class="vynym-why-content">
+      <h2>Tại Sao Bạn Nên Chọn Vy Ny?</h2>
+      
+      <ul class="vynym-why-list">
+        <li><strong>8+ Năm Kinh Nghiệm</strong> - Đã phục vụ hàng trăm cô dâu và khách hàng yêu quý</li>
+        <li><strong>Kỹ Thuật Chuyên Sâu</strong> - Từ makeup Hàn, makeup Âu Mỹ đến makeup truyền thống, tất cả đều xuất sắc</li>
+        <li><strong>Mỹ Phẩm Cao Cấp</strong> - Sử dụng những thương hiệu uy tín, an toàn và bền bỏ</li>
+        <li><strong>Tư Vấn Chuyên Nghiệp</strong> - Không chỉ trang điểm mà còn tư vấn về phong cách, skincare và sự tự tin</li>
+        <li><strong>Giá Trị Tâm Lý</strong> - Tạo môi trường an tâm, thoải mái và tôn trọng cho mỗi khách hàng</li>
+        <li><strong>Sự Linh Hoạt và Tùy Chỉnh</strong> - Lắng nghe, hiểu rõ và tạo ra makeup hoàn toàn phù hợp với bạn</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS SECTION ========== -->
+<section class="vynym-testimonials" data-aos="fade-up">
+  <h2 class="vynym-section-title" style="color: var(--dark); margin-bottom: 0.5rem;">Khách Hàng Nói Gì Về Vy Ny</h2>
+  <p class="vynym-section-desc">Những câu chuyện chân thực từ những cô dâu & khách hàng yêu quý</p>
+
+  <div class="vynym-testimonials-grid">
+    <div class="vynym-testimonial-card" data-aos="fade-up" data-aos-delay="0">
+      <div class="vynym-testimonial-stars">★★★★★</div>
+      <p class="vynym-testimonial-text">"Vy Ny không chỉ trang điểm tuyệt vời mà còn làm tôi cảm thấy tự tin và đẹp. Makeup của cô bền suốt cả ngày tiệc mà da tôi vẫn thoải mái. Rất đáng tin cậy!"</p>
+      <div class="vynym-testimonial-author">
+        <div class="vynym-author-avatar">M</div>
+        <div class="vynym-author-info">
+          <h4>Mỹ Linh</h4>
+          <p>Cô dâu, 2024</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="vynym-testimonial-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="vynym-testimonial-stars">★★★★★</div>
+      <p class="vynym-testimonial-text">"Cô Vy Ny là một người tuyệt vời! Không chỉ makeup đẹp mà cô còn tư vấn rất chuyên sâu. Tôi hiểu rõ hơn về màu sắc và phong cách makeup phù hợp với bản thân."</p>
+      <div class="vynym-testimonial-author">
+        <div class="vynym-author-avatar">H</div>
+        <div class="vynym-author-info">
+          <h4>Hương Giang</h4>
+          <p>Khách hàng thường xuyên</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="vynym-testimonial-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="vynym-testimonial-stars">★★★★★</div>
+      <p class="vynym-testimonial-text">"Quy trình makeup của Vy Ny rất chuyên nghiệp. Cô ở cạnh tôi từ đầu đến cuối, giải thích từng bước và lắng nghe ý kiến. Makeup bền vững và phù hợp tuyệt vời!"</p>
+      <div class="vynym-testimonial-author">
+        <div class="vynym-author-avatar">A</div>
+        <div class="vynym-author-info">
+          <h4>An Nhi</h4>
+          <p>Cô dâu, 2024</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA SECTION ========== -->
+<section class="vynym-cta" data-aos="fade-up">
+  <h2>Sẵn Sàng Tỏa Sáng Với Vẻ Đẹp Của Bạn?</h2>
+  <p>Hãy liên hệ Vy Ny để được tư vấn và trang điểm chuyên nghiệp. Mỗi khách hàng là một câu chuyện, và tôi muốn giúp bạn kể câu chuyện đó một cách tự tin và đẹp nhất.</p>
+  
+  <div class="vynym-cta-buttons">
+    <a href="booking.html" class="vynym-btn-white">
+      <i class="fas fa-calendar-check"></i> Đặt Lịch Ngay
+    </a>
+    <a href="index.html#contact" class="vynym-btn-outline">
+      <i class="fas fa-phone"></i> Liên Hệ Tư Vấn Miễn Phí
+    </a>
+  </div>
+</section>
+
+<!-- Footer Template Container -->
+<div id="footer-container"></div>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: false,
+    offset: 100
+  });
+</script>
+
+<!-- Load Header & Footer -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load header
+    fetch('assets/html/header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+        // Initialize mobile menu handler
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (navToggle) {
+          navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+          });
+        }
+      });
+
+    // Load footer
+    fetch('assets/html/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+  });
+</script>
+
+</body>
+</html>
