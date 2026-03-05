@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiết Kế Logotype - Kool D. Studio Photography</title>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #d4a574;
+            --color-primary-dark: #b8956a;
+            --color-primary-light: #ddb892;
+            --color-darkgreen: #2d5a4a;
+            --color-darkgreen-light: #3d7a5f;
+            --color-white: #ffffff;
+            --color-light-cream: #faf7f2;
+            --color-light-gray: #f5f3f0;
+            --color-gray: #8b8680;
+            --color-dark-gray: #4a4a48;
+            --color-dark: #2a2a28;
+            --font-primary: 'Playfair Display', serif;
+            --font-secondary: 'Lora', serif;
+            --font-tertiary: 'Montserrat', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-tertiary);
+            background-color: var(--color-light-cream);
+            color: var(--color-dark);
+            padding-top: 80px;
+            line-height: 1.6;
+        }
+
+        /* ========== HEADER ==========*/
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, #ffffff 0%, #fafaf9 100%);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(211, 188, 156, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-title {
+            font-size: 1.8rem;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            color: var(--color-dark);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .logo-dot {
+            color: var(--color-primary);
+        }
+
+        .logo-tagline {
+            font-size: 0.6rem;
+            font-family: var(--font-tertiary);
+            font-weight: 500;
+            color: var(--color-gray);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 2px;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ========== PAGE INTRO ==========*/
+        .page-header {
+            text-align: center;
+            padding: 100px 20px 60px;
+            background: linear-gradient(180deg, rgba(212, 165, 116, 0.05) 0%, transparent 100%);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-primary);
+            font-size: 3rem;
+            color: var(--color-dark);
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--color-gray);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .page-header .subtitle {
+            max-width: 700px;
+            margin: 10px auto 0;
+        }
+
+        /* ========== SECTION HEADER ==========*/
+        .section {
+            margin-bottom: 120px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: 2.2rem;
+            color: var(--color-dark);
+            margin-bottom: 50px;
+            text-align: center;
+            letter-spacing: -1px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+        }
+
+        .section-description {
+            text-align: center;
+            color: var(--color-gray);
+            margin-bottom: 50px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* ========== DESIGN CARD ==========*/
+        .design-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .design-card {
+            background: var(--color-white);
+            border-radius: 12px;
+            padding: 60px 50px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transition: var(--transition);
+            border: 1px solid rgba(212, 165, 116, 0.15);
+            position: relative;
+        }
+
+        .design-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 48px rgba(212, 165, 116, 0.2);
+            border-color: rgba(212, 165, 116, 0.4);
+        }
+
+        .design-card.featured {
+            border: 2px solid var(--color-primary);
+            background: linear-gradient(135deg, #ffffff 0%, rgba(212, 165, 116, 0.05) 100%);
+            box-shadow: 0 12px 40px rgba(212, 165, 116, 0.25);
+            transform: scale(1.02);
+        }
+
+        .design-card.featured::before {
+            content: '✨ LUXURY ICON';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            padding: 6px 18px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            border-radius: 25px;
+            box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+        }
+
+        /* ========== LOGOTYPE DISPLAYS ==========*/
+        .logotype-display {
+            background: linear-gradient(135deg, var(--color-light-gray) 0%, rgba(212, 165, 116, 0.08) 100%);
+            border-radius: 12px;
+            padding: 100px 50px;
+            margin-bottom: 35px;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(212, 165, 116, 0.1);
+        }
+
+        /* Design 7: Header Style */
+        .design-7 {
+            text-align: center;
+        }
+
+        .design-7 .main-text {
+            font-family: var(--font-primary);
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--color-dark);
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .design-7 .dot-accent {
+            color: var(--color-primary);
+            font-size: 0.8em;
+        }
+
+        .design-7 .sub-text {
+            font-family: var(--font-tertiary);
+            font-size: 11px;
+            color: var(--color-gray);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Design 1: Classic Elegant */
+        .design-1 {
+            text-align: center;
+        }
+
+        .design-1 .main-text {
+            font-family: var(--font-primary);
+            font-size: 80px;
+            font-weight: 600;
+            color: var(--color-dark);
+            letter-spacing: 0px;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .design-1 .sub-text {
+            font-family: var(--font-tertiary);
+            font-size: 12px;
+            color: var(--color-gray);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            word-spacing: 10px;
+        }
+
+        /* Design 6: Modern Refined */
+        .design-6 {
+            text-align: center;
+        }
+
+        .design-6 .main-text {
+            font-family: var(--font-tertiary);
+            font-size: 76px;
+            font-weight: 800;
+            color: var(--color-dark);
+            letter-spacing: 6px;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .design-6 .sub-text {
+            font-family: var(--font-tertiary);
+            font-size: 12px;
+            color: var(--color-gray);
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Design 2: Minimal with Accent */
+        .design-2 .main-text {
+            font-family: var(--font-primary);
+            font-size: 68px;
+            font-weight: 700;
+            color: var(--color-dark);
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .design-2 .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            margin: 0 8px;
+            vertical-align: middle;
+            position: relative;
+            top: -2px;
+        }
+
+        .design-2 .sub-text {
+            font-family: var(--font-secondary);
+            font-size: 13px;
+            color: var(--color-gray);
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* Design 3: Luxury Style */
+        .design-3 {
+            border: 2px solid var(--color-dark);
+            padding: 80px 60px !important;
+        }
+
+        .design-3 .main-text {
+            font-family: var(--font-primary);
+            font-size: 64px;
+            font-weight: 600;
+            color: var(--color-dark);
+            letter-spacing: 4px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .design-3 .line {
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+            margin: 0 auto 28px;
+        }
+
+        .design-3 .sub-text {
+            font-family: var(--font-tertiary);
+            font-size: 10px;
+            color: var(--color-dark);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Design 4: Modern Typography */
+        .design-4 .main-text {
+            font-family: var(--font-tertiary);
+            font-size: 56px;
+            font-weight: 600;
+            color: var(--color-darkgreen);
+            letter-spacing: 3px;
+            line-height: 1;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .design-4 .sub-text {
+            font-family: var(--font-tertiary);
+            font-size: 12px;
+            color: var(--color-primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Design 5: Serif Elegant */
+        .design-5 .main-text {
+            font-family: var(--font-secondary);
+            font-size: 70px;
+            font-weight: 500;
+            color: var(--color-dark);
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .design-5 .sub-text {
+            font-family: var(--font-secondary);
+            font-size: 12px;
+            color: var(--color-gray);
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+
+        /* ========== DESIGN DESCRIPTION ==========*/
+        .design-info {
+            margin-bottom: 15px;
+        }
+
+        .design-title {
+            font-family: var(--font-primary);
+            font-size: 1.35rem;
+            color: var(--color-dark);
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .design-description {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .design-features {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(212, 165, 116, 0.03) 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-primary);
+            border: 1px solid rgba(212, 165, 116, 0.15);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .design-features ul {
+            list-style: none;
+            font-size: 0.92rem;
+            color: var(--color-gray);
+            line-height: 1.7;
+        }
+
+        .design-features li:before {
+            content: "→ ";
+            color: var(--color-primary);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* ========== SPECS SECTION ==========*/
+        .specs-section {
+            background: linear-gradient(135deg, #ffffff 0%, rgba(212, 165, 116, 0.02) 100%);
+            border-radius: 12px;
+            padding: 50px;
+            margin-top: 60px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .spec-box {
+            padding: 28px;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(212, 165, 116, 0.02) 100%);
+            border-radius: 8px;
+            border-left: 4px solid var(--color-primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .spec-box:hover {
+            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .spec-box h4 {
+            font-family: var(--font-primary);
+            color: var(--color-dark);
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .spec-box p {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ========== COLOR PALETTE ==========*/
+        .color-section {
+            background: linear-gradient(135deg, #ffffff 0%, rgba(212, 165, 116, 0.02) 100%);
+            border-radius: 12px;
+            padding: 50px;
+            margin-top: 60px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .color-item {
+            text-align: center;
+        }
+
+        .color-swatch {
+            width: 100%;
+            height: 160px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+
+        .color-item:hover .color-swatch {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-item h4 {
+            font-family: var(--font-primary);
+            color: var(--color-dark);
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: -0.5px;
+        }
+
+        .color-item p {
+            color: var(--color-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ========== GUIDELINES ==========*/
+        .guidelines-section {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, transparent 100%);
+            border-radius: 8px;
+            padding: 50px 40px;
+            margin-top: 80px;
+            border: 2px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .guidelines-title {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            color: var(--color-dark);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .guideline-item h4 {
+            font-family: var(--font-primary);
+            color: var(--color-dark);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .guideline-item p {
+            color: var(--color-gray);
+            line-height: 1.8;
+        }
+
+        /* ========== FOOTER ==========*/
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(212, 165, 116, 0.1);
+            color: var(--color-gray);
+            font-size: 0.9rem;
+            margin-top: 100px;
+        }
+
+        /* ========== RESPONSIVE ==========*/
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .design-gallery {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .design-1 .main-text {
+                font-size: 56px;
+            }
+
+            .design-2 .main-text {
+                font-size: 52px;
+            }
+
+            .logotype-display {
+                padding: 60px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="index.html" class="logo-section">
+                    <div>
+                        <div class="logo-title">
+                            Kool D <span class="logo-dot">.</span>
+                        </div>
+                        <div class="logo-tagline">STUDIO PHOTOGRAPHY</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Thiết Kế Logotype</h1>
+        <p class="subtitle">
+            Các biến thể thiết kế chữ cho thương hiệu <strong>Kool D. Studio Photography</strong><br>
+            Logotype là thiết kế logo chỉ dùng chữ, tập trung vào typography – font chữ, khoảng cách và tỷ lệ.
+        </p>
+    </div>
+
+    <div class="container">
+        <!-- Section 1: Main Logotype Designs -->
+        <div class="section">
+            <h2 class="section-title">Các Thiết Kế Logotype Chính</h2>
+            <p class="section-description">
+                Mỗi thiết kế có cách tiếp cận khác nhau về cảm giác và phong cách. Chọn phiên bản phù hợp nhất với nhận diện thương hiệu của bạn.
+            </p>
+
+            <div class="design-gallery">
+                <!-- Design 7: Header Style -->
+                <div class="design-card">
+                    <div class="logotype-display">
+                        <div class="design-7">
+                            <div class="main-text">Kool D <span class="dot-accent">.</span></div>
+                            <div class="sub-text">STUDIO PHOTOGRAPHY</div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <h3 class="design-title">Design 7: Hiện Đại Tinh Tế</h3>
+                        <p class="design-description">
+                            Kết hợp phong cách hiện tại của header - "Kool D" với dấu chấm vàng nhấn, tagline nhỏ hơn dưới. Thanh lịch, cân bằng, dễ sử dụng cho mọi nền tảng.
+                        </p>
+                        <div class="design-features">
+                            <ul>
+                                <li>Tên chính: Serif (Playfair Display)</li>
+                                <li>Dấu chấm vàng - điểm nhấn tinh tế</li>
+                                <li>Tagline: Sans-serif nhỏ, giãn chữ</li>
+                                <li>Phù hợp: Website, card, profile, mọi nền tảng</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design 6: Modern Refined -->
+                <div class="design-card">
+                    <div class="logotype-display">
+                        <div class="design-6">
+                            <div class="main-text">KOOL D</div>
+                            <div class="sub-text">STUDIO PHOTOGRAPHY</div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <h3 class="design-title">Design 6: Hiện Đại Tối Giản</h3>
+                        <p class="design-description">
+                            Phong cách cực tối giản, hiện đại. Font sans-serif bold, chữ hoa, khoảng trắng rộng. Chính là phong cách tối giản nhất nhưng vẫn mạnh mẽ và sang trọng.
+                        </p>
+                        <div class="design-features">
+                            <ul>
+                                <li>Font: Sans-serif bold (Montserrat Heavy)</li>
+                                <li>Chữ hoa, tạo cảm giác quyền lực</li>
+                                <li>Khoảng cách rộng giữa dòng</li>
+                                <li>Cực tối giản, dễ nhớ, dùng mọi nơi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design 1 -->
+                <div class="design-card">
+                    <div class="logotype-display">
+                        <div class="design-1">
+                            <div class="main-text">Kool D</div>
+                            <div class="sub-text">Studio Photography</div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <h3 class="design-title">Design 1: Thanh Lịch Cổ Điển</h3>
+                        <p class="design-description">
+                            Thiết kế truyền thống với serif thanh lịch. Font Playfair Display kết hợp với khoảng cách rộng tạo cảm giác cao cấp, tối giản nhưng mạnh mẽ.
+                        </p>
+                        <div class="design-features">
+                            <ul>
+                                <li>Font: Playfair Display (chính)</li>
+                                <li>Khoảng cách rộng giữa chữ</li>
+                                <li>2 dòng - tên chính + mô tả</li>
+                                <li>Phù hợp: In ấn, thẻ tên, website</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design 2 -->
+                <div class="design-card">
+                    <div class="logotype-display">
+                        <div class="design-2">
+                            <div class="main-text">Kool D<span class="dot"></span></div>
+                            <div class="sub-text">Studio Photography</div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <h3 class="design-title">Design 2: Hiện Đại với Điểm Nhấn</h3>
+                        <p class="design-description">
+                            Tăng khoảng cách chữ và thêm dấu chấm màu nhấn nhẹ. Dấu chấm vàng (màu thương hiệu) trở thành điểm nhớ độc đáo mà không cần icon.
+                        </p>
+                        <div class="design-features">
+                            <ul>
+                                <li>Dấu chấm nhấn nổi bật</li>
+                                <li>Letter spacing rộng hơn</li>
+                                <li>Tạo cảm giác thoáng, cao cấp</li>
+                                <li>Dễ sử dụng ở mọi kích cỡ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design 3 -->
+                <div class="design-card featured">
+                    <div class="logotype-display design-3">
+                        <div>
+                            <div class="main-text">Kool D</div>
+                            <div class="line"></div>
+                            <div class="sub-text">Studio Photography</div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <h3 class="design-title">Design 3: Quý Phái Cao Cấp</h3>
+                        <p class="design-description">
+                            Phong cách luxury classic tinh tế. Viền nét căng, dòng vàng tách biệt, khoảng cách rộng. Dành cho những sự kiện đặc biệt và ấn phẩm cao cấp như đám cưới, sự kiện VIP, giấy chứng chỉ.
+                        </p>
+                        <div class="design-features">
+                            <ul>
+                                <li>Viền đen tinh tế xung quanh</li>
+                                <li>Dòng vàng gradient tách biệt giữa</li>
+                                <li>Padding lớn - cảm giác thoáng, cao quý</li>
+                                <li>Phù hợp: Thiệp cao cấp, sự kiện VIP, giấy chứng chỉ, ấn phẩm</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design 4 -->
+                <div class="design-card">
+                    <div class="logotype-display">
+                        <div class="design-4">
+                            <div class="main-text">kool d.</div>
+                            <div class="sub-text">photography studio</div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <h3 class="design-title">Design 4: Hiện Đại & Năng Động</h3>
+                        <p class="design-description">
+                            Dùng sans-serif, chữ thường, màu xanh đen hiện đại. Phong cách trẻ, năng động nhưng vẫn chuyên nghiệp.
+                        </p>
+                        <div class="design-features">
+                            <ul>
+                                <li>Sans-serif (Montserrat)</li>
+                                <li>Chữ thường - tạo cảm giác lân lại</li>
+                                <li>Màu xanh đen - ổn định, tin cậy</li>
+                                <li>Phù hợp: Digital, social media</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design 5 -->
+                <div class="design-card">
+                    <div class="logotype-display">
+                        <div class="design-5">
+                            <div class="main-text">Kool D. Studio</div>
+                            <div class="sub-text">Photography & Memories</div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <h3 class="design-title">Design 5: Tinh Tế & Nữ Tính</h3>
+                        <p class="design-description">
+                            Dùng Lora serif nhẹ nhàng, in hoa chữ đầu. Kiểu "mềm" phù hợp các dự án liên quan đến gia đình, phụ nữ.
+                        </p>
+                        <div class="design-features">
+                            <ul>
+                                <li>Font Lora - nhẹ nhàng, tinh tế</li>
+                                <li>Hoa chữ đầu mỗi từ</li>
+                                <li>Italic ở dòng phụ</li>
+                                <li>Phù hợp: Ảnh gia đình, pre-wedding</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Design Specifications -->
+        <div class="section">
+            <h2 class="section-title">Thông Số Kỹ Thuật</h2>
+
+            <div class="specs-section">
+                <div class="specs-grid">
+                    <div class="spec-box">
+                        <h4>Font Chính</h4>
+                        <p>
+                            <strong>Playfair Display</strong> - Serif sang trọng cao cấp, có độ tương phản nét dày-mảnh rõ rệt tạo điểm nhấn quý phái. Lựa chọn hàng đầu cho thương hiệu luxury.
+                        </p>
+                    </div>
+                    <div class="spec-box">
+                        <h4>Font Phụ</h4>
+                        <p>
+                            <strong>Montserrat</strong> - Sans-serif hiện đại, sạch sẽ. Dùng cho dòng mô tả phụ, có readability tốt ở mọi kích thước.
+                        </p>
+                    </div>
+                    <div class="spec-box">
+                        <h4>Khoảng Cách (Tracking)</h4>
+                        <p>
+                            Tên chính: -2px đến 0px. Dòng phụ: 3px-5px (rộng hơn). Khoảng cách rộng tạo cảm giác thoáng, sang trọng, và cao quý - đặc trưng của luxury branding.
+                        </p>
+                    </div>
+                    <div class="spec-box">
+                        <h4>Kích Cỡ Tương Đối</h4>
+                        <p>
+                            Tên chính: 100% → Dòng phụ: 20-25%. Tỷ lệ này tạo bố cục cấu trúc rõ ràng.
+                        </p>
+                    </div>
+                    <div class="spec-box">
+                        <h4>Màu Sắc Chính</h4>
+                        <p>
+                            Chữ: #2a2a28 (đen thanh lịch). Điểm nhấn: #d4a574 (vàng nâu luxury). Kết hợp tạo sự tinh tế và quý phái. Có thể dùng Trắng/Kem cho nền tối hoặc các ấn phẩm cao cấp.
+                        </p>
+                    </div>
+                    <div class="spec-box">
+                        <h4>Độ Dày & Trọng Lượng</h4>
+                        <p>
+                            Chính: 600-700 (bold). Phụ: 400-500 (regular). Tạo độ tương phản rõ ràng.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Color Palette -->
+        <div class="section">
+            <h2 class="section-title">Bảng Màu Thương Hiệu</h2>
+
+            <div class="color-section">
+                <div class="color-grid">
+                    <div class="color-item">
+                        <div class="color-swatch" style="background: #d4a574; box-shadow: 0 8px 20px rgba(212, 165, 116, 0.4);"></div>
+                        <h4>Vàng Luxury</h4>
+                        <p>#d4a574 - Ấm, thanh lịch, quý phái. Tạo cảm giác cao cấp và sang trọng. Là điểm nhấn chính của thương hiệu.</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background: #2a2a28;"></div>
+                        <h4>Đen</h4>
+                        <p>#2a2a28 - Tối, chuyên nghiệp, dễ đọc trên nền sáng</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background: #ddb892;"></div>
+                        <h4>Vàng Nhẹ</h4>
+                        <p>#ddb892 - Vàng nhẹ hơn, dùng cho accents phụ. Tạo bố cục có chiều sâu và tinh tế.</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background: #ffffff; border: 2px solid #ccc;"></div>
+                        <h4>Trắng</h4>
+                        <p>#ffffff - Sạch sẽ, rõ ràng, nền tối hoặc RGB</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background: #2d5a4a;"></div>
+                        <h4>Xanh Đen</h4>
+                        <p>#2d5a4a - Xanh tối, thay thế cho đen nếu cần</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background: #8b8680;"></div>
+                        <h4>Xám</h4>
+                        <p>#8b8680 - Cho dòng phụ, khoảng trắng thêm nhẹ nhàng</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Design Guidelines -->
+        <div class="section">
+            <div class="guidelines-section">
+                <h3 class="guidelines-title">Quy Tắc Thiết Kế Logotype</h3>
+
+                <div class="guidelines-grid">
+                    <div class="guideline-item">
+                        <h4>👑 Tinh Tế Là Cao Cấp</h4>
+                        <p>
+                            Luxury không phải về phức tạp mà là sự tinh tế trong từng chi tiết. Mỗi khoảng cách, mỗi pixel đều được tính toán cẩn thận. Simplicity + excellence = luxury.
+                        </p>
+                    </div>
+                    <div class="guideline-item">
+                        <h4>🎯 Tên Thương Hiệu Là Tâm Điểm</h4>
+                        <p>
+                            Logo là tên thương hiệu "Kool D." - đây là nhân vật chính. Không cần icon hay hình vẽ phức tạp. Sức mạnh nằm ở typography cao cấp.
+                        </p>
+                    </div>
+                    <div class="guideline-item">
+                        <h4>✨ Khoảng Trắng Rộng = Quý Phái</h4>
+                        <p>
+                            Dù là khoảng trắng giữa chữ (letter spacing) hay padding xung quanh, dùng "breathing room" rộng rãi để tạo cảm giác thoáng, quý phái, và cao cấp hơn.
+                        </p>
+                    </div>
+                    <div class="guideline-item">
+                        <h4>📝 Bậc Thứ Tự Rõ Ràng & Tinh Tế</h4>
+                        <p>
+                            Dòng "Studio Photography" phải phụ cấp nhưng tinh tế. Dùng size nhỏ, giãn chữ, hoặc color nhạt hơn. Tạo visual hierarchy mà không cần nhấn mạnh quá.
+                        </p>
+                    </div>
+                    <div class="guideline-item">
+                        <h4>💎 Chi Tiết Quý Phái & Ít Ỏi</h4>
+                        <p>
+                            Một dấu chấm vàng, một dòng gradient, hay một viền tinh tế. Đủ để tạo điểm nhớ sang trọng, không dài dòng hay phức tạp.
+                        </p>
+                    </div>
+                    <div class="guideline-item">
+                        <h4>📐 Tỷ Lệ Vàng & Cân Bằng Hoàn Hảo</h4>
+                        <p>
+                            Mọi yếu tố phải cân bằng, hài hòa. Khoảng cách lặp lại có hệ thống, mỗi size đều có ý nghĩa. Sự cẩn thận này tạo nên premium feel.
+                        </p>
+                    </div>
+                    <div class="guideline-item">
+                        <h4>🎨 Đơn Sắc → Vàng → Đa Sắc</h4>
+                        <p>
+                            Logo phải hoạt động tốt khi in đen trắng trước. Sau đó áp dụng vàng luxury làm accent. Cuối cùng mới thử các phê hợp màu sắc khác.
+                        </p>
+                    </div>
+                    <div class="guideline-item">
+                        <h4>✅ Typography = Tất Cả</h4>
+                        <p>
+                            Chọn font Playfair Display cho tên chính - nó mang thể hiện sang trọng, tinh tế, quý phái. Font chính là linh hồn của luxury logotype.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="section">
+            <div class="guidelines-section" style="text-align: center; padding: 60px 40px;">
+                <h3 class="guidelines-title">Chọn Thiết Kế Yêu Thích</h3>
+                <p style="color: var(--color-gray); margin-top: 15px; font-size: 1.05rem; line-height: 1.8;">
+                    Hàng thiết kế nào phù hợp nhất với tầm nhìn của Kool D. Studio?<br>
+                    Hãy cho chúng tôi biết để hoàn thiện và tối ưu hóa phiên bản cuối cùng.
+                </p>
+                <div style="margin-top: 30px;">
+                    <a href="mailto:contact@kooldstudio.com" style="
+                        display: inline-block;
+                        background: var(--color-primary);
+                        color: white;
+                        padding: 14px 35px;
+                        border-radius: 6px;
+                        text-decoration: none;
+                        font-weight: 600;
+                        transition: var(--transition);
+                        margin: 8px;
+                        font-family: var(--font-tertiary);
+                        letter-spacing: 0.5px;
+                    " onmouseover="this.style.background='var(--color-primary-dark)'; this.style.transform='translateY(-2px)';"
+                       onmouseout="this.style.background='var(--color-primary)'; this.style.transform='translateY(0)';">
+                        📧 Liên Hệ Ngay
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024-2025 Kool D. Studio Photography. | Design by Kool D. Studio</p>
+    </footer>
+
+    <script>
+        // Add smooth transitions on card interactions
+        document.querySelectorAll('.design-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.design-card').forEach(c => c.style.opacity = '0.7');
+                this.style.opacity = '1';
+                setTimeout(() => {
+                    document.querySelectorAll('.design-card').forEach(c => c.style.opacity = '1');
+                }, 300);
+            });
+        });
+
+        // Add intersection observer for fade-in effect
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.design-card, .spec-box, .color-item, .guideline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

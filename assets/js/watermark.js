@@ -24,6 +24,41 @@ const styleNames = [
 console.log('html2canvas available:', typeof html2canvas !== 'undefined');
 console.log('saveAs available:', typeof saveAs !== 'undefined');
 
+// Font mapping
+const fontLibrary = [
+    { key: 'Playfair', name: 'Playfair Display', family: "'Playfair Display', serif" },
+    { key: 'Montserrat', name: 'Montserrat', family: "'Montserrat', sans-serif" },
+    { key: 'Lora', name: 'Lora', family: "'Lora', serif" },
+    { key: 'Raleway', name: 'Raleway', family: "'Raleway', sans-serif" },
+    { key: 'Poppins', name: 'Poppins', family: "'Poppins', sans-serif" },
+    { key: 'Roboto', name: 'Roboto', family: "'Roboto', sans-serif" },
+    { key: 'Lato', name: 'Lato', family: "'Lato', sans-serif" },
+    { key: 'Sora', name: 'Sora', family: "'Sora', sans-serif" },
+    { key: 'Merriweather', name: 'Merriweather', family: "'Merriweather', serif" },
+    { key: 'Dancing Script', name: 'Dancing Script', family: "'Dancing Script', cursive" },
+    { key: 'Pacifico', name: 'Pacifico', family: "'Pacifico', cursive" },
+    { key: 'Satisfy', name: 'Satisfy', family: "'Satisfy', cursive" }
+];
+
+function getFontFamily(fontKey) {
+    const font = fontLibrary.find(f => f.key === fontKey);
+    return font ? font.family : "'Playfair Display', serif";
+}
+
+function getComplementaryColor(hex) {
+    // Convert hex to RGB
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    
+    // Get complementary color
+    const comp_r = (255 - r).toString(16).padStart(2, '0');
+    const comp_g = (255 - g).toString(16).padStart(2, '0');
+    const comp_b = (255 - b).toString(16).padStart(2, '0');
+    
+    return `#${comp_r}${comp_g}${comp_b}`;
+}
+
 function setColorQuick(color) {
     currentColor = color;
     currentSecondaryColor = getComplementaryColor(color);
