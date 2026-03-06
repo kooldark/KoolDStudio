@@ -38,6 +38,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/css/home-elegant.css">
   <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
 
@@ -124,11 +125,14 @@
         <p class="hero-subtitle">Nắm giữ yêu thương, lưu trữ ký ức</p>
       </div>
 
-      <!-- Hero Gallery Grid -->
-      <div class="hero-gallery">
-        <div class="hero-grid">
-          <!-- Images will be populated by JavaScript -->
+      <!-- Hero Gallery Carousel -->
+      <div class="swiper hero-carousel">
+        <div class="swiper-wrapper" id="hero-swiper-wrapper">
+          <!-- Slides will be populated by JavaScript -->
         </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
 
       <!-- Hero CTA -->
@@ -676,6 +680,7 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="assets/js/load-template.js"></script>
   <script src="assets/js/gallery-data.js"></script>
   <script src="assets/js/gallery-manager-home.js"></script>

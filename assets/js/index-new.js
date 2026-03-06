@@ -46,52 +46,94 @@ function initMobileNav() {
 
 /* ========== POPULATE HERO GALLERY ==========*/
 function populateHeroGallery() {
-  const heroGrid = document.querySelector('.hero-grid');
-  if (!heroGrid) return;
+  const heroWrapper = document.getElementById('hero-swiper-wrapper');
+  if (!heroWrapper) return;
 
-  // Check if gallery data is loaded
-  if (typeof galleryData === 'undefined') {
-    console.warn('Gallery data not loaded, retrying in 500ms...');
-    setTimeout(populateHeroGallery, 500);
+  try {
+    // Load hero images from config file
+    fetch('config/hero-images.json')
+      .then(res => {
+        if (!res.ok) throw new Error(`Failed to load hero images: ${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        if (!data.images || data.images.length === 0) {
+          console.warn('No hero images found in config');
+          showGalleryFallback(heroWrapper);
+          return;
+        }
+
+        // Clear existing content
+        heroWrapper.innerHTML = '';
+
+        // Create swiper slides for each image
+        data.images.forEach((filename, index) => {
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide';
+          slide.innerHTML = `<img src="assets/img/hero/${filename}" alt="Kool D Studio - Ảnh chuyên nghiệp ${index + 1}" loading="lazy" decoding="async">`;
+          slide.querySelector('img').onerror = function() {
+            console.warn('Failed to load image:', this.src);
+            this.closest('.swiper-slide').style.display = 'none';
+          };
+          heroWrapper.appendChild(slide);
+        });
+
+        // Initialize Swiper carousel
+        initHeroSwiper();
+      })
+      .catch(error => {
+        console.error('Error loading hero gallery:', error);
+        showGalleryFallback(heroWrapper);
+      });
+  } catch (error) {
+    console.error('Error in populateHeroGallery:', error);
+    showGalleryFallback(heroWrapper);
+  }
+}
+
+/* ========== INITIALIZE HERO SWIPER ==========*/
+function initHeroSwiper() {
+  const heroCarousel = document.querySelector('.hero-carousel');
+  if (!heroCarousel || typeof Swiper === 'undefined') {
+    console.warn('Hero carousel element or Swiper not found');
     return;
   }
 
   try {
-    // Select 6 random images from weddings and makeups categories only
-    const allImages = [
-      ...galleryData.weddings,
-      ...galleryData.makeups
-    ].filter(src => src && src.trim());
-
-    if (allImages.length === 0) {
-      console.warn('No gallery images found');
-      showGalleryFallback(heroGrid);
-      return;
-    }
-
-    // Shuffle and get first 6 unique images
-    const shuffled = allImages.sort(() => 0.5 - Math.random());
-    const selectedImages = shuffled.slice(0, 6);
-
-    // Clear existing content
-    heroGrid.innerHTML = '';
-
-    // Create image elements
-    selectedImages.forEach((src, index) => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = `Kool D Studio - Ảnh chuyên nghiệp ${index + 1}`;
-      img.loading = 'lazy';
-      img.style.animation = `fadeInGallery 0.8s ease-out ${index * 0.1}s both`;
-      img.onerror = function() {
-        console.warn('Failed to load image:', src);
-        this.style.display = 'none';
-      };
-      heroGrid.appendChild(img);
+    const heroSwiper = new Swiper(heroCarousel, {
+      slidesPerView: 2,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: heroCarousel.querySelector('.swiper-pagination'),
+        clickable: true,
+      },
+      navigation: {
+        nextEl: heroCarousel.querySelector('.swiper-button-next'),
+        prevEl: heroCarousel.querySelector('.swiper-button-prev'),
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 15,
+        },
+        1024: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+      },
     });
-  } catch (error) {
-    console.error('Error populating hero gallery:', error);
-    showGalleryFallback(heroGrid);
+    console.log('✨ Hero carousel initialized successfully');
+  } catch (err) {
+    console.error('Error initializing hero Swiper:', err);
   }
 }
 

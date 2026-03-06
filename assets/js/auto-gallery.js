@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     originalSubtitle = pageSubtitle.textContent;
 
     try {
-      const res = await fetch(basePath + "assets/js/portfolio-data.json");
+      const res = await fetch(basePath + "config/portfolio-data.json");
       if (!res.ok) throw new Error(`Network response was not ok, status: ${res.status}`);
       portfolioData = await res.json(); // Store full data
       
@@ -347,12 +347,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let gridHtml = '<div class="album-grid">';
 
-    // Lazy load: Limit albums shown at once
-    const MAX_ALBUMS = 12;
+    // Load all albums - no limit
     let albumCount = 0;
     
     for (const albumName in albums) {
-      if (albumCount >= MAX_ALBUMS) break;
       
       const albumFiles = albums[albumName];
       if (albumFiles.length === 0) continue;
