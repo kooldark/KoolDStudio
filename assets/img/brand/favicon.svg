@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background -->
+  <rect width="64" height="64" fill="#1a1a1a" rx="8"/>
+  
+  <!-- KD Text -->
+  <text x="32" y="42" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#e8d5b7" text-anchor="middle" letter-spacing="-2">KD</text>
+  
+  <!-- Decorative top line -->
+  <line x1="12" y1="12" x2="52" y2="12" stroke="#e8d5b7" stroke-width="2" stroke-linecap="round"/>
+</svg>
