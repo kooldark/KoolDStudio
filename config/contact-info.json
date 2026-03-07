@@ -1,0 +1,33 @@
+{
+  "phone": "+84379031662",
+  "phoneDisplay": "0379 031 662",
+  "locations": [
+    {
+      "id": "hcm",
+      "name": "Kool D. Studio HCM",
+      "address": "485/10 Phan Văn Trị, P.5, Gò Vấp, TP.HCM",
+      "addressShort": "485/10 Phan Văn Trị, P.5, Gò Vấp, TP.HCM",
+      "district": "Gò Vấp",
+      "city": "TP.HCM",
+      "description": "Studio chặp ảnh cưới tiệc nhà hàng, ảnh sự kiện, trang điểm cô dâu tại TP.HCM",
+      "type": "Studio"
+    },
+    {
+      "id": "quang-ngai",
+      "name": "Kool D. Studio Quảng Ngãi",
+      "address": "Ngã 3 Trà Bồng, QL1A, Bình Sơn, Quảng Ngãi",
+      "addressShort": "Ngã 3 Trà Bồng, QL1A, Bình Sơn, Quảng Ngãi",
+      "district": "Bình Sơn",
+      "city": "Quảng Ngãi",
+      "description": "Studio chụp ảnh cưới, pre-wedding, ảnh gia đình trong studio tại Bình Sơn, Quảng Ngãi",
+      "type": "Ngoài trời"
+    }
+  ],
+  "social": {
+    "facebook": "https://facebook.com/koolastudio",
+    "instagram": "https://instagram.com/koolastudio",
+    "zalo": "https://zalo.me/84379031662",
+    "messenger": "https://m.me/koolastudio",
+    "tiktok": "#"
+  }
+}

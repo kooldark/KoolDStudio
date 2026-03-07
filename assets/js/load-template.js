@@ -42,6 +42,10 @@
       
       if (footerContainer) {
         footerContainer.innerHTML = html;
+        // Trigger contact info update after footer is loaded
+        if (window.loadContactInfo && typeof window.loadContactInfo === 'function') {
+          setTimeout(() => window.loadContactInfo(), 0);
+        }
       }
     } catch (error) {
       console.warn('Footer not loaded:', error);

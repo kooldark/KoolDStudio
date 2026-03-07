@@ -1011,9 +1011,16 @@
       .then(response => response.text())
       .then(html => {
         document.getElementById('footer-container').innerHTML = html;
+        // Trigger contact info update after footer is loaded
+        if (window.loadContactInfo && typeof window.loadContactInfo === 'function') {
+          setTimeout(() => window.loadContactInfo(), 0);
+        }
       });
   });
 </script>
+
+<!-- Contact Loader -->
+<script src="assets/js/contact-loader.js"></script>
 
 </body>
 </html>
