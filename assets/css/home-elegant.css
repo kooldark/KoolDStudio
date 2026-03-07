@@ -769,6 +769,12 @@ a {
   font-size: 0.9rem;
   animation: bounce 2s infinite;
   z-index: 10;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.hero-scroll:hover {
+  color: var(--color-primary);
 }
 
 @keyframes bounce {
@@ -1986,8 +1992,31 @@ a {
 
 /* ========== CONTACT SECTION ==========*/
 .contact {
-  padding: var(--spacing-3xl) 0;
+  padding: 0;
   background-color: var(--color-white);
+}
+
+/* CTA Content within Contact Section */
+.contact .cta-content {
+  padding: var(--spacing-3xl) 0;
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  color: var(--color-white);
+  text-align: center;
+}
+
+.contact .cta-content h2 {
+  color: var(--color-white);
+  margin-bottom: var(--spacing-md);
+}
+
+.contact .cta-content p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+
+.contact > .container {
+  padding: var(--spacing-3xl) 0;
 }
 
 .contact-grid {

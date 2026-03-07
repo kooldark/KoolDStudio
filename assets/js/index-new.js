@@ -214,8 +214,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const heroScroll = document.querySelector('.hero-scroll');
   
   if (heroScroll) {
+    heroScroll.style.cursor = 'pointer';
     heroScroll.addEventListener('click', function() {
-      const nextSection = document.querySelector('.services');
+      const nextSection = document.querySelector('#galleries');
       if (nextSection) {
         nextSection.scrollIntoView({ behavior: 'smooth' });
       }
