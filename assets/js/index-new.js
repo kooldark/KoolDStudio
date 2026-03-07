@@ -128,28 +128,23 @@ function initHeroSwiper() {
       breakpoints: {
         320: {
           slidesPerView: 1,
-          spaceBetween: 10,
-          centeredSlides: true,
-          centeredSlidesBounds: true,
+          spaceBetween: 8,
         },
         480: {
-          slidesPerView: 1.3,
+          slidesPerView: 1,
           spaceBetween: 12,
-          centeredSlides: true,
-        },
-        640: {
-          slidesPerView: 1.5,
-          spaceBetween: 15,
         },
         768: {
-          slidesPerView: 2,
+          slidesPerView: 1,
           spaceBetween: 15,
-          centeredSlides: false,
         },
         1024: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-          centeredSlides: false,
+          slidesPerView: 1.05,
+          spaceBetween: 25,
+        },
+        1400: {
+          slidesPerView: 1,
+          spaceBetween: 0,
         },
       },
     });
