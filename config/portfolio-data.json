@@ -160,9 +160,9 @@
           "title": "Ảnh mẹ bầu",
           "description": "",
           "path": "gia-dinh/Ảnh mẹ bầu",
-          "coverImage": "me bau hoa tim (1).webp",
+          "coverImage": "0.webp",
           "images": [
-            "me bau hoa tim (1).webp",
+            "0.webp",
             "me bau hoa tim (4).webp",
             "me bau hoa tim (17).webp"
           ],
@@ -173,9 +173,9 @@
           "title": "Ông Bà Tôi",
           "description": "Gìn giữ những khoảnh khắc vô giá bên ông bà, nơi tình yêu thương và sự ấm áp của gia đình được thể hiện qua nhiều thế hệ.",
           "path": "gia-dinh/Ảnh mừng thọ kỷ niệm cho ông bà",
-          "coverImage": "ong ba (2).webp",
+          "coverImage": "0.webp",
           "images": [
-            "ong ba (2).webp",
+            "0.webp",
             "ong ba (6).webp",
             "ong ba (8).webp",
             "ong ba (9).webp",
@@ -188,8 +188,9 @@
           "title": "Gia đình 4 người",
           "description": "",
           "path": "gia-dinh/Gia đình 4 người",
-          "coverImage": "0chup anh gia dinh 4 nguoi (2).webp",
+          "coverImage": "0.webp",
           "images": [
+            "0.webp",
             "0chup anh gia dinh 4 nguoi (2).webp",
             "chup anh gia dinh 4 nguoi (1).webp",
             "chup anh gia dinh 4 nguoi (10).webp",
@@ -197,8 +198,7 @@
             "chup anh gia dinh 4 nguoi (4).webp",
             "chup anh gia dinh 4 nguoi (5).webp",
             "chup anh gia dinh 4 nguoi (8).webp",
-            "chup anh gia dinh 4 nguoi (9).webp",
-            "coverimage.webp"
+            "chup anh gia dinh 4 nguoi (9).webp"
           ],
           "imageCount": 9
         },
@@ -207,12 +207,12 @@
           "title": "Gia đình nhỏ ấm cúng",
           "description": "",
           "path": "gia-dinh/Gia đình nhỏ ấm cúng",
-          "coverImage": "chup anh gia dinh co em be (4).webp",
+          "coverImage": "0 chup anh gia dinh co em be (10).webp",
           "images": [
+            "0 chup anh gia dinh co em be (10).webp",
             "chup anh gia dinh co em be (4).webp",
             "chup anh gia dinh co em be (5).webp",
-            "chup anh gia dinh co em be (7).webp",
-            "chup anh gia dinh co em be (10).webp"
+            "chup anh gia dinh co em be (7).webp"
           ],
           "imageCount": 4
         },
@@ -221,9 +221,9 @@
           "title": "Hậu trường chụp ảnh gia đình",
           "description": "",
           "path": "gia-dinh/Hậu trường chụp ảnh gia đình",
-          "coverImage": "coverimage.webp",
+          "coverImage": "0.webp",
           "images": [
-            "coverimage.webp",
+            "0.webp",
             "_K__5994.webp",
             "_K__6021.webp",
             "_K__6023.webp",
@@ -248,15 +248,15 @@
           "title": "Bridal makeup",
           "description": "",
           "path": "makeup/Bridal makeup",
-          "coverImage": "0 mk (2).webp",
+          "coverImage": "0.webp",
           "images": [
-            "0 mk (2).webp",
+            "0.webp",
             "mk (1).webp",
             "mauhong (2).webp",
+            "3.webp",
             "GPEU0709.webp",
             "ILVA2528.webp",
             "DAK_2625.webp",
-            "DAK_2635.webp",
             "UBAB3559.webp",
             "DAK_3974.webp",
             "MJME6057.JPEG",
@@ -271,15 +271,14 @@
           "title": "Bridal outside",
           "description": "",
           "path": "makeup/Bridal outside",
-          "coverImage": "trinh cay (1).webp",
+          "coverImage": "0.webp",
           "images": [
+            "0.webp",
             "trinh cay (1).webp",
-            "trinh cay (3).webp",
             "trinh cay (5).webp",
-            "trinh cay (6).webp",
-            "trinh cay (7).webp"
+            "trinh cay (6).webp"
           ],
-          "imageCount": 5
+          "imageCount": 4
         },
         {
           "id": "Bridal Thương Concept",
@@ -371,25 +370,23 @@
           "title": "Hội An Resort",
           "description": "",
           "path": "phong-su/Hội An Resort",
-          "coverImage": "5F4A0130.webp",
+          "coverImage": "0.webp",
           "images": [
+            "0.webp",
             "5F4A0130.webp",
-            "5F4A0142.webp",
             "5F4A0173.webp",
-            "5F4A0518.webp",
-            "5F4A0740 - Copy.webp",
-            "5F4A0740.webp"
+            "5F4A0740 - Copy.webp"
           ],
-          "imageCount": 6
+          "imageCount": 4
         },
         {
           "id": "Sài Gòn",
           "title": "Sài Gòn",
           "description": "",
           "path": "phong-su/Sài Gòn",
-          "coverImage": "tiec cuoi sai gon (1).webp",
+          "coverImage": "0.webp",
           "images": [
-            "tiec cuoi sai gon (1).webp",
+            "0.webp",
             "tiec cuoi sai gon (3).webp",
             "tiec cuoi sai gon (4).webp",
             "tiec cuoi sai gon (10).webp",
@@ -423,9 +420,9 @@
           "title": "VN   SG REST",
           "description": "",
           "path": "phong-su/VN - SG REST",
-          "coverImage": "0baohy (9).webp",
+          "coverImage": "0.webp",
           "images": [
-            "0baohy (9).webp",
+            "0.webp",
             "baohy (6).webp",
             "baohy (7).webp",
             "baohy (8).webp"
@@ -445,8 +442,9 @@
           "title": "Áo dài",
           "description": "",
           "path": "portrait/Áo dài",
-          "coverImage": "thuongaodai (1).webp",
+          "coverImage": "0DAK_5333.webp",
           "images": [
+            "0DAK_5333.webp",
             "thuongaodai (1).webp",
             "thuongaodai (3).webp",
             "thuongaodai (6).webp",
@@ -454,26 +452,25 @@
             "thuongaodai (9).webp",
             "2019_01_18_15_55_IMG_0176.JPG",
             "2019_01_18_16_29_IMG_0177.JPG",
-            "DAK_5333.webp",
             "DAK_5345.webp",
             "DAK_5351.webp"
           ],
           "imageCount": 10
         },
         {
-          "id": "Áo dài Beauty",
-          "title": "Áo dài Beauty",
+          "id": "Beauty x Áo Dài VN",
+          "title": "Beauty x Áo Dài VN",
           "description": "",
-          "path": "portrait/Áo dài Beauty",
-          "coverImage": "_K__2553.jpg",
+          "path": "portrait/Beauty x Áo Dài VN",
+          "coverImage": "0_K__2826.webp",
           "images": [
-            "_K__2553.jpg",
-            "_K__2679-Recovered.jpg",
-            "_K__2734 copy.jpg",
-            "_K__2744.jpg",
-            "_K__2774.jpg",
-            "_K__2775.jpg",
-            "_K__2826.jpg"
+            "0_K__2826.webp",
+            "_K__2553.webp",
+            "_K__2679-Recovered.webp",
+            "_K__2734 copy.webp",
+            "_K__2744.webp",
+            "_K__2774.webp",
+            "_K__2775.webp"
           ],
           "imageCount": 7
         },
@@ -497,19 +494,19 @@
           "imageCount": 9
         },
         {
-          "id": "Sinh nhật tuổi 24",
-          "title": "Sinh nhật tuổi 24",
+          "id": "SINH NHẬT 24",
+          "title": "SINH NHẬT 24",
           "description": "",
-          "path": "portrait/Sinh nhật tuổi 24",
-          "coverImage": "1_ (5).webp",
+          "path": "portrait/SINH NHẬT 24",
+          "coverImage": "0.webp",
           "images": [
+            "0.webp",
             "1_ (5).webp",
             "1_ (6).webp",
             "1_ (7).webp",
             "anh sinh nhat 27 (1).webp",
             "anh sinh nhat 27 (4).webp",
             "anh sinh nhat 27 (5).webp",
-            "anh sinh nhat 27 (6).webp",
             "anh sinh nhat 27 (7).webp"
           ],
           "imageCount": 8
