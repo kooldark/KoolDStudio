@@ -111,23 +111,45 @@ function initHeroSwiper() {
       pagination: {
         el: heroCarousel.querySelector('.swiper-pagination'),
         clickable: true,
+        dynamicBullets: true,
       },
       navigation: {
         nextEl: heroCarousel.querySelector('.swiper-button-next'),
         prevEl: heroCarousel.querySelector('.swiper-button-prev'),
       },
+      // Touch & Swipe settings
+      touchRatio: 1,
+      touchAngle: 45,
+      simulateTouch: true,
+      grabCursor: true,
+      freeMode: false,
+      speed: 400,
+      effect: 'slide',
       breakpoints: {
         320: {
           slidesPerView: 1,
           spaceBetween: 10,
+          centeredSlides: true,
+          centeredSlidesBounds: true,
+        },
+        480: {
+          slidesPerView: 1.3,
+          spaceBetween: 12,
+          centeredSlides: true,
+        },
+        640: {
+          slidesPerView: 1.5,
+          spaceBetween: 15,
         },
         768: {
           slidesPerView: 2,
           spaceBetween: 15,
+          centeredSlides: false,
         },
         1024: {
           slidesPerView: 2,
           spaceBetween: 20,
+          centeredSlides: false,
         },
       },
     });

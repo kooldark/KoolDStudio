@@ -462,6 +462,415 @@
             margin-right: 8px;
         }
 
+        /* ========== DOWNLOAD SECTION ==========*/
+        .download-button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            font-family: var(--font-tertiary);
+            box-shadow: 0 4px 12px rgba(212, 165, 116, 0.2);
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.4);
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+        }
+
+        .download-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+        }
+
+        .download-btn-small {
+            padding: 9px 16px;
+            font-size: 0.85rem;
+            background: var(--color-primary);
+            box-shadow: 0 3px 8px rgba(212, 165, 116, 0.15);
+        }
+
+        .download-btn-small:hover {
+            background: var(--color-primary-dark);
+            box-shadow: 0 6px 16px rgba(212, 165, 116, 0.3);
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(212, 165, 116, 0.05) 100%);
+            border-radius: 14px;
+            padding: 60px 50px;
+            margin-top: 100px;
+            border: 2px solid rgba(212, 165, 116, 0.25);
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(212, 165, 116, 0.1);
+        }
+
+        .download-section h3 {
+            font-family: var(--font-primary);
+            font-size: 2.2rem;
+            color: var(--color-dark);
+            margin-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .download-section p {
+            color: var(--color-gray);
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .download-formats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .format-card {
+            background: white;
+            padding: 35px 30px;
+            border-radius: 12px;
+            border: 1.5px solid rgba(212, 165, 116, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .format-card:hover {
+            box-shadow: 0 12px 32px rgba(212, 165, 116, 0.2);
+            transform: translateY(-6px);
+            border-color: var(--color-primary);
+            background: linear-gradient(135deg, #ffffff 0%, rgba(212, 165, 116, 0.03) 100%);
+        }
+
+        .format-card h4 {
+            font-family: var(--font-primary);
+            color: var(--color-dark);
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+
+        .format-card p {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .format-card .download-btn {
+            width: 100%;
+            padding: 13px 25px;
+            font-size: 0.95rem;
+            justify-content: center;
+        }
+
+        .download-tips {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 50px;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .download-tips h4 {
+            color: var(--color-dark);
+            margin-bottom: 20px;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            text-align: left;
+        }
+
+        .tips-grid > div {
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.05) 0%, rgba(212, 165, 116, 0.02) 100%);
+            border-radius: 10px;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .tips-grid p {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .tips-grid strong {
+            color: var(--color-primary);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .download-contact {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .download-contact p {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .download-contact p {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            padding: 13px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            font-family: var(--font-tertiary);
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.25);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.35);
+        }
+
+        /* ========== EDITOR PANEL ==========*/
+        .editor-panel {
+            background: white;
+            border-radius: 14px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .editor-section {
+            margin-bottom: 50px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(212, 165, 116, 0.15);
+        }
+
+        .editor-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .editor-section-title {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            color: var(--color-dark);
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .editor-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .editor-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-group label {
+            font-family: var(--font-tertiary);
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .editor-group input[type="text"],
+        .editor-group select {
+            padding: 12px 15px;
+            border: 1.5px solid rgba(212, 165, 116, 0.25);
+            border-radius: 8px;
+            font-family: var(--font-tertiary);
+            font-size: 0.95rem;
+            color: var(--color-dark);
+            background: linear-gradient(135deg, #ffffff 0%, rgba(212, 165, 116, 0.02) 100%);
+            transition: all 0.3s ease;
+        }
+
+        .editor-group input[type="text"]:focus,
+        .editor-group select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+            background: white;
+        }
+
+        /* Color Input Group */
+        .color-input-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .editor-group input[type="color"] {
+            width: 60px;
+            height: 45px;
+            border: 1.5px solid rgba(212, 165, 116, 0.25);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .editor-group input[type="color"]:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 12px rgba(212, 165, 116, 0.2);
+        }
+
+        .editor-group input[type="text"]:last-child {
+            flex: 1;
+            background: rgba(212, 165, 116, 0.05);
+            border-color: rgba(212, 165, 116, 0.15);
+        }
+
+        /* Slider Group */
+        .slider-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .editor-slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, rgba(212, 165, 116, 0.2), var(--color-primary));
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .editor-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(212, 165, 116, 0.3);
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .editor-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 5px 15px rgba(212, 165, 116, 0.4);
+        }
+
+        .editor-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(212, 165, 116, 0.3);
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .slider-value {
+            min-width: 45px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--color-primary);
+            font-family: var(--font-tertiary);
+            font-size: 0.9rem;
+        }
+
+        /* Editor Actions */
+        .editor-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-tertiary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .reset-btn {
+            background: linear-gradient(135deg, #8b8680 0%, #6b6660 100%);
+            color: white;
+        }
+
+        .reset-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 134, 128, 0.3);
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+        }
+
+        .export-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        .export-btn:active,
+        .reset-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Preview Area */
+        .preview-area {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
         /* ========== SPECS SECTION ==========*/
         .specs-section {
             background: linear-gradient(135deg, #ffffff 0%, rgba(212, 165, 116, 0.02) 100%);
@@ -606,7 +1015,6 @@
             margin-top: 100px;
         }
 
-        /* ========== RESPONSIVE ==========*/
         @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 2.2rem;
@@ -631,6 +1039,135 @@
 
             .logotype-display {
                 padding: 60px 30px;
+            }
+
+            .download-section {
+                padding: 40px 25px;
+                margin-top: 80px;
+            }
+
+            .download-section h3 {
+                font-size: 1.8rem;
+            }
+
+            .download-formats {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .format-card {
+                padding: 25px 20px;
+            }
+
+            .download-button-group {
+                gap: 8px;
+            }
+
+            .download-btn-small {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .editor-panel {
+                padding: 30px 20px;
+            }
+
+            .editor-section-title {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+            }
+
+            .editor-row {
+                gap: 20px;
+            }
+
+            .editor-actions {
+                gap: 10px;
+            }
+
+            .action-btn {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+                flex: 1;
+                min-width: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .download-btn {
+                padding: 9px 14px;
+                font-size: 0.8rem;
+            }
+
+            .download-btn-small {
+                padding: 7px 10px;
+                font-size: 0.75rem;
+            }
+
+            .download-button-group {
+                gap: 6px;
+                margin-top: 15px;
+            }
+
+            .design-1 .main-text {
+                font-size: 40px;
+            }
+
+            .design-2 .main-text {
+                font-size: 36px;
+            }
+
+            .download-section {
+                padding: 30px 15px;
+            }
+
+            .download-section p {
+                font-size: 0.95rem;
+            }
+
+            .format-card {
+                padding: 20px 15px;
+            }
+
+            .format-card h4 {
+                font-size: 1.1rem;
+            }
+
+            .editor-panel {
+                padding: 20px 15px;
+            }
+
+            .editor-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .color-input-group {
+                gap: 8px;
+            }
+
+            .action-btn {
+                padding: 10px 14px;
+                font-size: 0.8rem;
+                flex: 1;
+            }
+
+            .slider-value {
+                font-size: 0.8rem;
+                min-width: 40px;
             }
         }
     </style>
@@ -662,26 +1199,27 @@
     </div>
 
     <div class="container">
-        <!-- Section 1: Main Logotype Designs -->
+        <!-- Section 1: Main Logotype Design -->
         <div class="section">
-            <h2 class="section-title">Các Thiết Kế Logotype Chính</h2>
+            <h2 class="section-title">Thiết Kế Logotype</h2>
             <p class="section-description">
-                Mỗi thiết kế có cách tiếp cận khác nhau về cảm giác và phong cách. Chọn phiên bản phù hợp nhất với nhận diện thương hiệu của bạn.
+                Tùy biến thiết kế logotype của bạn - thay đổi màu, kích cỡ, text và các yếu tố khác để tạo ra logo độc đáo.
             </p>
 
-            <div class="design-gallery">
-                <!-- Design 7: Header Style -->
+            <!-- Design 7 Editor -->
+            <div class="design-gallery" style="grid-template-columns: 1fr;">
+                <!-- Preview Card -->
                 <div class="design-card">
-                    <div class="logotype-display">
+                    <div class="logotype-display preview-area" id="designPreview">
                         <div class="design-7">
-                            <div class="main-text">Kool D <span class="dot-accent">.</span></div>
-                            <div class="sub-text">STUDIO PHOTOGRAPHY</div>
+                            <div class="main-text" id="previewMain">Kool D <span class="dot-accent" id="previewDot">.</span></div>
+                            <div class="sub-text" id="previewSub">STUDIO PHOTOGRAPHY</div>
                         </div>
                     </div>
                     <div class="design-info">
                         <h3 class="design-title">Design 7: Hiện Đại Tinh Tế</h3>
                         <p class="design-description">
-                            Kết hợp phong cách hiện tại của header - "Kool D" với dấu chấm vàng nhấn, tagline nhỏ hơn dưới. Thanh lịch, cân bằng, dễ sử dụng cho mọi nền tảng.
+                            Kết hợp phong cách hiện tại - "Kool D" với dấu chấm vàng nhấn, tagline nhỏ hơn dưới. Thanh lịch, cân bằng, dễ sử dụng cho mọi nền tảng.
                         </p>
                         <div class="design-features">
                             <ul>
@@ -691,151 +1229,142 @@
                                 <li>Phù hợp: Website, card, profile, mọi nền tảng</li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Design 6: Modern Refined -->
-                <div class="design-card">
-                    <div class="logotype-display">
-                        <div class="design-6">
-                            <div class="main-text">KOOL D</div>
-                            <div class="sub-text">STUDIO PHOTOGRAPHY</div>
-                        </div>
-                    </div>
-                    <div class="design-info">
-                        <h3 class="design-title">Design 6: Hiện Đại Tối Giản</h3>
-                        <p class="design-description">
-                            Phong cách cực tối giản, hiện đại. Font sans-serif bold, chữ hoa, khoảng trắng rộng. Chính là phong cách tối giản nhất nhưng vẫn mạnh mẽ và sang trọng.
-                        </p>
-                        <div class="design-features">
-                            <ul>
-                                <li>Font: Sans-serif bold (Montserrat Heavy)</li>
-                                <li>Chữ hoa, tạo cảm giác quyền lực</li>
-                                <li>Khoảng cách rộng giữa dòng</li>
-                                <li>Cực tối giản, dễ nhớ, dùng mọi nơi</li>
-                            </ul>
+                        <div class="download-button-group">
+                            <button class="download-btn download-btn-small" onclick="downloadDesign('design-7', 'png')">📥 PNG</button>
+                            <button class="download-btn download-btn-small" onclick="downloadDesign('design-7', 'svg')">📥 SVG</button>
+                            <button class="download-btn download-btn-small" onclick="downloadDesign('design-7', 'pdf')">📥 PDF</button>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Design 1 -->
-                <div class="design-card">
-                    <div class="logotype-display">
-                        <div class="design-1">
-                            <div class="main-text">Kool D</div>
-                            <div class="sub-text">Studio Photography</div>
+        <!-- Section 2: Editor Panel -->
+        <div class="section">
+            <h2 class="section-title">⚙️ Tùy Biến Thiết Kế</h2>
+            <p class="section-description">
+                Thay đổi các yếu tố của thiết kế để tạo ra phiên bản độc lập của riêng bạn.
+            </p>
+
+            <div class="editor-panel">
+                <!-- Text Customization -->
+                <div class="editor-section">
+                    <h3 class="editor-section-title">📝 Chỉnh Sửa Text</h3>
+                    
+                    <div class="editor-row">
+                        <div class="editor-group">
+                            <label for="mainText">Tên Chính</label>
+                            <input type="text" id="mainText" value="Kool D" placeholder="Nhập tên chính">
+                        </div>
+                        <div class="editor-group">
+                            <label for="subText">Tagline</label>
+                            <input type="text" id="subText" value="STUDIO PHOTOGRAPHY" placeholder="Nhập tagline">
                         </div>
                     </div>
-                    <div class="design-info">
-                        <h3 class="design-title">Design 1: Thanh Lịch Cổ Điển</h3>
-                        <p class="design-description">
-                            Thiết kế truyền thống với serif thanh lịch. Font Playfair Display kết hợp với khoảng cách rộng tạo cảm giác cao cấp, tối giản nhưng mạnh mẽ.
-                        </p>
-                        <div class="design-features">
-                            <ul>
-                                <li>Font: Playfair Display (chính)</li>
-                                <li>Khoảng cách rộng giữa chữ</li>
-                                <li>2 dòng - tên chính + mô tả</li>
-                                <li>Phù hợp: In ấn, thẻ tên, website</li>
-                            </ul>
+
+                    <div class="editor-row">
+                        <div class="editor-group">
+                            <label for="dotDisplay">Hiển Thị Dấu Chấm</label>
+                            <select id="dotDisplay">
+                                <option value="visible">Có</option>
+                                <option value="hidden">Không</option>
+                            </select>
                         </div>
                     </div>
                 </div>
 
-                <!-- Design 2 -->
-                <div class="design-card">
-                    <div class="logotype-display">
-                        <div class="design-2">
-                            <div class="main-text">Kool D<span class="dot"></span></div>
-                            <div class="sub-text">Studio Photography</div>
+                <!-- Color Customization -->
+                <div class="editor-section">
+                    <h3 class="editor-section-title">🎨 Tùy Chỉnh Màu Sắc</h3>
+                    
+                    <div class="editor-row">
+                        <div class="editor-group">
+                            <label for="mainColor">Màu Tên Chính</label>
+                            <div class="color-input-group">
+                                <input type="color" id="mainColor" value="#2a2a28">
+                                <input type="text" id="mainColorHex" value="#2a2a28" readonly>
+                            </div>
+                        </div>
+                        <div class="editor-group">
+                            <label for="dotColor">Màu Dấu Chấm</label>
+                            <div class="color-input-group">
+                                <input type="color" id="dotColor" value="#d4a574">
+                                <input type="text" id="dotColorHex" value="#d4a574" readonly>
+                            </div>
                         </div>
                     </div>
-                    <div class="design-info">
-                        <h3 class="design-title">Design 2: Hiện Đại với Điểm Nhấn</h3>
-                        <p class="design-description">
-                            Tăng khoảng cách chữ và thêm dấu chấm màu nhấn nhẹ. Dấu chấm vàng (màu thương hiệu) trở thành điểm nhớ độc đáo mà không cần icon.
-                        </p>
-                        <div class="design-features">
-                            <ul>
-                                <li>Dấu chấm nhấn nổi bật</li>
-                                <li>Letter spacing rộng hơn</li>
-                                <li>Tạo cảm giác thoáng, cao cấp</li>
-                                <li>Dễ sử dụng ở mọi kích cỡ</li>
-                            </ul>
+
+                    <div class="editor-row">
+                        <div class="editor-group">
+                            <label for="subColor">Màu Tagline</label>
+                            <div class="color-input-group">
+                                <input type="color" id="subColor" value="#8b8680">
+                                <input type="text" id="subColorHex" value="#8b8680" readonly>
+                            </div>
+                        </div>
+                        <div class="editor-group">
+                            <label for="bgColor">Màu Nền</label>
+                            <div class="color-input-group">
+                                <input type="color" id="bgColor" value="#f5f3f0">
+                                <input type="text" id="bgColorHex" value="#f5f3f0" readonly>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Design 3 -->
-                <div class="design-card featured">
-                    <div class="logotype-display design-3">
-                        <div>
-                            <div class="main-text">Kool D</div>
-                            <div class="line"></div>
-                            <div class="sub-text">Studio Photography</div>
+                <!-- Font & Size Customization -->
+                <div class="editor-section">
+                    <h3 class="editor-section-title">📐 Kích Cỡ & Spacing</h3>
+                    
+                    <div class="editor-row">
+                        <div class="editor-group">
+                            <label for="mainFontSize">Kích Cỡ Tên Chính (px)</label>
+                            <div class="slider-group">
+                                <input type="range" id="mainFontSize" min="30" max="100" value="64" class="editor-slider">
+                                <span class="slider-value" id="mainFontSizeValue">64px</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="design-info">
-                        <h3 class="design-title">Design 3: Quý Phái Cao Cấp</h3>
-                        <p class="design-description">
-                            Phong cách luxury classic tinh tế. Viền nét căng, dòng vàng tách biệt, khoảng cách rộng. Dành cho những sự kiện đặc biệt và ấn phẩm cao cấp như đám cưới, sự kiện VIP, giấy chứng chỉ.
-                        </p>
-                        <div class="design-features">
-                            <ul>
-                                <li>Viền đen tinh tế xung quanh</li>
-                                <li>Dòng vàng gradient tách biệt giữa</li>
-                                <li>Padding lớn - cảm giác thoáng, cao quý</li>
-                                <li>Phù hợp: Thiệp cao cấp, sự kiện VIP, giấy chứng chỉ, ấn phẩm</li>
-                            </ul>
+
+                    <div class="editor-row">
+                        <div class="editor-group">
+                            <label for="subFontSize">Kích Cỡ Tagline (px)</label>
+                            <div class="slider-group">
+                                <input type="range" id="subFontSize" min="8" max="20" value="11" class="editor-slider">
+                                <span class="slider-value" id="subFontSizeValue">11px</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="editor-row">
+                        <div class="editor-group">
+                            <label for="letterSpacing">Letter Spacing Tên Chính (px)</label>
+                            <div class="slider-group">
+                                <input type="range" id="letterSpacing" min="-3" max="5" value="-1" class="editor-slider">
+                                <span class="slider-value" id="letterSpacingValue">-1px</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="editor-row">
+                        <div class="editor-group">
+                            <label for="taglineSpacing">Letter Spacing Tagline (px)</label>
+                            <div class="slider-group">
+                                <input type="range" id="taglineSpacing" min="0" max="8" value="2" class="editor-slider">
+                                <span class="slider-value" id="taglineSpacingValue">2px</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Design 4 -->
-                <div class="design-card">
-                    <div class="logotype-display">
-                        <div class="design-4">
-                            <div class="main-text">kool d.</div>
-                            <div class="sub-text">photography studio</div>
-                        </div>
-                    </div>
-                    <div class="design-info">
-                        <h3 class="design-title">Design 4: Hiện Đại & Năng Động</h3>
-                        <p class="design-description">
-                            Dùng sans-serif, chữ thường, màu xanh đen hiện đại. Phong cách trẻ, năng động nhưng vẫn chuyên nghiệp.
-                        </p>
-                        <div class="design-features">
-                            <ul>
-                                <li>Sans-serif (Montserrat)</li>
-                                <li>Chữ thường - tạo cảm giác lân lại</li>
-                                <li>Màu xanh đen - ổn định, tin cậy</li>
-                                <li>Phù hợp: Digital, social media</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Design 5 -->
-                <div class="design-card">
-                    <div class="logotype-display">
-                        <div class="design-5">
-                            <div class="main-text">Kool D. Studio</div>
-                            <div class="sub-text">Photography & Memories</div>
-                        </div>
-                    </div>
-                    <div class="design-info">
-                        <h3 class="design-title">Design 5: Tinh Tế & Nữ Tính</h3>
-                        <p class="design-description">
-                            Dùng Lora serif nhẹ nhàng, in hoa chữ đầu. Kiểu "mềm" phù hợp các dự án liên quan đến gia đình, phụ nữ.
-                        </p>
-                        <div class="design-features">
-                            <ul>
-                                <li>Font Lora - nhẹ nhàng, tinh tế</li>
-                                <li>Hoa chữ đầu mỗi từ</li>
-                                <li>Italic ở dòng phụ</li>
-                                <li>Phù hợp: Ảnh gia đình, pre-wedding</li>
-                            </ul>
-                        </div>
+                <!-- Action Buttons -->
+                <div class="editor-section">
+                    <h3 class="editor-section-title">💾 Hành Động</h3>
+                    <div class="editor-actions">
+                        <button class="action-btn reset-btn" onclick="resetEditor()">🔄 Đặt Lại</button>
+                        <button class="action-btn export-btn" onclick="downloadCustomDesign('svg')">📥 Tải SVG</button>
+                        <button class="action-btn export-btn" onclick="downloadCustomDesign('png')">📥 Tải PNG</button>
+                        <button class="action-btn export-btn" onclick="downloadCustomDesign('pdf')">📥 Tải PDF</button>
                     </div>
                 </div>
             </div>
@@ -985,30 +1514,76 @@
             </div>
         </div>
 
-        <!-- CTA Section -->
+        <!-- Section 5: Download Kit -->
         <div class="section">
-            <div class="guidelines-section" style="text-align: center; padding: 60px 40px;">
-                <h3 class="guidelines-title">Chọn Thiết Kế Yêu Thích</h3>
-                <p style="color: var(--color-gray); margin-top: 15px; font-size: 1.05rem; line-height: 1.8;">
-                    Hàng thiết kế nào phù hợp nhất với tầm nhìn của Kool D. Studio?<br>
-                    Hãy cho chúng tôi biết để hoàn thiện và tối ưu hóa phiên bản cuối cùng.
+            <div class="download-section">
+                <h3>📦 Tải Xuống Các Thiết Kế</h3>
+                <p>
+                    Chọn định dạng phù hợp nhất với nhu cầu của bạn.<br>
+                    Các thiết kế đều có chất lượng cao và tương thích với mọi nền tảng.
                 </p>
-                <div style="margin-top: 30px;">
-                    <a href="mailto:contact@kooldstudio.com" style="
-                        display: inline-block;
-                        background: var(--color-primary);
-                        color: white;
-                        padding: 14px 35px;
-                        border-radius: 6px;
-                        text-decoration: none;
-                        font-weight: 600;
-                        transition: var(--transition);
-                        margin: 8px;
-                        font-family: var(--font-tertiary);
-                        letter-spacing: 0.5px;
-                    " onmouseover="this.style.background='var(--color-primary-dark)'; this.style.transform='translateY(-2px)';"
-                       onmouseout="this.style.background='var(--color-primary)'; this.style.transform='translateY(0)';">
-                        📧 Liên Hệ Ngay
+
+                <div class="download-formats">
+                    <div class="format-card">
+                        <h4>🖼️ PNG</h4>
+                        <p>
+                            Ảnh raster chất lượng cao. Phù hợp cho web, email, presentation và social media với nền trong suốt.
+                        </p>
+                        <button class="download-btn" onclick="downloadAllDesigns('png')">
+                            📥 Tải Tất Cả PNG
+                        </button>
+                    </div>
+
+                    <div class="format-card">
+                        <h4>🎨 SVG</h4>
+                        <p>
+                            Vector có thể phóng to tùy ý mà không mất chất lượng. Hoàn hảo cho của Adobe Illustrator & Figma.
+                        </p>
+                        <button class="download-btn" onclick="downloadAllDesigns('svg')">
+                            📥 Tải Tất Cả SVG
+                        </button>
+                    </div>
+
+                    <div class="format-card">
+                        <h4>📄 PDF</h4>
+                        <p>
+                            In ấn chuyên nghiệp. Tuyệt vời cho thẻ tên, thiệp, giấy chứng chỉ và tài liệu chính thức.
+                        </p>
+                        <button class="download-btn" onclick="downloadAllDesigns('pdf')">
+                            📥 Tải Tất Cả PDF
+                        </button>
+                    </div>
+                </div>
+
+                <div class="download-tips">
+                    <h4>💡 Hướng Dẫn Sử Dụng</h4>
+                    <div class="tips-grid">
+                        <div>
+                            <strong>🌐 Web & Digital</strong>
+                            <p>Dùng PNG hoặc SVG cho website, ứng dụng và social media</p>
+                        </div>
+                        <div>
+                            <strong>🖨️ In Ấn Profesh</strong>
+                            <p>Dùng PDF cho thẻ tên, thiệp, giấy chứng chỉ chất lượng cao</p>
+                        </div>
+                        <div>
+                            <strong>✏️ Chỉnh Sửa</strong>
+                            <p>Dùng SVG trong Adobe Illustrator, Figma để tân tạo design</p>
+                        </div>
+                        <div>
+                            <strong>⚡ Nhanh Chóng</strong>
+                            <p>Tải tất cả 7 thiết kế bằng 1 cú click duy nhất</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-contact">
+                    <p>
+                        <strong>❓ Cần hỗ trợ?</strong><br>
+                        Nếu bạn cần định dạng khác, có câu hỏi hoặc muốn tùy chỉnh, vui lòng liên hệ với chúng tôi.
+                    </p>
+                    <a href="mailto:contact@kooldstudio.com" class="contact-btn">
+                        📧 Liên Hệ Chúng Tôi
                     </a>
                 </div>
             </div>
@@ -1020,15 +1595,272 @@
     </footer>
 
     <script>
-        // Add smooth transitions on card interactions
-        document.querySelectorAll('.design-card').forEach(card => {
-            card.addEventListener('click', function() {
-                document.querySelectorAll('.design-card').forEach(c => c.style.opacity = '0.7');
-                this.style.opacity = '1';
-                setTimeout(() => {
-                    document.querySelectorAll('.design-card').forEach(c => c.style.opacity = '1');
-                }, 300);
+        // ========== DESIGN 7 CUSTOMIZER ==========
+        const defaultValues = {
+            mainText: 'Kool D',
+            subText: 'STUDIO PHOTOGRAPHY',
+            dotDisplay: 'visible',
+            mainColor: '#2a2a28',
+            dotColor: '#d4a574',
+            subColor: '#8b8680',
+            bgColor: '#f5f3f0',
+            mainFontSize: 64,
+            subFontSize: 11,
+            letterSpacing: -1,
+            taglineSpacing: 2
+        };
+
+        // Initialize editor
+        function initEditor() {
+            const inputs = document.querySelectorAll('#mainText, #subText, [id$="Color"], [id$="FontSize"], [id$="Spacing"]');
+            inputs.forEach(input => {
+                input.addEventListener('change', updatePreview);
+                input.addEventListener('input', updatePreview);
             });
+
+            document.getElementById('dotDisplay').addEventListener('change', updatePreview);
+
+            // Sync color hex values
+            document.getElementById('mainColor').addEventListener('change', function() {
+                document.getElementById('mainColorHex').value = this.value;
+            });
+            document.getElementById('dotColor').addEventListener('change', function() {
+                document.getElementById('dotColorHex').value = this.value;
+            });
+            document.getElementById('subColor').addEventListener('change', function() {
+                document.getElementById('subColorHex').value = this.value;
+            });
+            document.getElementById('bgColor').addEventListener('change', function() {
+                document.getElementById('bgColorHex').value = this.value;
+            });
+
+            // Update slider values display
+            document.getElementById('mainFontSize').addEventListener('input', function() {
+                document.getElementById('mainFontSizeValue').textContent = this.value + 'px';
+            });
+            document.getElementById('subFontSize').addEventListener('input', function() {
+                document.getElementById('subFontSizeValue').textContent = this.value + 'px';
+            });
+            document.getElementById('letterSpacing').addEventListener('input', function() {
+                document.getElementById('letterSpacingValue').textContent = this.value + 'px';
+            });
+            document.getElementById('taglineSpacing').addEventListener('input', function() {
+                document.getElementById('taglineSpacingValue').textContent = this.value + 'px';
+            });
+        }
+
+        // Update preview dynamically
+        function updatePreview() {
+            const mainText = document.getElementById('mainText').value || 'Kool D';
+            const subText = document.getElementById('subText').value || 'STUDIO PHOTOGRAPHY';
+            const mainColor = document.getElementById('mainColor').value;
+            const dotColor = document.getElementById('dotColor').value;
+            const subColor = document.getElementById('subColor').value;
+            const bgColor = document.getElementById('bgColor').value;
+            const mainFontSize = document.getElementById('mainFontSize').value;
+            const subFontSize = document.getElementById('subFontSize').value;
+            const letterSpacing = document.getElementById('letterSpacing').value;
+            const taglineSpacing = document.getElementById('taglineSpacing').value;
+            const dotDisplay = document.getElementById('dotDisplay').value;
+
+            // Update preview container background
+            const previewArea = document.getElementById('designPreview');
+            previewArea.style.backgroundColor = bgColor;
+
+            // Update main text
+            const previewMain = document.getElementById('previewMain');
+            previewMain.style.color = mainColor;
+            previewMain.style.fontSize = mainFontSize + 'px';
+            previewMain.style.letterSpacing = letterSpacing + 'px';
+
+            // Update dot
+            const previewDot = document.getElementById('previewDot');
+            previewDot.style.color = dotColor;
+            previewDot.style.display = dotDisplay === 'visible' ? 'inline' : 'none';
+
+            // Update sub text
+            const previewSub = document.getElementById('previewSub');
+            previewSub.style.color = subColor;
+            previewSub.style.fontSize = subFontSize + 'px';
+            previewSub.style.letterSpacing = taglineSpacing + 'px';
+            previewSub.textContent = subText;
+        }
+
+        // Reset editor to default
+        function resetEditor() {
+            if (!confirm('Bạn chắc chắn muốn đặt lại các thiết kế?')) return;
+
+            document.getElementById('mainText').value = defaultValues.mainText;
+            document.getElementById('subText').value = defaultValues.subText;
+            document.getElementById('dotDisplay').value = defaultValues.dotDisplay;
+            document.getElementById('mainColor').value = defaultValues.mainColor;
+            document.getElementById('mainColorHex').value = defaultValues.mainColor;
+            document.getElementById('dotColor').value = defaultValues.dotColor;
+            document.getElementById('dotColorHex').value = defaultValues.dotColor;
+            document.getElementById('subColor').value = defaultValues.subColor;
+            document.getElementById('subColorHex').value = defaultValues.subColor;
+            document.getElementById('bgColor').value = defaultValues.bgColor;
+            document.getElementById('bgColorHex').value = defaultValues.bgColor;
+            document.getElementById('mainFontSize').value = defaultValues.mainFontSize;
+            document.getElementById('mainFontSizeValue').textContent = defaultValues.mainFontSize + 'px';
+            document.getElementById('subFontSize').value = defaultValues.subFontSize;
+            document.getElementById('subFontSizeValue').textContent = defaultValues.subFontSize + 'px';
+            document.getElementById('letterSpacing').value = defaultValues.letterSpacing;
+            document.getElementById('letterSpacingValue').textContent = defaultValues.letterSpacing + 'px';
+            document.getElementById('taglineSpacing').value = defaultValues.taglineSpacing;
+            document.getElementById('taglineSpacingValue').textContent = defaultValues.taglineSpacing + 'px';
+
+            updatePreview();
+        }
+
+        // Download custom design
+        function downloadCustomDesign(format) {
+            const mainText = document.getElementById('mainText').value || 'Kool D';
+            const subText = document.getElementById('subText').value || 'STUDIO PHOTOGRAPHY';
+            const mainColor = document.getElementById('mainColor').value;
+            const dotColor = document.getElementById('dotColor').value;
+            const subColor = document.getElementById('subColor').value;
+            const bgColor = document.getElementById('bgColor').value;
+            const mainFontSize = document.getElementById('mainFontSize').value;
+            const subFontSize = document.getElementById('subFontSize').value;
+            const letterSpacing = document.getElementById('letterSpacing').value;
+            const taglineSpacing = document.getElementById('taglineSpacing').value;
+            const dotDisplay = document.getElementById('dotDisplay').value;
+
+            // Generate SVG with proper tspan handling
+            let mainTextContent = mainText;
+            let dotTspan = '';
+            
+            if (dotDisplay === 'visible') {
+                dotTspan = ` <tspan fill="${dotColor}" font-size="${mainFontSize * 0.8}">.</tspan>`;
+            }
+
+            const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="400" fill="${bgColor}"/>
+<text x="400" y="180" font-family="Playfair Display, serif" font-size="${mainFontSize}" font-weight="700" text-anchor="middle" fill="${mainColor}" letter-spacing="${letterSpacing}">${mainTextContent}${dotTspan}</text>
+<text x="400" y="240" font-family="Montserrat, sans-serif" font-size="${subFontSize}" font-weight="500" text-anchor="middle" fill="${subColor}" letter-spacing="${taglineSpacing}" text-transform="uppercase">${subText}</text>
+</svg>`;
+
+            switch(format) {
+                case 'svg':
+                    downloadSVG(`custom-design-${Date.now()}`, svgContent);
+                    break;
+                case 'png':
+                    downloadPNG(`custom-design-${Date.now()}`, svgContent);
+                    break;
+                case 'pdf':
+                    downloadPDF(`custom-design-${Date.now()}`, svgContent);
+                    break;
+            }
+        }
+
+        // Original download functions
+        const designs = {
+            'design-7': {
+                name: 'Design 7 - Hien Dai Tinh Te',
+                svg: '<svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg"><text x="300" y="120" font-family="Playfair Display, serif" font-size="64" font-weight="700" text-anchor="middle" fill="#2a2a28" letter-spacing="-1">Kool D </text><tspan font-size="0.8em" fill="#d4a574">.</tspan><text x="300" y="150" font-family="Montserrat, sans-serif" font-size="11" font-weight="500" text-anchor="middle" fill="#8b8680" letter-spacing="2" text-transform="uppercase">STUDIO PHOTOGRAPHY</text></svg>'
+            }
+        };
+
+        function downloadDesign(designId, format) {
+            const design = designs[designId];
+            if (!design) return;
+
+            const filename = `${design.name.replace(/\s+/g, '_')}_${format}`;
+            
+            switch(format) {
+                case 'svg':
+                    downloadSVG(filename, design.svg);
+                    break;
+                case 'png':
+                    downloadPNG(filename, design.svg);
+                    break;
+                case 'pdf':
+                    downloadPDF(filename, design.svg);
+                    break;
+            }
+        }
+
+        function downloadAllDesigns(format) {
+            const confirmMsg = `Bạn sắp tải Design 7 ở định dạng ${format.toUpperCase()}. Tiếp tục?`;
+            if (!confirm(confirmMsg)) return;
+
+            downloadDesign('design-7', format);
+        }
+
+        function downloadSVG(filename, svgContent) {
+            const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename + '.svg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadPNG(filename, svgContent) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const svgImage = new Image();
+            
+            // 4K Resolution: 4096x2160 (Ultra HD)
+            canvas.width = 4096;
+            canvas.height = 2160;
+            
+            svgImage.onload = function() {
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(svgImage, 0, 0, canvas.width, canvas.height);
+                
+                canvas.toBlob(blob => {
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = filename + '.png';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                }, 'image/png');
+            };
+            
+            svgImage.src = 'data:image/svg+xml;base64,' + btoa(svgContent);
+        }
+
+        function downloadPDF(filename, svgContent) {
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+            script.onload = function() {
+                const element = document.createElement('div');
+                element.innerHTML = svgContent;
+                element.style.padding = '20px';
+                element.style.display = 'flex';
+                element.style.alignItems = 'center';
+                element.style.justifyContent = 'center';
+                element.style.minHeight = '100%';
+                
+                const opt = {
+                    margin: 10,
+                    filename: filename + '.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+                };
+                
+                html2pdf().set(opt).from(element).save().catch(err => {
+                    alert('Tải PDF gặp vấn đề. Vui lòng tải PNG hoặc SVG thay thế.');
+                });
+            };
+            document.head.appendChild(script);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initEditor();
+            updatePreview();
         });
 
         // Add intersection observer for fade-in effect
@@ -1046,7 +1878,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.design-card, .spec-box, .color-item, .guideline-item').forEach(el => {
+        document.querySelectorAll('.design-card, .spec-box, .color-item, .guideline-item, .format-card, .editor-panel').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';

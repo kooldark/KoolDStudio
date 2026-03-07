@@ -6,25 +6,6 @@
       "description": "Hành trình yêu được kể bằng những khung hình tự nhiên và trong trẻo nhất. Kool D. Studio không chỉ chụp ảnh, mà còn lưu giữ từng ánh mắt, nụ cười và cảm xúc chân thật để câu chuyện tình yêu của bạn trở thành một thước phim lãng mạn, tinh tế và mãi mãi khắc sâu trong ký ức.",
       "albums": [
         {
-          "id": "Áo dài đỏ tryền thống",
-          "title": "Áo dài đỏ tryền thống",
-          "description": "",
-          "path": "cuoi/Áo dài đỏ tryền thống",
-          "coverImage": "coverimage.webp",
-          "images": [
-            "coverimage.webp",
-            "_KDS9190.webp",
-            "_KDS9265.webp",
-            "_KDS9267.webp",
-            "_KDS9315.webp",
-            "_KDS9668.webp",
-            "_KDS9808.webp",
-            "_KDS9809.webp",
-            "_KDS9827.webp"
-          ],
-          "imageCount": 9
-        },
-        {
           "id": "Ảnh cưới ngoại cảnh",
           "title": "Ảnh cưới ngoại cảnh",
           "description": "",
@@ -88,11 +69,11 @@
           "title": "Ngân Bridal 2024",
           "description": "",
           "path": "cuoi/Ngân Bridal 2024",
-          "coverImage": "1 (1).webp",
+          "coverImage": "01 (3).webp",
           "images": [
+            "01 (3).webp",
             "1 (1).webp",
             "1 (2).webp",
-            "1 (3).webp",
             "1 (4).webp",
             "1 (5).webp",
             "1 (6).webp"
@@ -122,6 +103,25 @@
             "bridal Trinh (19).webp"
           ],
           "imageCount": 14
+        },
+        {
+          "id": "Vương & Linh",
+          "title": "Vương & Linh",
+          "description": "",
+          "path": "cuoi/Vương & Linh",
+          "coverImage": "ao dai (1).webp",
+          "images": [
+            "ao dai (1).webp",
+            "ao dai (2).webp",
+            "ao dai (3).webp",
+            "ao dai (4).webp",
+            "ao dai (5).webp",
+            "ao dai (6).webp",
+            "ao dai (7).webp",
+            "ao dai (8).webp",
+            "ao dai (9).webp"
+          ],
+          "imageCount": 9
         },
         {
           "id": "Wedding Studio BW",
@@ -156,32 +156,31 @@
       "description": "Những khoảnh khắc sum vầy ấm áp bên gia đình.",
       "albums": [
         {
-          "id": "Ảnh mẹ bầu",
-          "title": "Ảnh mẹ bầu",
+          "id": "Amy House",
+          "title": "Amy House",
           "description": "",
-          "path": "gia-dinh/Ảnh mẹ bầu",
+          "path": "gia-dinh/Amy House",
           "coverImage": "0.webp",
           "images": [
             "0.webp",
-            "me bau hoa tim (4).webp",
-            "me bau hoa tim (17).webp"
+            "amy (1).JPG",
+            "amy (1).webp",
+            "amy (2).JPG",
+            "amy (3).JPG",
+            "amy (3).webp",
+            "amy (4).JPG",
+            "amy (4).webp",
+            "amy (5).webp",
+            "amy (6).webp",
+            "amy (7).webp",
+            "amy (8).webp",
+            "amy (9).webp",
+            "amy (10).webp",
+            "amy (11).webp",
+            "amy (12).webp",
+            "amy (13).webp"
           ],
-          "imageCount": 3
-        },
-        {
-          "id": "Ảnh mừng thọ kỷ niệm cho ông bà",
-          "title": "Ông Bà Tôi",
-          "description": "Gìn giữ những khoảnh khắc vô giá bên ông bà, nơi tình yêu thương và sự ấm áp của gia đình được thể hiện qua nhiều thế hệ.",
-          "path": "gia-dinh/Ảnh mừng thọ kỷ niệm cho ông bà",
-          "coverImage": "0.webp",
-          "images": [
-            "0.webp",
-            "ong ba (6).webp",
-            "ong ba (8).webp",
-            "ong ba (9).webp",
-            "ong ba (12).webp"
-          ],
-          "imageCount": 5
+          "imageCount": 17
         },
         {
           "id": "Gia đình 4 người",
@@ -234,15 +233,69 @@
             "_K__6437.webp"
           ],
           "imageCount": 9
+        },
+        {
+          "id": "Mẹ bầu",
+          "title": "Mẹ bầu",
+          "description": "",
+          "path": "gia-dinh/Mẹ bầu",
+          "coverImage": "0.webp",
+          "images": [
+            "0.webp",
+            "me bau hoa tim (4).webp",
+            "me bau hoa tim (17).webp"
+          ],
+          "imageCount": 3
+        },
+        {
+          "id": "Mừng thọ",
+          "title": "Ông Bà Tôi",
+          "description": "Gìn giữ những khoảnh khắc vô giá bên ông bà, nơi tình yêu thương và sự ấm áp của gia đình được thể hiện qua nhiều thế hệ.",
+          "path": "gia-dinh/Mừng thọ",
+          "coverImage": "0.webp",
+          "images": [
+            "0.webp",
+            "ong ba (6).webp",
+            "ong ba (8).webp",
+            "ong ba (9).webp",
+            "ong ba (12).webp"
+          ],
+          "imageCount": 5
         }
       ],
-      "albumCount": 5
+      "albumCount": 6
     },
     {
       "id": "makeup",
       "title": "Nét Vẽ Thanh Xuân",
       "description": "Nghệ thuật trang điểm là cách chúng tôi tôn vinh vẻ đẹp độc bản của mỗi người. Album này là nơi những đường nét tinh tế, màu sắc thời thượng và thần thái cuốn hút được thể hiện một cách trọn vẹn, giúp bạn khám phá và toả sáng với phiên bản hoàn hảo nhất của chính mình.",
       "albums": [
+        {
+          "id": "A Hoa vàng",
+          "title": "A Hoa vàng",
+          "description": "",
+          "path": "makeup/A Hoa vàng",
+          "coverImage": "0hanbeauty (5).webp",
+          "images": [
+            "0hanbeauty (5).webp",
+            "hanbeauty (4).webp",
+            "hanbeauty (8).webp"
+          ],
+          "imageCount": 3
+        },
+        {
+          "id": "An Hân",
+          "title": "Sample Album",
+          "description": "Replace with your album name and description",
+          "path": "makeup/An Hân",
+          "coverImage": "0.webp",
+          "images": [
+            "0.webp",
+            "han (2).webp",
+            "han (4).webp"
+          ],
+          "imageCount": 3
+        },
         {
           "id": "Bridal makeup",
           "title": "Bridal makeup",
@@ -265,20 +318,6 @@
             "CKPQ8663.webp"
           ],
           "imageCount": 13
-        },
-        {
-          "id": "Bridal outside",
-          "title": "Bridal outside",
-          "description": "",
-          "path": "makeup/Bridal outside",
-          "coverImage": "0.webp",
-          "images": [
-            "0.webp",
-            "trinh cay (1).webp",
-            "trinh cay (5).webp",
-            "trinh cay (6).webp"
-          ],
-          "imageCount": 4
         },
         {
           "id": "Bridal Thương Concept",
@@ -318,32 +357,6 @@
           "imageCount": 5
         },
         {
-          "id": "Hoa vàng",
-          "title": "Hoa vàng",
-          "description": "",
-          "path": "makeup/Hoa vàng",
-          "coverImage": "0hanbeauty (5).webp",
-          "images": [
-            "0hanbeauty (5).webp",
-            "hanbeauty (4).webp",
-            "hanbeauty (8).webp"
-          ],
-          "imageCount": 3
-        },
-        {
-          "id": "Hân",
-          "title": "Hân",
-          "description": "",
-          "path": "makeup/Hân",
-          "coverImage": "0.webp",
-          "images": [
-            "0.webp",
-            "han (2).webp",
-            "han (4).webp"
-          ],
-          "imageCount": 3
-        },
-        {
           "id": "Trang điểm với hoa lá",
           "title": "Trang điểm với hoa lá",
           "description": "",
@@ -356,9 +369,37 @@
             "trinh (8).webp"
           ],
           "imageCount": 4
+        },
+        {
+          "id": "Váy cưới đen",
+          "title": "Váy cưới đen",
+          "description": "",
+          "path": "makeup/Váy cưới đen",
+          "coverImage": "0 DAK_9435.webp",
+          "images": [
+            "0 DAK_9435.webp",
+            "3 DAK_9432.webp",
+            "IMG_2048.JPG",
+            "DAK_9328.webp"
+          ],
+          "imageCount": 4
+        },
+        {
+          "id": "Z Concept",
+          "title": "Z Concept",
+          "description": "",
+          "path": "makeup/Z Concept",
+          "coverImage": "0.webp",
+          "images": [
+            "0.webp",
+            "trinh cay (1).webp",
+            "trinh cay (5).webp",
+            "trinh cay (6).webp"
+          ],
+          "imageCount": 4
         }
       ],
-      "albumCount": 7
+      "albumCount": 8
     },
     {
       "id": "phong-su",
@@ -442,9 +483,9 @@
           "title": "Áo dài",
           "description": "",
           "path": "portrait/Áo dài",
-          "coverImage": "0DAK_5333.webp",
+          "coverImage": "0DAK_5345.webp",
           "images": [
-            "0DAK_5333.webp",
+            "0DAK_5345.webp",
             "thuongaodai (1).webp",
             "thuongaodai (3).webp",
             "thuongaodai (6).webp",
@@ -452,7 +493,7 @@
             "thuongaodai (9).webp",
             "2019_01_18_15_55_IMG_0176.JPG",
             "2019_01_18_16_29_IMG_0177.JPG",
-            "DAK_5345.webp",
+            "DAK_5333.webp",
             "DAK_5351.webp"
           ],
           "imageCount": 10
