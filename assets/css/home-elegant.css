@@ -3317,8 +3317,8 @@ a {
 
 .team-image-wrapper {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   margin: 0 auto;
   overflow: hidden;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
@@ -3356,7 +3356,7 @@ a {
 }
 
 .team-info {
-  padding: 1.75rem 1.5rem;
+  padding: 1.5rem 1.25rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -3364,9 +3364,9 @@ a {
 
 .team-name {
   font-family: var(--font-primary);
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   color: var(--color-dark);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
@@ -3374,10 +3374,10 @@ a {
 .team-role {
   color: var(--color-primary);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 0.75rem;
+  letter-spacing: 0.8px;
+  margin-bottom: 0.6rem;
 }
 
 .team-desc {
@@ -3469,7 +3469,20 @@ a {
 @media (max-width: 1024px) {
   .team-grid-modern {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.75rem;
+  }
+
+  .team-image-wrapper {
+    width: 110px;
+    height: 110px;
+  }
+
+  .team-info {
+    padding: 1.25rem 1rem;
+  }
+
+  .team-name {
+    font-size: 1.05rem;
   }
 
   .about-stats {
@@ -3507,7 +3520,31 @@ a {
   }
 
   .team-image-wrapper {
-    padding-bottom: 100%;
+    width: 100px;
+    height: 100px;
+  }
+
+  .team-info {
+    padding: 1rem 0.75rem;
+  }
+
+  .team-card {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  }
+
+  .team-name {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .team-role {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .team-desc {
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
 
   .about-stats {
@@ -3575,23 +3612,35 @@ a {
 
   .team-grid-modern {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .team-image-wrapper {
-    padding-bottom: 120%;
+    width: 90px;
+    height: 90px;
+  }
+
+  .team-info {
+    padding: 0.9rem 0.6rem;
+  }
+
+  .team-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
   .team-name {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
   }
 
   .team-role {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
   }
 
   .team-desc {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    line-height: 1.3;
   }
 
   .about-stats {
