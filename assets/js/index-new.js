@@ -101,8 +101,9 @@ function initHeroSwiper() {
 
   try {
     const heroSwiper = new Swiper(heroCarousel, {
-      slidesPerView: 2,
-      spaceBetween: 20,
+      slidesPerView: 1,
+      spaceBetween: 0,
+      centeredSlides: true,
       loop: true,
       autoplay: {
         delay: 5000,
@@ -117,34 +118,55 @@ function initHeroSwiper() {
         nextEl: heroCarousel.querySelector('.swiper-button-next'),
         prevEl: heroCarousel.querySelector('.swiper-button-prev'),
       },
-      // Touch & Swipe settings
+      // Touch & Swipe settings for smooth mobile experience
       touchRatio: 1,
       touchAngle: 45,
       simulateTouch: true,
       grabCursor: true,
       freeMode: false,
-      speed: 400,
+      speed: 500,
       effect: 'slide',
+      // Responsive to zoom and window resize
+      observer: true,
+      observeParents: true,
+      updateOnWindowResize: true,
+      watchSlidesProgress: true,
       breakpoints: {
+        // Mobile - Extra Small (320px and up)
         320: {
           slidesPerView: 1,
-          spaceBetween: 8,
+          spaceBetween: 0,
+          centeredSlides: true,
         },
+        // Mobile - Small (480px and up)
         480: {
           slidesPerView: 1,
-          spaceBetween: 12,
+          spaceBetween: 0,
+          centeredSlides: true,
         },
-        768: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-        },
-        1024: {
-          slidesPerView: 1.05,
-          spaceBetween: 25,
-        },
-        1400: {
+        // Tablet - Small (640px and up)
+        640: {
           slidesPerView: 1,
           spaceBetween: 0,
+          centeredSlides: true,
+        },
+        // Tablet - Medium (768px and up)
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          centeredSlides: true,
+        },
+        // Tablet - Large (1024px and up)
+        1024: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          centeredSlides: true,
+        },
+        // Desktop (1200px and up)
+        1200: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          centeredSlides: true,
         },
       },
     });

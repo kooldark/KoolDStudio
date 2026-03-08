@@ -118,9 +118,18 @@ a {
 
 /* ========== CONTAINER ==========*/
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    padding: 0 var(--spacing-lg);
+  }
 }
 
 @media (max-width: 768px) {
@@ -131,7 +140,7 @@ a {
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 1.25rem; /* 20px - better margin for mobile */
+    padding: 0 1rem; /* 16px - better margin for mobile */
   }
 }
 
@@ -538,6 +547,7 @@ a {
 /* ========== HERO SECTION ==========*/
 /* ========== HERO SECTION - IMAGE FOCUSED ==========*/
 .hero {
+  width: 100%;
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -547,14 +557,21 @@ a {
   background: linear-gradient(180deg, #fafaf9 0%, #ffffff 100%);
   padding-top: var(--spacing-3xl);
   padding-bottom: var(--spacing-3xl);
-  margin-top: 85px;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  margin-top: 0;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .hero-header {
+  width: 100%;
   text-align: center;
   margin-bottom: var(--spacing-2xl);
   z-index: 10;
+  padding: 0 var(--spacing-lg);
+  box-sizing: border-box;
 }
 
 .hero-label {
@@ -593,12 +610,14 @@ a {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  margin: var(--spacing-2xl) 0;
+  margin: var(--spacing-2xl) auto;
   overflow: hidden;
+  padding: 0 var(--spacing-lg);
+  box-sizing: border-box;
 }
 
 .hero-grid {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -686,24 +705,42 @@ a {
 /* Hero Carousel (Swiper) */
 .hero-carousel {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: var(--spacing-3xl) auto;
-  padding: 0;
+  padding: 0 var(--spacing-lg);
   position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
 }
 
+.hero-carousel .swiper-container,
 .hero-carousel .swiper-wrapper {
-  padding: 0 var(--spacing-lg);
+  width: 100%;
+  overflow: visible;
+}
+
+.hero-carousel .swiper-slide {
+  width: 100%;
+  height: auto;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-carousel .swiper-slide img {
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center;
   border-radius: 16px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: block;
+  max-width: 100%;
 }
 
 .hero-carousel .swiper-slide:hover img {
@@ -748,14 +785,17 @@ a {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  z-index: 20;
   position: absolute;
+  cursor: pointer;
+  user-select: none;
 }
 
 .hero-carousel .swiper-button-prev {
@@ -833,8 +873,16 @@ a {
     padding-bottom: var(--spacing-2xl);
   }
 
+  .hero-header {
+    padding: 0 var(--spacing-md);
+  }
+
   .hero-title {
     font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  .hero-gallery {
+    padding: 0 var(--spacing-md);
   }
 
   .hero-grid {
@@ -848,15 +896,13 @@ a {
 
   .hero-carousel {
     margin: var(--spacing-2xl) auto;
-    padding: 0;
-  }
-
-  .hero-carousel .swiper-wrapper {
     padding: 0 var(--spacing-md);
+    max-width: calc(100% - 2 * var(--spacing-md));
   }
 
   .hero-carousel .swiper-slide img {
     aspect-ratio: 16 / 10;
+    border-radius: 12px;
   }
 
   .hero-carousel .swiper-button-next,
@@ -866,11 +912,11 @@ a {
   }
 
   .hero-carousel .swiper-button-prev {
-    left: 12px;
+    left: 10px;
   }
 
   .hero-carousel .swiper-button-next {
-    right: 12px;
+    right: 10px;
   }
 
   .hero-carousel .swiper-button-next::after,
@@ -895,6 +941,10 @@ a {
     padding-bottom: var(--spacing-lg);
   }
 
+  .hero-header {
+    padding: 0 var(--spacing-sm);
+  }
+
   .hero-title {
     font-size: 1.8rem;
   }
@@ -904,15 +954,15 @@ a {
     padding: 0 var(--spacing-sm);
   }
 
+  .hero-gallery {
+    margin: var(--spacing-xl) auto;
+    padding: 0 var(--spacing-sm);
+    width: 100%;
+  }
+
   .hero-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    width: 100%;
-    padding: 0;
-  }
-
-  .hero-gallery {
-    margin: var(--spacing-xl) 0;
     width: 100%;
   }
 
@@ -923,15 +973,13 @@ a {
 
   .hero-carousel {
     margin: var(--spacing-xl) auto;
-    padding: 0;
-  }
-
-  .hero-carousel .swiper-wrapper {
     padding: 0 var(--spacing-sm);
+    max-width: calc(100% - 2 * var(--spacing-sm));
   }
 
   .hero-carousel .swiper-slide img {
     aspect-ratio: 16 / 10;
+    border-radius: 12px;
   }
 
   .hero-carousel .swiper-button-next,
@@ -941,11 +989,11 @@ a {
   }
 
   .hero-carousel .swiper-button-prev {
-    left: 10px;
+    left: 8px;
   }
 
   .hero-carousel .swiper-button-next {
-    right: 10px;
+    right: 8px;
   }
 
   .hero-carousel .swiper-button-next::after,
@@ -969,17 +1017,29 @@ a {
 }
 
 @media (max-width: 480px) {
-  .hero-carousel {
-    padding: 0;
+  .hero {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
   }
 
-  .hero-carousel .swiper-wrapper {
-    padding: 0 var(--spacing-xs);
+  .hero-header {
+    padding: 0 1rem;
+  }
+
+  .hero-gallery {
+    margin: var(--spacing-md) auto;
+    padding: 0 1rem;
+  }
+
+  .hero-carousel {
+    padding: 0;
+    margin: var(--spacing-lg) 1rem;
+    max-width: calc(100% - 2rem);
   }
 
   .hero-carousel .swiper-slide img {
     aspect-ratio: 16 / 10;
-    border-radius: 12px;
+    border-radius: 10px;
   }
 
   .hero-carousel .swiper-button-next,
@@ -989,11 +1049,11 @@ a {
   }
 
   .hero-carousel .swiper-button-prev {
-    left: 8px;
+    left: 6px;
   }
 
   .hero-carousel .swiper-button-next {
-    right: 8px;
+    right: 6px;
   }
 
   .hero-carousel .swiper-button-next::after,
@@ -1027,15 +1087,6 @@ a {
     font-size: 0.7rem;
     letter-spacing: 1px;
     padding-bottom: 2rem;
-  }
-
-  .hero-title {
-    font-size: 1.5rem;
-  }
-
-  .hero-label {
-    font-size: 0.7rem;
-    letter-spacing: 1px;
   }
 
   .hero-subtitle {
