@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // The new design doesn't use a preloader element
 
   // Navigation scroll effect with RequestAnimationFrame for smooth performance
-  const navbar = document.getElementById('main-header');
+  const navbar = document.getElementById('main-navbar') || document.querySelector('.navbar');
   if (navbar) {
     let ticking = false;
     window.addEventListener('scroll', () => {
