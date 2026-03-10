@@ -75,6 +75,12 @@ html {
   scroll-padding-top: 110px;
 }
 
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 0;
+  }
+}
+
 body {
   font-family: var(--font-tertiary);
   color: var(--color-dark);
@@ -583,10 +589,10 @@ a {
 
 @media (max-width: 768px) {
   .navbar {
-    padding: var(--spacing-sm) 0;
+    padding: 0.5rem 0;
     background: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border-bottom: 1px solid rgba(212, 165, 116, 0.1);
     box-shadow: none;
     position: fixed;
@@ -594,24 +600,24 @@ a {
 
   .navbar.scrolled {
     background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
   .navbar-content {
-    padding: var(--spacing-sm) 0;
+    padding: 0.5rem 0;
   }
 
   .logo-title {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: rgba(255, 255, 255, 0.95) !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
   }
 
   .logo-tagline {
-    font-size: 0.6rem;
-    letter-spacing: 1.5px;
+    font-size: 0.5rem;
+    letter-spacing: 1.2px;
     color: rgba(255, 255, 255, 0.75) !important;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
   }
@@ -724,7 +730,7 @@ a {
 .hero {
   width: 100%;
   position: relative;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1121,7 +1127,7 @@ a {
 
 @media (max-width: 1024px) {
   .hero {
-    padding-top: var(--spacing-2xl);
+    padding-top: 0;
     padding-bottom: var(--spacing-2xl);
   }
 
@@ -1189,13 +1195,14 @@ a {
 
 @media (max-width: 768px) {
   .hero {
-    height: 100vh;
+    height: 100dvh;
     padding: 0;
   }
 
   .hero-header {
     padding: 0 var(--spacing-md);
     width: 100%;
+    display: none;
   }
 
   .hero-title {
@@ -1209,6 +1216,16 @@ a {
 
   .hero-scroll {
     font-size: 0.85rem;
+    display: none;
+  }
+
+  .hero-carousel {
+    height: 100dvh;
+  }
+
+  .hero-carousel .swiper-slide img {
+    height: 100dvh;
+    object-fit: cover;
   }
 
   .hero-carousel .swiper-button-next,
