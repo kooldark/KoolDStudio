@@ -1498,22 +1498,6 @@
           </div>
         </div>
 
-        <!-- CASUAL OUTFIT -->
-        <div class="option-group">
-          <div class="option-label"><i class="fas fa-vest-patches"></i> Trang Phục Tự Do</div>
-          <div class="option-items">
-            <label class="option-item">
-              <input type="checkbox" name="studio-casual" value="casual" data-price="0">
-              <span class="option-text">Chụp với trang phục tự chọn</span>
-              <span class="option-price">Cơ bản</span>
-            </label>
-            <label class="option-item">
-              <input type="checkbox" name="studio-casual-2" value="casual-2" data-price="500">
-              <span class="option-text">Thêm 01 bộ trang phục khác</span>
-              <span class="option-price">+500k</span>
-            </label>
-          </div>
-        </div>
 
         <!-- RETOUCHING -->
         <div class="option-group">
@@ -1634,15 +1618,13 @@
         </div>
 
         <!-- PRINTS -->
-        <div class="option-group">
-          <div class="option-label"><i class="fas fa-image"></i> Ảnh Phóng Lớn</div>
-          <div class="option-items">
-            <label class="option-item">
-              <input type="checkbox" name="family-prints" value="prints" data-price="800">
-              <span class="option-text">01 ảnh gỗ pha lê 60x90cm</span>
-              <span class="option-price">+800k</span>
-            </label>
+        <div class="slider-group" style="grid-column: 1">
+          <div class="slider-label">
+            <span><i class="fas fa-image"></i> Ảnh Phóng Lớn</span>
+            <span class="slider-value" id="family-prints-count">0</span>
           </div>
+          <input type="range" id="family-prints-slider" min="0" max="5" value="0" data-price="800">
+          <p class="slider-hint" id="family-prints-hint">Chọn số ảnh phóng lớn (60x90cm)</p>
         </div>
       </div>
 
@@ -1669,7 +1651,7 @@
     <div class="calculator-section">
       <div class="calculator-header">
         <h2 class="calculator-title">Dịch Vụ Trang Điểm Cô Dâu</h2>
-        <p class="calculator-subtitle">Tôn vinh vẻ đẹp tự nhiên của bạn</p>
+        <p class="calculator-subtitle">Giá tham khảo từ 1.500k – liên hệ Makeup Artist để báo giá chi tiết theo từng cô dâu</p>
       </div>
 
       <div class="options-grid">
@@ -1695,22 +1677,6 @@
           </div>
         </div>
 
-        <!-- HAIR -->
-        <div class="option-group">
-          <div class="option-label"><i class="fas fa-spa"></i> Làm Tóc</div>
-          <div class="option-items">
-            <label class="option-item">
-              <input type="radio" name="makeup-hair" value="none" data-price="0" checked>
-              <span class="option-text">Hiệp màu trình chỉnh sửa</span>
-              <span class="option-price">Cơ bản</span>
-            </label>
-            <label class="option-item">
-              <input type="radio" name="makeup-hair" value="style" data-price="300">
-              <span class="option-text">Tạo kiểu tóc chuyên nghiệp</span>
-              <span class="option-price">+300k</span>
-            </label>
-          </div>
-        </div>
 
         <!-- TOUCH UP -->
         <div class="option-group">
@@ -1727,9 +1693,9 @@
 
       <!-- SUMMARY -->
       <div class="calculator-summary">
-        <div class="summary-label">Tổng Giá Dự Kiến</div>
+        <div class="summary-label">Giá tham khảo</div>
         <div class="summary-price" id="makeup-price">1.500k</div>
-        <div class="summary-description">Mỹ phẩm chính hãng, an toàn cho da & bền suốt ngày</div>
+        <div class="summary-description">Giá cơ bản từ 1.500k; báo giá thực tế phụ thuộc vào nhu cầu & đặc điểm mỗi cô dâu. Vui lòng liên hệ Makeup Artist để được tư vấn chính xác.</div>
         <div class="summary-items" id="makeup-items"></div>
         <div class="calculator-cta">
           <a href="https://zalo.me/0379031662" class="btn btn-primary">

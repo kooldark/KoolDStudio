@@ -114,17 +114,18 @@ function updateFamilyPrice() {
   const album = document.querySelector('input[name="family-album"]:checked');
   if (album) familyPrice += parseInt(album.dataset.price) || 0;
   
-  // Prints
-  const prints = document.querySelector('input[name="family-prints"]:checked');
-  if (prints) familyPrice += parseInt(prints.dataset.price) || 0;
+  // Prints (số lượng ảnh phóng lớn)
+  const printsCount = parseInt(document.getElementById('family-prints-slider').value) || 0;
+  const printUnitPrice = parseInt(document.getElementById('family-prints-slider').dataset.price) || 0;
+  familyPrice += printsCount * printUnitPrice;
   
   // Update display
   document.getElementById('family-price').textContent = formatPrice(familyPrice);
-  updateFamilySliderHints(members, makeup);
-  updateFamilyItems(members, makeup);
+  updateFamilySliderHints(members, makeup, printsCount);
+  updateFamilyItems(members, makeup, printsCount);
 }
 
-function updateFamilySliderHints(members, makeup) {
+function updateFamilySliderHints(members, makeup, printsCount) {
   const memberHints = {
     1: 'Cặp đôi hoặc 1 người',
     2: 'Đôi vợ chồng',
@@ -153,9 +154,15 @@ function updateFamilySliderHints(members, makeup) {
   
   document.getElementById('family-makeup-hint').textContent = makeupHints[makeup] || makeupHints[1];
   document.getElementById('family-makeup').textContent = makeup;
+  
+  document.getElementById('family-prints-hint').textContent =
+    printsCount === 0
+      ? 'Không in ảnh phóng lớn'
+      : `${printsCount} ảnh phóng lớn (60x90cm)`;
+  document.getElementById('family-prints-count').textContent = printsCount;
 }
 
-function updateFamilyItems(members, makeup) {
+function updateFamilyItems(members, makeup, printsCount) {
   const items = [];
   
   if (members !== 3) {
@@ -169,8 +176,9 @@ function updateFamilyItems(members, makeup) {
   const hasAlbum = document.querySelector('input[name="family-album"]:checked');
   if (hasAlbum) items.push('Album Photobook');
   
-  const hasPrints = document.querySelector('input[name="family-prints"]:checked');
-  if (hasPrints) items.push('Ảnh gỗ pha lê 60x90cm');
+  if (printsCount > 0) {
+    items.push(`${printsCount} ảnh gỗ pha lê 60x90cm`);
+  }
   
   const itemsHtml = items.map(item => `<div class="summary-item">${item}</div>`).join('');
   document.getElementById('family-items').innerHTML = itemsHtml;
@@ -179,6 +187,7 @@ function updateFamilyItems(members, makeup) {
 // Add event listeners for family inputs
 document.getElementById('family-members-slider').addEventListener('input', updateFamilyPrice);
 document.getElementById('family-makeup-slider').addEventListener('input', updateFamilyPrice);
+document.getElementById('family-prints-slider').addEventListener('input', updateFamilyPrice);
 document.querySelectorAll('input[name*="family"]').forEach(input => {
   if (!input.id.includes('slider')) {
     input.addEventListener('change', updateFamilyPrice);
@@ -192,21 +201,10 @@ const makeupBasePrice = 1500;
 let makeupPrice = makeupBasePrice;
 
 function updateMakeupPrice() {
+  // Giá tham khảo cố định
   makeupPrice = makeupBasePrice;
-  
-  // Type
-  const type = document.querySelector('input[name="makeup-type"]:checked');
-  if (type) makeupPrice = parseInt(type.dataset.price) || 1500;
-  
-  // Hair
-  const hair = document.querySelector('input[name="makeup-hair"]:checked');
-  if (hair && hair.value !== 'none') makeupPrice += parseInt(hair.dataset.price) || 0;
-  
-  // Touch up
-  const touchup = document.querySelector('input[name="makeup-touchup"]:checked');
-  if (touchup) makeupPrice += parseInt(touchup.dataset.price) || 0;
-  
-  // Update display
+
+  // Update display (giữ cố định, hãy liên hệ để có báo giá chính xác)
   document.getElementById('makeup-price').textContent = formatPrice(makeupPrice);
   updateMakeupItems();
 }
@@ -218,11 +216,6 @@ function updateMakeupItems() {
   if (type) {
     const text = type.parentElement.querySelector('.option-text').textContent;
     items.push(text.split(' - ')[0]);
-  }
-  
-  const hair = document.querySelector('input[name="makeup-hair"]:checked');
-  if (hair && hair.value !== 'none') {
-    items.push('Tạo kiểu tóc');
   }
   
   const touchup = document.querySelector('input[name="makeup-touchup"]:checked');
