@@ -29,13 +29,6 @@ function updateStudioPrice() {
   const outfit = document.querySelector('input[name="studio-outfit"]:checked');
   if (outfit) studioPrice += parseInt(outfit.dataset.price) || 0;
   
-  // Casual outfit
-  const casual1 = document.querySelector('input[name="studio-casual"]:checked');
-  if (casual1) studioPrice += parseInt(casual1.dataset.price) || 0;
-  
-  const casual2 = document.querySelector('input[name="studio-casual-2"]:checked');
-  if (casual2) studioPrice += parseInt(casual2.dataset.price) || 0;
-  
   // Retouch
   const retouch = document.querySelector('input[name="studio-retouch"]:checked');
   if (retouch) studioPrice += parseInt(retouch.dataset.price) || 0;
@@ -218,9 +211,6 @@ function updateMakeupItems() {
     items.push(text.split(' - ')[0]);
   }
   
-  const touchup = document.querySelector('input[name="makeup-touchup"]:checked');
-  if (touchup) items.push('Touch up trong tiệc');
-  
   const itemsHtml = items.map(item => `<div class="summary-item">${item}</div>`).join('');
   document.getElementById('makeup-items').innerHTML = itemsHtml;
 }
@@ -296,6 +286,21 @@ function formatPrice(price) {
   }
   return price.toLocaleString('vi-VN') + ' ₫';
 }
+
+// Update selected classes for visual feedback
+function updateSelectedClasses() {
+  // Remove selected class from all option items
+  document.querySelectorAll('.option-item').forEach(item => item.classList.remove('selected'));
+  
+  // Add selected class to checked inputs' parents
+  document.querySelectorAll('input:checked').forEach(input => {
+    input.closest('.option-item').classList.add('selected');
+  });
+}
+
+// Call updateSelectedClasses after any change
+document.addEventListener('change', updateSelectedClasses);
+updateSelectedClasses();
 
 // ===== SAVE BOOKING DETAILS TO LOCALSTORAGE =====
 function saveBookingDetails(packageName, price, details, packageType) {

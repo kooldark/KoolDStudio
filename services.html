@@ -222,17 +222,17 @@
 
     .tab-content {
       display: none;
-      animation: fadeIn 0.4s ease;
+      animation: tabFadeIn 0.4s ease;
     }
 
     .tab-content.active {
       display: block;
     }
 
-    @keyframes fadeIn {
+    @keyframes tabFadeIn {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
@@ -310,10 +310,19 @@
       border-radius: 8px;
       cursor: pointer;
       transition: var(--transition);
+      border: 2px solid transparent;
     }
 
     .option-item:hover {
       background: var(--color-white);
+      border-color: var(--color-primary);
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);
+    }
+
+    .option-item.selected {
+      background: var(--color-light-cream);
+      border-color: var(--color-primary);
     }
 
     .option-item input[type="checkbox"],
@@ -441,6 +450,14 @@
       font-weight: 700;
       line-height: 1;
       margin-bottom: 8px;
+      transition: all 0.3s ease;
+      animation: priceUpdate 0.5s ease;
+    }
+
+    @keyframes priceUpdate {
+      0% { opacity: 0; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     .summary-description {
@@ -1471,7 +1488,7 @@
   <div class="tab-content active" id="studio-content" data-aos="fade-up">
     <div class="calculator-section">
       <div class="calculator-header">
-        <h2 class="calculator-title">Album Ảnh Cưới Studio</h2>
+        <h2 class="calculator-title">Chụp Ảnh Cưới - Pre Wedding</h2>
         <p class="calculator-subtitle">Xây dựng gói chụp ảnh cưới hoàn hảo của bạn</p>
       </div>
 
@@ -1661,34 +1678,22 @@
           <div class="option-items">
             <label class="option-item">
               <input type="radio" name="makeup-type" value="base" data-price="1500" checked>
-              <span class="option-text">Gói Cơ Bản - Tự Nhiên</span>
+              <span class="option-text">Tự Nhiên</span>
               <span class="option-price">1.500k</span>
             </label>
             <label class="option-item">
               <input type="radio" name="makeup-type" value="premium" data-price="2000">
-              <span class="option-text">Gói Premium - Sang Trọng</span>
+              <span class="option-text">Nổi Bật</span>
               <span class="option-price">2.000k</span>
             </label>
             <label class="option-item">
               <input type="radio" name="makeup-type" value="luxury" data-price="3000">
-              <span class="option-text">Gói Luxury - Hoàn Hảo</span>
+              <span class="option-text">Hoàn Hảo</span>
               <span class="option-price">3.000k</span>
             </label>
           </div>
         </div>
 
-
-        <!-- TOUCH UP -->
-        <div class="option-group">
-          <div class="option-label"><i class="fas fa-star"></i> Dịch Vụ Thêm</div>
-          <div class="option-items">
-            <label class="option-item">
-              <input type="checkbox" name="makeup-touchup" value="touchup" data-price="500">
-              <span class="option-text">Touch up trong suốt ngày tiệc</span>
-              <span class="option-price">+500k</span>
-            </label>
-          </div>
-        </div>
       </div>
 
       <!-- SUMMARY -->
