@@ -6,6 +6,7 @@ let currentSubFont = 'Montserrat';
 let favorites = JSON.parse(localStorage.getItem('watermarkFavorites')) || [];
 let currentBgImage = null;
 let currentSize = 100;
+let currentOpacity = 100;
 let allStyles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
 let freeStyles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 let proStyles = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
@@ -164,7 +165,7 @@ function updatePreview() {
     const l1 = document.getElementById('line1Input')?.value || '';
     const l2 = document.getElementById('line2Input')?.value || '';
     const l3 = document.getElementById('line3Input')?.value || '';
-    const opacity = 1; // Always 100% opacity
+    const opacity = currentOpacity / 100;
 
     const template = watermarkTemplates[styleId];
     if (!template) return;
@@ -295,7 +296,7 @@ async function downloadWatermark() {
         align-items: center;
         justify-content: center;
         padding: 40px;
-        opacity: 1;
+        opacity: ${currentOpacity / 100};
     `;
     
     tempContainer.innerHTML = template.html(l1, l2, l3, currentColor, currentMainFont, currentSecondaryColor);
@@ -330,7 +331,7 @@ async function downloadWatermark() {
 
         const canvas = await html2canvas(tempContainer, { 
             backgroundColor: null, 
-            scale: 3, 
+            scale: 4, 
             useCORS: true, 
             logging: false
         });
@@ -794,6 +795,17 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSize = parseInt(e.target.value);
             const sizeValue = document.getElementById('sizeValue');
             if (sizeValue) sizeValue.textContent = e.target.value + '%';
+            updatePreview();
+        });
+    }
+
+    // Opacity control
+    const opacitySlider = document.getElementById('opacitySlider');
+    if (opacitySlider) {
+        opacitySlider.addEventListener('input', (e) => {
+            currentOpacity = parseInt(e.target.value);
+            const opacityValue = document.getElementById('opacityValue');
+            if (opacityValue) opacityValue.textContent = e.target.value + '%';
             updatePreview();
         });
     }

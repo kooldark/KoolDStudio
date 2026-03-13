@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Signature Generator - Kool D. Studio</title>
+    <meta name="description" content="Tạo chữ ký và watermark chuyên nghiệp với nhiều mẫu thiết kế tùy chỉnh">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Raleway:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Lato:wght@400;700&family=Sora:wght@400;600;700&family=Merriweather:wght@400;700&family=Dancing+Script:wght@400;700&family=Pacifico&family=Satisfy&family=Great+Vibes&family=Tangerine:wght@400;700&family=Allura&family=Alex+Brush&family=Sacramento&family=Caveat:wght@400;700&family=Indie+Flower&family=Patrick+Hand&family=Amatic+SC:wght@400;700&family=Comforter:wght@400;700&family=Quicksand:wght@400;600;700&family=Nunito:wght@400;600;700&family=Fredoka:wght@400;600&family=Oswald:wght@400;600;700&family=Abril+Fatface&family=Source+Sans+Pro:wght@400;600;700&family=Unbounded:wght@400;600;700&family=Inter:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/home-elegant.css">
+    <link rel="stylesheet" href="assets/css/signature.css">
+    <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="assets/js/modal.js"></script>
+</head>
+<body>
+    <!-- Header Template Container -->
+    <div id="header-container"></div>
+
+    <div class="page-title">
+        <h1>Signature Generator</h1>
+        <p>Tạo chữ ký và watermark chuyên nghiệp với nhiều tùy chọn thiết kế</p>
+    </div>
+
+    <section class="editor-section">
+        <div class="editor-container">
+            <div class="editor-panel">
+                <div class="form-section">
+                    <label class="section-label">� Mẫu thiết kế</label>
+                    <select id="styleSelect" class="style-select"></select>
+                </div>
+
+                <div class="form-section">
+                    <label class="section-label">📝 Văn bản</label>
+                    <div class="text-grid">
+                        <input type="text" id="line1Input" value="Kool D." placeholder="Dòng chính">
+                        <input type="text" id="line2Input" value="Studio" placeholder="Dòng phụ">
+                        <input type="text" id="line3Input" value="2025" placeholder="Dòng cuối">
+                    </div>
+                </div>
+
+                <div class="action-buttons minimal">
+                    <button class="btn btn-secondary" id="shareBtn">🔗 Chia sẻ</button>
+                    <button class="btn btn-primary" id="downloadBtn">📥 Tải xuống</button>
+                </div>
+            </div>
+
+            <div class="preview-panel">
+                <div id="signaturePreview"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="gallery-title">
+                <h2>20 Mẫu Thiết Kế Sáng Tạo</h2>
+                <p>Chọn mẫu yêu thích của bạn</p>
+            </div>
+            <div class="signature-container" id="galleryContainer"></div>
+        </div>
+    </section>
+
+    <script src="assets/js/signature-styles.js"></script>
+    <script src="assets/js/signature-data.js"></script>
+    <script src="assets/js/contact-loader.js"></script>
+    <script src="assets/js/load-template.js"></script>
+    <script src="assets/js/signature.js"></script>
+    <script>
+        window.showAlert = (message) => {
+            modal.info(message, 'Thông báo');
+        };
+    </script>
+
+    <!-- Footer Template Container -->
+    <div id="footer-container"></div>
+</body>
+</html>
