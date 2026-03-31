@@ -1,3 +1,17 @@
+// ===== VIEWPORT HEIGHT VARIABLE FOR iOS SAFARI FIX =====
+// Set CSS variable for proper 100vh/100dvh viewport heights
+function setViewportHeight() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Set on page load and on resize
+setViewportHeight();
+window.addEventListener('resize', setViewportHeight);
+window.addEventListener('orientationchange', () => {
+  setTimeout(setViewportHeight, 100);
+});
+
 window.addEventListener('load', () => {
   // AOS Init with better easing
   if (typeof AOS !== 'undefined') {
