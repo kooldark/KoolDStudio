@@ -65,22 +65,6 @@
           "imageCount": 4
         },
         {
-          "id": "Ngân Bridal 2024",
-          "title": "Ngân Bridal 2024",
-          "description": "",
-          "path": "cuoi/Ngân Bridal 2024",
-          "coverImage": "01 (3).webp",
-          "images": [
-            "01 (3).webp",
-            "1 (1).webp",
-            "1 (2).webp",
-            "1 (4).webp",
-            "1 (5).webp",
-            "1 (6).webp"
-          ],
-          "imageCount": 6
-        },
-        {
           "id": "Bridal Studio Kool D. 2026",
           "title": "Bridal Studio Kool D. 2026",
           "description": "",
@@ -103,6 +87,63 @@
             "bridal Trinh (19).webp"
           ],
           "imageCount": 14
+        },
+        {
+          "id": "K & H",
+          "title": "K & H",
+          "description": "",
+          "path": "cuoi/K & H",
+          "coverImage": "0.JPEG",
+          "images": [
+            "0.JPEG",
+            "2022_05_13_13_54_IMG_3614.JPEG",
+            "2022_05_13_13_55_IMG_3566.JPEG",
+            "2022_05_13_13_56_IMG_3565.JPEG",
+            "2022_05_13_14_11_IMG_3567.JPEG",
+            "2022_05_13_14_25_IMG_3564.JPEG",
+            "2022_05_13_14_27_IMG_3563.JPEG",
+            "resized_2023_05_04_09_14_IMG_2905.JPG",
+            "resized_2023_05_04_09_14_IMG_2907.JPG",
+            "resized_2023_05_04_09_14_IMG_2908.JPG",
+            "resized_2023_05_04_09_14_IMG_2909.JPG"
+          ],
+          "imageCount": 11
+        },
+        {
+          "id": "Ngân Bridal 2024",
+          "title": "Ngân Bridal 2024",
+          "description": "",
+          "path": "cuoi/Ngân Bridal 2024",
+          "coverImage": "01 (3).webp",
+          "images": [
+            "01 (3).webp",
+            "1 (1).webp",
+            "1 (2).webp",
+            "1 (4).webp",
+            "1 (5).webp",
+            "1 (6).webp"
+          ],
+          "imageCount": 6
+        },
+        {
+          "id": "T & T",
+          "title": "T & T",
+          "description": "",
+          "path": "cuoi/T & T",
+          "coverImage": "DAK_2001.webp",
+          "images": [
+            "DAK_2001.webp",
+            "DAK_2024.webp",
+            "DAK_2028.webp",
+            "DAK_2173.webp",
+            "DAK_2211.webp",
+            "DAK_2310.webp",
+            "DAK_2328.webp",
+            "DAK_2335.webp",
+            "DAK_2352.webp",
+            "DAK_2399.webp"
+          ],
+          "imageCount": 10
         },
         {
           "id": "Vương & Linh",
@@ -150,7 +191,7 @@
           "imageCount": 16
         }
       ],
-      "albumCount": 6
+      "albumCount": 8
     },
     {
       "id": "gia-dinh",
@@ -359,6 +400,25 @@
           "imageCount": 5
         },
         {
+          "id": "Ngân",
+          "title": "Ngân",
+          "description": "",
+          "path": "makeup/Ngân",
+          "coverImage": "0.JPEG",
+          "images": [
+            "0.JPEG",
+            "2022_01_06_18_31_IMG_0128.JPEG",
+            "2022_01_06_18_32_IMG_1610.JPEG",
+            "2022_01_06_18_34_IMG_0319.JPG",
+            "2022_01_06_18_38_IMG_0127.JPG",
+            "2022_01_06_18_38_IMG_0318.JPEG",
+            "_D__4817.jpg",
+            "_D__5193.jpg",
+            "_D__5230.jpg"
+          ],
+          "imageCount": 9
+        },
+        {
           "id": "Trang điểm với hoa lá",
           "title": "Trang điểm với hoa lá",
           "description": "",
@@ -401,7 +461,7 @@
           "imageCount": 4
         }
       ],
-      "albumCount": 8
+      "albumCount": 9
     },
     {
       "id": "phong-su",
@@ -518,6 +578,22 @@
           "imageCount": 7
         },
         {
+          "id": "Ngân x BeautyFlower",
+          "title": "Ngân x BeautyFlower",
+          "description": "",
+          "path": "portrait/Ngân x BeautyFlower",
+          "coverImage": "0resized_2023_03_27_08_54_IMG_1840.JPG",
+          "images": [
+            "0resized_2023_03_27_08_54_IMG_1840.JPG",
+            "resized_2023_03_29_19_07_IMG_1841.JPG",
+            "resized_2023_03_29_19_07_IMG_5144.JPEG",
+            "resized_2023_05_22_12_13_IMG_3488.JPG",
+            "resized_2023_07_14_16_01_IMG_5564.JPG",
+            "resized_2023_07_14_16_02_IMG_5568.JPG"
+          ],
+          "imageCount": 6
+        },
+        {
           "id": "PROFILE PORTRAIT",
           "title": "PROFILE PORTRAIT",
           "description": "",
@@ -555,7 +631,7 @@
           "imageCount": 8
         }
       ],
-      "albumCount": 4
+      "albumCount": 5
     },
     {
       "id": "pro",
