@@ -69,7 +69,7 @@
         }[category] || category;
         
         // Fetch images list to get real file names
-        fetch('../assets/img/portfolio/images-list.json?t=' + Date.now())
+        fetch('assets/img/portfolio/images-list.json?t=' + Date.now())
           .then(res => res.json())
           .then(data => {
             const categoryData = data[category];
