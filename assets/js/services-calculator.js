@@ -279,12 +279,14 @@ updateEventPrice();
 
 // ===== UTILITY FUNCTIONS =====
 function formatPrice(price) {
-  if (price >= 1000000) {
-    return (price / 1000000).toFixed(1).replace(/\.0$/, '') + 'M ₫';
-  } else if (price >= 1000) {
-    return (price / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+  // price is in thousands (k), so >= 1000 means >= 1 million
+  if (price >= 1000) {
+    const millions = price / 1000;
+    let formatted = millions.toFixed(2).replace(/\.?0+$/, '');
+    return formatted.replace('.', ',') + ' triệu';
+  } else {
+    return price + 'k';
   }
-  return price.toLocaleString('vi-VN') + ' ₫';
 }
 
 // Update selected classes for visual feedback

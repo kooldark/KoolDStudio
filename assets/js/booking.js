@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     packages = [
       { id: 'studio', name: 'Ảnh Cưới Studio', price: '4-8 triệu' },
       { id: 'family', name: 'Gia Đình', price: '2-4 triệu' },
-      { id: 'event', name: 'Sự Kiện', price: '2.5-5 triệu' },
+      { id: 'event', name: 'Sự Kiện', price: '2,5-5 triệu' },
       { id: 'custom', name: 'Gói Tùy Chỉnh', price: 'Liên hệ' }
     ];
   }

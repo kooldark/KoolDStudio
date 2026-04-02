@@ -552,7 +552,7 @@
 
           <div class="price-display">
             <span class="price-label">Giá từ</span>
-            <div class="price-value" id="price-t">1tr760</div>
+            <div class="price-value" id="price-t">1,76 triệu</div>
           </div>
 
           <ul class="features">
@@ -592,7 +592,7 @@
 
           <div class="price-display">
             <span class="price-label">Giá từ</span>
-            <div class="price-value" id="price-p">1.110.000đ</div>
+            <div class="price-value" id="price-p">1,11 triệu</div>
           </div>
 
           <ul class="features">
@@ -660,11 +660,11 @@
           <div class="album-prices">
             <div class="album-price-item">
               <span class="album-price-label">20 Trang</span>
-              <div class="album-price-amount" id="album-p20">1tr760</div>
+              <div class="album-price-amount" id="album-p20">1,76 triệu</div>
             </div>
             <div class="album-price-item">
               <span class="album-price-label">30 Trang</span>
-              <div class="album-price-amount" id="album-p30">2tr90</div>
+              <div class="album-price-amount" id="album-p30">2,9 triệu</div>
             </div>
             <div class="album-price-item">
               <span class="album-price-label">Thêm 1 Trang</span>
@@ -673,7 +673,7 @@
           </div>
 
           <div class="album-note">
-            <strong>Ưu đãi:</strong> Giảm 400.000đ cho album thứ 2 trở đi (sao chép / in lại từ file thiết kế có sẵn)
+            <strong>Ưu đãi:</strong> Giảm 400k cho album thứ 2 trở đi (sao chép / in lại từ file thiết kế có sẵn)
           </div>
         </div>
       </div>
@@ -711,9 +711,9 @@
     document.addEventListener('DOMContentLoaded', function() {
       function formatPrice(price) {
         if (price >= 1000000) {
-          const millions = Math.floor(price / 1000000);
-          const thousands = Math.round((price % 1000000) / 1000);
-          return thousands > 0 ? `${millions}tr${String(thousands).padStart(3, '0')}` : `${millions}tr`;
+          const millions = price / 1000000;
+          let formatted = millions.toFixed(2).replace(/\.?0+$/, '');
+          return formatted.replace('.', ',') + ' triệu';
         }
         if (price >= 1000) {
           return `${Math.round(price / 1000)}k`;
