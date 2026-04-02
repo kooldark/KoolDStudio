@@ -190,14 +190,19 @@ document.querySelectorAll('input[name*="family"]').forEach(input => {
 updateFamilyPrice();
 
 // ===== MAKEUP CALCULATOR =====
-const makeupBasePrice = 1500;
+const makeupBasePrice = 1800;
 let makeupPrice = makeupBasePrice;
 
 function updateMakeupPrice() {
-  // Giá tham khảo cố định
-  makeupPrice = makeupBasePrice;
+  // Lấy giá từ makeup-service option được chọn
+  const serviceOption = document.querySelector('input[name="makeup-service"]:checked');
+  if (serviceOption) {
+    makeupPrice = parseInt(serviceOption.dataset.price) || makeupBasePrice;
+  } else {
+    makeupPrice = makeupBasePrice;
+  }
 
-  // Update display (giữ cố định, hãy liên hệ để có báo giá chính xác)
+  // Update display
   document.getElementById('makeup-price').textContent = formatPrice(makeupPrice);
   updateMakeupItems();
 }
@@ -205,10 +210,10 @@ function updateMakeupPrice() {
 function updateMakeupItems() {
   const items = [];
   
-  const type = document.querySelector('input[name="makeup-type"]:checked');
-  if (type) {
-    const text = type.parentElement.querySelector('.option-text').textContent;
-    items.push(text.split(' - ')[0]);
+  const service = document.querySelector('input[name="makeup-service"]:checked');
+  if (service) {
+    const text = service.parentElement.querySelector('.option-text').textContent;
+    items.push(text);
   }
   
   const itemsHtml = items.map(item => `<div class="summary-item">${item}</div>`).join('');
