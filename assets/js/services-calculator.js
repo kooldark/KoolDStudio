@@ -29,6 +29,10 @@ function updateStudioPrice() {
   const outfit = document.querySelector('input[name="studio-outfit"]:checked');
   if (outfit) studioPrice += parseInt(outfit.dataset.price) || 0;
   
+  // Outdoor
+  const outdoor = document.querySelector('input[name="studio-outdoor"]:checked');
+  if (outdoor) studioPrice += parseInt(outdoor.dataset.price) || 0;
+  
   // Retouch
   const retouch = document.querySelector('input[name="studio-retouch"]:checked');
   if (retouch) studioPrice += parseInt(retouch.dataset.price) || 0;
@@ -58,6 +62,9 @@ function updateStudioItems() {
     const text = outfit.parentElement.querySelector('.option-text').textContent;
     items.push(text);
   }
+  
+  const outdoor = document.querySelector('input[name="studio-outdoor"]:checked');
+  if (outdoor) items.push('Chụp Ngoài Trời');
   
   const retouch = document.querySelector('input[name="studio-retouch"]:checked');
   if (retouch && retouch.value !== '12') {

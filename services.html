@@ -302,6 +302,151 @@
       gap: 12px;
     }
 
+    /* ===== PACKAGE HIGHLIGHTS ===== */
+    .package-highlights {
+      background: linear-gradient(135deg, #faf7f2 0%, #f5f3f0 100%);
+      border: 2px solid var(--color-primary);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 50px;
+    }
+
+    .highlights-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .highlights-title {
+      font-family: var(--font-secondary);
+      font-size: 1.5rem;
+      color: var(--color-darkgreen);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .highlights-price {
+      font-family: var(--font-primary);
+      font-size: 2.2rem;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 25px;
+    }
+
+    .highlight-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .highlight-icon {
+      font-size: 1.4rem;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .highlight-content h4 {
+      font-family: var(--font-secondary);
+      font-size: 0.95rem;
+      color: var(--color-darkgreen);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .highlight-content p {
+      font-family: var(--font-tertiary);
+      font-size: 0.9rem;
+      color: var(--color-gray);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    .highlights-divider {
+      height: 1px;
+      background: var(--color-border);
+      margin: 25px 0;
+    }
+
+    .highlight-addons {
+      text-align: center;
+    }
+
+    .addons-label {
+      font-family: var(--font-tertiary);
+      font-size: 0.95rem;
+      color: var(--color-gray);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .addons-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .addon-tag {
+      padding: 8px 16px;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      font-family: var(--font-tertiary);
+      font-size: 0.85rem;
+      color: var(--color-dark);
+      font-weight: 500;
+    }
+
+    .addon-tag i {
+      margin-right: 6px;
+      color: var(--color-primary);
+    }
+
+    @media (max-width: 768px) {
+      .package-highlights {
+        padding: 30px 20px;
+        margin-bottom: 40px;
+      }
+
+      .highlights-title {
+        font-size: 1.3rem;
+      }
+
+      .highlights-price {
+        font-size: 1.8rem;
+      }
+
+      .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .highlight-item {
+        gap: 10px;
+      }
+
+      .highlight-icon {
+        font-size: 1.2rem;
+      }
+
+      .highlight-content h4 {
+        font-size: 0.9rem;
+      }
+
+      .highlight-content p {
+        font-size: 0.85rem;
+      }
+    }
+
     .option-item {
       display: flex;
       align-items: center;
@@ -348,6 +493,16 @@
       font-size: 1rem;
       color: var(--color-primary);
       font-weight: 700;
+    }
+
+    .option-desc {
+      display: block;
+      font-family: var(--font-tertiary);
+      font-size: 0.85rem;
+      color: var(--color-gray);
+      font-weight: 400;
+      margin-top: 6px;
+      line-height: 1.4;
     }
 
     /* ===== SLIDERS ===== */
@@ -989,6 +1144,11 @@
         font-size: 0.95rem;
       }
 
+      .option-desc {
+        font-size: 0.8rem;
+        margin-top: 4px;
+      }
+
       .slider-group {
         padding: 18px;
       }
@@ -1285,6 +1445,11 @@
         font-size: 0.9rem;
       }
 
+      .option-desc {
+        font-size: 0.75rem;
+        margin-top: 3px;
+      }
+
       .slider-label {
         font-size: 1rem;
       }
@@ -1492,6 +1657,71 @@
         <p class="calculator-subtitle">Xây dựng gói chụp ảnh cưới hoàn hảo của bạn</p>
       </div>
 
+            <!-- WHAT'S INCLUDED -->
+      <div class="package-highlights">
+        <div class="highlights-header">
+          <h3 class="highlights-title">💝 Gói Cưới Studio</h3>
+          <div class="highlights-price">3,5 triệu</div>
+        </div>
+
+        <div class="highlights-grid">
+          <div class="highlight-item">
+            <div class="highlight-icon">💒</div>
+            <div class="highlight-content">
+              <h4>Chụp Studio Chuyên Nghiệp</h4>
+              <p>4-6 tiếng tại studio với ánh sáng chuẩn</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">✨</div>
+            <div class="highlight-content">
+              <h4>Makeup & Tóc</h4>
+              <p>Makeup toàn diện + kàn tóc chuyên nghiệp</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🖼️</div>
+            <div class="highlight-content">
+              <h4>12 Ảnh Chỉnh Sửa</h4>
+              <p>Chỉnh sửa chi tiết + tone color chuyên nghiệp</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">📸</div>
+            <div class="highlight-content">
+              <h4>02 Ảnh In 60x90cm</h4>
+              <p>In lệch trên chất liệu canvas/gỗ</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">💾</div>
+            <div class="highlight-content">
+              <h4>File Gốc 200+ Ảnh</h4>
+              <p>Toàn bộ file ảnh chưa chỉnh sửa</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">👔</div>
+            <div class="highlight-content">
+              <h4>02 Bộ Trang Phục</h4>
+              <p>02 Váy cưới + 02 Vest (cơ bản)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlights-divider"></div>
+
+        <div class="highlight-addons">
+          <span class="addons-label">✏️ Tùy Chỉnh Thêm</span>
+          <div class="addons-list">
+            <span class="addon-tag"><i class="fas fa-book"></i>Album +2tr</span>
+            <span class="addon-tag"><i class="fas fa-image"></i>Ảnh In +1tr</span>
+            <span class="addon-tag"><i class="fas fa-video"></i>Video +500k</span>
+            <span class="addon-tag"><i class="fas fa-shirt"></i>Trang Phục +500k</span>
+          </div>
+        </div>
+      </div>
+
       <div class="options-grid">
         <!-- OUTFIT -->
         <div class="option-group">
@@ -1510,6 +1740,18 @@
           </div>
         </div>
 
+        <!-- LOCATION -->
+        <div class="option-group">
+          <div class="option-label"><i class="fas fa-tree"></i> Địa Điểm Chụp</div>
+          <div class="option-items">
+            <label class="option-item">
+              <input type="checkbox" name="studio-outdoor" value="outdoor" data-price="2000">
+              <span class="option-text">Chụp Ngoài Trời</span>
+              <span class="option-desc">2h outdoor (vườn, công viên, v.v...)</span>
+              <span class="option-price">+2tr</span>
+            </label>
+          </div>
+        </div>
 
         <!-- RETOUCHING -->
         <div class="option-group">
@@ -1591,6 +1833,70 @@
         <p class="calculator-subtitle">Tùy chỉnh gói chụp theo kích cỡ gia đình của bạn</p>
       </div>
 
+            <!-- WHAT'S INCLUDED -->
+      <div class="package-highlights">
+        <div class="highlights-header">
+          <h3 class="highlights-title">👨‍👩‍👧‍👦 Khoảnh Khắc Gia Đình</h3>
+          <div class="highlights-price">1,5 triệu</div>
+        </div>
+
+        <div class="highlights-grid">
+          <div class="highlight-item">
+            <div class="highlight-icon">📸</div>
+            <div class="highlight-content">
+              <h4>Chụp Ngoài Trời/Studio</h4>
+              <p>Linh hoạt theo số lượng gia đình</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">✨</div>
+            <div class="highlight-content">
+              <h4>Makeup Miễn Phí</h4>
+              <p>Makeup cho 01 người – người khác tùy chọn</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🖼️</div>
+            <div class="highlight-content">
+              <h4>15 Ảnh Chỉnh Sửa</h4>
+              <p>Chỉnh sửa chi tiết + tone color</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">💾</div>
+            <div class="highlight-content">
+              <h4>File Gốc 100+ Ảnh</h4>
+              <p>Toàn bộ file ảnh chưa chỉnh sửa</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">👨‍👩‍👧</div>
+            <div class="highlight-content">
+              <h4>Linh Hoạt Theo Nhân Số</h4>
+              <p>Giá db: 3 người – Thêm người +300k/người</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">⏱️</div>
+            <div class="highlight-content">
+              <h4>Thời Gian Chụp</h4>
+              <p>2-3 tiếng tùy chọn lịch</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlights-divider"></div>
+
+        <div class="highlight-addons">
+          <span class="addons-label">✏️ Tùy Chỉnh Thêm</span>
+          <div class="addons-list">
+            <span class="addon-tag"><i class="fas fa-book"></i>Album +1.5tr</span>
+            <span class="addon-tag"><i class="fas fa-image"></i>Ảnh In +800k</span>
+            <span class="addon-tag"><i class="fas fa-wand-magic-sparkles"></i>Makeup +400k</span>
+          </div>
+        </div>
+      </div>
+
       <div class="options-grid">
         <!-- MEMBERS SLIDER -->
         <div class="slider-group" style="grid-column: 1">
@@ -1661,6 +1967,70 @@
         <p class="calculator-subtitle">Trang điểm & kàn tóc chuyên nghiệp, bền vững, tỏa sáng suốt ngày trọng đại</p>
       </div>
 
+            <!-- WHAT'S INCLUDED -->
+      <div class="package-highlights">
+        <div class="highlights-header">
+          <h3 class="highlights-title">✨ Dịch Vụ Trang Điểm Cô Dâu</h3>
+          <div class="highlights-price">1,8 triệu+</div>
+        </div>
+
+        <div class="highlights-grid">
+          <div class="highlight-item">
+            <div class="highlight-icon">💄</div>
+            <div class="highlight-content">
+              <h4>Makeup Toàn Diện</h4>
+              <p>Tư vấn tone, skincare, makeup chuyên nghiệp</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">💇</div>
+            <div class="highlight-content">
+              <h4>Tạo Kiểu Tóc</h4>
+              <p>Kàn tóc theo ý muốn, lạc quái nếu cần</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🎤</div>
+            <div class="highlight-content">
+              <h4>2 Tùy Chọn Phục Vụ</h4>
+              <p>Studio hoặc Tại Tư Gia theo lựa chọn</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">✋</div>
+            <div class="highlight-content">
+              <h4>Touch-up Ngày Tiệc</h4>
+              <p>Sửa makeup trong ngày cưới (+tùy thuộc)</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🎨</div>
+            <div class="highlight-content">
+              <h4>Tư Vấn Kiên</h4>
+              <p>Test makeup trước – đảm bảo hài lòng</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">⏰</div>
+            <div class="highlight-content">
+              <h4>Buổi Chụp Riêng</h4>
+              <p>30-60 phút makeup + Makeup Touch-up</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlights-divider"></div>
+
+        <div class="highlight-addons">
+          <span class="addons-label">✏️ Thông Tin Thêm</span>
+          <div class="addons-list">
+            <span class="addon-tag"><i class="fas fa-location-dot"></i>Địa điểm linh hoạt</span>
+            <span class="addon-tag"><i class="fas fa-users"></i>Tối đa 4 người</span>
+            <span class="addon-tag"><i class="fas fa-handshake"></i>Liên hệ tư vấn</span>
+          </div>
+        </div>
+      </div>
+
       <div class="options-grid">
         <div class="option-group" style="grid-column: 1 / -1;">
           <div class="option-label"><i class="fas fa-wand-magic-sparkles"></i> Chọn Dịch Vụ</div>
@@ -1705,6 +2075,70 @@
       <div class="calculator-header">
         <h2 class="calculator-title">Phóng Sự Ngày Trọn Vẹn</h2>
         <p class="calculator-subtitle">Bắt trọn mọi cảm xúc chân thật</p>
+      </div>
+
+            <!-- WHAT'S INCLUDED -->
+      <div class="package-highlights">
+        <div class="highlights-header">
+          <h3 class="highlights-title">🎥 Phóng Sự Ngày Trọn Vẹn</h3>
+          <div class="highlights-price">2,5 triệu+</div>
+        </div>
+
+        <div class="highlights-grid">
+          <div class="highlight-item">
+            <div class="highlight-icon">📸</div>
+            <div class="highlight-content">
+              <h4>50+ Ảnh Chỉnh Sửa</h4>
+              <p>Bắt trọn những khoảnh khắc đặc biệt</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🎬</div>
+            <div class="highlight-content">
+              <h4>Video 4K + Clip Hightlight</h4>
+              <p>Video toàn bộ sự kiện + video 5 phút</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">📖</div>
+            <div class="highlight-content">
+              <h4>Album Photobook</h4>
+              <p>30 trang album chất lượng cao</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">⏱️</div>
+            <div class="highlight-content">
+              <h4>Thời Gian Ghi Hình</h4>
+              <p>4h, 8h hoặc 12h tùy chọn</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">💾</div>
+            <div class="highlight-content">
+              <h4>File Gốc 200+ Ảnh</h4>
+              <p>Toàn bộ file ảnh & video chưa edit</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">✨</div>
+            <div class="highlight-content">
+              <h4>Chất Lượng Studio</h4>
+              <p>2 photographer chuyên nghiệp (4h+)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlights-divider"></div>
+
+        <div class="highlight-addons">
+          <span class="addons-label">✏️ Gói Thêm</span>
+          <div class="addons-list">
+            <span class="addon-tag"><i class="fas fa-drone"></i>Quay từ drone</span>
+            <span class="addon-tag"><i class="fas fa-film"></i>Video teaser</span>
+            <span class="addon-tag"><i class="fas fa-cd"></i>DVD/USB backup</span>
+          </div>
+        </div>
       </div>
 
       <div class="options-grid">
