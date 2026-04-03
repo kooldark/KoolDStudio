@@ -26,6 +26,9 @@
   <link rel="stylesheet" href="assets/css/home-elegant.css">
   <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
 
+  <!-- GLightbox -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
   <!-- Custom Styles for Vy Ny Page -->
   <style>
     :root {
@@ -68,13 +71,58 @@
       50% { transform: translateY(30px); }
     }
 
-    .vynym-hero-content {
-      max-width: 900px;
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .vynym-hero-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 2rem;
-      text-align: center;
+      align-items: center;
       position: relative;
       z-index: 2;
+    }
+
+    .vynym-hero-content {
+      text-align: left;
+    }
+
+    .vynym-hero-image {
+      position: relative;
+      height: 600px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      animation: slideInRight 1s ease-out;
+    }
+
+    .vynym-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .vynym-hero-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, transparent 50%);
+      pointer-events: none;
     }
 
     .vynym-hero-subtitle {
@@ -85,6 +133,7 @@
       color: var(--primary);
       margin-bottom: 1rem;
       font-weight: 500;
+      display: block;
     }
 
     .vynym-hero-title {
@@ -102,15 +151,15 @@
       color: var(--gray);
       margin-bottom: 3rem;
       font-weight: 400;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: none;
+      margin-left: 0;
+      margin-right: 0;
     }
 
     .vynym-hero-cta {
       display: flex;
       gap: 2rem;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
       margin-top: 3rem;
     }
@@ -651,7 +700,8 @@
     /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
       .vynym-about,
-      .vynym-why-container {
+      .vynym-why-container,
+      .vynym-hero-container {
         grid-template-columns: 1fr;
       }
 
@@ -659,13 +709,20 @@
         order: -1;
       }
 
+      .vynym-hero-image {
+        height: 400px;
+      }
+
       .vynym-hero-cta {
-        flex-direction: column;
-        gap: 1rem;
+        justify-content: flex-start;
+      }
+
+      .vynym-hero-content {
+        text-align: left;
       }
 
       .vynym-btn {
-        width: 100%;
+        width: auto;
       }
 
       .vynym-cta-buttons {
@@ -704,17 +761,23 @@
 
 <!-- ========== HERO SECTION ========== -->
 <section class="vynym-hero" data-aos="fade-up">
-  <div class="vynym-hero-content">
-    <span class="vynym-hero-subtitle">Make-Up Artist</span>
-    <h1 class="vynym-hero-title">Vy Ny</h1>
-    <p class="vynym-hero-tagline">Khai Phóng Vẻ Đẹp Tự Nhiên Thành Câu Chuyện Tinh Tế</p>
-    <div class="vynym-hero-cta">
-      <button class="vynym-btn vynym-btn-primary" onclick="document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})">
-        <i class="fas fa-calendar-check"></i> Đặt Lịch Tư Vấn
-      </button>
-      <button class="vynym-btn vynym-btn-secondary" onclick="document.getElementById('about-section').scrollIntoView({behavior: 'smooth'})">
-        Tìm Hiểu Thêm
-      </button>
+  <div class="vynym-hero-container">
+    <div class="vynym-hero-content">
+      <span class="vynym-hero-subtitle">Make-Up Artist</span>
+      <h1 class="vynym-hero-title">Vy Ny</h1>
+      <p class="vynym-hero-tagline">Khai Phóng Vẻ Đẹp Tự Nhiên Thành Câu Chuyện Tinh Tế</p>
+      <div class="vynym-hero-cta">
+        <button class="vynym-btn vynym-btn-primary" onclick="document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})">
+          <i class="fas fa-calendar-check"></i> Đặt Lịch Tư Vấn
+        </button>
+        <button class="vynym-btn vynym-btn-secondary" onclick="document.getElementById('about-section').scrollIntoView({behavior: 'smooth'})">
+          Tìm Hiểu Thêm
+        </button>
+      </div>
+    </div>
+
+    <div class="vynym-hero-image" data-aos="fade-left">
+      <img src="assets/img/portfolio/makeup/Bridal makeup/0.webp" alt="Makeup Cô Dâu - Vy Ny">
     </div>
   </div>
 </section>
@@ -843,54 +906,216 @@
   </div>
 </section>
 
+<!-- ========== BRIDAL HAIRSTYLES SECTION ========== -->
+<section class="vynym-section" id="hairstyles-section" data-aos="fade-up">
+  <h2 class="vynym-section-title">Kiểu Tóc Cô Dâu - Bộ Sưu Tập Toàn Diện</h2>
+  <p class="vynym-section-desc">28 kiểu tóc tinh tế dành cho cô dâu với lời tư vấn chi tiết từ Vy Ny</p>
+
+  <div class="vynym-gallery-grid" style="margin-top: 3rem;" class="glightbox-gallery">
+    <a href="assets/img/bridal-hairstyles/1.webp" class="vynym-gallery-item glightbox" data-aos="fade-up">
+      <img src="assets/img/bridal-hairstyles/1.webp" alt="Kiểu tóc cô dâu 1" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 1</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/2.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="50">
+      <img src="assets/img/bridal-hairstyles/2.webp" alt="Kiểu tóc cô dâu 2" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 2</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/3.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="100">
+      <img src="assets/img/bridal-hairstyles/3.webp" alt="Kiểu tóc cô dâu 3" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 3</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/4.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="150">
+      <img src="assets/img/bridal-hairstyles/4.webp" alt="Kiểu tóc cô dâu 4" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 4</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/5.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="200">
+      <img src="assets/img/bridal-hairstyles/5.webp" alt="Kiểu tóc cô dâu 5" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 5</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/6.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="250">
+      <img src="assets/img/bridal-hairstyles/6.webp" alt="Kiểu tóc cô dâu 6" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 6</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/7.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="300">
+      <img src="assets/img/bridal-hairstyles/7.webp" alt="Kiểu tóc cô dâu 7" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 7</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/8.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="350">
+      <img src="assets/img/bridal-hairstyles/8.webp" alt="Kiểu tóc cô dâu 8" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 8</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/9.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="400">
+      <img src="assets/img/bridal-hairstyles/9.webp" alt="Kiểu tóc cô dâu 9" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 9</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/10.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="450">
+      <img src="assets/img/bridal-hairstyles/10.webp" alt="Kiểu tóc cô dâu 10" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 10</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/11.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="500">
+      <img src="assets/img/bridal-hairstyles/11.webp" alt="Kiểu tóc cô dâu 11" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 11</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/12.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="550">
+      <img src="assets/img/bridal-hairstyles/12.webp" alt="Kiểu tóc cô dâu 12" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 12</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/13.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="600">
+      <img src="assets/img/bridal-hairstyles/13.webp" alt="Kiểu tóc cô dâu 13" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 13</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/14.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="650">
+      <img src="assets/img/bridal-hairstyles/14.webp" alt="Kiểu tóc cô dâu 14" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 14</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/15.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="700">
+      <img src="assets/img/bridal-hairstyles/15.webp" alt="Kiểu tóc cô dâu 15" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 15</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/16.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="750">
+      <img src="assets/img/bridal-hairstyles/16.webp" alt="Kiểu tóc cô dâu 16" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 16</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/17.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="800">
+      <img src="assets/img/bridal-hairstyles/17.webp" alt="Kiểu tóc cô dâu 17" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 17</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/18.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="850">
+      <img src="assets/img/bridal-hairstyles/18.webp" alt="Kiểu tóc cô dâu 18" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 18</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/19.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="900">
+      <img src="assets/img/bridal-hairstyles/19.webp" alt="Kiểu tóc cô dâu 19" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 19</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/20.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="950">
+      <img src="assets/img/bridal-hairstyles/20.webp" alt="Kiểu tóc cô dâu 20" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 20</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/21.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="1000">
+      <img src="assets/img/bridal-hairstyles/21.webp" alt="Kiểu tóc cô dâu 21" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 21</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/22.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="1050">
+      <img src="assets/img/bridal-hairstyles/22.webp" alt="Kiểu tóc cô dâu 22" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 22</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/23.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="1100">
+      <img src="assets/img/bridal-hairstyles/23.webp" alt="Kiểu tóc cô dâu 23" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 23</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/24.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="1150">
+      <img src="assets/img/bridal-hairstyles/24.webp" alt="Kiểu tóc cô dâu 24" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 24</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/25.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="1200">
+      <img src="assets/img/bridal-hairstyles/25.webp" alt="Kiểu tóc cô dâu 25" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 25</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/26.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="1250">
+      <img src="assets/img/bridal-hairstyles/26.webp" alt="Kiểu tóc cô dâu 26" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 26</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/27.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="1300">
+      <img src="assets/img/bridal-hairstyles/27.webp" alt="Kiểu tóc cô dâu 27" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 27</span>
+      </div>
+    </a>
+
+    <a href="assets/img/bridal-hairstyles/28.webp" class="vynym-gallery-item glightbox" data-aos="fade-up" data-aos-delay="1350">
+      <img src="assets/img/bridal-hairstyles/28.webp" alt="Kiểu tóc cô dâu 28" loading="lazy">
+      <div class="vynym-gallery-overlay">
+        <span class="vynym-gallery-overlay-text">Kiểu Tóc 28</span>
+      </div>
+    </a>
+  </div>
+</section>
+
 <!-- ========== GALLERY SECTION ========== -->
 <section class="vynym-gallery" data-aos="fade-up">
   <h2 class="vynym-section-title">Những Tác Phẩm Tiêu Biểu</h2>
   <p class="vynym-section-desc">Mỗi makeup là một câu chuyện về sự tự tin và vẻ đẹp</p>
 
-  <div class="vynym-gallery-grid">
-    <div class="vynym-gallery-item" data-aos="fade-up">
-      <img src="assets/img/portfolio/makeup/Beauty bridal/hanbeauty (4).webp" alt="Makeup Cô Dâu">
-      <div class="vynym-gallery-overlay">
-        <span class="vynym-gallery-overlay-text">Makeup Cô Dâu</span>
-      </div>
-    </div>
-
-    <div class="vynym-gallery-item" data-aos="fade-up" data-aos-delay="100">
-      <img src="assets/img/portfolio/makeup/Bridal outside/trinh cay (1).webp" alt="Makeup Ngoài Trời">
-      <div class="vynym-gallery-overlay">
-        <span class="vynym-gallery-overlay-text">Makeup Ngoài Trời</span>
-      </div>
-    </div>
-
-    <div class="vynym-gallery-item" data-aos="fade-up" data-aos-delay="200">
-      <img src="assets/img/portfolio/makeup/Bridal Thương Concept/0co dau xinh (17).webp" alt="Makeup Khái Niệm">
-      <div class="vynym-gallery-overlay">
-        <span class="vynym-gallery-overlay-text">Makeup Khái Niệm</span>
-      </div>
-    </div>
-
-    <div class="vynym-gallery-item" data-aos="fade-up" data-aos-delay="300">
-      <img src="assets/img/portfolio/makeup/Beauty bridal/hanbeauty (5).webp" alt="Makeup Lãng Mạn">
-      <div class="vynym-gallery-overlay">
-        <span class="vynym-gallery-overlay-text">Makeup Lãng Mạn</span>
-      </div>
-    </div>
-
-    <div class="vynym-gallery-item" data-aos="fade-up" data-aos-delay="400">
-      <img src="assets/img/portfolio/makeup/MakeupConcept/mk (1).webp" alt="Makeup Concept">
-      <div class="vynym-gallery-overlay">
-        <span class="vynym-gallery-overlay-text">Makeup Concept</span>
-      </div>
-    </div>
-
-    <div class="vynym-gallery-item" data-aos="fade-up" data-aos-delay="500">
-      <img src="assets/img/portfolio/makeup/Bridal outside/trinh cay (6).webp" alt="Makeup Độc Đáo">
-      <div class="vynym-gallery-overlay">
-        <span class="vynym-gallery-overlay-text">Makeup Độc Đáo</span>
-      </div>
-    </div>
-  </div>
+  <div class="vynym-gallery-grid" id="featured-gallery"></div>
 </section>
 
 <!-- ========== WHY CHOOSE SECTION ========== -->
@@ -1021,6 +1246,107 @@
 
 <!-- Contact Loader -->
 <script src="assets/js/contact-loader.js"></script>
+
+<!-- GLightbox Script -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  // Gallery random shuffle
+  function shuffleArray(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  // Featured gallery random load
+  const galleryData = [
+    {
+      href: 'assets/img/portfolio/makeup/Bridal makeup/0.webp',
+      title: 'Makeup Cô Dâu'
+    },
+    {
+      href: 'assets/img/portfolio/makeup/Bridal makeup/3.webp',
+      title: 'Makeup Sang Trọng'
+    },
+    {
+      href: 'assets/img/portfolio/makeup/Bridal makeup/CKPQ8663.webp',
+      title: 'Makeup Lãng Mạn'
+    },
+    {
+      href: 'assets/img/portfolio/makeup/Bridal makeup/DAK_2625.webp',
+      title: 'Makeup Tự Nhiên'
+    },
+    {
+      href: 'assets/img/portfolio/makeup/Bridal makeup/DAK_3974.webp',
+      title: 'Makeup Nổi Bật'
+    },
+    {
+      href: 'assets/img/portfolio/makeup/Bridal makeup/GPEU0709.webp',
+      title: 'Makeup Độc Đáo'
+    },
+    {
+      href: 'assets/img/portfolio/makeup/Bridal makeup/mk (1).webp',
+      title: 'Makeup Khái Niệm'
+    },
+    {
+      href: 'assets/img/portfolio/makeup/Bridal makeup/UBAB3559.webp',
+      title: 'Makeup Cổ Điển'
+    }
+  ];
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('featured-gallery');
+    const shuffled = shuffleArray(galleryData);
+    
+    shuffled.forEach((item, index) => {
+      const link = document.createElement('a');
+      link.href = item.href;
+      link.className = 'vynym-gallery-item glightbox';
+      link.setAttribute('data-aos', 'fade-up');
+      link.setAttribute('data-aos-delay', (index * 100).toString());
+      
+      const img = document.createElement('img');
+      img.src = item.href;
+      img.alt = item.title;
+      img.loading = 'lazy';
+      
+      const overlay = document.createElement('div');
+      overlay.className = 'vynym-gallery-overlay';
+      
+      const text = document.createElement('span');
+      text.className = 'vynym-gallery-overlay-text';
+      text.textContent = item.title;
+      
+      overlay.appendChild(text);
+      link.appendChild(img);
+      link.appendChild(overlay);
+      container.appendChild(link);
+    });
+
+    // Reinit AOS for dynamically added elements
+    if (window.AOS) {
+      AOS.refresh();
+    }
+
+    // Reinit GLightbox
+    const lightbox = GLightbox({
+      selector: '.glightbox',
+      descPosition: 'bottom',
+      zoomable: true,
+      draggable: true
+    });
+  });
+
+  // Original lightbox for hairstyles (static)
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    descPosition: 'bottom',
+    zoomable: true,
+    draggable: true
+  });
+</script>
 
 </body>
 </html>
