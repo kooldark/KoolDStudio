@@ -649,9 +649,32 @@
             "anh sinh nhat 27 (7).webp"
           ],
           "imageCount": 8
+        },
+        {
+          "id": "YẾN",
+          "title": "YẾN",
+          "description": "",
+          "path": "portrait/YẾN",
+          "coverImage": "0yenboho (12).jpg",
+          "images": [
+            "0yenboho (12).jpg",
+            "yenboho (1).jpg",
+            "yenboho (2).jpg",
+            "yenboho (3).jpg",
+            "yenboho (4).jpg",
+            "yenboho (5).jpg",
+            "yenboho (6).jpg",
+            "yenboho (7).jpg",
+            "yenboho (8).jpg",
+            "yenboho (9).jpg",
+            "yenboho (10).jpg",
+            "yenboho (11).jpg",
+            "yenboho (14).jpg"
+          ],
+          "imageCount": 13
         }
       ],
-      "albumCount": 5
+      "albumCount": 6
     },
     {
       "id": "pro",
