@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Đặt In Ảnh — Kool D Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Primary Colors - Elegant Warm Tone */
+    --primary: #c9915d;
+    --primary-dark: #a67d4e;
+    --primary-light: #d9a96d;
+    
+    /* Dark Green Accent */
+    --darkgreen: #2d5a4a;
+    --darkgreen-light: #3d7a5f;
+    
+    /* Neutral Colors */
+    --white: #ffffff;
+    --light-cream: #faf7f2;
+    --light-gray: #f5f3f0;
+    --gray: #6b6560;
+    --dark-gray: #3a3a36;
+    --dark: #1a1a16;
+    
+    /* Accent */
+    --zalo-blue: #0068ff;
+    --success: #22c55e;
+    --radius: 12px;
+  }
+
+  body {
+    background: var(--light-cream);
+    color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding-top: 60px;
+    font-weight: 500;
+  }
+  
+  @media (min-width: 768px) {
+    body {
+      padding-top: 70px;
+    }
+  }
+
+  /* ── HEADER & NAVIGATION ── */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--white);
+    border-bottom: 2px solid #e5e0d8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    z-index: 200;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (min-width: 768px) {
+    .header {
+      height: 70px;
+      padding: 0 40px;
+    }
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    transition: color 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .header-logo {
+      font-size: 20px;
+      gap: 14px;
+    }
+  }
+
+  .header-logo:hover {
+    color: var(--primary);
+  }
+
+  .header-logo .mark {
+    font-size: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .header-logo .mark {
+      font-size: 28px;
+    }
+  }
+
+  .header-logo span {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px;
+    margin-right: -8px;
+    z-index: 201;
+  }
+
+  @media (min-width: 768px) {
+    .hamburger {
+      display: none;
+    }
+  }
+
+  .hamburger span {
+    width: 24px;
+    height: 2.5px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(15px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-15px);
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 2px solid #e5e0d8;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+    z-index: 199;
+  }
+
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+    z-index: 199;
+  }
+
+  @media (min-width: 768px) {
+    .nav-menu {
+      position: static;
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      border-bottom: none;
+      padding: 0;
+    }
+  }
+
+  .nav-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  @media (min-width: 768px) {
+    .nav-menu ul {
+      flex-direction: row;
+      gap: 28px;
+      align-items: center;
+    }
+  }
+
+  .nav-menu a {
+    display: block;
+    padding: 14px 20px;
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+  }
+
+  @media (min-width: 768px) {
+    .nav-menu a {
+      padding: 0;
+      border-left: none;
+      border-bottom: 3px solid transparent;
+      font-size: 13px;
+    }
+  }
+
+  .nav-menu a:hover,
+  .nav-menu a.active {
+    color: var(--primary);
+    border-left-color: var(--primary);
+  }
+
+  @media (min-width: 768px) {
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      border-left-color: transparent;
+      border-bottom-color: var(--primary);
+    }
+  }
+
+  /* ── MAIN CONTAINER ── */
+  .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  @media (min-width: 1280px) {
+    .main-container {
+      max-width: 1400px;
+    }
+  }
+
+  /* ── FREESHIP BANNER ── */
+  .freeship-bar {
+    background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary));
+    color: var(--white);
+    text-align: center;
+    padding: clamp(10px, 2vw, 14px) 16px;
+    font-weight: 700;
+    font-size: clamp(13px, 2.5vw, 15px);
+    letter-spacing: 0.04em;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  .freeship-bar span { opacity: 0.85; font-weight: 500; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: clamp(40px, 10vw, 56px) 20px clamp(36px, 8vw, 48px);
+    text-align: center;
+    border-bottom: 1px solid #e5e0d8;
+    background: linear-gradient(135deg, var(--white) 0%, rgba(212, 165, 116, 0.02) 100%);
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      padding: 80px 60px 60px;
+      margin: 40px auto;
+      border-radius: 20px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 2px solid #e5e0d8;
+    }
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero > * {
+    position: relative;
+    z-index: 1;
+  }
+  .logo {
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: var(--primary);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 800;
+    animation: fadeInDown 0.6s ease;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 9vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 16px;
+    font-family: 'Playfair Display', serif;
+    animation: fadeInUp 0.7s ease 0.2s both;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--primary);
+    position: relative;
+    display: inline-block;
+  }
+  .hero h1 em::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary);
+    opacity: 0.3;
+  }
+  .hero p {
+    color: var(--dark-gray);
+    font-size: 17px;
+    max-width: 380px;
+    margin: 0 auto;
+    animation: fadeInUp 0.7s ease 0.4s both;
+    font-weight: 500;
+  }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: clamp(28px, 6vw, 36px) 20px;
+    border-bottom: 1px solid #e5e0d8;
+    background: var(--white);
+    position: relative;
+  }
+  .section:nth-child(even) {
+    background: linear-gradient(135deg, var(--white) 0%, rgba(212, 165, 116, 0.01) 100%);
+  }
+
+  @media (min-width: 768px) {
+    .section {
+      padding: 48px 40px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section {
+      padding: 56px 80px;
+      border: none;
+      margin: 24px auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+    .section:nth-child(even) {
+      background: linear-gradient(135deg, var(--light-gray) 0%, rgba(212, 165, 116, 0.02) 100%);
+    }
+  }
+  .section-label {
+    font-size: clamp(12px, 2vw, 13px);
+    letter-spacing: 0.2em;
+    color: var(--primary);
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: clamp(16px, 4vw, 20px);
+  }
+
+  /* ── PRODUCT TABS ── */
+  .product-tabs {
+    display: flex;
+    gap: clamp(6px, 2vw, 10px);
+    margin-bottom: 24px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: clamp(4px, 1vw, 8px) 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  .product-tabs::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: clamp(11px, 2.5vw, 15px) clamp(14px, 4vw, 20px);
+    border-radius: 10px;
+    border: 1.5px solid #d9d4cc;
+    background: var(--light-gray);
+    color: var(--dark-gray);
+    font-size: clamp(13px, 2vw, 14px);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: inherit;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    white-space: nowrap;
+  }
+  .tab-btn:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  .tab-btn.active {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    border-color: var(--primary);
+    box-shadow: 0 6px 20px rgba(212, 165, 116, 0.25);
+  }
+
+  /* ── PRODUCT DESCRIPTION ── */
+  .product-desc {
+    background: linear-gradient(135deg, var(--light-gray), rgba(212, 165, 116, 0.05));
+    border: 1.5px solid #d9d4cc;
+    border-radius: 12px;
+    padding: clamp(14px, 3vw, 18px);
+    margin-bottom: 24px;
+    display: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+  .product-desc.visible { display: block; animation: slideIn 0.3s ease; }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .product-desc p { font-size: clamp(14px, 2vw, 15px); color: var(--dark-gray); line-height: 1.8; font-weight: 500; }
+
+  /* ── SIZE GRID ── */
+  .size-label {
+    font-size: clamp(13px, 2vw, 14px);
+    color: var(--dark);
+    margin-bottom: clamp(12px, 3vw, 14px);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .size-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: clamp(10px, 2vw, 14px);
+    margin-bottom: 12px;
+  }
+  @media (min-width: 640px) {
+    .size-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .size-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .size-card {
+    background: var(--light-gray);
+    border: 1.5px solid #d9d4cc;
+    border-radius: 12px;
+    padding: clamp(12px, 3vw, 16px) clamp(10px, 2vw, 14px);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (max-width: 480px) {
+    .size-card {
+      min-height: 100px;
+    }
+  }
+  .size-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  .size-card:hover {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, var(--light-gray), rgba(212, 165, 116, 0.05));
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  .size-card:hover::before {
+    left: 100%;
+  }
+  .size-card.selected {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(212, 165, 116, 0.05));
+    box-shadow: 0 6px 20px rgba(212, 165, 116, 0.2);
+  }
+  .size-card.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .size-card .dim {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--dark);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .size-card .hint {
+    font-size: 12px;
+    color: var(--dark-gray);
+    display: block;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .size-card .price {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--primary);
+    display: block;
+  }
+
+  /* ── ALBUM EXTRAS ── */
+  .album-pages {
+    margin-top: clamp(14px, 3vw, 18px);
+    animation: slideIn 0.3s ease;
+  }
+  .album-pages-label {
+    font-size: clamp(12px, 2vw, 13px);
+    color: var(--gray);
+    margin-bottom: clamp(10px, 2.5vw, 12px);
+    font-weight: 600;
+  }
+  .page-options {
+    display: flex;
+    gap: clamp(8px, 2vw, 10px);
+  }
+  .page-btn {
+    flex: 1;
+    padding: clamp(10px, 2.5vw, 13px) clamp(8px, 2vw, 10px);
+    border-radius: 10px;
+    border: 1.5px solid #d9d4cc;
+    background: var(--light-gray);
+    color: var(--gray);
+    font-size: clamp(12px, 2vw, 13px);
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: inherit;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+  .page-btn:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+  .page-btn.selected {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(212, 165, 116, 0.05));
+    box-shadow: 0 4px 12px rgba(212, 165, 116, 0.2);
+  }
+  .page-btn small { display: block; font-size: clamp(10px, 1.5vw, 11px); font-weight: 700; color: var(--primary); margin-top: 2px; }
+
+  /* ── PRODUCT VIDEO LINK ── */
+  .product-video-cta {
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.08), rgba(212, 165, 116, 0.03));
+    border: 1.5px solid #d9d4cc;
+    border-radius: 12px;
+    padding: clamp(16px, 3vw, 20px);
+    margin: clamp(16px, 4vw, 24px) 0;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .product-video-cta:hover {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.12), rgba(212, 165, 116, 0.06));
+  }
+  .product-video-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: clamp(13px, 2vw, 15px);
+    font-weight: 700;
+    transition: all 0.3s ease;
+  }
+  .product-video-cta a:hover {
+    transform: translateX(4px);
+    color: var(--primary-dark);
+  }
+  .product-video-cta a::after {
+    content: '→';
+    transition: transform 0.3s ease;
+  }
+  .product-video-cta a:hover::after {
+    transform: translateX(4px);
+  }
+
+  /* ── PRICE SUMMARY ── */
+  .price-summary {
+    background: linear-gradient(135deg, var(--light-gray), rgba(212, 165, 116, 0.06));
+    border: 1.5px solid #d9d4cc;
+    border-radius: 12px;
+    padding: clamp(16px, 4vw, 20px);
+    margin-top: 24px;
+    display: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    animation: slideIn 0.3s ease;
+  }
+  .price-summary.visible { display: block; }
+  .price-summary .summary-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  @media (min-width: 640px) {
+    .price-summary .summary-row {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .price-summary .summary-label { font-size: clamp(13px, 2vw, 14px); color: var(--dark-gray); font-weight: 700; }
+  .price-summary .summary-value { font-size: clamp(24px, 5vw, 28px); font-weight: 900; color: var(--primary); }
+  .price-summary .summary-note { font-size: clamp(12px, 1.5vw, 13px); color: var(--dark-gray); margin-top: 8px; line-height: 1.6; font-weight: 500; }
+
+  /* ── FORM ── */
+  .form-group { margin-bottom: clamp(14px, 4vw, 18px); }
+  .form-group label {
+    display: block;
+    font-size: clamp(12px, 2vw, 13px);
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: clamp(6px, 2vw, 8px);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .form-group input {
+    width: 100%;
+    background: var(--white);
+    border: 1.5px solid #d9d4cc;
+    border-radius: 10px;
+    padding: clamp(12px, 2.5vw, 16px);
+    color: var(--dark);
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  @media (min-width: 768px) {
+    .form-group input {
+      font-size: 15px;
+    }
+  }
+  .form-group input:focus { 
+    border-color: var(--primary);
+    box-shadow: 0 4px 16px rgba(212, 165, 116, 0.15);
+    transform: translateY(-1px);
+  }
+  .form-group input::placeholder { color: #b8a89a; }
+
+  /* ── ZALO BUTTON ── */
+  .zalo-btn {
+    width: 100%;
+    padding: clamp(14px, 3.5vw, 18px);
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, var(--zalo-blue) 0%, #0050cc 100%);
+    color: var(--white);
+    font-size: clamp(15px, 2.5vw, 17px);
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(8px, 2vw, 12px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: inherit;
+    margin-top: 8px;
+    box-shadow: 0 6px 20px rgba(0, 104, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    min-height: 48px;
+  }
+  @media (max-width: 480px) {
+    .zalo-btn {
+      min-height: 44px;
+    }
+  }
+  .zalo-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: left 0.4s ease;
+  }
+  .zalo-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 104, 255, 0.3);
+  }
+  .zalo-btn:hover::before {
+    left: 100%;
+  }
+  .zalo-btn:active { 
+    transform: translateY(-1px);
+  }
+  .zalo-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .zalo-btn svg { flex-shrink: 0; }
+
+  /* ── POST-SUBMIT NOTE ── */
+  .post-note {
+    display: none;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: #22a34d;
+    text-align: center;
+  }
+  .post-note.visible { display: block; }
+
+  /* ── BANK TRANSFER ── */
+  .bank-card {
+    background: linear-gradient(135deg, var(--light-gray), rgba(212, 165, 116, 0.04));
+    border: 1.5px solid #d9d4cc;
+    border-radius: 14px;
+    padding: clamp(16px, 4vw, 24px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+  .bank-card .bank-name {
+    font-size: clamp(10px, 2vw, 12px);
+    letter-spacing: 0.15em;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: clamp(10px, 3vw, 12px);
+    text-transform: uppercase;
+  }
+  .bank-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(8px, 2vw, 12px) 0;
+    border-bottom: 1px solid #d9d4cc;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .bank-row:last-child { border-bottom: none; }
+  .bank-row .key { font-size: clamp(12px, 2vw, 13px); color: var(--dark-gray); font-weight: 700; }
+  .bank-row .val { font-size: clamp(13px, 2.5vw, 15px); font-weight: 800; color: var(--dark); text-align: right; }
+  .bank-row .val.gold { color: var(--primary); font-size: clamp(13px, 3vw, 15px); }
+  .bank-note {
+    margin-top: 12px;
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(212, 165, 116, 0.05));
+    border-radius: 10px;
+    padding: clamp(10px, 2.5vw, 14px);
+    font-size: clamp(12px, 2vw, 13px);
+    color: var(--dark-gray);
+    border-left: 3px solid var(--primary);
+    font-weight: 500;
+  }
+  .bank-note strong { color: var(--primary); font-weight: 700; }
+
+  /* ── BENEFITS ── */
+  .benefit-list { list-style: none; display: flex; flex-direction: column; gap: clamp(10px, 3vw, 14px); }
+  .benefit-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(10px, 2.5vw, 14px);
+    font-size: clamp(14px, 2vw, 15px);
+    color: var(--dark-gray);
+    padding: clamp(10px, 2vw, 12px) 0;
+    transition: transform 0.3s ease;
+    font-weight: 500;
+  }
+  .benefit-list li:hover {
+    transform: translateX(4px);
+  }
+  .benefit-list li .icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(212, 165, 116, 0.08));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(14px, 3vw, 16px);
+    border: 1px solid rgba(212, 165, 116, 0.2);
+  }
+  .benefit-list li span { padding-top: 2px; }
+
+  /* ── HOTLINE ── */
+  .hotline-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 2vw, 14px);
+    padding: clamp(20px, 5vw, 28px) 20px;
+    border-top: 1px solid #e5e0d8;
+    font-size: clamp(13px, 2vw, 14px);
+    color: var(--dark-gray);
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--white), rgba(212, 165, 116, 0.02));
+    flex-wrap: wrap;
+  }
+  .hotline-row a {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: clamp(14px, 2.5vw, 16px);
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+  .hotline-row a:hover {
+    color: var(--primary-dark);
+    transform: translateY(-1px);
+  }
+
+  /* ── VALIDATION ── */
+  .field-error { font-size: 11px; color: #e74c3c; margin-top: 4px; display: none; }
+  .field-error.show { display: block; }
+  input.err { border-color: #e74c3c !important; }
+
+  /* ── SHOWCASE GALLERY ── */
+  .showcase-section {
+    background: linear-gradient(135deg, var(--light-cream) 0%, rgba(212, 165, 116, 0.03) 100%);
+    padding: clamp(28px, 6vw, 56px) 20px;
+    border-bottom: 1px solid #e5e0d8;
+  }
+
+  @media (min-width: 1024px) {
+    .showcase-section {
+      padding: 80px 60px;
+      margin: 40px auto;
+      max-width: 1200px;
+      border-radius: 20px;
+      border: 2px solid #e5e0d8;
+    }
+  }
+  .showcase-label {
+    text-align: center;
+    font-size: clamp(12px, 2vw, 13px);
+    letter-spacing: 0.2em;
+    color: var(--primary);
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: clamp(8px, 2vw, 12px);
+  }
+  .showcase-title {
+    text-align: center;
+    font-size: clamp(24px, 6vw, 32px);
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: clamp(24px, 6vw, 32px);
+  }
+  .showcase-gallery {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 4vw, 24px);
+  }
+  .carousel-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+  .carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .showcase-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    aspect-ratio: 4/5;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  @media (max-width: 640px) {
+    .showcase-item {
+      aspect-ratio: auto;
+      min-height: 320px;
+    }
+  }
+  .showcase-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  }
+  .showcase-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .showcase-item:hover img {
+    transform: scale(1.05);
+  }
+  .showcase-label-product {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+    color: var(--white);
+    padding: clamp(12px, 3vw, 20px);
+    font-size: clamp(15px, 2.5vw, 17px);
+    font-weight: 800;
+    font-family: 'Playfair Display', serif;
+  }
+  .showcase-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: clamp(11px, 2vw, 12px);
+    font-weight: 500;
+    margin-top: 4px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* ── CAROUSEL CONTROLS ── */
+  .carousel-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  .carousel-buttons {
+    display: flex;
+    gap: 12px;
+  }
+  .carousel-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #d9d4cc;
+    background: var(--white);
+    color: var(--dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  .carousel-btn:hover {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 165, 116, 0.25);
+  }
+  .carousel-btn:active {
+    transform: translateY(0);
+  }
+  .carousel-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .carousel-dot {
+    width: clamp(8px, 1.5vw, 12px);
+    height: clamp(8px, 1.5vw, 12px);
+    border-radius: 50%;
+    border: 2px solid #d9d4cc;
+    background: var(--white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .carousel-dot.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: scale(1.2);
+  }
+  .carousel-dot:hover {
+    border-color: var(--primary);
+  }
+  @media (max-width: 768px) {
+    .showcase-gallery {
+      flex-direction: column;
+      gap: clamp(12px, 3vw, 20px);
+    }
+    .carousel-controls {
+      width: 100%;
+    }
+  }
+
+  /* ── DESKTOP ENHANCEMENTS ── */
+  @media (min-width: 768px) {
+    body {
+      font-size: 17px;
+    }
+    .hero h1 {
+      line-height: 1.2;
+    }
+    .section {
+      padding: 48px 40px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group input {
+      font-size: 16px;
+    }
+    .price-summary .summary-note {
+      text-align: right;
+    }
+    .hotline-row {
+      flex-wrap: nowrap;
+    }
+    .showcase-section {
+      padding: 56px 60px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section {
+      padding: 56px 80px;
+    }
+    .product-tabs {
+      gap: 12px;
+    }
+    .size-card {
+      padding: 20px 16px;
+    }
+    body {
+      font-size: 17px;
+    }
+    .showcase-gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .showcase-item {
+      aspect-ratio: 4/5;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 10vw, 52px);
+    }
+    .section-label {
+      font-size: clamp(13px, 2.5vw, 14px);
+    }
+    .product-tabs {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .size-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .form-group input {
+      max-width: 600px;
+      font-size: 16px;
+    }
+    .zalo-btn {
+      max-width: 600px;
+      margin-left: 0;
+      font-size: 16px;
+    }
+    .price-summary {
+      max-width: 600px;
+      margin-left: 0;
+    }
+    .bank-card {
+      max-width: 600px;
+    }
+    .benefit-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER & NAVIGATION -->
+<header class="header">
+  <a href="/" class="header-logo">
+    <span class="mark">✦</span>
+    <span>Kool D</span>
+  </a>
+  
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="nav-menu" id="nav-menu">
+    <ul>
+      <li><a href="#products" onclick="scrollToSection('products'); closeMenu()">Sản phẩm</a></li>
+      <li><a href="#info" onclick="scrollToSection('info'); closeMenu()">Đặt hàng</a></li>
+      <li><a href="#payment" onclick="scrollToSection('payment'); closeMenu()">Thanh toán</a></li>
+      <li><a href="#benefits" onclick="scrollToSection('benefits'); closeMenu()">Cam kết</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- FREESHIP BAR -->
+<div class="freeship-bar">
+  🚚 FREESHIP nội thành HCM — Giao tận nhà <span>· Bán kính 5km</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="logo">Kool D Studio</div>
+  <h1>Buổi chụp đẹp —<br/>giờ <em>treo lên tường</em> thôi.</h1>
+  <p>Chọn sản phẩm, điền tên, bấm gửi qua Zalo. Xong trong 2 phút.</p>
+</div>
+
+<!-- SHOWCASE GALLERY -->
+<div class="showcase-section">
+  <div class="showcase-label">Xem sản phẩm thực tế</div>
+  <div class="showcase-title">Treo tường như thế nào?</div>
+  
+  <div class="showcase-gallery">
+    <div class="carousel-container">
+      <div class="carousel-wrapper" id="carousel-wrapper"></div>
+    </div>
+    <div class="carousel-controls">
+      <div class="carousel-buttons">
+        <button class="carousel-btn" onclick="prevCarousel()">❮</button>
+        <button class="carousel-btn" onclick="nextCarousel()">❯</button>
+      </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 1: CHỌN SẢN PHẨM & KÍCH THƯỚC -->
+<div class="section" id="products">
+  <div class="section-label">Bước 1 — Chọn sản phẩm</div>
+
+  <div class="product-tabs">
+    <button class="tab-btn active" onclick="selectProduct('guong')">Tráng Gương Pha Lê</button>
+    <button class="tab-btn" onclick="selectProduct('go')">Ép Gỗ Cao Cấp</button>
+    <button class="tab-btn" onclick="selectProduct('album')">Album Thiết Kế</button>
+  </div>
+
+  <!-- Desc: Tráng gương -->
+  <div class="product-desc visible" id="desc-guong">
+    <p>Bề mặt phản quang như gương pha lê, màu sắc rực rỡ, bền theo năm tháng. Khung viền Đen hoặc Bạc theo yêu cầu. Bề mặt Bóng hoặc Mờ.</p>
+  </div>
+  <!-- Desc: Ép gỗ -->
+  <div class="product-desc" id="desc-go">
+    <p>Ảnh được ép trực tiếp lên nền gỗ cao cấp, tạo chiều sâu và cảm giác ấm áp. Phù hợp treo phòng ngủ, phòng làm việc và làm quà tặng.</p>
+  </div>
+  <!-- Desc: Album -->
+  <div class="product-desc" id="desc-album">
+    <p>Photobook bìa da/vải, thiết kế chuyên nghiệp theo yêu cầu. Album thứ 2 trở đi giảm 400.000đ (sao chép từ file có sẵn).</p>
+  </div>
+
+  <!-- Video CTA -->
+  <div class="product-video-cta">
+    <a href="products.html">📹 Xem video chi tiết sản phẩm</a>
+  </div>
+
+  <!-- Sizes: Tráng gương -->
+  <div id="sizes-guong">
+    <div class="size-label">Chọn kích thước</div>
+    <div class="size-grid">
+      <div class="size-card" onclick="selectSize(this, 999000)">
+        <span class="dim">40 × 60</span>
+        <span class="hint">Vừa bàn làm việc / kệ tivi</span>
+        <span class="price">999.000đ</span>
+      </div>
+      <div class="size-card" onclick="selectSize(this, 1350000)">
+        <span class="dim">60 × 90</span>
+        <span class="hint">Treo phòng khách, điểm nhấn</span>
+        <span class="price">1.350.000đ</span>
+      </div>
+      <div class="size-card" onclick="selectSize(this, 1760000)">
+        <span class="dim">70 × 110</span>
+        <span class="hint">Khổ lớn, ấn tượng</span>
+        <span class="price">1.760.000đ</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sizes: Ép gỗ -->
+  <div id="sizes-go" style="display:none">
+    <div class="size-label">Chọn kích thước</div>
+    <div class="size-grid">
+      <div class="size-card" onclick="selectSize(this, 195000)">
+        <span class="dim">13 × 18</span>
+        <span class="hint">Để bàn, quà tặng nhỏ</span>
+        <span class="price">195.000đ</span>
+      </div>
+      <div class="size-card" onclick="selectSize(this, 210000)">
+        <span class="dim">15 × 21</span>
+        <span class="hint">Để bàn hoặc treo nhỏ</span>
+        <span class="price">210.000đ</span>
+      </div>
+      <div class="size-card" onclick="selectSize(this, 350000)">
+        <span class="dim">30 × 45</span>
+        <span class="hint">Phòng ngủ, góc decor</span>
+        <span class="price">350.000đ</span>
+      </div>
+      <div class="size-card" onclick="selectSize(this, 630000)">
+        <span class="dim">40 × 60</span>
+        <span class="hint">Phổ biến nhất</span>
+        <span class="price">630.000đ</span>
+      </div>
+      <div class="size-card" onclick="selectSize(this, 990000)">
+        <span class="dim">50 × 75</span>
+        <span class="hint">Nổi bật, phòng khách</span>
+        <span class="price">990.000đ</span>
+      </div>
+      <div class="size-card" onclick="selectSize(this, 1110000)">
+        <span class="dim">60 × 90</span>
+        <span class="hint">Khổ lớn, sang trọng</span>
+        <span class="price">1.110.000đ</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sizes: Album -->
+  <div id="sizes-album" style="display:none">
+    <div class="size-label">Chọn kích thước album</div>
+    <div class="size-grid" id="album-size-grid">
+      <div class="size-card" onclick="selectAlbumSize(this, '20×20')">
+        <span class="dim">20 × 20</span>
+        <span class="hint">Vuông, nhỏ gọn</span>
+      </div>
+      <div class="size-card" onclick="selectAlbumSize(this, '25×25')">
+        <span class="dim">25 × 25</span>
+        <span class="hint">Vuông, chuẩn</span>
+      </div>
+      <div class="size-card" onclick="selectAlbumSize(this, '30×30')">
+        <span class="dim">30 × 30</span>
+        <span class="hint">Vuông, đẹp bàn cà phê</span>
+      </div>
+      <div class="size-card" onclick="selectAlbumSize(this, '20×30')">
+        <span class="dim">20 × 30</span>
+        <span class="hint">Chữ nhật đứng</span>
+      </div>
+      <div class="size-card" onclick="selectAlbumSize(this, '25×35')">
+        <span class="dim">25 × 35</span>
+        <span class="hint">Chữ nhật đứng, phổ biến</span>
+      </div>
+      <div class="size-card" onclick="selectAlbumSize(this, '30×40')">
+        <span class="dim">30 × 40</span>
+        <span class="hint">Chữ nhật lớn</span>
+      </div>
+      <div class="size-card" onclick="selectAlbumSize(this, '30×45')">
+        <span class="dim">30 × 45</span>
+        <span class="hint">Panorama đứng</span>
+      </div>
+    </div>
+
+    <div class="album-pages" id="album-pages" style="display:none">
+      <div class="album-pages-label">Số trang</div>
+      <div class="page-options">
+        <div class="page-btn" onclick="selectPages(this, 20, 1760000)">
+          20 trang
+          <small>1.760.000đ</small>
+        </div>
+        <div class="page-btn" onclick="selectPages(this, 30, 2900000)">
+          30 trang
+          <small>2.900.000đ</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Price summary -->
+  <div class="price-summary" id="price-summary">
+    <div class="summary-row">
+      <span class="summary-label" id="summary-desc">—</span>
+      <span class="summary-value" id="summary-price">—</span>
+    </div>
+    <div class="summary-note">✅ Đã bao gồm cân chỉnh màu & đóng gói · 🚚 Freeship nội thành HCM</div>
+  </div>
+</div>
+
+<!-- STEP 2: THÔNG TIN -->
+<div class="section" id="info">
+  <div class="section-label">Bước 2 — Thông tin của bạn</div>
+
+  <div class="form-group">
+    <label>HỌ TÊN</label>
+    <input type="text" id="inp-name" placeholder="Ví dụ: Thanh" autocomplete="name"/>
+    <div class="field-error" id="err-name">Vui lòng nhập họ tên</div>
+  </div>
+
+  <div class="form-group">
+    <label>SỐ ĐIỆN THOẠI</label>
+    <input type="tel" id="inp-phone" placeholder="Ví dụ: 0901234567" autocomplete="tel"/>
+    <div class="field-error" id="err-phone">Vui lòng nhập số điện thoại hợp lệ</div>
+  </div>
+</div>
+
+<!-- STEP 3: ĐẶT QUA ZALO -->
+<div class="section">
+  <div class="section-label">Bước 3 — Gửi đặt hàng</div>
+
+  <button class="zalo-btn" id="zalo-btn" onclick="orderViaZalo()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <rect width="24" height="24" rx="6" fill="#fff"/>
+      <text x="12" y="17" font-size="11" font-weight="900" text-anchor="middle" fill="#0068ff" font-family="Arial">Z</text>
+    </svg>
+    Đặt in qua Zalo
+  </button>
+
+  <div class="post-note" id="post-note">
+    ✅ Zalo đã mở! Bấm <strong>Gửi</strong> để hoàn tất.<br/>
+    Sau đó chuyển khoản để Kool D xếp lịch in sớm nhất cho bạn 🙏
+  </div>
+</div>
+
+<!-- THANH TOÁN -->
+<div class="section" id="payment">
+  <div class="section-label">Chuyển khoản xác nhận đơn</div>
+
+  <div class="bank-card">
+    <div class="bank-name">VIETCOMBANK</div>
+    <div class="bank-row">
+      <span class="key">Chủ tài khoản</span>
+      <span class="val">TRẦN NHƯ TUẤN</span>
+    </div>
+    <div class="bank-row">
+      <span class="key">Số tài khoản</span>
+      <span class="val gold">0071000763310</span>
+    </div>
+    <div class="bank-row">
+      <span class="key">Nội dung CK</span>
+      <span class="val" style="font-size:12px">Tên · SĐT · Kích thước</span>
+    </div>
+    <div class="bank-note">
+      Ví dụ: <strong>Thanh 0379031662 40x60</strong>
+    </div>
+  </div>
+</div>
+
+<!-- CAM KẾT -->
+<div class="section" id="benefits">
+  <div class="section-label">Cam kết từ Kool D</div>
+  <ul class="benefit-list">
+    <li><div class="icon">🎨</div><span>Cân chỉnh màu & kiểm tra ảnh trước khi in</span></li>
+    <li><div class="icon">📦</div><span>Đóng gói cẩn thận, bảo hành sản phẩm</span></li>
+    <li><div class="icon">🚚</div><span>Freeship nội thành HCM, giao tận nhà trong <strong>3–5 ngày</strong></span></li>
+    <li><div class="icon">📲</div><span>Gửi file ảnh qua Zalo ngay sau khi đặt hàng</span></li>
+  </ul>
+</div>
+
+<!-- HOTLINE -->
+<div class="hotline-row">
+  <span>Cần hỗ trợ?</span>
+  <a href="tel:0379031662">0379 031 662</a>
+  <span>·</span>
+  <a href="https://zalo.me/0379031662" target="_blank" style="font-size:14px; color:var(--zalo-blue)">Zalo ngay</a>
+</div>
+
+<script>
+  // ── SHOWCASE IMAGES CONFIG ── 
+  // Thêm ảnh mới: chỉ cần tạo file với hậu tố _1, _2, _3... và thêm vào config này
+  const showcaseImages = [
+    {
+      baseImage: 'assets/img/showcase/showcase-mirror-print.jpg',
+      variants: ['_1'],  // Thêm _2, _3, _4... tại đây khi có ảnh mới
+      title: 'Tráng Gương Pha Lê',
+      subtitle: 'Bóng, sáng, sang trọng'
+    },
+    {
+      baseImage: 'assets/img/showcase/showcase-wood-print.jpg',
+      variants: [],  // Chưa có variant, để rỗng
+      title: 'Ép Gỗ Cao Cấp',
+      subtitle: 'Ấm áp, tự nhiên, quý phái'
+    }
+  ];
+
+  // ── CAROUSEL STATE ──
+  let carouselState = {
+    current: 0,
+    total: 0,
+    items: []
+  };
+
+  // ── LOAD SHOWCASE IMAGES (CAROUSEL) ──
+  function loadShowcaseGallery() {
+    const wrapper = document.getElementById('carousel-wrapper');
+    const dots = document.getElementById('carousel-dots');
+    if (!wrapper || !dots) return;
+    
+    carouselState.items = [];
+
+    showcaseImages.forEach(product => {
+      // Thêm ảnh chính
+      addShowcaseItem(wrapper, dots, product.baseImage, product.title, product.subtitle);
+      
+      // Thêm các variant (_1, _2, _3...)
+      product.variants.forEach(variant => {
+        const variantPath = product.baseImage.replace('.jpg', variant + '.jpg');
+        addShowcaseItem(wrapper, dots, variantPath, product.title, product.subtitle);
+      });
+    });
+
+    carouselState.total = carouselState.items.length;
+    if (carouselState.total > 0) {
+      updateCarousel();
+    }
+  }
+
+  function addShowcaseItem(wrapper, dotsContainer, imagePath, title, subtitle) {
+    const item = document.createElement('div');
+    item.className = 'showcase-item';
+    item.innerHTML = `
+      <img src="${imagePath}" alt="${title} - Kool D Studio" loading="lazy"/>
+      <div class="showcase-label-product">
+        ${title}
+        <div class="showcase-subtitle">${subtitle}</div>
+      </div>
+    `;
+    wrapper.appendChild(item);
+    carouselState.items.push(item);
+
+    // Thêm dot
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot';
+    if (carouselState.items.length === 1) dot.classList.add('active');
+    dot.onclick = () => goToSlide(carouselState.items.length - 1);
+    dotsContainer.appendChild(dot);
+  }
+
+  function updateCarousel() {
+    const wrapper = document.getElementById('carousel-wrapper');
+    const offset = -carouselState.current * 100;
+    wrapper.style.transform = `translateX(${offset}%)`;
+
+    // Update dots
+    document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === carouselState.current);
+    });
+  }
+
+  function nextCarousel() {
+    carouselState.current = (carouselState.current + 1) % carouselState.total;
+    updateCarousel();
+  }
+
+  function prevCarousel() {
+    carouselState.current = (carouselState.current - 1 + carouselState.total) % carouselState.total;
+    updateCarousel();
+  }
+
+  function goToSlide(index) {
+    carouselState.current = index;
+    updateCarousel();
+  }
+
+  // ── STATE ──
+  let state = {
+    product: 'guong',      // guong | go | album
+    sizeLabel: '',
+    albumSize: '',
+    albumPages: 0,
+    price: 0,
+  };
+
+  // ── PRODUCT SWITCH ──
+  function selectProduct(p) {
+    state.product = p;
+    state.sizeLabel = '';
+    state.albumSize = '';
+    state.albumPages = 0;
+    state.price = 0;
+
+    // tabs
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
+      b.classList.toggle('active', ['guong','go','album'][i] === p);
+    });
+
+    // descs
+    ['guong','go','album'].forEach(id => {
+      document.getElementById('desc-'+id).classList.toggle('visible', id === p);
+      document.getElementById('sizes-'+id).style.display = id === p ? 'block' : 'none';
+    });
+
+    // clear selections
+    document.querySelectorAll('.size-card').forEach(c => c.classList.remove('selected'));
+    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('selected'));
+    document.getElementById('album-pages').style.display = 'none';
+    updateSummary();
+  }
+
+  // ── SIZE SELECTION (ảnh) ──
+  function selectSize(el, price) {
+    document.querySelectorAll('.size-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    state.sizeLabel = el.querySelector('.dim').textContent.trim();
+    state.price = price;
+    updateSummary();
+  }
+
+  // ── ALBUM SIZE ──
+  function selectAlbumSize(el, label) {
+    document.querySelectorAll('#album-size-grid .size-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    state.albumSize = label;
+    state.sizeLabel = label;
+    state.price = 0;
+    state.albumPages = 0;
+    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('selected'));
+    document.getElementById('album-pages').style.display = 'flex';
+    document.getElementById('album-pages').style.display = 'block';
+    updateSummary();
+  }
+
+  // ── ALBUM PAGES ──
+  function selectPages(el, pages, price) {
+    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    state.albumPages = pages;
+    state.price = price;
+    updateSummary();
+  }
+
+  // ── PRICE SUMMARY ──
+  function updateSummary() {
+    const summary = document.getElementById('price-summary');
+    const desc = document.getElementById('summary-desc');
+    const priceEl = document.getElementById('summary-price');
+
+    const productNames = { guong: 'Tráng Gương Pha Lê', go: 'Ép Gỗ', album: 'Album' };
+    const name = productNames[state.product];
+
+    if (!state.price) { summary.classList.remove('visible'); return; }
+
+    let label = name;
+    if (state.product === 'album') {
+      label = `${name} ${state.albumSize} · ${state.albumPages} trang`;
+    } else {
+      label = `${name} ${state.sizeLabel} cm`;
+    }
+
+    desc.textContent = label;
+    priceEl.textContent = state.price.toLocaleString('vi-VN') + 'đ';
+    summary.classList.add('visible');
+  }
+
+  // ── ZALO ORDER ──
+  function orderViaZalo() {
+    const nameEl = document.getElementById('inp-name');
+    const phoneEl = document.getElementById('inp-phone');
+    let ok = true;
+
+    // validate
+    const name = nameEl.value.trim();
+    const phone = phoneEl.value.trim();
+
+    document.getElementById('err-name').classList.toggle('show', !name);
+    nameEl.classList.toggle('err', !name);
+    if (!name) ok = false;
+
+    const phoneOk = /^0\d{9}$/.test(phone);
+    document.getElementById('err-phone').classList.toggle('show', !phoneOk);
+    phoneEl.classList.toggle('err', !phoneOk);
+    if (!phoneOk) ok = false;
+
+    if (!state.price) {
+      alert('Vui lòng chọn sản phẩm và kích thước trước nhé!');
+      return;
+    }
+    if (!ok) return;
+
+    // build message
+    const productNames = { guong: 'Ảnh tráng gương pha lê', go: 'Ảnh ép gỗ', album: 'Album thiết kế' };
+    const pName = productNames[state.product];
+    let detail = '';
+    if (state.product === 'album') {
+      detail = `${state.albumSize} · ${state.albumPages} trang`;
+    } else {
+      detail = `${state.sizeLabel} cm`;
+    }
+
+    const priceStr = state.price.toLocaleString('vi-VN') + 'đ';
+    const msg = `Đặt in: ${name} — ${phone} — ${pName} ${detail} — ${priceStr}`;
+
+    const zaloUrl = `https://zalo.me/0379031662?text=${encodeURIComponent(msg)}`;
+    window.open(zaloUrl, '_blank');
+
+    document.getElementById('post-note').classList.add('visible');
+  }
+
+  // ── MENU TOGGLE ──
+  function toggleMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  }
+
+  function closeMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+  }
+
+  // ── SMOOTH SCROLL ──
+  function scrollToSection(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // ── HIGHLIGHT ACTIVE NAV ON SCROLL ──
+  window.addEventListener('scroll', () => {
+    const sections = ['products', 'info', 'payment', 'benefits'];
+    let current = '';
+
+    sections.forEach(id => {
+      const section = document.getElementById(id);
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 120) {
+          current = id;
+        }
+      }
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').substring(1) === current) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // ── CLOSE MENU WHEN CLICKING OUTSIDE ──
+  document.addEventListener('click', (e) => {
+    const header = document.querySelector('.header');
+    const navMenu = document.getElementById('nav-menu');
+    const hamburger = document.getElementById('hamburger');
+    
+    if (!header.contains(e.target) && navMenu.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+
+  // ── INITIALIZE SHOWCASE GALLERY ──
+  document.addEventListener('DOMContentLoaded', loadShowcaseGallery);
+  // Nếu script chạy sau khi DOM loaded, gọi ngay
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadShowcaseGallery);
+  } else {
+    loadShowcaseGallery();
+  }
+</script>
+</body>
+</html>

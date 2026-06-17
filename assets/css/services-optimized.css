@@ -1,0 +1,236 @@
+/* ===== SERVICES PAGE OPTIMIZATIONS ===== */
+
+/* Improved Typography & Spacing */
+body {
+  background: var(--color-white);
+}
+
+/* Hero Section - Better Spacing */
+.services-hero {
+  padding: clamp(60px, 14vw, 120px) clamp(20px, 5vw, 50px);
+}
+
+.services-intro {
+  margin-bottom: clamp(40px, 8vw, 80px);
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 5.5vw, 3.2rem);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.section-subtitle {
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  line-height: 1.9;
+  margin-bottom: 40px;
+}
+
+/* Tab Buttons - Better Visual Hierarchy */
+.service-tabs {
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.tab-btn {
+  padding: clamp(12px, 1.5vw, 16px) clamp(24px, 3vw, 40px);
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Content Sections - Improved Readability */
+.services-content {
+  max-width: 1200px;
+  margin: clamp(60px, 10vw, 100px) auto 0;
+  padding: 0 clamp(16px, 5vw, 50px);
+}
+
+.calculator-section {
+  padding: clamp(40px, 7vw, 60px) clamp(30px, 5vw, 50px);
+  border-radius: 20px;
+  margin-bottom: clamp(50px, 8vw, 80px);
+}
+
+.calculator-header {
+  margin-bottom: clamp(40px, 7vw, 60px);
+}
+
+.calculator-title {
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.calculator-subtitle {
+  font-size: clamp(0.9rem, 1vw, 1.05rem);
+  letter-spacing: 0.3px;
+}
+
+/* Highlights - Better Visual Balance */
+.package-highlights {
+  padding: clamp(35px, 6vw, 50px);
+  border-radius: 18px;
+}
+
+.highlights-title {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+}
+
+.highlights-price {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.highlights-grid {
+  gap: clamp(20px, 3vw, 28px);
+}
+
+/* Options Grid - Better Responsive */
+.options-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(24px, 3vw, 36px);
+  margin-bottom: clamp(40px, 6vw, 60px);
+}
+
+.option-group {
+  padding: clamp(24px, 4vw, 35px);
+  border-radius: 14px;
+}
+
+.option-label {
+  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+  margin-bottom: 18px;
+}
+
+.option-item {
+  padding: clamp(10px, 1.5vw, 14px);
+  border-radius: 10px;
+}
+
+/* Summary - More Prominent */
+.calculator-summary {
+  padding: clamp(40px, 6vw, 50px);
+  border-radius: 18px;
+  margin: clamp(50px, 8vw, 80px) 0;
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, var(--color-white) 100%);
+}
+
+.summary-price {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.summary-label {
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+}
+
+.summary-description {
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  line-height: 1.8;
+}
+
+/* CTA Buttons */
+.btn {
+  padding: clamp(14px, 2vw, 18px) clamp(32px, 4vw, 48px);
+  font-size: clamp(0.85rem, 0.95vw, 1rem);
+  border-radius: 10px;
+}
+
+/* FAQ Section - Cleaner */
+.faq-section {
+  padding: clamp(80px, 12vw, 120px) clamp(20px, 5vw, 50px);
+}
+
+.faq-container {
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 900px;
+}
+
+.faq-item {
+  padding: clamp(24px, 4vw, 32px);
+  border-radius: 14px;
+}
+
+.faq-item:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.faq-question h3 {
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+}
+
+.faq-answer p {
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  line-height: 1.8;
+}
+
+/* Contract CTA - Better Balance */
+.contract-cta-section {
+  padding: clamp(60px, 10vw, 100px) clamp(20px, 5vw, 50px);
+}
+
+.contract-cta-wrapper {
+  gap: clamp(40px, 6vw, 80px);
+}
+
+.contract-cta-title {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  line-height: 1.2;
+}
+
+.contract-cta-description {
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  line-height: 1.8;
+}
+
+/* Footer CTA - Consistency */
+.footer-cta-section {
+  padding: clamp(60px, 10vw, 100px) clamp(20px, 5vw, 50px);
+}
+
+.divider-title {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+}
+
+.contact-link {
+  padding: clamp(12px, 1.5vw, 16px) clamp(24px, 3vw, 35px);
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+}
+
+/* Scroll Navigation - Subtle */
+.scroll-btn {
+  width: 48px;
+  height: 48px;
+  font-size: 1.1rem;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .faq-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contract-cta-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-tabs {
+    justify-content: center;
+  }
+}
+
+/* Accessibility Improvements */
+.option-item:focus-within {
+  box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.3);
+}
+
+.tab-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
