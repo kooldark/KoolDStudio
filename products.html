@@ -14,6 +14,168 @@
   <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
 
   <style>
+    /* ===== HEADER & NAVIGATION ===== */
+    body { padding-top: 60px; }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--color-white, #ffffff);
+      border-bottom: 2px solid #e5e0d8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 200;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--color-dark);
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      transition: color 0.3s ease;
+    }
+
+    .header-logo:hover {
+      color: var(--color-primary, #c9915d);
+    }
+
+    .header-logo .mark {
+      font-size: 24px;
+    }
+
+    .header-logo span {
+      background: linear-gradient(135deg, var(--color-primary, #c9915d), #a67d4e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+      margin-right: -8px;
+      z-index: 201;
+    }
+
+    @media (min-width: 768px) {
+      .hamburger { display: none; }
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2.5px;
+      background: var(--color-dark);
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translateY(15px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-15px);
+    }
+
+    .nav-menu {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: var(--color-white, #ffffff);
+      border-bottom: 2px solid #e5e0d8;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      pointer-events: none;
+      z-index: 199;
+    }
+
+    .nav-menu.active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+      z-index: 199;
+    }
+
+    @media (min-width: 768px) {
+      .nav-menu {
+        position: static;
+        transform: none;
+        opacity: 1;
+        pointer-events: all;
+        border: none;
+        background: transparent;
+      }
+    }
+
+    .nav-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    @media (min-width: 768px) {
+      .nav-menu ul {
+        flex-direction: row;
+        gap: 0;
+      }
+    }
+
+    .nav-menu a {
+      display: block;
+      padding: 14px 20px;
+      color: var(--color-gray, #8b8680);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+
+    @media (min-width: 768px) {
+      .nav-menu a {
+        border: none;
+        border-bottom: 2px solid transparent;
+        padding: 20px 14px;
+      }
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--color-primary, #c9915d);
+      border-left-color: var(--color-primary, #c9915d);
+    }
+
+    @media (min-width: 768px) {
+      .nav-menu a:hover,
+      .nav-menu a.active {
+        border-left: none;
+        border-bottom-color: var(--color-primary, #c9915d);
+      }
+    }
+
     /* ===== PRODUCTS PAGE STYLES ===== */
 
     .products-hero {
@@ -451,23 +613,37 @@
       transform: translateY(-3px);
     }
 
-    .back-link {
+    .footer-nav {
       text-align: center;
-      margin-bottom: 40px;
+      padding: 32px 20px;
+      border-top: 2px solid #e5e0d8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, var(--color-white, #ffffff), rgba(212, 165, 116, 0.02));
     }
 
-    .back-link a {
-      color: var(--color-primary);
-      font-weight: 600;
+    .footer-nav a {
+      color: var(--color-primary, #c9915d);
+      font-weight: 700;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       transition: all 0.3s ease;
+      font-size: 15px;
     }
 
-    .back-link a:hover {
+    .footer-nav a:hover {
+      transform: translateY(-2px);
       gap: 12px;
+    }
+
+    .footer-nav .divider {
+      color: #d9d4cc;
+      font-weight: 300;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -516,11 +692,31 @@
   </style>
 </head>
 <body>
+  <!-- HEADER & NAVIGATION -->
+  <header class="header">
+    <a href="/" class="header-logo">
+      <span class="mark">✦</span>
+      <span>Kool D</span>
+    </a>
+    
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-menu" id="nav-menu">
+      <ul>
+        <li><a href="products.html" onclick="closeMenu()">Sản phẩm</a></li>
+        <li><a href="order-now.html" onclick="closeMenu()">Đặt hàng</a></li>
+        <li><a href="tel:0379031662" onclick="closeMenu()">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <div id="preloader">
     <div class="spinner"></div>
   </div>
-
-  <div id="header-container"></div>
 
   <!-- HERO SECTION -->
   <section class="products-hero" data-aos="fade-down">
@@ -684,20 +880,24 @@
       <h2>Sẵn Sàng Sở Hữu Tác Phẩm Của Bạn?</h2>
       <p>Liên hệ với chúng tôi để được tư vấn về kích thước, chất liệu và các sản phẩm khác</p>
       <div class="cta-buttons">
-        <a href="https://zalo.me/0379031662" class="cta-btn cta-btn-primary">
-          <i class="fas fa-comments"></i> Tư Vấn Qua Zalo
+        <a href="order-now.html" class="cta-btn cta-btn-primary">
+          <i class="fas fa-shopping-cart"></i> Đặt Hàng Ngay
         </a>
-        <a href="tel:0379031662" class="cta-btn cta-btn-secondary">
-          <i class="fas fa-phone"></i> Gọi Hotline: 0379 031 662
+        <a href="https://zalo.me/0379031662" class="cta-btn cta-btn-secondary">
+          <i class="fas fa-comments"></i> Tư Vấn Qua Zalo
         </a>
       </div>
     </section>
   </div>
 
-  <!-- BACK LINK -->
-  <div class="back-link">
+  <!-- NAVIGATION FOOTER LINKS -->
+  <div class="footer-nav">
+    <a href="order-now.html">
+      <i class="fas fa-shopping-cart"></i> Đặt Hàng
+    </a>
+    <span class="divider">·</span>
     <a href="index.html">
-      <i class="fas fa-arrow-left"></i> Quay lại Trang Chủ
+      <i class="fas fa-home"></i> Trang Chủ
     </a>
   </div>
 
@@ -761,6 +961,37 @@
         albumRadios.forEach(radio => {
           radio.addEventListener('change', updateAlbum);
         });
+      }
+    });
+  </script>
+
+  <!-- NAVIGATION MENU FUNCTIONS -->
+  <script>
+    // ── MENU TOGGLE ──
+    function toggleMenu() {
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+      if (hamburger && navMenu) {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      }
+    }
+
+    function closeMenu() {
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+      if (hamburger && navMenu) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    }
+
+    // ── CLOSE MENU WHEN CLICKING OUTSIDE ──
+    document.addEventListener('click', (e) => {
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+      if (hamburger && navMenu && !hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        closeMenu();
       }
     });
   </script>
