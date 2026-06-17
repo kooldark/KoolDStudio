@@ -1,6 +1,10 @@
 // Scroll Navigation - Scroll to Top/Bottom Button
 (function() {
   const scrollNav = document.getElementById('scroll-nav');
+  
+  // Exit if scroll-nav element doesn't exist
+  if (!scrollNav) return;
+  
   const scrollTopBtn = document.getElementById('scroll-top-btn');
   const scrollBottomBtn = document.getElementById('scroll-bottom-btn');
 
