@@ -68,13 +68,18 @@
         .page-wrapper {
             max-width: 1100px;
             margin: 0 auto;
+            padding-top: 8rem;
+        }
+
+        .navbar {
+            position: absolute;
+            background: var(--light-bg);
+            border-bottom-color: rgba(212, 165, 116, 0.18);
         }
 
         /* ============ HEADER ============ */
         .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 1rem;
+            display: none;
         }
 
         .header-brand {
@@ -210,7 +215,7 @@
         /* ============ TWO COLUMN LAYOUT ============ */
         .two-column {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             gap: 3rem;
             margin-bottom: 2.5rem;
         }
@@ -219,6 +224,31 @@
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
+        }
+
+        .party-column {
+            padding: 1.25rem;
+            border: 1px solid var(--border-light);
+            border-top: 3px solid var(--primary-green);
+            border-radius: 12px;
+            background: rgba(45, 74, 53, 0.025);
+        }
+
+        .party-column .section-header {
+            border-bottom-color: rgba(45, 74, 53, 0.12);
+        }
+
+        .party-customer {
+            border-top-color: #b77962;
+            background: rgba(183, 121, 98, 0.035);
+        }
+
+        .party-customer .section-header::before {
+            background: #b77962;
+        }
+
+        .party-studio .section-header::before {
+            background: var(--primary-green);
         }
 
         /* ============ FORM INPUTS ============ */
@@ -343,7 +373,7 @@
         /* ============ SERVICE & PRODUCT SECTIONS ============ */
         .service-product-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             gap: 2.5rem;
             margin-bottom: 2.5rem;
         }
@@ -390,6 +420,8 @@
 
         /* ============ COST SECTION ============ */
         .cost-table {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             background: var(--light-bg);
             border: 1.5px solid var(--border-light);
             border-radius: 12px;
@@ -401,7 +433,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            padding: 1.2rem 1.5rem;
+            padding: 0.85rem 1.2rem;
             border-bottom: 1px solid var(--border-light);
             align-items: center;
         }
@@ -411,7 +443,8 @@
         }
 
         .cost-row.header {
-            background: var(--primary-green);
+            grid-column: 1 / -1;
+            background: #78857b;
             color: var(--white);
             font-weight: 600;
             font-size: 13px;
@@ -420,11 +453,16 @@
             border-bottom: none;
         }
 
+        .cost-row.total-cost-row {
+            grid-column: 1 / -1;
+        }
+
         .cost-row.total {
+            grid-column: 1 / -1;
             background: linear-gradient(135deg, rgba(45, 74, 53, 0.05) 0%, rgba(212, 165, 116, 0.05) 100%);
             border-top: 2px solid var(--accent-gold);
             font-weight: 700;
-            padding: 1.5rem;
+            padding: 1rem 1.2rem;
         }
 
         .cost-label {
@@ -436,12 +474,12 @@
             background: var(--white);
             border: 1px solid var(--border-light);
             border-radius: 8px;
-            padding: 0.8rem;
+            padding: 0.6rem 0.75rem;
             text-align: right;
             font-weight: 600;
             color: var(--primary-green);
             font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .cost-input:focus {
@@ -452,7 +490,7 @@
 
         #remaining-balance {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--primary-green);
             text-align: right;
@@ -501,6 +539,30 @@
             margin-bottom: 2rem;
         }
 
+        .terms-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding: 0.55rem 0.85rem;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            background: var(--white);
+            color: var(--primary-green);
+            font: 600 12px 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .terms-toggle:hover {
+            border-color: var(--accent-gold);
+            color: #8c6b4f;
+        }
+
+        .terms-content.is-collapsed {
+            display: none;
+        }
+
         .radio-card {
             position: relative;
             cursor: pointer;
@@ -524,9 +586,9 @@
         }
 
         .radio-card input[type="radio"]:checked + .radio-card-label {
-            background: var(--primary-green);
+            background: #b18a68;
             color: white;
-            border-color: var(--primary-green);
+            border-color: #b18a68;
             box-shadow: var(--shadow-md);
         }
 
@@ -584,15 +646,52 @@
         }
 
         .signature-line {
-            border-top: 2px solid var(--primary-green);
-            height: 80px;
-            margin-bottom: 0.8rem;
+            display: none;
+        }
+
+        .signature-canvas {
+            display: block;
+            width: 100%;
+            height: 100px;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-green);
+            background: rgba(255, 255, 255, 0.5);
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        .signature-clear {
+            border: 0;
+            background: transparent;
+            color: var(--text-secondary);
+            font: 500 11px 'Montserrat', sans-serif;
+            cursor: pointer;
+        }
+
+        .signature-clear:hover {
+            color: #8c6b4f;
         }
 
         .signature-name {
             font-size: 13px;
             color: var(--text-secondary);
             font-style: italic;
+        }
+
+        .signature-name-input {
+            width: 100%;
+            text-align: center;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border-light);
+            border-radius: 0;
+            padding: 0.4rem;
+            font-style: italic;
+        }
+
+        .signature-name-input:focus {
+            border-bottom-color: var(--accent-gold);
+            box-shadow: none;
         }
 
         /* ============ BUTTONS ============ */
@@ -797,6 +896,49 @@
                 grid-template-columns: 1fr;
             }
 
+            .cost-table {
+                display: block;
+            }
+
+            body {
+                padding: 1rem 0.75rem;
+            }
+
+            .page-wrapper {
+                padding-top: 6rem;
+            }
+
+            #contract-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .contract-container,
+            .management-section {
+                border-radius: 14px;
+            }
+
+            .party-column {
+                padding: 1rem;
+            }
+
+            .section {
+                margin-bottom: 2rem;
+            }
+
+            .terms-content {
+                padding: 1.25rem;
+            }
+
+            .terms-content li {
+                padding-left: 1.4rem;
+                margin-bottom: 0.85rem;
+            }
+
+            .management-section {
+                padding: 1.5rem 1rem;
+                margin-top: 2rem;
+            }
+
             .form-row {
                 flex-direction: column;
                 align-items: stretch;
@@ -836,6 +978,14 @@
             .terms-selector {
                 display: none !important;
             }
+
+            .terms-toggle {
+                display: none !important;
+            }
+
+            .terms-content.is-collapsed {
+                display: block !important;
+            }
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
@@ -871,7 +1021,7 @@
                 <section class="section">
                     <div class="two-column">
                         <!-- Customer Info -->
-                        <div class="column">
+                        <div class="column party-column party-customer">
                             <div class="section-header">
                                 <h3 class="section-title">Bên A: Khách Hàng</h3>
                             </div>
@@ -892,14 +1042,14 @@
                                     <small>(Chọn ngày và giờ bên dưới)</small>
                                 </div>
                                 <div class="time-picker">
-                                    <input type="time" id="appointment-time" class="form-input">
-                                    <input type="date" id="appointment-date" class="form-input">
+                                    <input type="text" id="appointment-time" class="form-input" placeholder="HH:MM" inputmode="numeric" maxlength="5">
+                                    <input type="text" id="appointment-date" class="form-input" placeholder="DD/MM/YYYY" inputmode="numeric" maxlength="10">
                                 </div>
                             </div>
                         </div>
 
                         <!-- Studio Info -->
-                        <div class="column">
+                        <div class="column party-column party-studio">
                             <div class="section-header">
                                 <h3 class="section-title">Bên B: Studio</h3>
                             </div>
@@ -962,7 +1112,7 @@
 
                 <!-- COST & PAYMENT -->
                 <section class="section">
-                    <div class="two-column">
+                    <div>
                         <div>
                             <div class="section-header">
                                 <h3 class="section-title">Chi Phí & Thanh Toán</h3>
@@ -974,17 +1124,17 @@
                                     <span>Số Tiền (VNĐ)</span>
                                 </div>
 
-                                <div class="cost-row">
+                                <div class="cost-row total-cost-row">
                                     <span class="cost-label">Tổng Chi Phí</span>
                                     <input type="text" id="total-cost" class="cost-input currency-input" placeholder="0" inputmode="numeric">
                                 </div>
 
-                                <div class="cost-row">
+                                <div class="cost-row payment-row">
                                     <span class="cost-label">Đặt Cọc Lần 1</span>
                                     <input type="text" id="deposit-1" class="cost-input currency-input" placeholder="0" inputmode="numeric">
                                 </div>
 
-                                <div class="cost-row">
+                                <div class="cost-row payment-row">
                                     <span class="cost-label">Thanh Toán Lần 2</span>
                                     <input type="text" id="deposit-2" class="cost-input currency-input" placeholder="0" inputmode="numeric">
                                 </div>
@@ -997,32 +1147,6 @@
                                             <textarea id="remaining-note" style="background: transparent; border: none; padding: 0; font-size: 12px; width: 100%; resize: none; font-style: italic; color: var(--text-secondary);" rows="1" placeholder="Ghi chú (vd: thanh toán khi nhận ảnh)"></textarea>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Bank Info -->
-                        <div>
-                            <div class="section-header">
-                                <h3 class="section-title">Thông Tin Tài Khoản</h3>
-                            </div>
-
-                            <div class="bank-info">
-                                <div class="bank-info-row">
-                                    <span class="bank-info-label">Ngân Hàng:</span>
-                                    <span>Vietcombank</span>
-                                </div>
-                                <div class="bank-info-row">
-                                    <span class="bank-info-label">Chủ Tài:</span>
-                                    <span>Trần Như Tuấn</span>
-                                </div>
-                                <div class="bank-info-row">
-                                    <span class="bank-info-label">Số TK:</span>
-                                    <span>0071000763310</span>
-                                </div>
-                                <div class="bank-info-row" style="margin-top: 1rem; border-top: 1px solid rgba(45, 74, 53, 0.1); padding-top: 1rem;">
-                                    <span class="bank-info-label">Nội Dung:</span>
-                                    <span style="font-style: italic;">Tên khách hàng</span>
                                 </div>
                             </div>
                         </div>
@@ -1052,19 +1176,24 @@
                         </label>
                     </div>
 
-                    <div class="terms-content">
+                    <button type="button" class="terms-toggle" id="terms-toggle" aria-expanded="true" aria-controls="terms-content">
+                        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+                        <span>Thu gọn điều khoản</span>
+                    </button>
+
+                    <div class="terms-content" id="terms-content">
                         <ul id="terms-photo">
-                            <li>Studio giao ảnh gốc trong 48h, ảnh chỉnh sửa (file mềm) trong 15 ngày làm việc kể từ khi Khách hàng chốt list. Album/in ấn hoàn thiện trong 25-30 ngày làm việc.</li>
-                            <li>Studio có thể sử dụng một số hình ảnh để quảng bá. Nếu yêu cầu riêng tư 100%, vui lòng thông báo trước.</li>
-                            <li>Hủy hợp đồng: đặt cọc lần 1 không hoàn lại. Hoãn lịch 1 lần miễn phí (thông báo trước 7 ngày), lần 2 trở đi phí 10% giá trị hợp đồng.</li>
-                            <li>Dịch vụ ngoài hợp đồng thanh toán 100% ngay. Giao sản phẩm tại studio; nếu giao tận nơi, Khách chịu phí & rủi ro vận chuyển.</li>
+                            <li>Ảnh gốc giao trong 48h; ảnh chỉnh sửa giao trong 15 ngày làm việc sau khi chốt list; album/in ấn hoàn thiện trong 25-30 ngày làm việc.</li>
+                            <li>Studio được dùng ảnh để quảng bá, trừ khi Khách hàng báo trước yêu cầu bảo mật.</li>
+                            <li>Hủy hợp đồng: cọc lần 1 không hoàn lại. Hoãn 1 lần miễn phí khi báo trước 7 ngày; từ lần 2 phí 10% giá trị hợp đồng.</li>
+                            <li>Dịch vụ ngoài hợp đồng thanh toán ngay. Nhận sản phẩm tại studio; giao tận nơi do Khách hàng chịu phí và rủi ro.</li>
                         </ul>
                         <ul id="terms-makeup" style="display: none;">
-                            <li>Thời Gian: Khách hàng vui lòng đúng giờ hẹn. Trễ hơn 30 phút không thông báo: Studio có quyền điều chỉnh quy trình hoặc hủy dịch vụ.</li>
-                            <li>Trách Nhiệm Cơ Địa: Khách hàng cần thông báo về mọi dị ứng/tình trạng da nhạy cảm trước khi làm dịch vụ. Studio miễn trừ trách nhiệm nếu xảy ra phản ứng.</li>
-                            <li>Thử Mẫu (Cô Dâu): Phí thử mẫu là không hoàn lại. Yêu cầu thực hiện ít nhất 10 ngày trước ngày chính thức.</li>
-                            <li>Hủy Hợp Đồng: Đặt cọc không hoàn lại (theo Điều Khoản Chung).</li>
-                            <li>Hoãn Lịch: Hoãn miễn phí 1 lần khi báo trước 7 ngày làm việc. Báo trước 3-6 ngày tính phí 10%. Báo trước &lt;48 giờ tính phí 30%.</li>
+                            <li>Khách hàng vui lòng đúng giờ. Trễ trên 30 phút không báo trước, Studio có thể điều chỉnh quy trình hoặc hủy dịch vụ.</li>
+                            <li>Vui lòng báo trước về dị ứng hoặc da nhạy cảm. Studio không chịu trách nhiệm với phản ứng không được thông báo.</li>
+                            <li>Thử makeup cô dâu: phí không hoàn lại, thực hiện ít nhất 10 ngày trước ngày chính thức.</li>
+                            <li>Hủy hợp đồng: tiền cọc không hoàn lại.</li>
+                            <li>Hoãn lịch: 1 lần miễn phí khi báo trước 7 ngày; báo trước 3-6 ngày phí 10%; dưới 48 giờ phí 30%.</li>
                         </ul>
                     </div>
                 </section>
@@ -1074,13 +1203,15 @@
                     <div class="signature-section">
                         <div class="signature-block">
                             <div class="signature-label">Ký & Ghi Rõ Họ Tên</div>
-                            <div class="signature-line"></div>
-                            <p class="signature-name">Đại Diện Khách Hàng</p>
+                            <canvas class="signature-canvas" id="customer-signature" width="600" height="180" aria-label="Chữ ký khách hàng"></canvas>
+                            <button type="button" class="signature-clear" data-signature="customer-signature">Xóa chữ ký</button>
+                            <input type="text" id="customer-signature-name" class="signature-name-input" placeholder="Nhập họ và tên khách hàng">
                         </div>
                         <div class="signature-block">
                             <div class="signature-label">Ký & Ghi Rõ Họ Tên</div>
-                            <div class="signature-line"></div>
-                            <p class="signature-name">Đại Diện Studio</p>
+                            <canvas class="signature-canvas" id="studio-signature" width="600" height="180" aria-label="Chữ ký đại diện Studio"></canvas>
+                            <button type="button" class="signature-clear" data-signature="studio-signature">Xóa chữ ký</button>
+                            <input type="text" id="studio-signature-name" class="signature-name-input" placeholder="Nhập họ và tên đại diện">
                         </div>
                     </div>
                 </section>
@@ -1166,6 +1297,10 @@
             // Service & products
             serviceDetails: document.getElementById('service-details'),
             includedProducts: document.getElementById('included-products'),
+            customerSignature: document.getElementById('customer-signature'),
+            studioSignature: document.getElementById('studio-signature'),
+            customerSignatureName: document.getElementById('customer-signature-name'),
+            studioSignatureName: document.getElementById('studio-signature-name'),
 
             // Cost
             totalCost: document.getElementById('total-cost'),
@@ -1179,6 +1314,8 @@
             termsMakeupRadio: document.querySelector('input[name="terms-type"][value="makeup"]'),
             termsPhotoList: document.getElementById('terms-photo'),
             termsMakeupList: document.getElementById('terms-makeup'),
+            termsToggle: document.getElementById('terms-toggle'),
+            termsContent: document.getElementById('terms-content'),
 
             // Contract management
             contractNameInput: document.getElementById('contract-name-input'),
@@ -1196,6 +1333,34 @@
             const d = new Date();
             els.date.textContent = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
             autoGenerateContractName();
+        }
+
+        function setDefaultAppointment() {
+            const d = new Date();
+            const currentDate = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+            els.appointmentDate.value = currentDate;
+            els.appointmentTime.value = '09:00';
+        }
+
+        function formatAppointmentDate(value) {
+            if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+                const [year, month, day] = value.split('-');
+                return `${day}/${month}/${year}`;
+            }
+            return value;
+        }
+
+        function formatAppointmentDateInput(value) {
+            const digits = value.replace(/\D/g, '').slice(0, 8);
+            if (digits.length <= 2) return digits;
+            if (digits.length <= 4) return `${digits.slice(0, 2)}/${digits.slice(2)}`;
+            return `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`;
+        }
+
+        function formatAppointmentTime(value) {
+            const digits = value.replace(/\D/g, '').slice(0, 4);
+            if (digits.length <= 2) return digits;
+            return `${digits.slice(0, 2)}:${digits.slice(2)}`;
         }
 
         // Auto-generate contract name based on customer name and date
@@ -1249,6 +1414,74 @@
             });
         });
 
+        function createSignaturePad(canvas) {
+            const context = canvas.getContext('2d');
+            let isDrawing = false;
+
+            context.strokeStyle = '#2d4a35';
+            context.lineWidth = 3;
+            context.lineCap = 'round';
+            context.lineJoin = 'round';
+
+            function getPoint(event) {
+                const rect = canvas.getBoundingClientRect();
+                return {
+                    x: (event.clientX - rect.left) * (canvas.width / rect.width),
+                    y: (event.clientY - rect.top) * (canvas.height / rect.height),
+                };
+            }
+
+            canvas.addEventListener('pointerdown', event => {
+                isDrawing = true;
+                canvas.setPointerCapture(event.pointerId);
+                const point = getPoint(event);
+                context.beginPath();
+                context.moveTo(point.x, point.y);
+            });
+
+            canvas.addEventListener('pointermove', event => {
+                if (!isDrawing) return;
+                const point = getPoint(event);
+                context.lineTo(point.x, point.y);
+                context.stroke();
+            });
+
+            canvas.addEventListener('pointerup', () => {
+                isDrawing = false;
+            });
+
+            canvas.addEventListener('pointercancel', () => {
+                isDrawing = false;
+            });
+
+            return {
+                clear() {
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                },
+                load(dataUrl) {
+                    this.clear();
+                    if (!dataUrl) return;
+                    const image = new Image();
+                    image.onload = () => context.drawImage(image, 0, 0, canvas.width, canvas.height);
+                    image.src = dataUrl;
+                },
+                toDataUrl() {
+                    return canvas.toDataURL('image/png');
+                },
+            };
+        }
+
+        const signaturePads = {
+            customer: createSignaturePad(els.customerSignature),
+            studio: createSignaturePad(els.studioSignature),
+        };
+
+        document.querySelectorAll('.signature-clear').forEach(button => {
+            button.addEventListener('click', () => {
+                signaturePads[button.dataset.signature === 'customer-signature' ? 'customer' : 'studio'].clear();
+            });
+        });
+
         // Update appointment display
         function updateAppointmentDisplay() {
             const time = els.appointmentTime.value;
@@ -1265,15 +1498,24 @@
             else if (hours >= 12 && hours < 18) period = '🌤️ Chiều';
             else period = '🌙 Tối';
 
-            const d = new Date(date + 'T00:00:00');
-            const dateStr = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+            const [day, month, year] = date.split('/').map(Number);
+            const d = new Date(year, month - 1, day);
+            if (Number.isNaN(d.getTime())) return;
+            const dateStr = `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
 
             els.appointmentDisplay.innerHTML = `<strong>${period} ${hours}:${String(minutes).padStart(2, '0')} ngày ${dateStr}</strong>`;
         }
 
         [els.appointmentTime, els.appointmentDate].forEach(el => {
             el.addEventListener('change', updateAppointmentDisplay);
-            el.addEventListener('input', updateAppointmentDisplay);
+            el.addEventListener('input', () => {
+                if (el === els.appointmentTime) {
+                    el.value = formatAppointmentTime(el.value);
+                } else if (el === els.appointmentDate) {
+                    el.value = formatAppointmentDateInput(el.value);
+                }
+                updateAppointmentDisplay();
+            });
         });
 
         // Get contract data
@@ -1288,6 +1530,10 @@
                 location: els.location.value,
                 serviceDetails: els.serviceDetails.innerHTML,
                 includedProducts: els.includedProducts.innerHTML,
+                customerSignature: signaturePads.customer.toDataUrl(),
+                studioSignature: signaturePads.studio.toDataUrl(),
+                customerSignatureName: els.customerSignatureName.value,
+                studioSignatureName: els.studioSignatureName.value,
                 totalCost: els.totalCost.value,
                 deposit1: els.deposit1.value,
                 deposit2: els.deposit2.value,
@@ -1302,12 +1548,16 @@
             els.customerName.value = data.customerName || '';
             els.customerPhone.value = data.customerPhone || '';
             els.appointmentTime.value = data.appointmentTime || '';
-            els.appointmentDate.value = data.appointmentDate || '';
+            els.appointmentDate.value = formatAppointmentDate(data.appointmentDate || '');
             els.studioRep.value = data.studioRep || '';
             els.studioPhone.value = data.studioPhone || '0379031662 - 0976839250';
             els.location.value = data.location || 'Kool D. Studio';
             els.serviceDetails.innerHTML = DOMPurify.sanitize(data.serviceDetails || '<ul><li>Gói chụp, thời gian, địa điểm...</li></ul>');
             els.includedProducts.innerHTML = DOMPurify.sanitize(data.includedProducts || '<ul><li>Album, ảnh lớn, file ảnh...</li></ul>');
+            signaturePads.customer.load(data.customerSignature || '');
+            signaturePads.studio.load(data.studioSignature || '');
+            els.customerSignatureName.value = data.customerSignatureName || '';
+            els.studioSignatureName.value = data.studioSignatureName || '';
             els.totalCost.value = data.totalCost || '';
             els.deposit1.value = data.deposit1 || '';
             els.deposit2.value = data.deposit2 || '';
@@ -1507,8 +1757,20 @@
             });
         });
 
+        els.termsToggle.addEventListener('click', () => {
+            const isCollapsed = els.termsContent.classList.toggle('is-collapsed');
+            els.termsToggle.setAttribute('aria-expanded', String(!isCollapsed));
+            els.termsToggle.querySelector('i').className = isCollapsed
+                ? 'fas fa-chevron-down'
+                : 'fas fa-chevron-up';
+            els.termsToggle.querySelector('span').textContent = isCollapsed
+                ? 'Mở rộng điều khoản'
+                : 'Thu gọn điều khoản';
+        });
+
         // Initialize
         setDate();
+        setDefaultAppointment();
         calculateRemaining();
         updateAppointmentDisplay();
         renderContractList();
