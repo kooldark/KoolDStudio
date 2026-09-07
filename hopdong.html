@@ -459,6 +459,7 @@
 
         .cost-row.total {
             grid-column: 1 / -1;
+            grid-template-columns: 0.7fr 1.3fr;
             background: linear-gradient(135deg, rgba(45, 74, 53, 0.05) 0%, rgba(212, 165, 116, 0.05) 100%);
             border-top: 2px solid var(--accent-gold);
             font-weight: 700;
@@ -497,10 +498,48 @@
         }
 
         .cost-note {
-            font-size: 12px;
+            margin-top: 0.75rem;
+        }
+
+        .cost-note-label {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--primary-green);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-align: right;
+            text-transform: uppercase;
+        }
+
+        .cost-note textarea {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 58px;
+            padding: 0.65rem 0.75rem !important;
+            background: var(--white) !important;
+            border: 1px solid var(--border-light) !important;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font: 12px/1.5 'Montserrat', sans-serif;
+            text-align: left;
+        }
+
+        .cost-note textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold) !important;
+            box-shadow: 0 0 0 2px rgba(212, 165, 116, 0.1);
+        }
+
+        .cost-note textarea::placeholder {
+            color: #999;
+        }
+
+        .cost-note-hint {
+            font-size: 11px;
             color: var(--text-secondary);
             text-align: right;
-            margin-top: 0.5rem;
             font-style: italic;
         }
 
@@ -640,9 +679,14 @@
             font-size: 12px;
             font-weight: 600;
             color: var(--primary-green);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .signature-hint {
+            margin-bottom: 0.6rem;
+            color: var(--text-secondary);
+            font-size: 10px;
+            font-style: italic;
         }
 
         .signature-line {
@@ -652,7 +696,7 @@
         .signature-canvas {
             display: block;
             width: 100%;
-            height: 100px;
+            height: 180px;
             margin-bottom: 0.5rem;
             border-bottom: 2px solid var(--primary-green);
             background: rgba(255, 255, 255, 0.5);
@@ -664,7 +708,7 @@
             border: 0;
             background: transparent;
             color: var(--text-secondary);
-            font: 500 11px 'Montserrat', sans-serif;
+            font: 500 10px 'Montserrat', sans-serif;
             cursor: pointer;
         }
 
@@ -685,7 +729,8 @@
             border: none;
             border-bottom: 1px solid var(--border-light);
             border-radius: 0;
-            padding: 0.4rem;
+            padding: 0.3rem;
+            font-size: 12px;
             font-style: italic;
         }
 
@@ -1042,8 +1087,8 @@
                                     <small>(Chọn ngày và giờ bên dưới)</small>
                                 </div>
                                 <div class="time-picker">
-                                    <input type="text" id="appointment-time" class="form-input" placeholder="HH:MM" inputmode="numeric" maxlength="5">
-                                    <input type="text" id="appointment-date" class="form-input" placeholder="DD/MM/YYYY" inputmode="numeric" maxlength="10">
+                                    <input type="time" id="appointment-time" class="form-input">
+                                    <input type="date" id="appointment-date" class="form-input">
                                 </div>
                             </div>
                         </div>
@@ -1131,7 +1176,7 @@
 
                                 <div class="cost-row payment-row">
                                     <span class="cost-label">Đặt Cọc Lần 1</span>
-                                    <input type="text" id="deposit-1" class="cost-input currency-input" placeholder="0" inputmode="numeric">
+                                    <input type="text" id="deposit-1" class="cost-input currency-input" value="1.000.000" placeholder="0" inputmode="numeric">
                                 </div>
 
                                 <div class="cost-row payment-row">
@@ -1144,7 +1189,7 @@
                                     <div style="text-align: right;">
                                         <div id="remaining-balance">0 VNĐ</div>
                                         <div class="cost-note">
-                                            <textarea id="remaining-note" style="background: transparent; border: none; padding: 0; font-size: 12px; width: 100%; resize: none; font-style: italic; color: var(--text-secondary);" rows="1" placeholder="Ghi chú (vd: thanh toán khi nhận ảnh)"></textarea>
+                                            <textarea id="remaining-note" rows="2">Thanh toán sau quá trình thực hiện dịch vụ</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1202,14 +1247,16 @@
                 <section class="section">
                     <div class="signature-section">
                         <div class="signature-block">
-                            <div class="signature-label">Ký & Ghi Rõ Họ Tên</div>
-                            <canvas class="signature-canvas" id="customer-signature" width="600" height="180" aria-label="Chữ ký khách hàng"></canvas>
+                            <div class="signature-label">Khách hàng</div>
+                            <div class="signature-hint">Ký và ghi rõ họ tên</div>
+                            <canvas class="signature-canvas" id="customer-signature" width="600" height="360" aria-label="Chữ ký khách hàng"></canvas>
                             <button type="button" class="signature-clear" data-signature="customer-signature">Xóa chữ ký</button>
                             <input type="text" id="customer-signature-name" class="signature-name-input" placeholder="Nhập họ và tên khách hàng">
                         </div>
                         <div class="signature-block">
-                            <div class="signature-label">Ký & Ghi Rõ Họ Tên</div>
-                            <canvas class="signature-canvas" id="studio-signature" width="600" height="180" aria-label="Chữ ký đại diện Studio"></canvas>
+                            <div class="signature-label">Studio</div>
+                            <div class="signature-hint">Ký và ghi rõ họ tên</div>
+                            <canvas class="signature-canvas" id="studio-signature" width="600" height="360" aria-label="Chữ ký đại diện Studio"></canvas>
                             <button type="button" class="signature-clear" data-signature="studio-signature">Xóa chữ ký</button>
                             <input type="text" id="studio-signature-name" class="signature-name-input" placeholder="Nhập họ và tên đại diện">
                         </div>
@@ -1337,30 +1384,17 @@
 
         function setDefaultAppointment() {
             const d = new Date();
-            const currentDate = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+            const currentDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
             els.appointmentDate.value = currentDate;
             els.appointmentTime.value = '09:00';
         }
 
         function formatAppointmentDate(value) {
-            if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-                const [year, month, day] = value.split('-');
-                return `${day}/${month}/${year}`;
+            if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) {
+                const [day, month, year] = value.split('/');
+                return `${year}-${month}-${day}`;
             }
             return value;
-        }
-
-        function formatAppointmentDateInput(value) {
-            const digits = value.replace(/\D/g, '').slice(0, 8);
-            if (digits.length <= 2) return digits;
-            if (digits.length <= 4) return `${digits.slice(0, 2)}/${digits.slice(2)}`;
-            return `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`;
-        }
-
-        function formatAppointmentTime(value) {
-            const digits = value.replace(/\D/g, '').slice(0, 4);
-            if (digits.length <= 2) return digits;
-            return `${digits.slice(0, 2)}:${digits.slice(2)}`;
         }
 
         // Auto-generate contract name based on customer name and date
@@ -1498,7 +1532,7 @@
             else if (hours >= 12 && hours < 18) period = '🌤️ Chiều';
             else period = '🌙 Tối';
 
-            const [day, month, year] = date.split('/').map(Number);
+            const [year, month, day] = date.split('-').map(Number);
             const d = new Date(year, month - 1, day);
             if (Number.isNaN(d.getTime())) return;
             const dateStr = `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
@@ -1508,14 +1542,7 @@
 
         [els.appointmentTime, els.appointmentDate].forEach(el => {
             el.addEventListener('change', updateAppointmentDisplay);
-            el.addEventListener('input', () => {
-                if (el === els.appointmentTime) {
-                    el.value = formatAppointmentTime(el.value);
-                } else if (el === els.appointmentDate) {
-                    el.value = formatAppointmentDateInput(el.value);
-                }
-                updateAppointmentDisplay();
-            });
+            el.addEventListener('input', updateAppointmentDisplay);
         });
 
         // Get contract data
@@ -1559,9 +1586,9 @@
             els.customerSignatureName.value = data.customerSignatureName || '';
             els.studioSignatureName.value = data.studioSignatureName || '';
             els.totalCost.value = data.totalCost || '';
-            els.deposit1.value = data.deposit1 || '';
+            els.deposit1.value = data.deposit1 || '1.000.000';
             els.deposit2.value = data.deposit2 || '';
-            els.remainingNote.value = data.remainingNote || '';
+            els.remainingNote.value = data.remainingNote || 'Thanh toán sau quá trình thực hiện dịch vụ';
             els.date.textContent = data.contractDate || new Date().toLocaleDateString('vi-VN');
 
             if (data.termsType === 'makeup') {
